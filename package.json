@@ -1,0 +1,10 @@
+{
+  "name": "structure-api-js",
+  "version": "1.0.0",
+  "description": "User API for accessing Structure data",
+  "main": "lib/index.js",
+  "dependencies": {
+    "axios": "^0.7.0",
+    "uri-template": "^1.0.0"
+  }
+}
