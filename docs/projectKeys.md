@@ -5,14 +5,23 @@ Structure API - v1.0.0
 Returns the projectKeys for a project
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Collection of projectKeys (https://api.getstructure.io/#/definitions/projectKeys)
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [projectKeys](_schemas.md#/definitions/projectKeys) | Collection of projectKeys |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
 
 ### Example
 ```javascript
@@ -30,14 +39,23 @@ client.projectKeys.get(params)
 Create a new projectKey for a project
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 201 - If projectKey was successfully created 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 201 | undefined | If projectKey was successfully created |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
 
 ### Example
 ```javascript

@@ -5,14 +5,23 @@ Structure API - v1.0.0
 Returns the flows for a project
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Collection of flows (https://api.getstructure.io/#/definitions/flows)
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [flows](_schemas.md#/definitions/flows) | Collection of flows |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
 
 ### Example
 ```javascript
@@ -30,15 +39,24 @@ client.flows.get(params)
 Create a new flow for a project
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {object} flow - New flow information (https://api.getstructure.io/#/definitions/flow)
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| flow | [flow](_schemas.md#/definitions/flow) | N | New flow information |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 201 - If flow was successfully created 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 201 | undefined | If flow was successfully created |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
 
 ### Example
 ```javascript

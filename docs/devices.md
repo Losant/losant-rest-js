@@ -5,14 +5,23 @@ Structure API - v1.0.0
 Returns the devices for a project
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Collection of devices (https://api.getstructure.io/#/definitions/devices)
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [devices](_schemas.md#/definitions/devices) | Collection of devices |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
 
 ### Example
 ```javascript
@@ -30,15 +39,24 @@ client.devices.get(params)
 Create a new device for a project
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {object} device - New device information (https://api.getstructure.io/#/definitions/device)
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| device | [device](_schemas.md#/definitions/device) | N | New device information |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 201 - If device was successfully created 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 201 | undefined | If device was successfully created |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
 
 ### Example
 ```javascript

@@ -5,14 +5,23 @@ Structure API - v1.0.0
 Returns the gateways for a project
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Collection of gateways (https://api.getstructure.io/#/definitions/gateways)
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [gateways](_schemas.md#/definitions/gateways) | Collection of gateways |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
 
 ### Example
 ```javascript
@@ -30,15 +39,24 @@ client.gateways.get(params)
 Create a new gateway for a project
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {object} gateway - New gateway information (https://api.getstructure.io/#/definitions/gateway)
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| gateway | [gateway](_schemas.md#/definitions/gateway) | N | New gateway information |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 201 - If gateway was successfully created 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 201 | undefined | If gateway was successfully created |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
 
 ### Example
 ```javascript

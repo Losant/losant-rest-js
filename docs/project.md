@@ -5,15 +5,24 @@ Structure API - v1.0.0
 Retrieves information on an project
 
 
+
 ### Parameters
-- {string} projectId - ID of the associated project 
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID of the associated project |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Project information (https://api.getstructure.io/#/definitions/project)
-- 404 - Error if project was not found 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [project](_schemas.md#/definitions/project) | Project information |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if project was not found |
 
 ### Example
 ```javascript
@@ -31,16 +40,25 @@ client.project.get(params)
 Updates information about a project
 
 
+
 ### Parameters
-- {string} projectId - ID of the associated project 
-- {object} project - Object containing new project properties (https://api.getstructure.io/#/definitions/project)
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID of the associated project |
+| project | [project](_schemas.md#/definitions/project) | N | Object containing new project properties |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Update project information (https://api.getstructure.io/#/definitions/project)
-- 404 - Error if project was not found 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [project](_schemas.md#/definitions/project) | Update project information |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if project was not found |
 
 ### Example
 ```javascript
@@ -58,15 +76,24 @@ client.project.patch(params)
 Deletes a project
 
 
+
 ### Parameters
-- {string} projectId - ID of the associated project 
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID of the associated project |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - If project was successfully deleted 
-- 404 - Error if project was not found 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | undefined | If project was successfully deleted |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if project was not found |
 
 ### Example
 ```javascript

@@ -5,16 +5,25 @@ Structure API - v1.0.0
 Retrieves information on an projectKey
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {string} projectKeyId - ID associated with the projectKey 
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| projectKeyId | string | Y | ID associated with the projectKey |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Device information (https://api.getstructure.io/#/definitions/projectKey)
-- 404 - Error if projectKey was not found 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [projectKey](_schemas.md#/definitions/projectKey) | Device information |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if projectKey was not found |
 
 ### Example
 ```javascript
@@ -32,17 +41,26 @@ client.projectKey.get(params)
 Updates information about a projectKey
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {string} projectKeyId - ID associated with the projectKey 
-- {object} projectKey - Object containing new properties of the projectKey (https://api.getstructure.io/#/definitions/projectKey)
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| projectKeyId | string | Y | ID associated with the projectKey |
+| projectKey | [projectKey](_schemas.md#/definitions/projectKey) | N | Object containing new properties of the projectKey |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Updated projectKey information (https://api.getstructure.io/#/definitions/projectKey)
-- 404 - Error if projectKey was not found 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [projectKey](_schemas.md#/definitions/projectKey) | Updated projectKey information |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if projectKey was not found |
 
 ### Example
 ```javascript
@@ -60,16 +78,25 @@ client.projectKey.patch(params)
 Deletes a projectKey
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {string} projectKeyId - ID associated with the projectKey 
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| projectKeyId | string | Y | ID associated with the projectKey |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 204 - If projectKey was successfully deleted 
-- 404 - Error if projectKey was not found 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 204 | undefined | If projectKey was successfully deleted |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if projectKey was not found |
 
 ### Example
 ```javascript

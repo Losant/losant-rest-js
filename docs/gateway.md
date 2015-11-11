@@ -5,16 +5,25 @@ Structure API - v1.0.0
 Retrieves information on an gateway
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {string} gatewayId - ID associated with the gateway 
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| gatewayId | string | Y | ID associated with the gateway |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Gateway information (https://api.getstructure.io/#/definitions/gateway)
-- 404 - Error if gateway was not found 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [gateway](_schemas.md#/definitions/gateway) | Gateway information |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if gateway was not found |
 
 ### Example
 ```javascript
@@ -32,17 +41,26 @@ client.gateway.get(params)
 Updates information about a gateway
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {string} gatewayId - ID associated with the gateway 
-- {object} gateway - Object containing new properties of the gateway (https://api.getstructure.io/#/definitions/gateway)
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| gatewayId | string | Y | ID associated with the gateway |
+| gateway | [gateway](_schemas.md#/definitions/gateway) | N | Object containing new properties of the gateway |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Updated gateway information (https://api.getstructure.io/#/definitions/gateway)
-- 404 - Error if gateway was not found 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [gateway](_schemas.md#/definitions/gateway) | Updated gateway information |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if gateway was not found |
 
 ### Example
 ```javascript
@@ -60,16 +78,25 @@ client.gateway.patch(params)
 Deletes a gateway
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {string} gatewayId - ID associated with the gateway 
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| gatewayId | string | Y | ID associated with the gateway |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 204 - If gateway was successfully deleted 
-- 404 - Error if gateway was not found 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 204 | undefined | If gateway was successfully deleted |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if gateway was not found |
 
 ### Example
 ```javascript

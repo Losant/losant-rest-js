@@ -5,16 +5,25 @@ Structure API - v1.0.0
 Retrieves information on an flow
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {string} flowId - ID associated with the flow 
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| flowId | string | Y | ID associated with the flow |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Flow information (https://api.getstructure.io/#/definitions/flow)
-- 404 - Error if flow was not found 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [flow](_schemas.md#/definitions/flow) | Flow information |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if flow was not found |
 
 ### Example
 ```javascript
@@ -32,17 +41,26 @@ client.flow.get(params)
 Updates information about a flow
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {string} flowId - ID associated with the flow 
-- {object} flow - Object containing new properties of the flow (https://api.getstructure.io/#/definitions/flow)
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| flowId | string | Y | ID associated with the flow |
+| flow | [flow](_schemas.md#/definitions/flow) | N | Object containing new properties of the flow |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Updated device information (https://api.getstructure.io/#/definitions/flow)
-- 404 - Error if flow is not found 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [flow](_schemas.md#/definitions/flow) | Updated device information |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if flow is not found |
 
 ### Example
 ```javascript
@@ -60,16 +78,25 @@ client.flow.patch(params)
 Deletes a flow
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {string} flowId - ID associated with the flow 
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| flowId | string | Y | ID associated with the flow |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 204 - If flow was successfully deleted 
-- 404 - Error if flow was not found 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 204 | undefined | If flow was successfully deleted |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if flow was not found |
 
 ### Example
 ```javascript

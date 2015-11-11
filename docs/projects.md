@@ -5,13 +5,22 @@ Structure API - v1.0.0
 Returns the projects owned by the current user
 
 
+
 ### Parameters
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Collection of projects (https://api.getstructure.io/#/definitions/projects)
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [projects](_schemas.md#/definitions/projects) | Collection of projects |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
 
 ### Example
 ```javascript
@@ -29,14 +38,23 @@ client.projects.get(params)
 Create a new project owned by the current user
 
 
+
 ### Parameters
-- {object} project - New project information (https://api.getstructure.io/#/definitions/project)
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| project | [project](_schemas.md#/definitions/project) | N | New project information |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 201 - If project was successfully created 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 201 | undefined | If project was successfully created |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
 
 ### Example
 ```javascript

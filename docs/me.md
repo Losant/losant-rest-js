@@ -5,13 +5,22 @@ Structure API - v1.0.0
 Retrieves information on the current user
 
 
+
 ### Parameters
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Current user information (https://api.getstructure.io/#/definitions/me)
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [me](_schemas.md#/definitions/me) | Current user information |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
 
 ### Example
 ```javascript
@@ -29,14 +38,23 @@ client.me.get(params)
 Updates information about the current user
 
 
+
 ### Parameters
-- {object} user - Object containing new user properties (https://api.getstructure.io/#/definitions/me)
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| user | [me](_schemas.md#/definitions/me) | N | Object containing new user properties |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Updated user information (https://api.getstructure.io/#/definitions/me)
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [me](_schemas.md#/definitions/me) | Updated user information |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
 
 ### Example
 ```javascript

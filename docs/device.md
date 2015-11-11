@@ -5,16 +5,25 @@ Structure API - v1.0.0
 Retrieves information on an device
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {string} deviceId - ID associated with the device 
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| deviceId | string | Y | ID associated with the device |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Device information (https://api.getstructure.io/#/definitions/device)
-- 404 - Error if device was not found 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [device](_schemas.md#/definitions/device) | Device information |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if device was not found |
 
 ### Example
 ```javascript
@@ -32,17 +41,26 @@ client.device.get(params)
 Updates information about a device
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {string} deviceId - ID associated with the device 
-- {object} device - Object containing new properties of the device (https://api.getstructure.io/#/definitions/device)
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| deviceId | string | Y | ID associated with the device |
+| device | [device](_schemas.md#/definitions/device) | N | Object containing new properties of the device |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Updated device information (https://api.getstructure.io/#/definitions/device)
-- 404 - Error if device was not found 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [device](_schemas.md#/definitions/device) | Updated device information |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if device was not found |
 
 ### Example
 ```javascript
@@ -60,16 +78,25 @@ client.device.patch(params)
 Deletes a device
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {string} deviceId - ID associated with the device 
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| deviceId | string | Y | ID associated with the device |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 204 - If device was successfully deleted 
-- 404 - Error if device was not found 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 204 | undefined | If device was successfully deleted |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if device was not found |
 
 ### Example
 ```javascript
@@ -87,15 +114,24 @@ client.device.delete(params)
 Retrieves the last known device state
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {string} deviceId - ID associated with the device 
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| deviceId | string | Y | ID associated with the device |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Last known device state 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | undefined | Last known device state |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
 
 ### Example
 ```javascript
@@ -113,15 +149,24 @@ client.device.retrieveState(params)
 Sends the current state of the device
 
 
+
 ### Parameters
-- {string} projectId - ID associated with the project 
-- {string} deviceId - ID associated with the device 
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| deviceId | string | Y | ID associated with the device |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - If state device was successfully sent 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | undefined | If state device was successfully sent |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
 
 ### Example
 ```javascript

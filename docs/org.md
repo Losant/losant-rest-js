@@ -5,15 +5,24 @@ Structure API - v1.0.0
 Retrieves information on an organization
 
 
+
 ### Parameters
-- {string} orgId - ID associated with the organization 
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| orgId | string | Y | ID associated with the organization |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Organization information (https://api.getstructure.io/#/definitions/org)
-- 404 - Error if organization not found 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [org](_schemas.md#/definitions/org) | Organization information |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if organization not found |
 
 ### Example
 ```javascript
@@ -31,16 +40,25 @@ client.org.get(params)
 Updates information about an organization
 
 
+
 ### Parameters
-- {string} orgId - ID associated with the organization 
-- {object} organization - Object containing new organization properties (https://api.getstructure.io/#/definitions/org)
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| orgId | string | Y | ID associated with the organization |
+| organization | [org](_schemas.md#/definitions/org) | N | Object containing new organization properties |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Updated organization information (https://api.getstructure.io/#/definitions/org)
-- 404 - Error if organization was not found 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [org](_schemas.md#/definitions/org) | Updated organization information |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if organization was not found |
 
 ### Example
 ```javascript
@@ -58,15 +76,24 @@ client.org.patch(params)
 Deletes an organization
 
 
+
 ### Parameters
-- {string} orgId - ID associated with the organization 
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| orgId | string | Y | ID associated with the organization |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - If organization was successfully deleted 
-- 404 - Error if organization was not found 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | undefined | If organization was successfully deleted |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if organization was not found |
 
 ### Example
 ```javascript

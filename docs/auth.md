@@ -5,15 +5,24 @@ Structure API - v1.0.0
 
 Authenticates a user using the provided credentials
 
+
 ### Parameters
-- {object} credentials - User authentication credentials (https://api.getstructure.io/#/definitions/userCredentials)
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| credentials | [userCredentials](_schemas.md#/definitions/userCredentials) | N | User authentication credentials |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - If authentication is successful 
-- 401 - Unauthorized error if authentication fails 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | undefined | If authentication is successful |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 401 | undefined | Unauthorized error if authentication fails |
 
 ### Example
 ```javascript
@@ -31,15 +40,24 @@ client.auth.authenticateUser(params)
 
 Authenticates a gateway using the provided credentials
 
+
 ### Parameters
-- {object} credentials - Gateway authentication credentials (https://api.getstructure.io/#/definitions/gatewayCredentials)
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| credentials | [gatewayCredentials](_schemas.md#/definitions/gatewayCredentials) | N | Gateway authentication credentials |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - If authentication is successful 
-- 401 - Unauthorized error if authentication fails 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | undefined | If authentication is successful |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 401 | undefined | Unauthorized error if authentication fails |
 
 ### Example
 ```javascript

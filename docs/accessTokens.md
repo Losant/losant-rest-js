@@ -5,13 +5,22 @@ Structure API - v1.0.0
 Returns the accessTokens for a user
 
 
+
 ### Parameters
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 200 - Collection of accessTokens (https://api.getstructure.io/#/definitions/accessTokens)
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [accessTokens](_schemas.md#/definitions/accessTokens) | Collection of accessTokens |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
 
 ### Example
 ```javascript
@@ -29,14 +38,23 @@ client.accessTokens.get(params)
 Create a new accessKey for a user
 
 
+
 ### Parameters
-- {object} accessToken - AccessToken information (https://api.getstructure.io/#/definitions/accessToken)
-- {boolean} _actions - Return resource actions in response 
-- {boolean} _links - Return resource link in response 
-- {boolean} _embedded - Return embedded resources in response 
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| accessToken | [accessToken](_schemas.md#/definitions/accessToken) | N | AccessToken information |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
 
 ### Responses
-- 201 - If accessKey was successfully created 
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 201 | undefined | If accessKey was successfully created |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
 
 ### Example
 ```javascript
