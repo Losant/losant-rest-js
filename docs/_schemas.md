@@ -957,3 +957,83 @@ Structure API - v1.0.0
   ]
 }
 ```
+## webhook
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "projectId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "name": {
+      "type": "string"
+    },
+    "token": {
+      "type": "string"
+    }
+  }
+}
+```
+## webhooks
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "limit": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "prevPage": {
+      "type": "integer"
+    },
+    "nextPage": {
+      "type": "integer"
+    },
+    "lastPage": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "items",
+    "count"
+  ]
+}
+```
