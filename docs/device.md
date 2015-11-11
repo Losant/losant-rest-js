@@ -18,7 +18,7 @@ Retrieves information on an device
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [device](_schemas.md#/definitions/device) | Device information |
+| 200 | [device](_schemas.md#device) | Device information |
 
 ### Errors
 | Code | Type | Description |
@@ -47,7 +47,7 @@ Updates information about a device
 | ---- | ---- | -------- | ----------- |
 | projectId | string | Y | ID associated with the project |
 | deviceId | string | Y | ID associated with the device |
-| device | [device](_schemas.md#/definitions/device) | N | Object containing new properties of the device |
+| device | [device](_schemas.md#device) | N | Object containing new properties of the device |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -55,7 +55,7 @@ Updates information about a device
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [device](_schemas.md#/definitions/device) | Updated device information |
+| 200 | [device](_schemas.md#device) | Updated device information |
 
 ### Errors
 | Code | Type | Description |

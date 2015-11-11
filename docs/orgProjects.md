@@ -44,7 +44,7 @@ Create a new project owned by the organization
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | orgId | string | Y | Id of the organization |
-| project | [project](_schemas.md#/definitions/project) | N | Project information |
+| project | [project](_schemas.md#project) | N | Project information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

@@ -17,7 +17,7 @@ Returns the flows for a project
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [flows](_schemas.md#/definitions/flows) | Collection of flows |
+| 200 | [flows](_schemas.md#flows) | Collection of flows |
 
 ### Errors
 | Code | Type | Description |
@@ -44,7 +44,7 @@ Create a new flow for a project
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | projectId | string | Y | ID associated with the project |
-| flow | [flow](_schemas.md#/definitions/flow) | N | New flow information |
+| flow | [flow](_schemas.md#flow) | N | New flow information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

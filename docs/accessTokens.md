@@ -16,7 +16,7 @@ Returns the accessTokens for a user
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [accessTokens](_schemas.md#/definitions/accessTokens) | Collection of accessTokens |
+| 200 | [accessTokens](_schemas.md#accesstokens) | Collection of accessTokens |
 
 ### Errors
 | Code | Type | Description |
@@ -42,7 +42,7 @@ Create a new accessKey for a user
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| accessToken | [accessToken](_schemas.md#/definitions/accessToken) | N | AccessToken information |
+| accessToken | [accessToken](_schemas.md#accesstoken) | N | AccessToken information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

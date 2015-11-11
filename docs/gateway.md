@@ -18,7 +18,7 @@ Retrieves information on an gateway
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [gateway](_schemas.md#/definitions/gateway) | Gateway information |
+| 200 | [gateway](_schemas.md#gateway) | Gateway information |
 
 ### Errors
 | Code | Type | Description |
@@ -47,7 +47,7 @@ Updates information about a gateway
 | ---- | ---- | -------- | ----------- |
 | projectId | string | Y | ID associated with the project |
 | gatewayId | string | Y | ID associated with the gateway |
-| gateway | [gateway](_schemas.md#/definitions/gateway) | N | Object containing new properties of the gateway |
+| gateway | [gateway](_schemas.md#gateway) | N | Object containing new properties of the gateway |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -55,7 +55,7 @@ Updates information about a gateway
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [gateway](_schemas.md#/definitions/gateway) | Updated gateway information |
+| 200 | [gateway](_schemas.md#gateway) | Updated gateway information |
 
 ### Errors
 | Code | Type | Description |

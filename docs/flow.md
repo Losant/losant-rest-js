@@ -18,7 +18,7 @@ Retrieves information on an flow
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [flow](_schemas.md#/definitions/flow) | Flow information |
+| 200 | [flow](_schemas.md#flow) | Flow information |
 
 ### Errors
 | Code | Type | Description |
@@ -47,7 +47,7 @@ Updates information about a flow
 | ---- | ---- | -------- | ----------- |
 | projectId | string | Y | ID associated with the project |
 | flowId | string | Y | ID associated with the flow |
-| flow | [flow](_schemas.md#/definitions/flow) | N | Object containing new properties of the flow |
+| flow | [flow](_schemas.md#flow) | N | Object containing new properties of the flow |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -55,7 +55,7 @@ Updates information about a flow
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [flow](_schemas.md#/definitions/flow) | Updated device information |
+| 200 | [flow](_schemas.md#flow) | Updated device information |
 
 ### Errors
 | Code | Type | Description |

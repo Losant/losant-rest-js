@@ -16,7 +16,7 @@ Returns the projects owned by the current user
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [projects](_schemas.md#/definitions/projects) | Collection of projects |
+| 200 | [projects](_schemas.md#projects) | Collection of projects |
 
 ### Errors
 | Code | Type | Description |
@@ -42,7 +42,7 @@ Create a new project owned by the current user
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| project | [project](_schemas.md#/definitions/project) | N | New project information |
+| project | [project](_schemas.md#project) | N | New project information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

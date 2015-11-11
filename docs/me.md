@@ -16,7 +16,7 @@ Retrieves information on the current user
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [me](_schemas.md#/definitions/me) | Current user information |
+| 200 | [me](_schemas.md#me) | Current user information |
 
 ### Errors
 | Code | Type | Description |
@@ -42,7 +42,7 @@ Updates information about the current user
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| user | [me](_schemas.md#/definitions/me) | N | Object containing new user properties |
+| user | [me](_schemas.md#me) | N | Object containing new user properties |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -50,7 +50,7 @@ Updates information about the current user
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [me](_schemas.md#/definitions/me) | Updated user information |
+| 200 | [me](_schemas.md#me) | Updated user information |
 
 ### Errors
 | Code | Type | Description |

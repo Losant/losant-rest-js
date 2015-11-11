@@ -17,7 +17,7 @@ Retrieves information on an project
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [project](_schemas.md#/definitions/project) | Project information |
+| 200 | [project](_schemas.md#project) | Project information |
 
 ### Errors
 | Code | Type | Description |
@@ -45,7 +45,7 @@ Updates information about a project
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | projectId | string | Y | ID of the associated project |
-| project | [project](_schemas.md#/definitions/project) | N | Object containing new project properties |
+| project | [project](_schemas.md#project) | N | Object containing new project properties |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -53,7 +53,7 @@ Updates information about a project
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [project](_schemas.md#/definitions/project) | Update project information |
+| 200 | [project](_schemas.md#project) | Update project information |
 
 ### Errors
 | Code | Type | Description |

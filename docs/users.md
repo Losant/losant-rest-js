@@ -9,7 +9,7 @@ Create a new user account
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| user | [newUser](_schemas.md#/definitions/newUser) | N | New user information |
+| user | [newUser](_schemas.md#newuser) | N | New user information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

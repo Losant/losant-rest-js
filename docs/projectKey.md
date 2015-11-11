@@ -18,7 +18,7 @@ Retrieves information on an projectKey
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [projectKey](_schemas.md#/definitions/projectKey) | Device information |
+| 200 | [projectKey](_schemas.md#projectkey) | Device information |
 
 ### Errors
 | Code | Type | Description |
@@ -47,7 +47,7 @@ Updates information about a projectKey
 | ---- | ---- | -------- | ----------- |
 | projectId | string | Y | ID associated with the project |
 | projectKeyId | string | Y | ID associated with the projectKey |
-| projectKey | [projectKey](_schemas.md#/definitions/projectKey) | N | Object containing new properties of the projectKey |
+| projectKey | [projectKey](_schemas.md#projectkey) | N | Object containing new properties of the projectKey |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -55,7 +55,7 @@ Updates information about a projectKey
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [projectKey](_schemas.md#/definitions/projectKey) | Updated projectKey information |
+| 200 | [projectKey](_schemas.md#projectkey) | Updated projectKey information |
 
 ### Errors
 | Code | Type | Description |

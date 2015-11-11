@@ -17,7 +17,7 @@ Retrieves information on an organization
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [org](_schemas.md#/definitions/org) | Organization information |
+| 200 | [org](_schemas.md#org) | Organization information |
 
 ### Errors
 | Code | Type | Description |
@@ -45,7 +45,7 @@ Updates information about an organization
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | orgId | string | Y | ID associated with the organization |
-| organization | [org](_schemas.md#/definitions/org) | N | Object containing new organization properties |
+| organization | [org](_schemas.md#org) | N | Object containing new organization properties |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -53,7 +53,7 @@ Updates information about an organization
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [org](_schemas.md#/definitions/org) | Updated organization information |
+| 200 | [org](_schemas.md#org) | Updated organization information |
 
 ### Errors
 | Code | Type | Description |

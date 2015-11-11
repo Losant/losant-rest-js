@@ -17,7 +17,7 @@ Returns the projectKeys for a project
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [projectKeys](_schemas.md#/definitions/projectKeys) | Collection of projectKeys |
+| 200 | [projectKeys](_schemas.md#projectkeys) | Collection of projectKeys |
 
 ### Errors
 | Code | Type | Description |

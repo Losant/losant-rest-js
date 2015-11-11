@@ -16,7 +16,7 @@ Returns the organizations associated with the current user
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [orgs](_schemas.md#/definitions/orgs) | Collection of organizations |
+| 200 | [orgs](_schemas.md#orgs) | Collection of organizations |
 
 ### Errors
 | Code | Type | Description |
@@ -42,7 +42,7 @@ Create a new organization
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| organization | [org](_schemas.md#/definitions/org) | N | New organization information |
+| organization | [org](_schemas.md#org) | N | New organization information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

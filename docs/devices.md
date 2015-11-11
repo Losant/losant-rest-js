@@ -17,7 +17,7 @@ Returns the devices for a project
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [devices](_schemas.md#/definitions/devices) | Collection of devices |
+| 200 | [devices](_schemas.md#devices) | Collection of devices |
 
 ### Errors
 | Code | Type | Description |
@@ -44,7 +44,7 @@ Create a new device for a project
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | projectId | string | Y | ID associated with the project |
-| device | [device](_schemas.md#/definitions/device) | N | New device information |
+| device | [device](_schemas.md#device) | N | New device information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

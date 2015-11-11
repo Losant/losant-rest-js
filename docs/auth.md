@@ -9,7 +9,7 @@ Authenticates a user using the provided credentials
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| credentials | [userCredentials](_schemas.md#/definitions/userCredentials) | N | User authentication credentials |
+| credentials | [userCredentials](_schemas.md#usercredentials) | N | User authentication credentials |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -44,7 +44,7 @@ Authenticates a gateway using the provided credentials
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| credentials | [gatewayCredentials](_schemas.md#/definitions/gatewayCredentials) | N | Gateway authentication credentials |
+| credentials | [gatewayCredentials](_schemas.md#gatewaycredentials) | N | Gateway authentication credentials |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

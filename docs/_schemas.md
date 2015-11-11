@@ -1,7 +1,7 @@
 # Schemas
 Structure API - v1.0.0
 
-## <a name="definitions/accessToken">accessToken</a>
+## accessToken
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -41,7 +41,7 @@ Structure API - v1.0.0
   ]
 }
 ```
-## <a name="definitions/accessTokens">accessTokens</a>
+## accessTokens
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -113,7 +113,7 @@ Structure API - v1.0.0
   ]
 }
 ```
-## <a name="definitions/device">device</a>
+## device
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -172,7 +172,7 @@ Structure API - v1.0.0
   }
 }
 ```
-## <a name="definitions/devices">devices</a>
+## devices
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -265,7 +265,7 @@ Structure API - v1.0.0
   ]
 }
 ```
-## <a name="definitions/emailVerificationVerify">emailVerificationVerify</a>
+## emailVerificationVerify
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -285,7 +285,7 @@ Structure API - v1.0.0
   ]
 }
 ```
-## <a name="definitions/flow">flow</a>
+## flow
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -344,7 +344,7 @@ Structure API - v1.0.0
   ]
 }
 ```
-## <a name="definitions/flows">flows</a>
+## flows
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -437,7 +437,7 @@ Structure API - v1.0.0
   ]
 }
 ```
-## <a name="definitions/gateway">gateway</a>
+## gateway
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -471,7 +471,7 @@ Structure API - v1.0.0
   }
 }
 ```
-## <a name="definitions/gateways">gateways</a>
+## gateways
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -539,7 +539,7 @@ Structure API - v1.0.0
   ]
 }
 ```
-## <a name="definitions/gatewayCredentials">gatewayCredentials</a>
+## gatewayCredentials
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -563,7 +563,7 @@ Structure API - v1.0.0
   ]
 }
 ```
-## <a name="definitions/me">me</a>
+## me
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -590,7 +590,7 @@ Structure API - v1.0.0
   ]
 }
 ```
-## <a name="definitions/newUser">newUser</a>
+## newUser
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -618,7 +618,7 @@ Structure API - v1.0.0
   ]
 }
 ```
-## <a name="definitions/org">org</a>
+## org
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -640,7 +640,7 @@ Structure API - v1.0.0
   ]
 }
 ```
-## <a name="definitions/orgs">orgs</a>
+## orgs
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -696,7 +696,7 @@ Structure API - v1.0.0
   ]
 }
 ```
-## <a name="definitions/passwordResetInput">passwordResetInput</a>
+## passwordResetInput
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -712,7 +712,7 @@ Structure API - v1.0.0
   ]
 }
 ```
-## <a name="definitions/passwordResetFinish">passwordResetFinish</a>
+## passwordResetFinish
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -736,7 +736,7 @@ Structure API - v1.0.0
   ]
 }
 ```
-## <a name="definitions/project">project</a>
+## project
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -765,7 +765,7 @@ Structure API - v1.0.0
   ]
 }
 ```
-## <a name="definitions/projects">projects</a>
+## projects
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -828,7 +828,7 @@ Structure API - v1.0.0
   ]
 }
 ```
-## <a name="definitions/projectKey">projectKey</a>
+## projectKey
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -865,7 +865,7 @@ Structure API - v1.0.0
   ]
 }
 ```
-## <a name="definitions/projectKeys">projectKeys</a>
+## projectKeys
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -937,7 +937,7 @@ Structure API - v1.0.0
   ]
 }
 ```
-## <a name="definitions/userCredentials">userCredentials</a>
+## userCredentials
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",

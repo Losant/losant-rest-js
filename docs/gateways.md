@@ -17,7 +17,7 @@ Returns the gateways for a project
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [gateways](_schemas.md#/definitions/gateways) | Collection of gateways |
+| 200 | [gateways](_schemas.md#gateways) | Collection of gateways |
 
 ### Errors
 | Code | Type | Description |
@@ -44,7 +44,7 @@ Create a new gateway for a project
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | projectId | string | Y | ID associated with the project |
-| gateway | [gateway](_schemas.md#/definitions/gateway) | N | New gateway information |
+| gateway | [gateway](_schemas.md#gateway) | N | New gateway information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
