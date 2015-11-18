@@ -34,6 +34,5 @@ var client = api.createClient({
 - [Projects](docs/projects.md)
 - [Project Key](docs/projectKey.md)
 - [Project Keys](docs/projectKeys.md)
-- [Users](docs/users.md)
 - [Webhook](docs/webhook.md)
 - [Webhooks](docs/webhooks.md)
