@@ -312,35 +312,70 @@ Structure API - v1.0.0
     "enabled": {
       "type": "boolean"
     },
+    "payloadSchema": {
+      "type": "string"
+    },
     "triggers": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "type": {
-            "type": "string"
-          },
           "key": {
             "type": "string"
           },
-          "name": {
+          "type": {
             "type": "string"
+          },
+          "config": {
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          },
+          "outputIds": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
           }
         }
       }
     },
-    "payloadSchema": {
-      "type": "string"
-    },
-    "flow": {
-      "type": "string"
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "config": {
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          },
+          "outputIds": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "required": [
-    "projectId",
-    "name",
-    "enabled",
-    "flow"
+    "name"
   ]
 }
 ```
@@ -377,35 +412,70 @@ Structure API - v1.0.0
           "enabled": {
             "type": "boolean"
           },
+          "payloadSchema": {
+            "type": "string"
+          },
           "triggers": {
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
-                "type": {
-                  "type": "string"
-                },
                 "key": {
                   "type": "string"
                 },
-                "name": {
+                "type": {
                   "type": "string"
+                },
+                "config": {
+                  "type": "object"
+                },
+                "meta": {
+                  "type": "object"
+                },
+                "outputIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
           },
-          "payloadSchema": {
-            "type": "string"
-          },
-          "flow": {
-            "type": "string"
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "config": {
+                  "type": "object"
+                },
+                "meta": {
+                  "type": "object"
+                },
+                "outputIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "required": [
-          "projectId",
-          "name",
-          "enabled",
-          "flow"
+          "name"
         ]
       }
     },
@@ -596,6 +666,9 @@ Structure API - v1.0.0
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "betaCode": {
+      "type": "string"
+    },
     "firstName": {
       "type": "string"
     },
@@ -758,6 +831,23 @@ Structure API - v1.0.0
     },
     "description": {
       "type": "string"
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "gatewayCount": {
+          "type": "number"
+        },
+        "deviceCount": {
+          "type": "number"
+        },
+        "workflowCount": {
+          "type": "number"
+        },
+        "webhookCount": {
+          "type": "number"
+        }
+      }
     }
   },
   "required": [
@@ -793,6 +883,23 @@ Structure API - v1.0.0
           },
           "description": {
             "type": "string"
+          },
+          "summary": {
+            "type": "object",
+            "properties": {
+              "gatewayCount": {
+                "type": "number"
+              },
+              "deviceCount": {
+                "type": "number"
+              },
+              "workflowCount": {
+                "type": "number"
+              },
+              "webhookCount": {
+                "type": "number"
+              }
+            }
           }
         },
         "required": [

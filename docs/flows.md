@@ -10,6 +10,7 @@ Returns the flows for a project
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | projectId | string | Y | ID associated with the project |
+| sort | string | N | undefined |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
