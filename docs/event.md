@@ -1,8 +1,8 @@
-# Flow
+# Event
 Structure API - v1.0.0
 
-## flow.get
-Retrieves information on an flow
+## event.get
+Retrieves information on an event
 
 
 
@@ -10,7 +10,7 @@ Retrieves information on an flow
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | projectId | string | Y | ID associated with the project |
-| flowId | string | Y | ID associated with the flow |
+| eventId | string | Y | ID associated with the event |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -18,27 +18,27 @@ Retrieves information on an flow
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [flow](_schemas.md#flow) | Flow information |
+| 200 | [event](_schemas.md#event) | Event information |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if flow was not found |
+| 404 | undefined | Error if event was not found |
 
 ### Example
 ```javascript
 // with callbacks
-client.flow.get(params, function (err, result) {
+client.event.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 // with promises
-client.flow.get(params)
+client.event.get(params)
   .then(console.log)
   .catch(console.error);
 ```
-## flow.patch
-Updates information about a flow
+## event.patch
+Updates information about an event
 
 
 
@@ -46,8 +46,8 @@ Updates information about a flow
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | projectId | string | Y | ID associated with the project |
-| flowId | string | Y | ID associated with the flow |
-| flow | [flow](_schemas.md#flow) | N | Object containing new properties of the flow |
+| eventId | string | Y | ID associated with the event |
+| event | [event](_schemas.md#event) | N | Object containing new properties of the event |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -55,27 +55,27 @@ Updates information about a flow
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [flow](_schemas.md#flow) | Updated flow information |
+| 200 | [event](_schemas.md#event) | Updated event information |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if flow is not found |
+| 404 | undefined | Error if event is not found |
 
 ### Example
 ```javascript
 // with callbacks
-client.flow.patch(params, function (err, result) {
+client.event.patch(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 // with promises
-client.flow.patch(params)
+client.event.patch(params)
   .then(console.log)
   .catch(console.error);
 ```
-## flow.delete
-Deletes a flow
+## event.delete
+Deletes an event
 
 
 
@@ -83,7 +83,7 @@ Deletes a flow
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | projectId | string | Y | ID associated with the project |
-| flowId | string | Y | ID associated with the flow |
+| eventId | string | Y | ID associated with the event |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -91,22 +91,22 @@ Deletes a flow
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 204 | undefined | If flow was successfully deleted |
+| 204 | undefined | If event was successfully deleted |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if flow was not found |
+| 404 | undefined | Error if event was not found |
 
 ### Example
 ```javascript
 // with callbacks
-client.flow.delete(params, function (err, result) {
+client.event.delete(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 // with promises
-client.flow.delete(params)
+client.event.delete(params)
   .then(console.log)
   .catch(console.error);
 ```

@@ -110,8 +110,8 @@ client.device.delete(params)
   .then(console.log)
   .catch(console.error);
 ```
-## device.retrieveState
-Retrieves the last known device state
+## device.retrieveLastReportedState
+Retrieve the last known state of the device
 
 
 
@@ -127,26 +127,27 @@ Retrieves the last known device state
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | undefined | Last known device state |
+| 200 | [deviceState](_schemas.md#devicestate) | Last known device state |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 404 | undefined | Error if device was not found |
 
 ### Example
 ```javascript
 // with callbacks
-client.device.retrieveState(params, function (err, result) {
+client.device.retrieveLastReportedState(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 // with promises
-client.device.retrieveState(params)
+client.device.retrieveLastReportedState(params)
   .then(console.log)
   .catch(console.error);
 ```
-## device.sendState
-Sends the current state of the device
+## device.sendStateChangeRequest
+Request for the device to change to the given state
 
 
 
@@ -155,6 +156,7 @@ Sends the current state of the device
 | ---- | ---- | -------- | ----------- |
 | projectId | string | Y | ID associated with the project |
 | deviceId | string | Y | ID associated with the device |
+| deviceState | [deviceState](_schemas.md#devicestate) | N | Object containing the requested state of the device |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -162,21 +164,96 @@ Sends the current state of the device
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | undefined | If state device was successfully sent |
+| 200 | undefined | If change request was successfully sent |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 404 | undefined | Error if device was not found |
 
 ### Example
 ```javascript
 // with callbacks
-client.device.sendState(params, function (err, result) {
+client.device.sendStateChangeRequest(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 // with promises
-client.device.sendState(params)
+client.device.sendStateChangeRequest(params)
+  .then(console.log)
+  .catch(console.error);
+```
+## device.reportCurrentState
+Report the current state of the device
+
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| deviceId | string | Y | ID associated with the device |
+| deviceState | [deviceState](_schemas.md#devicestate) | N | Object containing the current state of the device |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | undefined | If state was successfully received |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if device was not found |
+
+### Example
+```javascript
+// with callbacks
+client.device.reportCurrentState(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.device.reportCurrentState(params)
+  .then(console.log)
+  .catch(console.error);
+```
+## device.sendMessage
+Send a message about the device
+
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| projectId | string | Y | ID associated with the project |
+| deviceId | string | Y | ID associated with the device |
+| message | undefined | N | Message to send about the device |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | undefined | If message was successfully sent |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | undefined | Error if device was not found |
+
+### Example
+```javascript
+// with callbacks
+client.device.sendMessage(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.device.sendMessage(params)
   .then(console.log)
   .catch(console.error);
 ```

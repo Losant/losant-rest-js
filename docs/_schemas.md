@@ -265,6 +265,172 @@ Structure API - v1.0.0
   ]
 }
 ```
+## deviceState
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "gatewayId": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "data"
+  ]
+}
+```
+## event
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "eventId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "projectId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sourceType": {
+      "type": "string",
+      "enum": [
+        "flow",
+        "user",
+        "gateway"
+      ]
+    },
+    "sourceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "level": {
+      "type": "string",
+      "enum": [
+        "info",
+        "warning",
+        "error"
+      ]
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "new",
+        "acknowledged",
+        "resolved"
+      ]
+    },
+    "subject": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  }
+}
+```
+## events
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "eventId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "projectId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "sourceType": {
+            "type": "string",
+            "enum": [
+              "flow",
+              "user",
+              "gateway"
+            ]
+          },
+          "sourceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "level": {
+            "type": "string",
+            "enum": [
+              "info",
+              "warning",
+              "error"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "new",
+              "acknowledged",
+              "resolved"
+            ]
+          },
+          "subject": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "limit": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "prevPage": {
+      "type": "integer"
+    },
+    "nextPage": {
+      "type": "integer"
+    },
+    "lastPage": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "items",
+    "count"
+  ]
+}
+```
 ## emailVerificationVerify
 ```javascript
 {
@@ -311,9 +477,6 @@ Structure API - v1.0.0
     },
     "enabled": {
       "type": "boolean"
-    },
-    "payloadSchema": {
-      "type": "string"
     },
     "triggers": {
       "type": "array",
@@ -411,9 +574,6 @@ Structure API - v1.0.0
           },
           "enabled": {
             "type": "boolean"
-          },
-          "payloadSchema": {
-            "type": "string"
           },
           "triggers": {
             "type": "array",
@@ -846,6 +1006,9 @@ Structure API - v1.0.0
         },
         "webhookCount": {
           "type": "number"
+        },
+        "eventCount": {
+          "type": "number"
         }
       }
     }
@@ -897,6 +1060,9 @@ Structure API - v1.0.0
                 "type": "number"
               },
               "webhookCount": {
+                "type": "number"
+              },
+              "eventCount": {
                 "type": "number"
               }
             }
