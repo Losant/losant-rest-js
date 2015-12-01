@@ -1,5 +1,5 @@
 # Devices
-Structure API - v1.0.0
+Structure API - v0.1.0
 
 ## devices.get
 Returns the devices for a project

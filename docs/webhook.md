@@ -1,5 +1,5 @@
 # Webhook
-Structure API - v1.0.0
+Structure API - v0.1.0
 
 ## webhook.get
 Retrieves information on an webhook

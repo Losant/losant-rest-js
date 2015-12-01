@@ -1,5 +1,5 @@
 # Webhooks
-Structure API - v1.0.0
+Structure API - v0.1.0
 
 ## webhooks.get
 Returns the webhooks for a project

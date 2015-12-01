@@ -1,5 +1,5 @@
 # Access Token
-Structure API - v1.0.0
+Structure API - v0.1.0
 
 ## accessToken.get
 Retrieves information on an accessToken

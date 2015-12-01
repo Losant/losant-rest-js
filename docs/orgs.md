@@ -1,5 +1,5 @@
 # Orgs
-Structure API - v1.0.0
+Structure API - v0.1.0
 
 ## orgs.get
 Returns the organizations associated with the current user

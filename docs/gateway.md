@@ -1,5 +1,5 @@
 # Gateway
-Structure API - v1.0.0
+Structure API - v0.1.0
 
 ## gateway.get
 Retrieves information on an gateway

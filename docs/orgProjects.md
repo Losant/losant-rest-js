@@ -1,5 +1,5 @@
 # Org Projects
-Structure API - v1.0.0
+Structure API - v0.1.0
 
 ## orgProjects.get
 Returns the projects owned by the organization

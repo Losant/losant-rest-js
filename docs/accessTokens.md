@@ -1,5 +1,5 @@
 # Access Tokens
-Structure API - v1.0.0
+Structure API - v0.1.0
 
 ## accessTokens.get
 Returns the accessTokens for a user

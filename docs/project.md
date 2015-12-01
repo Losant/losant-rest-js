@@ -1,5 +1,5 @@
 # Project
-Structure API - v1.0.0
+Structure API - v0.1.0
 
 ## project.get
 Retrieves information on an project

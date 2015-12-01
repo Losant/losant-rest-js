@@ -1,5 +1,5 @@
 # Projects
-Structure API - v1.0.0
+Structure API - v0.1.0
 
 ## projects.get
 Returns the projects owned by the current user

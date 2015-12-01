@@ -1,5 +1,5 @@
 # Me
-Structure API - v1.0.0
+Structure API - v0.1.0
 
 ## me.get
 Retrieves information on the current user

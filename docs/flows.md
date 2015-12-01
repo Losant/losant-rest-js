@@ -1,5 +1,5 @@
 # Flows
-Structure API - v1.0.0
+Structure API - v0.1.0
 
 ## flows.get
 Returns the flows for a project
