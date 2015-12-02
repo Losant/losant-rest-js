@@ -7,9 +7,9 @@ var api = structure.createClient({
 });
 
 // using promises
-api.projects.get()
-  .then(function (projects) {
-    return api.devices.get({ projectId: projects.items[0].projectId });
+api.applications.get()
+  .then(function (applications) {
+    return api.devices.get({ applicationId: applications.items[0].applicationId });
   })
   .then(function (devices) {
     console.trace(devices);
