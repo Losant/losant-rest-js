@@ -1,15 +1,16 @@
-# Org Projects
+# Application Key
 Structure API - v0.1.0
 
-## orgProjects.get
-Returns the projects owned by the organization
+## applicationKey.get
+Retrieves information on an applicationKey
 
 
 
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| orgId | string | Y | Id of the organization |
+| applicationId | string | Y | ID associated with the application |
+| applicationKeyId | string | Y | ID associated with the applicationKey |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -17,34 +18,36 @@ Returns the projects owned by the organization
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | undefined | Collection of org projects |
+| 200 | [applicationKey](_schemas.md#applicationkey) | Device information |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 404 | undefined | Error if applicationKey was not found |
 
 ### Example
 ```javascript
 // with callbacks
-client.orgProjects.get(params, function (err, result) {
+client.applicationKey.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 // with promises
-client.orgProjects.get(params)
+client.applicationKey.get(params)
   .then(console.log)
   .catch(console.error);
 ```
-## orgProjects.post
-Create a new project owned by the organization
+## applicationKey.patch
+Updates information about an applicationKey
 
 
 
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| orgId | string | Y | Id of the organization |
-| project | [project](_schemas.md#project) | N | Project information |
+| applicationId | string | Y | ID associated with the application |
+| applicationKeyId | string | Y | ID associated with the applicationKey |
+| applicationKey | [applicationKey](_schemas.md#applicationkey) | N | Object containing new properties of the applicationKey |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -52,33 +55,35 @@ Create a new project owned by the organization
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | undefined | If project was successfully created |
+| 200 | [applicationKey](_schemas.md#applicationkey) | Updated applicationKey information |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 404 | undefined | Error if applicationKey was not found |
 
 ### Example
 ```javascript
 // with callbacks
-client.orgProjects.post(params, function (err, result) {
+client.applicationKey.patch(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 // with promises
-client.orgProjects.post(params)
+client.applicationKey.patch(params)
   .then(console.log)
   .catch(console.error);
 ```
-## orgProjects.delete
-Deletes a project owned by the organization
+## applicationKey.delete
+Deletes an applicationKey
 
 
 
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| orgId | string | Y | Id of the organization |
+| applicationId | string | Y | ID associated with the application |
+| applicationKeyId | string | Y | ID associated with the applicationKey |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -86,22 +91,22 @@ Deletes a project owned by the organization
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | undefined | If project was successfully deleted |
+| 204 | undefined | If applicationKey was successfully deleted |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if project was not found |
+| 404 | undefined | Error if applicationKey was not found |
 
 ### Example
 ```javascript
 // with callbacks
-client.orgProjects.delete(params, function (err, result) {
+client.applicationKey.delete(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 // with promises
-client.orgProjects.delete(params)
+client.applicationKey.delete(params)
   .then(console.log)
   .catch(console.error);
 ```

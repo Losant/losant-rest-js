@@ -9,7 +9,7 @@ Retrieves information on an device
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | deviceId | string | Y | ID associated with the device |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
@@ -45,7 +45,7 @@ Updates information about a device
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | deviceId | string | Y | ID associated with the device |
 | device | [device](_schemas.md#device) | N | Object containing new properties of the device |
 | _actions | boolean | N | Return resource actions in response |
@@ -82,7 +82,7 @@ Deletes a device
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | deviceId | string | Y | ID associated with the device |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
@@ -118,7 +118,7 @@ Retrieve the last known state of the device
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | deviceId | string | Y | ID associated with the device |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
@@ -154,7 +154,7 @@ Request for the device to change to the given state
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | deviceId | string | Y | ID associated with the device |
 | deviceState | [deviceState](_schemas.md#devicestate) | N | Object containing the requested state of the device |
 | _actions | boolean | N | Return resource actions in response |
@@ -191,7 +191,7 @@ Report the current state of the device
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | deviceId | string | Y | ID associated with the device |
 | deviceState | [deviceState](_schemas.md#devicestate) | N | Object containing the current state of the device |
 | _actions | boolean | N | Return resource actions in response |
@@ -228,7 +228,7 @@ Send a message about the device
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | deviceId | string | Y | ID associated with the device |
 | message | undefined | N | Message to send about the device |
 | _actions | boolean | N | Return resource actions in response |

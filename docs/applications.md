@@ -1,8 +1,8 @@
-# Projects
+# Applications
 Structure API - v0.1.0
 
-## projects.get
-Returns the projects owned by the current user
+## applications.get
+Returns the applications owned by the current user
 
 
 
@@ -17,7 +17,7 @@ Returns the projects owned by the current user
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [projects](_schemas.md#projects) | Collection of projects |
+| 200 | [applications](_schemas.md#applications) | Collection of applications |
 
 ### Errors
 | Code | Type | Description |
@@ -26,24 +26,24 @@ Returns the projects owned by the current user
 ### Example
 ```javascript
 // with callbacks
-client.projects.get(params, function (err, result) {
+client.applications.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 // with promises
-client.projects.get(params)
+client.applications.get(params)
   .then(console.log)
   .catch(console.error);
 ```
-## projects.post
-Create a new project owned by the current user
+## applications.post
+Create a new application owned by the current user
 
 
 
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| project | [project](_schemas.md#project) | N | New project information |
+| application | [application](_schemas.md#application) | N | New application information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -51,7 +51,7 @@ Create a new project owned by the current user
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | undefined | If project was successfully created |
+| 201 | undefined | If application was successfully created |
 
 ### Errors
 | Code | Type | Description |
@@ -60,12 +60,12 @@ Create a new project owned by the current user
 ### Example
 ```javascript
 // with callbacks
-client.projects.post(params, function (err, result) {
+client.applications.post(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 // with promises
-client.projects.post(params)
+client.applications.post(params)
   .then(console.log)
   .catch(console.error);
 ```

@@ -9,7 +9,7 @@ Retrieves information on an flow
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | flowId | string | Y | ID associated with the flow |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
@@ -45,7 +45,7 @@ Updates information about a flow
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | flowId | string | Y | ID associated with the flow |
 | flow | [flow](_schemas.md#flow) | N | Object containing new properties of the flow |
 | _actions | boolean | N | Return resource actions in response |
@@ -82,7 +82,7 @@ Deletes a flow
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | flowId | string | Y | ID associated with the flow |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |

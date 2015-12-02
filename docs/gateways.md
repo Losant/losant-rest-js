@@ -2,14 +2,14 @@
 Structure API - v0.1.0
 
 ## gateways.get
-Returns the gateways for a project
+Returns the gateways for an application
 
 
 
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | sort | string | N | undefined |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
@@ -37,14 +37,14 @@ client.gateways.get(params)
   .catch(console.error);
 ```
 ## gateways.post
-Create a new gateway for a project
+Create a new gateway for an application
 
 
 
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | gateway | [gateway](_schemas.md#gateway) | N | New gateway information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |

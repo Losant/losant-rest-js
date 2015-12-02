@@ -9,7 +9,7 @@ Retrieves information on an webhook
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | webhookId | string | Y | ID associated with the webhook |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
@@ -45,7 +45,7 @@ Updates information about a webhook
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | webhookId | string | Y | ID associated with the webhook |
 | webhook | [webhook](_schemas.md#webhook) | N | Object containing new properties of the webhook |
 | _actions | boolean | N | Return resource actions in response |
@@ -82,7 +82,7 @@ Deletes a webhook
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | webhookId | string | Y | ID associated with the webhook |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |

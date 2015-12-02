@@ -2,14 +2,14 @@
 Structure API - v0.1.0
 
 ## events.get
-Returns the events for a project
+Returns the events for an application
 
 
 
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | sort | string | N | undefined |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
@@ -37,14 +37,14 @@ client.events.get(params)
   .catch(console.error);
 ```
 ## events.post
-Create a new event for a project
+Create a new event for an application
 
 
 
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | event | [event](_schemas.md#event) | N | New event information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |

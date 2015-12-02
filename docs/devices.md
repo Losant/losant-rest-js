@@ -2,14 +2,14 @@
 Structure API - v0.1.0
 
 ## devices.get
-Returns the devices for a project
+Returns the devices for an application
 
 
 
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | sort | string | N | undefined |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
@@ -37,14 +37,14 @@ client.devices.get(params)
   .catch(console.error);
 ```
 ## devices.post
-Create a new device for a project
+Create a new device for an application
 
 
 
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | device | [device](_schemas.md#device) | N | New device information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |

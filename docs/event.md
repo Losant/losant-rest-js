@@ -9,7 +9,7 @@ Retrieves information on an event
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | eventId | string | Y | ID associated with the event |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
@@ -45,7 +45,7 @@ Updates information about an event
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | eventId | string | Y | ID associated with the event |
 | event | [event](_schemas.md#event) | N | Object containing new properties of the event |
 | _actions | boolean | N | Return resource actions in response |
@@ -82,7 +82,7 @@ Deletes an event
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | eventId | string | Y | ID associated with the event |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |

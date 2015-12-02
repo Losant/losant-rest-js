@@ -2,14 +2,14 @@
 Structure API - v0.1.0
 
 ## flows.get
-Returns the flows for a project
+Returns the flows for an application
 
 
 
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | sort | string | N | undefined |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
@@ -37,14 +37,14 @@ client.flows.get(params)
   .catch(console.error);
 ```
 ## flows.post
-Create a new flow for a project
+Create a new flow for an application
 
 
 
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | flow | [flow](_schemas.md#flow) | N | New flow information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |

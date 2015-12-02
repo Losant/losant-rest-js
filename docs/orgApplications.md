@@ -1,16 +1,15 @@
-# Project
+# Org Applications
 Structure API - v0.1.0
 
-## project.get
-Retrieves information on an project
+## orgApplications.get
+Returns the applications owned by the organization
 
 
 
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID of the associated project |
-| embed | array | N | Embed additional resources in the request |
+| orgId | string | Y | Id of the organization |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -18,35 +17,34 @@ Retrieves information on an project
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [project](_schemas.md#project) | Project information |
+| 200 | undefined | Collection of org applications |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if project was not found |
 
 ### Example
 ```javascript
 // with callbacks
-client.project.get(params, function (err, result) {
+client.orgApplications.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 // with promises
-client.project.get(params)
+client.orgApplications.get(params)
   .then(console.log)
   .catch(console.error);
 ```
-## project.patch
-Updates information about a project
+## orgApplications.post
+Create a new application owned by the organization
 
 
 
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID of the associated project |
-| project | [project](_schemas.md#project) | N | Object containing new project properties |
+| orgId | string | Y | Id of the organization |
+| application | [application](_schemas.md#application) | N | Application information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -54,34 +52,33 @@ Updates information about a project
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [project](_schemas.md#project) | Update project information |
+| 201 | undefined | If application was successfully created |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if project was not found |
 
 ### Example
 ```javascript
 // with callbacks
-client.project.patch(params, function (err, result) {
+client.orgApplications.post(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 // with promises
-client.project.patch(params)
+client.orgApplications.post(params)
   .then(console.log)
   .catch(console.error);
 ```
-## project.delete
-Deletes a project
+## orgApplications.delete
+Deletes an application owned by the organization
 
 
 
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID of the associated project |
+| orgId | string | Y | Id of the organization |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -89,22 +86,22 @@ Deletes a project
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | undefined | If project was successfully deleted |
+| 200 | undefined | If application was successfully deleted |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if project was not found |
+| 404 | undefined | Error if application was not found |
 
 ### Example
 ```javascript
 // with callbacks
-client.project.delete(params, function (err, result) {
+client.orgApplications.delete(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 // with promises
-client.project.delete(params)
+client.orgApplications.delete(params)
   .then(console.log)
   .catch(console.error);
 ```

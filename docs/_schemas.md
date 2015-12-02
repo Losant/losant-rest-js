@@ -113,6 +113,247 @@ Structure API - v0.1.0
   ]
 }
 ```
+## application
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "ownerId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "ownerType": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "gatewayCount": {
+          "type": "number"
+        },
+        "deviceCount": {
+          "type": "number"
+        },
+        "workflowCount": {
+          "type": "number"
+        },
+        "webhookCount": {
+          "type": "number"
+        },
+        "eventCount": {
+          "type": "number"
+        }
+      }
+    }
+  },
+  "required": [
+    "name"
+  ]
+}
+```
+## applications
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "ownerId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "ownerType": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "object",
+            "properties": {
+              "gatewayCount": {
+                "type": "number"
+              },
+              "deviceCount": {
+                "type": "number"
+              },
+              "workflowCount": {
+                "type": "number"
+              },
+              "webhookCount": {
+                "type": "number"
+              },
+              "eventCount": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "limit": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "prevPage": {
+      "type": "integer"
+    },
+    "nextPage": {
+      "type": "integer"
+    },
+    "lastPage": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "items",
+    "count"
+  ]
+}
+```
+## applicationKey
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "applicationKeyId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "key": {
+      "type": "string"
+    },
+    "secret": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "applicationKeyId",
+    "applicationId",
+    "key",
+    "secret",
+    "status"
+  ]
+}
+```
+## applicationKeys
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {}
+          },
+          "count": {
+            "type": "integer"
+          },
+          "totalCount": {
+            "type": "integer"
+          },
+          "limit": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "prevPage": {
+            "type": "integer"
+          },
+          "nextPage": {
+            "type": "integer"
+          },
+          "lastPage": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "items",
+          "count"
+        ]
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "limit": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "prevPage": {
+      "type": "integer"
+    },
+    "nextPage": {
+      "type": "integer"
+    },
+    "lastPage": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "items",
+    "count"
+  ]
+}
+```
 ## device
 ```javascript
 {
@@ -123,7 +364,7 @@ Structure API - v0.1.0
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "projectId": {
+    "applicationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
@@ -188,7 +429,7 @@ Structure API - v0.1.0
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
-          "projectId": {
+          "applicationId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
@@ -297,7 +538,7 @@ Structure API - v0.1.0
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "projectId": {
+    "applicationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
@@ -358,7 +599,7 @@ Structure API - v0.1.0
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
-          "projectId": {
+          "applicationId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
@@ -461,7 +702,7 @@ Structure API - v0.1.0
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "projectId": {
+    "applicationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
@@ -558,7 +799,7 @@ Structure API - v0.1.0
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
-          "projectId": {
+          "applicationId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
@@ -677,7 +918,7 @@ Structure API - v0.1.0
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "projectId": {
+    "applicationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
@@ -717,7 +958,7 @@ Structure API - v0.1.0
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
-          "projectId": {
+          "applicationId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
@@ -969,247 +1210,6 @@ Structure API - v0.1.0
   ]
 }
 ```
-## project
-```javascript
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "projectId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "ownerId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "ownerType": {
-      "type": "string"
-    },
-    "name": {
-      "type": "string"
-    },
-    "description": {
-      "type": "string"
-    },
-    "summary": {
-      "type": "object",
-      "properties": {
-        "gatewayCount": {
-          "type": "number"
-        },
-        "deviceCount": {
-          "type": "number"
-        },
-        "workflowCount": {
-          "type": "number"
-        },
-        "webhookCount": {
-          "type": "number"
-        },
-        "eventCount": {
-          "type": "number"
-        }
-      }
-    }
-  },
-  "required": [
-    "name"
-  ]
-}
-```
-## projects
-```javascript
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "items": {
-      "type": "array",
-      "items": {
-        "$schema": "http://json-schema.org/draft-04/schema#",
-        "type": "object",
-        "properties": {
-          "projectId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "ownerId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "ownerType": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "summary": {
-            "type": "object",
-            "properties": {
-              "gatewayCount": {
-                "type": "number"
-              },
-              "deviceCount": {
-                "type": "number"
-              },
-              "workflowCount": {
-                "type": "number"
-              },
-              "webhookCount": {
-                "type": "number"
-              },
-              "eventCount": {
-                "type": "number"
-              }
-            }
-          }
-        },
-        "required": [
-          "name"
-        ]
-      }
-    },
-    "count": {
-      "type": "integer"
-    },
-    "totalCount": {
-      "type": "integer"
-    },
-    "limit": {
-      "type": "integer"
-    },
-    "page": {
-      "type": "integer"
-    },
-    "prevPage": {
-      "type": "integer"
-    },
-    "nextPage": {
-      "type": "integer"
-    },
-    "lastPage": {
-      "type": "integer"
-    }
-  },
-  "required": [
-    "items",
-    "count"
-  ]
-}
-```
-## projectKey
-```javascript
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "projectKeyId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "projectId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "creationDate": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "key": {
-      "type": "string"
-    },
-    "secret": {
-      "type": "string"
-    },
-    "status": {
-      "type": "string"
-    }
-  },
-  "required": [
-    "projectKeyId",
-    "projectId",
-    "key",
-    "secret",
-    "status"
-  ]
-}
-```
-## projectKeys
-```javascript
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "items": {
-      "type": "array",
-      "items": {
-        "$schema": "http://json-schema.org/draft-04/schema#",
-        "type": "object",
-        "properties": {
-          "items": {
-            "type": "array",
-            "items": {}
-          },
-          "count": {
-            "type": "integer"
-          },
-          "totalCount": {
-            "type": "integer"
-          },
-          "limit": {
-            "type": "integer"
-          },
-          "page": {
-            "type": "integer"
-          },
-          "prevPage": {
-            "type": "integer"
-          },
-          "nextPage": {
-            "type": "integer"
-          },
-          "lastPage": {
-            "type": "integer"
-          }
-        },
-        "required": [
-          "items",
-          "count"
-        ]
-      }
-    },
-    "count": {
-      "type": "integer"
-    },
-    "totalCount": {
-      "type": "integer"
-    },
-    "limit": {
-      "type": "integer"
-    },
-    "page": {
-      "type": "integer"
-    },
-    "prevPage": {
-      "type": "integer"
-    },
-    "nextPage": {
-      "type": "integer"
-    },
-    "lastPage": {
-      "type": "integer"
-    }
-  },
-  "required": [
-    "items",
-    "count"
-  ]
-}
-```
 ## userCredentials
 ```javascript
 {
@@ -1236,7 +1236,7 @@ Structure API - v0.1.0
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "projectId": {
+    "applicationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
@@ -1265,7 +1265,7 @@ Structure API - v0.1.0
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
         "properties": {
-          "projectId": {
+          "applicationId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },

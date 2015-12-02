@@ -9,7 +9,7 @@ Retrieves information on an gateway
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | gatewayId | string | Y | ID associated with the gateway |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
@@ -45,7 +45,7 @@ Updates information about a gateway
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | gatewayId | string | Y | ID associated with the gateway |
 | gateway | [gateway](_schemas.md#gateway) | N | Object containing new properties of the gateway |
 | _actions | boolean | N | Return resource actions in response |
@@ -82,7 +82,7 @@ Deletes a gateway
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| projectId | string | Y | ID associated with the project |
+| applicationId | string | Y | ID associated with the application |
 | gatewayId | string | Y | ID associated with the gateway |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
