@@ -398,7 +398,8 @@ Structure API - v0.1.0
             "type": "string",
             "enum": [
               "string",
-              "number"
+              "number",
+              "gps-nmea"
             ]
           },
           "readable": {
@@ -463,7 +464,8 @@ Structure API - v0.1.0
                   "type": "string",
                   "enum": [
                     "string",
-                    "number"
+                    "number",
+                    "gps-nmea"
                   ]
                 },
                 "readable": {
