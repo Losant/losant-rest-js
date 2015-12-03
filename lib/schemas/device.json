@@ -52,6 +52,19 @@
           }
         }
       }
+    },
+    "deviceClass": {
+      "type": "string",
+      "enum": [
+        "standalone",
+        "master",
+        "owned",
+        "floating"
+      ]
+    },
+    "masterId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     }
   }
 }

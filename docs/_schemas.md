@@ -139,9 +139,6 @@ Structure API - v0.1.0
     "summary": {
       "type": "object",
       "properties": {
-        "gatewayCount": {
-          "type": "number"
-        },
         "deviceCount": {
           "type": "number"
         },
@@ -194,9 +191,6 @@ Structure API - v0.1.0
           "summary": {
             "type": "object",
             "properties": {
-              "gatewayCount": {
-                "type": "number"
-              },
               "deviceCount": {
                 "type": "number"
               },
@@ -410,6 +404,19 @@ Structure API - v0.1.0
           }
         }
       }
+    },
+    "deviceClass": {
+      "type": "string",
+      "enum": [
+        "standalone",
+        "master",
+        "owned",
+        "floating"
+      ]
+    },
+    "masterId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     }
   }
 }
@@ -476,6 +483,19 @@ Structure API - v0.1.0
                 }
               }
             }
+          },
+          "deviceClass": {
+            "type": "string",
+            "enum": [
+              "standalone",
+              "master",
+              "owned",
+              "floating"
+            ]
+          },
+          "masterId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
           }
         }
       }
@@ -508,6 +528,30 @@ Structure API - v0.1.0
   ]
 }
 ```
+## deviceCredentials
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "deviceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "key": {
+      "type": "string"
+    },
+    "secret": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "deviceId",
+    "key",
+    "secret"
+  ]
+}
+```
 ## deviceState
 ```javascript
 {
@@ -518,7 +562,7 @@ Structure API - v0.1.0
       "type": "string",
       "format": "date-time"
     },
-    "gatewayId": {
+    "relayId": {
       "type": "string"
     },
     "data": {
@@ -553,7 +597,7 @@ Structure API - v0.1.0
       "enum": [
         "flow",
         "user",
-        "gateway"
+        "device"
       ]
     },
     "sourceId": {
@@ -614,7 +658,7 @@ Structure API - v0.1.0
             "enum": [
               "flow",
               "user",
-              "gateway"
+              "device"
             ]
           },
           "sourceId": {
@@ -907,132 +951,6 @@ Structure API - v0.1.0
   "required": [
     "items",
     "count"
-  ]
-}
-```
-## gateway
-```javascript
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "gatewayId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "creationDate": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "name": {
-      "type": "string"
-    },
-    "description": {
-      "type": "string"
-    },
-    "tags": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^[0-9a-zA-Z]+$"
-      }
-    }
-  }
-}
-```
-## gateways
-```javascript
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "items": {
-      "type": "array",
-      "items": {
-        "$schema": "http://json-schema.org/draft-04/schema#",
-        "type": "object",
-        "properties": {
-          "gatewayId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "applicationId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "creationDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "tags": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "pattern": "^[0-9a-zA-Z]+$"
-            }
-          }
-        }
-      }
-    },
-    "count": {
-      "type": "integer"
-    },
-    "totalCount": {
-      "type": "integer"
-    },
-    "limit": {
-      "type": "integer"
-    },
-    "page": {
-      "type": "integer"
-    },
-    "prevPage": {
-      "type": "integer"
-    },
-    "nextPage": {
-      "type": "integer"
-    },
-    "lastPage": {
-      "type": "integer"
-    }
-  },
-  "required": [
-    "items",
-    "count"
-  ]
-}
-```
-## gatewayCredentials
-```javascript
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "gatewayId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "key": {
-      "type": "string"
-    },
-    "secret": {
-      "type": "string"
-    }
-  },
-  "required": [
-    "gatewayId",
-    "key",
-    "secret"
   ]
 }
 ```

@@ -36,15 +36,15 @@ client.auth.authenticateUser(params)
   .then(console.log)
   .catch(console.error);
 ```
-## auth.authenticateGateway
+## auth.authenticateDevice
 
-Authenticates a gateway using the provided credentials
+Authenticates a device using the provided credentials
 
 
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| credentials | [gatewayCredentials](_schemas.md#gatewaycredentials) | N | Gateway authentication credentials |
+| credentials | [deviceCredentials](_schemas.md#devicecredentials) | N | Device authentication credentials |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -62,12 +62,12 @@ Authenticates a gateway using the provided credentials
 ### Example
 ```javascript
 // with callbacks
-client.auth.authenticateGateway(params, function (err, result) {
+client.auth.authenticateDevice(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 // with promises
-client.auth.authenticateGateway(params)
+client.auth.authenticateDevice(params)
   .then(console.log)
   .catch(console.error);
 ```

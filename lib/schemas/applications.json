@@ -28,9 +28,6 @@
           "summary": {
             "type": "object",
             "properties": {
-              "gatewayCount": {
-                "type": "number"
-              },
               "deviceCount": {
                 "type": "number"
               },

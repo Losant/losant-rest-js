@@ -30,8 +30,6 @@ var client = api.createClient({
 - [Events](docs/events.md)
 - [Flow](docs/flow.md)
 - [Flows](docs/flows.md)
-- [Gateway](docs/gateway.md)
-- [Gateways](docs/gateways.md)
 - [Me](docs/me.md)
 - [Org](docs/org.md)
 - [Orgs](docs/orgs.md)

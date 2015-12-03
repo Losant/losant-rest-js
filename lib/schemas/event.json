@@ -19,7 +19,7 @@
       "enum": [
         "flow",
         "user",
-        "gateway"
+        "device"
       ]
     },
     "sourceId": {
