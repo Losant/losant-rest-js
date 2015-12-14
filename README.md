@@ -24,6 +24,7 @@ var client = api.createClient({
 - [Application Key](docs/applicationKey.md)
 - [Application Keys](docs/applicationKeys.md)
 - [Auth](docs/auth.md)
+- [Data](docs/data.md)
 - [Device](docs/device.md)
 - [Devices](docs/devices.md)
 - [Event](docs/event.md)

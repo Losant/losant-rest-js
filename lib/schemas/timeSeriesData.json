@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "end": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "resolution": {
+      "type": "number"
+    },
+    "aggregation": {
+      "type": "string"
+    },
+    "series": {
+      "type": "object"
+    }
+  }
+}

@@ -417,6 +417,18 @@ Structure API - v0.1.0
     "masterId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "connectionInfo": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "connected": {
+          "type": "number"
+        }
+      }
     }
   }
 }
@@ -496,6 +508,18 @@ Structure API - v0.1.0
           "masterId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "connectionInfo": {
+            "type": "object",
+            "properties": {
+              "time": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "connected": {
+                "type": "number"
+              }
+            }
           }
         }
       }
@@ -1128,6 +1152,32 @@ Structure API - v0.1.0
     "email",
     "password"
   ]
+}
+```
+## timeSeriesData
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "end": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "resolution": {
+      "type": "number"
+    },
+    "aggregation": {
+      "type": "string"
+    },
+    "series": {
+      "type": "object"
+    }
+  }
 }
 ```
 ## userCredentials

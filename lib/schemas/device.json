@@ -65,6 +65,18 @@
     "masterId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "connectionInfo": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "connected": {
+          "type": "number"
+        }
+      }
     }
   }
 }
