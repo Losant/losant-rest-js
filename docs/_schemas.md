@@ -388,12 +388,13 @@ Structure API - v0.1.0
             "type": "string",
             "pattern": "^[0-9a-zA-Z]+$"
           },
-          "type": {
+          "dataType": {
             "type": "string",
             "enum": [
               "string",
               "number",
-              "gps-nmea"
+              "gps-nmea",
+              "boolean"
             ]
           },
           "readable": {
@@ -479,12 +480,13 @@ Structure API - v0.1.0
                   "type": "string",
                   "pattern": "^[0-9a-zA-Z]+$"
                 },
-                "type": {
+                "dataType": {
                   "type": "string",
                   "enum": [
                     "string",
                     "number",
-                    "gps-nmea"
+                    "gps-nmea",
+                    "boolean"
                   ]
                 },
                 "readable": {
