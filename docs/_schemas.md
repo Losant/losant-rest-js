@@ -532,20 +532,15 @@ Structure API - v0.1.0
     "totalCount": {
       "type": "integer"
     },
-    "limit": {
+    "perPage": {
       "type": "integer"
     },
     "page": {
       "type": "integer"
     },
-    "prevPage": {
-      "type": "integer"
-    },
-    "nextPage": {
-      "type": "integer"
-    },
-    "lastPage": {
-      "type": "integer"
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     }
   },
   "required": [
