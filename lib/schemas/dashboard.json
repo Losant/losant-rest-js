@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "dashboardId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "ownerId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "ownerType": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "blockType": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "startX": {
+            "type": "integer"
+          },
+          "startY": {
+            "type": "integer"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "height": {
+            "type": "integer"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "config": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

@@ -348,6 +348,158 @@ Structure API - v0.1.0
   ]
 }
 ```
+## dashboard
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "dashboardId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "ownerId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "ownerType": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "blockType": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "startX": {
+            "type": "integer"
+          },
+          "startY": {
+            "type": "integer"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "height": {
+            "type": "integer"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "config": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "name"
+  ]
+}
+```
+## dashboards
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "dashboardId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "ownerId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "ownerType": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "blocks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "blockType": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "startX": {
+                  "type": "integer"
+                },
+                "startY": {
+                  "type": "integer"
+                },
+                "width": {
+                  "type": "integer"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "applicationId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "config": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "limit": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "prevPage": {
+      "type": "integer"
+    },
+    "nextPage": {
+      "type": "integer"
+    },
+    "lastPage": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "items",
+    "count"
+  ]
+}
+```
 ## device
 ```javascript
 {
