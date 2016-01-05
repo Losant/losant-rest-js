@@ -564,7 +564,8 @@ Structure API - v0.1.0
         "standalone",
         "master",
         "owned",
-        "floating"
+        "floating",
+        "virtual"
       ]
     },
     "masterId": {
@@ -656,7 +657,8 @@ Structure API - v0.1.0
               "standalone",
               "master",
               "owned",
-              "floating"
+              "floating",
+              "virtual"
             ]
           },
           "masterId": {
