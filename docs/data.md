@@ -43,3 +43,40 @@ client.data.get(params)
   .then(console.log)
   .catch(console.error);
 ```
+## data.lastValue
+Returns the last known data for the given attribute
+
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| applicationId | string | Y | ID associated with the application |
+| attribute | undefined | N | undefined |
+| deviceTags | array | N | undefined |
+| deviceIds | array | N | undefined |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | undefined | Requested data |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+
+### Example
+```javascript
+// with callbacks
+client.data.lastValue(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.data.lastValue(params)
+  .then(console.log)
+  .catch(console.error);
+```
