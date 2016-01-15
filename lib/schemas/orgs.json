@@ -26,24 +26,6 @@
     },
     "count": {
       "type": "integer"
-    },
-    "totalCount": {
-      "type": "integer"
-    },
-    "limit": {
-      "type": "integer"
-    },
-    "page": {
-      "type": "integer"
-    },
-    "prevPage": {
-      "type": "integer"
-    },
-    "nextPage": {
-      "type": "integer"
-    },
-    "lastPage": {
-      "type": "integer"
     }
   },
   "required": [

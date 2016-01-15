@@ -67,24 +67,29 @@
     "totalCount": {
       "type": "integer"
     },
-    "limit": {
+    "perPage": {
       "type": "integer"
     },
     "page": {
       "type": "integer"
     },
-    "prevPage": {
-      "type": "integer"
+    "filter": {
+      "type": "string"
     },
-    "nextPage": {
-      "type": "integer"
+    "filterField": {
+      "type": "string"
     },
-    "lastPage": {
-      "type": "integer"
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string"
     }
   },
   "required": [
     "items",
-    "count"
+    "totalCount",
+    "perPage",
+    "page"
   ]
 }

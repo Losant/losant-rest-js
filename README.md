@@ -36,6 +36,5 @@ var client = api.createClient({
 - [Me](docs/me.md)
 - [Org](docs/org.md)
 - [Orgs](docs/orgs.md)
-- [Org Applications](docs/orgApplications.md)
 - [Webhook](docs/webhook.md)
 - [Webhooks](docs/webhooks.md)

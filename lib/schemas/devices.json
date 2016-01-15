@@ -101,6 +101,18 @@
     "page": {
       "type": "integer"
     },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string"
+    },
     "applicationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
@@ -108,6 +120,9 @@
   },
   "required": [
     "items",
-    "count"
+    "totalCount",
+    "perPage",
+    "page",
+    "applicationId"
   ]
 }

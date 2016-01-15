@@ -10,7 +10,7 @@ Returns the devices for an application
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
-| sort | string | N | undefined |
+| sortField | string | N | undefined |
 | sortDirection | string | N | undefined |
 | page | string | N | undefined |
 | perPage | string | N | undefined |

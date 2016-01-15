@@ -59,24 +59,6 @@ Structure API - v0.1.0
           },
           "count": {
             "type": "integer"
-          },
-          "totalCount": {
-            "type": "integer"
-          },
-          "limit": {
-            "type": "integer"
-          },
-          "page": {
-            "type": "integer"
-          },
-          "prevPage": {
-            "type": "integer"
-          },
-          "nextPage": {
-            "type": "integer"
-          },
-          "lastPage": {
-            "type": "integer"
           }
         },
         "required": [
@@ -86,24 +68,6 @@ Structure API - v0.1.0
       }
     },
     "count": {
-      "type": "integer"
-    },
-    "totalCount": {
-      "type": "integer"
-    },
-    "limit": {
-      "type": "integer"
-    },
-    "page": {
-      "type": "integer"
-    },
-    "prevPage": {
-      "type": "integer"
-    },
-    "nextPage": {
-      "type": "integer"
-    },
-    "lastPage": {
       "type": "integer"
     }
   },
@@ -217,25 +181,30 @@ Structure API - v0.1.0
     "totalCount": {
       "type": "integer"
     },
-    "limit": {
+    "perPage": {
       "type": "integer"
     },
     "page": {
       "type": "integer"
     },
-    "prevPage": {
-      "type": "integer"
+    "filter": {
+      "type": "string"
     },
-    "nextPage": {
-      "type": "integer"
+    "filterField": {
+      "type": "string"
     },
-    "lastPage": {
-      "type": "integer"
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string"
     }
   },
   "required": [
     "items",
-    "count"
+    "totalCount",
+    "perPage",
+    "page"
   ]
 }
 ```
@@ -298,25 +267,35 @@ Structure API - v0.1.0
           "totalCount": {
             "type": "integer"
           },
-          "limit": {
+          "perPage": {
             "type": "integer"
           },
           "page": {
             "type": "integer"
           },
-          "prevPage": {
-            "type": "integer"
+          "filter": {
+            "type": "string"
           },
-          "nextPage": {
-            "type": "integer"
+          "filterField": {
+            "type": "string"
           },
-          "lastPage": {
-            "type": "integer"
+          "sortField": {
+            "type": "string"
+          },
+          "sortDirection": {
+            "type": "string"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
           }
         },
         "required": [
           "items",
-          "count"
+          "totalCount",
+          "perPage",
+          "page",
+          "applicationId"
         ]
       }
     },
@@ -326,25 +305,35 @@ Structure API - v0.1.0
     "totalCount": {
       "type": "integer"
     },
-    "limit": {
+    "perPage": {
       "type": "integer"
     },
     "page": {
       "type": "integer"
     },
-    "prevPage": {
-      "type": "integer"
+    "filter": {
+      "type": "string"
     },
-    "nextPage": {
-      "type": "integer"
+    "filterField": {
+      "type": "string"
     },
-    "lastPage": {
-      "type": "integer"
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     }
   },
   "required": [
     "items",
-    "count"
+    "totalCount",
+    "perPage",
+    "page",
+    "applicationId"
   ]
 }
 ```
@@ -478,25 +467,30 @@ Structure API - v0.1.0
     "totalCount": {
       "type": "integer"
     },
-    "limit": {
+    "perPage": {
       "type": "integer"
     },
     "page": {
       "type": "integer"
     },
-    "prevPage": {
-      "type": "integer"
+    "filter": {
+      "type": "string"
     },
-    "nextPage": {
-      "type": "integer"
+    "filterField": {
+      "type": "string"
     },
-    "lastPage": {
-      "type": "integer"
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string"
     }
   },
   "required": [
     "items",
-    "count"
+    "totalCount",
+    "perPage",
+    "page"
   ]
 }
 ```
@@ -692,6 +686,18 @@ Structure API - v0.1.0
     "page": {
       "type": "integer"
     },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string"
+    },
     "applicationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
@@ -699,7 +705,10 @@ Structure API - v0.1.0
   },
   "required": [
     "items",
-    "count"
+    "totalCount",
+    "perPage",
+    "page",
+    "applicationId"
   ]
 }
 ```
@@ -877,6 +886,21 @@ Structure API - v0.1.0
     "page": {
       "type": "integer"
     },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
     "applicationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
@@ -884,7 +908,10 @@ Structure API - v0.1.0
   },
   "required": [
     "items",
-    "count"
+    "totalCount",
+    "perPage",
+    "page",
+    "applicationId"
   ]
 }
 ```
@@ -1102,25 +1129,35 @@ Structure API - v0.1.0
     "totalCount": {
       "type": "integer"
     },
-    "limit": {
+    "perPage": {
       "type": "integer"
     },
     "page": {
       "type": "integer"
     },
-    "prevPage": {
-      "type": "integer"
+    "filter": {
+      "type": "string"
     },
-    "nextPage": {
-      "type": "integer"
+    "filterField": {
+      "type": "string"
     },
-    "lastPage": {
-      "type": "integer"
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     }
   },
   "required": [
     "items",
-    "count"
+    "totalCount",
+    "perPage",
+    "page",
+    "applicationId"
   ]
 }
 ```
@@ -1233,24 +1270,6 @@ Structure API - v0.1.0
       }
     },
     "count": {
-      "type": "integer"
-    },
-    "totalCount": {
-      "type": "integer"
-    },
-    "limit": {
-      "type": "integer"
-    },
-    "page": {
-      "type": "integer"
-    },
-    "prevPage": {
-      "type": "integer"
-    },
-    "nextPage": {
-      "type": "integer"
-    },
-    "lastPage": {
       "type": "integer"
     }
   },
@@ -1404,25 +1423,35 @@ Structure API - v0.1.0
     "totalCount": {
       "type": "integer"
     },
-    "limit": {
+    "perPage": {
       "type": "integer"
     },
     "page": {
       "type": "integer"
     },
-    "prevPage": {
-      "type": "integer"
+    "filter": {
+      "type": "string"
     },
-    "nextPage": {
-      "type": "integer"
+    "filterField": {
+      "type": "string"
     },
-    "lastPage": {
-      "type": "integer"
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     }
   },
   "required": [
     "items",
-    "count"
+    "totalCount",
+    "perPage",
+    "page",
+    "applicationId"
   ]
 }
 ```

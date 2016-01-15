@@ -10,6 +10,12 @@ Returns the webhooks for an application
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
+| sortField | string | N | undefined |
+| sortDirection | string | N | undefined |
+| page | string | N | undefined |
+| perPage | string | N | undefined |
+| filterField | string | N | undefined |
+| filter | string | N | undefined |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
