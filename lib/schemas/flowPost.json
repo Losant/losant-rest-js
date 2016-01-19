@@ -89,7 +89,7 @@
     }
   },
   "additionalProperties": false,
-  "require": [
+  "required": [
     "name"
   ]
 }

@@ -46,7 +46,7 @@
           "name",
           "dataType",
           "readable",
-          "writeable"
+          "writable"
         ],
         "additionalProperties": false
       }

@@ -31,8 +31,8 @@ Structure API - v0.1.0
   "properties": {
     "name": {
       "type": "string",
-      "min": 1,
-      "max": 255
+      "minLength": 1,
+      "maxLength": 255
     },
     "creationDate": {
       "type": "string",
@@ -1018,7 +1018,7 @@ Structure API - v0.1.0
           "name",
           "dataType",
           "readable",
-          "writeable"
+          "writable"
         ],
         "additionalProperties": false
       }
@@ -1091,7 +1091,7 @@ Structure API - v0.1.0
           "name",
           "dataType",
           "readable",
-          "writeable"
+          "writable"
         ],
         "additionalProperties": false
       }
@@ -1857,7 +1857,7 @@ Structure API - v0.1.0
     }
   },
   "additionalProperties": false,
-  "require": [
+  "required": [
     "name"
   ]
 }

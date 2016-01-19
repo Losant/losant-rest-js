@@ -4,8 +4,8 @@
   "properties": {
     "name": {
       "type": "string",
-      "min": 1,
-      "max": 255
+      "minLength": 1,
+      "maxLength": 255
     },
     "creationDate": {
       "type": "string",
