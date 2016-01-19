@@ -2,23 +2,48 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "firstName": {
-      "type": "string"
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
     },
-    "lastName": {
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "emailVerified": {
+      "type": "boolean"
+    },
+    "firstName": {
       "type": "string"
     },
     "fullName": {
       "type": "string"
     },
-    "email": {
+    "id": {
       "type": "string",
-      "format": "email"
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "passwordLastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "userId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     }
   },
   "required": [
+    "creationDate",
     "email",
+    "emailVerified",
     "firstName",
-    "lastName"
+    "fullName",
+    "id",
+    "lastName",
+    "passwordLastUpdated",
+    "userId"
   ]
 }

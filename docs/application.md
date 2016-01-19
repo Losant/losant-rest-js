@@ -10,7 +10,6 @@ Retrieves information on an application
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID of the associated application |
-| embed | array | N | Embed additional resources in the request |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -23,7 +22,7 @@ Retrieves information on an application
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if application was not found |
+| 404 | [error](_schemas.md#error) | Error if application was not found |
 
 ### Example
 ```javascript
@@ -46,7 +45,7 @@ Updates information about an application
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID of the associated application |
-| application | [application](_schemas.md#application) | N | Object containing new application properties |
+| application | [applicationPatch](_schemas.md#applicationpatch) | N | Object containing new application properties |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -54,12 +53,13 @@ Updates information about an application
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [application](_schemas.md#application) | Update application information |
+| 200 | [application](_schemas.md#application) | Updated application information |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if application was not found |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 404 | [error](_schemas.md#error) | Error if application was not found |
 
 ### Example
 ```javascript
@@ -89,12 +89,12 @@ Deletes an application
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | undefined | If application was successfully deleted |
+| 200 | [success](_schemas.md#success) | If application was successfully deleted |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if application was not found |
+| 404 | [error](_schemas.md#error) | Error if application was not found |
 
 ### Example
 ```javascript

@@ -28,6 +28,7 @@ Returns the flows for an application
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 404 | [error](_schemas.md#error) | Error if application was not found |
 
 ### Example
 ```javascript
@@ -50,7 +51,7 @@ Create a new flow for an application
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
-| flow | [flow](_schemas.md#flow) | N | New flow information |
+| flow | [flowPost](_schemas.md#flowpost) | N | New flow information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -58,11 +59,13 @@ Create a new flow for an application
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | undefined | If flow was successfully created |
+| 201 | [flow](_schemas.md#flow) | Successfully created flow |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 404 | [error](_schemas.md#error) | Error if application was not found |
 
 ### Example
 ```javascript

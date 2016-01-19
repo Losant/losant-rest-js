@@ -30,6 +30,7 @@ Returns the data for the given query
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 404 | [error](_schemas.md#error) | Error if application was not found |
 
 ### Example
 ```javascript
@@ -62,11 +63,12 @@ Returns the last known data for the given attribute
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | undefined | Requested data |
+| 200 | [lastValueData](_schemas.md#lastvaluedata) | Last know data for the requested attribute |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 404 | [error](_schemas.md#error) | Error if application was not found |
 
 ### Example
 ```javascript

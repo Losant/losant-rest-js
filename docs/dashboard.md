@@ -22,7 +22,7 @@ Retrieves information on an dashboard
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if dashboard was not found |
+| 404 | [error](_schemas.md#error) | Error if dashboard was not found |
 
 ### Example
 ```javascript
@@ -45,7 +45,7 @@ Updates information about a dashboard
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | dashboardId | string | Y | ID of the associated dashboard |
-| dashboard | [dashboard](_schemas.md#dashboard) | N | Object containing new dashboard properties |
+| dashboard | [dashboardPatch](_schemas.md#dashboardpatch) | N | Object containing new dashboard properties |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -58,7 +58,8 @@ Updates information about a dashboard
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if dashboard was not found |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 404 | [error](_schemas.md#error) | Error if dashboard was not found |
 
 ### Example
 ```javascript
@@ -88,12 +89,12 @@ Deletes an dashboard
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | undefined | If dashboard was successfully deleted |
+| 200 | [success](_schemas.md#success) | If dashboard was successfully deleted |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if dashboard was not found |
+| 404 | [error](_schemas.md#error) | Error if dashboard was not found |
 
 ### Example
 ```javascript

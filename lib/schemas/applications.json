@@ -8,16 +8,28 @@
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
           "applicationId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
           },
           "ownerId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "ownerType": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "user",
+              "organization"
+            ]
           },
           "name": {
             "type": "string"
@@ -31,7 +43,7 @@
               "deviceCount": {
                 "type": "number"
               },
-              "workflowCount": {
+              "flowCount": {
                 "type": "number"
               },
               "webhookCount": {
@@ -39,11 +51,19 @@
               },
               "eventCount": {
                 "type": "number"
+              },
+              "keyCount": {
+                "type": "number"
               }
             }
           }
         },
         "required": [
+          "id",
+          "applicationId",
+          "creationDate",
+          "ownerId",
+          "ownerType",
           "name"
         ]
       }
@@ -70,7 +90,11 @@
       "type": "string"
     },
     "sortDirection": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
     }
   },
   "required": [

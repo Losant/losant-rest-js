@@ -48,7 +48,7 @@ Create a new application owned by the current user
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| application | [application](_schemas.md#application) | N | New application information |
+| application | [applicationPost](_schemas.md#applicationpost) | N | New application information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -56,11 +56,12 @@ Create a new application owned by the current user
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | undefined | If application was successfully created |
+| 201 | [application](_schemas.md#application) | Successfully created application |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
 
 ### Example
 ```javascript

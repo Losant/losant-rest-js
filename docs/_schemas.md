@@ -1,12 +1,77 @@
 # Schemas
 Structure API - v0.1.0
 
+## accessTokenPatch
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
+```
+## accessTokenPost
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "min": 1,
+      "max": 255
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expirationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name"
+  ]
+}
+```
 ## accessToken
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "accessTokenId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
@@ -33,11 +98,24 @@ Structure API - v0.1.0
       }
     },
     "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ]
+    },
+    "token": {
       "type": "string"
     }
   },
   "required": [
-    "name"
+    "id",
+    "accessTokenId",
+    "userId",
+    "name",
+    "creationDate",
+    "scope",
+    "status"
   ]
 }
 ```
@@ -53,17 +131,54 @@ Structure API - v0.1.0
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
         "properties": {
-          "items": {
-            "type": "array",
-            "items": {}
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
           },
-          "count": {
-            "type": "integer"
+          "accessTokenId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "userId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expirationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "scope": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          },
+          "token": {
+            "type": "string"
           }
         },
         "required": [
-          "items",
-          "count"
+          "id",
+          "accessTokenId",
+          "userId",
+          "name",
+          "creationDate",
+          "scope",
+          "status"
         ]
       }
     },
@@ -77,135 +192,21 @@ Structure API - v0.1.0
   ]
 }
 ```
-## application
+## applicationKeyPatch
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "applicationId": {
+    "status": {
       "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "ownerId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "ownerType": {
-      "type": "string"
-    },
-    "name": {
-      "type": "string"
-    },
-    "description": {
-      "type": "string"
-    },
-    "summary": {
-      "type": "object",
-      "properties": {
-        "deviceCount": {
-          "type": "number"
-        },
-        "workflowCount": {
-          "type": "number"
-        },
-        "webhookCount": {
-          "type": "number"
-        },
-        "eventCount": {
-          "type": "number"
-        }
-      }
+      "enum": [
+        "active",
+        "inactive"
+      ]
     }
   },
-  "required": [
-    "name"
-  ]
-}
-```
-## applications
-```javascript
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "items": {
-      "type": "array",
-      "items": {
-        "$schema": "http://json-schema.org/draft-04/schema#",
-        "type": "object",
-        "properties": {
-          "applicationId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "ownerId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "ownerType": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "summary": {
-            "type": "object",
-            "properties": {
-              "deviceCount": {
-                "type": "number"
-              },
-              "workflowCount": {
-                "type": "number"
-              },
-              "webhookCount": {
-                "type": "number"
-              },
-              "eventCount": {
-                "type": "number"
-              }
-            }
-          }
-        },
-        "required": [
-          "name"
-        ]
-      }
-    },
-    "count": {
-      "type": "integer"
-    },
-    "totalCount": {
-      "type": "integer"
-    },
-    "perPage": {
-      "type": "integer"
-    },
-    "page": {
-      "type": "integer"
-    },
-    "filter": {
-      "type": "string"
-    },
-    "filterField": {
-      "type": "string"
-    },
-    "sortField": {
-      "type": "string"
-    },
-    "sortDirection": {
-      "type": "string"
-    }
-  },
-  "required": [
-    "items",
-    "totalCount",
-    "perPage",
-    "page"
-  ]
+  "additionalProperties": false
 }
 ```
 ## applicationKey
@@ -214,6 +215,10 @@ Structure API - v0.1.0
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "applicationKeyId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
@@ -229,18 +234,22 @@ Structure API - v0.1.0
     "key": {
       "type": "string"
     },
-    "secret": {
-      "type": "string"
-    },
     "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ]
+    },
+    "secret": {
       "type": "string"
     }
   },
   "required": [
+    "id",
     "applicationKeyId",
     "applicationId",
     "key",
-    "secret",
     "status"
   ]
 }
@@ -257,45 +266,42 @@ Structure API - v0.1.0
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
         "properties": {
-          "items": {
-            "type": "array",
-            "items": {}
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
           },
-          "count": {
-            "type": "integer"
-          },
-          "totalCount": {
-            "type": "integer"
-          },
-          "perPage": {
-            "type": "integer"
-          },
-          "page": {
-            "type": "integer"
-          },
-          "filter": {
-            "type": "string"
-          },
-          "filterField": {
-            "type": "string"
-          },
-          "sortField": {
-            "type": "string"
-          },
-          "sortDirection": {
-            "type": "string"
+          "applicationKeyId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "applicationId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "key": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          },
+          "secret": {
+            "type": "string"
           }
         },
         "required": [
-          "items",
-          "totalCount",
-          "perPage",
-          "page",
-          "applicationId"
+          "id",
+          "applicationKeyId",
+          "applicationId",
+          "key",
+          "status"
         ]
       }
     },
@@ -321,7 +327,11 @@ Structure API - v0.1.0
       "type": "string"
     },
     "sortDirection": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
     },
     "applicationId": {
       "type": "string",
@@ -337,66 +347,112 @@ Structure API - v0.1.0
   ]
 }
 ```
-## dashboard
+## applicationPatch
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "dashboardId": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
+```
+## applicationPost
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name"
+  ]
+}
+```
+## application
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
     },
     "ownerId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "ownerType": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "user",
+        "organization"
+      ]
     },
     "name": {
       "type": "string"
     },
-    "blocks": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "blockType": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          },
-          "startX": {
-            "type": "integer"
-          },
-          "startY": {
-            "type": "integer"
-          },
-          "width": {
-            "type": "integer"
-          },
-          "height": {
-            "type": "integer"
-          },
-          "applicationId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "config": {
-            "type": "object"
-          }
+    "description": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "deviceCount": {
+          "type": "number"
+        },
+        "flowCount": {
+          "type": "number"
+        },
+        "webhookCount": {
+          "type": "number"
+        },
+        "eventCount": {
+          "type": "number"
+        },
+        "keyCount": {
+          "type": "number"
         }
       }
     }
   },
   "required": [
+    "id",
+    "applicationId",
+    "creationDate",
+    "ownerId",
+    "ownerType",
     "name"
   ]
 }
 ```
-## dashboards
+## applications
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -408,55 +464,62 @@ Structure API - v0.1.0
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
         "properties": {
-          "dashboardId": {
+          "id": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
           },
           "ownerId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "ownerType": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "user",
+              "organization"
+            ]
           },
           "name": {
             "type": "string"
           },
-          "blocks": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "blockType": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "startX": {
-                  "type": "integer"
-                },
-                "startY": {
-                  "type": "integer"
-                },
-                "width": {
-                  "type": "integer"
-                },
-                "height": {
-                  "type": "integer"
-                },
-                "applicationId": {
-                  "type": "string",
-                  "pattern": "^[A-Fa-f\\d]{24}$"
-                },
-                "config": {
-                  "type": "object"
-                }
+          "description": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "object",
+            "properties": {
+              "deviceCount": {
+                "type": "number"
+              },
+              "flowCount": {
+                "type": "number"
+              },
+              "webhookCount": {
+                "type": "number"
+              },
+              "eventCount": {
+                "type": "number"
+              },
+              "keyCount": {
+                "type": "number"
               }
             }
           }
         },
         "required": [
+          "id",
+          "applicationId",
+          "creationDate",
+          "ownerId",
+          "ownerType",
           "name"
         ]
       }
@@ -483,7 +546,11 @@ Structure API - v0.1.0
       "type": "string"
     },
     "sortDirection": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
     }
   },
   "required": [
@@ -494,12 +561,605 @@ Structure API - v0.1.0
   ]
 }
 ```
+## authedDevice
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceClass": {
+      "type": "string",
+      "enum": [
+        "standalone",
+        "master",
+        "owned",
+        "floating",
+        "virtual"
+      ]
+    },
+    "token": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "applicationId",
+    "deviceId",
+    "deviceClass",
+    "token"
+  ]
+}
+```
+## authedUser
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "token": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "userId",
+    "token"
+  ]
+}
+```
+## dashboardPatch
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "blockType": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "startX": {
+            "type": "integer"
+          },
+          "startY": {
+            "type": "integer"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "height": {
+            "type": "integer"
+          },
+          "config": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "blockType",
+          "startX",
+          "startY",
+          "width",
+          "height"
+        ]
+      }
+    }
+  },
+  "additionalProperties": false
+}
+```
+## dashboardPost
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "blockType": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "startX": {
+            "type": "integer"
+          },
+          "startY": {
+            "type": "integer"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "height": {
+            "type": "integer"
+          },
+          "config": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "blockType",
+          "startX",
+          "startY",
+          "width",
+          "height"
+        ]
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name"
+  ]
+}
+```
+## dashboard
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "dashboardId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ownerId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "ownerType": {
+      "type": "string",
+      "enum": [
+        "user",
+        "organization"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "blockType": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "startX": {
+            "type": "integer"
+          },
+          "startY": {
+            "type": "integer"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "height": {
+            "type": "integer"
+          },
+          "config": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "id",
+    "dashboardId",
+    "creationDate",
+    "ownerId",
+    "ownerType",
+    "name",
+    "blocks"
+  ]
+}
+```
+## dashboards
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "dashboardId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ownerId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "ownerType": {
+            "type": "string",
+            "enum": [
+              "user",
+              "organization"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "blocks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "blockType": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "applicationId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "startX": {
+                  "type": "integer"
+                },
+                "startY": {
+                  "type": "integer"
+                },
+                "width": {
+                  "type": "integer"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "config": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "id",
+          "dashboardId",
+          "creationDate",
+          "ownerId",
+          "ownerType",
+          "name",
+          "blocks"
+        ]
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
+    }
+  },
+  "required": [
+    "items",
+    "totalCount",
+    "perPage",
+    "page"
+  ]
+}
+```
+## deviceCredentials
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "deviceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "key": {
+      "type": "string"
+    },
+    "secret": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "deviceId",
+    "key",
+    "secret"
+  ],
+  "additionalProperties": false
+}
+```
+## devicePatch
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+      }
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "dataType": {
+            "type": "string",
+            "enum": [
+              "string",
+              "number",
+              "gps-nmea",
+              "boolean"
+            ]
+          },
+          "readable": {
+            "type": "boolean"
+          },
+          "writable": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "dataType",
+          "readable",
+          "writeable"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "deviceClass": {
+      "type": "string",
+      "enum": [
+        "standalone",
+        "master",
+        "owned",
+        "floating",
+        "virtual"
+      ]
+    },
+    "masterId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  },
+  "additionalProperties": false
+}
+```
+## devicePost
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+      }
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "dataType": {
+            "type": "string",
+            "enum": [
+              "string",
+              "number",
+              "gps-nmea",
+              "boolean"
+            ]
+          },
+          "readable": {
+            "type": "boolean"
+          },
+          "writable": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "dataType",
+          "readable",
+          "writeable"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "deviceClass": {
+      "type": "string",
+      "enum": [
+        "standalone",
+        "master",
+        "owned",
+        "floating",
+        "virtual"
+      ]
+    },
+    "masterId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name"
+  ]
+}
+```
+## deviceState
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "relayId": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": [
+            "number",
+            "string",
+            "boolean"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "data"
+  ],
+  "additionalProperties": false
+}
+```
 ## device
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "deviceId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
@@ -522,7 +1182,7 @@ Structure API - v0.1.0
       "type": "array",
       "items": {
         "type": "string",
-        "pattern": "^[0-9a-zA-Z]+$"
+        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
       }
     },
     "attributes": {
@@ -532,7 +1192,7 @@ Structure API - v0.1.0
         "properties": {
           "name": {
             "type": "string",
-            "pattern": "^[0-9a-zA-Z]+$"
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
           },
           "dataType": {
             "type": "string",
@@ -593,6 +1253,10 @@ Structure API - v0.1.0
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
           "deviceId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
@@ -615,7 +1279,7 @@ Structure API - v0.1.0
             "type": "array",
             "items": {
               "type": "string",
-              "pattern": "^[0-9a-zA-Z]+$"
+              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
             }
           },
           "attributes": {
@@ -625,7 +1289,7 @@ Structure API - v0.1.0
               "properties": {
                 "name": {
                   "type": "string",
-                  "pattern": "^[0-9a-zA-Z]+$"
+                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
                 },
                 "dataType": {
                   "type": "string",
@@ -696,7 +1360,11 @@ Structure API - v0.1.0
       "type": "string"
     },
     "sortDirection": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
     },
     "applicationId": {
       "type": "string",
@@ -712,50 +1380,102 @@ Structure API - v0.1.0
   ]
 }
 ```
-## deviceCredentials
+## emailVerificationVerify
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "deviceId": {
+    "email": {
       "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
+      "format": "email"
     },
-    "key": {
-      "type": "string"
-    },
-    "secret": {
+    "token": {
       "type": "string"
     }
   },
   "required": [
-    "deviceId",
-    "key",
-    "secret"
-  ]
+    "email",
+    "token"
+  ],
+  "additionalProperties": false
 }
 ```
-## deviceState
+## error
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "time": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "relayId": {
+    "type": {
       "type": "string"
     },
-    "data": {
-      "type": "object"
+    "message": {
+      "type": "string"
     }
   },
   "required": [
-    "data"
-  ]
+    "type",
+    "message"
+  ],
+  "additionalProperties": false
+}
+```
+## eventPatch
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "state": {
+      "type": "string",
+      "enum": [
+        "new",
+        "acknowledged",
+        "resolved"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
+```
+## eventPost
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "level": {
+      "type": "string",
+      "enum": [
+        "info",
+        "warning",
+        "error"
+      ]
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "new",
+        "acknowledged",
+        "resolved"
+      ]
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "level",
+    "state",
+    "subject"
+  ],
+  "additionalProperties": false
 }
 ```
 ## event
@@ -764,6 +1484,10 @@ Structure API - v0.1.0
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "eventId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
@@ -810,7 +1534,18 @@ Structure API - v0.1.0
     "message": {
       "type": "string"
     }
-  }
+  },
+  "required": [
+    "id",
+    "eventId",
+    "applicationId",
+    "creationDate",
+    "sourceType",
+    "sourceId",
+    "level",
+    "state",
+    "subject"
+  ]
 }
 ```
 ## events
@@ -825,6 +1560,10 @@ Structure API - v0.1.0
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
           "eventId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
@@ -871,7 +1610,18 @@ Structure API - v0.1.0
           "message": {
             "type": "string"
           }
-        }
+        },
+        "required": [
+          "id",
+          "eventId",
+          "applicationId",
+          "creationDate",
+          "sourceType",
+          "sourceId",
+          "level",
+          "state",
+          "subject"
+        ]
       }
     },
     "count": {
@@ -896,7 +1646,11 @@ Structure API - v0.1.0
       "type": "string"
     },
     "sortDirection": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
     },
     "state": {
       "type": "string"
@@ -915,23 +1669,196 @@ Structure API - v0.1.0
   ]
 }
 ```
-## emailVerificationVerify
+## flowPatch
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "email": {
+    "name": {
       "type": "string",
-      "format": "email"
+      "minLength": 1,
+      "maxLength": 255
     },
-    "token": {
+    "description": {
       "type": "string"
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "triggers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "config": {
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          },
+          "outputIds": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "type",
+          "config",
+          "meta",
+          "outputIds"
+        ]
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "config": {
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          },
+          "outputIds": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "type",
+          "config",
+          "meta",
+          "outputIds"
+        ]
+      }
     }
   },
-  "required": [
-    "email",
-    "token"
+  "additionalProperties": false
+}
+```
+## flowPost
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string"
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "triggers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "config": {
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          },
+          "outputIds": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "type",
+          "config",
+          "meta",
+          "outputIds"
+        ]
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "config": {
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          },
+          "outputIds": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "type",
+          "config",
+          "meta",
+          "outputIds"
+        ]
+      }
+    }
+  },
+  "additionalProperties": false,
+  "require": [
+    "name"
   ]
 }
 ```
@@ -941,6 +1868,10 @@ Structure API - v0.1.0
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "flowId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
@@ -1022,7 +1953,14 @@ Structure API - v0.1.0
     }
   },
   "required": [
-    "name"
+    "id",
+    "flowId",
+    "applicationId",
+    "creationDate",
+    "name",
+    "enabled",
+    "triggers",
+    "nodes"
   ]
 }
 ```
@@ -1038,6 +1976,10 @@ Structure API - v0.1.0
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
           "flowId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
@@ -1119,7 +2061,14 @@ Structure API - v0.1.0
           }
         },
         "required": [
-          "name"
+          "id",
+          "flowId",
+          "applicationId",
+          "creationDate",
+          "name",
+          "enabled",
+          "triggers",
+          "nodes"
         ]
       }
     },
@@ -1145,7 +2094,11 @@ Structure API - v0.1.0
       "type": "string"
     },
     "sortDirection": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
     },
     "applicationId": {
       "type": "string",
@@ -1161,62 +2114,166 @@ Structure API - v0.1.0
   ]
 }
 ```
+## lastValueData
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "patternProperties": {
+    "^[A-Fa-f\\d]{24}$": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "data": {
+          "type": "object",
+          "patternProperties": {
+            "^[0-9a-zA-Z_-]{1,255}$": {
+              "type": [
+                "number",
+                "string",
+                "boolean"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "data",
+        "time"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
+```
+## mePatch
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
+```
 ## me
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "firstName": {
-      "type": "string"
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
     },
-    "lastName": {
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "emailVerified": {
+      "type": "boolean"
+    },
+    "firstName": {
       "type": "string"
     },
     "fullName": {
       "type": "string"
     },
-    "email": {
+    "id": {
       "type": "string",
-      "format": "email"
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "passwordLastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "userId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     }
   },
   "required": [
+    "creationDate",
     "email",
+    "emailVerified",
     "firstName",
-    "lastName"
+    "fullName",
+    "id",
+    "lastName",
+    "passwordLastUpdated",
+    "userId"
   ]
 }
 ```
-## newUser
+## orgPatch
 ```javascript
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "betaCode": {
-      "type": "string"
-    },
-    "firstName": {
-      "type": "string"
-    },
-    "lastName": {
-      "type": "string"
-    },
-    "email": {
+    "name": {
       "type": "string",
-      "format": "email"
+      "minLength": 1,
+      "maxLength": 255
     },
-    "password": {
+    "description": {
       "type": "string"
+    },
+    "memberIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
     }
   },
-  "required": [
-    "email",
-    "firstName",
-    "lastName",
-    "password"
-  ]
+  "additionalProperties": false
+}
+```
+## orgPost
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string"
+    },
+    "memberIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
+    }
+  },
+  "additionalProperties": false
 }
 ```
 ## org
@@ -1225,19 +2282,38 @@ Structure API - v0.1.0
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "orgId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
     },
     "name": {
       "type": "string"
     },
     "description": {
       "type": "string"
+    },
+    "memberIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
     }
   },
   "required": [
-    "name"
+    "id",
+    "orgId",
+    "creationDate",
+    "name",
+    "memberIds"
   ]
 }
 ```
@@ -1253,19 +2329,38 @@ Structure API - v0.1.0
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
           "orgId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
           },
           "name": {
             "type": "string"
           },
           "description": {
             "type": "string"
+          },
+          "memberIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            }
           }
         },
         "required": [
-          "name"
+          "id",
+          "orgId",
+          "creationDate",
+          "name",
+          "memberIds"
         ]
       }
     },
@@ -1276,22 +2371,6 @@ Structure API - v0.1.0
   "required": [
     "items",
     "count"
-  ]
-}
-```
-## passwordResetInput
-```javascript
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "email": {
-      "type": "string",
-      "format": "email"
-    }
-  },
-  "required": [
-    "email"
   ]
 }
 ```
@@ -1316,7 +2395,44 @@ Structure API - v0.1.0
     "token",
     "email",
     "password"
-  ]
+  ],
+  "additionalProperties": false
+}
+```
+## passwordResetInput
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email"
+    }
+  },
+  "required": [
+    "email"
+  ],
+  "additionalProperties": false
+}
+```
+## success
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "boolean",
+      "enum": [
+        true
+      ]
+    }
+  },
+  "required": [
+    "success"
+  ],
+  "additionalProperties": false
 }
 ```
 ## timeSeriesData
@@ -1339,10 +2455,64 @@ Structure API - v0.1.0
     "aggregation": {
       "type": "string"
     },
-    "series": {
-      "type": "object"
+    "devices": {
+      "type": "object",
+      "patternProperties": {
+        "^[A-Fa-f\\d]{24}$": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "points": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "time": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "data": {
+                    "type": "object",
+                    "patternProperties": {
+                      "^[0-9a-zA-Z_-]{1,255}$": {
+                        "type": [
+                          "number",
+                          "string",
+                          "boolean"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "data",
+                  "time"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "points"
+          ]
+        }
+      },
+      "additionalProperties": false
     }
-  }
+  },
+  "additionalProperties": false,
+  "required": [
+    "start",
+    "end",
+    "resolution",
+    "aggregation",
+    "devices"
+  ]
 }
 ```
 ## userCredentials
@@ -1362,7 +2532,74 @@ Structure API - v0.1.0
   "required": [
     "username",
     "password"
-  ]
+  ],
+  "additionalProperties": false
+}
+```
+## userPost
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "betaCode": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "password": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "betaCode",
+    "email",
+    "firstName",
+    "lastName",
+    "password"
+  ],
+  "additionalProperties": false
+}
+```
+## webhookPatch
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    }
+  },
+  "additionalProperties": false
+}
+```
+## webhookPost
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "additionalProperties": false
 }
 ```
 ## webhook
@@ -1371,6 +2608,14 @@ Structure API - v0.1.0
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "webhookId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "applicationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
@@ -1385,7 +2630,15 @@ Structure API - v0.1.0
     "token": {
       "type": "string"
     }
-  }
+  },
+  "required": [
+    "id",
+    "webhookId",
+    "applicationId",
+    "creationDate",
+    "name",
+    "token"
+  ]
 }
 ```
 ## webhooks
@@ -1400,6 +2653,14 @@ Structure API - v0.1.0
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "webhookId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
           "applicationId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
@@ -1414,7 +2675,15 @@ Structure API - v0.1.0
           "token": {
             "type": "string"
           }
-        }
+        },
+        "required": [
+          "id",
+          "webhookId",
+          "applicationId",
+          "creationDate",
+          "name",
+          "token"
+        ]
       }
     },
     "count": {
@@ -1439,7 +2708,11 @@ Structure API - v0.1.0
       "type": "string"
     },
     "sortDirection": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
     },
     "applicationId": {
       "type": "string",

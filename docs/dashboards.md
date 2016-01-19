@@ -48,7 +48,7 @@ Create a new dasboard owned by the current user
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| dashboard | [dashboard](_schemas.md#dashboard) | N | New dashboard information |
+| dashboard | [dashboardPost](_schemas.md#dashboardpost) | N | New dashboard information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -56,11 +56,12 @@ Create a new dasboard owned by the current user
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | undefined | If dashboard was successfully created |
+| 201 | [dashboard](_schemas.md#dashboard) | Successfully created dashboard |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
 
 ### Example
 ```javascript

@@ -23,7 +23,7 @@ Retrieves information on an device
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if device was not found |
+| 404 | [error](_schemas.md#error) | Error if device was not found |
 
 ### Example
 ```javascript
@@ -47,7 +47,7 @@ Updates information about a device
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
 | deviceId | string | Y | ID associated with the device |
-| device | [device](_schemas.md#device) | N | Object containing new properties of the device |
+| device | [devicePatch](_schemas.md#devicepatch) | N | Object containing new properties of the device |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -60,7 +60,8 @@ Updates information about a device
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if device was not found |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 404 | [error](_schemas.md#error) | Error if device was not found |
 
 ### Example
 ```javascript
@@ -91,12 +92,12 @@ Deletes a device
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 204 | undefined | If device was successfully deleted |
+| 200 | [success](_schemas.md#success) | If device was successfully deleted |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if device was not found |
+| 404 | [error](_schemas.md#error) | Error if device was not found |
 
 ### Example
 ```javascript
@@ -132,7 +133,7 @@ Retrieve the last known state of the device
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if device was not found |
+| 404 | [error](_schemas.md#error) | Error if device was not found |
 
 ### Example
 ```javascript
@@ -164,12 +165,13 @@ Request for the device to change to the given state
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | undefined | If change request was successfully sent |
+| 200 | [success](_schemas.md#success) | If change request was successfully sent |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if device was not found |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 404 | [error](_schemas.md#error) | Error if device was not found |
 
 ### Example
 ```javascript
@@ -201,12 +203,13 @@ Report the current state of the device
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | undefined | If state was successfully received |
+| 200 | [success](_schemas.md#success) | If state was successfully received |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if device was not found |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 404 | [error](_schemas.md#error) | Error if device was not found |
 
 ### Example
 ```javascript
@@ -238,12 +241,13 @@ Send a message about the device
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | undefined | If message was successfully sent |
+| 200 | [success](_schemas.md#success) | If message was successfully sent |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if device was not found |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 404 | [error](_schemas.md#error) | Error if device was not found |
 
 ### Example
 ```javascript

@@ -19,10 +19,10 @@ var client = api.createClient({
 ## API Reference
 - [Access Token](docs/accessToken.md)
 - [Access Tokens](docs/accessTokens.md)
-- [Application](docs/application.md)
-- [Applications](docs/applications.md)
 - [Application Key](docs/applicationKey.md)
 - [Application Keys](docs/applicationKeys.md)
+- [Application](docs/application.md)
+- [Applications](docs/applications.md)
 - [Auth](docs/auth.md)
 - [Dashboard](docs/dashboard.md)
 - [Dashboards](docs/dashboards.md)

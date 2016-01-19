@@ -2,6 +2,10 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "flowId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
@@ -83,6 +87,13 @@
     }
   },
   "required": [
-    "name"
+    "id",
+    "flowId",
+    "applicationId",
+    "creationDate",
+    "name",
+    "enabled",
+    "triggers",
+    "nodes"
   ]
 }

@@ -17,12 +17,13 @@ Authenticates a user using the provided credentials
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | undefined | If authentication is successful |
+| 200 | [authedUser](_schemas.md#autheduser) | Successful authentication |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 401 | undefined | Unauthorized error if authentication fails |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 401 | [error](_schemas.md#error) | Unauthorized error if authentication fails |
 
 ### Example
 ```javascript
@@ -52,12 +53,13 @@ Authenticates a device using the provided credentials
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | undefined | If authentication is successful |
+| 200 | [authedDevice](_schemas.md#autheddevice) | Successful authentication |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 401 | undefined | Unauthorized error if authentication fails |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 401 | [error](_schemas.md#error) | Unauthorized error if authentication fails |
 
 ### Example
 ```javascript

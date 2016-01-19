@@ -50,11 +50,12 @@ Create a new accessKey for a user
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | undefined | If accessKey was successfully created |
+| 201 | [accessToken](_schemas.md#accesstoken) | Successfully created access token |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
 
 ### Example
 ```javascript

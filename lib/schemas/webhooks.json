@@ -8,6 +8,14 @@
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "webhookId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
           "applicationId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
@@ -22,7 +30,15 @@
           "token": {
             "type": "string"
           }
-        }
+        },
+        "required": [
+          "id",
+          "webhookId",
+          "applicationId",
+          "creationDate",
+          "name",
+          "token"
+        ]
       }
     },
     "count": {
@@ -47,7 +63,11 @@
       "type": "string"
     },
     "sortDirection": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
     },
     "applicationId": {
       "type": "string",

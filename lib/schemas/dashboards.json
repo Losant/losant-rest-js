@@ -8,16 +8,28 @@
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
           "dashboardId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
           },
           "ownerId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "ownerType": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "user",
+              "organization"
+            ]
           },
           "name": {
             "type": "string"
@@ -27,11 +39,18 @@
             "items": {
               "type": "object",
               "properties": {
+                "id": {
+                  "type": "string"
+                },
                 "blockType": {
                   "type": "string"
                 },
                 "title": {
                   "type": "string"
+                },
+                "applicationId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
                 },
                 "startX": {
                   "type": "integer"
@@ -45,10 +64,6 @@
                 "height": {
                   "type": "integer"
                 },
-                "applicationId": {
-                  "type": "string",
-                  "pattern": "^[A-Fa-f\\d]{24}$"
-                },
                 "config": {
                   "type": "object"
                 }
@@ -57,7 +72,13 @@
           }
         },
         "required": [
-          "name"
+          "id",
+          "dashboardId",
+          "creationDate",
+          "ownerId",
+          "ownerType",
+          "name",
+          "blocks"
         ]
       }
     },
@@ -83,7 +104,11 @@
       "type": "string"
     },
     "sortDirection": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
     }
   },
   "required": [

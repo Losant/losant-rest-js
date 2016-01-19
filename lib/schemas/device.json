@@ -2,6 +2,10 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "deviceId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
@@ -24,7 +28,7 @@
       "type": "array",
       "items": {
         "type": "string",
-        "pattern": "^[0-9a-zA-Z]+$"
+        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
       }
     },
     "attributes": {
@@ -34,7 +38,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "pattern": "^[0-9a-zA-Z]+$"
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
           },
           "dataType": {
             "type": "string",

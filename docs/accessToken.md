@@ -22,7 +22,7 @@ Retrieves information on an accessToken
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if accessToken was not found |
+| 404 | [error](_schemas.md#error) | Error if accessToken was not found |
 
 ### Example
 ```javascript
@@ -45,7 +45,7 @@ Updates information about a accessToken
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | accessTokenId | string | Y | ID associated with the accessToken |
-| accessToken | [accessToken](_schemas.md#accesstoken) | N | Object containing new properties of the accessToken |
+| accessToken | [accessTokenPatch](_schemas.md#accesstokenpatch) | N | Object containing new properties of the accessToken |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -58,7 +58,8 @@ Updates information about a accessToken
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if accessToken was not found |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 404 | [error](_schemas.md#error) | Error if accessToken was not found |
 
 ### Example
 ```javascript
@@ -88,12 +89,12 @@ Deletes a accessToken
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 204 | undefined | If accessToken was successfully deleted |
+| 200 | [success](_schemas.md#success) | If accessToken was successfully deleted |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if accessToken was not found |
+| 404 | [error](_schemas.md#error) | Error if accessToken was not found |
 
 ### Example
 ```javascript

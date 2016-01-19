@@ -42,7 +42,7 @@ Create a new organization
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| organization | [org](_schemas.md#org) | N | New organization information |
+| organization | [orgPost](_schemas.md#orgpost) | N | New organization information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -50,11 +50,12 @@ Create a new organization
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | undefined | If organization was successfully created |
+| 201 | [org](_schemas.md#org) | Successfully created organization |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
 
 ### Example
 ```javascript

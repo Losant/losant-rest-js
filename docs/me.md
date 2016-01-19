@@ -42,7 +42,7 @@ Updates information about the current user
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| user | [me](_schemas.md#me) | N | Object containing new user properties |
+| user | [mePatch](_schemas.md#mepatch) | N | Object containing new user properties |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -55,6 +55,7 @@ Updates information about the current user
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
 
 ### Example
 ```javascript

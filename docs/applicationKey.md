@@ -18,12 +18,12 @@ Retrieves information on an applicationKey
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [applicationKey](_schemas.md#applicationkey) | Device information |
+| 200 | [applicationKey](_schemas.md#applicationkey) | applicationKey information |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if applicationKey was not found |
+| 404 | [error](_schemas.md#error) | Error if applicationKey was not found |
 
 ### Example
 ```javascript
@@ -47,7 +47,7 @@ Updates information about an applicationKey
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
 | applicationKeyId | string | Y | ID associated with the applicationKey |
-| applicationKey | [applicationKey](_schemas.md#applicationkey) | N | Object containing new properties of the applicationKey |
+| applicationKey | [applicationKeyPatch](_schemas.md#applicationkeypatch) | N | Object containing new properties of the applicationKey |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -60,7 +60,8 @@ Updates information about an applicationKey
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if applicationKey was not found |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 404 | [error](_schemas.md#error) | Error if applicationKey was not found |
 
 ### Example
 ```javascript
@@ -91,12 +92,12 @@ Deletes an applicationKey
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 204 | undefined | If applicationKey was successfully deleted |
+| 200 | [success](_schemas.md#success) | If applicationKey was successfully deleted |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if applicationKey was not found |
+| 404 | [error](_schemas.md#error) | Error if applicationKey was not found |
 
 ### Example
 ```javascript

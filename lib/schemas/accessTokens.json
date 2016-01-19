@@ -8,17 +8,54 @@
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
         "properties": {
-          "items": {
-            "type": "array",
-            "items": {}
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
           },
-          "count": {
-            "type": "integer"
+          "accessTokenId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "userId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expirationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "scope": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          },
+          "token": {
+            "type": "string"
           }
         },
         "required": [
-          "items",
-          "count"
+          "id",
+          "accessTokenId",
+          "userId",
+          "name",
+          "creationDate",
+          "scope",
+          "status"
         ]
       }
     },

@@ -8,45 +8,42 @@
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
         "properties": {
-          "items": {
-            "type": "array",
-            "items": {}
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
           },
-          "count": {
-            "type": "integer"
-          },
-          "totalCount": {
-            "type": "integer"
-          },
-          "perPage": {
-            "type": "integer"
-          },
-          "page": {
-            "type": "integer"
-          },
-          "filter": {
-            "type": "string"
-          },
-          "filterField": {
-            "type": "string"
-          },
-          "sortField": {
-            "type": "string"
-          },
-          "sortDirection": {
-            "type": "string"
+          "applicationKeyId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "applicationId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "key": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          },
+          "secret": {
+            "type": "string"
           }
         },
         "required": [
-          "items",
-          "totalCount",
-          "perPage",
-          "page",
-          "applicationId"
+          "id",
+          "applicationKeyId",
+          "applicationId",
+          "key",
+          "status"
         ]
       }
     },
@@ -72,7 +69,11 @@
       "type": "string"
     },
     "sortDirection": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
     },
     "applicationId": {
       "type": "string",

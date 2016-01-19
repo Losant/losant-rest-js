@@ -28,6 +28,7 @@ Returns the applicationKeys for an application
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 404 | [error](_schemas.md#error) | Error if application was not found |
 
 ### Example
 ```javascript
@@ -57,11 +58,13 @@ Create a new applicationKey for an application
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | undefined | If applicationKey was successfully created |
+| 201 | [applicationKey](_schemas.md#applicationkey) | Successfully created applicationKey |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 404 | [error](_schemas.md#error) | Error if application was not found |
 
 ### Example
 ```javascript

@@ -2,6 +2,10 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "eventId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
@@ -48,5 +52,16 @@
     "message": {
       "type": "string"
     }
-  }
+  },
+  "required": [
+    "id",
+    "eventId",
+    "applicationId",
+    "creationDate",
+    "sourceType",
+    "sourceId",
+    "level",
+    "state",
+    "subject"
+  ]
 }

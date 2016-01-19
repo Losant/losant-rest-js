@@ -22,7 +22,7 @@ Retrieves information on an organization
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if organization not found |
+| 404 | [error](_schemas.md#error) | Error if organization not found |
 
 ### Example
 ```javascript
@@ -45,7 +45,7 @@ Updates information about an organization
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | orgId | string | Y | ID associated with the organization |
-| organization | [org](_schemas.md#org) | N | Object containing new organization properties |
+| organization | [orgPatch](_schemas.md#orgpatch) | N | Object containing new organization properties |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -58,7 +58,8 @@ Updates information about an organization
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if organization was not found |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 404 | [error](_schemas.md#error) | Error if organization was not found |
 
 ### Example
 ```javascript
@@ -88,12 +89,12 @@ Deletes an organization
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | undefined | If organization was successfully deleted |
+| 200 | [success](_schemas.md#success) | If organization was successfully deleted |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if organization was not found |
+| 404 | [error](_schemas.md#error) | Error if organization was not found |
 
 ### Example
 ```javascript

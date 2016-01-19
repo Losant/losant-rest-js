@@ -28,6 +28,7 @@ Returns the webhooks for an application
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 404 | [error](_schemas.md#error) | Error if application was not found |
 
 ### Example
 ```javascript
@@ -50,7 +51,7 @@ Create a new webhook for an application
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
-| webhook | [webhook](_schemas.md#webhook) | N | New webhook information |
+| webhook | [webhookPost](_schemas.md#webhookpost) | N | New webhook information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -58,11 +59,13 @@ Create a new webhook for an application
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | undefined | If webhook was successfully created |
+| 201 | [webhook](_schemas.md#webhook) | Successfully created webhook |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 404 | [error](_schemas.md#error) | Error if application was not found |
 
 ### Example
 ```javascript

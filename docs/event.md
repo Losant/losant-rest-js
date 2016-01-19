@@ -23,7 +23,7 @@ Retrieves information on an event
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if event was not found |
+| 404 | [error](_schemas.md#error) | Error if event was not found |
 
 ### Example
 ```javascript
@@ -47,7 +47,7 @@ Updates information about an event
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
 | eventId | string | Y | ID associated with the event |
-| event | [event](_schemas.md#event) | N | Object containing new properties of the event |
+| event | [eventPatch](_schemas.md#eventpatch) | N | Object containing new properties of the event |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -60,7 +60,8 @@ Updates information about an event
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if event is not found |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 404 | [error](_schemas.md#error) | Error if event is not found |
 
 ### Example
 ```javascript
@@ -91,12 +92,12 @@ Deletes an event
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 204 | undefined | If event was successfully deleted |
+| 200 | [success](_schemas.md#success) | If event was successfully deleted |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if event was not found |
+| 404 | [error](_schemas.md#error) | Error if event was not found |
 
 ### Example
 ```javascript

@@ -28,6 +28,7 @@ Returns the devices for an application
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 404 | [error](_schemas.md#error) | Error if application was not found |
 
 ### Example
 ```javascript
@@ -50,7 +51,7 @@ Create a new device for an application
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
-| device | [device](_schemas.md#device) | N | New device information |
+| device | [devicePost](_schemas.md#devicepost) | N | New device information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -58,11 +59,13 @@ Create a new device for an application
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | undefined | If device was successfully created |
+| 201 | [device](_schemas.md#device) | Successfully created device |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 404 | [error](_schemas.md#error) | Error if application was not found |
 
 ### Example
 ```javascript

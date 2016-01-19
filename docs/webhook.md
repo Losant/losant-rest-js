@@ -23,7 +23,7 @@ Retrieves information on an webhook
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if webhook was not found |
+| 404 | [error](_schemas.md#error) | Error if webhook was not found |
 
 ### Example
 ```javascript
@@ -47,7 +47,7 @@ Updates information about a webhook
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
 | webhookId | string | Y | ID associated with the webhook |
-| webhook | [webhook](_schemas.md#webhook) | N | Object containing new properties of the webhook |
+| webhook | [webhookPatch](_schemas.md#webhookpatch) | N | Object containing new properties of the webhook |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -60,7 +60,8 @@ Updates information about a webhook
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if webhook was not found |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 404 | [error](_schemas.md#error) | Error if webhook was not found |
 
 ### Example
 ```javascript
@@ -91,12 +92,12 @@ Deletes a webhook
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 204 | undefined | If webhook was successfully deleted |
+| 200 | [success](_schemas.md#success) | If webhook was successfully deleted |
 
 ### Errors
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | undefined | Error if webhook was not found |
+| 404 | [error](_schemas.md#error) | Error if webhook was not found |
 
 ### Example
 ```javascript
