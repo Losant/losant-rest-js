@@ -2,7 +2,19 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "passwordLastUpdated": {
       "type": "string",
       "format": "date-time"
     },
@@ -16,34 +28,33 @@
     "firstName": {
       "type": "string"
     },
-    "fullName": {
-      "type": "string"
-    },
-    "id": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
     "lastName": {
       "type": "string"
     },
-    "passwordLastUpdated": {
-      "type": "string",
-      "format": "date-time"
+    "companyName": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "twoFactorAuthKey": {
+      "type": "string"
+    },
+    "twoFactorAuthEnabled": {
+      "type": "boolean"
+    },
+    "fullName": {
+      "type": "string"
     },
     "userId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     }
-  },
-  "required": [
-    "creationDate",
-    "email",
-    "emailVerified",
-    "firstName",
-    "fullName",
-    "id",
-    "lastName",
-    "passwordLastUpdated",
-    "userId"
-  ]
+  }
 }

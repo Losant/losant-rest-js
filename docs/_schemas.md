@@ -2159,16 +2159,42 @@ Structure API - v0.1.0
   "properties": {
     "email": {
       "type": "string",
-      "format": "email"
+      "format": "email",
+      "maxLength": 1024
     },
     "firstName": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
     },
     "lastName": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "companyName": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "phoneNumber": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "location": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "url": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "twoFactorAuthEnabled": {
+      "type": "boolean"
     },
     "password": {
-      "type": "string"
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 2048
     }
   },
   "additionalProperties": false
@@ -2180,7 +2206,19 @@ Structure API - v0.1.0
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "passwordLastUpdated": {
       "type": "string",
       "format": "date-time"
     },
@@ -2194,36 +2232,35 @@ Structure API - v0.1.0
     "firstName": {
       "type": "string"
     },
-    "fullName": {
-      "type": "string"
-    },
-    "id": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
     "lastName": {
       "type": "string"
     },
-    "passwordLastUpdated": {
-      "type": "string",
-      "format": "date-time"
+    "companyName": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "twoFactorAuthKey": {
+      "type": "string"
+    },
+    "twoFactorAuthEnabled": {
+      "type": "boolean"
+    },
+    "fullName": {
+      "type": "string"
     },
     "userId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     }
-  },
-  "required": [
-    "creationDate",
-    "email",
-    "emailVerified",
-    "firstName",
-    "fullName",
-    "id",
-    "lastName",
-    "passwordLastUpdated",
-    "userId"
-  ]
+  }
 }
 ```
 ## orgPatch
@@ -2521,16 +2558,19 @@ Structure API - v0.1.0
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "username": {
+    "email": {
       "type": "string",
       "format": "email"
     },
     "password": {
       "type": "string"
+    },
+    "twoFactorCode": {
+      "type": "string"
     }
   },
   "required": [
-    "username",
+    "email",
     "password"
   ],
   "additionalProperties": false
@@ -2542,21 +2582,45 @@ Structure API - v0.1.0
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "betaCode": {
-      "type": "string"
-    },
-    "firstName": {
-      "type": "string"
-    },
-    "lastName": {
-      "type": "string"
-    },
     "email": {
       "type": "string",
-      "format": "email"
+      "format": "email",
+      "maxLength": 1024
+    },
+    "firstName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "companyName": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "phoneNumber": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "location": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "url": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "betaCode": {
+      "type": "string",
+      "maxLength": 2048
     },
     "password": {
-      "type": "string"
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 2048
     }
   },
   "required": [
