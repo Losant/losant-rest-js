@@ -33,9 +33,6 @@
       "type": "string",
       "maxLength": 1024
     },
-    "twoFactorAuthEnabled": {
-      "type": "boolean"
-    },
     "password": {
       "type": "string",
       "minLength": 8,

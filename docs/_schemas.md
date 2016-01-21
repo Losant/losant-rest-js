@@ -1380,6 +1380,29 @@ Structure API - v0.1.0
   ]
 }
 ```
+## disableTwoFactorAuth
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "twoFactorCode": {
+      "type": "string",
+      "maxLength": 2048
+    },
+    "password": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 2048
+    }
+  },
+  "required": [
+    "password",
+    "twoFactorCode"
+  ],
+  "additionalProperties": false
+}
+```
 ## emailVerificationVerify
 ```javascript
 {
@@ -1397,6 +1420,30 @@ Structure API - v0.1.0
   "required": [
     "email",
     "token"
+  ],
+  "additionalProperties": false
+}
+```
+## enableTwoFactorAuth
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "twoFactorAuthKey": {
+      "type": "string",
+      "minLength": 52,
+      "maxLength": 52
+    },
+    "password": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 2048
+    }
+  },
+  "required": [
+    "password",
+    "twoFactorAuthKey"
   ],
   "additionalProperties": false
 }
@@ -2188,9 +2235,6 @@ Structure API - v0.1.0
       "type": "string",
       "maxLength": 1024
     },
-    "twoFactorAuthEnabled": {
-      "type": "boolean"
-    },
     "password": {
       "type": "string",
       "minLength": 8,
@@ -2245,9 +2289,6 @@ Structure API - v0.1.0
       "type": "string"
     },
     "url": {
-      "type": "string"
-    },
-    "twoFactorAuthKey": {
       "type": "string"
     },
     "twoFactorAuthEnabled": {
@@ -2560,13 +2601,17 @@ Structure API - v0.1.0
   "properties": {
     "email": {
       "type": "string",
-      "format": "email"
+      "format": "email",
+      "maxLength": 1024
     },
     "password": {
-      "type": "string"
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 2048
     },
     "twoFactorCode": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 2048
     }
   },
   "required": [

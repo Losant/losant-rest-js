@@ -2,24 +2,20 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "email": {
+    "twoFactorAuthKey": {
       "type": "string",
-      "format": "email",
-      "maxLength": 1024
+      "minLength": 52,
+      "maxLength": 52
     },
     "password": {
       "type": "string",
       "minLength": 8,
       "maxLength": 2048
-    },
-    "twoFactorCode": {
-      "type": "string",
-      "maxLength": 2048
     }
   },
   "required": [
-    "email",
-    "password"
+    "password",
+    "twoFactorAuthKey"
   ],
   "additionalProperties": false
 }

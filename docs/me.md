@@ -69,3 +69,73 @@ client.me.patch(params)
   .then(console.log)
   .catch(console.error);
 ```
+## me.enableTwoFactorAuth
+Enables two factor auth for the current user
+
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| data | [enableTwoFactorAuth](_schemas.md#enabletwofactorauth) | N | Object containing two factor auth properties |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [me](_schemas.md#me) | Updated user information |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+
+### Example
+```javascript
+// with callbacks
+client.me.enableTwoFactorAuth(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.me.enableTwoFactorAuth(params)
+  .then(console.log)
+  .catch(console.error);
+```
+## me.disableTwoFactorAuth
+Disables two factor auth for the current user
+
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| data | [disableTwoFactorAuth](_schemas.md#disabletwofactorauth) | N | Object containing two factor auth properties |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [me](_schemas.md#me) | Updated user information |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+
+### Example
+```javascript
+// with callbacks
+client.me.disableTwoFactorAuth(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.me.disableTwoFactorAuth(params)
+  .then(console.log)
+  .catch(console.error);
+```

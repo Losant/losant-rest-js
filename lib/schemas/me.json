@@ -43,9 +43,6 @@
     "url": {
       "type": "string"
     },
-    "twoFactorAuthKey": {
-      "type": "string"
-    },
     "twoFactorAuthEnabled": {
       "type": "boolean"
     },
