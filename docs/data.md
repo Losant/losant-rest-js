@@ -1,7 +1,7 @@
 # Data
 Structure API - v0.1.0
 
-## data.get
+## data.timeSeriesQuery
 Returns the data for the given query
 
 
@@ -10,14 +10,7 @@ Returns the data for the given query
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
-| start | undefined | N | undefined |
-| end | undefined | N | undefined |
-| duration | undefined | N | undefined |
-| resolution | undefined | N | undefined |
-| aggregation | undefined | N | undefined |
-| attributes | array | N | undefined |
-| deviceTags | array | N | undefined |
-| deviceIds | array | N | undefined |
+| query | [timeSeriesQuery](_schemas.md#timeseriesquery) | N | The query parameters |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -35,16 +28,16 @@ Returns the data for the given query
 ### Example
 ```javascript
 // with callbacks
-client.data.get(params, function (err, result) {
+client.data.timeSeriesQuery(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 // with promises
-client.data.get(params)
+client.data.timeSeriesQuery(params)
   .then(console.log)
   .catch(console.error);
 ```
-## data.lastValue
+## data.lastValueQuery
 Returns the last known data for the given attribute
 
 
@@ -53,9 +46,7 @@ Returns the last known data for the given attribute
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
-| attribute | undefined | N | undefined |
-| deviceTags | array | N | undefined |
-| deviceIds | array | N | undefined |
+| query | [lastValueQuery](_schemas.md#lastvaluequery) | N | The query parameters |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -63,7 +54,7 @@ Returns the last known data for the given attribute
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [lastValueData](_schemas.md#lastvaluedata) | Last know data for the requested attribute |
+| 200 | [lastValueData](_schemas.md#lastvaluedata) | Last known data for the requested attribute |
 
 ### Errors
 | Code | Type | Description |
@@ -73,12 +64,12 @@ Returns the last known data for the given attribute
 ### Example
 ```javascript
 // with callbacks
-client.data.lastValue(params, function (err, result) {
+client.data.lastValueQuery(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 // with promises
-client.data.lastValue(params)
+client.data.lastValueQuery(params)
   .then(console.log)
   .catch(console.error);
 ```

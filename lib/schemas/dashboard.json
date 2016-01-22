@@ -14,6 +14,10 @@
       "type": "string",
       "format": "date-time"
     },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
     "ownerId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"

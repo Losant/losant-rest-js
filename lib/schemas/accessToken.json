@@ -21,6 +21,10 @@
       "type": "string",
       "format": "date-time"
     },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
     "expirationDate": {
       "type": "string",
       "format": "date-time"

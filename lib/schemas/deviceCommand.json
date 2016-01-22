@@ -2,14 +2,17 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "email": {
+    "time": {
       "type": "string",
-      "format": "email",
-      "maxLength": 1024
-    }
+      "format": "date-time"
+    },
+    "name": {
+      "type": "string"
+    },
+    "payload": {}
   },
   "required": [
-    "email"
+    "name"
   ],
   "additionalProperties": false
 }

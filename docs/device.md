@@ -111,7 +111,7 @@ client.device.delete(params)
   .then(console.log)
   .catch(console.error);
 ```
-## device.retrieveLastReportedState
+## device.getState
 Retrieve the last known state of the device
 
 
@@ -138,55 +138,17 @@ Retrieve the last known state of the device
 ### Example
 ```javascript
 // with callbacks
-client.device.retrieveLastReportedState(params, function (err, result) {
+client.device.getState(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 // with promises
-client.device.retrieveLastReportedState(params)
+client.device.getState(params)
   .then(console.log)
   .catch(console.error);
 ```
-## device.sendStateChangeRequest
-Request for the device to change to the given state
-
-
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| deviceId | string | Y | ID associated with the device |
-| deviceState | [deviceState](_schemas.md#devicestate) | N | Object containing the requested state of the device |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [success](_schemas.md#success) | If change request was successfully sent |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 400 | [error](_schemas.md#error) | Error if malformed request |
-| 404 | [error](_schemas.md#error) | Error if device was not found |
-
-### Example
-```javascript
-// with callbacks
-client.device.sendStateChangeRequest(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-// with promises
-client.device.sendStateChangeRequest(params)
-  .then(console.log)
-  .catch(console.error);
-```
-## device.reportCurrentState
-Report the current state of the device
+## device.sendState
+Send the current state of the device
 
 
 
@@ -214,17 +176,17 @@ Report the current state of the device
 ### Example
 ```javascript
 // with callbacks
-client.device.reportCurrentState(params, function (err, result) {
+client.device.sendState(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 // with promises
-client.device.reportCurrentState(params)
+client.device.sendState(params)
   .then(console.log)
   .catch(console.error);
 ```
-## device.sendMessage
-Send a message about the device
+## device.sendCommand
+Send a command to a device
 
 
 
@@ -233,7 +195,7 @@ Send a message about the device
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
 | deviceId | string | Y | ID associated with the device |
-| message | undefined | N | Message to send about the device |
+| deviceCommand | [deviceCommand](_schemas.md#devicecommand) | N | Command to send to the device |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -241,7 +203,7 @@ Send a message about the device
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [success](_schemas.md#success) | If message was successfully sent |
+| 200 | [success](_schemas.md#success) | If command was successfully sent |
 
 ### Errors
 | Code | Type | Description |
@@ -252,12 +214,12 @@ Send a message about the device
 ### Example
 ```javascript
 // with callbacks
-client.device.sendMessage(params, function (err, result) {
+client.device.sendCommand(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 // with promises
-client.device.sendMessage(params)
+client.device.sendCommand(params)
   .then(console.log)
   .catch(console.error);
 ```

@@ -87,6 +87,10 @@ Structure API - v0.1.0
       "type": "string",
       "format": "date-time"
     },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
     "expirationDate": {
       "type": "string",
       "format": "date-time"
@@ -147,6 +151,10 @@ Structure API - v0.1.0
             "type": "string"
           },
           "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
             "type": "string",
             "format": "date-time"
           },
@@ -231,6 +239,10 @@ Structure API - v0.1.0
       "type": "string",
       "format": "date-time"
     },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
     "key": {
       "type": "string"
     },
@@ -279,6 +291,10 @@ Structure API - v0.1.0
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
             "type": "string",
             "format": "date-time"
           },
@@ -359,7 +375,8 @@ Structure API - v0.1.0
       "maxLength": 255
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 32767
     }
   },
   "additionalProperties": false
@@ -377,7 +394,8 @@ Structure API - v0.1.0
       "maxLength": 255
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 32767
     }
   },
   "additionalProperties": false,
@@ -401,6 +419,10 @@ Structure API - v0.1.0
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
       "type": "string",
       "format": "date-time"
     },
@@ -473,6 +495,10 @@ Structure API - v0.1.0
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
             "type": "string",
             "format": "date-time"
           },
@@ -640,7 +666,8 @@ Structure API - v0.1.0
             "type": "string"
           },
           "title": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 255
           },
           "applicationId": {
             "type": "string",
@@ -700,7 +727,8 @@ Structure API - v0.1.0
             "type": "string"
           },
           "title": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 255
           },
           "applicationId": {
             "type": "string",
@@ -755,6 +783,10 @@ Structure API - v0.1.0
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
       "type": "string",
       "format": "date-time"
     },
@@ -841,6 +873,10 @@ Structure API - v0.1.0
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
             "type": "string",
             "format": "date-time"
           },
@@ -943,6 +979,27 @@ Structure API - v0.1.0
   ]
 }
 ```
+## deviceCommand
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "name": {
+      "type": "string"
+    },
+    "payload": {}
+  },
+  "required": [
+    "name"
+  ],
+  "additionalProperties": false
+}
+```
 ## deviceCredentials
 ```javascript
 {
@@ -980,13 +1037,29 @@ Structure API - v0.1.0
       "maxLength": 255
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 32767
     },
     "tags": {
       "type": "array",
       "items": {
-        "type": "string",
-        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "value"
+        ]
       }
     },
     "attributes": {
@@ -1006,19 +1079,11 @@ Structure API - v0.1.0
               "gps-nmea",
               "boolean"
             ]
-          },
-          "readable": {
-            "type": "boolean"
-          },
-          "writable": {
-            "type": "boolean"
           }
         },
         "required": [
           "name",
-          "dataType",
-          "readable",
-          "writable"
+          "dataType"
         ],
         "additionalProperties": false
       }
@@ -1053,13 +1118,29 @@ Structure API - v0.1.0
       "maxLength": 255
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 32767
     },
     "tags": {
       "type": "array",
       "items": {
-        "type": "string",
-        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "value"
+        ]
       }
     },
     "attributes": {
@@ -1079,19 +1160,11 @@ Structure API - v0.1.0
               "gps-nmea",
               "boolean"
             ]
-          },
-          "readable": {
-            "type": "boolean"
-          },
-          "writable": {
-            "type": "boolean"
           }
         },
         "required": [
           "name",
-          "dataType",
-          "readable",
-          "writable"
+          "dataType"
         ],
         "additionalProperties": false
       }
@@ -1172,6 +1245,10 @@ Structure API - v0.1.0
       "type": "string",
       "format": "date-time"
     },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
     "name": {
       "type": "string"
     },
@@ -1181,8 +1258,15 @@ Structure API - v0.1.0
     "tags": {
       "type": "array",
       "items": {
-        "type": "string",
-        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
       }
     },
     "attributes": {
@@ -1202,12 +1286,6 @@ Structure API - v0.1.0
               "gps-nmea",
               "boolean"
             ]
-          },
-          "readable": {
-            "type": "boolean"
-          },
-          "writable": {
-            "type": "boolean"
           }
         }
       }
@@ -1269,6 +1347,10 @@ Structure API - v0.1.0
             "type": "string",
             "format": "date-time"
           },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
           "name": {
             "type": "string"
           },
@@ -1278,8 +1360,15 @@ Structure API - v0.1.0
           "tags": {
             "type": "array",
             "items": {
-              "type": "string",
-              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                }
+              }
             }
           },
           "attributes": {
@@ -1299,12 +1388,6 @@ Structure API - v0.1.0
                     "gps-nmea",
                     "boolean"
                   ]
-                },
-                "readable": {
-                  "type": "boolean"
-                },
-                "writable": {
-                  "type": "boolean"
                 }
               }
             }
@@ -1411,7 +1494,8 @@ Structure API - v0.1.0
   "properties": {
     "email": {
       "type": "string",
-      "format": "email"
+      "format": "email",
+      "maxLength": 1024
     },
     "token": {
       "type": "string"
@@ -1547,6 +1631,10 @@ Structure API - v0.1.0
       "type": "string",
       "format": "date-time"
     },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
     "sourceType": {
       "type": "string",
       "enum": [
@@ -1620,6 +1708,10 @@ Structure API - v0.1.0
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
             "type": "string",
             "format": "date-time"
           },
@@ -1728,7 +1820,8 @@ Structure API - v0.1.0
       "maxLength": 255
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 32767
     },
     "enabled": {
       "type": "boolean"
@@ -1823,7 +1916,8 @@ Structure API - v0.1.0
       "maxLength": 255
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 32767
     },
     "enabled": {
       "type": "boolean"
@@ -1928,6 +2022,10 @@ Structure API - v0.1.0
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
       "type": "string",
       "format": "date-time"
     },
@@ -2036,6 +2134,10 @@ Structure API - v0.1.0
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
             "type": "string",
             "format": "date-time"
           },
@@ -2198,6 +2300,44 @@ Structure API - v0.1.0
   "additionalProperties": false
 }
 ```
+## lastValueQuery
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "attribute": {
+      "type": "string",
+      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+    },
+    "deviceTags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        }
+      }
+    },
+    "deviceIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
+    }
+  },
+  "additionalProperties": false
+}
+```
 ## mePatch
 ```javascript
 {
@@ -2316,7 +2456,8 @@ Structure API - v0.1.0
       "maxLength": 255
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 32767
     },
     "memberIds": {
       "type": "array",
@@ -2341,7 +2482,8 @@ Structure API - v0.1.0
       "maxLength": 255
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 32767
     },
     "memberIds": {
       "type": "array",
@@ -2369,6 +2511,10 @@ Structure API - v0.1.0
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
       "type": "string",
       "format": "date-time"
     },
@@ -2419,6 +2565,10 @@ Structure API - v0.1.0
             "type": "string",
             "format": "date-time"
           },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
           "name": {
             "type": "string"
           },
@@ -2463,10 +2613,13 @@ Structure API - v0.1.0
     },
     "email": {
       "type": "string",
-      "format": "email"
+      "format": "email",
+      "maxLength": 1024
     },
     "password": {
-      "type": "string"
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 2048
     }
   },
   "required": [
@@ -2485,7 +2638,8 @@ Structure API - v0.1.0
   "properties": {
     "email": {
       "type": "string",
-      "format": "email"
+      "format": "email",
+      "maxLength": 1024
     }
   },
   "required": [
@@ -2591,6 +2745,72 @@ Structure API - v0.1.0
     "aggregation",
     "devices"
   ]
+}
+```
+## timeSeriesQuery
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "start": {
+      "type": "number"
+    },
+    "end": {
+      "type": "number"
+    },
+    "duration": {
+      "type": "number"
+    },
+    "resolution": {
+      "type": "number"
+    },
+    "aggregation": {
+      "type": "string",
+      "enum": [
+        "FIRST",
+        "LAST",
+        "COUNT",
+        "MAX",
+        "MIN",
+        "MEDIAN",
+        "MEAN",
+        "SUM"
+      ]
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+      }
+    },
+    "deviceTags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        }
+      }
+    },
+    "deviceIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
+    }
+  },
+  "additionalProperties": false
 }
 ```
 ## userCredentials
@@ -2733,6 +2953,10 @@ Structure API - v0.1.0
       "type": "string",
       "format": "date-time"
     },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
     "name": {
       "type": "string"
     },
@@ -2775,6 +2999,10 @@ Structure API - v0.1.0
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
             "type": "string",
             "format": "date-time"
           },

@@ -19,7 +19,8 @@
             "type": "string"
           },
           "title": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 255
           },
           "applicationId": {
             "type": "string",

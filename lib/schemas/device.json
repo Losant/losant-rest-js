@@ -18,6 +18,10 @@
       "type": "string",
       "format": "date-time"
     },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
     "name": {
       "type": "string"
     },
@@ -27,8 +31,15 @@
     "tags": {
       "type": "array",
       "items": {
-        "type": "string",
-        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
       }
     },
     "attributes": {
@@ -48,12 +59,6 @@
               "gps-nmea",
               "boolean"
             ]
-          },
-          "readable": {
-            "type": "boolean"
-          },
-          "writable": {
-            "type": "boolean"
           }
         }
       }
