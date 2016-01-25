@@ -121,6 +121,8 @@ Retrieve the last known state of the device
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
 | deviceId | string | Y | ID associated with the device |
+| limit | string | N | undefined |
+| since | string | N | undefined |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -128,7 +130,7 @@ Retrieve the last known state of the device
 ### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [deviceState](_schemas.md#devicestate) | Last known device state |
+| 200 | [deviceStates](_schemas.md#devicestates) | Recent device states |
 
 ### Errors
 | Code | Type | Description |

@@ -1223,6 +1223,43 @@ Structure API - v0.1.0
   "additionalProperties": false
 }
 ```
+## deviceStates
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "time": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "relayId": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "patternProperties": {
+          "^[0-9a-zA-Z_-]{1,255}$": {
+            "type": [
+              "number",
+              "string",
+              "boolean"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "data"
+    ],
+    "additionalProperties": false
+  }
+}
+```
 ## device
 ```javascript
 {
