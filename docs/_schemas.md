@@ -34,10 +34,6 @@ Structure API - v0.1.0
       "minLength": 1,
       "maxLength": 255
     },
-    "creationDate": {
-      "type": "string",
-      "format": "date-time"
-    },
     "expirationDate": {
       "type": "string",
       "format": "date-time"
@@ -67,6 +63,21 @@ Structure API - v0.1.0
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
+  "definitions": {
+    "scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ]
+    }
+  },
   "properties": {
     "id": {
       "type": "string",
@@ -81,7 +92,9 @@ Structure API - v0.1.0
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "name": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
     },
     "creationDate": {
       "type": "string",
@@ -96,31 +109,15 @@ Structure API - v0.1.0
       "format": "date-time"
     },
     "scope": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "$ref": "#/definitions/scope"
     },
     "status": {
-      "type": "string",
-      "enum": [
-        "active",
-        "inactive"
-      ]
+      "$ref": "#/definitions/status"
     },
     "token": {
       "type": "string"
     }
-  },
-  "required": [
-    "id",
-    "accessTokenId",
-    "userId",
-    "name",
-    "creationDate",
-    "scope",
-    "status"
-  ]
+  }
 }
 ```
 ## accessTokens
@@ -134,6 +131,21 @@ Structure API - v0.1.0
       "items": {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
+        "definitions": {
+          "scope": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          }
+        },
         "properties": {
           "id": {
             "type": "string",
@@ -148,7 +160,9 @@ Structure API - v0.1.0
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           },
           "creationDate": {
             "type": "string",
@@ -163,41 +177,21 @@ Structure API - v0.1.0
             "format": "date-time"
           },
           "scope": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "$ref": "#/definitions/scope"
           },
           "status": {
-            "type": "string",
-            "enum": [
-              "active",
-              "inactive"
-            ]
+            "$ref": "#/definitions/status"
           },
           "token": {
             "type": "string"
           }
-        },
-        "required": [
-          "id",
-          "accessTokenId",
-          "userId",
-          "name",
-          "creationDate",
-          "scope",
-          "status"
-        ]
+        }
       }
     },
     "count": {
       "type": "integer"
     }
-  },
-  "required": [
-    "items",
-    "count"
-  ]
+  }
 }
 ```
 ## applicationKeyPatch
@@ -222,6 +216,15 @@ Structure API - v0.1.0
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
+  "definitions": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ]
+    }
+  },
   "properties": {
     "id": {
       "type": "string",
@@ -247,23 +250,12 @@ Structure API - v0.1.0
       "type": "string"
     },
     "status": {
-      "type": "string",
-      "enum": [
-        "active",
-        "inactive"
-      ]
+      "$ref": "#/definitions/status"
     },
     "secret": {
       "type": "string"
     }
-  },
-  "required": [
-    "id",
-    "applicationKeyId",
-    "applicationId",
-    "key",
-    "status"
-  ]
+  }
 }
 ```
 ## applicationKeys
@@ -277,6 +269,15 @@ Structure API - v0.1.0
       "items": {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
+        "definitions": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          }
+        },
         "properties": {
           "id": {
             "type": "string",
@@ -302,23 +303,12 @@ Structure API - v0.1.0
             "type": "string"
           },
           "status": {
-            "type": "string",
-            "enum": [
-              "active",
-              "inactive"
-            ]
+            "$ref": "#/definitions/status"
           },
           "secret": {
             "type": "string"
           }
-        },
-        "required": [
-          "id",
-          "applicationKeyId",
-          "applicationId",
-          "key",
-          "status"
-        ]
+        }
       }
     },
     "count": {
@@ -353,14 +343,7 @@ Structure API - v0.1.0
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     }
-  },
-  "required": [
-    "items",
-    "totalCount",
-    "perPage",
-    "page",
-    "applicationId"
-  ]
+  }
 }
 ```
 ## applicationPatch
@@ -438,10 +421,13 @@ Structure API - v0.1.0
       ]
     },
     "name": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 32767
     },
     "summary": {
       "type": "object",
@@ -463,15 +449,7 @@ Structure API - v0.1.0
         }
       }
     }
-  },
-  "required": [
-    "id",
-    "applicationId",
-    "creationDate",
-    "ownerId",
-    "ownerType",
-    "name"
-  ]
+  }
 }
 ```
 ## applications
@@ -514,10 +492,13 @@ Structure API - v0.1.0
             ]
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           },
           "description": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 32767
           },
           "summary": {
             "type": "object",
@@ -539,15 +520,7 @@ Structure API - v0.1.0
               }
             }
           }
-        },
-        "required": [
-          "id",
-          "applicationId",
-          "creationDate",
-          "ownerId",
-          "ownerType",
-          "name"
-        ]
+        }
       }
     },
     "count": {
@@ -578,13 +551,7 @@ Structure API - v0.1.0
         "desc"
       ]
     }
-  },
-  "required": [
-    "items",
-    "totalCount",
-    "perPage",
-    "page"
-  ]
+  }
 }
 ```
 ## authedDevice
@@ -601,7 +568,7 @@ Structure API - v0.1.0
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "deviceClass": {
+    "devicecClass": {
       "type": "string",
       "enum": [
         "standalone",
@@ -689,7 +656,6 @@ Structure API - v0.1.0
             "type": "object"
           }
         },
-        "additionalProperties": false,
         "required": [
           "id",
           "blockType",
@@ -750,7 +716,6 @@ Structure API - v0.1.0
             "type": "object"
           }
         },
-        "additionalProperties": false,
         "required": [
           "id",
           "blockType",
@@ -773,6 +738,60 @@ Structure API - v0.1.0
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
+  "definitions": {
+    "ownerType": {
+      "type": "string",
+      "enum": [
+        "user",
+        "organization"
+      ]
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "blockType": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "startX": {
+            "type": "integer"
+          },
+          "startY": {
+            "type": "integer"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "height": {
+            "type": "integer"
+          },
+          "config": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "id",
+          "blockType",
+          "startX",
+          "startY",
+          "width",
+          "height"
+        ]
+      }
+    }
+  },
   "properties": {
     "id": {
       "type": "string",
@@ -795,61 +814,17 @@ Structure API - v0.1.0
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "ownerType": {
-      "type": "string",
-      "enum": [
-        "user",
-        "organization"
-      ]
+      "$ref": "#/definitions/ownerType"
     },
     "name": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
     },
     "blocks": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "blockType": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          },
-          "applicationId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "startX": {
-            "type": "integer"
-          },
-          "startY": {
-            "type": "integer"
-          },
-          "width": {
-            "type": "integer"
-          },
-          "height": {
-            "type": "integer"
-          },
-          "config": {
-            "type": "object"
-          }
-        }
-      }
+      "$ref": "#/definitions/blocks"
     }
-  },
-  "required": [
-    "id",
-    "dashboardId",
-    "creationDate",
-    "ownerId",
-    "ownerType",
-    "name",
-    "blocks"
-  ]
+  }
 }
 ```
 ## dashboards
@@ -863,6 +838,60 @@ Structure API - v0.1.0
       "items": {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
+        "definitions": {
+          "ownerType": {
+            "type": "string",
+            "enum": [
+              "user",
+              "organization"
+            ]
+          },
+          "blocks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "blockType": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "applicationId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "startX": {
+                  "type": "integer"
+                },
+                "startY": {
+                  "type": "integer"
+                },
+                "width": {
+                  "type": "integer"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "config": {
+                  "type": "object"
+                }
+              },
+              "required": [
+                "id",
+                "blockType",
+                "startX",
+                "startY",
+                "width",
+                "height"
+              ]
+            }
+          }
+        },
         "properties": {
           "id": {
             "type": "string",
@@ -885,61 +914,17 @@ Structure API - v0.1.0
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "ownerType": {
-            "type": "string",
-            "enum": [
-              "user",
-              "organization"
-            ]
+            "$ref": "#/definitions/ownerType"
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           },
           "blocks": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "blockType": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "applicationId": {
-                  "type": "string",
-                  "pattern": "^[A-Fa-f\\d]{24}$"
-                },
-                "startX": {
-                  "type": "integer"
-                },
-                "startY": {
-                  "type": "integer"
-                },
-                "width": {
-                  "type": "integer"
-                },
-                "height": {
-                  "type": "integer"
-                },
-                "config": {
-                  "type": "object"
-                }
-              }
-            }
+            "$ref": "#/definitions/blocks"
           }
-        },
-        "required": [
-          "id",
-          "dashboardId",
-          "creationDate",
-          "ownerId",
-          "ownerType",
-          "name",
-          "blocks"
-        ]
+        }
       }
     },
     "count": {
@@ -970,13 +955,7 @@ Structure API - v0.1.0
         "desc"
       ]
     }
-  },
-  "required": [
-    "items",
-    "totalCount",
-    "perPage",
-    "page"
-  ]
+  }
 }
 ```
 ## deviceCommand
@@ -1046,20 +1025,12 @@ Structure API - v0.1.0
         "type": "object",
         "properties": {
           "key": {
-            "type": "string",
-            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+            "type": "string"
           },
           "value": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 255
+            "type": "string"
           }
-        },
-        "additionalProperties": false,
-        "required": [
-          "key",
-          "value"
-        ]
+        }
       }
     },
     "attributes": {
@@ -1127,20 +1098,12 @@ Structure API - v0.1.0
         "type": "object",
         "properties": {
           "key": {
-            "type": "string",
-            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+            "type": "string"
           },
           "value": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 255
+            "type": "string"
           }
-        },
-        "additionalProperties": false,
-        "required": [
-          "key",
-          "value"
-        ]
+        }
       }
     },
     "attributes": {
@@ -1265,33 +1228,7 @@ Structure API - v0.1.0
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
-  "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "deviceId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "creationDate": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "lastUpdated": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "name": {
-      "type": "string"
-    },
-    "description": {
-      "type": "string"
-    },
+  "definitions": {
     "tags": {
       "type": "array",
       "items": {
@@ -1324,7 +1261,12 @@ Structure API - v0.1.0
               "boolean"
             ]
           }
-        }
+        },
+        "required": [
+          "name",
+          "dataType"
+        ],
+        "additionalProperties": false
       }
     },
     "deviceClass": {
@@ -1337,10 +1279,6 @@ Structure API - v0.1.0
         "virtual"
       ]
     },
-    "masterId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
     "connectionInfo": {
       "type": "object",
       "properties": {
@@ -1352,6 +1290,53 @@ Structure API - v0.1.0
           "type": "number"
         }
       }
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "tags": {
+      "$ref": "#/definitions/tags"
+    },
+    "attributes": {
+      "$ref": "#/definitions/attributes"
+    },
+    "deviceClass": {
+      "$ref": "#/definitions/deviceClass"
+    },
+    "masterId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "connectionInfo": {
+      "$ref": "#/definitions/connectionInfo"
     }
   }
 }
@@ -1367,33 +1352,7 @@ Structure API - v0.1.0
       "items": {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "deviceId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "applicationId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "creationDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "lastUpdated": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
+        "definitions": {
           "tags": {
             "type": "array",
             "items": {
@@ -1426,7 +1385,12 @@ Structure API - v0.1.0
                     "boolean"
                   ]
                 }
-              }
+              },
+              "required": [
+                "name",
+                "dataType"
+              ],
+              "additionalProperties": false
             }
           },
           "deviceClass": {
@@ -1439,10 +1403,6 @@ Structure API - v0.1.0
               "virtual"
             ]
           },
-          "masterId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
           "connectionInfo": {
             "type": "object",
             "properties": {
@@ -1454,6 +1414,53 @@ Structure API - v0.1.0
                 "type": "number"
               }
             }
+          }
+        },
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "deviceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "tags": {
+            "$ref": "#/definitions/tags"
+          },
+          "attributes": {
+            "$ref": "#/definitions/attributes"
+          },
+          "deviceClass": {
+            "$ref": "#/definitions/deviceClass"
+          },
+          "masterId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "connectionInfo": {
+            "$ref": "#/definitions/connectionInfo"
           }
         }
       }
@@ -1490,14 +1497,7 @@ Structure API - v0.1.0
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     }
-  },
-  "required": [
-    "items",
-    "totalCount",
-    "perPage",
-    "page",
-    "applicationId"
-  ]
+  }
 }
 ```
 ## disableTwoFactorAuth
@@ -1581,12 +1581,7 @@ Structure API - v0.1.0
     "message": {
       "type": "string"
     }
-  },
-  "required": [
-    "type",
-    "message"
-  ],
-  "additionalProperties": false
+  }
 }
 ```
 ## eventPatch
@@ -1651,6 +1646,40 @@ Structure API - v0.1.0
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
+  "definitions": {
+    "sourceType": {
+      "type": "string",
+      "enum": [
+        "flow",
+        "user",
+        "device"
+      ]
+    },
+    "level": {
+      "type": "string",
+      "enum": [
+        "info",
+        "warning",
+        "error"
+      ]
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "new",
+        "acknowledged",
+        "resolved"
+      ]
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "message": {
+      "type": "string"
+    }
+  },
   "properties": {
     "id": {
       "type": "string",
@@ -1673,51 +1702,25 @@ Structure API - v0.1.0
       "format": "date-time"
     },
     "sourceType": {
-      "type": "string",
-      "enum": [
-        "flow",
-        "user",
-        "device"
-      ]
+      "$ref": "#/definitions/sourceType"
     },
     "sourceId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "level": {
-      "type": "string",
-      "enum": [
-        "info",
-        "warning",
-        "error"
-      ]
+      "$ref": "#/definitions/level"
     },
     "state": {
-      "type": "string",
-      "enum": [
-        "new",
-        "acknowledged",
-        "resolved"
-      ]
+      "$ref": "#/definitions/state"
     },
     "subject": {
-      "type": "string"
+      "$ref": "#/definitions/subject"
     },
     "message": {
-      "type": "string"
+      "$ref": "#/definitions/message"
     }
-  },
-  "required": [
-    "id",
-    "eventId",
-    "applicationId",
-    "creationDate",
-    "sourceType",
-    "sourceId",
-    "level",
-    "state",
-    "subject"
-  ]
+  }
 }
 ```
 ## events
@@ -1731,6 +1734,40 @@ Structure API - v0.1.0
       "items": {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
+        "definitions": {
+          "sourceType": {
+            "type": "string",
+            "enum": [
+              "flow",
+              "user",
+              "device"
+            ]
+          },
+          "level": {
+            "type": "string",
+            "enum": [
+              "info",
+              "warning",
+              "error"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "new",
+              "acknowledged",
+              "resolved"
+            ]
+          },
+          "subject": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "message": {
+            "type": "string"
+          }
+        },
         "properties": {
           "id": {
             "type": "string",
@@ -1753,51 +1790,25 @@ Structure API - v0.1.0
             "format": "date-time"
           },
           "sourceType": {
-            "type": "string",
-            "enum": [
-              "flow",
-              "user",
-              "device"
-            ]
+            "$ref": "#/definitions/sourceType"
           },
           "sourceId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "level": {
-            "type": "string",
-            "enum": [
-              "info",
-              "warning",
-              "error"
-            ]
+            "$ref": "#/definitions/level"
           },
           "state": {
-            "type": "string",
-            "enum": [
-              "new",
-              "acknowledged",
-              "resolved"
-            ]
+            "$ref": "#/definitions/state"
           },
           "subject": {
-            "type": "string"
+            "$ref": "#/definitions/subject"
           },
           "message": {
-            "type": "string"
+            "$ref": "#/definitions/message"
           }
-        },
-        "required": [
-          "id",
-          "eventId",
-          "applicationId",
-          "creationDate",
-          "sourceType",
-          "sourceId",
-          "level",
-          "state",
-          "subject"
-        ]
+        }
       }
     },
     "count": {
@@ -1835,14 +1846,7 @@ Structure API - v0.1.0
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     }
-  },
-  "required": [
-    "items",
-    "totalCount",
-    "perPage",
-    "page",
-    "applicationId"
-  ]
+  }
 }
 ```
 ## flowPatch
@@ -2045,33 +2049,7 @@ Structure API - v0.1.0
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
-  "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "flowId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "creationDate": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "lastUpdated": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "name": {
-      "type": "string"
-    },
-    "description": {
-      "type": "string"
-    },
+  "definitions": {
     "enabled": {
       "type": "boolean"
     },
@@ -2101,7 +2079,15 @@ Structure API - v0.1.0
               }
             }
           }
-        }
+        },
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "type",
+          "config",
+          "meta",
+          "outputIds"
+        ]
       }
     },
     "nodes": {
@@ -2130,20 +2116,1850 @@ Structure API - v0.1.0
               }
             }
           }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "type",
+          "config",
+          "meta",
+          "outputIds"
+        ]
+      }
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "flowId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "enabled": {
+      "$ref": "#/definitions/enabled"
+    },
+    "triggers": {
+      "$ref": "#/definitions/triggers"
+    },
+    "nodes": {
+      "$ref": "#/definitions/nodes"
+    }
+  }
+}
+```
+## dataAggregateState
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "resultPath": {
+      "title": "Result Path",
+      "description": "JSON path to store the results",
+      "minLength": 1,
+      "type": "string"
+    },
+    "deviceTags": {
+      "title": "Device Tags",
+      "type": "array",
+      "items": {
+        "title": "Device Tag Pair",
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "minLength": 1
+      }
+    },
+    "deviceIds": {
+      "title": "Device IDs",
+      "type": "array",
+      "items": {
+        "title": "Device ID",
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "start": {
+      "title": "Start Time",
+      "description": "Milliseconds since the epoch start time",
+      "type": "number"
+    },
+    "end": {
+      "title": "End Time",
+      "description": "Milliseconds since the epoch end time",
+      "type": "number"
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "Duration of aggregation in milliseconds",
+      "type": "number"
+    },
+    "aggregation": {
+      "title": "Aggregation",
+      "description": "Valid aggregation function name",
+      "type": "string",
+      "minLength": 1
+    },
+    "attributes": {
+      "title": "Attributes",
+      "description": "Device IDs",
+      "type": "array",
+      "items": {
+        "title": "Device ID",
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "allOf": [
+    {
+      "required": [
+        "resultPath",
+        "aggregation"
+      ]
+    },
+    {
+      "oneOf": [
+        {
+          "required": [
+            "start",
+            "end"
+          ]
+        },
+        {
+          "required": [
+            "duration"
+          ]
         }
+      ]
+    }
+  ]
+}
+```
+## dataGetValue
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "keyName": {
+      "title": "Storage Key Name",
+      "type": "string",
+      "minLength": 1
+    },
+    "valuePath": {
+      "title": "Value Path",
+      "description": "JSON path for where to place value",
+      "type": "string",
+      "minLength": 1
+    },
+    "defaultValue": {
+      "title": "Default Value",
+      "description": "Value to place in 'Value Path' if key does not exist",
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "keyName",
+    "valuePath"
+  ]
+}
+```
+## dataHttp
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "definitions": {
+    "_methodNoBody": {
+      "title": "HTTP Method",
+      "description": "GET, DELETE, POST, PATCH or PUT",
+      "enum": [
+        "GET",
+        "DELETE"
+      ]
+    },
+    "_methodWithBody": {
+      "title": "HTTP Method",
+      "description": "GET, DELETE, POST, PATCH or PUT",
+      "enum": [
+        "POST",
+        "PATCH",
+        "PUT"
+      ]
+    },
+    "responsePath": {
+      "title": "Response Path",
+      "description": "JSON path for where to store response",
+      "type": "string",
+      "minLength": 1
+    },
+    "uriTemplate": {
+      "title": "URI Template",
+      "minLength": 1,
+      "type": "string",
+      "messages": {
+        "required": "URI Template is required"
+      }
+    },
+    "bodyTemplate": {
+      "title": "Request Body",
+      "type": "string"
+    },
+    "headerInfo": {
+      "type": "array",
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "key": {
+            "title": "Name",
+            "type": "string",
+            "minLength": 1
+          },
+          "valueTemplate": {
+            "title": "Value Template",
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "key",
+          "valueTemplate"
+        ]
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "method": {
+          "$ref": "#/definitions/_methodNoBody"
+        },
+        "responsePath": {
+          "$ref": "#/definitions/responsePath"
+        },
+        "uriTemplate": {
+          "$ref": "#/definitions/uriTemplate"
+        },
+        "headerInfo": {
+          "$ref": "#/definitions/headerInfo"
+        }
+      },
+      "required": [
+        "method",
+        "uriTemplate"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "method": {
+          "$ref": "#/definitions/_methodWithBody"
+        },
+        "responsePath": {
+          "$ref": "#/definitions/responsePath"
+        },
+        "uriTemplate": {
+          "$ref": "#/definitions/uriTemplate"
+        },
+        "bodyTemplate": {
+          "$ref": "#/definitions/bodyTemplate"
+        },
+        "headerInfo": {
+          "$ref": "#/definitions/headerInfo"
+        }
+      },
+      "required": [
+        "method",
+        "uriTemplate",
+        "bodyTemplate"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}
+```
+## dataLastState
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "resultPath": {
+      "type": "string",
+      "title": "Result Path",
+      "minLength": 1
+    },
+    "deviceTags": {
+      "title": "Device Tags",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "title": "Device Tag Pair",
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "minLength": 1
+      }
+    },
+    "deviceIds": {
+      "title": "Device IDs",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "title": "Device ID"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "required": [
+        "resultPath"
+      ]
+    },
+    {
+      "anyOf": [
+        {
+          "required": [
+            "deviceTags"
+          ]
+        },
+        {
+          "required": [
+            "deviceIds"
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+## dataStoreValue
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "keyName": {
+      "title": "Storage Key",
+      "type": "string",
+      "minLength": 1
+    },
+    "valuePath": {
+      "title": "Value",
+      "description": "JSON path for getting value to store. If 'Value' is empty, the current value at the provided 'Storage Key' is deleted.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "keyName",
+    "valuePath"
+  ]
+}
+```
+## logicConditional
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "expression": {
+      "title": "Expression",
+      "description": "What to evaluate; JSON paths are allowed, wrapped in {{this.is.a.path}}",
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "expression"
+  ]
+}
+```
+## logicDelay
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "delay": {
+      "title": "Delay (s)",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 59
+    }
+  },
+  "required": [
+    "delay"
+  ]
+}
+```
+## logicFunction
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "script": {
+      "title": "Script",
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "script"
+  ]
+}
+```
+## logicGeofence
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "definitions": {
+    "_gpsCheck": {
+      "title": "Point A NMEA-Formatted String",
+      "type": "string",
+      "minLength": 1
+    },
+    "_latCheck": {
+      "title": "Point A Latitude / Template",
+      "type": "string",
+      "minLength": 1
+    },
+    "_lonCheck": {
+      "title": "Point A Longitude / Template",
+      "type": "string",
+      "minLength": 1
+    },
+    "_gpsCenter": {
+      "title": "Point B NMEA-Formatted String",
+      "type": "string",
+      "minLength": 1
+    },
+    "_latCenter": {
+      "title": "Point B Latitude / Template",
+      "type": "string",
+      "minLength": 1
+    },
+    "_lonCenter": {
+      "title": "Point B Longitude / Template",
+      "type": "string",
+      "minLength": 1
+    },
+    "radius": {
+      "title": "Radius (meters) / Template",
+      "type": "string"
+    },
+    "resultPath": {
+      "title": "Result Path",
+      "description": "JSON Path for where to put the distance between the two coordinates",
+      "type": "string"
+    }
+  },
+  "anyOf": [
+    {
+      "properties": {
+        "gpsCheck": {
+          "$ref": "#/definitions/_gpsCheck"
+        },
+        "gpsCenter": {
+          "$ref": "#/definitions/_gpsCenter"
+        },
+        "radius": {
+          "$ref": "#/definitions/radius"
+        },
+        "resultPath": {
+          "$ref": "#/definitions/resultPath"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "radius",
+        "gpsCheck",
+        "gpsCenter"
+      ]
+    },
+    {
+      "properties": {
+        "gpsCheck": {
+          "$ref": "#/definitions/_gpsCheck"
+        },
+        "latCenter": {
+          "$ref": "#/definitions/_latCenter"
+        },
+        "lonCenter": {
+          "$ref": "#/definitions/_lonCenter"
+        },
+        "radius": {
+          "$ref": "#/definitions/radius"
+        },
+        "resultPath": {
+          "$ref": "#/definitions/resultPath"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "radius",
+        "gpsCheck",
+        "latCenter",
+        "lonCenter"
+      ]
+    },
+    {
+      "properties": {
+        "latCheck": {
+          "$ref": "#/definitions/_latCheck"
+        },
+        "lonCheck": {
+          "$ref": "#/definitions/_lonCheck"
+        },
+        "gpsCenter": {
+          "$ref": "#/definitions/_gpsCenter"
+        },
+        "radius": {
+          "$ref": "#/definitions/radius"
+        },
+        "resultPath": {
+          "$ref": "#/definitions/resultPath"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "radius",
+        "latCheck",
+        "lonCheck",
+        "gpsCenter"
+      ]
+    },
+    {
+      "properties": {
+        "latCheck": {
+          "$ref": "#/definitions/_latCheck"
+        },
+        "lonCheck": {
+          "$ref": "#/definitions/_lonCheck"
+        },
+        "latCenter": {
+          "$ref": "#/definitions/_latCenter"
+        },
+        "lonCenter": {
+          "$ref": "#/definitions/_lonCenter"
+        },
+        "radius": {
+          "$ref": "#/definitions/radius"
+        },
+        "resultPath": {
+          "$ref": "#/definitions/resultPath"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "radius",
+        "latCheck",
+        "lonCheck",
+        "latCenter",
+        "lonCenter"
+      ]
+    }
+  ]
+}
+```
+## logicJsonDecode
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "source": {
+      "title": "Source",
+      "description": "JSON path for source that contains the input",
+      "type": "string",
+      "minLength": 1
+    },
+    "destination": {
+      "title": "Destination",
+      "description": "JSON path for destination to place output",
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "source",
+    "destination"
+  ]
+}
+```
+## logicJsonEncode
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "source": {
+      "title": "Source",
+      "description": "JSON path for source that contains the input",
+      "type": "string",
+      "minLength": 1
+    },
+    "destination": {
+      "title": "Destination",
+      "description": "JSON path for destination to place output",
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "source",
+    "destination"
+  ]
+}
+```
+## logicMath
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "statements": {
+      "title": "Statements",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "title": "Statement",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "expression": {
+            "title": "Expression",
+            "description": "JSON Paths are allowed, wrapped in {{this.is.a.path}}",
+            "type": "string",
+            "minLength": 1
+          },
+          "resultPath": {
+            "title": "Result Path",
+            "description": "JSON path to place result of evaluated expression",
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "expression",
+          "resultPath"
+        ]
       }
     }
   },
   "required": [
-    "id",
-    "flowId",
-    "applicationId",
-    "creationDate",
-    "name",
-    "enabled",
-    "triggers",
-    "nodes"
+    "statements"
   ]
+}
+```
+## logicMutate
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "definitions": {
+    "_typeSet": {
+      "title": "Type",
+      "enum": [
+        "set"
+      ]
+    },
+    "_typeRemove": {
+      "title": "Type",
+      "enum": [
+        "remove"
+      ]
+    },
+    "_typeMove": {
+      "title": "Type",
+      "enum": [
+        "move"
+      ]
+    },
+    "_typeCopy": {
+      "title": "Type",
+      "enum": [
+        "copy"
+      ]
+    },
+    "destination": {
+      "title": "Destination",
+      "description": "JSON path to place result",
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "title": "Source",
+      "description": "JSON path of source value",
+      "type": "string",
+      "minLength": 1
+    },
+    "valueTemplate": {
+      "title": "Value Template",
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "properties": {
+    "rules": {
+      "title": "Rules",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "title": "Rule",
+        "type": "object",
+        "oneOf": [
+          {
+            "properties": {
+              "type": {
+                "$ref": "#/definitions/_typeSet"
+              },
+              "destination": {
+                "$ref": "#/definitions/destination"
+              },
+              "valueTemplate": {
+                "$ref": "#/definitions/valueTemplate"
+              }
+            },
+            "required": [
+              "type",
+              "destination",
+              "valueTemplate"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "properties": {
+              "type": {
+                "$ref": "#/definitions/_typeRemove"
+              },
+              "source": {
+                "$ref": "#/definitions/source"
+              }
+            },
+            "required": [
+              "type",
+              "source"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "properties": {
+              "type": {
+                "$ref": "#/definitions/_typeMove"
+              },
+              "destination": {
+                "$ref": "#/definitions/destination"
+              },
+              "source": {
+                "$ref": "#/definitions/source"
+              }
+            },
+            "required": [
+              "type",
+              "destination",
+              "source"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "properties": {
+              "type": {
+                "$ref": "#/definitions/_typeCopy"
+              },
+              "destination": {
+                "$ref": "#/definitions/destination"
+              },
+              "source": {
+                "$ref": "#/definitions/source"
+              }
+            },
+            "required": [
+              "type",
+              "destination",
+              "source"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "rules"
+  ]
+}
+```
+## logicOnchange
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "definitions": {
+    "valuePath": {
+      "title": "Value Path",
+      "description": "JSON Path of where to find value to check in payload",
+      "type": "string",
+      "minLength": 1
+    },
+    "_changeTypeOthers": {
+      "title": "Change Type",
+      "enum": [
+        "percent",
+        "percentInc",
+        "percentDec",
+        "value",
+        "valueInc",
+        "valueDec"
+      ]
+    },
+    "_changeTypeAny": {
+      "title": "Change Type",
+      "enum": [
+        "any"
+      ]
+    },
+    "changeThreshold": {
+      "title": "Change Threshold",
+      "description": "Amount of change required",
+      "type": "number"
+    },
+    "prevValuePath": {
+      "title": "Previous Value Path",
+      "description": "JSON path of where to put the previous triggering value and time",
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "valuePath": {
+          "$ref": "#/definitions/valuePath"
+        },
+        "changeType": {
+          "$ref": "#/definitions/_changeTypeOthers"
+        },
+        "changeThreshold": {
+          "$ref": "#/definitions/changeThreshold"
+        },
+        "prevValuePath": {
+          "$ref": "#/definitions/prevValuePath"
+        }
+      },
+      "required": [
+        "valuePath",
+        "changeType",
+        "changeThreshold"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "valuePath": {
+          "$ref": "#/definitions/valuePath"
+        },
+        "changeType": {
+          "$ref": "#/definitions/_changeTypeAny"
+        },
+        "prevValuePath": {
+          "$ref": "#/definitions/prevValuePath"
+        }
+      },
+      "required": [
+        "valuePath",
+        "changeType"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}
+```
+## logicThrottle
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "timeSincePath": {
+      "title": "Time Since Path",
+      "description": "JSON path to store the time since last not throttled payload",
+      "type": "string",
+      "minLength": 1
+    },
+    "ratePerMinute": {
+      "title": "Rate (per minute)",
+      "description": "Number of payloads to allow per minute",
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "required": [
+    "ratePerMinute"
+  ]
+}
+```
+## logicValidatePayload
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "schema": {
+      "title": "Schema",
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema"
+  ]
+}
+```
+## outputDebug
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "message": {
+      "title": "message",
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "message"
+  ]
+}
+```
+## outputDeviceCommand
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "nameTemplate": {
+      "title": "Command Name Template",
+      "type": "string",
+      "minLength": 1
+    },
+    "payloadTemplate": {
+      "title": "Command Payload Template",
+      "type": "string"
+    },
+    "sendToDeviceTags": {
+      "title": "Send to Device Tags",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "title": "Device Tag Pair",
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "minLength": 1
+      }
+    },
+    "sendToDeviceIds": {
+      "title": "Send to Device IDs",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "title": "Device ID",
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "allOf": [
+    {
+      "required": [
+        "nameTemplate"
+      ]
+    },
+    {
+      "anyOf": [
+        {
+          "required": [
+            "sendToDeviceIds"
+          ]
+        },
+        {
+          "required": [
+            "sendToDeviceTags"
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+## outputEvent
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "level": {
+      "title": "Level",
+      "enum": [
+        "info",
+        "warning",
+        "error"
+      ]
+    },
+    "subjectTemplate": {
+      "title": "Subject Template",
+      "type": "string",
+      "minLength": 1
+    },
+    "messageTemplate": {
+      "title": "Message Template",
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "level",
+    "subjectTemplate",
+    "messageTemplate"
+  ]
+}
+```
+## outputHttp
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "definitions": {
+    "_methodNoBody": {
+      "title": "HTTP Method",
+      "description": "GET, DELETE, POST, PATCH or PUT",
+      "enum": [
+        "GET",
+        "DELETE"
+      ]
+    },
+    "_methodWithBody": {
+      "title": "HTTP Method",
+      "description": "GET, DELETE, POST, PATCH or PUT",
+      "enum": [
+        "POST",
+        "PATCH",
+        "PUT"
+      ]
+    },
+    "responsePath": {
+      "title": "Response Path",
+      "description": "JSON path for where to store response",
+      "type": "string",
+      "minLength": 1
+    },
+    "uriTemplate": {
+      "title": "URI Template",
+      "minLength": 1,
+      "type": "string",
+      "messages": {
+        "required": "URI Template is required"
+      }
+    },
+    "bodyTemplate": {
+      "title": "Request Body",
+      "type": "string"
+    },
+    "headerInfo": {
+      "type": "array",
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "key": {
+            "title": "Name",
+            "type": "string",
+            "minLength": 1
+          },
+          "valueTemplate": {
+            "title": "Value Template",
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "key",
+          "valueTemplate"
+        ]
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "method": {
+          "$ref": "#/definitions/_methodNoBody"
+        },
+        "responsePath": {
+          "$ref": "#/definitions/responsePath"
+        },
+        "uriTemplate": {
+          "$ref": "#/definitions/uriTemplate"
+        },
+        "headerInfo": {
+          "$ref": "#/definitions/headerInfo"
+        }
+      },
+      "required": [
+        "method",
+        "uriTemplate"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "method": {
+          "$ref": "#/definitions/_methodWithBody"
+        },
+        "responsePath": {
+          "$ref": "#/definitions/responsePath"
+        },
+        "uriTemplate": {
+          "$ref": "#/definitions/uriTemplate"
+        },
+        "bodyTemplate": {
+          "$ref": "#/definitions/bodyTemplate"
+        },
+        "headerInfo": {
+          "$ref": "#/definitions/headerInfo"
+        }
+      },
+      "required": [
+        "method",
+        "uriTemplate",
+        "bodyTemplate"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}
+```
+## outputMqtt
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "topicTemplate": {
+      "title": "Topic Template",
+      "type": "string",
+      "minLength": 1
+    },
+    "messageTemplate": {
+      "title": "Message Template",
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "topicTemplate",
+    "messageTemplate"
+  ]
+}
+```
+## outputSendgrid
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "bodyTemplate": {
+      "title": "Body Template",
+      "type": "string",
+      "minLength": 1
+    },
+    "subjectTemplate": {
+      "title": "Subject Template",
+      "type": "string",
+      "minLength": 1
+    },
+    "fromTemplate": {
+      "title": "From Template",
+      "type": "string",
+      "minLength": 1
+    },
+    "replyToTemplate": {
+      "title": "Reply-To Template",
+      "type": "string",
+      "minLength": 1
+    },
+    "sendgridApiKey": {
+      "title": "SendGrid API Key",
+      "type": "string",
+      "minLength": 1
+    },
+    "resultPath": {
+      "title": "Result Path",
+      "description": "JSON path to store SendGrid response",
+      "type": "string",
+      "minLength": 1
+    },
+    "toAddresses": {
+      "title": "To Addresses",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "title": "Email Address",
+        "type": "string",
+        "minLength": 1,
+        "format": "email"
+      }
+    },
+    "ccAddresses": {
+      "title": "CC Addresses",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "title": "Email Address",
+        "type": "string",
+        "minLength": 1,
+        "format": "email"
+      }
+    },
+    "bccAddresses": {
+      "title": "BCC Addresses",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "title": "Email Address",
+        "type": "string",
+        "minLength": 1,
+        "format": "email"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "required": [
+        "bodyTemplate",
+        "subjectTemplate",
+        "fromTemplate",
+        "sendgridApiKey"
+      ]
+    },
+    {
+      "anyOf": [
+        {
+          "required": [
+            "toAddresses"
+          ]
+        },
+        {
+          "required": [
+            "ccAddresses"
+          ]
+        },
+        {
+          "required": [
+            "bccAddresses"
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+## outputSlack
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "urlPathTemplate": {
+      "title": "Service Path",
+      "type": "string",
+      "minLength": 1
+    },
+    "textTemplate": {
+      "title": "Message",
+      "type": "string",
+      "minLength": 1
+    },
+    "channelTemplate": {
+      "title": "Channel Name",
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "urlPathTemplate"
+  ]
+}
+```
+## outputTwilio
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "definitions": {
+    "accountSid": {
+      "title": "Account Sid",
+      "type": "string",
+      "minLength": 1,
+      "messages": {
+        "required": "Account Sid is required"
+      }
+    },
+    "authToken": {
+      "title": "Auth Token",
+      "type": "string",
+      "minLength": 1,
+      "messages": {
+        "required": "Auth Token is required"
+      }
+    },
+    "toNumbers": {
+      "title": "Send to ...",
+      "type": "array",
+      "items": {
+        "title": "SMS Number",
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "fromNumber": {
+      "title": "From Number Template",
+      "type": "string",
+      "minLength": 1
+    },
+    "messagingServiceSid": {
+      "title": "Messaging Service Sid Template",
+      "type": "string",
+      "minLength": 1
+    },
+    "bodyTemplate": {
+      "title": "Body Template",
+      "type": "string",
+      "minLength": 1
+    },
+    "mediaUrl": {
+      "title": "Media URL",
+      "type": "string",
+      "minLength": 1,
+      "format": "uri"
+    },
+    "maxPrice": {
+      "title": "Max. Price Template",
+      "type": "string"
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "accountSid": {
+          "$ref": "#/definitions/accountSid"
+        },
+        "authToken": {
+          "$ref": "#/definitions/authToken"
+        },
+        "toNumbers": {
+          "$ref": "#/definitions/toNumbers"
+        },
+        "fromNumber": {
+          "$ref": "#/definitions/fromNumber"
+        },
+        "bodyTemplate": {
+          "$ref": "#/definitions/bodyTemplate"
+        },
+        "mediaUrl": {
+          "$ref": "#/definitions/mediaUrl"
+        },
+        "maxPrice": {
+          "$ref": "#/definitions/maxPrice"
+        }
+      },
+      "allOf": [
+        {
+          "required": [
+            "accountSid",
+            "authToken",
+            "toNumbers",
+            "fromNumber"
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "required": [
+                "bodyTemplate"
+              ]
+            },
+            {
+              "required": [
+                "mediaUrl"
+              ]
+            }
+          ]
+        }
+      ],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "accountSid": {
+          "$ref": "#/definitions/accountSid"
+        },
+        "authToken": {
+          "$ref": "#/definitions/authToken"
+        },
+        "toNumbers": {
+          "$ref": "#/definitions/toNumbers"
+        },
+        "messagingServiceSid": {
+          "$ref": "#/definitions/messagingServiceSid"
+        },
+        "bodyTemplate": {
+          "$ref": "#/definitions/bodyTemplate"
+        },
+        "mediaUrl": {
+          "$ref": "#/definitions/mediaUrl"
+        },
+        "maxPrice": {
+          "$ref": "#/definitions/maxPrice"
+        }
+      },
+      "allOf": [
+        {
+          "required": [
+            "accountSid",
+            "authToken",
+            "toNumbers",
+            "messagingServiceSid"
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "required": [
+                "bodyTemplate"
+              ]
+            },
+            {
+              "required": [
+                "mediaUrl"
+              ]
+            }
+          ]
+        }
+      ],
+      "additionalProperties": false
+    }
+  ]
+}
+```
+## outputVirtualDeviceState
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "attrInfos": {
+      "title": "Attributes",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "title": "Attribute",
+        "type": "object",
+        "properties": {
+          "key": {
+            "title": "Key",
+            "type": "string",
+            "minLength": 1
+          },
+          "valueTemplate": {
+            "title": "Value Template",
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "key",
+          "valueTemplate"
+        ]
+      }
+    },
+    "deviceId": {
+      "title": "Device ID",
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "deviceId"
+  ]
+}
+```
+## triggerDeviceId
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "key": {
+      "title": "Device ID",
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$",
+      "messages": {
+        "required": "Device ID is required",
+        "pattern": "Must be a valid Device ID"
+      }
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "deviceId"
+      ]
+    },
+    "outputIds": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "meta": {
+      "type": "object"
+    },
+    "config": {
+      "type": "object",
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "key",
+    "type"
+  ],
+  "additionalProperties": false
+}
+```
+## triggerDeviceTag
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "key": {
+      "title": "Device Tag Pair",
+      "type": "string",
+      "messages": {
+        "required": "Device Tag pair is required"
+      }
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "deviceTag"
+      ]
+    },
+    "outputIds": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "meta": {
+      "type": "object"
+    },
+    "config": {
+      "type": "object",
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "key",
+    "type"
+  ],
+  "additionalProperties": false
+}
+```
+## triggerEvent
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "key": {
+      "title": "Event Pair",
+      "type": "string",
+      "messages": {
+        "required": "Event pair is required"
+      }
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "event"
+      ]
+    },
+    "outputIds": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "meta": {
+      "type": "object"
+    },
+    "config": {
+      "type": "object",
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "key",
+    "type"
+  ],
+  "additionalProperties": false
+}
+```
+## triggerMqtt
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "key": {
+      "title": "Mqtt Topic",
+      "type": "string",
+      "pattern": "^[0-9a-zA-Z_-]{1,230}$",
+      "messages": {
+        "required": "A mqtt topic is required",
+        "pattern": "Must be a valid mqtt topic"
+      }
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "mqttTopic"
+      ]
+    },
+    "outputIds": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "meta": {
+      "type": "object"
+    },
+    "config": {
+      "type": "object",
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "key",
+    "type"
+  ],
+  "additionalProperties": false
+}
+```
+## triggerTimer
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "timer"
+      ]
+    },
+    "outputIds": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "meta": {
+      "type": "object"
+    },
+    "config": {
+      "type": "object",
+      "properties": {
+        "cron": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "cron"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "type",
+    "config"
+  ],
+  "additionalProperties": false
+}
+```
+## triggerVirtualButton
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "virtualButton"
+      ]
+    },
+    "outputIds": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "meta": {
+      "type": "object"
+    },
+    "config": {
+      "type": "object",
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "type"
+  ],
+  "additionalProperties": false
+}
+```
+## triggerWebhook
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "key": {
+      "title": "Webhook ID",
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$",
+      "messages": {
+        "required": "Webhook ID is required",
+        "pattern": "Must be a valid Webhook ID"
+      }
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "webhook"
+      ]
+    },
+    "outputIds": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "meta": {
+      "type": "object"
+    },
+    "config": {
+      "type": "object",
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "key",
+    "type"
+  ],
+  "additionalProperties": false
 }
 ```
 ## flows
@@ -2157,33 +3973,7 @@ Structure API - v0.1.0
       "items": {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "flowId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "applicationId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "creationDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "lastUpdated": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
+        "definitions": {
           "enabled": {
             "type": "boolean"
           },
@@ -2213,7 +4003,15 @@ Structure API - v0.1.0
                     }
                   }
                 }
-              }
+              },
+              "additionalProperties": false,
+              "required": [
+                "key",
+                "type",
+                "config",
+                "meta",
+                "outputIds"
+              ]
             }
           },
           "nodes": {
@@ -2242,20 +4040,58 @@ Structure API - v0.1.0
                     }
                   }
                 }
-              }
+              },
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "type",
+                "config",
+                "meta",
+                "outputIds"
+              ]
             }
           }
         },
-        "required": [
-          "id",
-          "flowId",
-          "applicationId",
-          "creationDate",
-          "name",
-          "enabled",
-          "triggers",
-          "nodes"
-        ]
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "flowId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "enabled": {
+            "$ref": "#/definitions/enabled"
+          },
+          "triggers": {
+            "$ref": "#/definitions/triggers"
+          },
+          "nodes": {
+            "$ref": "#/definitions/nodes"
+          }
+        }
       }
     },
     "count": {
@@ -2290,14 +4126,7 @@ Structure API - v0.1.0
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     }
-  },
-  "required": [
-    "items",
-    "totalCount",
-    "perPage",
-    "page",
-    "applicationId"
-  ]
+  }
 }
 ```
 ## lastValueData
@@ -2426,6 +4255,56 @@ Structure API - v0.1.0
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
+  "definitions": {
+    "emailVerified": {
+      "type": "boolean"
+    },
+    "firstName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "companyName": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "phoneNumber": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "location": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "url": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "twoFactorAuthEnabled": {
+      "type": "boolean"
+    },
+    "fullName": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 2048
+    },
+    "twoFactorCode": {
+      "type": "string",
+      "maxLength": 2048
+    },
+    "betaCode": {
+      "type": "string",
+      "maxLength": 2048
+    }
+  },
   "properties": {
     "id": {
       "type": "string",
@@ -2445,34 +4324,35 @@ Structure API - v0.1.0
     },
     "email": {
       "type": "string",
-      "format": "email"
+      "format": "email",
+      "maxLength": 1024
     },
     "emailVerified": {
-      "type": "boolean"
+      "$ref": "#/definitions/emailVerified"
     },
     "firstName": {
-      "type": "string"
+      "$ref": "#/definitions/firstName"
     },
     "lastName": {
-      "type": "string"
+      "$ref": "#/definitions/lastName"
     },
     "companyName": {
-      "type": "string"
+      "$ref": "#/definitions/companyName"
     },
     "phoneNumber": {
-      "type": "string"
+      "$ref": "#/definitions/phoneNumber"
     },
     "location": {
-      "type": "string"
+      "$ref": "#/definitions/location"
     },
     "url": {
-      "type": "string"
+      "$ref": "#/definitions/url"
     },
     "twoFactorAuthEnabled": {
-      "type": "boolean"
+      "$ref": "#/definitions/twoFactorAuthEnabled"
     },
     "fullName": {
-      "type": "string"
+      "$ref": "#/definitions/fullName"
     },
     "userId": {
       "type": "string",
@@ -2538,6 +4418,15 @@ Structure API - v0.1.0
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
+  "definitions": {
+    "memberIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
+    }
+  },
   "properties": {
     "id": {
       "type": "string",
@@ -2556,26 +4445,18 @@ Structure API - v0.1.0
       "format": "date-time"
     },
     "name": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 32767
     },
     "memberIds": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      "$ref": "#/definitions/memberIds"
     }
-  },
-  "required": [
-    "id",
-    "orgId",
-    "creationDate",
-    "name",
-    "memberIds"
-  ]
+  }
 }
 ```
 ## orgs
@@ -2589,6 +4470,15 @@ Structure API - v0.1.0
       "items": {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
+        "definitions": {
+          "memberIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            }
+          }
+        },
         "properties": {
           "id": {
             "type": "string",
@@ -2607,36 +4497,24 @@ Structure API - v0.1.0
             "format": "date-time"
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           },
           "description": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 32767
           },
           "memberIds": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "pattern": "^[A-Fa-f\\d]{24}$"
-            }
+            "$ref": "#/definitions/memberIds"
           }
-        },
-        "required": [
-          "id",
-          "orgId",
-          "creationDate",
-          "name",
-          "memberIds"
-        ]
+        }
       }
     },
     "count": {
       "type": "integer"
     }
-  },
-  "required": [
-    "items",
-    "count"
-  ]
+  }
 }
 ```
 ## passwordResetFinish
@@ -2697,11 +4575,7 @@ Structure API - v0.1.0
         true
       ]
     }
-  },
-  "required": [
-    "success"
-  ],
-  "additionalProperties": false
+  }
 }
 ```
 ## timeSeriesData
@@ -2926,11 +4800,27 @@ Structure API - v0.1.0
     }
   },
   "required": [
-    "betaCode",
     "email",
     "firstName",
     "lastName",
+    "betaCode",
     "password"
+  ]
+}
+```
+## virtualButtonPress
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string"
+    },
+    "payload": {}
+  },
+  "required": [
+    "key"
   ],
   "additionalProperties": false
 }
@@ -2995,20 +4885,14 @@ Structure API - v0.1.0
       "format": "date-time"
     },
     "name": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
     },
     "token": {
       "type": "string"
     }
-  },
-  "required": [
-    "id",
-    "webhookId",
-    "applicationId",
-    "creationDate",
-    "name",
-    "token"
-  ]
+  }
 }
 ```
 ## webhooks
@@ -3044,20 +4928,14 @@ Structure API - v0.1.0
             "format": "date-time"
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           },
           "token": {
             "type": "string"
           }
-        },
-        "required": [
-          "id",
-          "webhookId",
-          "applicationId",
-          "creationDate",
-          "name",
-          "token"
-        ]
+        }
       }
     },
     "count": {
@@ -3092,13 +4970,6 @@ Structure API - v0.1.0
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     }
-  },
-  "required": [
-    "items",
-    "totalCount",
-    "perPage",
-    "page",
-    "applicationId"
-  ]
+  }
 }
 ```

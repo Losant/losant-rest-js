@@ -7,10 +7,6 @@
       "minLength": 1,
       "maxLength": 255
     },
-    "creationDate": {
-      "type": "string",
-      "format": "date-time"
-    },
     "expirationDate": {
       "type": "string",
       "format": "date-time"

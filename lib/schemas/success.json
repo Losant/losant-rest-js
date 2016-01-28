@@ -8,9 +8,5 @@
         true
       ]
     }
-  },
-  "required": [
-    "success"
-  ],
-  "additionalProperties": false
+  }
 }

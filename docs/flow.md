@@ -111,3 +111,76 @@ client.flow.delete(params)
   .then(console.log)
   .catch(console.error);
 ```
+## flow.debug
+Streams real time flow debug events using SSE
+
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| applicationId | string | Y | ID associated with the application |
+| flowId | string | Y | ID associated with the flow |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | undefined | Stream of flow debug events |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [error](_schemas.md#error) | Error if flow was not found |
+
+### Example
+```javascript
+// with callbacks
+client.flow.debug(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.flow.debug(params)
+  .then(console.log)
+  .catch(console.error);
+```
+## flow.pressVirtualButton
+Presses the specified virtual button on the flow
+
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| applicationId | string | Y | ID associated with the application |
+| flowId | string | Y | ID associated with the flow |
+| button | [virtualButtonPress](_schemas.md#virtualbuttonpress) | N | Object containing button key and payload |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [success](_schemas.md#success) | Virtual button was pressed |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [error](_schemas.md#error) | Error if flow was not found |
+
+### Example
+```javascript
+// with callbacks
+client.flow.pressVirtualButton(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.flow.pressVirtualButton(params)
+  .then(console.log)
+  .catch(console.error);
+```

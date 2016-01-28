@@ -1,6 +1,15 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
+  "definitions": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ]
+    }
+  },
   "properties": {
     "id": {
       "type": "string",
@@ -26,21 +35,10 @@
       "type": "string"
     },
     "status": {
-      "type": "string",
-      "enum": [
-        "active",
-        "inactive"
-      ]
+      "$ref": "#/definitions/status"
     },
     "secret": {
       "type": "string"
     }
-  },
-  "required": [
-    "id",
-    "applicationKeyId",
-    "applicationId",
-    "key",
-    "status"
-  ]
+  }
 }

@@ -8,10 +8,5 @@
     "message": {
       "type": "string"
     }
-  },
-  "required": [
-    "type",
-    "message"
-  ],
-  "additionalProperties": false
+  }
 }

@@ -44,11 +44,10 @@
     }
   },
   "required": [
-    "betaCode",
     "email",
     "firstName",
     "lastName",
+    "betaCode",
     "password"
-  ],
-  "additionalProperties": false
+  ]
 }

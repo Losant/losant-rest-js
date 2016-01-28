@@ -1,6 +1,15 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
+  "definitions": {
+    "memberIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
+    }
+  },
   "properties": {
     "id": {
       "type": "string",
@@ -19,24 +28,16 @@
       "format": "date-time"
     },
     "name": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 32767
     },
     "memberIds": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      "$ref": "#/definitions/memberIds"
     }
-  },
-  "required": [
-    "id",
-    "orgId",
-    "creationDate",
-    "name",
-    "memberIds"
-  ]
+  }
 }

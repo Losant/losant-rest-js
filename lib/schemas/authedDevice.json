@@ -10,7 +10,7 @@
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "deviceClass": {
+    "devicecClass": {
       "type": "string",
       "enum": [
         "standalone",

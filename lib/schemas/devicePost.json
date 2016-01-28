@@ -17,20 +17,12 @@
         "type": "object",
         "properties": {
           "key": {
-            "type": "string",
-            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+            "type": "string"
           },
           "value": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 255
+            "type": "string"
           }
-        },
-        "additionalProperties": false,
-        "required": [
-          "key",
-          "value"
-        ]
+        }
       }
     },
     "attributes": {

@@ -7,6 +7,21 @@
       "items": {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
+        "definitions": {
+          "scope": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          }
+        },
         "properties": {
           "id": {
             "type": "string",
@@ -21,7 +36,9 @@
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           },
           "creationDate": {
             "type": "string",
@@ -36,39 +53,19 @@
             "format": "date-time"
           },
           "scope": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "$ref": "#/definitions/scope"
           },
           "status": {
-            "type": "string",
-            "enum": [
-              "active",
-              "inactive"
-            ]
+            "$ref": "#/definitions/status"
           },
           "token": {
             "type": "string"
           }
-        },
-        "required": [
-          "id",
-          "accessTokenId",
-          "userId",
-          "name",
-          "creationDate",
-          "scope",
-          "status"
-        ]
+        }
       }
     },
     "count": {
       "type": "integer"
     }
-  },
-  "required": [
-    "items",
-    "count"
-  ]
+  }
 }
