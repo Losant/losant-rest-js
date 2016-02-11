@@ -46,7 +46,7 @@
       "type": "string",
       "maxLength": 2048
     },
-    "betaCode": {
+    "inviteCode": {
       "type": "string",
       "maxLength": 2048
     }

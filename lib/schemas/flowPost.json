@@ -43,11 +43,7 @@
         },
         "additionalProperties": false,
         "required": [
-          "key",
-          "type",
-          "config",
-          "meta",
-          "outputIds"
+          "type"
         ]
       }
     },
@@ -81,10 +77,7 @@
         "additionalProperties": false,
         "required": [
           "id",
-          "type",
-          "config",
-          "meta",
-          "outputIds"
+          "type"
         ]
       }
     }

@@ -971,7 +971,9 @@ Structure API - v0.1.0
     "name": {
       "type": "string"
     },
-    "payload": {}
+    "payload": {
+      "type": "object"
+    }
   },
   "required": [
     "name"
@@ -1896,11 +1898,7 @@ Structure API - v0.1.0
         },
         "additionalProperties": false,
         "required": [
-          "key",
-          "type",
-          "config",
-          "meta",
-          "outputIds"
+          "type"
         ]
       }
     },
@@ -1934,10 +1932,7 @@ Structure API - v0.1.0
         "additionalProperties": false,
         "required": [
           "id",
-          "type",
-          "config",
-          "meta",
-          "outputIds"
+          "type"
         ]
       }
     }
@@ -1992,11 +1987,7 @@ Structure API - v0.1.0
         },
         "additionalProperties": false,
         "required": [
-          "key",
-          "type",
-          "config",
-          "meta",
-          "outputIds"
+          "type"
         ]
       }
     },
@@ -2030,10 +2021,7 @@ Structure API - v0.1.0
         "additionalProperties": false,
         "required": [
           "id",
-          "type",
-          "config",
-          "meta",
-          "outputIds"
+          "type"
         ]
       }
     }
@@ -2082,11 +2070,7 @@ Structure API - v0.1.0
         },
         "additionalProperties": false,
         "required": [
-          "key",
-          "type",
-          "config",
-          "meta",
-          "outputIds"
+          "type"
         ]
       }
     },
@@ -2120,10 +2104,7 @@ Structure API - v0.1.0
         "additionalProperties": false,
         "required": [
           "id",
-          "type",
-          "config",
-          "meta",
-          "outputIds"
+          "type"
         ]
       }
     }
@@ -4006,11 +3987,7 @@ Structure API - v0.1.0
               },
               "additionalProperties": false,
               "required": [
-                "key",
-                "type",
-                "config",
-                "meta",
-                "outputIds"
+                "type"
               ]
             }
           },
@@ -4044,10 +4021,7 @@ Structure API - v0.1.0
               "additionalProperties": false,
               "required": [
                 "id",
-                "type",
-                "config",
-                "meta",
-                "outputIds"
+                "type"
               ]
             }
           }
@@ -4300,7 +4274,7 @@ Structure API - v0.1.0
       "type": "string",
       "maxLength": 2048
     },
-    "betaCode": {
+    "inviteCode": {
       "type": "string",
       "maxLength": 2048
     }
@@ -4789,7 +4763,7 @@ Structure API - v0.1.0
       "type": "string",
       "maxLength": 1024
     },
-    "betaCode": {
+    "inviteCode": {
       "type": "string",
       "maxLength": 2048
     },
@@ -4797,14 +4771,20 @@ Structure API - v0.1.0
       "type": "string",
       "minLength": 8,
       "maxLength": 2048
+    },
+    "acceptTerms": {
+      "enum": [
+        "on"
+      ]
     }
   },
   "required": [
     "email",
     "firstName",
     "lastName",
-    "betaCode",
-    "password"
+    "inviteCode",
+    "password",
+    "acceptTerms"
   ]
 }
 ```

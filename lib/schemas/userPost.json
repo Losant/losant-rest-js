@@ -33,7 +33,7 @@
       "type": "string",
       "maxLength": 1024
     },
-    "betaCode": {
+    "inviteCode": {
       "type": "string",
       "maxLength": 2048
     },
@@ -41,13 +41,19 @@
       "type": "string",
       "minLength": 8,
       "maxLength": 2048
+    },
+    "acceptTerms": {
+      "enum": [
+        "on"
+      ]
     }
   },
   "required": [
     "email",
     "firstName",
     "lastName",
-    "betaCode",
-    "password"
+    "inviteCode",
+    "password",
+    "acceptTerms"
   ]
 }

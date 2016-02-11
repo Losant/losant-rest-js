@@ -69,6 +69,39 @@ client.me.patch(params)
   .then(console.log)
   .catch(console.error);
 ```
+## me.verifyEmail
+Sends and email verification to the user
+
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [success](_schemas.md#success) | If email verification was successfully sent |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+
+### Example
+```javascript
+// with callbacks
+client.me.verifyEmail(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.me.verifyEmail(params)
+  .then(console.log)
+  .catch(console.error);
+```
 ## me.enableTwoFactorAuth
 Enables two factor auth for the current user
 

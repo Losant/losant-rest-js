@@ -9,7 +9,9 @@
     "name": {
       "type": "string"
     },
-    "payload": {}
+    "payload": {
+      "type": "object"
+    }
   },
   "required": [
     "name"
