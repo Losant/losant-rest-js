@@ -4537,6 +4537,75 @@ Structure API - v0.1.0
   "additionalProperties": false
 }
 ```
+## recentItem
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "itemType": {
+      "type": "string",
+      "enum": [
+        "application",
+        "device",
+        "flow",
+        "dashboard"
+      ]
+    },
+    "parentId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "itemId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  },
+  "required": [
+    "itemType",
+    "itemId"
+  ]
+}
+```
+## recentItemList
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "itemType": {
+      "type": "string",
+      "enum": [
+        "application",
+        "device",
+        "flow",
+        "dashboard"
+      ]
+    },
+    "parentId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        }
+      }
+    }
+  }
+}
+```
 ## success
 ```javascript
 {

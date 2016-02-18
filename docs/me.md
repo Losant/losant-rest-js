@@ -9,6 +9,7 @@ Retrieves information on the current user
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
+| includeRecent | undefined | N | Should the user include recent app/dashboard info |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -204,6 +205,77 @@ client.me.disconnectTwitter(params, function (err, result) {
 });
 // with promises
 client.me.disconnectTwitter(params)
+  .then(console.log)
+  .catch(console.error);
+```
+## me.addRecentItem
+Adds an item to a recent item list
+
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| data | [recentItem](_schemas.md#recentitem) | N | Object containing recent item info |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [recentItemList](_schemas.md#recentitemlist) | Updated recent item list |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+
+### Example
+```javascript
+// with callbacks
+client.me.addRecentItem(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.me.addRecentItem(params)
+  .then(console.log)
+  .catch(console.error);
+```
+## me.fetchRecentItems
+Gets a recent item list
+
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| parentId | undefined | N | undefined |
+| itemType | undefined | N | undefined |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [recentItemList](_schemas.md#recentitemlist) | Recent item list |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+
+### Example
+```javascript
+// with callbacks
+client.me.fetchRecentItems(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.me.fetchRecentItems(params)
   .then(console.log)
   .catch(console.error);
 ```
