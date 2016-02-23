@@ -4346,10 +4346,6 @@ Structure API
     "twoFactorCode": {
       "type": "string",
       "maxLength": 2048
-    },
-    "inviteCode": {
-      "type": "string",
-      "maxLength": 2048
     }
   },
   "properties": {
@@ -4905,10 +4901,6 @@ Structure API
       "type": "string",
       "maxLength": 1024
     },
-    "inviteCode": {
-      "type": "string",
-      "maxLength": 2048
-    },
     "password": {
       "type": "string",
       "minLength": 8,
@@ -4924,7 +4916,6 @@ Structure API
     "email",
     "firstName",
     "lastName",
-    "inviteCode",
     "password",
     "acceptTerms"
   ]

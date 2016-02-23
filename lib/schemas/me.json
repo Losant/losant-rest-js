@@ -45,10 +45,6 @@
     "twoFactorCode": {
       "type": "string",
       "maxLength": 2048
-    },
-    "inviteCode": {
-      "type": "string",
-      "maxLength": 2048
     }
   },
   "properties": {
