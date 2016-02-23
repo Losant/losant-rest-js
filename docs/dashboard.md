@@ -1,5 +1,5 @@
 # Dashboard
-Structure API - v0.1.0
+Structure API
 
 ## dashboard.get
 Retrieves information on an dashboard

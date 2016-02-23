@@ -1,5 +1,5 @@
 # Events
-Structure API - v0.1.0
+Structure API
 
 ## events.get
 Returns the events for an application

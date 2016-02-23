@@ -1,5 +1,5 @@
 # Auth
-Structure API - v0.1.0
+Structure API
 
 ## auth.authenticateUser
 

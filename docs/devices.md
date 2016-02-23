@@ -1,5 +1,5 @@
 # Devices
-Structure API - v0.1.0
+Structure API
 
 ## devices.get
 Returns the devices for an application

@@ -1,5 +1,5 @@
 # Device
-Structure API - v0.1.0
+Structure API
 
 ## device.get
 Retrieves information on an device

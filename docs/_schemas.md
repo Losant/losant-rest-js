@@ -1,5 +1,5 @@
 # Schemas
-Structure API - v0.1.0
+Structure API
 
 ## accessTokenPatch
 ```javascript

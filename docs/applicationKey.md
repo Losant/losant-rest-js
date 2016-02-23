@@ -1,5 +1,5 @@
 # Application Key
-Structure API - v0.1.0
+Structure API
 
 ## applicationKey.get
 Retrieves information on an applicationKey

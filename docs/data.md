@@ -1,5 +1,5 @@
 # Data
-Structure API - v0.1.0
+Structure API
 
 ## data.timeSeriesQuery
 Returns the data for the given query

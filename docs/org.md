@@ -1,5 +1,5 @@
 # Org
-Structure API - v0.1.0
+Structure API
 
 ## org.get
 Retrieves information on an organization

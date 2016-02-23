@@ -1,5 +1,5 @@
 # Dashboards
-Structure API - v0.1.0
+Structure API
 
 ## dashboards.get
 Returns the dashboards owned by the current user

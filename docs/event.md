@@ -1,5 +1,5 @@
 # Event
-Structure API - v0.1.0
+Structure API
 
 ## event.get
 Retrieves information on an event

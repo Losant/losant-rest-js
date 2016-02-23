@@ -1,5 +1,5 @@
 # Application
-Structure API - v0.1.0
+Structure API
 
 ## application.get
 Retrieves information on an application

@@ -1,5 +1,5 @@
 # Flow
-Structure API - v0.1.0
+Structure API
 
 ## flow.get
 Retrieves information on an flow

@@ -1,5 +1,5 @@
 # Application Keys
-Structure API - v0.1.0
+Structure API
 
 ## applicationKeys.get
 Returns the applicationKeys for an application

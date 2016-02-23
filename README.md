@@ -1,4 +1,4 @@
-# Structure API - v0.1.0
+# Structure API
 User API for accessing Structure data
 
 ## Installation

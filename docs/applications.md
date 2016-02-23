@@ -1,5 +1,5 @@
 # Applications
-Structure API - v0.1.0
+Structure API
 
 ## applications.get
 Returns the applications owned by the current user
