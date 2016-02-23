@@ -3,7 +3,7 @@ var api = structure.createClient();
 
 // using callbacks
 api.auth.authenticateUser(
-  { credentials: { username: 'test@example.com', password: 'qwerqwer' } },
+  { credentials: { email: 'test@example.com', password: 'qwerqwer' } },
   function (err, data) {
     if (err) { return console.log(err.stack); }
     console.trace(data);
@@ -12,9 +12,9 @@ api.auth.authenticateUser(
 
 // using promises
 api.auth
-  .authenticateGateway({
+  .authenticateDevice({
     credentials: {
-      gatewayId: '123456789123456789000000',
+      deviceId: '123456789123456789000000',
       key: 'abcdefghijklmnopqrstuvwxyz',
       secret: 'abcdefghijklmnopqrstuvwxyz'
     }
