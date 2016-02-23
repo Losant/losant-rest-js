@@ -1,10 +1,33 @@
 {
   "name": "structure-api-js",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "User API for accessing Structure data",
   "main": "lib/index.js",
   "dependencies": {
     "axios": "^0.7.0",
     "uri-template": "^1.0.0"
-  }
+  },
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GetStructure/structure-api-js.git"
+  },
+  "keywords": [
+    "IoT",
+    "platform",
+    "api"
+  ],
+  "author": "Structure <hello@getstructure.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GetStructure/structure-api-js/issues"
+  },
+  "homepage": "https://github.com/GetStructure/structure-api-js#readme"
 }
