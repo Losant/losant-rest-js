@@ -70,6 +70,41 @@ client.me.patch(params)
   .then(console.log)
   .catch(console.error);
 ```
+## me.delete
+Deletes the current user
+
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| credentials | [userCredentials](_schemas.md#usercredentials) | N | User authentication credentials |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [success](_schemas.md#success) | If the user was successfully deleted |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+
+### Example
+```javascript
+// with callbacks
+client.me.delete(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.me.delete(params)
+  .then(console.log)
+  .catch(console.error);
+```
 ## me.verifyEmail
 Sends and email verification to the user
 
