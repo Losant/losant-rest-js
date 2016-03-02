@@ -112,7 +112,7 @@ client.device.delete(params)
   .catch(console.error);
 ```
 ## device.getState
-Retrieve the last know state(s) of the device
+Retrieve the last known state(s) of the device
 
 
 
@@ -184,6 +184,44 @@ client.device.sendState(params, function (err, result) {
 });
 // with promises
 client.device.sendState(params)
+  .then(console.log)
+  .catch(console.error);
+```
+## device.getCommand
+Retrieve the last known commands(s) sent to the device
+
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| applicationId | string | Y | ID associated with the application |
+| deviceId | string | Y | ID associated with the device |
+| limit | string | N | undefined |
+| since | string | N | undefined |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [deviceCommands](_schemas.md#devicecommands) | Recent device commands |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [error](_schemas.md#error) | Error if device was not found |
+
+### Example
+```javascript
+// with callbacks
+client.device.getCommand(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.device.getCommand(params)
   .then(console.log)
   .catch(console.error);
 ```

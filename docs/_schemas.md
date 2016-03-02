@@ -1054,6 +1054,33 @@ Structure API
   "additionalProperties": false
 }
 ```
+## deviceCommands
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "time": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "name": {
+        "type": "string"
+      },
+      "payload": {
+        "type": "object"
+      }
+    },
+    "required": [
+      "name"
+    ],
+    "additionalProperties": false
+  }
+}
+```
 ## deviceCredentials
 ```javascript
 {
