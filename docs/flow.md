@@ -147,6 +147,44 @@ client.flow.debug(params)
   .then(console.log)
   .catch(console.error);
 ```
+## flow.getLogEntries
+Retrieve the recent log entries about the flows
+
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| applicationId | string | Y | ID associated with the application |
+| flowId | string | Y | ID associated with the flow |
+| limit | string | N | undefined |
+| since | string | N | undefined |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | undefined | Recent log entries |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [error](_schemas.md#error) | Error if device was not found |
+
+### Example
+```javascript
+// with callbacks
+client.flow.getLogEntries(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.flow.getLogEntries(params)
+  .then(console.log)
+  .catch(console.error);
+```
 ## flow.pressVirtualButton
 Presses the specified virtual button on the flow
 
