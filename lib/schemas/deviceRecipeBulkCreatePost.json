@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "nameColumn": {
+      "type": "string"
+    },
+    "descriptionColumn": {
+      "type": "string"
+    },
+    "csv": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "csv"
+  ]
+}

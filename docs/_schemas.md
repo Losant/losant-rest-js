@@ -1602,6 +1602,361 @@ Structure API
   }
 }
 ```
+## deviceRecipePost
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "deviceName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "deviceDescription": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "dataType": {
+            "type": "string",
+            "enum": [
+              "string",
+              "number",
+              "gps-nmea",
+              "boolean"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "dataType"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "deviceClass": {
+      "type": "string",
+      "enum": [
+        "standalone",
+        "master",
+        "owned",
+        "floating",
+        "virtual"
+      ]
+    },
+    "masterId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name"
+  ]
+}
+```
+## deviceRecipePatch
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "deviceName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "deviceDescription": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "dataType": {
+            "type": "string",
+            "enum": [
+              "string",
+              "number",
+              "gps-nmea",
+              "boolean"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "dataType"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "deviceClass": {
+      "type": "string",
+      "enum": [
+        "standalone",
+        "master",
+        "owned",
+        "floating",
+        "virtual"
+      ]
+    },
+    "masterId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  },
+  "additionalProperties": false
+}
+```
+## deviceRecipe
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceRecipeId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "deviceName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "deviceDescription": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "dataType": {
+            "type": "string",
+            "enum": [
+              "string",
+              "number",
+              "gps-nmea",
+              "boolean"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "dataType"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "deviceClass": {
+      "type": "string",
+      "enum": [
+        "standalone",
+        "master",
+        "owned",
+        "floating",
+        "virtual"
+      ]
+    },
+    "masterId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  }
+}
+```
+## deviceRecipes
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "device-recipes.json"
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  }
+}
+```
+## deviceRecipeBulkCreate
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "created": {
+      "type": "number"
+    },
+    "failed": {
+      "type": "number"
+    },
+    "csvResult": {
+      "type": "string"
+    }
+  }
+}
+```
+## deviceRecipeBulkCreatePost
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "nameColumn": {
+      "type": "string"
+    },
+    "descriptionColumn": {
+      "type": "string"
+    },
+    "csv": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "csv"
+  ]
+}
+```
 ## disableTwoFactorAuth
 ```javascript
 {

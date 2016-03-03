@@ -29,6 +29,8 @@ var client = api.createClient({
 - [Data](docs/data.md)
 - [Device](docs/device.md)
 - [Devices](docs/devices.md)
+- [Device Recipe](docs/deviceRecipe.md)
+- [Device Recipes](docs/deviceRecipes.md)
 - [Event](docs/event.md)
 - [Events](docs/events.md)
 - [Flow](docs/flow.md)
