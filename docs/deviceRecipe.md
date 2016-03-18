@@ -47,7 +47,7 @@ Updates information about a device recipe
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
 | deviceRecipeId | string | Y | ID associated with the device recipe |
-| deviceRecipe | [deviceRecipePatch](_schemas.md#devicerecipepatch) | N | Object containing new properties of the device recipe |
+| deviceRecipe | [deviceRecipePatch](_schemas.md#devicerecipepatch) | Y | Object containing new properties of the device recipe |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -121,7 +121,7 @@ Bulk creates devices using this recipe from a CSV
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
 | deviceRecipeId | string | Y | ID associated with the device recipe |
-| bulkInfo | [deviceRecipeBulkCreatePost](_schemas.md#devicerecipebulkcreatepost) | N | Object containing bulk creation info |
+| bulkInfo | [deviceRecipeBulkCreatePost](_schemas.md#devicerecipebulkcreatepost) | Y | Object containing bulk creation info |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

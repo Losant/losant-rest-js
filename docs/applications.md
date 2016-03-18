@@ -48,7 +48,7 @@ Create a new application owned by the current user
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| application | [applicationPost](_schemas.md#applicationpost) | N | New application information |
+| application | [applicationPost](_schemas.md#applicationpost) | Y | New application information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

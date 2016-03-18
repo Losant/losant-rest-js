@@ -10,7 +10,7 @@ Returns the data for the given query
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
-| query | [timeSeriesQuery](_schemas.md#timeseriesquery) | N | The query parameters |
+| query | [timeSeriesQuery](_schemas.md#timeseriesquery) | Y | The query parameters |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -46,7 +46,7 @@ Returns the last known data for the given attribute
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
-| query | [lastValueQuery](_schemas.md#lastvaluequery) | N | The query parameters |
+| query | [lastValueQuery](_schemas.md#lastvaluequery) | Y | The query parameters |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

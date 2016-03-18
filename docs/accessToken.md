@@ -45,7 +45,7 @@ Updates information about a accessToken
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | accessTokenId | string | Y | ID associated with the accessToken |
-| accessToken | [accessTokenPatch](_schemas.md#accesstokenpatch) | N | Object containing new properties of the accessToken |
+| accessToken | [accessTokenPatch](_schemas.md#accesstokenpatch) | Y | Object containing new properties of the accessToken |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

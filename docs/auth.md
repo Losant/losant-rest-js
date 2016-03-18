@@ -9,7 +9,7 @@ Authenticates a user using the provided credentials
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| credentials | [userCredentials](_schemas.md#usercredentials) | N | User authentication credentials |
+| credentials | [userCredentials](_schemas.md#usercredentials) | Y | User authentication credentials |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -45,7 +45,7 @@ Authenticates a device using the provided credentials
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| credentials | [deviceCredentials](_schemas.md#devicecredentials) | N | Device authentication credentials |
+| credentials | [deviceCredentials](_schemas.md#devicecredentials) | Y | Device authentication credentials |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

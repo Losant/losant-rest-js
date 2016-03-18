@@ -1149,6 +1149,7 @@ Structure API
             "enum": [
               "string",
               "number",
+              "gps",
               "gps-nmea",
               "boolean"
             ]
@@ -1222,6 +1223,7 @@ Structure API
             "enum": [
               "string",
               "number",
+              "gps",
               "gps-nmea",
               "boolean"
             ]
@@ -1359,6 +1361,7 @@ Structure API
             "enum": [
               "string",
               "number",
+              "gps",
               "gps-nmea",
               "boolean"
             ]
@@ -1483,6 +1486,7 @@ Structure API
                   "enum": [
                     "string",
                     "number",
+                    "gps",
                     "gps-nmea",
                     "boolean"
                   ]
@@ -1654,6 +1658,7 @@ Structure API
             "enum": [
               "string",
               "number",
+              "gps",
               "gps-nmea",
               "boolean"
             ]
@@ -1739,6 +1744,7 @@ Structure API
             "enum": [
               "string",
               "number",
+              "gps",
               "gps-nmea",
               "boolean"
             ]
@@ -1841,6 +1847,7 @@ Structure API
             "enum": [
               "string",
               "number",
+              "gps",
               "gps-nmea",
               "boolean"
             ]
@@ -2998,7 +3005,7 @@ Structure API
   "type": "object",
   "definitions": {
     "_gpsCheck": {
-      "title": "Point A NMEA-Formatted String",
+      "title": "Point A GPS Formatted String",
       "type": "string",
       "minLength": 1
     },
@@ -3013,7 +3020,7 @@ Structure API
       "minLength": 1
     },
     "_gpsCenter": {
-      "title": "Point B NMEA-Formatted String",
+      "title": "Point B GPS Formatted String",
       "type": "string",
       "minLength": 1
     },

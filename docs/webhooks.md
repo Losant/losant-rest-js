@@ -51,7 +51,7 @@ Create a new webhook for an application
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
-| webhook | [webhookPost](_schemas.md#webhookpost) | N | New webhook information |
+| webhook | [webhookPost](_schemas.md#webhookpost) | Y | New webhook information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

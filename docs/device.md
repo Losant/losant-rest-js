@@ -47,7 +47,7 @@ Updates information about a device
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
 | deviceId | string | Y | ID associated with the device |
-| device | [devicePatch](_schemas.md#devicepatch) | N | Object containing new properties of the device |
+| device | [devicePatch](_schemas.md#devicepatch) | Y | Object containing new properties of the device |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -159,7 +159,7 @@ Send the current state of the device
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
 | deviceId | string | Y | ID associated with the device |
-| deviceState | [deviceState](_schemas.md#devicestate) | N | Object containing the current state of the device |
+| deviceState | [deviceState](_schemas.md#devicestate) | Y | Object containing the current state of the device |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -235,7 +235,7 @@ Send a command to a device
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
 | deviceId | string | Y | ID associated with the device |
-| deviceCommand | [deviceCommand](_schemas.md#devicecommand) | N | Command to send to the device |
+| deviceCommand | [deviceCommand](_schemas.md#devicecommand) | Y | Command to send to the device |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

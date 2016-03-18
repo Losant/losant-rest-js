@@ -45,7 +45,7 @@ Updates information about a dashboard
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | dashboardId | string | Y | ID of the associated dashboard |
-| dashboard | [dashboardPatch](_schemas.md#dashboardpatch) | N | Object containing new dashboard properties |
+| dashboard | [dashboardPatch](_schemas.md#dashboardpatch) | Y | Object containing new dashboard properties |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

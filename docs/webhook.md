@@ -47,7 +47,7 @@ Updates information about a webhook
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
 | webhookId | string | Y | ID associated with the webhook |
-| webhook | [webhookPatch](_schemas.md#webhookpatch) | N | Object containing new properties of the webhook |
+| webhook | [webhookPatch](_schemas.md#webhookpatch) | Y | Object containing new properties of the webhook |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

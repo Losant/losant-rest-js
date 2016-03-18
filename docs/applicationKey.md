@@ -47,7 +47,7 @@ Updates information about an applicationKey
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
 | applicationKeyId | string | Y | ID associated with the applicationKey |
-| applicationKey | [applicationKeyPatch](_schemas.md#applicationkeypatch) | N | Object containing new properties of the applicationKey |
+| applicationKey | [applicationKeyPatch](_schemas.md#applicationkeypatch) | Y | Object containing new properties of the applicationKey |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

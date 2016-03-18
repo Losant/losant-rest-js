@@ -52,7 +52,7 @@ Create a new event for an application
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
-| event | [eventPost](_schemas.md#eventpost) | N | New event information |
+| event | [eventPost](_schemas.md#eventpost) | Y | New event information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

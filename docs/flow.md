@@ -47,7 +47,7 @@ Updates information about a flow
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
 | flowId | string | Y | ID associated with the flow |
-| flow | [flowPatch](_schemas.md#flowpatch) | N | Object containing new properties of the flow |
+| flow | [flowPatch](_schemas.md#flowpatch) | Y | Object containing new properties of the flow |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -195,7 +195,7 @@ Presses the specified virtual button on the flow
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
 | flowId | string | Y | ID associated with the flow |
-| button | [virtualButtonPress](_schemas.md#virtualbuttonpress) | N | Object containing button key and payload |
+| button | [virtualButtonPress](_schemas.md#virtualbuttonpress) | Y | Object containing button key and payload |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

@@ -3,7 +3,7 @@
   "type": "object",
   "definitions": {
     "_gpsCheck": {
-      "title": "Point A NMEA-Formatted String",
+      "title": "Point A GPS Formatted String",
       "type": "string",
       "minLength": 1
     },
@@ -18,7 +18,7 @@
       "minLength": 1
     },
     "_gpsCenter": {
-      "title": "Point B NMEA-Formatted String",
+      "title": "Point B GPS Formatted String",
       "type": "string",
       "minLength": 1
     },

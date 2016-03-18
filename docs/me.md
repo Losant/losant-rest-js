@@ -43,7 +43,7 @@ Updates information about the current user
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| user | [mePatch](_schemas.md#mepatch) | N | Object containing new user properties |
+| user | [mePatch](_schemas.md#mepatch) | Y | Object containing new user properties |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -78,7 +78,7 @@ Deletes the current user
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| credentials | [userCredentials](_schemas.md#usercredentials) | N | User authentication credentials |
+| credentials | [userCredentials](_schemas.md#usercredentials) | Y | User authentication credentials |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -147,7 +147,7 @@ Enables two factor auth for the current user
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| data | [enableTwoFactorAuth](_schemas.md#enabletwofactorauth) | N | Object containing two factor auth properties |
+| data | [enableTwoFactorAuth](_schemas.md#enabletwofactorauth) | Y | Object containing two factor auth properties |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -182,7 +182,7 @@ Disables two factor auth for the current user
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| data | [disableTwoFactorAuth](_schemas.md#disabletwofactorauth) | N | Object containing two factor auth properties |
+| data | [disableTwoFactorAuth](_schemas.md#disabletwofactorauth) | Y | Object containing two factor auth properties |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -251,7 +251,7 @@ Adds an item to a recent item list
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| data | [recentItem](_schemas.md#recentitem) | N | Object containing recent item info |
+| data | [recentItem](_schemas.md#recentitem) | Y | Object containing recent item info |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
@@ -286,7 +286,7 @@ Gets a recent item list
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| parentId | undefined | N | undefined |
+| parentId | string | N | undefined |
 | itemType | undefined | N | undefined |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |

@@ -51,7 +51,7 @@ Create a new device for an application
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
-| device | [devicePost](_schemas.md#devicepost) | N | New device information |
+| device | [devicePost](_schemas.md#devicepost) | Y | New device information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

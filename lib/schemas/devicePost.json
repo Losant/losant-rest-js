@@ -39,6 +39,7 @@
             "enum": [
               "string",
               "number",
+              "gps",
               "gps-nmea",
               "boolean"
             ]

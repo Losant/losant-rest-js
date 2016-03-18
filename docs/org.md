@@ -45,7 +45,7 @@ Updates information about an organization
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | orgId | string | Y | ID associated with the organization |
-| organization | [orgPatch](_schemas.md#orgpatch) | N | Object containing new organization properties |
+| organization | [orgPatch](_schemas.md#orgpatch) | Y | Object containing new organization properties |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

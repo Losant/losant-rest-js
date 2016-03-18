@@ -45,7 +45,7 @@ Updates information about an application
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID of the associated application |
-| application | [applicationPatch](_schemas.md#applicationpatch) | N | Object containing new application properties |
+| application | [applicationPatch](_schemas.md#applicationpatch) | Y | Object containing new application properties |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

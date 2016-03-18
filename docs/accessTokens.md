@@ -42,7 +42,7 @@ Create a new accessKey for a user
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| accessToken | [accessToken](_schemas.md#accesstoken) | N | AccessToken information |
+| accessToken | [accessToken](_schemas.md#accesstoken) | Y | AccessToken information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

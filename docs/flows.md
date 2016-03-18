@@ -51,7 +51,7 @@ Create a new flow for an application
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
-| flow | [flowPost](_schemas.md#flowpost) | N | New flow information |
+| flow | [flowPost](_schemas.md#flowpost) | Y | New flow information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

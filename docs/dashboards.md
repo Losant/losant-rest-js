@@ -48,7 +48,7 @@ Create a new dasboard owned by the current user
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| dashboard | [dashboardPost](_schemas.md#dashboardpost) | N | New dashboard information |
+| dashboard | [dashboardPost](_schemas.md#dashboardpost) | Y | New dashboard information |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

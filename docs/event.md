@@ -47,7 +47,7 @@ Updates information about an event
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
 | eventId | string | Y | ID associated with the event |
-| event | [eventPatch](_schemas.md#eventpatch) | N | Object containing new properties of the event |
+| event | [eventPatch](_schemas.md#eventpatch) | Y | Object containing new properties of the event |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
