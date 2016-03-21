@@ -11,8 +11,21 @@
           "memberIds": {
             "type": "array",
             "items": {
-              "type": "string",
-              "pattern": "^[A-Fa-f\\d]{24}$"
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "admin",
+                    "edit",
+                    "view"
+                  ]
+                }
+              }
             }
           }
         },
@@ -50,6 +63,31 @@
     },
     "count": {
       "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
     }
   }
 }

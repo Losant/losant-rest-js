@@ -444,6 +444,10 @@ Structure API
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "orgId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "name": {
       "type": "string",
       "minLength": 1,
@@ -749,6 +753,10 @@ Structure API
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "orgId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "name": {
       "type": "string",
       "minLength": 1,
@@ -4811,8 +4819,21 @@ Structure API
     "memberIds": {
       "type": "array",
       "items": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "edit",
+              "view"
+            ]
+          }
+        }
       }
     }
   },
@@ -4837,8 +4858,21 @@ Structure API
     "memberIds": {
       "type": "array",
       "items": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "edit",
+              "view"
+            ]
+          }
+        }
       }
     }
   },
@@ -4854,8 +4888,21 @@ Structure API
     "memberIds": {
       "type": "array",
       "items": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "edit",
+              "view"
+            ]
+          }
+        }
       }
     }
   },
@@ -4906,8 +4953,21 @@ Structure API
           "memberIds": {
             "type": "array",
             "items": {
-              "type": "string",
-              "pattern": "^[A-Fa-f\\d]{24}$"
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "admin",
+                    "edit",
+                    "view"
+                  ]
+                }
+              }
             }
           }
         },
@@ -4945,6 +5005,31 @@ Structure API
     },
     "count": {
       "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
     }
   }
 }

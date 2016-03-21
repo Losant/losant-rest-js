@@ -14,8 +14,21 @@
     "memberIds": {
       "type": "array",
       "items": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "edit",
+              "view"
+            ]
+          }
+        }
       }
     }
   },
