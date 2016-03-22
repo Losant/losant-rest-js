@@ -10,26 +10,6 @@
     "description": {
       "type": "string",
       "maxLength": 32767
-    },
-    "memberIds": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "role": {
-            "type": "string",
-            "enum": [
-              "admin",
-              "edit",
-              "view"
-            ]
-          }
-        }
-      }
     }
   },
   "additionalProperties": false

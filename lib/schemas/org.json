@@ -1,28 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
-  "definitions": {
-    "memberIds": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "role": {
-            "type": "string",
-            "enum": [
-              "admin",
-              "edit",
-              "view"
-            ]
-          }
-        }
-      }
-    }
-  },
   "properties": {
     "id": {
       "type": "string",
@@ -49,8 +27,47 @@
       "type": "string",
       "maxLength": 32767
     },
-    "memberIds": {
-      "$ref": "#/definitions/memberIds"
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 1024
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "edit",
+              "view"
+            ]
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "appCount": {
+          "type": "number"
+        },
+        "dashCount": {
+          "type": "number"
+        }
+      }
     }
   }
 }

@@ -2,18 +2,22 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "name": {
+    "userId": {
       "type": "string",
-      "minLength": 1,
-      "maxLength": 255
+      "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "description": {
+    "role": {
       "type": "string",
-      "maxLength": 32767
+      "enum": [
+        "admin",
+        "edit",
+        "view"
+      ]
     }
   },
   "additionalProperties": false,
   "required": [
-    "name"
+    "userId",
+    "role"
   ]
 }

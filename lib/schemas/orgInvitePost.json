@@ -2,18 +2,23 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "name": {
+    "email": {
       "type": "string",
-      "minLength": 1,
-      "maxLength": 255
+      "format": "email",
+      "maxLength": 1024
     },
-    "description": {
+    "role": {
       "type": "string",
-      "maxLength": 32767
+      "enum": [
+        "admin",
+        "edit",
+        "view"
+      ]
     }
   },
   "additionalProperties": false,
   "required": [
-    "name"
+    "email",
+    "role"
   ]
 }

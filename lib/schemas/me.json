@@ -99,6 +99,20 @@
     "userId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "appCount": {
+          "type": "number"
+        },
+        "dashCount": {
+          "type": "number"
+        },
+        "orgCount": {
+          "type": "number"
+        }
+      }
     }
   }
 }

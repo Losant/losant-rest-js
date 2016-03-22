@@ -4797,8 +4797,190 @@ Structure API
     "userId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "appCount": {
+          "type": "number"
+        },
+        "dashCount": {
+          "type": "number"
+        },
+        "orgCount": {
+          "type": "number"
+        }
+      }
     }
   }
+}
+```
+## orgInvites
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "maxLength": 1024
+      },
+      "role": {
+        "type": "string",
+        "enum": [
+          "admin",
+          "edit",
+          "view"
+        ]
+      },
+      "inviteDate": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "ttl": {
+        "type": "number"
+      },
+      "hasExpired": {
+        "type": "boolean"
+      }
+    }
+  }
+}
+```
+## orgInviteInfo
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "orgName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "edit",
+        "view"
+      ]
+    },
+    "inviteDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ttl": {
+      "type": "number"
+    }
+  }
+}
+```
+## orgInviteAction
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "token": {
+      "type": "string"
+    },
+    "accept": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "email",
+    "token",
+    "accept"
+  ]
+}
+```
+## orgInviteResult
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "accepted": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "orgId": {
+      "type": "string"
+    }
+  }
+}
+```
+## orgInvitePost
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "edit",
+        "view"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "email",
+    "role"
+  ]
+}
+```
+## orgMemberPatch
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "edit",
+        "view"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "userId",
+    "role"
+  ]
 }
 ```
 ## orgPatch
@@ -4815,26 +4997,6 @@ Structure API
     "description": {
       "type": "string",
       "maxLength": 32767
-    },
-    "memberIds": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "role": {
-            "type": "string",
-            "enum": [
-              "admin",
-              "edit",
-              "view"
-            ]
-          }
-        }
-      }
     }
   },
   "additionalProperties": false
@@ -4854,29 +5016,12 @@ Structure API
     "description": {
       "type": "string",
       "maxLength": 32767
-    },
-    "memberIds": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "role": {
-            "type": "string",
-            "enum": [
-              "admin",
-              "edit",
-              "view"
-            ]
-          }
-        }
-      }
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "required": [
+    "name"
+  ]
 }
 ```
 ## org
@@ -4884,28 +5029,6 @@ Structure API
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
-  "definitions": {
-    "memberIds": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "role": {
-            "type": "string",
-            "enum": [
-              "admin",
-              "edit",
-              "view"
-            ]
-          }
-        }
-      }
-    }
-  },
   "properties": {
     "id": {
       "type": "string",
@@ -4932,8 +5055,47 @@ Structure API
       "type": "string",
       "maxLength": 32767
     },
-    "memberIds": {
-      "$ref": "#/definitions/memberIds"
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 1024
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "edit",
+              "view"
+            ]
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "appCount": {
+          "type": "number"
+        },
+        "dashCount": {
+          "type": "number"
+        }
+      }
     }
   }
 }
@@ -4949,28 +5111,6 @@ Structure API
       "items": {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
-        "definitions": {
-          "memberIds": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "userId": {
-                  "type": "string",
-                  "pattern": "^[A-Fa-f\\d]{24}$"
-                },
-                "role": {
-                  "type": "string",
-                  "enum": [
-                    "admin",
-                    "edit",
-                    "view"
-                  ]
-                }
-              }
-            }
-          }
-        },
         "properties": {
           "id": {
             "type": "string",
@@ -4997,8 +5137,47 @@ Structure API
             "type": "string",
             "maxLength": 32767
           },
-          "memberIds": {
-            "$ref": "#/definitions/memberIds"
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string",
+                  "format": "email",
+                  "maxLength": 1024
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "admin",
+                    "edit",
+                    "view"
+                  ]
+                }
+              }
+            }
+          },
+          "summary": {
+            "type": "object",
+            "properties": {
+              "appCount": {
+                "type": "number"
+              },
+              "dashCount": {
+                "type": "number"
+              }
+            }
           }
         }
       }
