@@ -1135,12 +1135,20 @@ Structure API
         "type": "object",
         "properties": {
           "key": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
           },
           "value": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           }
-        }
+        },
+        "required": [
+          "key",
+          "value"
+        ],
+        "additionalProperties": false
       }
     },
     "attributes": {
@@ -1158,7 +1166,6 @@ Structure API
               "string",
               "number",
               "gps",
-              "gps-nmea",
               "boolean"
             ]
           }
@@ -1209,12 +1216,20 @@ Structure API
         "type": "object",
         "properties": {
           "key": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
           },
           "value": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           }
-        }
+        },
+        "required": [
+          "key",
+          "value"
+        ],
+        "additionalProperties": false
       }
     },
     "attributes": {
@@ -1232,7 +1247,6 @@ Structure API
               "string",
               "number",
               "gps",
-              "gps-nmea",
               "boolean"
             ]
           }
@@ -1347,12 +1361,20 @@ Structure API
         "type": "object",
         "properties": {
           "key": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
           },
           "value": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           }
-        }
+        },
+        "required": [
+          "key",
+          "value"
+        ],
+        "additionalProperties": false
       }
     },
     "attributes": {
@@ -1370,7 +1392,6 @@ Structure API
               "string",
               "number",
               "gps",
-              "gps-nmea",
               "boolean"
             ]
           }
@@ -1472,12 +1493,20 @@ Structure API
               "type": "object",
               "properties": {
                 "key": {
-                  "type": "string"
+                  "type": "string",
+                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
                 },
                 "value": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
                 }
-              }
+              },
+              "required": [
+                "key",
+                "value"
+              ],
+              "additionalProperties": false
             }
           },
           "attributes": {
@@ -1495,7 +1524,6 @@ Structure API
                     "string",
                     "number",
                     "gps",
-                    "gps-nmea",
                     "boolean"
                   ]
                 }
@@ -1644,12 +1672,20 @@ Structure API
         "type": "object",
         "properties": {
           "key": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
           },
           "value": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           }
-        }
+        },
+        "required": [
+          "key",
+          "value"
+        ],
+        "additionalProperties": false
       }
     },
     "attributes": {
@@ -1667,7 +1703,6 @@ Structure API
               "string",
               "number",
               "gps",
-              "gps-nmea",
               "boolean"
             ]
           }
@@ -1730,12 +1765,20 @@ Structure API
         "type": "object",
         "properties": {
           "key": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
           },
           "value": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           }
-        }
+        },
+        "required": [
+          "key",
+          "value"
+        ],
+        "additionalProperties": false
       }
     },
     "attributes": {
@@ -1753,7 +1796,6 @@ Structure API
               "string",
               "number",
               "gps",
-              "gps-nmea",
               "boolean"
             ]
           }
@@ -1833,12 +1875,20 @@ Structure API
         "type": "object",
         "properties": {
           "key": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
           },
           "value": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           }
-        }
+        },
+        "required": [
+          "key",
+          "value"
+        ],
+        "additionalProperties": false
       }
     },
     "attributes": {
@@ -1856,7 +1906,6 @@ Structure API
               "string",
               "number",
               "gps",
-              "gps-nmea",
               "boolean"
             ]
           }
@@ -2085,7 +2134,8 @@ Structure API
       "enum": [
         "info",
         "warning",
-        "error"
+        "error",
+        "critical"
       ]
     },
     "state": {
@@ -2132,7 +2182,8 @@ Structure API
       "enum": [
         "info",
         "warning",
-        "error"
+        "error",
+        "critical"
       ]
     },
     "state": {
@@ -2220,7 +2271,8 @@ Structure API
             "enum": [
               "info",
               "warning",
-              "error"
+              "error",
+              "critical"
             ]
           },
           "state": {
@@ -2405,6 +2457,27 @@ Structure API
           "type"
         ]
       }
+    },
+    "globals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "json": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "json"
+        ]
+      }
     }
   },
   "additionalProperties": false
@@ -2494,6 +2567,27 @@ Structure API
           "type"
         ]
       }
+    },
+    "globals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "json": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "json"
+        ]
+      }
     }
   },
   "additionalProperties": false,
@@ -2577,6 +2671,27 @@ Structure API
           "type"
         ]
       }
+    },
+    "globals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "json": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "json"
+        ]
+      }
     }
   },
   "properties": {
@@ -2617,6 +2732,9 @@ Structure API
     },
     "nodes": {
       "$ref": "#/definitions/nodes"
+    },
+    "globals": {
+      "$ref": "#/definitions/globals"
     }
   }
 }
@@ -3618,7 +3736,8 @@ Structure API
       "enum": [
         "info",
         "warning",
-        "error"
+        "error",
+        "critical"
       ]
     },
     "subjectTemplate": {
@@ -4494,6 +4613,27 @@ Structure API
                 "type"
               ]
             }
+          },
+          "globals": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                },
+                "json": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "key",
+                "json"
+              ]
+            }
           }
         },
         "properties": {
@@ -4534,6 +4674,9 @@ Structure API
           },
           "nodes": {
             "$ref": "#/definitions/nodes"
+          },
+          "globals": {
+            "$ref": "#/definitions/globals"
           }
         }
       }

@@ -222,3 +222,76 @@ client.flow.pressVirtualButton(params)
   .then(console.log)
   .catch(console.error);
 ```
+## flow.getStorageEntries
+Gets the current values in persistent storage
+
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| applicationId | string | Y | ID associated with the application |
+| flowId | string | Y | ID associated with the flow |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | undefined | The stored values |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [error](_schemas.md#error) | Error if flow was not found |
+
+### Example
+```javascript
+// with callbacks
+client.flow.getStorageEntries(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.flow.getStorageEntries(params)
+  .then(console.log)
+  .catch(console.error);
+```
+## flow.setStorageEntry
+Sets a storage value
+
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| applicationId | string | Y | ID associated with the application |
+| flowId | string | Y | ID associated with the flow |
+| entry | undefined | Y | Object containing storage entry |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [success](_schemas.md#success) | Value was successfully stored |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [error](_schemas.md#error) | Error if flow was not found |
+
+### Example
+```javascript
+// with callbacks
+client.flow.setStorageEntry(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.flow.setStorageEntry(params)
+  .then(console.log)
+  .catch(console.error);
+```

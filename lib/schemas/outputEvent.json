@@ -8,7 +8,8 @@
       "enum": [
         "info",
         "warning",
-        "error"
+        "error",
+        "critical"
       ]
     },
     "subjectTemplate": {

@@ -71,6 +71,27 @@
           "type"
         ]
       }
+    },
+    "globals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "json": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "json"
+        ]
+      }
     }
   },
   "properties": {
@@ -111,6 +132,9 @@
     },
     "nodes": {
       "$ref": "#/definitions/nodes"
+    },
+    "globals": {
+      "$ref": "#/definitions/globals"
     }
   }
 }

@@ -15,7 +15,8 @@
       "enum": [
         "info",
         "warning",
-        "error"
+        "error",
+        "critical"
       ]
     },
     "state": {
