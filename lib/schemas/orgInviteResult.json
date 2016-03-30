@@ -3,11 +3,11 @@
   "type": "object",
   "properties": {
     "accepted": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
+      "type": "boolean"
     },
     "orgId": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     }
   }
 }

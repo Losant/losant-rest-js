@@ -2596,6 +2596,25 @@ Structure API
   ]
 }
 ```
+## flowStorageEntry
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "value": {}
+  },
+  "additionalProperties": false,
+  "required": [
+    "key"
+  ]
+}
+```
 ## flow
 ```javascript
 {
@@ -5064,11 +5083,11 @@ Structure API
   "type": "object",
   "properties": {
     "accepted": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
+      "type": "boolean"
     },
     "orgId": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     }
   }
 }

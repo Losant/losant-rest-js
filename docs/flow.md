@@ -268,7 +268,7 @@ Sets a storage value
 | ---- | ---- | -------- | ----------- |
 | applicationId | string | Y | ID associated with the application |
 | flowId | string | Y | ID associated with the flow |
-| entry | undefined | Y | Object containing storage entry |
+| entry | [flowStorageEntry](_schemas.md#flowstorageentry) | Y | Object containing storage entry |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

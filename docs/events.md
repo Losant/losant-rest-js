@@ -81,3 +81,39 @@ client.events.post(params)
   .then(console.log)
   .catch(console.error);
 ```
+## events.mostRecentBySeverity
+Returns the first new event ordered by severity and then creation
+
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| applicationId | string | Y | ID associated with the application |
+| filter | string | N | undefined |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | undefined | The event, plus count of currently new events |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [error](_schemas.md#error) | Error if application was not found |
+
+### Example
+```javascript
+// with callbacks
+client.events.mostRecentBySeverity(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.events.mostRecentBySeverity(params)
+  .then(console.log)
+  .catch(console.error);
+```
