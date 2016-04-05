@@ -1,6 +1,6 @@
 {
   "name": "structure-api-js",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "User API for accessing Structure data",
   "main": "lib/index.js",
   "dependencies": {
