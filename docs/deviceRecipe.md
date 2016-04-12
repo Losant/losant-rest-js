@@ -1,5 +1,5 @@
 # Device Recipe
-Structure API
+Losant API
 
 ## deviceRecipe.get
 Retrieves information on a device recipe

@@ -1,5 +1,5 @@
 # Application
-Structure API
+Losant API
 
 ## application.get
 Retrieves information on an application

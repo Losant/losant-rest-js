@@ -39,7 +39,59 @@
             "maxLength": 255
           },
           "message": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 32767
+          },
+          "data": {},
+          "updates": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sourceType": {
+                  "type": "string",
+                  "enum": [
+                    "flow",
+                    "user",
+                    "device"
+                  ]
+                },
+                "sourceId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "creationDate": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "comment": {
+                  "type": "string",
+                  "maxLength": 32767
+                },
+                "data": {},
+                "stateChange": {
+                  "type": "object",
+                  "properties": {
+                    "old": {
+                      "type": "string",
+                      "enum": [
+                        "new",
+                        "acknowledged",
+                        "resolved"
+                      ]
+                    },
+                    "new": {
+                      "type": "string",
+                      "enum": [
+                        "new",
+                        "acknowledged",
+                        "resolved"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "properties": {
@@ -81,6 +133,12 @@
           },
           "message": {
             "$ref": "#/definitions/message"
+          },
+          "data": {
+            "$ref": "#/definitions/data"
+          },
+          "updates": {
+            "$ref": "#/definitions/updates"
           }
         }
       }

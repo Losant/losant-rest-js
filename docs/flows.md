@@ -1,5 +1,5 @@
 # Flows
-Structure API
+Losant API
 
 ## flows.get
 Returns the flows for an application

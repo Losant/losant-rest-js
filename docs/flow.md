@@ -1,5 +1,5 @@
 # Flow
-Structure API
+Losant API
 
 ## flow.get
 Retrieves information on an flow

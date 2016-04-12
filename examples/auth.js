@@ -1,5 +1,5 @@
-var structure = require('../lib');
-var api = structure.createClient();
+var losant = require('../lib');
+var api = losant.createClient();
 
 // using callbacks
 api.auth.authenticateUser(

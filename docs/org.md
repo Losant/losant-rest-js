@@ -1,5 +1,5 @@
 # Org
-Structure API
+Losant API
 
 ## org.get
 Retrieves information on an organization

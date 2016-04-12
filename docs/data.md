@@ -1,5 +1,5 @@
 # Data
-Structure API
+Losant API
 
 ## data.timeSeriesQuery
 Returns the data for the given query

@@ -1,5 +1,5 @@
 # Devices
-Structure API
+Losant API
 
 ## devices.get
 Returns the devices for an application

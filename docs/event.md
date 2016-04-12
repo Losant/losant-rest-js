@@ -1,5 +1,5 @@
 # Event
-Structure API
+Losant API
 
 ## event.get
 Retrieves information on an event

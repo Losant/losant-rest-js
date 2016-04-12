@@ -1,5 +1,5 @@
 # Auth
-Structure API
+Losant API
 
 ## auth.authenticateUser
 

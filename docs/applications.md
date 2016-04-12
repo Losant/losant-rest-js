@@ -1,5 +1,5 @@
 # Applications
-Structure API
+Losant API
 
 ## applications.get
 Returns the applications owned by the current user

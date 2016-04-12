@@ -1,5 +1,5 @@
 # Application Keys
-Structure API
+Losant API
 
 ## applicationKeys.get
 Returns the applicationKeys for an application

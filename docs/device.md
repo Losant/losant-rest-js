@@ -1,5 +1,5 @@
 # Device
-Structure API
+Losant API
 
 ## device.get
 Retrieves information on an device

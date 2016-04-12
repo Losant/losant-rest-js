@@ -1,5 +1,5 @@
 # Schemas
-Structure API
+Losant API
 
 ## accessTokenPatch
 ```javascript
@@ -742,6 +742,15 @@ Structure API
           "height"
         ]
       }
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "refreshRate": {
+      "type": "number",
+      "minimum": 5,
+      "maximum": 600
     }
   },
   "additionalProperties": false
@@ -806,6 +815,15 @@ Structure API
           "height"
         ]
       }
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "refreshRate": {
+      "type": "number",
+      "minimum": 5,
+      "maximum": 600
     }
   },
   "additionalProperties": false,
@@ -820,6 +838,11 @@ Structure API
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "definitions": {
+    "refreshRate": {
+      "type": "number",
+      "minimum": 5,
+      "maximum": 600
+    },
     "ownerType": {
       "type": "string",
       "enum": [
@@ -904,6 +927,13 @@ Structure API
     },
     "blocks": {
       "$ref": "#/definitions/blocks"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "refreshRate": {
+      "$ref": "#/definitions/refreshRate"
     }
   }
 }
@@ -920,6 +950,11 @@ Structure API
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
         "definitions": {
+          "refreshRate": {
+            "type": "number",
+            "minimum": 5,
+            "maximum": 600
+          },
           "ownerType": {
             "type": "string",
             "enum": [
@@ -1004,6 +1039,13 @@ Structure API
           },
           "blocks": {
             "$ref": "#/definitions/blocks"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "refreshRate": {
+            "$ref": "#/definitions/refreshRate"
           }
         }
       }
@@ -2118,6 +2160,13 @@ Structure API
         "acknowledged",
         "resolved"
       ]
+    },
+    "comment": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "data": {
+      "$ref": "#/definitions/data"
     }
   },
   "additionalProperties": false
@@ -2152,7 +2201,11 @@ Structure API
       "maxLength": 255
     },
     "message": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 32767
+    },
+    "data": {
+      "$ref": "#/definitions/data"
     }
   },
   "required": [
@@ -2200,7 +2253,59 @@ Structure API
       "maxLength": 255
     },
     "message": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 32767
+    },
+    "data": {},
+    "updates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sourceType": {
+            "type": "string",
+            "enum": [
+              "flow",
+              "user",
+              "device"
+            ]
+          },
+          "sourceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "comment": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "data": {},
+          "stateChange": {
+            "type": "object",
+            "properties": {
+              "old": {
+                "type": "string",
+                "enum": [
+                  "new",
+                  "acknowledged",
+                  "resolved"
+                ]
+              },
+              "new": {
+                "type": "string",
+                "enum": [
+                  "new",
+                  "acknowledged",
+                  "resolved"
+                ]
+              }
+            }
+          }
+        }
+      }
     }
   },
   "properties": {
@@ -2242,6 +2347,12 @@ Structure API
     },
     "message": {
       "$ref": "#/definitions/message"
+    },
+    "data": {
+      "$ref": "#/definitions/data"
+    },
+    "updates": {
+      "$ref": "#/definitions/updates"
     }
   }
 }
@@ -2289,7 +2400,59 @@ Structure API
             "maxLength": 255
           },
           "message": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 32767
+          },
+          "data": {},
+          "updates": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sourceType": {
+                  "type": "string",
+                  "enum": [
+                    "flow",
+                    "user",
+                    "device"
+                  ]
+                },
+                "sourceId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "creationDate": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "comment": {
+                  "type": "string",
+                  "maxLength": 32767
+                },
+                "data": {},
+                "stateChange": {
+                  "type": "object",
+                  "properties": {
+                    "old": {
+                      "type": "string",
+                      "enum": [
+                        "new",
+                        "acknowledged",
+                        "resolved"
+                      ]
+                    },
+                    "new": {
+                      "type": "string",
+                      "enum": [
+                        "new",
+                        "acknowledged",
+                        "resolved"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "properties": {
@@ -2331,6 +2494,12 @@ Structure API
           },
           "message": {
             "$ref": "#/definitions/message"
+          },
+          "data": {
+            "$ref": "#/definitions/data"
+          },
+          "updates": {
+            "$ref": "#/definitions/updates"
           }
         }
       }

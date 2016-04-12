@@ -1,5 +1,5 @@
 # Dashboards
-Structure API
+Losant API
 
 ## dashboards.get
 Returns the dashboards owned by the current user

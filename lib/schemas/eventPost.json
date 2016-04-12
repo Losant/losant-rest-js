@@ -25,7 +25,11 @@
       "maxLength": 255
     },
     "message": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 32767
+    },
+    "data": {
+      "$ref": "#/definitions/data"
     }
   },
   "required": [

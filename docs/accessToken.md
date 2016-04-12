@@ -1,5 +1,5 @@
 # Access Token
-Structure API
+Losant API
 
 ## accessToken.get
 Retrieves information on an accessToken

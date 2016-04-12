@@ -1,8 +1,8 @@
-var structure = require('../lib');
+var losant = require('../lib');
 
 // Access token retrieved using api.auth.authenticateUser or by creating an
 // access token in your account
-var api = structure.createClient({
+var api = losant.createClient({
   accessToken: 'abcdefghijklmnopqrstuvwxyz'
 });
 

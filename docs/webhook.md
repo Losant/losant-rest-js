@@ -1,5 +1,5 @@
 # Webhook
-Structure API
+Losant API
 
 ## webhook.get
 Retrieves information on an webhook

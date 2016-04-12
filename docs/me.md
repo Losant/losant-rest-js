@@ -1,5 +1,5 @@
 # Me
-Structure API
+Losant API
 
 ## me.get
 Retrieves information on the current user

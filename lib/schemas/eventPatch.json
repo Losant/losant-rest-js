@@ -9,6 +9,13 @@
         "acknowledged",
         "resolved"
       ]
+    },
+    "comment": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "data": {
+      "$ref": "#/definitions/data"
     }
   },
   "additionalProperties": false

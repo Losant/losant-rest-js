@@ -1,16 +1,16 @@
-# Structure API
-User API for accessing Structure data
+# Losant API
+User API for accessing Losant data
 
 ## Installation
 To install the module via NPM:
 ```bash
-$ npm install --save structure-api-js
+$ npm install --save losant-api-js
 ```
 
 ## Usage
 To create a new API client:
 ```javascript
-var api = require('structure-api-js');
+var api = require('losant-api-js');
 
 var client = api.createClient({
   accessToken: '...'

@@ -1,5 +1,5 @@
 # Orgs
-Structure API
+Losant API
 
 ## orgs.get
 Returns the organizations associated with the current user

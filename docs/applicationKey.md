@@ -1,5 +1,5 @@
 # Application Key
-Structure API
+Losant API
 
 ## applicationKey.get
 Retrieves information on an applicationKey

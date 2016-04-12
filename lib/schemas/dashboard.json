@@ -2,6 +2,11 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "definitions": {
+    "refreshRate": {
+      "type": "number",
+      "minimum": 5,
+      "maximum": 600
+    },
     "ownerType": {
       "type": "string",
       "enum": [
@@ -86,6 +91,13 @@
     },
     "blocks": {
       "$ref": "#/definitions/blocks"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "refreshRate": {
+      "$ref": "#/definitions/refreshRate"
     }
   }
 }

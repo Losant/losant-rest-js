@@ -1,5 +1,5 @@
 # Webhooks
-Structure API
+Losant API
 
 ## webhooks.get
 Returns the webhooks for an application

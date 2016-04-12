@@ -1,5 +1,5 @@
 # Dashboard
-Structure API
+Losant API
 
 ## dashboard.get
 Retrieves information on an dashboard

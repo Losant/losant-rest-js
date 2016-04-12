@@ -1,5 +1,5 @@
 # Events
-Structure API
+Losant API
 
 ## events.get
 Returns the events for an application

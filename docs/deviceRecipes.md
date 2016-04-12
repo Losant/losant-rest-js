@@ -1,5 +1,5 @@
 # Device Recipes
-Structure API
+Losant API
 
 ## deviceRecipes.get
 Returns the device recipes for an application
