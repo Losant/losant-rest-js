@@ -1,6 +1,6 @@
 {
   "name": "losant-api-js",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "User API for accessing Losant data",
   "main": "lib/index.js",
   "dependencies": {
