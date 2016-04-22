@@ -751,6 +751,9 @@ Losant API
       "type": "number",
       "minimum": 5,
       "maximum": 600
+    },
+    "public": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false
@@ -824,6 +827,9 @@ Losant API
       "type": "number",
       "minimum": 5,
       "maximum": 600
+    },
+    "public": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false,
@@ -934,6 +940,9 @@ Losant API
     },
     "refreshRate": {
       "$ref": "#/definitions/refreshRate"
+    },
+    "public": {
+      "type": "boolean"
     }
   }
 }
@@ -1046,6 +1055,9 @@ Losant API
           },
           "refreshRate": {
             "$ref": "#/definitions/refreshRate"
+          },
+          "public": {
+            "type": "boolean"
           }
         }
       }

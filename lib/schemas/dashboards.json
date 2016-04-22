@@ -104,6 +104,9 @@
           },
           "refreshRate": {
             "$ref": "#/definitions/refreshRate"
+          },
+          "public": {
+            "type": "boolean"
           }
         }
       }
