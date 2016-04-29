@@ -16,6 +16,7 @@ var client = api.createClient({
   accessToken: '...'
 });
 ```
+
 ## API Reference
 - [Access Token](docs/accessToken.md)
 - [Access Tokens](docs/accessTokens.md)

@@ -5944,6 +5944,15 @@ Losant API
       "type": "string",
       "minLength": 1,
       "maxLength": 255
+    },
+    "responseCode": {
+      "$ref": "webook.json#/definitions/responseCode"
+    },
+    "verificationType": {
+      "$ref": "webook.json#/definitions/verificationType"
+    },
+    "verificationCode": {
+      "$ref": "webook.json#/definitions/verificationCode"
     }
   },
   "additionalProperties": false
@@ -5959,6 +5968,15 @@ Losant API
       "type": "string",
       "minLength": 1,
       "maxLength": 255
+    },
+    "responseCode": {
+      "$ref": "webook.json#/definitions/responseCode"
+    },
+    "verificationType": {
+      "$ref": "webook.json#/definitions/verificationType"
+    },
+    "verificationCode": {
+      "$ref": "webook.json#/definitions/verificationCode"
     }
   },
   "required": [
@@ -5972,6 +5990,25 @@ Losant API
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
+  "definitions": {
+    "responseCode": {
+      "type": "integer",
+      "minimum": 100,
+      "maximum": 599
+    },
+    "verificationType": {
+      "type": "string",
+      "enum": [
+        "facebook",
+        "fitbit",
+        "none"
+      ]
+    },
+    "verificationCode": {
+      "type": "string",
+      "maxLength": 32767
+    }
+  },
   "properties": {
     "id": {
       "type": "string",
@@ -6000,6 +6037,15 @@ Losant API
     },
     "token": {
       "type": "string"
+    },
+    "responseCode": {
+      "$ref": "#/definitions/responseCode"
+    },
+    "verificationType": {
+      "$ref": "#/definitions/verificationType"
+    },
+    "verificationCode": {
+      "$ref": "#/definitions/verificationCode"
     }
   }
 }
@@ -6015,6 +6061,25 @@ Losant API
       "items": {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
+        "definitions": {
+          "responseCode": {
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 599
+          },
+          "verificationType": {
+            "type": "string",
+            "enum": [
+              "facebook",
+              "fitbit",
+              "none"
+            ]
+          },
+          "verificationCode": {
+            "type": "string",
+            "maxLength": 32767
+          }
+        },
         "properties": {
           "id": {
             "type": "string",
@@ -6043,6 +6108,15 @@ Losant API
           },
           "token": {
             "type": "string"
+          },
+          "responseCode": {
+            "$ref": "#/definitions/responseCode"
+          },
+          "verificationType": {
+            "$ref": "#/definitions/verificationType"
+          },
+          "verificationCode": {
+            "$ref": "#/definitions/verificationCode"
           }
         }
       }
