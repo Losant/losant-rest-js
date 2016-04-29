@@ -4925,15 +4925,10 @@ Losant API
     "accessToken": {
       "type": "string",
       "minLength": 1
-    },
-    "appName": {
-      "type": "string",
-      "minLength": 1
     }
   },
   "required": [
-    "accessToken",
-    "appName"
+    "accessToken"
   ],
   "additionalProperties": false
 }
@@ -5126,9 +5121,6 @@ Losant API
           "type": "string"
         },
         "accessToken": {
-          "type": "string"
-        },
-        "appName": {
           "type": "string"
         }
       },
@@ -5969,9 +5961,6 @@ Losant API
           "type": "string"
         },
         "accessToken": {
-          "type": "string"
-        },
-        "appName": {
           "type": "string"
         }
       },

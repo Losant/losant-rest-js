@@ -5,15 +5,10 @@
     "accessToken": {
       "type": "string",
       "minLength": 1
-    },
-    "appName": {
-      "type": "string",
-      "minLength": 1
     }
   },
   "required": [
-    "accessToken",
-    "appName"
+    "accessToken"
   ],
   "additionalProperties": false
 }

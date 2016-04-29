@@ -64,9 +64,6 @@
         },
         "accessToken": {
           "type": "string"
-        },
-        "appName": {
-          "type": "string"
         }
       },
       "required": [
