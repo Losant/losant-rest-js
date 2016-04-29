@@ -47,6 +47,9 @@
             "format": "email",
             "maxLength": 1024
           },
+          "avatarUrl": {
+            "type": "string"
+          },
           "role": {
             "type": "string",
             "enum": [

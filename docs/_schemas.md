@@ -4916,6 +4916,28 @@ Losant API
   }
 }
 ```
+## githubLogin
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "accessToken": {
+      "type": "string",
+      "minLength": 1
+    },
+    "appName": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "accessToken",
+    "appName"
+  ],
+  "additionalProperties": false
+}
+```
 ## lastValueData
 ```javascript
 {
@@ -5086,6 +5108,34 @@ Losant API
     "twoFactorCode": {
       "type": "string",
       "maxLength": 2048
+    },
+    "githubName": {
+      "type": "string"
+    },
+    "twitterName": {
+      "type": "string"
+    },
+    "avatarUrl": {
+      "type": "string",
+      "format": "url"
+    },
+    "oauth": {
+      "type": "object",
+      "properties": {
+        "service": {
+          "type": "string"
+        },
+        "accessToken": {
+          "type": "string"
+        },
+        "appName": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "service",
+        "accessToken"
+      ]
     }
   },
   "properties": {
@@ -5140,6 +5190,15 @@ Losant API
     "userId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "githubName": {
+      "$ref": "#/definitions/githubName"
+    },
+    "twitterName": {
+      "$ref": "#/definitions/twitterName"
+    },
+    "avatarUrl": {
+      "$ref": "#/definitions/avatarUrl"
     },
     "summary": {
       "type": "object",
@@ -5418,6 +5477,9 @@ Losant API
             "format": "email",
             "maxLength": 1024
           },
+          "avatarUrl": {
+            "type": "string"
+          },
           "role": {
             "type": "string",
             "enum": [
@@ -5499,6 +5561,9 @@ Losant API
                   "type": "string",
                   "format": "email",
                   "maxLength": 1024
+                },
+                "avatarUrl": {
+                  "type": "string"
                 },
                 "role": {
                   "type": "string",
@@ -5897,6 +5962,24 @@ Losant API
       "type": "string",
       "maxLength": 1024
     },
+    "oauth": {
+      "type": "object",
+      "properties": {
+        "service": {
+          "type": "string"
+        },
+        "accessToken": {
+          "type": "string"
+        },
+        "appName": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "service",
+        "accessToken"
+      ]
+    },
     "password": {
       "type": "string",
       "minLength": 8,
@@ -5908,12 +5991,25 @@ Losant API
       ]
     }
   },
-  "required": [
-    "email",
-    "firstName",
-    "lastName",
-    "password",
-    "acceptTerms"
+  "anyOf": [
+    {
+      "required": [
+        "email",
+        "firstName",
+        "lastName",
+        "password",
+        "acceptTerms"
+      ]
+    },
+    {
+      "required": [
+        "email",
+        "firstName",
+        "lastName",
+        "oauth",
+        "acceptTerms"
+      ]
+    }
   ]
 }
 ```

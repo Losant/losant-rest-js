@@ -37,6 +37,42 @@ client.auth.authenticateUser(params)
   .then(console.log)
   .catch(console.error);
 ```
+## auth.authenticateUserGithub
+
+Authenticates a user via GitHub OAuth
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| oauth | [githubLogin](_schemas.md#githublogin) | Y | User authentication credentials; access token and app name |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [authedUser](_schemas.md#autheduser) | Successful authentication |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 401 | [error](_schemas.md#error) | Unauthorized error if authentication fails |
+
+### Example
+```javascript
+// with callbacks
+client.auth.authenticateUserGithub(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.auth.authenticateUserGithub(params)
+  .then(console.log)
+  .catch(console.error);
+```
 ## auth.authenticateDevice
 
 Authenticates a device using the provided credentials
