@@ -45,7 +45,7 @@ Authenticates a user via GitHub OAuth
 ### Parameters
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| oauth | [githubLogin](_schemas.md#githublogin) | Y | User authentication credentials; access token and app name |
+| oauth | [githubLogin](_schemas.md#githublogin) | Y | User authentication credentials (access token) |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |

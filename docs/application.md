@@ -108,3 +108,38 @@ client.application.delete(params)
   .then(console.log)
   .catch(console.error);
 ```
+## application.debug
+Streams real time application debug events using SSE
+
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| applicationId | string | Y | ID of the associated application |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | undefined | Stream of application debug events |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [error](_schemas.md#error) | Error if application was not found |
+
+### Example
+```javascript
+// with callbacks
+client.application.debug(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.application.debug(params)
+  .then(console.log)
+  .catch(console.error);
+```
