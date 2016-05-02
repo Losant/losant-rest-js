@@ -45,6 +45,31 @@
     "twoFactorCode": {
       "type": "string",
       "maxLength": 2048
+    },
+    "githubName": {
+      "type": "string"
+    },
+    "twitterName": {
+      "type": "string"
+    },
+    "avatarUrl": {
+      "type": "string",
+      "format": "url"
+    },
+    "oauth": {
+      "type": "object",
+      "properties": {
+        "service": {
+          "type": "string"
+        },
+        "accessToken": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "service",
+        "accessToken"
+      ]
     }
   },
   "properties": {
@@ -99,6 +124,15 @@
     "userId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "githubName": {
+      "$ref": "#/definitions/githubName"
+    },
+    "twitterName": {
+      "$ref": "#/definitions/twitterName"
+    },
+    "avatarUrl": {
+      "$ref": "#/definitions/avatarUrl"
     },
     "summary": {
       "type": "object",

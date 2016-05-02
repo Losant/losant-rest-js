@@ -33,6 +33,21 @@
       "type": "string",
       "maxLength": 1024
     },
+    "oauth": {
+      "type": "object",
+      "properties": {
+        "service": {
+          "type": "string"
+        },
+        "accessToken": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "service",
+        "accessToken"
+      ]
+    },
     "password": {
       "type": "string",
       "minLength": 8,
@@ -44,11 +59,24 @@
       ]
     }
   },
-  "required": [
-    "email",
-    "firstName",
-    "lastName",
-    "password",
-    "acceptTerms"
+  "anyOf": [
+    {
+      "required": [
+        "email",
+        "firstName",
+        "lastName",
+        "password",
+        "acceptTerms"
+      ]
+    },
+    {
+      "required": [
+        "email",
+        "firstName",
+        "lastName",
+        "oauth",
+        "acceptTerms"
+      ]
+    }
   ]
 }
