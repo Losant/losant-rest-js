@@ -79,3 +79,40 @@ client.devices.post(params)
   .then(console.log)
   .catch(console.error);
 ```
+## devices.sendCommand
+Send a command to multiple devices
+
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| applicationId | string | Y | ID associated with the application |
+| multiDeviceCommand | [multiDeviceCommand](_schemas.md#multidevicecommand) | Y | Command to send to the device |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [success](_schemas.md#success) | If command was successfully sent |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 404 | [error](_schemas.md#error) | Error if application was not found |
+
+### Example
+```javascript
+// with callbacks
+client.devices.sendCommand(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.devices.sendCommand(params)
+  .then(console.log)
+  .catch(console.error);
+```

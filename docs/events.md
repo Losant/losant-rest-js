@@ -81,6 +81,46 @@ client.events.post(params)
   .then(console.log)
   .catch(console.error);
 ```
+## events.patch
+Updates information for matching events by subject and/or current state
+
+
+
+### Parameters
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+| applicationId | string | Y | ID associated with the application |
+| filterField | string | N | undefined |
+| filter | string | N | undefined |
+| state | string | N | undefined |
+| updates | [eventPatch](_schemas.md#eventpatch) | Y | Object containing updated information for the events |
+| _actions | boolean | N | Return resource actions in response |
+| _links | boolean | N | Return resource link in response |
+| _embedded | boolean | N | Return embedded resources in response |
+
+### Responses
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [success](_schemas.md#success) | If updates were successfully applied |
+
+### Errors
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [error](_schemas.md#error) | Error if malformed request |
+| 404 | [error](_schemas.md#error) | Error if application is not found |
+
+### Example
+```javascript
+// with callbacks
+client.events.patch(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+// with promises
+client.events.patch(params)
+  .then(console.log)
+  .catch(console.error);
+```
 ## events.mostRecentBySeverity
 Returns the first new event ordered by severity and then creation
 
