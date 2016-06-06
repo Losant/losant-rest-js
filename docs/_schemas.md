@@ -2075,6 +2075,28 @@ Losant API
   ]
 }
 ```
+## deviceTagFilter
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "key": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+      },
+      "value": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 255
+      }
+    },
+    "additionalProperties": false
+  }
+}
+```
 ## disableTwoFactorAuth
 ```javascript
 {

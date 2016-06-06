@@ -16,6 +16,7 @@ Returns the devices for an application
 | perPage | string | N | undefined |
 | filterField | string | N | undefined |
 | filter | string | N | undefined |
+| tagFilter | [deviceTagFilter](_schemas.md#devicetagfilter) | N | Array of tag pairs to filter by |
 | _actions | boolean | N | Return resource actions in response |
 | _links | boolean | N | Return resource link in response |
 | _embedded | boolean | N | Return embedded resources in response |
