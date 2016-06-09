@@ -1,303 +1,375 @@
-# Device
-Losant API
+# Device Actions
 
-## device.get
-Retrieves information on an device
+Details on the various actions that can be performed on the
+Device resource, including the expected
+parameters and the potential responses.
 
+##### Contents
 
+*   [Delete](#delete)
+*   [Get](#get)
+*   [Get Command](#get-command)
+*   [Get Log Entries](#get-log-entries)
+*   [Get State](#get-state)
+*   [Patch](#patch)
+*   [Send Command](#send-command)
+*   [Send State](#send-state)
 
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| deviceId | string | Y | ID associated with the device |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
+<br/>
 
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [device](_schemas.md#device) | Device information |
+## Delete
 
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 404 | [error](_schemas.md#error) | Error if device was not found |
-
-### Example
-```javascript
-// with callbacks
-client.device.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-// with promises
-client.device.get(params)
-  .then(console.log)
-  .catch(console.error);
-```
-## device.patch
-Updates information about a device
-
-
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| deviceId | string | Y | ID associated with the device |
-| device | [devicePatch](_schemas.md#devicepatch) | Y | Object containing new properties of the device |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [device](_schemas.md#device) | Updated device information |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 400 | [error](_schemas.md#error) | Error if malformed request |
-| 404 | [error](_schemas.md#error) | Error if device was not found |
-
-### Example
-```javascript
-// with callbacks
-client.device.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-// with promises
-client.device.patch(params)
-  .then(console.log)
-  .catch(console.error);
-```
-## device.delete
 Deletes a device
 
-
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| deviceId | string | Y | ID associated with the device |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [success](_schemas.md#success) | If device was successfully deleted |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 404 | [error](_schemas.md#error) | Error if device was not found |
-
-### Example
 ```javascript
+var params = {
+  applicationId: myApplicationId,
+  deviceId: myDeviceId
+};
+
 // with callbacks
 client.device.delete(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
+
 // with promises
 client.device.delete(params)
   .then(console.log)
   .catch(console.error);
 ```
-## device.getState
-Retrieve the last known state(s) of the device
 
+#### Available Parameters
 
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| applicationId | string | Y | ID associated with the application |  |
+| deviceId | string | Y | ID associated with the device |  |
 
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| deviceId | string | Y | ID associated with the device |
-| limit | string | N | undefined |
-| since | string | N | undefined |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
+#### Successful Responses
 
-### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [deviceStates](_schemas.md#devicestates) | Recent device states |
+| 200 | [Success](_schemas.md#success) | If device was successfully deleted |
 
-### Errors
+#### Error Responses
+
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | [error](_schemas.md#error) | Error if device was not found |
+| 404 | [Error](_schemas.md#error) | Error if device was not found |
 
-### Example
+<br/>
+
+## Get
+
+Retrieves information on a device
+
 ```javascript
+var params = {
+  applicationId: myApplicationId,
+  deviceId: myDeviceId
+};
+
 // with callbacks
-client.device.getState(params, function (err, result) {
+client.device.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
+
 // with promises
-client.device.getState(params)
+client.device.get(params)
   .then(console.log)
   .catch(console.error);
 ```
-## device.sendState
-Send the current state of the device
 
+#### Available Parameters
 
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| applicationId | string | Y | ID associated with the application |  |
+| deviceId | string | Y | ID associated with the device |  |
 
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| deviceId | string | Y | ID associated with the device |
-| deviceState | [deviceState](_schemas.md#devicestate) | Y | Object containing the current state of the device |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
+#### Successful Responses
 
-### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [success](_schemas.md#success) | If state was successfully received |
+| 200 | [Device](_schemas.md#device) | Device information |
 
-### Errors
+#### Error Responses
+
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [error](_schemas.md#error) | Error if malformed request |
-| 404 | [error](_schemas.md#error) | Error if device was not found |
+| 404 | [Error](_schemas.md#error) | Error if device was not found |
 
-### Example
-```javascript
-// with callbacks
-client.device.sendState(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-// with promises
-client.device.sendState(params)
-  .then(console.log)
-  .catch(console.error);
-```
-## device.getCommand
+<br/>
+
+## Get Command
+
 Retrieve the last known commands(s) sent to the device
 
-
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| deviceId | string | Y | ID associated with the device |
-| limit | string | N | undefined |
-| since | string | N | undefined |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [deviceCommands](_schemas.md#devicecommands) | Recent device commands |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 404 | [error](_schemas.md#error) | Error if device was not found |
-
-### Example
 ```javascript
+var params = {
+  applicationId: myApplicationId,
+  deviceId: myDeviceId
+};
+
 // with callbacks
 client.device.getCommand(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
+
 // with promises
 client.device.getCommand(params)
   .then(console.log)
   .catch(console.error);
 ```
-## device.sendCommand
-Send a command to a device
 
+#### Available Parameters
 
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| applicationId | string | Y | ID associated with the application |  |
+| deviceId | string | Y | ID associated with the device |  |
+| limit | string | N | Max command entries to return (ordered by time descending) | 1 |
+| since | string | N | Look for command entries since this time (ms since epoch) |  |
 
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| deviceId | string | Y | ID associated with the device |
-| deviceCommand | [deviceCommand](_schemas.md#devicecommand) | Y | Command to send to the device |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
+#### Successful Responses
 
-### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [success](_schemas.md#success) | If command was successfully sent |
+| 200 | [Device Commands](_schemas.md#device-commands) | Recent device commands |
 
-### Errors
+#### Error Responses
+
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [error](_schemas.md#error) | Error if malformed request |
-| 404 | [error](_schemas.md#error) | Error if device was not found |
+| 404 | [Error](_schemas.md#error) | Error if device was not found |
 
-### Example
-```javascript
-// with callbacks
-client.device.sendCommand(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-// with promises
-client.device.sendCommand(params)
-  .then(console.log)
-  .catch(console.error);
-```
-## device.getLogEntries
+<br/>
+
+## Get Log Entries
+
 Retrieve the recent log entries about the device
 
-
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| deviceId | string | Y | ID associated with the device |
-| limit | string | N | undefined |
-| since | string | N | undefined |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | undefined | Recent log entries |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 404 | [error](_schemas.md#error) | Error if device was not found |
-
-### Example
 ```javascript
+var params = {
+  applicationId: myApplicationId,
+  deviceId: myDeviceId
+};
+
 // with callbacks
 client.device.getLogEntries(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
+
 // with promises
 client.device.getLogEntries(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| applicationId | string | Y | ID associated with the application |  |
+| deviceId | string | Y | ID associated with the device |  |
+| limit | string | N | Max log entries to return (ordered by time descending) | 1 |
+| since | string | N | Look for log entries since this time (ms since epoch) |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | undefined | Recent log entries |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [Error](_schemas.md#error) | Error if device was not found |
+
+<br/>
+
+## Get State
+
+Retrieve the last known state(s) of the device
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  deviceId: myDeviceId
+};
+
+// with callbacks
+client.device.getState(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.device.getState(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| applicationId | string | Y | ID associated with the application |  |
+| deviceId | string | Y | ID associated with the device |  |
+| limit | string | N | Max state entries to return (ordered by time descending) | 1 |
+| since | string | N | Look for state entries since this time (ms since epoch) |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Device States](_schemas.md#device-states) | Recent device states |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [Error](_schemas.md#error) | Error if device was not found |
+
+<br/>
+
+## Patch
+
+Updates information about a device
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  deviceId: myDeviceId,
+  device: myDevice
+};
+
+// with callbacks
+client.device.patch(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.device.patch(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| applicationId | string | Y | ID associated with the application |  |
+| deviceId | string | Y | ID associated with the device |  |
+| device | [Device Patch](_schemas.md#device-patch) | Y | Object containing new properties of the device |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Device](_schemas.md#device) | Updated device information |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if device was not found |
+
+<br/>
+
+## Send Command
+
+Send a command to a device
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  deviceId: myDeviceId,
+  deviceCommand: myDeviceCommand
+};
+
+// with callbacks
+client.device.sendCommand(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.device.sendCommand(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| applicationId | string | Y | ID associated with the application |  |
+| deviceId | string | Y | ID associated with the device |  |
+| deviceCommand | [Device Command](_schemas.md#device-command) | Y | Command to send to the device |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Success](_schemas.md#success) | If command was successfully sent |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if device was not found |
+
+<br/>
+
+## Send State
+
+Send the current state of the device
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  deviceId: myDeviceId,
+  deviceState: myDeviceState
+};
+
+// with callbacks
+client.device.sendState(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.device.sendState(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| applicationId | string | Y | ID associated with the application |  |
+| deviceId | string | Y | ID associated with the device |  |
+| deviceState | [Device State](_schemas.md#device-state) | Y | Object containing the current state of the device |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Success](_schemas.md#success) | If state was successfully received |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if device was not found |

@@ -55,6 +55,9 @@
         },
         "keyCount": {
           "type": "number"
+        },
+        "deviceRecipeCount": {
+          "type": "number"
         }
       }
     }

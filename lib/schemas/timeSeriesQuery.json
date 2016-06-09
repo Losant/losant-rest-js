@@ -48,7 +48,8 @@
             "minLength": 1,
             "maxLength": 255
           }
-        }
+        },
+        "additionalProperties": false
       }
     },
     "deviceIds": {

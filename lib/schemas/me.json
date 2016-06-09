@@ -1,79 +1,12 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
-  "definitions": {
-    "emailVerified": {
-      "type": "boolean"
-    },
-    "firstName": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 1024
-    },
-    "lastName": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 1024
-    },
-    "companyName": {
-      "type": "string",
-      "maxLength": 1024
-    },
-    "phoneNumber": {
-      "type": "string",
-      "maxLength": 1024
-    },
-    "location": {
-      "type": "string",
-      "maxLength": 1024
-    },
-    "url": {
-      "type": "string",
-      "maxLength": 1024
-    },
-    "twoFactorAuthEnabled": {
-      "type": "boolean"
-    },
-    "fullName": {
-      "type": "string"
-    },
-    "password": {
-      "type": "string",
-      "minLength": 8,
-      "maxLength": 2048
-    },
-    "twoFactorCode": {
-      "type": "string",
-      "maxLength": 2048
-    },
-    "githubName": {
-      "type": "string"
-    },
-    "twitterName": {
-      "type": "string"
-    },
-    "avatarUrl": {
-      "type": "string",
-      "format": "url"
-    },
-    "oauth": {
-      "type": "object",
-      "properties": {
-        "service": {
-          "type": "string"
-        },
-        "accessToken": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "service",
-        "accessToken"
-      ]
-    }
-  },
   "properties": {
     "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "userId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
@@ -94,46 +27,134 @@
       "format": "email",
       "maxLength": 1024
     },
-    "emailVerified": {
-      "$ref": "#/definitions/emailVerified"
-    },
     "firstName": {
-      "$ref": "#/definitions/firstName"
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
     },
     "lastName": {
-      "$ref": "#/definitions/lastName"
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
     },
     "companyName": {
-      "$ref": "#/definitions/companyName"
+      "type": "string",
+      "maxLength": 1024
     },
     "phoneNumber": {
-      "$ref": "#/definitions/phoneNumber"
+      "type": "string",
+      "maxLength": 1024
     },
     "location": {
-      "$ref": "#/definitions/location"
+      "type": "string",
+      "maxLength": 1024
     },
     "url": {
-      "$ref": "#/definitions/url"
+      "type": "string",
+      "maxLength": 1024
+    },
+    "emailVerified": {
+      "type": "boolean"
     },
     "twoFactorAuthEnabled": {
-      "$ref": "#/definitions/twoFactorAuthEnabled"
+      "type": "boolean"
     },
     "fullName": {
-      "$ref": "#/definitions/fullName"
-    },
-    "userId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
+      "type": "string"
     },
     "githubName": {
-      "$ref": "#/definitions/githubName"
+      "type": "string"
     },
     "twitterName": {
-      "$ref": "#/definitions/twitterName"
+      "type": "string"
     },
     "avatarUrl": {
-      "$ref": "#/definitions/avatarUrl"
+      "type": "string",
+      "format": "url"
     },
+    "limits": {
+      "application": {
+        "type": "number"
+      },
+      "dashboard": {
+        "type": "number"
+      }
+    },
+    "recentDashboards": {
+      "title": "Recent Item List",
+      "description": "Schema for an array of recent items",
+      "type": "object",
+      "properties": {
+        "itemType": {
+          "type": "string",
+          "enum": [
+            "application",
+            "device",
+            "flow",
+            "dashboard"
+          ]
+        },
+        "parentId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            }
+          }
+        }
+      }
+    },
+    "recentApplications": {
+      "title": "Recent Item List",
+      "description": "Schema for an array of recent items",
+      "type": "object",
+      "properties": {
+        "itemType": {
+          "type": "string",
+          "enum": [
+            "application",
+            "device",
+            "flow",
+            "dashboard"
+          ]
+        },
+        "parentId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            }
+          }
+        }
+      }
+    },
+    "defaults": {},
     "summary": {
       "type": "object",
       "properties": {

@@ -1,7 +1,36 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
-  "definitions": {
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "flowId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
     "enabled": {
       "type": "boolean"
     },
@@ -92,49 +121,6 @@
           "json"
         ]
       }
-    }
-  },
-  "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "flowId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "creationDate": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "lastUpdated": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "name": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 255
-    },
-    "description": {
-      "type": "string",
-      "maxLength": 32767
-    },
-    "enabled": {
-      "$ref": "#/definitions/enabled"
-    },
-    "triggers": {
-      "$ref": "#/definitions/triggers"
-    },
-    "nodes": {
-      "$ref": "#/definitions/nodes"
-    },
-    "globals": {
-      "$ref": "#/definitions/globals"
     }
   }
 }

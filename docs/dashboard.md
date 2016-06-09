@@ -1,110 +1,137 @@
-# Dashboard
-Losant API
+# Dashboard Actions
 
-## dashboard.get
-Retrieves information on an dashboard
+Details on the various actions that can be performed on the
+Dashboard resource, including the expected
+parameters and the potential responses.
 
+##### Contents
 
+*   [Delete](#delete)
+*   [Get](#get)
+*   [Patch](#patch)
 
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| dashboardId | string | Y | ID of the associated dashboard |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
+<br/>
 
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [dashboard](_schemas.md#dashboard) | Dashboard information |
+## Delete
 
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 404 | [error](_schemas.md#error) | Error if dashboard was not found |
+Deletes a dashboard
 
-### Example
 ```javascript
-// with callbacks
-client.dashboard.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-// with promises
-client.dashboard.get(params)
-  .then(console.log)
-  .catch(console.error);
-```
-## dashboard.patch
-Updates information about a dashboard
+var params = {
+  dashboardId: myDashboardId
+};
 
-
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| dashboardId | string | Y | ID of the associated dashboard |
-| dashboard | [dashboardPatch](_schemas.md#dashboardpatch) | Y | Object containing new dashboard properties |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [dashboard](_schemas.md#dashboard) | Update dashboard information |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 400 | [error](_schemas.md#error) | Error if malformed request |
-| 404 | [error](_schemas.md#error) | Error if dashboard was not found |
-
-### Example
-```javascript
-// with callbacks
-client.dashboard.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-// with promises
-client.dashboard.patch(params)
-  .then(console.log)
-  .catch(console.error);
-```
-## dashboard.delete
-Deletes an dashboard
-
-
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| dashboardId | string | Y | ID of the associated dashboard |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [success](_schemas.md#success) | If dashboard was successfully deleted |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 404 | [error](_schemas.md#error) | Error if dashboard was not found |
-
-### Example
-```javascript
 // with callbacks
 client.dashboard.delete(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
+
 // with promises
 client.dashboard.delete(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| dashboardId | string | Y | ID of the associated dashboard |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Success](_schemas.md#success) | If dashboard was successfully deleted |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [Error](_schemas.md#error) | Error if dashboard was not found |
+
+<br/>
+
+## Get
+
+Retrieves information on a dashboard
+
+```javascript
+var params = {
+  dashboardId: myDashboardId
+};
+
+// with callbacks
+client.dashboard.get(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.dashboard.get(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| dashboardId | string | Y | ID of the associated dashboard |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Dashboard](_schemas.md#dashboard) | Dashboard information |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [Error](_schemas.md#error) | Error if dashboard was not found |
+
+<br/>
+
+## Patch
+
+Updates information about a dashboard
+
+```javascript
+var params = {
+  dashboardId: myDashboardId,
+  dashboard: myDashboard
+};
+
+// with callbacks
+client.dashboard.patch(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.dashboard.patch(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| dashboardId | string | Y | ID of the associated dashboard |  |
+| dashboard | [Dashboard Patch](_schemas.md#dashboard-patch) | Y | Object containing new dashboard properties |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Dashboard](_schemas.md#dashboard) | Update dashboard information |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if dashboard was not found |

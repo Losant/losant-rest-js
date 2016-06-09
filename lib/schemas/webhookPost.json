@@ -8,13 +8,21 @@
       "maxLength": 255
     },
     "responseCode": {
-      "$ref": "webook.json#/definitions/responseCode"
+      "type": "integer",
+      "minimum": 100,
+      "maximum": 599
     },
     "verificationType": {
-      "$ref": "webook.json#/definitions/verificationType"
+      "type": "string",
+      "enum": [
+        "facebook",
+        "fitbit",
+        "none"
+      ]
     },
     "verificationCode": {
-      "$ref": "webook.json#/definitions/verificationCode"
+      "type": "string",
+      "maxLength": 32767
     }
   },
   "required": [

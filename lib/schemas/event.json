@@ -1,7 +1,27 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
-  "definitions": {
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "eventId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
     "sourceType": {
       "type": "string",
       "enum": [
@@ -9,6 +29,10 @@
         "user",
         "device"
       ]
+    },
+    "sourceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "level": {
       "type": "string",
@@ -86,53 +110,6 @@
           }
         }
       }
-    }
-  },
-  "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "eventId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "creationDate": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "lastUpdated": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "sourceType": {
-      "$ref": "#/definitions/sourceType"
-    },
-    "sourceId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "level": {
-      "$ref": "#/definitions/level"
-    },
-    "state": {
-      "$ref": "#/definitions/state"
-    },
-    "subject": {
-      "$ref": "#/definitions/subject"
-    },
-    "message": {
-      "$ref": "#/definitions/message"
-    },
-    "data": {
-      "$ref": "#/definitions/data"
-    },
-    "updates": {
-      "$ref": "#/definitions/updates"
     }
   }
 }

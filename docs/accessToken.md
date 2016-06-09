@@ -1,110 +1,137 @@
-# Access Token
-Losant API
+# Access Token Actions
 
-## accessToken.get
-Retrieves information on an accessToken
+Details on the various actions that can be performed on the
+Access Token resource, including the expected
+parameters and the potential responses.
 
+##### Contents
 
+*   [Delete](#delete)
+*   [Get](#get)
+*   [Patch](#patch)
 
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| accessTokenId | string | Y | ID associated with the accessToken |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
+<br/>
 
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [accessToken](_schemas.md#accesstoken) | Device information |
+## Delete
 
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 404 | [error](_schemas.md#error) | Error if accessToken was not found |
+Deletes an accessToken
 
-### Example
 ```javascript
-// with callbacks
-client.accessToken.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-// with promises
-client.accessToken.get(params)
-  .then(console.log)
-  .catch(console.error);
-```
-## accessToken.patch
-Updates information about a accessToken
+var params = {
+  accessTokenId: myAccessTokenId
+};
 
-
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| accessTokenId | string | Y | ID associated with the accessToken |
-| accessToken | [accessTokenPatch](_schemas.md#accesstokenpatch) | Y | Object containing new properties of the accessToken |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [accessToken](_schemas.md#accesstoken) | Updated accessToken information |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 400 | [error](_schemas.md#error) | Error if malformed request |
-| 404 | [error](_schemas.md#error) | Error if accessToken was not found |
-
-### Example
-```javascript
-// with callbacks
-client.accessToken.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-// with promises
-client.accessToken.patch(params)
-  .then(console.log)
-  .catch(console.error);
-```
-## accessToken.delete
-Deletes a accessToken
-
-
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| accessTokenId | string | Y | ID associated with the accessToken |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [success](_schemas.md#success) | If accessToken was successfully deleted |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 404 | [error](_schemas.md#error) | Error if accessToken was not found |
-
-### Example
-```javascript
 // with callbacks
 client.accessToken.delete(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
+
 // with promises
 client.accessToken.delete(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| accessTokenId | string | Y | ID associated with the accessToken |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Success](_schemas.md#success) | If accessToken was successfully deleted |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [Error](_schemas.md#error) | Error if accessToken was not found |
+
+<br/>
+
+## Get
+
+Retrieves information on an accessToken
+
+```javascript
+var params = {
+  accessTokenId: myAccessTokenId
+};
+
+// with callbacks
+client.accessToken.get(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.accessToken.get(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| accessTokenId | string | Y | ID associated with the accessToken |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Access Token](_schemas.md#access-token) | Access token information |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [Error](_schemas.md#error) | Error if accessToken was not found |
+
+<br/>
+
+## Patch
+
+Updates information about an accessToken
+
+```javascript
+var params = {
+  accessTokenId: myAccessTokenId,
+  accessToken: myAccessToken
+};
+
+// with callbacks
+client.accessToken.patch(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.accessToken.patch(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| accessTokenId | string | Y | ID associated with the accessToken |  |
+| accessToken | [Access Token Patch](_schemas.md#access-token-patch) | Y | Object containing new properties of the accessToken |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Access Token](_schemas.md#access-token) | Updated accessToken information |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if accessToken was not found |

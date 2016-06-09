@@ -7,11 +7,11 @@
       "format": "date-time"
     },
     "name": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
     },
-    "payload": {
-      "type": "object"
-    },
+    "payload": {},
     "deviceTags": {
       "type": "array",
       "items": {
@@ -26,7 +26,8 @@
             "minLength": 1,
             "maxLength": 255
           }
-        }
+        },
+        "additionalProperties": false
       }
     },
     "deviceIds": {

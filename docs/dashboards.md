@@ -1,78 +1,95 @@
-# Dashboards
-Losant API
+# Dashboards Actions
 
-## dashboards.get
-Returns the dashboards owned by the current user
+Details on the various actions that can be performed on the
+Dashboards resource, including the expected
+parameters and the potential responses.
 
+##### Contents
 
+*   [Get](#get)
+*   [Post](#post)
 
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| sortField | string | N | undefined |
-| sortDirection | string | N | undefined |
-| page | string | N | undefined |
-| perPage | string | N | undefined |
-| filterField | string | N | undefined |
-| filter | string | N | undefined |
-| orgId | string | N | undefined |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
+<br/>
 
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [dashboards](_schemas.md#dashboards) | Collection of dashboards |
+## Get
 
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
+Returns the dashboards the current user has permission to see
 
-### Example
 ```javascript
+var params = {}; // all params are optional
+
 // with callbacks
 client.dashboards.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
+
 // with promises
 client.dashboards.get(params)
   .then(console.log)
   .catch(console.error);
 ```
-## dashboards.post
-Create a new dasboard owned by the current user
 
+#### Available Parameters
 
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| sortField | string | N | Field to sort the results by. Accepted values are: name, id, creationDate, ownerId | name |
+| sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc |
+| page | string | N | Which page of results to return | 0 |
+| perPage | string | N | How many items to return per page | 1000 |
+| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  |
+| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  |
+| orgId | string | N | If not provided, return all dashboards. If provided but blank, only return dashboards belonging to the current user.  If provided and an id, only return dashboards belonging to the given organization id. |  |
 
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| dashboard | [dashboardPost](_schemas.md#dashboardpost) | Y | New dashboard information |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
+#### Successful Responses
 
-### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [dashboard](_schemas.md#dashboard) | Successfully created dashboard |
+| 200 | [Dashboards](_schemas.md#dashboards) | Collection of dashboards |
 
-### Errors
+#### Error Responses
+
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [error](_schemas.md#error) | Error if malformed request |
 
-### Example
+<br/>
+
+## Post
+
+Create a new dasboard
+
 ```javascript
+var params = {
+  dashboard: myDashboard
+};
+
 // with callbacks
 client.dashboards.post(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
+
 // with promises
 client.dashboards.post(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| dashboard | [Dashboard Post](_schemas.md#dashboard-post) | Y | New dashboard information |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 201 | [Dashboard](_schemas.md#dashboard) | Successfully created dashboard |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |

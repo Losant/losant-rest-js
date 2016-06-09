@@ -1,21 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
-  "definitions": {
-    "scope": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "status": {
-      "type": "string",
-      "enum": [
-        "active",
-        "inactive"
-      ]
-    }
-  },
   "properties": {
     "id": {
       "type": "string",
@@ -47,13 +32,21 @@
       "format": "date-time"
     },
     "scope": {
-      "$ref": "#/definitions/scope"
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     },
     "status": {
-      "$ref": "#/definitions/status"
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ]
     },
     "token": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     }
   }
 }

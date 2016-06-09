@@ -1,15 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
-  "definitions": {
-    "status": {
-      "type": "string",
-      "enum": [
-        "active",
-        "inactive"
-      ]
-    }
-  },
   "properties": {
     "id": {
       "type": "string",
@@ -35,7 +26,11 @@
       "type": "string"
     },
     "status": {
-      "$ref": "#/definitions/status"
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ]
     },
     "secret": {
       "type": "string"
@@ -53,12 +48,16 @@
         "type": "object",
         "properties": {
           "key": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
           },
           "value": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           }
-        }
+        },
+        "additionalProperties": false
       }
     }
   }

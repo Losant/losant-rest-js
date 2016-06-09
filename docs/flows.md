@@ -1,81 +1,101 @@
-# Flows
-Losant API
+# Flows Actions
 
-## flows.get
+Details on the various actions that can be performed on the
+Flows resource, including the expected
+parameters and the potential responses.
+
+##### Contents
+
+*   [Get](#get)
+*   [Post](#post)
+
+<br/>
+
+## Get
+
 Returns the flows for an application
 
-
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| sortField | string | N | undefined |
-| sortDirection | string | N | undefined |
-| page | string | N | undefined |
-| perPage | string | N | undefined |
-| filterField | string | N | undefined |
-| filter | string | N | undefined |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [flows](_schemas.md#flows) | Collection of flows |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 404 | [error](_schemas.md#error) | Error if application was not found |
-
-### Example
 ```javascript
+var params = {
+  applicationId: myApplicationId
+};
+
 // with callbacks
 client.flows.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
+
 // with promises
 client.flows.get(params)
   .then(console.log)
   .catch(console.error);
 ```
-## flows.post
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| applicationId | string | Y | ID associated with the application |  |
+| sortField | string | N | Field to sort the results by. Accepted values are: name, id, creationDate | name |
+| sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc |
+| page | string | N | Which page of results to return | 0 |
+| perPage | string | N | How many items to return per page | 1000 |
+| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  |
+| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Workflows](_schemas.md#workflows) | Collection of flows |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
+
+<br/>
+
+## Post
+
 Create a new flow for an application
 
-
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| flow | [flowPost](_schemas.md#flowpost) | Y | New flow information |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 201 | [flow](_schemas.md#flow) | Successfully created flow |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 400 | [error](_schemas.md#error) | Error if malformed request |
-| 404 | [error](_schemas.md#error) | Error if application was not found |
-
-### Example
 ```javascript
+var params = {
+  applicationId: myApplicationId,
+  flow: myFlow
+};
+
 // with callbacks
 client.flows.post(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
+
 // with promises
 client.flows.post(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| applicationId | string | Y | ID associated with the application |  |
+| flow | [Workflow Post](_schemas.md#workflow-post) | Y | New flow information |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 201 | [Workflow](_schemas.md#workflow) | Successfully created flow |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |

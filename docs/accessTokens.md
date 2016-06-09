@@ -1,71 +1,87 @@
-# Access Tokens
-Losant API
+# Access Tokens Actions
 
-## accessTokens.get
+Details on the various actions that can be performed on the
+Access Tokens resource, including the expected
+parameters and the potential responses.
+
+##### Contents
+
+*   [Get](#get)
+*   [Post](#post)
+
+<br/>
+
+## Get
+
 Returns the accessTokens for a user
 
-
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [accessTokens](_schemas.md#accesstokens) | Collection of accessTokens |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-
-### Example
 ```javascript
+var params = {}; // all params are optional
+
 // with callbacks
 client.accessTokens.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
+
 // with promises
 client.accessTokens.get(params)
   .then(console.log)
   .catch(console.error);
 ```
-## accessTokens.post
-Create a new accessKey for a user
 
+#### Available Parameters
 
+No parameters needed for this call.
 
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| accessToken | [accessToken](_schemas.md#accesstoken) | Y | AccessToken information |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
+#### Successful Responses
 
-### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [accessToken](_schemas.md#accesstoken) | Successfully created access token |
+| 200 | [Access Tokens](_schemas.md#access-tokens) | Collection of accessTokens |
 
-### Errors
+#### Error Responses
+
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [error](_schemas.md#error) | Error if malformed request |
 
-### Example
+<br/>
+
+## Post
+
+Create a new accessToken for a user
+
 ```javascript
+var params = {
+  accessToken: myAccessToken
+};
+
 // with callbacks
 client.accessTokens.post(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
+
 // with promises
 client.accessTokens.post(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| accessToken | [Access Token Post](_schemas.md#access-token-post) | Y | AccessToken information |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 201 | [Access Token](_schemas.md#access-token) | The successfully created accessToken |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |

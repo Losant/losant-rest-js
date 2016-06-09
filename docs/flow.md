@@ -1,297 +1,325 @@
-# Flow
-Losant API
+# Flow Actions
 
-## flow.get
-Retrieves information on an flow
+Details on the various actions that can be performed on the
+Flow resource, including the expected
+parameters and the potential responses.
 
+##### Contents
 
+*   [Delete](#delete)
+*   [Get](#get)
+*   [Get Log Entries](#get-log-entries)
+*   [Get Storage Entries](#get-storage-entries)
+*   [Patch](#patch)
+*   [Press Virtual Button](#press-virtual-button)
+*   [Set Storage Entry](#set-storage-entry)
 
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| flowId | string | Y | ID associated with the flow |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
+<br/>
 
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [flow](_schemas.md#flow) | Flow information |
+## Delete
 
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 404 | [error](_schemas.md#error) | Error if flow was not found |
-
-### Example
-```javascript
-// with callbacks
-client.flow.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-// with promises
-client.flow.get(params)
-  .then(console.log)
-  .catch(console.error);
-```
-## flow.patch
-Updates information about a flow
-
-
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| flowId | string | Y | ID associated with the flow |
-| flow | [flowPatch](_schemas.md#flowpatch) | Y | Object containing new properties of the flow |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [flow](_schemas.md#flow) | Updated flow information |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 400 | [error](_schemas.md#error) | Error if malformed request |
-| 404 | [error](_schemas.md#error) | Error if flow is not found |
-
-### Example
-```javascript
-// with callbacks
-client.flow.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-// with promises
-client.flow.patch(params)
-  .then(console.log)
-  .catch(console.error);
-```
-## flow.delete
 Deletes a flow
 
-
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| flowId | string | Y | ID associated with the flow |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [success](_schemas.md#success) | If flow was successfully deleted |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 404 | [error](_schemas.md#error) | Error if flow was not found |
-
-### Example
 ```javascript
+var params = {
+  applicationId: myApplicationId,
+  flowId: myFlowId
+};
+
 // with callbacks
 client.flow.delete(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
+
 // with promises
 client.flow.delete(params)
   .then(console.log)
   .catch(console.error);
 ```
-## flow.debug
-Streams real time flow debug events using SSE
 
+#### Available Parameters
 
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| applicationId | string | Y | ID associated with the application |  |
+| flowId | string | Y | ID associated with the flow |  |
 
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| flowId | string | Y | ID associated with the flow |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
+#### Successful Responses
 
-### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | undefined | Stream of flow debug events |
+| 200 | [Success](_schemas.md#success) | If flow was successfully deleted |
 
-### Errors
+#### Error Responses
+
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | [error](_schemas.md#error) | Error if flow was not found |
+| 404 | [Error](_schemas.md#error) | Error if flow was not found |
 
-### Example
+<br/>
+
+## Get
+
+Retrieves information on a flow
+
 ```javascript
+var params = {
+  applicationId: myApplicationId,
+  flowId: myFlowId
+};
+
 // with callbacks
-client.flow.debug(params, function (err, result) {
+client.flow.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
+
 // with promises
-client.flow.debug(params)
+client.flow.get(params)
   .then(console.log)
   .catch(console.error);
 ```
-## flow.getLogEntries
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| applicationId | string | Y | ID associated with the application |  |
+| flowId | string | Y | ID associated with the flow |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Workflow](_schemas.md#workflow) | Flow information |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [Error](_schemas.md#error) | Error if flow was not found |
+
+<br/>
+
+## Get Log Entries
+
 Retrieve the recent log entries about the flows
 
-
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| flowId | string | Y | ID associated with the flow |
-| limit | string | N | undefined |
-| since | string | N | undefined |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | undefined | Recent log entries |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 404 | [error](_schemas.md#error) | Error if device was not found |
-
-### Example
 ```javascript
+var params = {
+  applicationId: myApplicationId,
+  flowId: myFlowId
+};
+
 // with callbacks
 client.flow.getLogEntries(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
+
 // with promises
 client.flow.getLogEntries(params)
   .then(console.log)
   .catch(console.error);
 ```
-## flow.pressVirtualButton
-Presses the specified virtual button on the flow
 
+#### Available Parameters
 
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| applicationId | string | Y | ID associated with the application |  |
+| flowId | string | Y | ID associated with the flow |  |
+| limit | string | N | Max log entries to return (ordered by time descending) | 1 |
+| since | string | N | Look for log entries since this time (ms since epoch) |  |
 
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| flowId | string | Y | ID associated with the flow |
-| button | [virtualButtonPress](_schemas.md#virtualbuttonpress) | Y | Object containing button key and payload |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
+#### Successful Responses
 
-### Responses
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [success](_schemas.md#success) | Virtual button was pressed |
+| 200 | undefined | Recent log entries |
 
-### Errors
+#### Error Responses
+
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | [error](_schemas.md#error) | Error if flow was not found |
+| 404 | [Error](_schemas.md#error) | Error if device was not found |
 
-### Example
-```javascript
-// with callbacks
-client.flow.pressVirtualButton(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-// with promises
-client.flow.pressVirtualButton(params)
-  .then(console.log)
-  .catch(console.error);
-```
-## flow.getStorageEntries
+<br/>
+
+## Get Storage Entries
+
 Gets the current values in persistent storage
 
-
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| flowId | string | Y | ID associated with the flow |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | undefined | The stored values |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 404 | [error](_schemas.md#error) | Error if flow was not found |
-
-### Example
 ```javascript
+var params = {
+  applicationId: myApplicationId,
+  flowId: myFlowId
+};
+
 // with callbacks
 client.flow.getStorageEntries(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
+
 // with promises
 client.flow.getStorageEntries(params)
   .then(console.log)
   .catch(console.error);
 ```
-## flow.setStorageEntry
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| applicationId | string | Y | ID associated with the application |  |
+| flowId | string | Y | ID associated with the flow |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | undefined | The stored values |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [Error](_schemas.md#error) | Error if flow was not found |
+
+<br/>
+
+## Patch
+
+Updates information about a flow
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  flowId: myFlowId,
+  flow: myFlow
+};
+
+// with callbacks
+client.flow.patch(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.flow.patch(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| applicationId | string | Y | ID associated with the application |  |
+| flowId | string | Y | ID associated with the flow |  |
+| flow | [Workflow Patch](_schemas.md#workflow-patch) | Y | Object containing new properties of the flow |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Workflow](_schemas.md#workflow) | Updated flow information |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if flow is not found |
+
+<br/>
+
+## Press Virtual Button
+
+Presses the specified virtual button on the flow
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  flowId: myFlowId,
+  button: myButton
+};
+
+// with callbacks
+client.flow.pressVirtualButton(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.flow.pressVirtualButton(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| applicationId | string | Y | ID associated with the application |  |
+| flowId | string | Y | ID associated with the flow |  |
+| button | [Virtual Button Press](_schemas.md#virtual-button-press) | Y | Object containing button key and payload |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Success](_schemas.md#success) | Virtual button was pressed |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [Error](_schemas.md#error) | Error if flow was not found |
+
+<br/>
+
+## Set Storage Entry
+
 Sets a storage value
 
-
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| flowId | string | Y | ID associated with the flow |
-| entry | [flowStorageEntry](_schemas.md#flowstorageentry) | Y | Object containing storage entry |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [success](_schemas.md#success) | Value was successfully stored |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 404 | [error](_schemas.md#error) | Error if flow was not found |
-
-### Example
 ```javascript
+var params = {
+  applicationId: myApplicationId,
+  flowId: myFlowId,
+  entry: myEntry
+};
+
 // with callbacks
 client.flow.setStorageEntry(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
+
 // with promises
 client.flow.setStorageEntry(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| applicationId | string | Y | ID associated with the application |  |
+| flowId | string | Y | ID associated with the flow |  |
+| entry | [Workflow Storage Entry](_schemas.md#workflow-storage-entry) | Y | Object containing storage entry |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Success](_schemas.md#success) | Value was successfully stored |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [Error](_schemas.md#error) | Error if flow was not found |

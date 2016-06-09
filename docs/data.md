@@ -1,75 +1,96 @@
-# Data
-Losant API
+# Data Actions
 
-## data.timeSeriesQuery
-Returns the data for the given query
+Details on the various actions that can be performed on the
+Data resource, including the expected
+parameters and the potential responses.
 
+##### Contents
 
+*   [Last Value Query](#last-value-query)
+*   [Time Series Query](#time-series-query)
 
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| query | [timeSeriesQuery](_schemas.md#timeseriesquery) | Y | The query parameters |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
+<br/>
 
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [timeSeriesData](_schemas.md#timeseriesdata) | Data for requested time range |
+## Last Value Query
 
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 404 | [error](_schemas.md#error) | Error if application was not found |
-
-### Example
-```javascript
-// with callbacks
-client.data.timeSeriesQuery(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-// with promises
-client.data.timeSeriesQuery(params)
-  .then(console.log)
-  .catch(console.error);
-```
-## data.lastValueQuery
 Returns the last known data for the given attribute
 
-
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| applicationId | string | Y | ID associated with the application |
-| query | [lastValueQuery](_schemas.md#lastvaluequery) | Y | The query parameters |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [lastValueData](_schemas.md#lastvaluedata) | Last known data for the requested attribute |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 404 | [error](_schemas.md#error) | Error if application was not found |
-
-### Example
 ```javascript
+var params = {
+  applicationId: myApplicationId,
+  query: myQuery
+};
+
 // with callbacks
 client.data.lastValueQuery(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
+
 // with promises
 client.data.lastValueQuery(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| applicationId | string | Y | ID associated with the application |  |
+| query | [Last Value Query](_schemas.md#last-value-query) | Y | The query parameters |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Last Value Data](_schemas.md#last-value-data) | Last known data for the requested attribute |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
+
+<br/>
+
+## Time Series Query
+
+Returns the data for the given query
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  query: myQuery
+};
+
+// with callbacks
+client.data.timeSeriesQuery(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.data.timeSeriesQuery(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| applicationId | string | Y | ID associated with the application |  |
+| query | [Time Series Query](_schemas.md#time-series-query) | Y | The query parameters |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Time Series Data](_schemas.md#time-series-data) | Data for requested time range |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |

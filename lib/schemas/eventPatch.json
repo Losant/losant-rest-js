@@ -14,9 +14,7 @@
       "type": "string",
       "maxLength": 32767
     },
-    "data": {
-      "$ref": "#/definitions/data"
-    }
+    "data": {}
   },
   "additionalProperties": false
 }

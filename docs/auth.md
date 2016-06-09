@@ -1,111 +1,137 @@
-# Auth
-Losant API
+# Auth Actions
 
-## auth.authenticateUser
+Details on the various actions that can be performed on the
+Auth resource, including the expected
+parameters and the potential responses.
 
-Authenticates a user using the provided credentials
+##### Contents
 
+*   [Authenticate Device](#authenticate-device)
+*   [Authenticate User](#authenticate-user)
+*   [Authenticate User Github](#authenticate-user-github)
 
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| credentials | [userCredentials](_schemas.md#usercredentials) | Y | User authentication credentials |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
+<br/>
 
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [authedUser](_schemas.md#autheduser) | Successful authentication |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 400 | [error](_schemas.md#error) | Error if malformed request |
-| 401 | [error](_schemas.md#error) | Unauthorized error if authentication fails |
-
-### Example
-```javascript
-// with callbacks
-client.auth.authenticateUser(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-// with promises
-client.auth.authenticateUser(params)
-  .then(console.log)
-  .catch(console.error);
-```
-## auth.authenticateUserGithub
-
-Authenticates a user via GitHub OAuth
-
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| oauth | [githubLogin](_schemas.md#githublogin) | Y | User authentication credentials (access token) |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [authedUser](_schemas.md#autheduser) | Successful authentication |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 400 | [error](_schemas.md#error) | Error if malformed request |
-| 401 | [error](_schemas.md#error) | Unauthorized error if authentication fails |
-
-### Example
-```javascript
-// with callbacks
-client.auth.authenticateUserGithub(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-// with promises
-client.auth.authenticateUserGithub(params)
-  .then(console.log)
-  .catch(console.error);
-```
-## auth.authenticateDevice
+## Authenticate Device
 
 Authenticates a device using the provided credentials
 
-
-### Parameters
-| Name | Type | Required | Description |
-| ---- | ---- | -------- | ----------- |
-| credentials | [deviceCredentials](_schemas.md#devicecredentials) | Y | Device authentication credentials |
-| _actions | boolean | N | Return resource actions in response |
-| _links | boolean | N | Return resource link in response |
-| _embedded | boolean | N | Return embedded resources in response |
-
-### Responses
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [authedDevice](_schemas.md#autheddevice) | Successful authentication |
-
-### Errors
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 400 | [error](_schemas.md#error) | Error if malformed request |
-| 401 | [error](_schemas.md#error) | Unauthorized error if authentication fails |
-
-### Example
 ```javascript
+var params = {
+  credentials: myCredentials
+};
+
 // with callbacks
 client.auth.authenticateDevice(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
+
 // with promises
 client.auth.authenticateDevice(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| credentials | [Device Credentials](_schemas.md#device-credentials) | Y | Device authentication credentials |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Authenticated Device](_schemas.md#authenticated-device) | Successful authentication |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 401 | [Error](_schemas.md#error) | Unauthorized error if authentication fails |
+
+<br/>
+
+## Authenticate User
+
+Authenticates a user using the provided credentials
+
+```javascript
+var params = {
+  credentials: myCredentials
+};
+
+// with callbacks
+client.auth.authenticateUser(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.auth.authenticateUser(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| credentials | [User Credentials](_schemas.md#user-credentials) | Y | User authentication credentials |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Authenticated User](_schemas.md#authenticated-user) | Successful authentication |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 401 | [Error](_schemas.md#error) | Unauthorized error if authentication fails |
+
+<br/>
+
+## Authenticate User Github
+
+Authenticates a user via GitHub OAuth
+
+```javascript
+var params = {
+  oauth: myOauth
+};
+
+// with callbacks
+client.auth.authenticateUserGithub(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.auth.authenticateUserGithub(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default |
+| ---- | ---- | -------- | ----------- | ------- |
+| oauth | [Github Login](_schemas.md#github-login) | Y | User authentication credentials (access token) |  |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Authenticated User](_schemas.md#authenticated-user) | Successful authentication |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 401 | [Error](_schemas.md#error) | Unauthorized error if authentication fails |
