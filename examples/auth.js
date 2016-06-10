@@ -4,9 +4,9 @@ var client = api.createClient();
 // using callbacks
 client.auth.authenticateUser({ credentials:
   { email: 'example@losant.com', password: 'your_password' } },
-  function (err, data) {
-    if (err) { return console.log(err.stack); }
-    console.trace(data);
+  function (err, response) {
+    if (err) { return console.error(err); }
+    console.log(response);
   }
 );
 /* Example user result
@@ -18,16 +18,16 @@ client.auth.authenticateUser({ credentials:
 
 // using promises
 client.auth.authenticateDevice({ credentials: {
-    deviceId: '123456789123456789000000',
-    key: 'abcdefghijklmnopqrstuvwxyz',
-    secret: 'abcdefghijklmnopqrstuvwxyz'
+    deviceId: 'myDeviceId',
+    key: 'my_app_access_key',
+    secret: 'my_app_access_secret'
   }
 })
-.then(function (data) {
-  console.trace(data);
+.then(function (response) {
+  console.log(response);
 })
 .catch(function (err) {
-  console.log(err.stack);
+  console.error(err);
 });
 /* Example device result
  * {

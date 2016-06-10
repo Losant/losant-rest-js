@@ -32,22 +32,26 @@ var mySensor = require('./my-analog-sensor');
 
 var client = api.createClient();
 
-client.auth.authenticate_device({ credentials: {
-  deviceId: "my-device-id",
-  key: "my-app-access-key",
-  secret: "my-app-access-secret"
+client.auth.authenticateDevice({ credentials: {
+  deviceId: 'my-device-id',
+  key: 'my-app-access-key',
+  secret: 'my-app-access-secret'
 }}).then(function (response) {
   client.setOption('accessToken', response.token);
   var appId = response.applicationId;
 
   var state = { data: { temperature: mySensor.read() } };
-  return client.device.send_state({
-    deviceId: "my-device-id",
+  return client.device.sendState({
+    deviceId: 'my-device-id',
     applicationId: appId,
     deviceState: state
   });
-}).then(function (response) {
-  console.log(response); // { "success": true }
+})
+.then(function (response) {
+  console.log(response); // { success: true }
+})
+.catch(function (error) {
+  console.error(error);
 });
 ```
 

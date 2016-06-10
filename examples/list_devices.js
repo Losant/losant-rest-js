@@ -2,11 +2,11 @@ var api = require('losant-api-js');
 
 var client = api.createClient({ accessToken: 'my_token' });
 client.devices.get({ applicationId: 'myAppId' })
-.then(function (data) {
-  console.trace(data);
+.then(function (response) {
+  console.log(response);
 })
 .catch(function (err) {
-  console.log(err.stack);
+  console.error(err);
 });
 /* Example result
  * {
