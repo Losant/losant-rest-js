@@ -1,34 +1,37 @@
 {
   "name": "losant-api-js",
   "version": "1.3.2",
-  "description": "User API for accessing Losant data",
+  "description": "REST client for accessing the Losant API",
   "main": "lib/index.js",
-  "dependencies": {
-    "axios": "^0.12.0",
-    "uri-template": "^1.0.0",
-    "qs": "^6.2.0"
-  },
+  "homepage": "https://github.com/Losant/losant-api-js#readme",
+  "author": "Losant <hello@losant.com>",
+  "license": "MIT",
+  "keywords": ["IoT", "platform", "api"],
+  "bugs": { "url": "https://github.com/Losant/losant-api-js/issues" },
   "directories": {
-    "doc": "docs",
-    "example": "examples"
+    "doc": "./docs",
+    "example": "./examples",
+    "lib": "./lib"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "jshint": "jshint lib/*.js test/*.js lib/api/*.js examples/*.js",
+    "test": "mocha test 2>&1",
+    "coverage": "rm -rf coverage; istanbul cover _mocha -- --recursive --reporter spec --bail"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Losant/losant-api-js.git"
   },
-  "keywords": [
-    "IoT",
-    "platform",
-    "api"
-  ],
-  "author": "Losant <hello@losant.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Losant/losant-api-js/issues"
+  "dependencies": {
+    "axios": "^0.12.0",
+    "uri-template": "^1.0.0",
+    "qs": "^6.2.0"
   },
-  "homepage": "https://github.com/Losant/losant-api-js#readme"
+  "devDependencies": {
+    "jshint": "2.9.2",
+    "mocha": "2.5.3",
+    "should": "9.0.2",
+    "istanbul": "0.4.3",
+    "nock": "8.0.0"
+  }
 }
