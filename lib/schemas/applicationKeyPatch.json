@@ -8,6 +8,10 @@
         "active",
         "inactive"
       ]
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
     }
   },
   "additionalProperties": false

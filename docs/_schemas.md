@@ -405,6 +405,10 @@ Schema for a single Application Key
         },
         "additionalProperties": false
       }
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
     }
   }
 }
@@ -425,6 +429,10 @@ Schema for the body of an Application Key modification request
         "active",
         "inactive"
       ]
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
     }
   },
   "additionalProperties": false
@@ -464,6 +472,10 @@ Schema for the body of an Application Key creation request
         },
         "additionalProperties": false
       }
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
     }
   },
   "additionalProperties": false
@@ -543,6 +555,10 @@ Schema for a collection of Application Keys
               },
               "additionalProperties": false
             }
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
           }
         }
       }
