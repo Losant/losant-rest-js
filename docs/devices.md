@@ -35,16 +35,16 @@ client.devices.get(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| applicationId | string | Y | ID associated with the application |  |
-| sortField | string | N | Field to sort the results by. Accepted values are: name, id, creationDate | name |
-| sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc |
-| page | string | N | Which page of results to return | 0 |
-| perPage | string | N | How many items to return per page | 1000 |
-| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  |
-| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  |
-| tagFilter | [Device Tag Filter](_schemas.md#device-tag-filter) | N | Array of tag pairs to filter by. |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| sortField | string | N | Field to sort the results by. Accepted values are: name, id, creationDate | name | name |
+| sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
+| page | string | N | Which page of results to return | 0 | 0 |
+| perPage | string | N | How many items to return per page | 1000 | 10 |
+| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
+| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my * device |
+| tagFilter | [Device Tag Filter](_schemas.md#device-tag-filter) | N | Array of tag pairs to filter by. |  | [Device Tag Filter Example](_schemas.md#device-tag-filter-example) |
 
 #### Successful Responses
 
@@ -56,6 +56,7 @@ client.devices.get(params)
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if application was not found |
 
 <br/>
@@ -84,10 +85,10 @@ client.devices.post(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| applicationId | string | Y | ID associated with the application |  |
-| device | [Device Post](_schemas.md#device-post) | Y | New device information |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| device | [Device Post](_schemas.md#device-post) | Y | New device information |  | [Device Post Example](_schemas.md#device-post-example) |
 
 #### Successful Responses
 
@@ -128,10 +129,10 @@ client.devices.sendCommand(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| applicationId | string | Y | ID associated with the application |  |
-| multiDeviceCommand | [Multi Device Command](_schemas.md#multi-device-command) | Y | Command to send to the device |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| multiDeviceCommand | [Multi Device Command](_schemas.md#multi-device-command) | Y | Command to send to the device |  | [Multi Device Command Example](_schemas.md#multi-device-command-example) |
 
 #### Successful Responses
 

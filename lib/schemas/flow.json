@@ -121,6 +121,17 @@
           "json"
         ]
       }
+    },
+    "stats": {
+      "type": "object",
+      "properties": {
+        "runCount": {
+          "type": "number"
+        },
+        "errorCount": {
+          "type": "number"
+        }
+      }
     }
   }
 }

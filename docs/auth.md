@@ -35,9 +35,9 @@ client.auth.authenticateDevice(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| credentials | [Device Credentials](_schemas.md#device-credentials) | Y | Device authentication credentials |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| credentials | [Device Credentials](_schemas.md#device-credentials) | Y | Device authentication credentials |  | [Device Credentials Example](_schemas.md#device-credentials-example) |
 
 #### Successful Responses
 
@@ -77,9 +77,9 @@ client.auth.authenticateUser(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| credentials | [User Credentials](_schemas.md#user-credentials) | Y | User authentication credentials |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| credentials | [User Credentials](_schemas.md#user-credentials) | Y | User authentication credentials |  | [User Credentials Example](_schemas.md#user-credentials-example) |
 
 #### Successful Responses
 
@@ -119,9 +119,9 @@ client.auth.authenticateUserGithub(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| oauth | [Github Login](_schemas.md#github-login) | Y | User authentication credentials (access token) |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| oauth | [Github Login](_schemas.md#github-login) | Y | User authentication credentials (access token) |  | [Github Login Example](_schemas.md#github-login-example) |
 
 #### Successful Responses
 

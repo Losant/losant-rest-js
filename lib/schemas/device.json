@@ -101,7 +101,11 @@
           "format": "date-time"
         },
         "connected": {
-          "type": "number"
+          "enum": [
+            1,
+            0,
+            null
+          ]
         }
       }
     }

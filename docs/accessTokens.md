@@ -44,6 +44,7 @@ No parameters needed for this call.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 
 <br/>
 
@@ -70,9 +71,9 @@ client.accessTokens.post(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| accessToken | [Access Token Post](_schemas.md#access-token-post) | Y | AccessToken information |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| accessToken | [Access Token Post](_schemas.md#access-token-post) | Y | AccessToken information |  | [Access Token Post Example](_schemas.md#access-token-post-example) |
 
 #### Successful Responses
 

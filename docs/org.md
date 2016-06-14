@@ -40,9 +40,9 @@ client.org.delete(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| orgId | string | Y | ID associated with the organization |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
 
 #### Successful Responses
 
@@ -54,6 +54,7 @@ client.org.delete(params)
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if organization was not found |
 
 <br/>
@@ -81,9 +82,9 @@ client.org.get(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| orgId | string | Y | ID associated with the organization |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
 
 #### Successful Responses
 
@@ -95,6 +96,7 @@ client.org.get(params)
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if organization not found |
 
 <br/>
@@ -123,10 +125,10 @@ client.org.inviteMember(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| orgId | string | Y | ID associated with the organization |  |
-| invite | [Organization Invitation Post](_schemas.md#organization-invitation-post) | Y | Object containing new invite info |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
+| invite | [Organization Invitation Post](_schemas.md#organization-invitation-post) | Y | Object containing new invite info |  | [Organization Invitation Post Example](_schemas.md#organization-invitation-post-example) |
 
 #### Successful Responses
 
@@ -167,10 +169,10 @@ client.org.modifyMember(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| orgId | string | Y | ID associated with the organization |  |
-| member | [Organization Member Patch](_schemas.md#organization-member-patch) | Y | Object containing new member pair |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
+| member | [Organization Member Patch](_schemas.md#organization-member-patch) | Y | Object containing new member pair |  | [Organization Member Patch Example](_schemas.md#organization-member-patch-example) |
 
 #### Successful Responses
 
@@ -211,10 +213,10 @@ client.org.patch(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| orgId | string | Y | ID associated with the organization |  |
-| organization | [Organization Patch](_schemas.md#organization-patch) | Y | Object containing new organization properties |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
+| organization | [Organization Patch](_schemas.md#organization-patch) | Y | Object containing new organization properties |  | [Organization Patch Example](_schemas.md#organization-patch-example) |
 
 #### Successful Responses
 
@@ -254,9 +256,9 @@ client.org.pendingInvites(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| orgId | string | Y | ID associated with the organization |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
 
 #### Successful Responses
 
@@ -268,6 +270,7 @@ client.org.pendingInvites(params)
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if organization not found |
 
 <br/>
@@ -296,10 +299,10 @@ client.org.removeMember(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| orgId | string | Y | ID associated with the organization |  |
-| userId | string | Y | Id of user to remove |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
+| userId | string | Y | Id of user to remove |  | 575ed70c7ae143cd83dc4aa9 |
 
 #### Successful Responses
 
@@ -340,10 +343,10 @@ client.org.revokeInvite(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| orgId | string | Y | ID associated with the organization |  |
-| inviteId | string | Y | Id of invite to revoke |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
+| inviteId | string | Y | Id of invite to revoke |  | 575ed71e7ae143cd83dc4aaa |
 
 #### Successful Responses
 

@@ -35,9 +35,9 @@ client.accessToken.delete(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| accessTokenId | string | Y | ID associated with the accessToken |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| accessTokenId | string | Y | ID associated with the accessToken |  | 575ec7417ae143cd83dc4a95 |
 
 #### Successful Responses
 
@@ -49,6 +49,7 @@ client.accessToken.delete(params)
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if accessToken was not found |
 
 <br/>
@@ -76,9 +77,9 @@ client.accessToken.get(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| accessTokenId | string | Y | ID associated with the accessToken |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| accessTokenId | string | Y | ID associated with the accessToken |  | 575ec7417ae143cd83dc4a95 |
 
 #### Successful Responses
 
@@ -90,6 +91,7 @@ client.accessToken.get(params)
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if accessToken was not found |
 
 <br/>
@@ -118,10 +120,10 @@ client.accessToken.patch(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| accessTokenId | string | Y | ID associated with the accessToken |  |
-| accessToken | [Access Token Patch](_schemas.md#access-token-patch) | Y | Object containing new properties of the accessToken |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| accessTokenId | string | Y | ID associated with the accessToken |  | 575ec7417ae143cd83dc4a95 |
+| accessToken | [Access Token Patch](_schemas.md#access-token-patch) | Y | Object containing new properties of the accessToken |  | [Access Token Patch Example](_schemas.md#access-token-patch-example) |
 
 #### Successful Responses
 

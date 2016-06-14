@@ -36,10 +36,10 @@ client.webhook.delete(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| applicationId | string | Y | ID associated with the application |  |
-| webhookId | string | Y | ID associated with the webhook |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| webhookId | string | Y | ID associated with the webhook |  | 575ed78e7ae143cd83dc4aab |
 
 #### Successful Responses
 
@@ -51,6 +51,7 @@ client.webhook.delete(params)
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if webhook was not found |
 
 <br/>
@@ -79,10 +80,10 @@ client.webhook.get(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| applicationId | string | Y | ID associated with the application |  |
-| webhookId | string | Y | ID associated with the webhook |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| webhookId | string | Y | ID associated with the webhook |  | 575ed78e7ae143cd83dc4aab |
 
 #### Successful Responses
 
@@ -94,6 +95,7 @@ client.webhook.get(params)
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if webhook was not found |
 
 <br/>
@@ -123,11 +125,11 @@ client.webhook.patch(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| applicationId | string | Y | ID associated with the application |  |
-| webhookId | string | Y | ID associated with the webhook |  |
-| webhook | [Webhook Patch](_schemas.md#webhook-patch) | Y | Object containing new properties of the webhook |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| webhookId | string | Y | ID associated with the webhook |  | 575ed78e7ae143cd83dc4aab |
+| webhook | [Webhook Patch](_schemas.md#webhook-patch) | Y | Object containing new properties of the webhook |  | [Webhook Patch Example](_schemas.md#webhook-patch-example) |
 
 #### Successful Responses
 

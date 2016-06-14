@@ -36,16 +36,16 @@ client.events.get(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| applicationId | string | Y | ID associated with the application |  |
-| sortField | string | N | Field to sort the results by. Accepted values are: subject, id, creationDate | creationDate |
-| sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | desc |
-| page | string | N | Which page of results to return | 0 |
-| perPage | string | N | How many items to return per page | 1000 |
-| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: subject |  |
-| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  |
-| state | string | N | If provided, return events only in the given state. Accepted values are: new, acknowledged, resolved |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| sortField | string | N | Field to sort the results by. Accepted values are: subject, id, creationDate | creationDate | subject |
+| sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | desc | asc |
+| page | string | N | Which page of results to return | 0 | 0 |
+| perPage | string | N | How many items to return per page | 1000 | 10 |
+| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: subject |  | subject |
+| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | abnormal power to * |
+| state | string | N | If provided, return events only in the given state. Accepted values are: new, acknowledged, resolved |  | new |
 
 #### Successful Responses
 
@@ -57,6 +57,7 @@ client.events.get(params)
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if application was not found |
 
 <br/>
@@ -84,10 +85,10 @@ client.events.mostRecentBySeverity(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| applicationId | string | Y | ID associated with the application |  |
-| filter | string | N | Filter to apply against event subjects. Supports globbing. Blank or not provided means no filtering. |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| filter | string | N | Filter to apply against event subjects. Supports globbing. Blank or not provided means no filtering. |  | abnormal power to * |
 
 #### Successful Responses
 
@@ -127,13 +128,13 @@ client.events.patch(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| applicationId | string | Y | ID associated with the application |  |
-| filterField | string | N | Field to filter the events to act on by. Blank or not provided means no filtering. Accepted values are: subject |  |
-| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  |
-| state | string | N | If provided, act on events only in the given state. Accepted values are: new, acknowledged, resolved |  |
-| updates | [Event Patch](_schemas.md#event-patch) | Y | Object containing updated information for the events |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| filterField | string | N | Field to filter the events to act on by. Blank or not provided means no filtering. Accepted values are: subject |  | subject |
+| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | abnormal power to * |
+| state | string | N | If provided, act on events only in the given state. Accepted values are: new, acknowledged, resolved |  | new |
+| updates | [Event Patch](_schemas.md#event-patch) | Y | Object containing updated information for the events |  | [Event Patch Example](_schemas.md#event-patch-example) |
 
 #### Successful Responses
 
@@ -174,10 +175,10 @@ client.events.post(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| applicationId | string | Y | ID associated with the application |  |
-| event | [Event Post](_schemas.md#event-post) | Y | New event information |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| event | [Event Post](_schemas.md#event-post) | Y | New event information |  | [Event Post Example](_schemas.md#event-post-example) |
 
 #### Successful Responses
 

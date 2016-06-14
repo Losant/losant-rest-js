@@ -42,9 +42,9 @@ client.me.addRecentItem(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| data | [Recent Item](_schemas.md#recent-item) | Y | Object containing recent item info |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| data | [Recent Item](_schemas.md#recent-item) | Y | Object containing recent item info |  | [Recent Item Example](_schemas.md#recent-item-example) |
 
 #### Successful Responses
 
@@ -83,9 +83,9 @@ client.me.delete(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| credentials | [User Credentials](_schemas.md#user-credentials) | Y | User authentication credentials |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| credentials | [User Credentials](_schemas.md#user-credentials) | Y | User authentication credentials |  | [User Credentials Example](_schemas.md#user-credentials-example) |
 
 #### Successful Responses
 
@@ -124,9 +124,9 @@ client.me.disableTwoFactorAuth(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| data | [Disable Two Factor Auth](_schemas.md#disable-two-factor-auth) | Y | Object containing two factor auth properties |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| data | [Disable Two Factor Auth](_schemas.md#disable-two-factor-auth) | Y | Object containing two factor auth properties |  | [Disable Two Factor Auth Example](_schemas.md#disable-two-factor-auth-example) |
 
 #### Successful Responses
 
@@ -239,9 +239,9 @@ client.me.enableTwoFactorAuth(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| data | [Enable Two Factor Auth](_schemas.md#enable-two-factor-auth) | Y | Object containing two factor auth properties |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| data | [Enable Two Factor Auth](_schemas.md#enable-two-factor-auth) | Y | Object containing two factor auth properties |  | [Enable Two Factor Auth Example](_schemas.md#enable-two-factor-auth-example) |
 
 #### Successful Responses
 
@@ -280,10 +280,10 @@ client.me.fetchRecentItems(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| parentId | string | N | Parent id of the recent list |  |
-| itemType | undefined | Y | Item type to get the recent list of. Accepted values are: application, device, flow, dashboard |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| parentId | string | N | Parent id of the recent list |  | 575ec8687ae143cd83dc4a97 |
+| itemType | undefined | Y | Item type to get the recent list of. Accepted values are: application, device, flow, dashboard |  | application |
 
 #### Successful Responses
 
@@ -320,9 +320,9 @@ client.me.get(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| includeRecent | undefined | N | Should the user include recent app/dashboard info |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| includeRecent | undefined | N | Should the user include recent app/dashboard info |  | true |
 
 #### Successful Responses
 
@@ -360,9 +360,9 @@ client.me.patch(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| user | [Me Patch](_schemas.md#me-patch) | Y | Object containing new user properties |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| user | [Me Patch](_schemas.md#me-patch) | Y | Object containing new user properties |  | [Me Patch Example](_schemas.md#me-patch-example) |
 
 #### Successful Responses
 

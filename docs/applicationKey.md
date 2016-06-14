@@ -36,10 +36,10 @@ client.applicationKey.delete(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| applicationId | string | Y | ID associated with the application |  |
-| applicationKeyId | string | Y | ID associated with the applicationKey |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| applicationKeyId | string | Y | ID associated with the applicationKey |  | 575ec76c7ae143cd83dc4a96 |
 
 #### Successful Responses
 
@@ -51,6 +51,7 @@ client.applicationKey.delete(params)
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if applicationKey was not found |
 
 <br/>
@@ -79,10 +80,10 @@ client.applicationKey.get(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| applicationId | string | Y | ID associated with the application |  |
-| applicationKeyId | string | Y | ID associated with the applicationKey |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| applicationKeyId | string | Y | ID associated with the applicationKey |  | 575ec76c7ae143cd83dc4a96 |
 
 #### Successful Responses
 
@@ -94,6 +95,7 @@ client.applicationKey.get(params)
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if applicationKey was not found |
 
 <br/>
@@ -123,11 +125,11 @@ client.applicationKey.patch(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| applicationId | string | Y | ID associated with the application |  |
-| applicationKeyId | string | Y | ID associated with the applicationKey |  |
-| applicationKey | [Application Key Patch](_schemas.md#application-key-patch) | Y | Object containing new properties of the applicationKey |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| applicationKeyId | string | Y | ID associated with the applicationKey |  | 575ec76c7ae143cd83dc4a96 |
+| applicationKey | [Application Key Patch](_schemas.md#application-key-patch) | Y | Object containing new properties of the applicationKey |  | [Application Key Patch Example](_schemas.md#application-key-patch-example) |
 
 #### Successful Responses
 

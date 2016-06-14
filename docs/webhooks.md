@@ -34,15 +34,15 @@ client.webhooks.get(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| applicationId | string | Y | ID associated with the application |  |
-| sortField | string | N | Field to sort the results by. Accepted values are: name, id, creationDate | name |
-| sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc |
-| page | string | N | Which page of results to return | 0 |
-| perPage | string | N | How many items to return per page | 1000 |
-| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  |
-| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| sortField | string | N | Field to sort the results by. Accepted values are: name, id, creationDate | name | name |
+| sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
+| page | string | N | Which page of results to return | 0 | 0 |
+| perPage | string | N | How many items to return per page | 1000 | 10 |
+| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
+| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*webhook |
 
 #### Successful Responses
 
@@ -54,6 +54,7 @@ client.webhooks.get(params)
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if application was not found |
 
 <br/>
@@ -82,10 +83,10 @@ client.webhooks.post(params)
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default |
-| ---- | ---- | -------- | ----------- | ------- |
-| applicationId | string | Y | ID associated with the application |  |
-| webhook | [Webhook Post](_schemas.md#webhook-post) | Y | New webhook information |  |
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| webhook | [Webhook Post](_schemas.md#webhook-post) | Y | New webhook information |  | [Webhook Post Example](_schemas.md#webhook-post-example) |
 
 #### Successful Responses
 

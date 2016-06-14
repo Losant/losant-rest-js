@@ -22,6 +22,7 @@
 *   [Device Command](#device-command)
 *   [Device Commands](#device-commands)
 *   [Device Credentials](#device-credentials)
+*   [Device Log](#device-log)
 *   [Device Patch](#device-patch)
 *   [Device Post](#device-post)
 *   [Device Recipe](#device-recipe)
@@ -42,8 +43,10 @@
 *   [Event Post](#event-post)
 *   [Events](#events)
 *   [Workflow](#workflow)
+*   [Workflow Log](#workflow-log)
 *   [Workflow Patch](#workflow-patch)
 *   [Workflow Post](#workflow-post)
+*   [Workflow Storage Entries](#workflow-storage-entries)
 *   [Workflow Storage Entry](#workflow-storage-entry)
 *   [Workflows](#workflows)
 *   [Github Login](#github-login)
@@ -75,7 +78,9 @@
 
 Schema for a single Access Token
 
-```javascript
+### <a name="access-token-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -129,12 +134,35 @@ Schema for a single Access Token
   }
 }
 ```
+### <a name="access-token-example"></a> Example
+
+```json
+{
+  "id": "575ec7417ae143cd83dc4a95",
+  "accessTokenId": "575ec7417ae143cd83dc4a95",
+  "userId": "575ed70c7ae143cd83dc4aa9",
+  "name": "My Access Token",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "expirationDate": "2017-06-13T04:00:00.000Z",
+  "scope": [
+    "devices",
+    "devices.state"
+  ],
+  "status": "active",
+  "token": "the_actual_token_string"
+}
+```
+
+<br/>
 
 ## Access Token Patch
 
 Schema for the body of an Access Token modification request
 
-```javascript
+### <a name="access-token-patch-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -155,12 +183,24 @@ Schema for the body of an Access Token modification request
   "additionalProperties": false
 }
 ```
+### <a name="access-token-patch-example"></a> Example
+
+```json
+{
+  "name": "My Updated Access Token",
+  "status": "inactive"
+}
+```
+
+<br/>
 
 ## Access Token Post
 
 Schema for the body of an Access Token creation request
 
-```javascript
+### <a name="access-token-post-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -194,12 +234,29 @@ Schema for the body of an Access Token creation request
   ]
 }
 ```
+### <a name="access-token-post-example"></a> Example
+
+```json
+{
+  "name": "My New Access Token",
+  "expirationDate": "2017-06-13T04:00:00.000Z",
+  "scope": [
+    "devices",
+    "devices.state"
+  ],
+  "status": "active"
+}
+```
+
+<br/>
 
 ## Access Tokens
 
 Schema for a collection of Access Tokens
 
-```javascript
+### <a name="access-tokens-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -266,12 +323,40 @@ Schema for a collection of Access Tokens
   }
 }
 ```
+### <a name="access-tokens-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "575ec7417ae143cd83dc4a95",
+      "accessTokenId": "575ec7417ae143cd83dc4a95",
+      "userId": "575ed70c7ae143cd83dc4aa9",
+      "name": "My Access Token",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "expirationDate": "2017-06-13T04:00:00.000Z",
+      "scope": [
+        "devices",
+        "devices.state"
+      ],
+      "status": "active",
+      "token": "the_actual_token_string"
+    }
+  ],
+  "count": 1
+}
+```
+
+<br/>
 
 ## Application
 
 Schema for a single Application
 
-```javascript
+### <a name="application-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -338,12 +423,38 @@ Schema for a single Application
   }
 }
 ```
+### <a name="application-example"></a> Example
+
+```json
+{
+  "id": "575ec8687ae143cd83dc4a97",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "ownerId": "575ed70c7ae143cd83dc4aa9",
+  "ownerType": "user",
+  "name": "My Application",
+  "description": "The is the best application description",
+  "summary": {
+    "deviceCount": 5,
+    "flowCount": 2,
+    "webhookCount": 0,
+    "eventCount": 0,
+    "keyCount": 1,
+    "deviceRecipeCount": 0
+  }
+}
+```
+
+<br/>
 
 ## Application Key
 
 Schema for a single Application Key
 
-```javascript
+### <a name="application-key-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -413,12 +524,30 @@ Schema for a single Application Key
   }
 }
 ```
+### <a name="application-key-example"></a> Example
+
+```json
+{
+  "id": "575ec76c7ae143cd83dc4a96",
+  "applicationKeyId": "575ec76c7ae143cd83dc4a96",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "key": "this_would_be_the_key",
+  "status": "active",
+  "description": "An example key description"
+}
+```
+
+<br/>
 
 ## Application Key Patch
 
 Schema for the body of an Application Key modification request
 
-```javascript
+### <a name="application-key-patch-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -438,12 +567,24 @@ Schema for the body of an Application Key modification request
   "additionalProperties": false
 }
 ```
+### <a name="application-key-patch-example"></a> Example
+
+```json
+{
+  "status": "active",
+  "description": "An example updated key description"
+}
+```
+
+<br/>
 
 ## Application Key Post
 
 Schema for the body of an Application Key creation request
 
-```javascript
+### <a name="application-key-post-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -481,12 +622,23 @@ Schema for the body of an Application Key creation request
   "additionalProperties": false
 }
 ```
+### <a name="application-key-post-example"></a> Example
+
+```json
+{
+  "description": "An example new key description"
+}
+```
+
+<br/>
 
 ## Application Keys
 
 Schema for a collection of Application Keys
 
-```javascript
+### <a name="application-keys-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -598,12 +750,41 @@ Schema for a collection of Application Keys
   }
 }
 ```
+### <a name="application-keys-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "575ec76c7ae143cd83dc4a96",
+      "applicationKeyId": "575ec76c7ae143cd83dc4a96",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "key": "this_would_be_the_key",
+      "status": "active",
+      "description": "An example key description"
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "key",
+  "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
 
 ## Application Patch
 
 Schema for the body of an Application modification request
 
-```javascript
+### <a name="application-patch-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -621,12 +802,24 @@ Schema for the body of an Application modification request
   "additionalProperties": false
 }
 ```
+### <a name="application-patch-example"></a> Example
+
+```json
+{
+  "name": "My Updated Application",
+  "description": "Description of my updated application"
+}
+```
+
+<br/>
 
 ## Application Post
 
 Schema for the body of an Application creation request
 
-```javascript
+### <a name="application-post-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -651,12 +844,24 @@ Schema for the body of an Application creation request
   ]
 }
 ```
+### <a name="application-post-example"></a> Example
+
+```json
+{
+  "name": "My New Application",
+  "description": "Description of my new application"
+}
+```
+
+<br/>
 
 ## Applications
 
 Schema for a collection of Applications
 
-```javascript
+### <a name="applications-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -761,12 +966,48 @@ Schema for a collection of Applications
   }
 }
 ```
+### <a name="applications-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "575ec8687ae143cd83dc4a97",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "ownerId": "575ed70c7ae143cd83dc4aa9",
+      "ownerType": "user",
+      "name": "My Application",
+      "description": "The is the best application description",
+      "summary": {
+        "deviceCount": 5,
+        "flowCount": 2,
+        "webhookCount": 0,
+        "eventCount": 0,
+        "keyCount": 1,
+        "deviceRecipeCount": 0
+      }
+    }
+  ],
+  "count": 1,
+  "totalCount": 8,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc"
+}
+```
+
+<br/>
 
 ## Authenticated Device
 
 Schema for the sucessful response when authenticating a Device
 
-```javascript
+### <a name="authenticated-device-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -802,12 +1043,26 @@ Schema for the sucessful response when authenticating a Device
   ]
 }
 ```
+### <a name="authenticated-device-example"></a> Example
+
+```json
+{
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "deviceId": "575ecf887ae143cd83dc4aa2",
+  "devicecClass": "standalone",
+  "token": "token_to_use_for_authenticating_subsequent_requests"
+}
+```
+
+<br/>
 
 ## Authenticated User
 
 Schema for the sucessful response when authenticating a User
 
-```javascript
+### <a name="authenticated-user-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -827,12 +1082,24 @@ Schema for the sucessful response when authenticating a User
   ]
 }
 ```
+### <a name="authenticated-user-example"></a> Example
+
+```json
+{
+  "userId": "575ed70c7ae143cd83dc4aa9",
+  "token": "token_to_use_for_authenticating_subsequent_requests"
+}
+```
+
+<br/>
 
 ## Dashboard
 
 Schema for a single Dashboard
 
-```javascript
+### <a name="dashboard-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -929,12 +1196,33 @@ Schema for a single Dashboard
   }
 }
 ```
+### <a name="dashboard-example"></a> Example
+
+```json
+{
+  "id": "575ece2b7ae143cd83dc4a9b",
+  "dashboardId": "575ece2b7ae143cd83dc4a9b",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "ownerId": "575ed70c7ae143cd83dc4aa9",
+  "ownerType": "user",
+  "name": "My Dashboard",
+  "description": "The best dashboard description",
+  "refreshRate": 60,
+  "public": false,
+  "blocks": []
+}
+```
+
+<br/>
 
 ## Dashboard Patch
 
 Schema for the body of a Dashboard modification request
 
-```javascript
+### <a name="dashboard-patch-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -1005,12 +1293,26 @@ Schema for the body of a Dashboard modification request
   "additionalProperties": false
 }
 ```
+### <a name="dashboard-patch-example"></a> Example
+
+```json
+{
+  "name": "My Updated Dashboard",
+  "description": "Description of my updated dashboard",
+  "refreshRate": 300,
+  "public": true
+}
+```
+
+<br/>
 
 ## Dashboard Post
 
 Schema for the body of a Dashboard creation request
 
-```javascript
+### <a name="dashboard-post-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -1088,12 +1390,24 @@ Schema for the body of a Dashboard creation request
   ]
 }
 ```
+### <a name="dashboard-post-example"></a> Example
+
+```json
+{
+  "name": "My New Dashboard",
+  "public": false
+}
+```
+
+<br/>
 
 ## Dashboards
 
 Schema for a collection of Dashboards
 
-```javascript
+### <a name="dashboards-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -1228,12 +1542,43 @@ Schema for a collection of Dashboards
   }
 }
 ```
+### <a name="dashboards-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "575ece2b7ae143cd83dc4a9b",
+      "dashboardId": "575ece2b7ae143cd83dc4a9b",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "ownerId": "575ed70c7ae143cd83dc4aa9",
+      "ownerType": "user",
+      "name": "My Dashboard",
+      "description": "The best dashboard description",
+      "refreshRate": 60,
+      "public": false,
+      "blocks": []
+    }
+  ],
+  "count": 1,
+  "totalCount": 5,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc"
+}
+```
+
+<br/>
 
 ## Device
 
 Schema for a single Device
 
-```javascript
+### <a name="device-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -1337,19 +1682,61 @@ Schema for a single Device
           "format": "date-time"
         },
         "connected": {
-          "type": "number"
+          "enum": [
+            1,
+            0,
+            null
+          ]
         }
       }
     }
   }
 }
 ```
+### <a name="device-example"></a> Example
+
+```json
+{
+  "id": "575ecf887ae143cd83dc4aa2",
+  "deviceId": "575ecf887ae143cd83dc4aa2",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "name": "My Device",
+  "description": "A device description",
+  "tags": [
+    {
+      "key": "TagKey",
+      "value": "TagValue"
+    },
+    {
+      "key": "floor",
+      "value": "8"
+    }
+  ],
+  "attributes": [
+    {
+      "name": "voltage",
+      "dataType": "number"
+    }
+  ],
+  "deviceClass": "standalone",
+  "connectionInfo": {
+    "time": "2016-06-14T08:15:00.000Z",
+    "connected": 1
+  }
+}
+```
+
+<br/>
 
 ## Device Command
 
 Schema for a command for a single Device
 
-```javascript
+### <a name="device-command-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -1371,12 +1758,31 @@ Schema for a command for a single Device
   "additionalProperties": false
 }
 ```
+### <a name="device-command-example"></a> Example
+
+```json
+{
+  "time": "2016-06-13T04:00:00.000Z",
+  "name": "myCommand",
+  "payload": [
+    1,
+    1,
+    2,
+    3,
+    5
+  ]
+}
+```
+
+<br/>
 
 ## Device Commands
 
 Schema for an array of Device Commands
 
-```javascript
+### <a name="device-commands-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "array",
@@ -1403,12 +1809,44 @@ Schema for an array of Device Commands
   }
 }
 ```
+### <a name="device-commands-example"></a> Example
+
+```json
+[
+  {
+    "time": "2016-06-13T04:00:00.000Z",
+    "name": "myCommand",
+    "payload": [
+      1,
+      1,
+      2,
+      3,
+      5
+    ]
+  },
+  {
+    "time": "2016-06-13T04:00:00.000Z",
+    "name": "myCommand",
+    "payload": [
+      1,
+      1,
+      2,
+      3,
+      5
+    ]
+  }
+]
+```
+
+<br/>
 
 ## Device Credentials
 
 Schema for the body of a Device authentication request
 
-```javascript
+### <a name="device-credentials-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -1432,12 +1870,96 @@ Schema for the body of a Device authentication request
   "additionalProperties": false
 }
 ```
+### <a name="device-credentials-example"></a> Example
+
+```json
+{
+  "deviceId": "575ecf887ae143cd83dc4aa2",
+  "key": "this_would_be_the_key",
+  "secret": "this_would_be_the_secret"
+}
+```
+
+<br/>
+
+## Device Log
+
+Log of connection information for a Device
+
+### <a name="device-log-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "connected": {
+        "enum": [
+          1,
+          0
+        ]
+      },
+      "time": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "disconnectReason": {
+        "type": "string"
+      },
+      "messagesFromClient": {
+        "type": "number"
+      },
+      "messagesToClient": {
+        "type": "number"
+      }
+    }
+  }
+}
+```
+### <a name="device-log-example"></a> Example
+
+```json
+[
+  {
+    "connected": 1,
+    "time": "2016-06-03T00:56:22.447Z"
+  },
+  {
+    "connected": 0,
+    "disconnectReason": "Connection Lost",
+    "messagesFromClient": 2548,
+    "messagesToClient": 0,
+    "time": "2016-06-03T00:56:21.028Z"
+  },
+  {
+    "connected": 1,
+    "time": "2016-06-01T06:24:39.190Z"
+  },
+  {
+    "connected": 0,
+    "disconnectReason": "Connection Lost",
+    "messagesFromClient": 479,
+    "messagesToClient": 0,
+    "time": "2016-06-01T06:24:37.925Z"
+  },
+  {
+    "connected": 1,
+    "time": "2016-05-31T22:24:48.777Z"
+  }
+]
+```
+
+<br/>
 
 ## Device Patch
 
 Schema for the body of a Device modification request
 
-```javascript
+### <a name="device-patch-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -1517,12 +2039,37 @@ Schema for the body of a Device modification request
   "additionalProperties": false
 }
 ```
+### <a name="device-patch-example"></a> Example
+
+```json
+{
+  "name": "My Updated Device",
+  "description": "Description of my updated device",
+  "tags": [
+    {
+      "key": "TagKey",
+      "value": "TagValue"
+    }
+  ],
+  "attributes": [
+    {
+      "name": "voltage",
+      "dataType": "number"
+    }
+  ],
+  "deviceClass": "standalone"
+}
+```
+
+<br/>
 
 ## Device Post
 
 Schema for the body of a Device creation request
 
-```javascript
+### <a name="device-post-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -1605,12 +2152,37 @@ Schema for the body of a Device creation request
   ]
 }
 ```
+### <a name="device-post-example"></a> Example
+
+```json
+{
+  "name": "My New Device",
+  "description": "Description of my new device",
+  "tags": [
+    {
+      "key": "TagKey",
+      "value": "TagValue"
+    }
+  ],
+  "attributes": [
+    {
+      "name": "voltage",
+      "dataType": "number"
+    }
+  ],
+  "deviceClass": "standalone"
+}
+```
+
+<br/>
 
 ## Device Recipe
 
 Schema for a single Device Recipe
 
-```javascript
+### <a name="device-recipe-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -1718,12 +2290,44 @@ Schema for a single Device Recipe
   }
 }
 ```
+### <a name="device-recipe-example"></a> Example
+
+```json
+{
+  "id": "575ecec57ae143cd83dc4a9f",
+  "deviceRecipeId": "575ecec57ae143cd83dc4a9f",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "name": "Actual recipe name",
+  "deviceName": "Future device name",
+  "description": "My recipe description",
+  "deviceDescription": "Future device description",
+  "tags": [
+    {
+      "key": "TagKey",
+      "value": "TagValue"
+    }
+  ],
+  "attributes": [
+    {
+      "name": "voltage",
+      "dataType": "number"
+    }
+  ],
+  "deviceClass": "standalone"
+}
+```
+
+<br/>
 
 ## Device Recipe Bulk Create
 
 Schema for the result of a bulk Device creation request
 
-```javascript
+### <a name="device-recipe-bulk-create-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -1740,12 +2344,25 @@ Schema for the result of a bulk Device creation request
   }
 }
 ```
+### <a name="device-recipe-bulk-create-example"></a> Example
+
+```json
+{
+  "created": 10,
+  "failed": 0,
+  "csvResult": "a,comma,separated,string,of,results"
+}
+```
+
+<br/>
 
 ## Device Recipe Bulk Create Post
 
 Schema for the body of a bulk Device creation request
 
-```javascript
+### <a name="device-recipe-bulk-create-post-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -1766,12 +2383,25 @@ Schema for the body of a bulk Device creation request
   ]
 }
 ```
+### <a name="device-recipe-bulk-create-post-example"></a> Example
+
+```json
+{
+  "nameColumn": "myNameColumn",
+  "descriptionColumn": "column2",
+  "csv": "a,comma,separated,string,of,input,data"
+}
+```
+
+<br/>
 
 ## Device Recipe Patch
 
 Schema for the body of a Device Recipe modification request
 
-```javascript
+### <a name="device-recipe-patch-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -1860,12 +2490,39 @@ Schema for the body of a Device Recipe modification request
   "additionalProperties": false
 }
 ```
+### <a name="device-recipe-patch-example"></a> Example
+
+```json
+{
+  "name": "My Updated Device Recipe",
+  "deviceName": "Future device name",
+  "description": "Description of my updated device recipe",
+  "deviceDescription": "Future device description",
+  "tags": [
+    {
+      "key": "TagKey",
+      "value": "TagValue"
+    }
+  ],
+  "attributes": [
+    {
+      "name": "voltage",
+      "dataType": "number"
+    }
+  ],
+  "deviceClass": "standalone"
+}
+```
+
+<br/>
 
 ## Device Recipe Post
 
 Schema for the body of a Device Recipe creation request
 
-```javascript
+### <a name="device-recipe-post-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -1957,12 +2614,39 @@ Schema for the body of a Device Recipe creation request
   ]
 }
 ```
+### <a name="device-recipe-post-example"></a> Example
+
+```json
+{
+  "name": "My New Device Recipe",
+  "deviceName": "Future device name",
+  "description": "Description of my new device recipe",
+  "deviceDescription": "Future device description",
+  "tags": [
+    {
+      "key": "TagKey",
+      "value": "TagValue"
+    }
+  ],
+  "attributes": [
+    {
+      "name": "voltage",
+      "dataType": "number"
+    }
+  ],
+  "deviceClass": "standalone"
+}
+```
+
+<br/>
 
 ## Device Recipes
 
 Schema for a collection of Device Recipes
 
-```javascript
+### <a name="device-recipes-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -2112,12 +2796,55 @@ Schema for a collection of Device Recipes
   }
 }
 ```
+### <a name="device-recipes-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "575ecec57ae143cd83dc4a9f",
+      "deviceRecipeId": "575ecec57ae143cd83dc4a9f",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "name": "Actual recipe name",
+      "deviceName": "Future device name",
+      "description": "My recipe description",
+      "deviceDescription": "Future device description",
+      "tags": [
+        {
+          "key": "TagKey",
+          "value": "TagValue"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "voltage",
+          "dataType": "number"
+        }
+      ],
+      "deviceClass": "standalone"
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
 
 ## Device State
 
 Schema for a single Device state
 
-```javascript
+### <a name="device-state-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -2149,12 +2876,26 @@ Schema for a single Device state
   "additionalProperties": false
 }
 ```
+### <a name="device-state-example"></a> Example
+
+```json
+{
+  "time": "2016-06-13T04:00:00.000Z",
+  "data": {
+    "voltage": 22.4
+  }
+}
+```
+
+<br/>
 
 ## Device States
 
 Schema for an array of Device states
 
-```javascript
+### <a name="device-states-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "array",
@@ -2191,12 +2932,28 @@ Schema for an array of Device states
   }
 }
 ```
+### <a name="device-states-example"></a> Example
+
+```json
+[
+  {
+    "time": "2016-06-13T04:00:00.000Z",
+    "data": {
+      "voltage": 22.4
+    }
+  }
+]
+```
+
+<br/>
 
 ## Device Tag Filter
 
 Array of Tags for filtering devices. Tag keys and tag values are optional.
 
-```javascript
+### <a name="device-tag-filter-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "array",
@@ -2217,12 +2974,29 @@ Array of Tags for filtering devices. Tag keys and tag values are optional.
   }
 }
 ```
+### <a name="device-tag-filter-example"></a> Example
+
+```json
+[
+  {
+    "value": "red"
+  },
+  {
+    "key": "floor",
+    "value": 2
+  }
+]
+```
+
+<br/>
 
 ## Devices
 
 Schema for a collection of Devices
 
-```javascript
+### <a name="devices-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -2333,7 +3107,11 @@ Schema for a collection of Devices
                 "format": "date-time"
               },
               "connected": {
-                "type": "number"
+                "enum": [
+                  1,
+                  0,
+                  null
+                ]
               }
             }
           }
@@ -2375,12 +3153,61 @@ Schema for a collection of Devices
   }
 }
 ```
+### <a name="devices-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "575ecf887ae143cd83dc4aa2",
+      "deviceId": "575ecf887ae143cd83dc4aa2",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "name": "My Device",
+      "description": "A device description",
+      "tags": [
+        {
+          "key": "TagKey",
+          "value": "TagValue"
+        },
+        {
+          "key": "floor",
+          "value": "8"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "voltage",
+          "dataType": "number"
+        }
+      ],
+      "deviceClass": "standalone",
+      "connectionInfo": {
+        "time": "2016-06-14T08:15:00.000Z",
+        "connected": 1
+      }
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
 
 ## Disable Two Factor Auth
 
 Schema for the body of a request to disable two factor auth
 
-```javascript
+### <a name="disable-two-factor-auth-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -2402,12 +3229,24 @@ Schema for the body of a request to disable two factor auth
   "additionalProperties": false
 }
 ```
+### <a name="disable-two-factor-auth-example"></a> Example
+
+```json
+{
+  "twoFactorCode": "123123",
+  "password": "this would be your password"
+}
+```
+
+<br/>
 
 ## Enable Two Factor Auth
 
 Schema for the body of a request to enable two factor auth
 
-```javascript
+### <a name="enable-two-factor-auth-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -2430,12 +3269,24 @@ Schema for the body of a request to enable two factor auth
   "additionalProperties": false
 }
 ```
+### <a name="enable-two-factor-auth-example"></a> Example
+
+```json
+{
+  "twoFactorAuthKey": "HBBGWJJVOVLXS4ZGNRTDOUKTMESFUR3BMRWVQND2HJYT44TOMVJA",
+  "password": "this would be your password"
+}
+```
+
+<br/>
 
 ## Error
 
 Schema for errors returned by the API
 
-```javascript
+### <a name="error-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -2449,12 +3300,24 @@ Schema for errors returned by the API
   }
 }
 ```
+### <a name="error-example"></a> Example
+
+```json
+{
+  "type": "NotFound",
+  "message": "Application was not found"
+}
+```
+
+<br/>
 
 ## Event
 
 Schema for a single Event
 
-```javascript
+### <a name="event-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -2571,12 +3434,34 @@ Schema for a single Event
   }
 }
 ```
+### <a name="event-example"></a> Example
+
+```json
+{
+  "id": "575ed0de7ae143cd83dc4aa5",
+  "eventId": "575ed0de7ae143cd83dc4aa5",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "sourceType": "user",
+  "sourceId": "575ed70c7ae143cd83dc4aa9",
+  "level": "info",
+  "state": "new",
+  "subject": "Power levels critical",
+  "message": "Power levels on device 432 have surpassed critical thresholds",
+  "updates": []
+}
+```
+
+<br/>
 
 ## Event Patch
 
 Schema for the body of an Event modification request
 
-```javascript
+### <a name="event-patch-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -2598,12 +3483,24 @@ Schema for the body of an Event modification request
   "additionalProperties": false
 }
 ```
+### <a name="event-patch-example"></a> Example
+
+```json
+{
+  "state": "acknowledged",
+  "comment": "Looking into this issue"
+}
+```
+
+<br/>
 
 ## Event Post
 
 Schema for the body of an Event creation request
 
-```javascript
+### <a name="event-post-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -2644,12 +3541,26 @@ Schema for the body of an Event creation request
   "additionalProperties": false
 }
 ```
+### <a name="event-post-example"></a> Example
+
+```json
+{
+  "level": "info",
+  "state": "new",
+  "subject": "Power levels critical",
+  "message": "Power levels on device 432 have surpassed critical thresholds"
+}
+```
+
+<br/>
 
 ## Events
 
 Schema for a collection of Events
 
-```javascript
+### <a name="events-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -2816,12 +3727,46 @@ Schema for a collection of Events
   }
 }
 ```
+### <a name="events-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "575ed0de7ae143cd83dc4aa5",
+      "eventId": "575ed0de7ae143cd83dc4aa5",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "sourceType": "user",
+      "sourceId": "575ed70c7ae143cd83dc4aa9",
+      "level": "info",
+      "state": "new",
+      "subject": "Power levels critical",
+      "message": "Power levels on device 432 have surpassed critical thresholds",
+      "updates": []
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "subject",
+  "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "state": "new"
+}
+```
+
+<br/>
 
 ## Workflow
 
 Schema for a single Workflow
 
-```javascript
+### <a name="workflow-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -2945,16 +3890,145 @@ Schema for a single Workflow
           "json"
         ]
       }
+    },
+    "stats": {
+      "type": "object",
+      "properties": {
+        "runCount": {
+          "type": "number"
+        },
+        "errorCount": {
+          "type": "number"
+        }
+      }
     }
   }
 }
 ```
+### <a name="workflow-example"></a> Example
+
+```json
+{
+  "id": "575ed18f7ae143cd83dc4aa6",
+  "flowId": "575ed18f7ae143cd83dc4aa6",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "name": "My Workflow",
+  "description": "Description of my empty workflow",
+  "enabled": true,
+  "triggers": [],
+  "nodes": [],
+  "globals": [],
+  "stats": {
+    "runCount": 0,
+    "errorCount": 0
+  }
+}
+```
+
+<br/>
+
+## Workflow Log
+
+Log of workflow run information
+
+### <a name="workflow-log-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "time": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "errorCount": {
+        "type": "number"
+      },
+      "pathsCompleted": {
+        "type": "number"
+      },
+      "totalCount": {
+        "type": "number"
+      },
+      "totalTime": {
+        "type": "number"
+      },
+      "wallTime": {
+        "type": "number"
+      },
+      "nodes": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "time": {
+              "type": "number"
+            },
+            "count": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "errors": {
+        "type": "array",
+        "items": {}
+      }
+    }
+  }
+}
+```
+### <a name="workflow-log-example"></a> Example
+
+```json
+[
+  {
+    "time": "2016-06-03T00:56:22.447Z",
+    "errorCount": 0,
+    "pathsCompleted": 1,
+    "totalCount": 1,
+    "totalTime": 24,
+    "wallTime": 450,
+    "errors": [],
+    "nodes": {
+      "SJaEw_dV": {
+        "time": 22,
+        "count": 1
+      }
+    }
+  },
+  {
+    "time": "2016-06-03T00:57:22.447Z",
+    "errorCount": 0,
+    "pathsCompleted": 1,
+    "totalCount": 3,
+    "totalTime": 58,
+    "wallTime": 152,
+    "errors": [],
+    "nodes": {
+      "SJaEw_dV": {
+        "time": 18,
+        "count": 3
+      }
+    }
+  }
+]
+```
+
+<br/>
 
 ## Workflow Patch
 
 Schema for the body of a Workflow modification request
 
-```javascript
+### <a name="workflow-patch-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -3063,12 +4137,25 @@ Schema for the body of a Workflow modification request
   "additionalProperties": false
 }
 ```
+### <a name="workflow-patch-example"></a> Example
+
+```json
+{
+  "name": "My Updated Workflow",
+  "description": "Description of my updated workflow",
+  "enabled": false
+}
+```
+
+<br/>
 
 ## Workflow Post
 
 Schema for the body of a Workflow creation request
 
-```javascript
+### <a name="workflow-post-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -3180,12 +4267,54 @@ Schema for the body of a Workflow creation request
   ]
 }
 ```
+### <a name="workflow-post-example"></a> Example
+
+```json
+{
+  "name": "My New Workflow",
+  "description": "Description of my new workflow"
+}
+```
+
+<br/>
+
+## Workflow Storage Entries
+
+Set of persistent workflow storage values
+
+### <a name="workflow-storage-entries-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "patternProperties": {
+    "^.{1,255}$": {}
+  }
+}
+```
+### <a name="workflow-storage-entries-example"></a> Example
+
+```json
+{
+  "myStorageKey": "hello",
+  "other key": [
+    13,
+    21,
+    34
+  ]
+}
+```
+
+<br/>
 
 ## Workflow Storage Entry
 
 Schema for the body of a request to set a Workflow storage entry
 
-```javascript
+### <a name="workflow-storage-entry-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -3203,12 +4332,24 @@ Schema for the body of a request to set a Workflow storage entry
   ]
 }
 ```
+### <a name="workflow-storage-entry-example"></a> Example
+
+```json
+{
+  "key": "myStorageKey",
+  "value": 12
+}
+```
+
+<br/>
 
 ## Workflows
 
 Schema for a collection of Workflows
 
-```javascript
+### <a name="workflows-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -3339,6 +4480,17 @@ Schema for a collection of Workflows
                 "json"
               ]
             }
+          },
+          "stats": {
+            "type": "object",
+            "properties": {
+              "runCount": {
+                "type": "number"
+              },
+              "errorCount": {
+                "type": "number"
+              }
+            }
           }
         }
       }
@@ -3378,12 +4530,48 @@ Schema for a collection of Workflows
   }
 }
 ```
+### <a name="workflows-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "575ed18f7ae143cd83dc4aa6",
+      "flowId": "575ed18f7ae143cd83dc4aa6",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "name": "My Workflow",
+      "description": "Description of my empty workflow",
+      "enabled": true,
+      "triggers": [],
+      "nodes": [],
+      "globals": [],
+      "stats": {
+        "runCount": 0,
+        "errorCount": 0
+      }
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
 
 ## Github Login
 
 Schema for the body of a Github login request
 
-```javascript
+### <a name="github-login-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -3399,12 +4587,23 @@ Schema for the body of a Github login request
   "additionalProperties": false
 }
 ```
+### <a name="github-login-example"></a> Example
+
+```json
+{
+  "accessToken": "the github access token"
+}
+```
+
+<br/>
 
 ## Last Value Data
 
 Schema for the result of a last value query
 
-```javascript
+### <a name="last-value-data-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -3440,12 +4639,34 @@ Schema for the result of a last value query
   "additionalProperties": false
 }
 ```
+### <a name="last-value-data-example"></a> Example
+
+```json
+{
+  "575ecf887ae143cd83dc4aa2": {
+    "time": "2016-06-13T04:00:00.000Z",
+    "data": {
+      "voltage": 12
+    }
+  },
+  "575ef5c97ae143cd83dc4aac": {
+    "time": "2016-06-12T08:30:00.000Z",
+    "data": {
+      "voltage": 19
+    }
+  }
+}
+```
+
+<br/>
 
 ## Last Value Query
 
 Schema for the body of a last value query request
 
-```javascript
+### <a name="last-value-query-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -3483,12 +4704,27 @@ Schema for the body of a last value query request
   "additionalProperties": false
 }
 ```
+### <a name="last-value-query-example"></a> Example
+
+```json
+{
+  "deviceIds": [
+    "575ecf887ae143cd83dc4aa2",
+    "575ef5c97ae143cd83dc4aac"
+  ],
+  "attribute": "voltage"
+}
+```
+
+<br/>
 
 ## Me
 
 Schema for information about the currently authenticated user
 
-```javascript
+### <a name="me-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -3663,12 +4899,40 @@ Schema for information about the currently authenticated user
   }
 }
 ```
+### <a name="me-example"></a> Example
+
+```json
+{
+  "id": "575ed70c7ae143cd83dc4aa9",
+  "userId": "575ed70c7ae143cd83dc4aa9",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "passwordLastUpdated": "2016-06-13T04:00:00.000Z",
+  "email": "example@losant.com",
+  "firstName": "Example",
+  "lastName": "Name",
+  "companyName": "Losant IoT, Inc.",
+  "url": "https://www.losant.com",
+  "emailVerified": true,
+  "twoFactorAuthEnabled": false,
+  "fullName": "Example Name",
+  "summary": {
+    "appCount": 8,
+    "dashCount": 5,
+    "orgCount": 2
+  }
+}
+```
+
+<br/>
 
 ## Me Patch
 
 Schema for the body of request to modify the current user
 
-```javascript
+### <a name="me-patch-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -3713,12 +4977,28 @@ Schema for the body of request to modify the current user
   "additionalProperties": false
 }
 ```
+### <a name="me-patch-example"></a> Example
+
+```json
+{
+  "email": "example@losant.com",
+  "firstName": "Example",
+  "lastName": "Name",
+  "companyName": "Losant IoT, Inc.",
+  "url": "https://www.losant.com",
+  "password": "my new password"
+}
+```
+
+<br/>
 
 ## Multi Device Command
 
 Schema for the body of a request to send a command to multiple Devices
 
-```javascript
+### <a name="multi-device-command-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -3765,12 +5045,37 @@ Schema for the body of a request to send a command to multiple Devices
   "additionalProperties": false
 }
 ```
+### <a name="multi-device-command-example"></a> Example
+
+```json
+{
+  "time": "2016-06-13T04:00:00.000Z",
+  "name": "myCommand",
+  "payload": [
+    1,
+    1,
+    2,
+    3,
+    5
+  ],
+  "deviceTags": [
+    {
+      "key": "floor",
+      "value": 8
+    }
+  ]
+}
+```
+
+<br/>
 
 ## Organization
 
 Schema for a single Organization
 
-```javascript
+### <a name="organization-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -3853,12 +5158,48 @@ Schema for a single Organization
   }
 }
 ```
+### <a name="organization-example"></a> Example
+
+```json
+{
+  "id": "575ed6e87ae143cd83dc4aa8",
+  "orgId": "575ed6e87ae143cd83dc4aa8",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "name": "My Organization",
+  "description": "My organization description",
+  "members": [
+    {
+      "userId": "575ed70c7ae143cd83dc4aa9",
+      "firstName": "Example",
+      "lastName": "Name",
+      "email": "example@losant.com",
+      "role": "admin"
+    },
+    {
+      "userId": "575ef90f7ae143cd83dc4aad",
+      "firstName": "Other View",
+      "lastName": "Only User",
+      "email": "viewer@losant.com",
+      "role": "view"
+    }
+  ],
+  "summary": {
+    "appCount": 2,
+    "dashCount": 1
+  }
+}
+```
+
+<br/>
 
 ## Organization Invitation Post
 
 Schema for the body of a request to send an invitation
 
-```javascript
+### <a name="organization-invitation-post-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -3884,12 +5225,24 @@ Schema for the body of a request to send an invitation
   ]
 }
 ```
+### <a name="organization-invitation-post-example"></a> Example
+
+```json
+{
+  "email": "invitedUser@losant.com",
+  "role": "edit"
+}
+```
+
+<br/>
 
 ## Organization Invitations
 
 Schema for an array of pending invitations to an Organization
 
-```javascript
+### <a name="organization-invitations-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "array",
@@ -3927,12 +5280,30 @@ Schema for an array of pending invitations to an Organization
   }
 }
 ```
+### <a name="organization-invitations-example"></a> Example
+
+```json
+[
+  {
+    "id": "575ed71e7ae143cd83dc4aaa",
+    "email": "invitedUser@losant.com",
+    "role": "edit",
+    "inviteDate": "2016-05-13T04:00:00.000Z",
+    "ttl": 4233600000,
+    "hasExpired": true
+  }
+]
+```
+
+<br/>
 
 ## Organization Member Patch
 
 Schema for the body of a request to modify an Organization member
 
-```javascript
+### <a name="organization-member-patch-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -3957,12 +5328,24 @@ Schema for the body of a request to modify an Organization member
   ]
 }
 ```
+### <a name="organization-member-patch-example"></a> Example
+
+```json
+{
+  "userId": "575ef90f7ae143cd83dc4aad",
+  "role": "view"
+}
+```
+
+<br/>
 
 ## Organization Patch
 
 Schema for the body of an Organization modification request
 
-```javascript
+### <a name="organization-patch-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -3980,12 +5363,24 @@ Schema for the body of an Organization modification request
   "additionalProperties": false
 }
 ```
+### <a name="organization-patch-example"></a> Example
+
+```json
+{
+  "name": "My Updated Organization",
+  "description": "Description of my updated organization"
+}
+```
+
+<br/>
 
 ## Organization Post
 
 Schema for the body of an Organization creation request
 
-```javascript
+### <a name="organization-post-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -4006,12 +5401,24 @@ Schema for the body of an Organization creation request
   ]
 }
 ```
+### <a name="organization-post-example"></a> Example
+
+```json
+{
+  "name": "My New Organization",
+  "description": "Description of my new organization"
+}
+```
+
+<br/>
 
 ## Organizations
 
 Schema for a collection of Organizations
 
-```javascript
+### <a name="organizations-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -4132,12 +5539,58 @@ Schema for a collection of Organizations
   }
 }
 ```
+### <a name="organizations-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "575ed6e87ae143cd83dc4aa8",
+      "orgId": "575ed6e87ae143cd83dc4aa8",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "name": "My Organization",
+      "description": "My organization description",
+      "members": [
+        {
+          "userId": "575ed70c7ae143cd83dc4aa9",
+          "firstName": "Example",
+          "lastName": "Name",
+          "email": "example@losant.com",
+          "role": "admin"
+        },
+        {
+          "userId": "575ef90f7ae143cd83dc4aad",
+          "firstName": "Other View",
+          "lastName": "Only User",
+          "email": "viewer@losant.com",
+          "role": "view"
+        }
+      ],
+      "summary": {
+        "appCount": 2,
+        "dashCount": 1
+      }
+    }
+  ],
+  "count": 1,
+  "totalCount": 2,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc"
+}
+```
+
+<br/>
 
 ## Recent Item
 
 Schema for the body of a request to add a recent item
 
-```javascript
+### <a name="recent-item-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -4166,12 +5619,25 @@ Schema for the body of a request to add a recent item
   ]
 }
 ```
+### <a name="recent-item-example"></a> Example
+
+```json
+{
+  "itemType": "device",
+  "parentId": "575ec8687ae143cd83dc4a97",
+  "itemId": "575ecf887ae143cd83dc4aa2"
+}
+```
+
+<br/>
 
 ## Recent Item List
 
 Schema for an array of recent items
 
-```javascript
+### <a name="recent-item-list-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -4209,12 +5675,33 @@ Schema for an array of recent items
   }
 }
 ```
+### <a name="recent-item-list-example"></a> Example
+
+```json
+{
+  "itemType": "application",
+  "items": [
+    {
+      "id": "575ec8687ae143cd83dc4a97",
+      "name": "My Application"
+    },
+    {
+      "id": "575efbcc7ae143cd83dc4aae",
+      "name": "My Other Application"
+    }
+  ]
+}
+```
+
+<br/>
 
 ## Success
 
 Schema for reporting a successful operation
 
-```javascript
+### <a name="success-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -4228,12 +5715,23 @@ Schema for reporting a successful operation
   }
 }
 ```
+### <a name="success-example"></a> Example
+
+```json
+{
+  "success": true
+}
+```
+
+<br/>
 
 ## Time Series Data
 
 Schema for the result of a time series query
 
-```javascript
+### <a name="time-series-data-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -4324,12 +5822,62 @@ Schema for the result of a time series query
   ]
 }
 ```
+### <a name="time-series-data-example"></a> Example
+
+```json
+{
+  "start": "2016-06-15T03:50:00.000Z",
+  "end": "2016-06-15T04:00:00.000Z",
+  "resolution": 300000,
+  "aggregation": "MEAN",
+  "devices": {
+    "575ecf887ae143cd83dc4aa2": {
+      "name": "My Device",
+      "points": [
+        {
+          "time": "2016-06-15T03:50:00.000Z",
+          "data": {
+            "voltage": 10.3
+          }
+        },
+        {
+          "time": "2016-06-15T03:55:00.000Z",
+          "data": {
+            "voltage": 12.7
+          }
+        }
+      ]
+    },
+    "575ef5c97ae143cd83dc4aac": {
+      "name": "My Other Device",
+      "points": [
+        {
+          "time": "2016-06-15T03:50:00.000Z",
+          "data": {
+            "voltage": 10.3
+          }
+        },
+        {
+          "time": "2016-06-15T03:55:00.000Z",
+          "data": {
+            "voltage": 12.7
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+<br/>
 
 ## Time Series Query
 
 Schema for the body of a time series query request
 
-```javascript
+### <a name="time-series-query-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -4395,12 +5943,33 @@ Schema for the body of a time series query request
   "additionalProperties": false
 }
 ```
+### <a name="time-series-query-example"></a> Example
+
+```json
+{
+  "end": 0,
+  "duration": 600000,
+  "resolution": 300000,
+  "aggregation": "MEAN",
+  "attributes": [
+    "voltage"
+  ],
+  "deviceTags": {
+    "key": "floor",
+    "value": "8"
+  }
+}
+```
+
+<br/>
 
 ## User Credentials
 
 Schema for the body of a User authentication request
 
-```javascript
+### <a name="user-credentials-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -4427,12 +5996,24 @@ Schema for the body of a User authentication request
   "additionalProperties": false
 }
 ```
+### <a name="user-credentials-example"></a> Example
+
+```json
+{
+  "email": "example@losant.com",
+  "password": "this is the password"
+}
+```
+
+<br/>
 
 ## Virtual Button Press
 
 Schema for the body of a request to press a Workflow virtual button
 
-```javascript
+### <a name="virtual-button-press-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -4448,12 +6029,26 @@ Schema for the body of a request to press a Workflow virtual button
   "additionalProperties": false
 }
 ```
+### <a name="virtual-button-press-example"></a> Example
+
+```json
+{
+  "key": "575ed18f7ae143cd83dc4aa6-SJaEw_dV",
+  "payload": {
+    "some": "data"
+  }
+}
+```
+
+<br/>
 
 ## Webhook
 
 Schema for a single Webhook
 
-```javascript
+### <a name="webhook-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -4507,12 +6102,30 @@ Schema for a single Webhook
   }
 }
 ```
+### <a name="webhook-example"></a> Example
+
+```json
+{
+  "id": "575ed78e7ae143cd83dc4aab",
+  "webhookId": "575ed78e7ae143cd83dc4aab",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "name": "My Webhook",
+  "token": "the_webhook_token",
+  "responseCode": 200
+}
+```
+
+<br/>
 
 ## Webhook Patch
 
 Schema for the body of a Webhook modification request
 
-```javascript
+### <a name="webhook-patch-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -4543,12 +6156,24 @@ Schema for the body of a Webhook modification request
   "additionalProperties": false
 }
 ```
+### <a name="webhook-patch-example"></a> Example
+
+```json
+{
+  "name": "My Updated Webhook",
+  "responseCode": 201
+}
+```
+
+<br/>
 
 ## Webhook Post
 
 Schema for the body of a Webhook creation request
 
-```javascript
+### <a name="webhook-post-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -4582,12 +6207,23 @@ Schema for the body of a Webhook creation request
   "additionalProperties": false
 }
 ```
+### <a name="webhook-post-example"></a> Example
+
+```json
+{
+  "name": "My New Webhook"
+}
+```
+
+<br/>
 
 ## Webhooks
 
 Schema for a collection of Webhooks
 
-```javascript
+### <a name="webhooks-schema"></a> Schema
+
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -4683,3 +6319,30 @@ Schema for a collection of Webhooks
   }
 }
 ```
+### <a name="webhooks-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "575ed78e7ae143cd83dc4aab",
+      "webhookId": "575ed78e7ae143cd83dc4aab",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "name": "My Webhook",
+      "token": "the_webhook_token",
+      "responseCode": 200
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
