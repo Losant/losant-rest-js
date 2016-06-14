@@ -1,13 +1,15 @@
 # Losant Javascript REST API Client
 
+[![Build Status](https://travis-ci.org/Losant/losant-rest-js.svg?branch=master)](https://travis-ci.org/Losant/losant-rest-js)
+
 The [Losant](https://www.losant.com>) REST API client provides a simple way to
 use the comprehensive Losant API.  You can authenticate either as a Losant
 device or with your user account, and have access to all the functionality
 of the Losant platform.
 
-This client works both in browsers and node.js, and supports both callbacks
-and promises.  It uses [Axios](https://github.com/mzabriskie/axios) under the
-covers for the actual HTTP communication.
+This client works both in browsers and node.js (v0.12 and newer), and supports
+both callbacks and promises. It uses [Axios](https://github.com/mzabriskie/axios)
+under the covers for the actual HTTP communication.
 
 <br/>
 
