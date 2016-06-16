@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Losant/losant-rest-js.svg?branch=master)](https://travis-ci.org/Losant/losant-rest-js)
 
-The [Losant](https://www.losant.com>) REST API client provides a simple way to
+The [Losant](https://www.losant.com) REST API client provides a simple way to
 use the comprehensive Losant API.  You can authenticate either as a Losant
 device or with your user account, and have access to all the functionality
 of the Losant platform.
