@@ -1,4 +1,4 @@
-var api = require('losant-api-js');
+var api = require('losant-rest');
 
 var client = api.createClient({ accessToken: 'my_token' });
 client.devices.get({ applicationId: 'myAppId' })

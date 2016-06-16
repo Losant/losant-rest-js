@@ -18,7 +18,7 @@ under the covers for the actual HTTP communication.
 The latest stable version is available in NPM and can be installed using
 
 ```bash
-npm install --save losant-api-js
+npm install --save losant-rest
 ```
 
 <br/>
@@ -29,7 +29,7 @@ Below is a high-level example of using the Losant Ruby REST API client to
 authenticate against the Losant Platform and report state for a device.
 
 ```javascript
-var api = require('losant-api-js');
+var api = require('losant-rest');
 var mySensor = require('./my-analog-sensor');
 
 var client = api.createClient();
@@ -65,7 +65,7 @@ client.auth.authenticateDevice({ credentials: {
 var client = api.createClient({ accessToken: undefined, url: 'https://api.losant.com' })
 ```
 
-The losant-api-js module exposes a single function named createClient which
+The losant-rest module exposes a single function named createClient which
 returns a client instance.  Ite takes the following options:
 
 *   accessToken  
