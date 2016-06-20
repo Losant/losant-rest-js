@@ -67,6 +67,12 @@
     },
     "public": {
       "type": "boolean"
+    },
+    "password": {
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "additionalProperties": false,

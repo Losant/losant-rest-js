@@ -1145,6 +1145,9 @@ Schema for a single Dashboard
       "minimum": 5,
       "maximum": 600
     },
+    "isPasswordProtected": {
+      "type": "boolean"
+    },
     "public": {
       "type": "boolean"
     },
@@ -1288,6 +1291,12 @@ Schema for the body of a Dashboard modification request
     },
     "public": {
       "type": "boolean"
+    },
+    "password": {
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "additionalProperties": false
@@ -1382,6 +1391,12 @@ Schema for the body of a Dashboard creation request
     },
     "public": {
       "type": "boolean"
+    },
+    "password": {
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "additionalProperties": false,
@@ -1459,6 +1474,9 @@ Schema for a collection of Dashboards
             "type": "number",
             "minimum": 5,
             "maximum": 600
+          },
+          "isPasswordProtected": {
+            "type": "boolean"
           },
           "public": {
             "type": "boolean"

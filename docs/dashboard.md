@@ -80,6 +80,7 @@ client.dashboard.get(params)
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | dashboardId | string | Y | ID of the associated dashboard |  | 575ece2b7ae143cd83dc4a9b |
+| password | string | N | Password for password-protected dashboards |  | undefined |
 
 #### Successful Responses
 
