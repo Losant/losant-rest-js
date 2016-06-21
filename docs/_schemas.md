@@ -1024,8 +1024,8 @@ Schema for the sucessful response when authenticating a Device
       "type": "string",
       "enum": [
         "standalone",
-        "master",
-        "owned",
+        "gateway",
+        "peripheral",
         "floating",
         "virtual"
       ]
@@ -1682,13 +1682,13 @@ Schema for a single Device
       "type": "string",
       "enum": [
         "standalone",
-        "master",
-        "owned",
+        "gateway",
+        "peripheral",
         "floating",
         "virtual"
       ]
     },
-    "masterId": {
+    "gatewayId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
@@ -2043,13 +2043,13 @@ Schema for the body of a Device modification request
       "type": "string",
       "enum": [
         "standalone",
-        "master",
-        "owned",
+        "gateway",
+        "peripheral",
         "floating",
         "virtual"
       ]
     },
-    "masterId": {
+    "gatewayId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     }
@@ -2153,13 +2153,13 @@ Schema for the body of a Device creation request
       "type": "string",
       "enum": [
         "standalone",
-        "master",
-        "owned",
+        "gateway",
+        "peripheral",
         "floating",
         "virtual"
       ]
     },
-    "masterId": {
+    "gatewayId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     }
@@ -2295,13 +2295,13 @@ Schema for a single Device Recipe
       "type": "string",
       "enum": [
         "standalone",
-        "master",
-        "owned",
+        "gateway",
+        "peripheral",
         "floating",
         "virtual"
       ]
     },
-    "masterId": {
+    "gatewayId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     }
@@ -2494,13 +2494,13 @@ Schema for the body of a Device Recipe modification request
       "type": "string",
       "enum": [
         "standalone",
-        "master",
-        "owned",
+        "gateway",
+        "peripheral",
         "floating",
         "virtual"
       ]
     },
-    "masterId": {
+    "gatewayId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     }
@@ -2615,13 +2615,13 @@ Schema for the body of a Device Recipe creation request
       "type": "string",
       "enum": [
         "standalone",
-        "master",
-        "owned",
+        "gateway",
+        "peripheral",
         "floating",
         "virtual"
       ]
     },
-    "masterId": {
+    "gatewayId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     }
@@ -2766,13 +2766,13 @@ Schema for a collection of Device Recipes
             "type": "string",
             "enum": [
               "standalone",
-              "master",
-              "owned",
+              "gateway",
+              "peripheral",
               "floating",
               "virtual"
             ]
           },
-          "masterId": {
+          "gatewayId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           }
@@ -3107,13 +3107,13 @@ Schema for a collection of Devices
             "type": "string",
             "enum": [
               "standalone",
-              "master",
-              "owned",
+              "gateway",
+              "peripheral",
               "floating",
               "virtual"
             ]
           },
-          "masterId": {
+          "gatewayId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },

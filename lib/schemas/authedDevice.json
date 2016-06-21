@@ -14,8 +14,8 @@
       "type": "string",
       "enum": [
         "standalone",
-        "master",
-        "owned",
+        "gateway",
+        "peripheral",
         "floating",
         "virtual"
       ]

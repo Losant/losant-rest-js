@@ -83,13 +83,13 @@
       "type": "string",
       "enum": [
         "standalone",
-        "master",
-        "owned",
+        "gateway",
+        "peripheral",
         "floating",
         "virtual"
       ]
     },
-    "masterId": {
+    "gatewayId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
