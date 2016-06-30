@@ -48,7 +48,8 @@
             "enum": [
               "facebook",
               "fitbit",
-              "none"
+              "none",
+              "twilio"
             ]
           },
           "verificationCode": {

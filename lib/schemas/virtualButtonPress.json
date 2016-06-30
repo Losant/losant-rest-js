@@ -5,7 +5,8 @@
     "key": {
       "type": "string"
     },
-    "payload": {}
+    "payload": {},
+    "meta": {}
   },
   "required": [
     "key"
