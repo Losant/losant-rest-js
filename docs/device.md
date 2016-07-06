@@ -13,6 +13,7 @@ parameters and the potential responses.
 *   [Get Log Entries](#get-log-entries)
 *   [Get State](#get-state)
 *   [Patch](#patch)
+*   [Remove Data](#remove-data)
 *   [Send Command](#send-command)
 *   [Send State](#send-state)
 
@@ -64,7 +65,7 @@ client.device.delete(params)
 
 ## Export
 
-Creates a device data export (to be emailed to the requestor)
+Creates a device data export (to be emailed to the requestor). Defaults to all data.
 
 ```javascript
 var params = {
@@ -90,8 +91,8 @@ client.device.export(params)
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
-| start | string | N | Start time of export (ms since epoch) | 1 | 1465790400000 |
-| end | string | N | End time of export (ms since epoch) | 1 | 1465790400000 |
+| start | string | N | Start time of export (ms since epoch - 0 means now, negative is relative to now) | 1 | 1465790400000 |
+| end | string | N | End time of export (ms since epoch - 0 means now, negative is relative to now) | 0 | 1465790400000 |
 
 #### Successful Responses
 
@@ -326,6 +327,52 @@ client.device.patch(params)
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Device](_schemas.md#device) | Updated device information |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if device was not found |
+
+<br/>
+
+## Remove Data
+
+Removes all device data for the specified time range. Defaults to all data.
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  deviceId: myDeviceId
+};
+
+// with callbacks
+client.device.removeData(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.device.removeData(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
+| start | string | N | Start time of export (ms since epoch - 0 means now, negative is relative to now) | 1 | 1465790400000 |
+| end | string | N | End time of export (ms since epoch - 0 means now, negative is relative to now) | 0 | 1465790400000 |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Success](_schemas.md#success) | If data removal was successfully started |
 
 #### Error Responses
 
