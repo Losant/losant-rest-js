@@ -64,6 +64,10 @@
 *   [Organizations](#organizations)
 *   [Recent Item](#recent-item)
 *   [Recent Item List](#recent-item-list)
+*   [Solution](#solution)
+*   [Solution Patch](#solution-patch)
+*   [Solution Post](#solution-post)
+*   [Solutions](#solutions)
 *   [Success](#success)
 *   [Time Series Data](#time-series-data)
 *   [Time Series Query](#time-series-query)
@@ -5710,6 +5714,403 @@ Schema for an array of recent items
       "name": "My Other Application"
     }
   ]
+}
+```
+
+<br/>
+
+## Solution
+
+Schema for a single Solution
+
+### <a name="solution-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "solutionId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "orgId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[0-9a-z_-]{1,255}$"
+    },
+    "allowSelfDeletion": {
+      "type": "boolean"
+    },
+    "allowSelfEmailChange": {
+      "type": "boolean"
+    },
+    "passwordReset": {
+      "type": "object",
+      "properties": {
+        "allowPasswordReset": {
+          "type": "boolean"
+        },
+        "emailSubject": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "emailBody": {
+          "type": "string",
+          "maxLength": 32767
+        },
+        "emailFrom": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 1024
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "solutionUserCount": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
+```
+### <a name="solution-example"></a> Example
+
+```json
+{
+  "id": "57955788124b37010084c053",
+  "solutionId": "57955788124b37010084c053",
+  "orgId": "575ed6e87ae143cd83dc4aa8",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "name": "My Solution",
+  "slug": "my_solution",
+  "allowSelfDeletion": false,
+  "allowSelfEmailChange": false,
+  "summary": {
+    "solutionUserCount": 0
+  }
+}
+```
+
+<br/>
+
+## Solution Patch
+
+Schema for the body of a Solution modification request
+
+### <a name="solution-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[0-9a-z_-]{1,255}$"
+    },
+    "allowSelfDeletion": {
+      "type": "boolean"
+    },
+    "allowSelfEmailChange": {
+      "type": "boolean"
+    },
+    "passwordReset": {
+      "type": "object",
+      "properties": {
+        "allowPasswordReset": {
+          "type": "boolean"
+        },
+        "emailSubject": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "emailBody": {
+          "type": "string",
+          "maxLength": 32767
+        },
+        "emailFrom": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 1024
+        }
+      },
+      "additionalProperties": false
+    },
+    "additionalProperties": false
+  }
+}
+```
+### <a name="solution-patch-example"></a> Example
+
+```json
+{
+  "name": "My Updated Solution",
+  "allowSelfDeletion": true
+}
+```
+
+<br/>
+
+## Solution Post
+
+Schema for the body of a Solution creation request
+
+### <a name="solution-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[0-9a-z_-]{1,255}$"
+    },
+    "allowSelfDeletion": {
+      "type": "boolean"
+    },
+    "allowSelfEmailChange": {
+      "type": "boolean"
+    },
+    "passwordReset": {
+      "type": "object",
+      "properties": {
+        "allowPasswordReset": {
+          "type": "boolean"
+        },
+        "emailSubject": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "emailBody": {
+          "type": "string",
+          "maxLength": 32767
+        },
+        "emailFrom": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 1024
+        }
+      },
+      "additionalProperties": false
+    },
+    "required": [
+      "name",
+      "slug"
+    ],
+    "additionalProperties": false
+  }
+}
+```
+### <a name="solution-post-example"></a> Example
+
+```json
+{
+  "name": "My New Solution",
+  "slug": "my_new_solution"
+}
+```
+
+<br/>
+
+## Solutions
+
+Schema for a collection of Solutions
+
+### <a name="solutions-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Solution",
+        "description": "Schema for a single Solution",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "solutionId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "orgId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "slug": {
+            "type": "string",
+            "pattern": "^[0-9a-z_-]{1,255}$"
+          },
+          "allowSelfDeletion": {
+            "type": "boolean"
+          },
+          "allowSelfEmailChange": {
+            "type": "boolean"
+          },
+          "passwordReset": {
+            "type": "object",
+            "properties": {
+              "allowPasswordReset": {
+                "type": "boolean"
+              },
+              "emailSubject": {
+                "type": "string",
+                "maxLength": 255
+              },
+              "emailBody": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "emailFrom": {
+                "type": "string",
+                "format": "email",
+                "maxLength": 1024
+              }
+            }
+          },
+          "summary": {
+            "type": "object",
+            "properties": {
+              "solutionUserCount": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
+    },
+    "orgId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  }
+}
+```
+### <a name="solutions-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "57955788124b37010084c053",
+      "solutionId": "57955788124b37010084c053",
+      "orgId": "575ed6e87ae143cd83dc4aa8",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "name": "My Solution",
+      "slug": "my_solution",
+      "allowSelfDeletion": false,
+      "allowSelfEmailChange": false,
+      "summary": {
+        "solutionUserCount": 0
+      }
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc",
+  "applicationId": "57955788124b37010084c053"
 }
 ```
 

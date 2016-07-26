@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[0-9a-z_-]{1,255}$"
+    },
+    "allowSelfDeletion": {
+      "type": "boolean"
+    },
+    "allowSelfEmailChange": {
+      "type": "boolean"
+    },
+    "passwordReset": {
+      "type": "object",
+      "properties": {
+        "allowPasswordReset": {
+          "type": "boolean"
+        },
+        "emailSubject": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "emailBody": {
+          "type": "string",
+          "maxLength": 32767
+        },
+        "emailFrom": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 1024
+        }
+      },
+      "additionalProperties": false
+    },
+    "additionalProperties": false
+  }
+}
