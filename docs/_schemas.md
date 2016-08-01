@@ -13,6 +13,7 @@
 *   [Application Post](#application-post)
 *   [Applications](#applications)
 *   [Authenticated Device](#authenticated-device)
+*   [Authenticated Solution User](#authenticated-solution-user)
 *   [Authenticated User](#authenticated-user)
 *   [Dashboard](#dashboard)
 *   [Dashboard Patch](#dashboard-patch)
@@ -68,6 +69,7 @@
 *   [Solution Patch](#solution-patch)
 *   [Solution Post](#solution-post)
 *   [Solution User](#solution-user)
+*   [User Credentials](#user-credentials)
 *   [Solution User Patch](#solution-user-patch)
 *   [Solution User Post](#solution-user-post)
 *   [Solution Users](#solution-users)
@@ -1058,6 +1060,43 @@ Schema for the sucessful response when authenticating a Device
   "applicationId": "575ec8687ae143cd83dc4a97",
   "deviceId": "575ecf887ae143cd83dc4aa2",
   "devicecClass": "standalone",
+  "token": "token_to_use_for_authenticating_subsequent_requests"
+}
+```
+
+<br/>
+
+## Authenticated Solution User
+
+Schema for the sucessful response when authenticating a Solution User
+
+### <a name="authenticated-solution-user-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "solutionUserId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "token": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "solutionUserId",
+    "token"
+  ]
+}
+```
+### <a name="authenticated-solution-user-example"></a> Example
+
+```json
+{
+  "solutionUserId": "566116085df4b701000258e3",
   "token": "token_to_use_for_authenticating_subsequent_requests"
 }
 ```
@@ -6096,6 +6135,56 @@ Schema for a single Solution User
 
 <br/>
 
+## User Credentials
+
+Schema for the body of a Solution User authentication request
+
+### <a name="user-credentials-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "solutionId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "password": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 2048
+    },
+    "twoFactorCode": {
+      "type": "string",
+      "maxLength": 2048
+    }
+  },
+  "required": [
+    "solutionId",
+    "email",
+    "password"
+  ],
+  "additionalProperties": false
+}
+```
+### <a name="user-credentials-example"></a> Example
+
+```json
+{
+  "solutionId": "57955788124b37010084c053",
+  "email": "example@solutionuser.com",
+  "password": "this is the password"
+}
+```
+
+<br/>
+
 ## Solution User Patch
 
 Schema for the body of a Solution User modification request
@@ -6616,7 +6705,7 @@ Schema for a collection of Solutions
   "page": 0,
   "sortField": "name",
   "sortDirection": "asc",
-  "orgId": "57955788124b37010084c053"
+  "orgId": "575ed6e87ae143cd83dc4aa8"
 }
 ```
 
