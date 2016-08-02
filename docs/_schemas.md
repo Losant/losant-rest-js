@@ -5172,6 +5172,9 @@ Schema for a single Organization
       "type": "string",
       "maxLength": 32767
     },
+    "solutionsEnabled": {
+      "type": "boolean"
+    },
     "members": {
       "type": "array",
       "items": {
@@ -5521,6 +5524,9 @@ Schema for a collection of Organizations
           "description": {
             "type": "string",
             "maxLength": 32767
+          },
+          "solutionsEnabled": {
+            "type": "boolean"
           },
           "members": {
             "type": "array",
