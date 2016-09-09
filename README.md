@@ -25,7 +25,7 @@ npm install --save losant-rest
 
 ## Example
 
-Below is a high-level example of using the Losant Ruby REST API client to
+Below is a high-level example of using the Losant JavaScript REST API client to
 authenticate against the Losant Platform and report state for a device.
 
 ```javascript
