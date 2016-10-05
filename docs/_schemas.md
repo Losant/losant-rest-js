@@ -63,6 +63,7 @@
 *   [Organization Patch](#organization-patch)
 *   [Organization Post](#organization-post)
 *   [Organizations](#organizations)
+*   [Payload Counts](#payload-counts)
 *   [Recent Item](#recent-item)
 *   [Recent Item List](#recent-item-list)
 *   [Solution](#solution)
@@ -5652,6 +5653,128 @@ Schema for a collection of Organizations
   "page": 0,
   "sortField": "name",
   "sortDirection": "asc"
+}
+```
+
+<br/>
+
+## Payload Counts
+
+Schema the result of a payload count request
+
+### <a name="payload-counts-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "mqttOut": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "number"
+        }
+      }
+    },
+    "mqttIn": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "number"
+        }
+      }
+    },
+    "deviceState": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "number"
+        }
+      }
+    },
+    "deviceCommand": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "number"
+        }
+      }
+    },
+    "webhook": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "number"
+        }
+      }
+    },
+    "timer": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "number"
+        }
+      }
+    },
+    "event": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "number"
+        }
+      }
+    },
+    "virtualButton": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "number"
+        }
+      }
+    },
+    "deviceConnect": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "number"
+        }
+      }
+    },
+    "deviceDisconnect": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
+```
+### <a name="payload-counts-example"></a> Example
+
+```json
+{
+  "timer": {
+    "timer.flow": 19772
+  },
+  "deviceState": {
+    "flow.flow": 5215,
+    "device.mqtt": 1244049
+  },
+  "mqttOut": {
+    "device.mqtt": 12
+  },
+  "webhook": {
+    "public.rest": 1713284
+  },
+  "deviceConnect": {
+    "device.mqtt": 1016
+  },
+  "deviceDisconnect": {
+    "device.mqtt": 1016
+  }
 }
 ```
 
