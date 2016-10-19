@@ -106,7 +106,7 @@ client.events.mostRecentBySeverity(params)
 
 ## Patch
 
-Updates information for matching events by subject and/or current state
+Asynchronously updates information for matching events by subject and/or current state
 
 ```javascript
 var params = {
@@ -140,7 +140,7 @@ client.events.patch(params)
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If updates were successfully applied |
+| 200 | [Success](_schemas.md#success) | If the bulk update has been successfully started |
 
 #### Error Responses
 

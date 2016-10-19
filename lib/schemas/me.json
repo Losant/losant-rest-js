@@ -76,7 +76,25 @@
       "application": {
         "type": "number"
       },
+      "applicationkey": {
+        "type": "number"
+      },
       "dashboard": {
+        "type": "number"
+      },
+      "device": {
+        "type": "number"
+      },
+      "devicerecipe": {
+        "type": "number"
+      },
+      "flow": {
+        "type": "number"
+      },
+      "webhook": {
+        "type": "number"
+      },
+      "dataTTL": {
         "type": "number"
       }
     },
@@ -154,7 +172,6 @@
         }
       }
     },
-    "defaults": {},
     "summary": {
       "type": "object",
       "properties": {
@@ -165,6 +182,24 @@
           "type": "number"
         },
         "orgCount": {
+          "type": "number"
+        },
+        "deviceCount": {
+          "type": "number"
+        },
+        "flowCount": {
+          "type": "number"
+        },
+        "webhookCount": {
+          "type": "number"
+        },
+        "keyCount": {
+          "type": "number"
+        },
+        "eventCount": {
+          "type": "number"
+        },
+        "deviceRecipeCount": {
           "type": "number"
         }
       }

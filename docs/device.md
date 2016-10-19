@@ -458,7 +458,7 @@ client.device.sendState(params)
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
-| deviceState | [Device State](_schemas.md#device-state) | Y | Object containing the current state of the device |  | [Device State Example](_schemas.md#device-state-example) |
+| deviceState | [Single or Multiple Device States](_schemas.md#single-or-multiple-device-states) | Y | A single device state object, or an array of device state objects |  | [Single or Multiple Device States Example](_schemas.md#single-or-multiple-device-states-example) |
 
 #### Successful Responses
 
