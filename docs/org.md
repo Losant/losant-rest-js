@@ -274,7 +274,7 @@ client.org.payloadCounts(params)
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
+| 404 | [Error](_schemas.md#error) | Error if organization was not found |
 
 <br/>
 

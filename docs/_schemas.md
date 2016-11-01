@@ -5364,6 +5364,36 @@ Schema for a single Organization
           "type": "number"
         }
       }
+    },
+    "planId": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "billingEmail": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "subscriptionStatus": {
+      "type": "string",
+      "enum": [
+        "trialing",
+        "active",
+        "past_due",
+        "canceled",
+        "unpaid"
+      ]
+    },
+    "currentPeriodStart": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "currentPeriodEnd": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "isEnterprise": {
+      "type": "boolean"
     }
   }
 }
@@ -5574,6 +5604,19 @@ Schema for the body of an Organization modification request
     "description": {
       "type": "string",
       "maxLength": 32767
+    },
+    "planId": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "billingEmail": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "cardToken": {
+      "type": "string",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false
@@ -5609,6 +5652,19 @@ Schema for the body of an Organization creation request
     "description": {
       "type": "string",
       "maxLength": 32767
+    },
+    "planId": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "billingEmail": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "cardToken": {
+      "type": "string",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false,
@@ -5773,6 +5829,36 @@ Schema for a collection of Organizations
                 "type": "number"
               }
             }
+          },
+          "planId": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "billingEmail": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 1024
+          },
+          "subscriptionStatus": {
+            "type": "string",
+            "enum": [
+              "trialing",
+              "active",
+              "past_due",
+              "canceled",
+              "unpaid"
+            ]
+          },
+          "currentPeriodStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "currentPeriodEnd": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isEnterprise": {
+            "type": "boolean"
           }
         }
       }

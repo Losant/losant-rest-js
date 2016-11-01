@@ -10,6 +10,19 @@
     "description": {
       "type": "string",
       "maxLength": 32767
+    },
+    "planId": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "billingEmail": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "cardToken": {
+      "type": "string",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false,
