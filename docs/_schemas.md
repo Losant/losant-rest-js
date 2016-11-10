@@ -5174,9 +5174,6 @@ Schema for information about the currently authenticated user
         "keyCount": {
           "type": "number"
         },
-        "eventCount": {
-          "type": "number"
-        },
         "deviceRecipeCount": {
           "type": "number"
         },

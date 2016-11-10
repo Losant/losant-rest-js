@@ -239,9 +239,6 @@
         "keyCount": {
           "type": "number"
         },
-        "eventCount": {
-          "type": "number"
-        },
         "deviceRecipeCount": {
           "type": "number"
         },

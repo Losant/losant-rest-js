@@ -442,7 +442,7 @@ client.org.transferResources(params)
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Organization](_schemas.md#organization) | Updated organization information |
+| 200 | [Success](_schemas.md#success) | If resource transfer was successful |
 
 #### Error Responses
 
