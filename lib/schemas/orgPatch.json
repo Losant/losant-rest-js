@@ -23,6 +23,9 @@
     "cardToken": {
       "type": "string",
       "maxLength": 1024
+    },
+    "iconColor": {
+      "type": "string"
     }
   },
   "additionalProperties": false

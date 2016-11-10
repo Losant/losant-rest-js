@@ -15,6 +15,7 @@ parameters and the potential responses.
 *   [Pending Invites](#pending-invites)
 *   [Remove Member](#remove-member)
 *   [Revoke Invite](#revoke-invite)
+*   [Transfer Resources](#transfer-resources)
 
 <br/>
 
@@ -260,8 +261,8 @@ client.org.payloadCounts(params)
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
-| start | string | N | Start of range for payload count query (ms since epoch) | -2592000000 | 0 |
-| end | string | N | End of range for payload count query (ms since epoch) | 0 | 1465790400000 |
+| start | string | N | Start of range for payload count query (ms since epoch) |  | 0 |
+| end | string | N | End of range for payload count query (ms since epoch) |  | 1465790400000 |
 
 #### Successful Responses
 
@@ -405,3 +406,47 @@ client.org.revokeInvite(params)
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if organization not found |
+
+<br/>
+
+## Transfer Resources
+
+Moves resources to a new owner
+
+```javascript
+var params = {
+  orgId: myOrgId,
+  transfer: myTransfer
+};
+
+// with callbacks
+client.org.transferResources(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.org.transferResources(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
+| transfer | [Resource Transfer](_schemas.md#resource-transfer) | Y | Object containing properties of the transfer |  | [Resource Transfer Example](_schemas.md#resource-transfer-example) |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Organization](_schemas.md#organization) | Updated organization information |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if organization was not found |

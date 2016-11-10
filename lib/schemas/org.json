@@ -96,6 +96,12 @@
       },
       "dataTTL": {
         "type": "number"
+      },
+      "member": {
+        "type": "number"
+      },
+      "payload": {
+        "type": "number"
       }
     },
     "summary": {
@@ -122,10 +128,100 @@
         "keyCount": {
           "type": "number"
         },
-        "eventCount": {
+        "deviceRecipeCount": {
           "type": "number"
         },
-        "deviceRecipeCount": {
+        "payloadCount": {
+          "title": "Payload Counts",
+          "description": "Schema the result of a payload count request",
+          "type": "object",
+          "properties": {
+            "mqttOut": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "mqttIn": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "deviceState": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "deviceCommand": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "webhook": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "timer": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "event": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "virtualButton": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "deviceConnect": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "deviceDisconnect": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "pendingInviteCount": {
+          "type": "number"
+        },
+        "memberCount": {
           "type": "number"
         }
       }
@@ -159,6 +255,9 @@
     },
     "isEnterprise": {
       "type": "boolean"
+    },
+    "iconColor": {
+      "type": "string"
     }
   }
 }

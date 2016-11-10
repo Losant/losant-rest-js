@@ -7,8 +7,26 @@
       "type": "object",
       "properties": {
         "time": {
-          "type": "string",
-          "format": "date-time"
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$date": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "$date"
+              ]
+            }
+          ]
         },
         "relayId": {
           "type": "string"
@@ -43,8 +61,26 @@
         "type": "object",
         "properties": {
           "time": {
-            "type": "string",
-            "format": "date-time"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "$date": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "$date"
+                ]
+              }
+            ]
           },
           "relayId": {
             "type": "string"

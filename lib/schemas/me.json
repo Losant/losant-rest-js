@@ -96,6 +96,9 @@
       },
       "dataTTL": {
         "type": "number"
+      },
+      "payload": {
+        "type": "number"
       }
     },
     "recentDashboards": {
@@ -109,7 +112,8 @@
             "application",
             "device",
             "flow",
-            "dashboard"
+            "dashboard",
+            "organization"
           ]
         },
         "parentId": {
@@ -146,7 +150,46 @@
             "application",
             "device",
             "flow",
-            "dashboard"
+            "dashboard",
+            "organization"
+          ]
+        },
+        "parentId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            }
+          }
+        }
+      }
+    },
+    "recentOrganizations": {
+      "title": "Recent Item List",
+      "description": "Schema for an array of recent items",
+      "type": "object",
+      "properties": {
+        "itemType": {
+          "type": "string",
+          "enum": [
+            "application",
+            "device",
+            "flow",
+            "dashboard",
+            "organization"
           ]
         },
         "parentId": {
@@ -201,8 +244,103 @@
         },
         "deviceRecipeCount": {
           "type": "number"
+        },
+        "payloadCount": {
+          "title": "Payload Counts",
+          "description": "Schema the result of a payload count request",
+          "type": "object",
+          "properties": {
+            "mqttOut": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "mqttIn": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "deviceState": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "deviceCommand": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "webhook": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "timer": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "event": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "virtualButton": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "deviceConnect": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "deviceDisconnect": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            }
+          }
         }
       }
+    },
+    "currentPeriodStart": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "currentPeriodEnd": {
+      "type": "string",
+      "format": "date-time"
     }
   }
 }
