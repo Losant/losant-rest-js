@@ -1808,8 +1808,26 @@ Schema for a command for a single Device
   "type": "object",
   "properties": {
     "time": {
-      "type": "string",
-      "format": "date-time"
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$date": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "$date"
+          ]
+        }
+      ]
     },
     "name": {
       "type": "string",
@@ -1858,8 +1876,26 @@ Schema for an array of Device Commands
     "type": "object",
     "properties": {
       "time": {
-        "type": "string",
-        "format": "date-time"
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "$date": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "$date"
+            ]
+          }
+        ]
       },
       "name": {
         "type": "string",
@@ -2920,8 +2956,26 @@ Schema for a single device state or an array of device states
       "type": "object",
       "properties": {
         "time": {
-          "type": "string",
-          "format": "date-time"
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$date": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "$date"
+              ]
+            }
+          ]
         },
         "relayId": {
           "type": "string"
@@ -2956,8 +3010,26 @@ Schema for a single device state or an array of device states
         "type": "object",
         "properties": {
           "time": {
-            "type": "string",
-            "format": "date-time"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "$date": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "$date"
+                ]
+              }
+            ]
           },
           "relayId": {
             "type": "string"
@@ -3015,8 +3087,26 @@ Schema for an array of Device states
     "type": "object",
     "properties": {
       "time": {
-        "type": "string",
-        "format": "date-time"
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "$date": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "$date"
+            ]
+          }
+        ]
       },
       "relayId": {
         "type": "string"
@@ -5161,8 +5251,26 @@ Schema for the body of a request to send a command to multiple Devices
   "type": "object",
   "properties": {
     "time": {
-      "type": "string",
-      "format": "date-time"
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$date": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "$date"
+          ]
+        }
+      ]
     },
     "name": {
       "type": "string",
@@ -7446,6 +7554,9 @@ Schema for a single Webhook
     "verificationCode": {
       "type": "string",
       "maxLength": 32767
+    },
+    "waitForReply": {
+      "type": "boolean"
     }
   }
 }
@@ -7500,6 +7611,9 @@ Schema for the body of a Webhook modification request
     "verificationCode": {
       "type": "string",
       "maxLength": 32767
+    },
+    "waitForReply": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false
@@ -7549,6 +7663,9 @@ Schema for the body of a Webhook creation request
     "verificationCode": {
       "type": "string",
       "maxLength": 32767
+    },
+    "waitForReply": {
+      "type": "boolean"
     }
   },
   "required": [
@@ -7631,6 +7748,9 @@ Schema for a collection of Webhooks
           "verificationCode": {
             "type": "string",
             "maxLength": 32767
+          },
+          "waitForReply": {
+            "type": "boolean"
           }
         }
       }

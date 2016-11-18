@@ -24,6 +24,9 @@
     "verificationCode": {
       "type": "string",
       "maxLength": 32767
+    },
+    "waitForReply": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false
