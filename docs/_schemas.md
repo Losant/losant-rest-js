@@ -6670,6 +6670,9 @@ Schema for the body of a resource transfer request
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
       }
+    },
+    "strict": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false,
