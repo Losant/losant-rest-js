@@ -8047,6 +8047,9 @@ Schema for a single Webhook
     "verificationCode": {
       "type": "string",
       "maxLength": 32767
+    },
+    "waitForReply": {
+      "type": "boolean"
     }
   }
 }
@@ -8101,6 +8104,9 @@ Schema for the body of a Webhook modification request
     "verificationCode": {
       "type": "string",
       "maxLength": 32767
+    },
+    "waitForReply": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false
@@ -8150,6 +8156,9 @@ Schema for the body of a Webhook creation request
     "verificationCode": {
       "type": "string",
       "maxLength": 32767
+    },
+    "waitForReply": {
+      "type": "boolean"
     }
   },
   "required": [
@@ -8232,6 +8241,9 @@ Schema for a collection of Webhooks
           "verificationCode": {
             "type": "string",
             "maxLength": 32767
+          },
+          "waitForReply": {
+            "type": "boolean"
           }
         }
       }
