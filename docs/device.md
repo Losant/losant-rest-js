@@ -10,6 +10,7 @@ parameters and the potential responses.
 *   [Export](#export)
 *   [Get](#get)
 *   [Get Command](#get-command)
+*   [Get Composite State](#get-composite-state)
 *   [Get Log Entries](#get-log-entries)
 *   [Get State](#get-state)
 *   [Patch](#patch)
@@ -191,6 +192,52 @@ client.device.getCommand(params)
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Device Commands](_schemas.md#device-commands) | Recent device commands |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if device was not found |
+
+<br/>
+
+## Get Composite State
+
+Retrieve the composite last complete state of the device
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  deviceId: myDeviceId
+};
+
+// with callbacks
+client.device.getCompositeState(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.device.getCompositeState(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
+| start | string | N | Start of time range to look at to build composite state | 1 | 1465790400000 |
+| end | string | N | End of time range to look at to build composite state | 0 | 1465790400000 |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Composite Device State](_schemas.md#composite-device-state) | Composite last state of the device |
 
 #### Error Responses
 

@@ -15,6 +15,7 @@
 *   [Authenticated Device](#authenticated-device)
 *   [Authenticated Solution User](#authenticated-solution-user)
 *   [Authenticated User](#authenticated-user)
+*   [Composite Device State](#composite-device-state)
 *   [Dashboard](#dashboard)
 *   [Dashboard Patch](#dashboard-patch)
 *   [Dashboard Post](#dashboard-post)
@@ -1137,6 +1138,75 @@ Schema for the sucessful response when authenticating a User
 {
   "userId": "575ed70c7ae143cd83dc4aa9",
   "token": "token_to_use_for_authenticating_subsequent_requests"
+}
+```
+
+<br/>
+
+## Composite Device State
+
+Schema for a composite Device state
+
+### <a name="composite-device-state-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "patternProperties": {
+    "^[0-9a-zA-Z_-]{1,255}$": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": [
+            "number",
+            "string",
+            "boolean"
+          ]
+        },
+        "time": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$date": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "$date"
+              ]
+            }
+          ]
+        },
+        "relayId": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="composite-device-state-example"></a> Example
+
+```json
+{
+  "voltage": {
+    "time": "2016-06-13T04:00:00.000Z",
+    "value": 22.4
+  },
+  "loaded": {
+    "time": "2016-06-13T03:00:00.000Z",
+    "value": false
+  }
 }
 ```
 
@@ -7888,6 +7958,9 @@ Schema for the body of a time series query request
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
       }
+    },
+    "limit": {
+      "type": "number"
     }
   },
   "additionalProperties": false

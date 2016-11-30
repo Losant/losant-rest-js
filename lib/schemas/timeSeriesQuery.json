@@ -58,6 +58,9 @@
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
       }
+    },
+    "limit": {
+      "type": "number"
     }
   },
   "additionalProperties": false
