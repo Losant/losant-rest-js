@@ -58,7 +58,7 @@ client.dashboards.get(params)
 
 ## Post
 
-Create a new dasboard
+Create a new dashboard
 
 ```javascript
 var params = {

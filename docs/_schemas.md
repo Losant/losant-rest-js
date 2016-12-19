@@ -1016,7 +1016,7 @@ Schema for a collection of Applications
 
 ## Authenticated Device
 
-Schema for the sucessful response when authenticating a Device
+Schema for the successful response when authenticating a Device
 
 ### <a name="authenticated-device-schema"></a> Schema
 
@@ -1071,7 +1071,7 @@ Schema for the sucessful response when authenticating a Device
 
 ## Authenticated Solution User
 
-Schema for the sucessful response when authenticating a Solution User
+Schema for the successful response when authenticating a Solution User
 
 ### <a name="authenticated-solution-user-schema"></a> Schema
 
@@ -1108,7 +1108,7 @@ Schema for the sucessful response when authenticating a Solution User
 
 ## Authenticated User
 
-Schema for the sucessful response when authenticating a User
+Schema for the successful response when authenticating a User
 
 ### <a name="authenticated-user-schema"></a> Schema
 
