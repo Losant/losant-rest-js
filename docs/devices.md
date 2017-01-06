@@ -39,7 +39,7 @@ client.devices.export(params)
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| email | string | N | Email address to send export to.  Defaults to current user&#x27;s email. |  | email@example.com |
+| email | string | N | Email address to send export to. Defaults to current user&#x27;s email. |  | email@example.com |
 | callbackUrl | string | N | Callback URL to call with export result. |  | https://example.com/cburl |
 
 #### Successful Responses

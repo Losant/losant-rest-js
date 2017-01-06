@@ -94,7 +94,7 @@ client.device.export(params)
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
 | start | string | N | Start time of export (ms since epoch - 0 means now, negative is relative to now) | 1 | 1465790400000 |
 | end | string | N | End time of export (ms since epoch - 0 means now, negative is relative to now) | 0 | 1465790400000 |
-| email | string | N | Email address to send export to.  Defaults to current user&#x27;s email. |  | email@example.com |
+| email | string | N | Email address to send export to. Defaults to current user&#x27;s email. |  | email@example.com |
 | callbackUrl | string | N | Callback URL to call with export result. |  | https://example.com/cburl |
 
 #### Successful Responses
