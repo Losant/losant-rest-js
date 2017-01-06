@@ -12,6 +12,7 @@
 *   [Application Patch](#application-patch)
 *   [Application Post](#application-post)
 *   [Applications](#applications)
+*   [Audit Log](#audit-log)
 *   [Audit Log Filter](#audit-log-filter)
 *   [Audit Logs](#audit-logs)
 *   [Authenticated Device](#authenticated-device)
@@ -1011,6 +1012,146 @@ Schema for a collection of Applications
   "page": 0,
   "sortField": "name",
   "sortDirection": "asc"
+}
+```
+
+<br/>
+
+## Audit Log
+
+Schema for a single Audit Log entry
+
+### <a name="audit-log-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "auditLogId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "orgId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "primaryTargetId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "primaryTargetType": {
+      "type": "string",
+      "enum": [
+        "Application",
+        "Dashboard",
+        "Solution",
+        "OrgInvite"
+      ]
+    },
+    "primaryTargetName": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "secondaryTargetId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "secondaryTargetType": {
+      "type": "string",
+      "enum": [
+        "ApplicationKey",
+        "Device",
+        "DeviceRecipe",
+        "Event",
+        "Flow",
+        "SolutionUser",
+        "Webhook"
+      ]
+    },
+    "secondaryTargetName": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "actorId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "actorType": {
+      "type": "string",
+      "enum": [
+        "Application",
+        "Device",
+        "Flow",
+        "SolutionUser",
+        "User"
+      ]
+    },
+    "actorName": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "requestResource": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "requestAction": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "requestQueryParams": {
+      "type": "object"
+    },
+    "requestBody": {
+      "type": "object"
+    },
+    "requestPathParams": {
+      "type": "object"
+    },
+    "responseBody": {
+      "type": "object"
+    },
+    "responseStatus": {
+      "type": "integer",
+      "minimum": 100,
+      "maximum": 599
+    }
+  }
+}
+```
+### <a name="audit-log-example"></a> Example
+
+```json
+{
+  "id": "586e9d5151265cb9d72f6ec6",
+  "auditLogId": "586e9d5151265cb9d72f6ec6",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "orgId": "575ed6e87ae143cd83dc4aa8",
+  "primaryTargetId": "575ec8687ae143cd83dc4a97",
+  "primaryTargetType": "Application",
+  "primaryTargetName": "My Application",
+  "actorId": "575ed70c7ae143cd83dc4aa9",
+  "actorType": "User",
+  "actorName": "example@losant.com",
+  "requestResource": "application",
+  "requestAction": "delete",
+  "requestQueryParams": {},
+  "requestBody": {},
+  "requestPathParams": {
+    "applicationId": "575ec8687ae143cd83dc4a97"
+  },
+  "responseBody": {
+    "success": true
+  },
+  "responseStatus": 200
 }
 ```
 

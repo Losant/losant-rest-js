@@ -6,7 +6,6 @@ parameters and the potential responses.
 
 ##### Contents
 
-*   [Audit Logs](#audit-logs)
 *   [Delete](#delete)
 *   [Get](#get)
 *   [Invite Member](#invite-member)
@@ -17,55 +16,6 @@ parameters and the potential responses.
 *   [Remove Member](#remove-member)
 *   [Revoke Invite](#revoke-invite)
 *   [Transfer Resources](#transfer-resources)
-
-<br/>
-
-## Audit Logs
-
-Returns the audit logs for this organization
-
-```javascript
-var params = {
-  orgId: myOrgId
-};
-
-// with callbacks
-client.org.auditLogs(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.org.auditLogs(params)
-  .then(console.log)
-  .catch(console.error);
-```
-
-#### Available Parameters
-
-| Name | Type | Required | Description | Default | Example |
-| ---- | ---- | -------- | ----------- | ------- | ------- |
-| orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
-| sortField | string | N | Field to sort the results by. Accepted values are: creationDate, responseStatus, actorName | creationDate | creationDate |
-| sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | desc | asc |
-| page | string | N | Which page of results to return | 0 | 0 |
-| perPage | string | N | How many items to return per page | 1000 | 10 |
-| start | string | N | Start of time range for audit log query |  | 1465790400000 |
-| end | string | N | End of time range for audit log query |  | 1465790400000 |
-| auditLogFilter | [Audit Log Filter](_schemas.md#audit-log-filter) | N | Filters for the audit log query |  | [Audit Log Filter Example](_schemas.md#audit-log-filter-example) |
-
-#### Successful Responses
-
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [Audit Logs](_schemas.md#audit-logs) | Audit log entries |
-
-#### Error Responses
-
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if organization was not found |
 
 <br/>
 
