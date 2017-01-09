@@ -213,6 +213,6 @@ to an Application - such as listing the webhooks or creating a new webhook.
 
 *****
 
-Copyright (c) 2016 Losant IoT, Inc
+Copyright (c) 2017 Losant IoT, Inc
 
 <https://www.losant.com>
