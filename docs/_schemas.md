@@ -61,7 +61,10 @@
 *   [Me Patch](#me-patch)
 *   [Multi Device Command](#multi-device-command)
 *   [Organization](#organization)
+*   [Organization Invitation Action](#organization-invitation-action)
+*   [Organization Invitation Information](#organization-invitation-information)
 *   [Organization Invitation Post](#organization-invitation-post)
+*   [Organization Invitation Result](#organization-invitation-result)
 *   [Organization Invitations](#organization-invitations)
 *   [Organization Member Patch](#organization-member-patch)
 *   [Organization Patch](#organization-patch)
@@ -6328,6 +6331,103 @@ Schema for a single Organization
 
 <br/>
 
+## Organization Invitation Action
+
+Schema for the body of a request to accept or reject an invitation
+
+### <a name="organization-invitation-action-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "token": {
+      "type": "string",
+      "minLength": 1
+    },
+    "accept": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "email",
+    "token",
+    "accept"
+  ]
+}
+```
+### <a name="organization-invitation-action-example"></a> Example
+
+```json
+{
+  "email": "invitedUser@losant.com",
+  "token": "the_invitation_token",
+  "accept": true
+}
+```
+
+<br/>
+
+## Organization Invitation Information
+
+Schema for information about an invitation
+
+### <a name="organization-invitation-information-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "orgName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "edit",
+        "view"
+      ]
+    },
+    "inviteDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ttl": {
+      "type": "number"
+    }
+  }
+}
+```
+### <a name="organization-invitation-information-example"></a> Example
+
+```json
+{
+  "orgName": "My Organization",
+  "email": "invitedUser@losant.com",
+  "role": "edit",
+  "inviteDate": "2016-05-13T04:00:00.000Z",
+  "ttl": 4233600000
+}
+```
+
+<br/>
+
 ## Organization Invitation Post
 
 Schema for the body of a request to send an invitation
@@ -6366,6 +6466,38 @@ Schema for the body of a request to send an invitation
 {
   "email": "invitedUser@losant.com",
   "role": "edit"
+}
+```
+
+<br/>
+
+## Organization Invitation Result
+
+Schema for the result of accepting/rejecting an invitation
+
+### <a name="organization-invitation-result-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "accepted": {
+      "type": "boolean"
+    },
+    "orgId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  }
+}
+```
+### <a name="organization-invitation-result-example"></a> Example
+
+```json
+{
+  "accepted": true,
+  "orgId": "575ed6e87ae143cd83dc4aa8"
 }
 ```
 
