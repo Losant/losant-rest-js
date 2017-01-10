@@ -96,7 +96,6 @@
         },
         "additionalProperties": false,
         "required": [
-          "id",
           "type"
         ]
       }

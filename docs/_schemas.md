@@ -1785,13 +1785,13 @@ Schema for a single Dashboard
           }
         },
         "required": [
-          "id",
           "blockType",
           "startX",
           "startY",
           "width",
           "height"
-        ]
+        ],
+        "additionalProperties": false
       }
     }
   }
@@ -1869,13 +1869,13 @@ Schema for the body of a Dashboard modification request
           }
         },
         "required": [
-          "id",
           "blockType",
           "startX",
           "startY",
           "width",
           "height"
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "description": {
@@ -1969,13 +1969,13 @@ Schema for the body of a Dashboard creation request
           }
         },
         "required": [
-          "id",
           "blockType",
           "startX",
           "startY",
           "width",
           "height"
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "description": {
@@ -2115,13 +2115,13 @@ Schema for a collection of Dashboards
                 }
               },
               "required": [
-                "id",
                 "blockType",
                 "startX",
                 "startY",
                 "width",
                 "height"
-              ]
+              ],
+              "additionalProperties": false
             }
           }
         }
@@ -4622,7 +4622,6 @@ Schema for a single Workflow
         },
         "additionalProperties": false,
         "required": [
-          "id",
           "type"
         ]
       }
@@ -4864,7 +4863,6 @@ Schema for the body of a Workflow modification request
         },
         "additionalProperties": false,
         "required": [
-          "id",
           "type"
         ]
       }
@@ -4991,7 +4989,6 @@ Schema for the body of a Workflow creation request
         },
         "additionalProperties": false,
         "required": [
-          "id",
           "type"
         ]
       }
@@ -5212,7 +5209,6 @@ Schema for a collection of Workflows
               },
               "additionalProperties": false,
               "required": [
-                "id",
                 "type"
               ]
             }

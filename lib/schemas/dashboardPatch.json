@@ -43,13 +43,13 @@
           }
         },
         "required": [
-          "id",
           "blockType",
           "startX",
           "startY",
           "width",
           "height"
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "description": {
