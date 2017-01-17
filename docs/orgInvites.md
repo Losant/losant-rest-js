@@ -37,8 +37,8 @@ client.orgInvites.get(params)
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| token | string | Y | The token associated with the invite |  | undefined |
-| email | string | Y | The email associated with the invite |  | undefined |
+| token | string | Y | The token associated with the invite |  | aTokenString |
+| email | string | Y | The email associated with the invite |  | example@example.com |
 
 #### Successful Responses
 

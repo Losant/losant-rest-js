@@ -87,6 +87,7 @@ client.org.get(params)
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
+| summaryExclude | string | N | List of summary fields to exclude from org summary |  | payloadCount |
 
 #### Successful Responses
 

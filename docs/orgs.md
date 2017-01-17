@@ -40,6 +40,7 @@ client.orgs.get(params)
 | perPage | string | N | How many items to return per page | 1000 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*org |
+| summaryExclude | string | N | List of summary fields to exclude from org summaries |  | payloadCount |
 
 #### Successful Responses
 

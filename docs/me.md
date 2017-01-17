@@ -325,6 +325,7 @@ client.me.get(params)
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | includeRecent | undefined | N | Should the user include recent app/dashboard info |  | true |
+| summaryExclude | string | N | List of summary fields to exclude from user summary |  | payloadCount |
 
 #### Successful Responses
 
