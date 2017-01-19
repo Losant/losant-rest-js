@@ -6,18 +6,39 @@
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "accessTokenId": {
+    "apiTokenId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "userId": {
+    "ownerId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "ownerType": {
+      "type": "string",
+      "enum": [
+        "application"
+      ]
+    },
+    "creatorId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creatorType": {
+      "type": "string",
+      "enum": [
+        "apiToken",
+        "user"
+      ]
     },
     "name": {
       "type": "string",
       "minLength": 1,
       "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
     },
     "creationDate": {
       "type": "string",
@@ -34,7 +55,9 @@
     "scope": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
       }
     },
     "status": {

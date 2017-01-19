@@ -1,7 +1,7 @@
-# Access Token Actions
+# Application Api Token Actions
 
 Details on the various actions that can be performed on the
-Access Token resource, including the expected
+Application Api Token resource, including the expected
 parameters and the potential responses.
 
 ##### Contents
@@ -14,21 +14,22 @@ parameters and the potential responses.
 
 ## Delete
 
-Deletes an accessToken
+Deletes an API Token
 
 ```javascript
 var params = {
-  accessTokenId: myAccessTokenId
+  applicationId: myApplicationId,
+  apiTokenId: myApiTokenId
 };
 
 // with callbacks
-client.accessToken.delete(params, function (err, result) {
+client.applicationApiToken.delete(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.accessToken.delete(params)
+client.applicationApiToken.delete(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -37,40 +38,42 @@ client.accessToken.delete(params)
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| accessTokenId | string | Y | ID associated with the accessToken |  | 575ec7417ae143cd83dc4a95 |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| apiTokenId | string | Y | ID associated with the API token |  | 575ec7417ae143cd83dc4a95 |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If accessToken was successfully deleted |
+| 200 | [Success](_schemas.md#success) | If API token was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if accessToken was not found |
+| 404 | [Error](_schemas.md#error) | Error if API token was not found |
 
 <br/>
 
 ## Get
 
-Retrieves information on an accessToken
+Retrieves information on an API token
 
 ```javascript
 var params = {
-  accessTokenId: myAccessTokenId
+  applicationId: myApplicationId,
+  apiTokenId: myApiTokenId
 };
 
 // with callbacks
-client.accessToken.get(params, function (err, result) {
+client.applicationApiToken.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.accessToken.get(params)
+client.applicationApiToken.get(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -79,41 +82,43 @@ client.accessToken.get(params)
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| accessTokenId | string | Y | ID associated with the accessToken |  | 575ec7417ae143cd83dc4a95 |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| apiTokenId | string | Y | ID associated with the API token |  | 575ec7417ae143cd83dc4a95 |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Access Token](_schemas.md#access-token) | Access token information |
+| 200 | [API Token](_schemas.md#api-token) | API token information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if accessToken was not found |
+| 404 | [Error](_schemas.md#error) | Error if API token was not found |
 
 <br/>
 
 ## Patch
 
-Updates information about an accessToken
+Updates information about an API token
 
 ```javascript
 var params = {
-  accessTokenId: myAccessTokenId,
-  accessToken: myAccessToken
+  applicationId: myApplicationId,
+  apiTokenId: myApiTokenId,
+  apiToken: myApiToken
 };
 
 // with callbacks
-client.accessToken.patch(params, function (err, result) {
+client.applicationApiToken.patch(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.accessToken.patch(params)
+client.applicationApiToken.patch(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -122,18 +127,19 @@ client.accessToken.patch(params)
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| accessTokenId | string | Y | ID associated with the accessToken |  | 575ec7417ae143cd83dc4a95 |
-| accessToken | [Access Token Patch](_schemas.md#access-token-patch) | Y | Object containing new properties of the accessToken |  | [Access Token Patch Example](_schemas.md#access-token-patch-example) |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| apiTokenId | string | Y | ID associated with the API token |  | 575ec7417ae143cd83dc4a95 |
+| apiToken | [API Token Patch](_schemas.md#api-token-patch) | Y | Object containing new properties of the API token |  | [API Token Patch Example](_schemas.md#api-token-patch-example) |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Access Token](_schemas.md#access-token) | Updated accessToken information |
+| 200 | [API Token](_schemas.md#api-token) | Updated API token information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if accessToken was not found |
+| 404 | [Error](_schemas.md#error) | Error if API token was not found |

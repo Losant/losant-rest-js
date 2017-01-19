@@ -27,7 +27,8 @@
       "enum": [
         "flow",
         "user",
-        "device"
+        "device",
+        "apiToken"
       ]
     },
     "sourceId": {
@@ -71,7 +72,8 @@
             "enum": [
               "flow",
               "user",
-              "device"
+              "device",
+              "apiToken"
             ]
           },
           "sourceId": {

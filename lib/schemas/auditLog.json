@@ -42,6 +42,7 @@
     "secondaryTargetType": {
       "type": "string",
       "enum": [
+        "ApiToken",
         "ApplicationKey",
         "Device",
         "DeviceRecipe",
@@ -66,7 +67,8 @@
         "Device",
         "Flow",
         "SolutionUser",
-        "User"
+        "User",
+        "ApiToken"
       ]
     },
     "actorName": {

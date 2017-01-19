@@ -1,7 +1,7 @@
-# Access Tokens Actions
+# Application Api Tokens Actions
 
 Details on the various actions that can be performed on the
-Access Tokens resource, including the expected
+Application Api Tokens resource, including the expected
 parameters and the potential responses.
 
 ##### Contents
@@ -13,32 +13,36 @@ parameters and the potential responses.
 
 ## Get
 
-Returns the accessTokens for a user
+Returns the API tokens for an application
 
 ```javascript
-var params = {}; // all params are optional
+var params = {
+  applicationId: myApplicationId
+};
 
 // with callbacks
-client.accessTokens.get(params, function (err, result) {
+client.applicationApiTokens.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.accessTokens.get(params)
+client.applicationApiTokens.get(params)
   .then(console.log)
   .catch(console.error);
 ```
 
 #### Available Parameters
 
-No parameters needed for this call.
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Access Tokens](_schemas.md#access-tokens) | Collection of accessTokens |
+| 200 | [API Token](_schemas.md#api-token) | Collection of API tokens |
 
 #### Error Responses
 
@@ -50,21 +54,22 @@ No parameters needed for this call.
 
 ## Post
 
-Create a new accessToken for a user
+Create a new API token for an application
 
 ```javascript
 var params = {
-  accessToken: myAccessToken
+  applicationId: myApplicationId,
+  apiToken: myApiToken
 };
 
 // with callbacks
-client.accessTokens.post(params, function (err, result) {
+client.applicationApiTokens.post(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.accessTokens.post(params)
+client.applicationApiTokens.post(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -73,13 +78,14 @@ client.accessTokens.post(params)
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| accessToken | [Access Token Post](_schemas.md#access-token-post) | Y | AccessToken information |  | [Access Token Post Example](_schemas.md#access-token-post-example) |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| apiToken | [API Token Post](_schemas.md#api-token-post) | Y | API token information |  | [API Token Post Example](_schemas.md#api-token-post-example) |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Access Token](_schemas.md#access-token) | The successfully created accessToken |
+| 201 | [API Token](_schemas.md#api-token) | The successfully created API token |
 
 #### Error Responses
 

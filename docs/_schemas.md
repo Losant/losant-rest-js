@@ -1,9 +1,8 @@
 # Schemas
 
-*   [Access Token](#access-token)
-*   [Access Token Patch](#access-token-patch)
-*   [Access Token Post](#access-token-post)
-*   [Access Tokens](#access-tokens)
+*   [API Token](#api-token)
+*   [API Token Patch](#api-token-patch)
+*   [API Token Post](#api-token-post)
 *   [Application](#application)
 *   [Application Key](#application-key)
 *   [Application Key Patch](#application-key-patch)
@@ -93,11 +92,11 @@
 *   [Webhook Post](#webhook-post)
 *   [Webhooks](#webhooks)
 
-## Access Token
+## API Token
 
-Schema for a single Access Token
+Schema for a single API Token
 
-### <a name="access-token-schema"></a> Schema
+### <a name="api-token-schema"></a> Schema
 
 ```json
 {
@@ -108,18 +107,39 @@ Schema for a single Access Token
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "accessTokenId": {
+    "apiTokenId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "userId": {
+    "ownerId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "ownerType": {
+      "type": "string",
+      "enum": [
+        "application"
+      ]
+    },
+    "creatorId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creatorType": {
+      "type": "string",
+      "enum": [
+        "apiToken",
+        "user"
+      ]
     },
     "name": {
       "type": "string",
       "minLength": 1,
       "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
     },
     "creationDate": {
       "type": "string",
@@ -136,7 +156,9 @@ Schema for a single Access Token
     "scope": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
       }
     },
     "status": {
@@ -153,20 +175,22 @@ Schema for a single Access Token
   }
 }
 ```
-### <a name="access-token-example"></a> Example
+### <a name="api-token-example"></a> Example
 
 ```json
 {
   "id": "575ec7417ae143cd83dc4a95",
-  "accessTokenId": "575ec7417ae143cd83dc4a95",
-  "userId": "575ed70c7ae143cd83dc4aa9",
-  "name": "My Access Token",
+  "apiTokenId": "575ec7417ae143cd83dc4a95",
+  "creatorId": "575ed70c7ae143cd83dc4aa9",
+  "creatorType": "user",
+  "ownerId": "575ec8687ae143cd83dc4a97",
+  "ownerType": "application",
+  "name": "My API Token",
   "creationDate": "2016-06-13T04:00:00.000Z",
   "lastUpdated": "2016-06-13T04:00:00.000Z",
   "expirationDate": "2017-06-13T04:00:00.000Z",
   "scope": [
-    "devices",
-    "devices.state"
+    "all.Application"
   ],
   "status": "active",
   "token": "the_actual_token_string"
@@ -175,11 +199,11 @@ Schema for a single Access Token
 
 <br/>
 
-## Access Token Patch
+## API Token Patch
 
-Schema for the body of an Access Token modification request
+Schema for the body of an API Token modification request
 
-### <a name="access-token-patch-schema"></a> Schema
+### <a name="api-token-patch-schema"></a> Schema
 
 ```json
 {
@@ -190,6 +214,10 @@ Schema for the body of an Access Token modification request
       "type": "string",
       "minLength": 1,
       "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
     },
     "status": {
       "type": "string",
@@ -202,22 +230,22 @@ Schema for the body of an Access Token modification request
   "additionalProperties": false
 }
 ```
-### <a name="access-token-patch-example"></a> Example
+### <a name="api-token-patch-example"></a> Example
 
 ```json
 {
-  "name": "My Updated Access Token",
+  "name": "My Updated API Token",
   "status": "inactive"
 }
 ```
 
 <br/>
 
-## Access Token Post
+## API Token Post
 
-Schema for the body of an Access Token creation request
+Schema for the body of an API Token creation request
 
-### <a name="access-token-post-schema"></a> Schema
+### <a name="api-token-post-schema"></a> Schema
 
 ```json
 {
@@ -229,6 +257,10 @@ Schema for the body of an Access Token creation request
       "minLength": 1,
       "maxLength": 255
     },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
     "expirationDate": {
       "type": "string",
       "format": "date-time"
@@ -236,7 +268,9 @@ Schema for the body of an Access Token creation request
     "scope": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
       }
     },
     "status": {
@@ -253,117 +287,16 @@ Schema for the body of an Access Token creation request
   ]
 }
 ```
-### <a name="access-token-post-example"></a> Example
+### <a name="api-token-post-example"></a> Example
 
 ```json
 {
-  "name": "My New Access Token",
+  "name": "My New API Token",
   "expirationDate": "2017-06-13T04:00:00.000Z",
   "scope": [
-    "devices",
-    "devices.state"
+    "all.Application"
   ],
   "status": "active"
-}
-```
-
-<br/>
-
-## Access Tokens
-
-Schema for a collection of Access Tokens
-
-### <a name="access-tokens-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "items": {
-      "type": "array",
-      "items": {
-        "title": "Access Token",
-        "description": "Schema for a single Access Token",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "accessTokenId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "userId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "name": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 255
-          },
-          "creationDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "lastUpdated": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "expirationDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "scope": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "active",
-              "inactive"
-            ]
-          },
-          "token": {
-            "type": "string",
-            "minLength": 1
-          }
-        }
-      }
-    },
-    "count": {
-      "type": "integer"
-    }
-  }
-}
-```
-### <a name="access-tokens-example"></a> Example
-
-```json
-{
-  "items": [
-    {
-      "id": "575ec7417ae143cd83dc4a95",
-      "accessTokenId": "575ec7417ae143cd83dc4a95",
-      "userId": "575ed70c7ae143cd83dc4aa9",
-      "name": "My Access Token",
-      "creationDate": "2016-06-13T04:00:00.000Z",
-      "lastUpdated": "2016-06-13T04:00:00.000Z",
-      "expirationDate": "2017-06-13T04:00:00.000Z",
-      "scope": [
-        "devices",
-        "devices.state"
-      ],
-      "status": "active",
-      "token": "the_actual_token_string"
-    }
-  ],
-  "count": 1
 }
 ```
 
@@ -1071,6 +1004,7 @@ Schema for a single Audit Log entry
     "secondaryTargetType": {
       "type": "string",
       "enum": [
+        "ApiToken",
         "ApplicationKey",
         "Device",
         "DeviceRecipe",
@@ -1095,7 +1029,8 @@ Schema for a single Audit Log entry
         "Device",
         "Flow",
         "SolutionUser",
-        "User"
+        "User",
+        "ApiToken"
       ]
     },
     "actorName": {
@@ -1209,6 +1144,7 @@ Schema for the filter of an audit log query
           "type": {
             "type": "string",
             "enum": [
+              "ApiToken",
               "ApplicationKey",
               "Device",
               "DeviceRecipe",
@@ -1242,7 +1178,8 @@ Schema for the filter of an audit log query
               "Device",
               "Flow",
               "SolutionUser",
-              "User"
+              "User",
+              "ApiToken"
             ]
           },
           "name": {
@@ -1364,6 +1301,7 @@ Schema for a collection of Audit Logs
           "secondaryTargetType": {
             "type": "string",
             "enum": [
+              "ApiToken",
               "ApplicationKey",
               "Device",
               "DeviceRecipe",
@@ -1388,7 +1326,8 @@ Schema for a collection of Audit Logs
               "Device",
               "Flow",
               "SolutionUser",
-              "User"
+              "User",
+              "ApiToken"
             ]
           },
           "actorName": {
@@ -4104,7 +4043,8 @@ Schema for a single Event
       "enum": [
         "flow",
         "user",
-        "device"
+        "device",
+        "apiToken"
       ]
     },
     "sourceId": {
@@ -4148,7 +4088,8 @@ Schema for a single Event
             "enum": [
               "flow",
               "user",
-              "device"
+              "device",
+              "apiToken"
             ]
           },
           "sourceId": {
@@ -4354,7 +4295,8 @@ Schema for a collection of Events
             "enum": [
               "flow",
               "user",
-              "device"
+              "device",
+              "apiToken"
             ]
           },
           "sourceId": {
@@ -4398,7 +4340,8 @@ Schema for a collection of Events
                   "enum": [
                     "flow",
                     "user",
-                    "device"
+                    "device",
+                    "apiToken"
                   ]
                 },
                 "sourceId": {
