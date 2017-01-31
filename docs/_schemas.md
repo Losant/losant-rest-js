@@ -129,8 +129,13 @@ Schema for a single API Token
       "type": "string",
       "enum": [
         "apiToken",
-        "user"
+        "user",
+        "flow"
       ]
+    },
+    "creatorName": {
+      "type": "string",
+      "maxLength": 1024
     },
     "name": {
       "type": "string",
