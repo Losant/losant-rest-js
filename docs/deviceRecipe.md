@@ -36,6 +36,11 @@ client.deviceRecipe.bulkCreate(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, deviceRecipe.*, or deviceRecipe.bulkCreate.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -81,6 +86,11 @@ client.deviceRecipe.delete(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, deviceRecipe.*, or deviceRecipe.delete.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -124,6 +134,11 @@ client.deviceRecipe.get(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, deviceRecipe.*, or deviceRecipe.get.
 
 #### Available Parameters
 
@@ -169,6 +184,11 @@ client.deviceRecipe.patch(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, deviceRecipe.*, or deviceRecipe.patch.
 
 #### Available Parameters
 

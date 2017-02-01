@@ -34,6 +34,11 @@ client.event.delete(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, event.*, or event.delete.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -77,6 +82,11 @@ client.event.get(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, event.*, or event.get.
 
 #### Available Parameters
 
@@ -122,6 +132,11 @@ client.event.patch(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, event.*, or event.patch.
 
 #### Available Parameters
 

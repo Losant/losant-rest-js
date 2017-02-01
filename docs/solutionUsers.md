@@ -33,6 +33,11 @@ client.solutionUsers.get(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Organization, all.Organization.read, all.User, all.User.read, solutionUsers.*, or solutionUsers.get.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -82,6 +87,11 @@ client.solutionUsers.post(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Organization, all.User, solutionUsers.*, or solutionUsers.post.
 
 #### Available Parameters
 

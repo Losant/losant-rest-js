@@ -2,8 +2,8 @@
 
 *   [API Token](#api-token)
 *   [API Token Patch](#api-token-patch)
-*   [API Token Post](#api-token-post)
 *   [Application](#application)
+*   [Application API Token Post](#application-api-token-post)
 *   [Application Key](#application-key)
 *   [Application Key Patch](#application-key-patch)
 *   [Application Key Post](#application-key-post)
@@ -246,67 +246,6 @@ Schema for the body of an API Token modification request
 
 <br/>
 
-## API Token Post
-
-Schema for the body of an API Token creation request
-
-### <a name="api-token-post-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "name": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 255
-    },
-    "description": {
-      "type": "string",
-      "maxLength": 32767
-    },
-    "expirationDate": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "scope": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 1024
-      }
-    },
-    "status": {
-      "type": "string",
-      "enum": [
-        "active",
-        "inactive"
-      ]
-    }
-  },
-  "additionalProperties": false,
-  "required": [
-    "name"
-  ]
-}
-```
-### <a name="api-token-post-example"></a> Example
-
-```json
-{
-  "name": "My New API Token",
-  "expirationDate": "2017-06-13T04:00:00.000Z",
-  "scope": [
-    "all.Application"
-  ],
-  "status": "active"
-}
-```
-
-<br/>
-
 ## Application
 
 Schema for a single Application
@@ -400,6 +339,145 @@ Schema for a single Application
     "keyCount": 1,
     "deviceRecipeCount": 0
   }
+}
+```
+
+<br/>
+
+## Application API Token Post
+
+Schema for the body of an Application API Token creation request
+
+### <a name="application-api-token-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "expirationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "all.Application",
+          "all.Application.read",
+          "all.Device",
+          "all.Device.read",
+          "application.*",
+          "applicationApiToken.*",
+          "applicationApiTokens.*",
+          "applicationKey.*",
+          "applicationKeys.*",
+          "data.*",
+          "device.*",
+          "deviceRecipe.*",
+          "deviceRecipes.*",
+          "devices.*",
+          "event.*",
+          "events.*",
+          "flow.*",
+          "flows.*",
+          "webhook.*",
+          "webhooks.*",
+          "application.delete",
+          "application.get",
+          "application.patch",
+          "application.payloadCounts",
+          "applicationApiToken.delete",
+          "applicationApiToken.get",
+          "applicationApiToken.patch",
+          "applicationApiTokens.get",
+          "applicationApiTokens.post",
+          "applicationKey.delete",
+          "applicationKey.get",
+          "applicationKey.patch",
+          "applicationKeys.get",
+          "applicationKeys.post",
+          "data.lastValueQuery",
+          "data.timeSeriesQuery",
+          "device.delete",
+          "device.export",
+          "device.get",
+          "device.getCommand",
+          "device.getCompositeState",
+          "device.getLogEntries",
+          "device.getState",
+          "device.patch",
+          "device.removeData",
+          "device.sendCommand",
+          "device.sendState",
+          "deviceRecipe.bulkCreate",
+          "deviceRecipe.delete",
+          "deviceRecipe.get",
+          "deviceRecipe.patch",
+          "deviceRecipes.get",
+          "deviceRecipes.post",
+          "devices.export",
+          "devices.get",
+          "devices.post",
+          "devices.sendCommand",
+          "event.delete",
+          "event.get",
+          "event.patch",
+          "events.get",
+          "events.mostRecentBySeverity",
+          "events.patch",
+          "events.post",
+          "flow.delete",
+          "flow.get",
+          "flow.getStorageEntries",
+          "flow.log",
+          "flow.patch",
+          "flow.pressVirtualButton",
+          "flow.setStorageEntry",
+          "flows.create",
+          "flows.get",
+          "webhook.delete",
+          "webhook.get",
+          "webhook.patch",
+          "webhooks.get",
+          "webhooks.post"
+        ]
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name"
+  ]
+}
+```
+### <a name="application-api-token-post-example"></a> Example
+
+```json
+{
+  "name": "My New API Token",
+  "expirationDate": "2017-06-13T04:00:00.000Z",
+  "scope": [
+    "all.Application"
+  ],
+  "status": "active"
 }
 ```
 

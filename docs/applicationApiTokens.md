@@ -32,6 +32,11 @@ client.applicationApiTokens.get(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, applicationApiTokens.*, or applicationApiTokens.get.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -74,12 +79,17 @@ client.applicationApiTokens.post(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, applicationApiTokens.*, or applicationApiTokens.post.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| apiToken | [API Token Post](_schemas.md#api-token-post) | Y | API token information |  | [API Token Post Example](_schemas.md#api-token-post-example) |
+| apiToken | [Application API Token Post](_schemas.md#application-api-token-post) | Y | API token information |  | [Application API Token Post Example](_schemas.md#application-api-token-post-example) |
 
 #### Successful Responses
 

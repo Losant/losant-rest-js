@@ -34,6 +34,11 @@ client.events.get(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, events.*, or events.get.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -83,6 +88,11 @@ client.events.mostRecentBySeverity(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, events.*, or events.mostRecentBySeverity.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -125,6 +135,11 @@ client.events.patch(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, events.*, or events.patch.
 
 #### Available Parameters
 
@@ -172,6 +187,11 @@ client.events.post(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, events.*, or events.post.
 
 #### Available Parameters
 

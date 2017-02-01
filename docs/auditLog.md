@@ -32,6 +32,11 @@ client.auditLog.get(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Organization, all.Organization.read, all.User, all.User.read, auditLog.*, or auditLog.get.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |

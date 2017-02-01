@@ -38,6 +38,11 @@ client.flow.delete(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, flow.*, or flow.delete.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -82,6 +87,11 @@ client.flow.get(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, flow.*, or flow.get.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -125,6 +135,11 @@ client.flow.getLogEntries(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, flow.*, or flow.log.
 
 #### Available Parameters
 
@@ -172,6 +187,11 @@ client.flow.getStorageEntries(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, flow.*, or flow.getStorageEntries.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -216,6 +236,11 @@ client.flow.patch(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, flow.*, or flow.patch.
 
 #### Available Parameters
 
@@ -263,6 +288,11 @@ client.flow.pressVirtualButton(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, flow.*, or flow.pressVirtualButton.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -308,6 +338,11 @@ client.flow.setStorageEntry(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, flow.*, or flow.setStorageEntry.
 
 #### Available Parameters
 

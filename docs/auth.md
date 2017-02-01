@@ -15,7 +15,7 @@ parameters and the potential responses.
 
 ## Authenticate Device
 
-Authenticates a device using the provided credentials
+Authenticates a device using the provided credentials.
 
 ```javascript
 var params = {
@@ -34,6 +34,9 @@ client.auth.authenticateDevice(params)
   .catch(console.error);
 ```
 
+#### Authentication
+No api access token is required to call this action.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -44,7 +47,7 @@ client.auth.authenticateDevice(params)
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Authenticated Device](_schemas.md#authenticated-device) | Successful authentication |
+| 200 | [Authenticated Device](_schemas.md#authenticated-device) | Successful authentication. The included api access token has the scope &#x27;all.Device&#x27;. |
 
 #### Error Responses
 
@@ -57,7 +60,7 @@ client.auth.authenticateDevice(params)
 
 ## Authenticate Solution User
 
-Authenticates a solution user using the provided credentials
+Authenticates a solution user using the provided credentials.
 
 ```javascript
 var params = {
@@ -76,11 +79,14 @@ client.auth.authenticateSolutionUser(params)
   .catch(console.error);
 ```
 
+#### Authentication
+No api access token is required to call this action.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| credentials | [User Credentials](_schemas.md#user-credentials) | Y | Solution user authentication credentials |  | [User Credentials Example](_schemas.md#user-credentials-example) |
+| credentials | [User Credentials](_schemas.md#user-credentials) | Y | Solution user authentication credentials. The included api access token has the scope &#x27;all.SolutionUser&#x27;. |  | [User Credentials Example](_schemas.md#user-credentials-example) |
 
 #### Successful Responses
 
@@ -99,7 +105,7 @@ client.auth.authenticateSolutionUser(params)
 
 ## Authenticate User
 
-Authenticates a user using the provided credentials
+Authenticates a user using the provided credentials.
 
 ```javascript
 var params = {
@@ -118,6 +124,9 @@ client.auth.authenticateUser(params)
   .catch(console.error);
 ```
 
+#### Authentication
+No api access token is required to call this action.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -128,7 +137,7 @@ client.auth.authenticateUser(params)
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Authenticated User](_schemas.md#authenticated-user) | Successful authentication |
+| 200 | [Authenticated User](_schemas.md#authenticated-user) | Successful authentication. The included api access token has the scope &#x27;all.User&#x27;. |
 
 #### Error Responses
 
@@ -141,7 +150,7 @@ client.auth.authenticateUser(params)
 
 ## Authenticate User Github
 
-Authenticates a user via GitHub OAuth
+Authenticates a user via GitHub OAuth.
 
 ```javascript
 var params = {
@@ -160,6 +169,9 @@ client.auth.authenticateUserGithub(params)
   .catch(console.error);
 ```
 
+#### Authentication
+No api access token is required to call this action.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -170,7 +182,7 @@ client.auth.authenticateUserGithub(params)
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Authenticated User](_schemas.md#authenticated-user) | Successful authentication |
+| 200 | [Authenticated User](_schemas.md#authenticated-user) | Successful authentication. The included api access token has the scope &#x27;all.User&#x27;. |
 
 #### Error Responses
 

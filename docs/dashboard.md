@@ -33,6 +33,11 @@ client.dashboard.delete(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Organization, all.User, dashboard.*, or dashboard.delete.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -74,6 +79,9 @@ client.dashboard.get(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+No api access token is required to call this action.
 
 #### Available Parameters
 
@@ -118,6 +126,11 @@ client.dashboard.patch(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Organization, all.User, dashboard.*, or dashboard.patch.
 
 #### Available Parameters
 

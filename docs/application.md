@@ -34,6 +34,11 @@ client.application.delete(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, application.*, or application.delete.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -75,6 +80,11 @@ client.application.get(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, application.*, or application.get.
 
 #### Available Parameters
 
@@ -119,6 +129,11 @@ client.application.patch(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, application.*, or application.patch.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -161,6 +176,11 @@ client.application.payloadCounts(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, application.*, or application.payloadCounts.
 
 #### Available Parameters
 

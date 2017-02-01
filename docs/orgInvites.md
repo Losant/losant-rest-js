@@ -33,6 +33,9 @@ client.orgInvites.get(params)
   .catch(console.error);
 ```
 
+#### Authentication
+No api access token is required to call this action.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -76,6 +79,9 @@ client.orgInvites.post(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+No api access token is required to call this action.
 
 #### Available Parameters
 

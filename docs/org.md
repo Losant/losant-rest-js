@@ -40,6 +40,11 @@ client.org.delete(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Organization, all.User, org.*, or org.delete.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -81,6 +86,11 @@ client.org.get(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.get.
 
 #### Available Parameters
 
@@ -126,6 +136,11 @@ client.org.inviteMember(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Organization, all.User, org.*, or org.inviteMember.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -169,6 +184,11 @@ client.org.modifyMember(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Organization, all.User, org.*, or org.modifyMember.
 
 #### Available Parameters
 
@@ -214,6 +234,11 @@ client.org.patch(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Organization, all.User, org.*, or org.patch.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -256,6 +281,11 @@ client.org.payloadCounts(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.payloadCounts.
 
 #### Available Parameters
 
@@ -301,6 +331,11 @@ client.org.pendingInvites(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.pendingInvites.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -343,6 +378,11 @@ client.org.removeMember(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Organization, all.User, org.*, or org.removeMember.
 
 #### Available Parameters
 
@@ -388,6 +428,11 @@ client.org.revokeInvite(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Organization, all.User, org.*, or org.revokeInvite.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -431,6 +476,11 @@ client.org.transferResources(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Organization, all.User, org.*, or org.transferResources.
 
 #### Available Parameters
 

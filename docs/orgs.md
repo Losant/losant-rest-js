@@ -30,6 +30,11 @@ client.orgs.get(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.User, all.User.read, orgs.*, or orgs.get.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -76,6 +81,11 @@ client.orgs.post(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.User, orgs.*, or orgs.post.
 
 #### Available Parameters
 

@@ -42,6 +42,11 @@ client.device.delete(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, device.*, or device.delete.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -85,6 +90,11 @@ client.device.export(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, device.*, or device.export.
 
 #### Available Parameters
 
@@ -134,6 +144,11 @@ client.device.get(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Device, all.Device.read, all.Organization, all.Organization.read, all.User, all.User.read, device.*, or device.get.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -177,6 +192,11 @@ client.device.getCommand(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Device, all.Device.read, all.Organization, all.Organization.read, all.User, all.User.read, device.*, or device.getCommand.
 
 #### Available Parameters
 
@@ -224,6 +244,11 @@ client.device.getCompositeState(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Device, all.Device.read, all.Organization, all.Organization.read, all.User, all.User.read, device.*, or device.getCompositeState.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -270,6 +295,11 @@ client.device.getLogEntries(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Device, all.Device.read, all.Organization, all.Organization.read, all.User, all.User.read, device.*, or device.getLogEntries.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -315,6 +345,11 @@ client.device.getState(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Device, all.Device.read, all.Organization, all.Organization.read, all.User, all.User.read, device.*, or device.getState.
 
 #### Available Parameters
 
@@ -363,6 +398,11 @@ client.device.patch(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, device.*, or device.patch.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -407,6 +447,11 @@ client.device.removeData(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, device.*, or device.removeData.
 
 #### Available Parameters
 
@@ -455,6 +500,11 @@ client.device.sendCommand(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Device, all.Organization, all.User, device.*, or device.sendCommand.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -500,6 +550,11 @@ client.device.sendState(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Device, all.Organization, all.User, device.*, or device.sendState.
 
 #### Available Parameters
 

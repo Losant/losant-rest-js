@@ -42,6 +42,11 @@ client.me.addRecentItem(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.SolutionUser, all.User, me.*, or me.addRecentItem.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -82,6 +87,11 @@ client.me.delete(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.SolutionUser, all.User, me.*, or me.delete.
 
 #### Available Parameters
 
@@ -124,6 +134,11 @@ client.me.disableTwoFactorAuth(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.SolutionUser, all.User, me.*, or me.disableTwoFactorAuth.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -163,6 +178,11 @@ client.me.disconnectGithub(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.SolutionUser, all.User, me.*, or me.disconnectGithub.
+
 #### Available Parameters
 
 No parameters needed for this call.
@@ -199,6 +219,11 @@ client.me.disconnectTwitter(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.SolutionUser, all.User, me.*, or me.disconnectTwitter.
 
 #### Available Parameters
 
@@ -238,6 +263,11 @@ client.me.enableTwoFactorAuth(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.SolutionUser, all.User, me.*, or me.enableTwoFactorAuth.
 
 #### Available Parameters
 
@@ -280,6 +310,11 @@ client.me.fetchRecentItems(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.SolutionUser, all.SolutionUser.read, all.User, all.User.read, me.*, or me.fetchRecentItems.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -319,6 +354,11 @@ client.me.get(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.SolutionUser, all.SolutionUser.read, all.User, all.User.read, me.*, or me.get.
 
 #### Available Parameters
 
@@ -361,6 +401,11 @@ client.me.patch(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.SolutionUser, all.User, me.*, or me.patch.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -399,6 +444,11 @@ client.me.payloadCounts(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.SolutionUser, all.User, all.User.read, me.*, or me.payloadCounts.
 
 #### Available Parameters
 
@@ -442,6 +492,11 @@ client.me.transferResources(params)
   .catch(console.error);
 ```
 
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.SolutionUser, all.User, me.*, or me.transferResources.
+
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
@@ -480,6 +535,11 @@ client.me.verifyEmail(params)
   .then(console.log)
   .catch(console.error);
 ```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.SolutionUser, all.User, me.*, or me.verifyEmail.
 
 #### Available Parameters
 

@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/Losant/losant-rest-js.svg?branch=master)](https://travis-ci.org/Losant/losant-rest-js) [![npm version](https://badge.fury.io/js/losant-rest.svg)](https://badge.fury.io/js/losant-rest)
 
 The [Losant](https://www.losant.com) REST API client provides a simple way to
-use the comprehensive Losant API.  You can authenticate either as a Losant
+use the comprehensive Losant API. You can authenticate either as a Losant
 device or with your user account, and have access to all the functionality
 of the Losant platform.
 
@@ -66,19 +66,20 @@ var client = api.createClient({ accessToken: undefined, url: 'https://api.losant
 ```
 
 The losant-rest module exposes a single function named createClient which
-returns a client instance.  Ite takes the following options:
+returns a client instance. It takes the following options:
 
 *   accessToken  
 The access token to be used for authentication - by default there is no
-access token.  An access token can be acquired through either of the
-[Auth](docs/auth.md) methods.
+access token. An access token can be acquired through any of the
+[Auth](docs/auth.md) methods, or can be created for a particular application
+through [applicationApiTokens](docs/applicationApiTokens.md).
 
 *   url  
 The url of the Losant API - by default <https://api.losant.com>.
 
 ### Client
 
-A client is a single api instance.  By default, it is unauthenticated, but can
+A client is a single api instance. By default, it is unauthenticated, but can
 be given an access token to perform authenticated requests.
 
 #### Functions
@@ -94,8 +95,18 @@ options set on the client instance.
 #### Resources
 
 Each of the following is a property on the client instance, and wraps the
-actions for that particular resource.  See each resource documentation file
+actions for that particular resource. See each resource documentation file
 for more information.
+
+*   [applicationApiToken](docs/applicationApiToken.md)  
+Contains all the actions that can be performed against a single
+Api Token beloging to an application - for instance, getting info
+on a single token or revoking a token.
+
+*   [applicationApiTokens](docs/applicationApiTokens.md)  
+Contains all of the actions that can be performed against the
+collection of Api Tokens belonging to an Application - such
+as listing all tokens or creating a new token.
 
 *   [applicationKey](docs/applicationKey.md)  
 Contains all the actions that can be performed against a single
@@ -121,7 +132,7 @@ listing the applications or creating a new application.
 
 *   [auth](docs/auth.md)  
 Contains the actions used for authenticating against the api, either as a
-user or as a device.  The result of authentication calls contain the auth_token
+user or as a device. The result of authentication calls contain the auth_token
 needed for authenticated calls - see the examples for more details.
 
 *   [dashboard](docs/dashboard.md)  
