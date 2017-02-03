@@ -69,6 +69,94 @@
         "string",
         "null"
       ]
+    },
+    "contextConfiguration": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "deviceId",
+              "deviceAttribute",
+              "string",
+              "number"
+            ]
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "defaultValue": {
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "validationEnabled": {
+            "type": "boolean"
+          },
+          "validationConfig": {
+            "type": "object",
+            "properties": {
+              "min": {
+                "type": "number"
+              },
+              "max": {
+                "type": "number"
+              },
+              "regExp": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "attributes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                }
+              },
+              "deviceIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                }
+              },
+              "deviceTags": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "value": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "name",
+          "type",
+          "defaultValue"
+        ],
+        "additionalProperties": false
+      }
     }
   },
   "additionalProperties": false
