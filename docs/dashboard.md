@@ -185,7 +185,7 @@ No api access token is required to call this action.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | dashboardId | string | Y | ID of the associated dashboard |  | 575ece2b7ae143cd83dc4a9b |
-| ctx | undefined | Y | The context object to validate |  | undefined |
+| ctx | [Dashboard Context Instance](_schemas.md#dashboard-context-instance) | Y | The context object to validate |  | [Dashboard Context Instance Example](_schemas.md#dashboard-context-instance-example) |
 
 #### Successful Responses
 

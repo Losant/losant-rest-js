@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "patternProperties": {
+    "^[0-9a-zA-Z_-]{1,255}$": {
+      "type": [
+        "string",
+        "number"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

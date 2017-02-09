@@ -19,6 +19,7 @@
 *   [Authenticated User](#authenticated-user)
 *   [Composite Device State](#composite-device-state)
 *   [Dashboard](#dashboard)
+*   [Dashboard Context Instance](#dashboard-context-instance)
 *   [Dashboard Patch](#dashboard-patch)
 *   [Dashboard Post](#dashboard-post)
 *   [Dashboards](#dashboards)
@@ -1922,6 +1923,38 @@ Schema for a single Dashboard
   "refreshRate": 60,
   "public": false,
   "blocks": []
+}
+```
+
+<br/>
+
+## Dashboard Context Instance
+
+Schema for a dashboard context instance
+
+### <a name="dashboard-context-instance-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "patternProperties": {
+    "^[0-9a-zA-Z_-]{1,255}$": {
+      "type": [
+        "string",
+        "number"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="dashboard-context-instance-example"></a> Example
+
+```json
+{
+  "myContextVariable": "myValue",
+  "myOtherVariable": "575ecf887ae143cd83dc4aa2"
 }
 ```
 
