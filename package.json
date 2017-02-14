@@ -6,15 +6,22 @@
   "homepage": "https://github.com/Losant/losant-rest-js#readme",
   "author": "Losant <hello@losant.com>",
   "license": "MIT",
-  "keywords": ["IoT", "platform", "api", "REST"],
-  "bugs": { "url": "https://github.com/Losant/losant-rest-js/issues" },
+  "keywords": [
+    "IoT",
+    "platform",
+    "api",
+    "REST"
+  ],
+  "bugs": {
+    "url": "https://github.com/Losant/losant-rest-js/issues"
+  },
   "directories": {
     "doc": "./docs",
     "example": "./examples",
     "lib": "./lib"
   },
   "scripts": {
-    "jshint": "jshint lib/*.js test/*.js lib/api/*.js examples/*.js",
+    "lint": "eslint *.js lib test",
     "test": "mocha test 2>&1",
     "coverage": "rm -rf coverage; istanbul cover _mocha -- --recursive --reporter spec --bail"
   },
@@ -28,10 +35,10 @@
     "qs": "^6.2.0"
   },
   "devDependencies": {
-    "jshint": "2.9.2",
-    "mocha": "2.5.3",
-    "should": "9.0.2",
-    "istanbul": "0.4.3",
-    "nock": "8.0.0"
+    "eslint": "^3.15.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "nock": "^9.0.3",
+    "should": "^11.2.0"
   }
 }
