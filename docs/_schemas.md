@@ -9141,6 +9141,14 @@ Schema for a single Webhook
     },
     "waitForReply": {
       "type": "boolean"
+    },
+    "basicAuthUsername": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "basicAuthPassword": {
+      "type": "string",
+      "maxLength": 255
     }
   }
 }
@@ -9198,6 +9206,14 @@ Schema for the body of a Webhook modification request
     },
     "waitForReply": {
       "type": "boolean"
+    },
+    "basicAuthUsername": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "basicAuthPassword": {
+      "type": "string",
+      "maxLength": 255
     }
   },
   "additionalProperties": false
@@ -9250,6 +9266,14 @@ Schema for the body of a Webhook creation request
     },
     "waitForReply": {
       "type": "boolean"
+    },
+    "basicAuthUsername": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "basicAuthPassword": {
+      "type": "string",
+      "maxLength": 255
     }
   },
   "required": [
@@ -9335,6 +9359,14 @@ Schema for a collection of Webhooks
           },
           "waitForReply": {
             "type": "boolean"
+          },
+          "basicAuthUsername": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "basicAuthPassword": {
+            "type": "string",
+            "maxLength": 255
           }
         }
       }

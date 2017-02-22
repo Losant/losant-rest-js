@@ -27,6 +27,14 @@
     },
     "waitForReply": {
       "type": "boolean"
+    },
+    "basicAuthUsername": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "basicAuthPassword": {
+      "type": "string",
+      "maxLength": 255
     }
   },
   "required": [
