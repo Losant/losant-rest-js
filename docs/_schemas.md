@@ -4,12 +4,20 @@
 *   [API Token Patch](#api-token-patch)
 *   [Application](#application)
 *   [Application API Token Post](#application-api-token-post)
+*   [Application Group](#application-group)
+*   [Application Group Patch](#application-group-patch)
+*   [Application Group Post](#application-group-post)
+*   [Application Groups](#application-groups)
 *   [Application Key](#application-key)
 *   [Application Key Patch](#application-key-patch)
 *   [Application Key Post](#application-key-post)
 *   [Application Keys](#application-keys)
 *   [Application Patch](#application-patch)
 *   [Application Post](#application-post)
+*   [Application User](#application-user)
+*   [Application User Patch](#application-user-patch)
+*   [Application User Post](#application-user-post)
+*   [Application Users](#application-users)
 *   [Applications](#applications)
 *   [Audit Log](#audit-log)
 *   [Audit Log Filter](#audit-log-filter)
@@ -484,6 +492,422 @@ Schema for the body of an Application API Token creation request
 
 <br/>
 
+## Application Group
+
+Schema for a single Application Group
+
+### <a name="application-group-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationGroupId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "resourceType": {
+            "type": "string",
+            "enum": [
+              "endpoint"
+            ]
+          },
+          "resourceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "resourceType",
+          "resourceId"
+        ]
+      }
+    }
+  }
+}
+```
+### <a name="application-group-example"></a> Example
+
+```json
+{
+  "id": "58b9d794cbfafe1be675744f",
+  "applicationGroupId": "58b9d794cbfafe1be675744f",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "name": "My Group",
+  "members": [
+    "58b9d782cbfafe1be675744d",
+    "58b9d787cbfafe1be675744e"
+  ],
+  "resources": [
+    {
+      "resourceType": "endpoint",
+      "resourceId": "58b9d743cbfafe1be675744b"
+    },
+    {
+      "resourceType": "endpoint",
+      "resourceId": "58b9d743cbfafe1be675744c"
+    }
+  ]
+}
+```
+
+<br/>
+
+## Application Group Patch
+
+Schema for the body of an Application Group modification request
+
+### <a name="application-group-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "resourceType": {
+            "type": "string",
+            "enum": [
+              "endpoint"
+            ]
+          },
+          "resourceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "resourceType",
+          "resourceId"
+        ]
+      }
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="application-group-patch-example"></a> Example
+
+```json
+{
+  "name": "My New Group Name",
+  "members": [
+    "575ed70c7ae143cd83dc4aa9",
+    "675ed70c7ae143cd83dc4aa9"
+  ],
+  "resources": [
+    {
+      "resourceType": "endpoint",
+      "resourceId": "58b9d743cbfafe1be675744b"
+    },
+    {
+      "resourceType": "endpoint",
+      "resourceId": "58b9d743cbfafe1be675744c"
+    }
+  ]
+}
+```
+
+<br/>
+
+## Application Group Post
+
+Schema for the body of an Application Group creation request
+
+### <a name="application-group-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "resourceType": {
+            "type": "string",
+            "enum": [
+              "endpoint"
+            ]
+          },
+          "resourceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "resourceType",
+          "resourceId"
+        ]
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name"
+  ]
+}
+```
+### <a name="application-group-post-example"></a> Example
+
+```json
+{
+  "name": "My Group",
+  "members": [
+    "575ed70c7ae143cd83dc4aa9",
+    "675ed70c7ae143cd83dc4aa9"
+  ],
+  "resources": [
+    {
+      "resourceType": "endpoint",
+      "resourceId": "58b9d743cbfafe1be675744b"
+    },
+    {
+      "resourceType": "endpoint",
+      "resourceId": "58b9d743cbfafe1be675744c"
+    }
+  ]
+}
+```
+
+<br/>
+
+## Application Groups
+
+Schema for a collection of Application Groups
+
+### <a name="application-groups-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Application Group",
+        "description": "Schema for a single Application Group",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationGroupId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            }
+          },
+          "resources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "resourceType": {
+                  "type": "string",
+                  "enum": [
+                    "endpoint"
+                  ]
+                },
+                "resourceId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "resourceType",
+                "resourceId"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  }
+}
+```
+### <a name="application-groups-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "58b9d794cbfafe1be675744f",
+      "applicationGroupId": "58b9d794cbfafe1be675744f",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "name": "My Group",
+      "members": [
+        "58b9d782cbfafe1be675744d",
+        "58b9d787cbfafe1be675744e"
+      ],
+      "resources": [
+        {
+          "resourceType": "endpoint",
+          "resourceId": "58b9d743cbfafe1be675744b"
+        },
+        {
+          "resourceType": "endpoint",
+          "resourceId": "58b9d743cbfafe1be675744c"
+        }
+      ]
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
+
 ## Application Key
 
 Schema for a single Application Key
@@ -886,6 +1310,384 @@ Schema for the body of an Application creation request
 {
   "name": "My New Application",
   "description": "Description of my new application"
+}
+```
+
+<br/>
+
+## Application User
+
+Schema for a single Application User
+
+### <a name="application-user-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationUserId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "passwordLastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastLogin": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "firstName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "fullName": {
+      "type": "string"
+    },
+    "avatarUrl": {
+      "type": "string",
+      "format": "url"
+    },
+    "metaData": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
+```
+### <a name="application-user-example"></a> Example
+
+```json
+{
+  "id": "58b9d782cbfafe1be675744d",
+  "applicationUserId": "58b9d782cbfafe1be675744d",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "passwordLastUpdated": "2016-06-13T04:00:00.000Z",
+  "lastLogin": "2016-06-13T04:00:00.000Z",
+  "email": "example@applicationuser.com",
+  "firstName": "Example",
+  "lastName": "Name",
+  "fullName": "Example Name",
+  "avatarUrl": "https://example.avatar.url/is_here.png",
+  "metaData": {
+    "customKey": "customValue"
+  }
+}
+```
+
+<br/>
+
+## Application User Patch
+
+Schema for the body of an Application User modification request
+
+### <a name="application-user-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "firstName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "password": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 2048
+    },
+    "metaData": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="application-user-patch-example"></a> Example
+
+```json
+{
+  "password": "aNewPassword",
+  "metaData": {
+    "customKey": "newCustomValue"
+  }
+}
+```
+
+<br/>
+
+## Application User Post
+
+Schema for the body of an Application User creation request
+
+### <a name="application-user-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "firstName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "password": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 2048
+    },
+    "metaData": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "email",
+    "firstName",
+    "lastName",
+    "password"
+  ]
+}
+```
+### <a name="application-user-post-example"></a> Example
+
+```json
+{
+  "email": "example@applicationuser.com",
+  "firstName": "Example",
+  "lastName": "Name",
+  "password": "aUserPassword",
+  "metaData": {
+    "customKey": "customValue"
+  }
+}
+```
+
+<br/>
+
+## Application Users
+
+Schema for a collection of Application Users
+
+### <a name="application-users-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Application User",
+        "description": "Schema for a single Application User",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationUserId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "passwordLastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastLogin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 1024
+          },
+          "firstName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "lastName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "avatarUrl": {
+            "type": "string",
+            "format": "url"
+          },
+          "metaData": {
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  }
+}
+```
+### <a name="application-users-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "58b9d782cbfafe1be675744d",
+      "applicationUserId": "58b9d782cbfafe1be675744d",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "passwordLastUpdated": "2016-06-13T04:00:00.000Z",
+      "lastLogin": "2016-06-13T04:00:00.000Z",
+      "email": "example@applicationuser.com",
+      "firstName": "Example",
+      "lastName": "Name",
+      "fullName": "Example Name",
+      "avatarUrl": "https://example.avatar.url/is_here.png",
+      "metaData": {
+        "customKey": "customValue"
+      }
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97"
 }
 ```
 
