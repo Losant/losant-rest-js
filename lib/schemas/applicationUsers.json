@@ -69,6 +69,23 @@
               }
             },
             "additionalProperties": false
+          },
+          "groups": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                }
+              }
+            }
           }
         }
       }
@@ -102,6 +119,10 @@
       ]
     },
     "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "groupId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     }

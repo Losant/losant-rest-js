@@ -48,6 +48,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | perPage | string | N | How many items to return per page | 1000 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*flow |
+| triggerFilter | [Workflow Trigger Filter](_schemas.md#workflow-trigger-filter) | N | Array of triggers to filter by. |  | [Workflow Trigger Filter Example](_schemas.md#workflow-trigger-filter-example) |
 
 #### Successful Responses
 

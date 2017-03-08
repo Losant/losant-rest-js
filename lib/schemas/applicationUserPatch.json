@@ -32,6 +32,13 @@
         }
       },
       "additionalProperties": false
+    },
+    "groupIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
     }
   },
   "additionalProperties": false

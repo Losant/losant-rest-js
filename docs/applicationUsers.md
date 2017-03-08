@@ -48,6 +48,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | perPage | string | N | How many items to return per page | 1000 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: firstName, lastName, email |  | email |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*user |
+| groupId | string | N | Filter users to those only in the specified group |  | 575ec8687ae143cd83dc4a97 |
 
 #### Successful Responses
 

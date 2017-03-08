@@ -61,6 +61,7 @@
 *   [Workflow Post](#workflow-post)
 *   [Workflow Storage Entries](#workflow-storage-entries)
 *   [Workflow Storage Entry](#workflow-storage-entry)
+*   [Workflow Trigger Filter](#workflow-trigger-filter)
 *   [Workflows](#workflows)
 *   [Github Login](#github-login)
 *   [Last Value Data](#last-value-data)
@@ -1386,6 +1387,23 @@ Schema for a single Application User
         }
       },
       "additionalProperties": false
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          }
+        }
+      }
     }
   }
 }
@@ -1455,6 +1473,13 @@ Schema for the body of an Application User modification request
         }
       },
       "additionalProperties": false
+    },
+    "groupIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
     }
   },
   "additionalProperties": false
@@ -1514,6 +1539,13 @@ Schema for the body of an Application User creation request
         }
       },
       "additionalProperties": false
+    },
+    "groupIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
     }
   },
   "additionalProperties": false,
@@ -1619,6 +1651,23 @@ Schema for a collection of Application Users
               }
             },
             "additionalProperties": false
+          },
+          "groups": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                }
+              }
+            }
           }
         }
       }
@@ -1652,6 +1701,10 @@ Schema for a collection of Application Users
       ]
     },
     "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "groupId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     }
@@ -5779,10 +5832,13 @@ Schema for a single Workflow
         "type": "object",
         "properties": {
           "key": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "type": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
           },
           "config": {
             "type": "object"
@@ -5812,10 +5868,13 @@ Schema for a single Workflow
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "type": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
           },
           "config": {
             "type": "object"
@@ -6020,10 +6079,13 @@ Schema for the body of a Workflow modification request
         "type": "object",
         "properties": {
           "key": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "type": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
           },
           "config": {
             "type": "object"
@@ -6053,10 +6115,13 @@ Schema for the body of a Workflow modification request
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "type": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
           },
           "config": {
             "type": "object"
@@ -6146,10 +6211,13 @@ Schema for the body of a Workflow creation request
         "type": "object",
         "properties": {
           "key": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "type": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
           },
           "config": {
             "type": "object"
@@ -6179,10 +6247,13 @@ Schema for the body of a Workflow creation request
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "type": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
           },
           "config": {
             "type": "object"
@@ -6310,6 +6381,45 @@ Schema for the body of a request to set a Workflow storage entry
 
 <br/>
 
+## Workflow Trigger Filter
+
+Array of triggers for filtering workflows. Trigger keys and trigger types are optional.
+
+### <a name="workflow-trigger-filter-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "key": {
+        "type": "string",
+        "maxLength": 1024
+      },
+      "type": {
+        "type": "string",
+        "maxLength": 1024
+      }
+    },
+    "additionalProperties": false
+  }
+}
+```
+### <a name="workflow-trigger-filter-example"></a> Example
+
+```json
+[
+  {
+    "type": "webhook",
+    "key": "575ed78e7ae143cd83dc4aab"
+  }
+]
+```
+
+<br/>
+
 ## Workflows
 
 Schema for a collection of Workflows
@@ -6366,10 +6476,13 @@ Schema for a collection of Workflows
               "type": "object",
               "properties": {
                 "key": {
-                  "type": "string"
+                  "type": "string",
+                  "maxLength": 1024
                 },
                 "type": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024
                 },
                 "config": {
                   "type": "object"
@@ -6399,10 +6512,13 @@ Schema for a collection of Workflows
               "type": "object",
               "properties": {
                 "id": {
-                  "type": "string"
+                  "type": "string",
+                  "maxLength": 1024
                 },
                 "type": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024
                 },
                 "config": {
                   "type": "object"

@@ -47,10 +47,13 @@
               "type": "object",
               "properties": {
                 "key": {
-                  "type": "string"
+                  "type": "string",
+                  "maxLength": 1024
                 },
                 "type": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024
                 },
                 "config": {
                   "type": "object"
@@ -80,10 +83,13 @@
               "type": "object",
               "properties": {
                 "id": {
-                  "type": "string"
+                  "type": "string",
+                  "maxLength": 1024
                 },
                 "type": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024
                 },
                 "config": {
                   "type": "object"
