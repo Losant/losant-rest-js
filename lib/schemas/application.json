@@ -38,6 +38,10 @@
       "type": "string",
       "maxLength": 32767
     },
+    "endpointSlug": {
+      "type": "string",
+      "pattern": "^[0-9a-z_-]{1,255}$"
+    },
     "summary": {
       "type": "object",
       "properties": {

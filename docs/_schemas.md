@@ -4,6 +4,10 @@
 *   [API Token Patch](#api-token-patch)
 *   [Application](#application)
 *   [Application API Token Post](#application-api-token-post)
+*   [Application Endpoint](#application-endpoint)
+*   [Application Endpoint Patch](#application-endpoint-patch)
+*   [Application Endpoint Post](#application-endpoint-post)
+*   [Application Endpoints](#application-endpoints)
 *   [Application Group](#application-group)
 *   [Application Group Patch](#application-group-patch)
 *   [Application Group Post](#application-group-post)
@@ -303,6 +307,10 @@ Schema for a single Application
       "type": "string",
       "maxLength": 32767
     },
+    "endpointSlug": {
+      "type": "string",
+      "pattern": "^[0-9a-z_-]{1,255}$"
+    },
     "summary": {
       "type": "object",
       "properties": {
@@ -493,6 +501,348 @@ Schema for the body of an Application API Token creation request
 
 <br/>
 
+## Application Endpoint
+
+Schema for a single Application Endpoint
+
+### <a name="application-endpoint-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationEndpointId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "route": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "method": {
+      "type": "string",
+      "enum": [
+        "get",
+        "post",
+        "patch",
+        "put",
+        "options"
+      ]
+    },
+    "access": {
+      "type": "string",
+      "enum": [
+        "public",
+        "authenticated",
+        "group"
+      ]
+    },
+    "position": {
+      "type": "number"
+    },
+    "applicationGroups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          }
+        }
+      }
+    }
+  }
+}
+```
+### <a name="application-endpoint-example"></a> Example
+
+```json
+{
+  "id": "58c1de6c8f812590d8e82980",
+  "applicationEndpointId": "58c1de6c8f812590d8e82980",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "route": "/my/route/:id",
+  "enabled": true,
+  "method": "get",
+  "access": "group",
+  "position": 0,
+  "applicationGroups": [
+    {
+      "name": "myGroup",
+      "id": "58b9d794cbfafe1be675744f"
+    }
+  ]
+}
+```
+
+<br/>
+
+## Application Endpoint Patch
+
+Schema for the body of an Application Endpoint modification request
+
+### <a name="application-endpoint-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "route": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "method": {
+      "type": "string",
+      "enum": [
+        "get",
+        "post",
+        "patch",
+        "put",
+        "options"
+      ]
+    },
+    "access": {
+      "type": "string",
+      "enum": [
+        "public",
+        "authenticated",
+        "group"
+      ]
+    },
+    "position": {
+      "type": "number"
+    },
+    "applicationGroupIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="application-endpoint-patch-example"></a> Example
+
+```json
+{
+  "access": "group",
+  "position": 1,
+  "applicationGroupIds": [
+    "58c1de6f8f812590d8e82983"
+  ]
+}
+```
+
+<br/>
+
+## Application Endpoint Post
+
+Schema for the body of an Application Endpoint creation request
+
+### <a name="application-endpoint-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "route": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "method": {
+      "type": "string",
+      "enum": [
+        "get",
+        "post",
+        "patch",
+        "put",
+        "options"
+      ]
+    },
+    "access": {
+      "type": "string",
+      "enum": [
+        "public",
+        "authenticated",
+        "group"
+      ]
+    },
+    "position": {
+      "type": "number"
+    },
+    "applicationGroupIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "route",
+    "method"
+  ]
+}
+```
+### <a name="application-endpoint-post-example"></a> Example
+
+```json
+{
+  "route": "/my/route/:id",
+  "method": "get",
+  "access": "public",
+  "position": 0
+}
+```
+
+<br/>
+
+## Application Endpoints
+
+Schema for a collection of Application Endpoints
+
+### <a name="application-endpoints-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/applicationEndpoints"
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationGroupId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  }
+}
+```
+### <a name="application-endpoints-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "58c1de6c8f812590d8e82980",
+      "applicationEndpointId": "58c1de6c8f812590d8e82980",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "route": "/my/route/:id",
+      "enabled": true,
+      "method": "get",
+      "access": "group",
+      "position": 0,
+      "applicationGroups": [
+        {
+          "name": "myGroup",
+          "id": "58b9d794cbfafe1be675744f"
+        }
+      ]
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
+
 ## Application Group
 
 Schema for a single Application Group
@@ -533,34 +883,18 @@ Schema for a single Application Group
       "type": "string",
       "maxLength": 32767
     },
-    "members": {
+    "applicationUserIds": {
       "type": "array",
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
       }
     },
-    "resources": {
+    "applicationEndpointIds": {
       "type": "array",
       "items": {
-        "type": "object",
-        "properties": {
-          "resourceType": {
-            "type": "string",
-            "enum": [
-              "endpoint"
-            ]
-          },
-          "resourceId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "resourceType",
-          "resourceId"
-        ]
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
       }
     }
   }
@@ -576,19 +910,13 @@ Schema for a single Application Group
   "creationDate": "2016-06-13T04:00:00.000Z",
   "lastUpdated": "2016-06-13T04:00:00.000Z",
   "name": "My Group",
-  "members": [
+  "applicationUserIds": [
     "58b9d782cbfafe1be675744d",
     "58b9d787cbfafe1be675744e"
   ],
-  "resources": [
-    {
-      "resourceType": "endpoint",
-      "resourceId": "58b9d743cbfafe1be675744b"
-    },
-    {
-      "resourceType": "endpoint",
-      "resourceId": "58b9d743cbfafe1be675744c"
-    }
+  "applicationEndpointIds": [
+    "58b9d743cbfafe1be675744b",
+    "58b9d743cbfafe1be675744c"
   ]
 }
 ```
@@ -615,34 +943,18 @@ Schema for the body of an Application Group modification request
       "type": "string",
       "maxLength": 32767
     },
-    "members": {
+    "applicationUserIds": {
       "type": "array",
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
       }
     },
-    "resources": {
+    "applicationEndpointIds": {
       "type": "array",
       "items": {
-        "type": "object",
-        "properties": {
-          "resourceType": {
-            "type": "string",
-            "enum": [
-              "endpoint"
-            ]
-          },
-          "resourceId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "resourceType",
-          "resourceId"
-        ]
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
       }
     }
   },
@@ -654,19 +966,13 @@ Schema for the body of an Application Group modification request
 ```json
 {
   "name": "My New Group Name",
-  "members": [
+  "applicationUserIds": [
     "575ed70c7ae143cd83dc4aa9",
     "675ed70c7ae143cd83dc4aa9"
   ],
-  "resources": [
-    {
-      "resourceType": "endpoint",
-      "resourceId": "58b9d743cbfafe1be675744b"
-    },
-    {
-      "resourceType": "endpoint",
-      "resourceId": "58b9d743cbfafe1be675744c"
-    }
+  "applicationEndpointIds": [
+    "58b9d743cbfafe1be675744b",
+    "58b9d743cbfafe1be675744c"
   ]
 }
 ```
@@ -693,34 +999,18 @@ Schema for the body of an Application Group creation request
       "type": "string",
       "maxLength": 32767
     },
-    "members": {
+    "applicationUserIds": {
       "type": "array",
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
       }
     },
-    "resources": {
+    "applicationEndpointIds": {
       "type": "array",
       "items": {
-        "type": "object",
-        "properties": {
-          "resourceType": {
-            "type": "string",
-            "enum": [
-              "endpoint"
-            ]
-          },
-          "resourceId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "resourceType",
-          "resourceId"
-        ]
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
       }
     }
   },
@@ -735,19 +1025,13 @@ Schema for the body of an Application Group creation request
 ```json
 {
   "name": "My Group",
-  "members": [
+  "applicationUserIds": [
     "575ed70c7ae143cd83dc4aa9",
     "675ed70c7ae143cd83dc4aa9"
   ],
-  "resources": [
-    {
-      "resourceType": "endpoint",
-      "resourceId": "58b9d743cbfafe1be675744b"
-    },
-    {
-      "resourceType": "endpoint",
-      "resourceId": "58b9d743cbfafe1be675744c"
-    }
+  "applicationEndpointIds": [
+    "58b9d743cbfafe1be675744b",
+    "58b9d743cbfafe1be675744c"
   ]
 }
 ```
@@ -801,34 +1085,18 @@ Schema for a collection of Application Groups
             "type": "string",
             "maxLength": 32767
           },
-          "members": {
+          "applicationUserIds": {
             "type": "array",
             "items": {
               "type": "string",
               "pattern": "^[A-Fa-f\\d]{24}$"
             }
           },
-          "resources": {
+          "applicationEndpointIds": {
             "type": "array",
             "items": {
-              "type": "object",
-              "properties": {
-                "resourceType": {
-                  "type": "string",
-                  "enum": [
-                    "endpoint"
-                  ]
-                },
-                "resourceId": {
-                  "type": "string",
-                  "pattern": "^[A-Fa-f\\d]{24}$"
-                }
-              },
-              "additionalProperties": false,
-              "required": [
-                "resourceType",
-                "resourceId"
-              ]
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
             }
           }
         }
@@ -881,19 +1149,13 @@ Schema for a collection of Application Groups
       "creationDate": "2016-06-13T04:00:00.000Z",
       "lastUpdated": "2016-06-13T04:00:00.000Z",
       "name": "My Group",
-      "members": [
+      "applicationUserIds": [
         "58b9d782cbfafe1be675744d",
         "58b9d787cbfafe1be675744e"
       ],
-      "resources": [
-        {
-          "resourceType": "endpoint",
-          "resourceId": "58b9d743cbfafe1be675744b"
-        },
-        {
-          "resourceType": "endpoint",
-          "resourceId": "58b9d743cbfafe1be675744c"
-        }
+      "applicationEndpointIds": [
+        "58b9d743cbfafe1be675744b",
+        "58b9d743cbfafe1be675744c"
       ]
     }
   ],
@@ -1258,6 +1520,10 @@ Schema for the body of an Application modification request
     "description": {
       "type": "string",
       "maxLength": 32767
+    },
+    "endpointSlug": {
+      "type": "string",
+      "pattern": "^[0-9a-z_-]{1,255}$"
     }
   },
   "additionalProperties": false
@@ -1297,6 +1563,10 @@ Schema for the body of an Application creation request
     "description": {
       "type": "string",
       "maxLength": 32767
+    },
+    "endpointSlug": {
+      "type": "string",
+      "pattern": "^[0-9a-z_-]{1,255}$"
     }
   },
   "additionalProperties": false,
@@ -1388,7 +1658,7 @@ Schema for a single Application User
       },
       "additionalProperties": false
     },
-    "groups": {
+    "applicationGroups": {
       "type": "array",
       "items": {
         "type": "object",
@@ -1474,7 +1744,7 @@ Schema for the body of an Application User modification request
       },
       "additionalProperties": false
     },
-    "groupIds": {
+    "applicationGroupIds": {
       "type": "array",
       "items": {
         "type": "string",
@@ -1540,7 +1810,7 @@ Schema for the body of an Application User creation request
       },
       "additionalProperties": false
     },
-    "groupIds": {
+    "applicationGroupIds": {
       "type": "array",
       "items": {
         "type": "string",
@@ -1652,7 +1922,7 @@ Schema for a collection of Application Users
             },
             "additionalProperties": false
           },
-          "groups": {
+          "applicationGroups": {
             "type": "array",
             "items": {
               "type": "object",
@@ -1704,7 +1974,7 @@ Schema for a collection of Application Users
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "groupId": {
+    "applicationGroupId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     }
@@ -1799,6 +2069,10 @@ Schema for a collection of Applications
           "description": {
             "type": "string",
             "maxLength": 32767
+          },
+          "endpointSlug": {
+            "type": "string",
+            "pattern": "^[0-9a-z_-]{1,255}$"
           },
           "summary": {
             "type": "object",

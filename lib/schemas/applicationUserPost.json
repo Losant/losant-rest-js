@@ -33,7 +33,7 @@
       },
       "additionalProperties": false
     },
-    "groupIds": {
+    "applicationGroupIds": {
       "type": "array",
       "items": {
         "type": "string",

@@ -70,7 +70,7 @@
             },
             "additionalProperties": false
           },
-          "groups": {
+          "applicationGroups": {
             "type": "array",
             "items": {
               "type": "object",
@@ -122,7 +122,7 @@
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "groupId": {
+    "applicationGroupId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     }

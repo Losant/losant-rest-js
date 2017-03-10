@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "route": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "method": {
+      "type": "string",
+      "enum": [
+        "get",
+        "post",
+        "patch",
+        "put",
+        "options"
+      ]
+    },
+    "access": {
+      "type": "string",
+      "enum": [
+        "public",
+        "authenticated",
+        "group"
+      ]
+    },
+    "position": {
+      "type": "number"
+    },
+    "applicationGroupIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "route",
+    "method"
+  ]
+}

@@ -6,7 +6,7 @@
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "applicationUserId": {
+    "applicationEndpointId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
@@ -22,46 +22,38 @@
       "type": "string",
       "format": "date-time"
     },
-    "passwordLastUpdated": {
+    "description": {
       "type": "string",
-      "format": "date-time"
+      "maxLength": 32767
     },
-    "lastLogin": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "email": {
-      "type": "string",
-      "format": "email",
-      "maxLength": 1024
-    },
-    "firstName": {
+    "route": {
       "type": "string",
       "minLength": 1,
       "maxLength": 1024
     },
-    "lastName": {
+    "enabled": {
+      "type": "boolean"
+    },
+    "method": {
       "type": "string",
-      "minLength": 1,
-      "maxLength": 1024
+      "enum": [
+        "get",
+        "post",
+        "patch",
+        "put",
+        "options"
+      ]
     },
-    "fullName": {
-      "type": "string"
-    },
-    "avatarUrl": {
+    "access": {
       "type": "string",
-      "format": "url"
+      "enum": [
+        "public",
+        "authenticated",
+        "group"
+      ]
     },
-    "metaData": {
-      "type": "object",
-      "patternProperties": {
-        "^[0-9a-zA-Z_-]{1,255}$": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 255
-        }
-      },
-      "additionalProperties": false
+    "position": {
+      "type": "number"
     },
     "applicationGroups": {
       "type": "array",

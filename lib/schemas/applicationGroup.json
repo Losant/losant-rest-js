@@ -31,34 +31,18 @@
       "type": "string",
       "maxLength": 32767
     },
-    "members": {
+    "applicationUserIds": {
       "type": "array",
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
       }
     },
-    "resources": {
+    "applicationEndpointIds": {
       "type": "array",
       "items": {
-        "type": "object",
-        "properties": {
-          "resourceType": {
-            "type": "string",
-            "enum": [
-              "endpoint"
-            ]
-          },
-          "resourceId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "resourceType",
-          "resourceId"
-        ]
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
       }
     }
   }
