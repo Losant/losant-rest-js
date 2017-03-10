@@ -8,6 +8,7 @@ parameters and the potential responses.
 
 *   [Get](#get)
 *   [Post](#post)
+*   [Set Order](#set-order)
 
 <br/>
 
@@ -104,6 +105,55 @@ all.Application, all.Organization, all.User, applicationEndpoints.*, or applicat
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 201 | [Application Endpoint](_schemas.md#application-endpoint) | Successfully created application endpoint |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
+
+<br/>
+
+## Set Order
+
+Set the order of the application endpoints for an application
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  applicationEndpointIdsByPosition: myApplicationEndpointIdsByPosition
+};
+
+// with callbacks
+client.applicationEndpoints.setOrder(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.applicationEndpoints.setOrder(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, applicationEndpoints.*, or applicationEndpoints.setPositions.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| applicationEndpointIdsByPosition | [Application Endpoint Ids by Position](_schemas.md#application-endpoint-ids-by-position) | Y | Application endpoint ids in order of their position |  | [Application Endpoint Ids by Position Example](_schemas.md#application-endpoint-ids-by-position-example) |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Success](_schemas.md#success) | If positions were successfully set |
 
 #### Error Responses
 

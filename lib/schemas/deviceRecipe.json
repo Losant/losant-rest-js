@@ -60,7 +60,8 @@
           "value"
         ],
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     },
     "attributes": {
       "type": "array",
@@ -86,7 +87,8 @@
           "dataType"
         ],
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     },
     "deviceClass": {
       "type": "string",
@@ -94,8 +96,7 @@
         "standalone",
         "gateway",
         "peripheral",
-        "floating",
-        "virtual"
+        "floating"
       ]
     },
     "gatewayId": {

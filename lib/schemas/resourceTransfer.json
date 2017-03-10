@@ -18,21 +18,24 @@
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     },
     "dashboardIds": {
       "type": "array",
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     },
     "solutionIds": {
       "type": "array",
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     },
     "strict": {
       "type": "boolean"

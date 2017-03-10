@@ -15,5 +15,6 @@
       }
     },
     "additionalProperties": false
-  }
+  },
+  "maxItems": 100
 }

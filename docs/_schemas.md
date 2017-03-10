@@ -5,6 +5,7 @@
 *   [Application](#application)
 *   [Application API Token Post](#application-api-token-post)
 *   [Application Endpoint](#application-endpoint)
+*   [Application Endpoint Ids by Position](#application-endpoint-ids-by-position)
 *   [Application Endpoint Patch](#application-endpoint-patch)
 *   [Application Endpoint Post](#application-endpoint-post)
 *   [Application Endpoints](#application-endpoints)
@@ -610,6 +611,34 @@ Schema for a single Application Endpoint
 
 <br/>
 
+## Application Endpoint Ids by Position
+
+Array of application endpoint ids, in order of their position for route evaluation.
+
+### <a name="application-endpoint-ids-by-position-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": {
+    "type": "string",
+    "pattern": "^[A-Fa-f\\d]{24}$"
+  },
+  "maxItems": 1000
+}
+```
+### <a name="application-endpoint-ids-by-position-example"></a> Example
+
+```json
+[
+  "58b9d743cbfafe1be675744b",
+  "58b9d743cbfafe1be675744c"
+]
+```
+
+<br/>
+
 ## Application Endpoint Patch
 
 Schema for the body of an Application Endpoint modification request
@@ -659,7 +688,8 @@ Schema for the body of an Application Endpoint modification request
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     }
   },
   "additionalProperties": false
@@ -728,7 +758,8 @@ Schema for the body of an Application Endpoint creation request
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     }
   },
   "additionalProperties": false,
@@ -888,14 +919,16 @@ Schema for a single Application Group
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     },
     "applicationEndpointIds": {
       "type": "array",
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     }
   }
 }
@@ -948,14 +981,16 @@ Schema for the body of an Application Group modification request
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     },
     "applicationEndpointIds": {
       "type": "array",
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     }
   },
   "additionalProperties": false
@@ -1004,14 +1039,16 @@ Schema for the body of an Application Group creation request
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     },
     "applicationEndpointIds": {
       "type": "array",
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     }
   },
   "additionalProperties": false,
@@ -1090,14 +1127,16 @@ Schema for a collection of Application Groups
             "items": {
               "type": "string",
               "pattern": "^[A-Fa-f\\d]{24}$"
-            }
+            },
+            "maxItems": 1000
           },
           "applicationEndpointIds": {
             "type": "array",
             "items": {
               "type": "string",
               "pattern": "^[A-Fa-f\\d]{24}$"
-            }
+            },
+            "maxItems": 1000
           }
         }
       }
@@ -1220,7 +1259,8 @@ Schema for a single Application Key
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     },
     "deviceTags": {
       "type": "array",
@@ -1238,7 +1278,8 @@ Schema for a single Application Key
           }
         },
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     },
     "description": {
       "type": "string",
@@ -1317,7 +1358,8 @@ Schema for the body of an Application Key creation request
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     },
     "deviceTags": {
       "type": "array",
@@ -1335,7 +1377,8 @@ Schema for the body of an Application Key creation request
           }
         },
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     },
     "description": {
       "type": "string",
@@ -1411,7 +1454,8 @@ Schema for a collection of Application Keys
             "items": {
               "type": "string",
               "pattern": "^[A-Fa-f\\d]{24}$"
-            }
+            },
+            "maxItems": 1000
           },
           "deviceTags": {
             "type": "array",
@@ -1429,7 +1473,8 @@ Schema for a collection of Application Keys
                 }
               },
               "additionalProperties": false
-            }
+            },
+            "maxItems": 100
           },
           "description": {
             "type": "string",
@@ -1749,7 +1794,8 @@ Schema for the body of an Application User modification request
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     }
   },
   "additionalProperties": false
@@ -1815,7 +1861,8 @@ Schema for the body of an Application User creation request
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     }
   },
   "additionalProperties": false,
@@ -2670,8 +2717,7 @@ Schema for the successful response when authenticating a Device
         "standalone",
         "gateway",
         "peripheral",
-        "floating",
-        "virtual"
+        "floating"
       ]
     },
     "token": {
@@ -3002,7 +3048,8 @@ Schema for a single Dashboard
                 "items": {
                   "type": "string",
                   "pattern": "^[A-Fa-f\\d]{24}$"
-                }
+                },
+                "maxItems": 1000
               },
               "deviceTags": {
                 "type": "array",
@@ -3020,7 +3067,8 @@ Schema for a single Dashboard
                     }
                   },
                   "additionalProperties": false
-                }
+                },
+                "maxItems": 100
               }
             },
             "additionalProperties": false
@@ -3224,7 +3272,8 @@ Schema for the body of a Dashboard modification request
                 "items": {
                   "type": "string",
                   "pattern": "^[A-Fa-f\\d]{24}$"
-                }
+                },
+                "maxItems": 1000
               },
               "deviceTags": {
                 "type": "array",
@@ -3242,7 +3291,8 @@ Schema for the body of a Dashboard modification request
                     }
                   },
                   "additionalProperties": false
-                }
+                },
+                "maxItems": 100
               }
             },
             "additionalProperties": false
@@ -3412,7 +3462,8 @@ Schema for the body of a Dashboard creation request
                 "items": {
                   "type": "string",
                   "pattern": "^[A-Fa-f\\d]{24}$"
-                }
+                },
+                "maxItems": 1000
               },
               "deviceTags": {
                 "type": "array",
@@ -3430,7 +3481,8 @@ Schema for the body of a Dashboard creation request
                     }
                   },
                   "additionalProperties": false
-                }
+                },
+                "maxItems": 100
               }
             },
             "additionalProperties": false
@@ -3628,7 +3680,8 @@ Schema for a collection of Dashboards
                       "items": {
                         "type": "string",
                         "pattern": "^[A-Fa-f\\d]{24}$"
-                      }
+                      },
+                      "maxItems": 1000
                     },
                     "deviceTags": {
                       "type": "array",
@@ -3646,7 +3699,8 @@ Schema for a collection of Dashboards
                           }
                         },
                         "additionalProperties": false
-                      }
+                      },
+                      "maxItems": 100
                     }
                   },
                   "additionalProperties": false
@@ -3784,7 +3838,8 @@ Schema for a single Device
           "value"
         ],
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     },
     "attributes": {
       "type": "array",
@@ -3810,7 +3865,8 @@ Schema for a single Device
           "dataType"
         ],
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     },
     "deviceClass": {
       "type": "string",
@@ -3818,8 +3874,7 @@ Schema for a single Device
         "standalone",
         "gateway",
         "peripheral",
-        "floating",
-        "virtual"
+        "floating"
       ]
     },
     "gatewayId": {
@@ -4181,7 +4236,8 @@ Schema for the body of a Device modification request
           "value"
         ],
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     },
     "attributes": {
       "type": "array",
@@ -4207,7 +4263,8 @@ Schema for the body of a Device modification request
           "dataType"
         ],
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     },
     "deviceClass": {
       "type": "string",
@@ -4215,8 +4272,7 @@ Schema for the body of a Device modification request
         "standalone",
         "gateway",
         "peripheral",
-        "floating",
-        "virtual"
+        "floating"
       ]
     },
     "gatewayId": {
@@ -4291,7 +4347,8 @@ Schema for the body of a Device creation request
           "value"
         ],
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     },
     "attributes": {
       "type": "array",
@@ -4317,7 +4374,8 @@ Schema for the body of a Device creation request
           "dataType"
         ],
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     },
     "deviceClass": {
       "type": "string",
@@ -4325,8 +4383,7 @@ Schema for the body of a Device creation request
         "standalone",
         "gateway",
         "peripheral",
-        "floating",
-        "virtual"
+        "floating"
       ]
     },
     "gatewayId": {
@@ -4433,7 +4490,8 @@ Schema for a single Device Recipe
           "value"
         ],
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     },
     "attributes": {
       "type": "array",
@@ -4459,7 +4517,8 @@ Schema for a single Device Recipe
           "dataType"
         ],
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     },
     "deviceClass": {
       "type": "string",
@@ -4467,8 +4526,7 @@ Schema for a single Device Recipe
         "standalone",
         "gateway",
         "peripheral",
-        "floating",
-        "virtual"
+        "floating"
       ]
     },
     "gatewayId": {
@@ -4632,7 +4690,8 @@ Schema for the body of a Device Recipe modification request
           "value"
         ],
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     },
     "attributes": {
       "type": "array",
@@ -4658,7 +4717,8 @@ Schema for the body of a Device Recipe modification request
           "dataType"
         ],
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     },
     "deviceClass": {
       "type": "string",
@@ -4666,8 +4726,7 @@ Schema for the body of a Device Recipe modification request
         "standalone",
         "gateway",
         "peripheral",
-        "floating",
-        "virtual"
+        "floating"
       ]
     },
     "gatewayId": {
@@ -4753,7 +4812,8 @@ Schema for the body of a Device Recipe creation request
           "value"
         ],
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     },
     "attributes": {
       "type": "array",
@@ -4779,7 +4839,8 @@ Schema for the body of a Device Recipe creation request
           "dataType"
         ],
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     },
     "deviceClass": {
       "type": "string",
@@ -4787,8 +4848,7 @@ Schema for the body of a Device Recipe creation request
         "standalone",
         "gateway",
         "peripheral",
-        "floating",
-        "virtual"
+        "floating"
       ]
     },
     "gatewayId": {
@@ -4904,7 +4964,8 @@ Schema for a collection of Device Recipes
                 "value"
               ],
               "additionalProperties": false
-            }
+            },
+            "maxItems": 100
           },
           "attributes": {
             "type": "array",
@@ -4930,7 +4991,8 @@ Schema for a collection of Device Recipes
                 "dataType"
               ],
               "additionalProperties": false
-            }
+            },
+            "maxItems": 100
           },
           "deviceClass": {
             "type": "string",
@@ -4938,8 +5000,7 @@ Schema for a collection of Device Recipes
               "standalone",
               "gateway",
               "peripheral",
-              "floating",
-              "virtual"
+              "floating"
             ]
           },
           "gatewayId": {
@@ -5264,7 +5325,8 @@ Array of Tags for filtering devices. Tag keys and tag values are optional.
       }
     },
     "additionalProperties": false
-  }
+  },
+  "maxItems": 100
 }
 ```
 ### <a name="device-tag-filter-example"></a> Example
@@ -5350,7 +5412,8 @@ Schema for a collection of Devices
                 "value"
               ],
               "additionalProperties": false
-            }
+            },
+            "maxItems": 100
           },
           "attributes": {
             "type": "array",
@@ -5376,7 +5439,8 @@ Schema for a collection of Devices
                 "dataType"
               ],
               "additionalProperties": false
-            }
+            },
+            "maxItems": 100
           },
           "deviceClass": {
             "type": "string",
@@ -5384,8 +5448,7 @@ Schema for a collection of Devices
               "standalone",
               "gateway",
               "peripheral",
-              "floating",
-              "virtual"
+              "floating"
             ]
           },
           "gatewayId": {
@@ -6125,9 +6188,12 @@ Schema for a single Workflow
             "items": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
-            }
+                "type": "string",
+                "maxLength": 255
+              },
+              "maxItems": 100
+            },
+            "maxItems": 100
           }
         },
         "additionalProperties": false,
@@ -6161,9 +6227,12 @@ Schema for a single Workflow
             "items": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
-            }
+                "type": "string",
+                "maxLength": 255
+              },
+              "maxItems": 100
+            },
+            "maxItems": 100
           }
         },
         "additionalProperties": false,
@@ -6372,9 +6441,12 @@ Schema for the body of a Workflow modification request
             "items": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
-            }
+                "type": "string",
+                "maxLength": 255
+              },
+              "maxItems": 100
+            },
+            "maxItems": 100
           }
         },
         "additionalProperties": false,
@@ -6408,9 +6480,12 @@ Schema for the body of a Workflow modification request
             "items": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
-            }
+                "type": "string",
+                "maxLength": 255
+              },
+              "maxItems": 100
+            },
+            "maxItems": 100
           }
         },
         "additionalProperties": false,
@@ -6504,9 +6579,12 @@ Schema for the body of a Workflow creation request
             "items": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
-            }
+                "type": "string",
+                "maxLength": 255
+              },
+              "maxItems": 100
+            },
+            "maxItems": 100
           }
         },
         "additionalProperties": false,
@@ -6540,9 +6618,12 @@ Schema for the body of a Workflow creation request
             "items": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
-            }
+                "type": "string",
+                "maxLength": 255
+              },
+              "maxItems": 100
+            },
+            "maxItems": 100
           }
         },
         "additionalProperties": false,
@@ -6678,7 +6759,8 @@ Array of triggers for filtering workflows. Trigger keys and trigger types are op
       }
     },
     "additionalProperties": false
-  }
+  },
+  "maxItems": 100
 }
 ```
 ### <a name="workflow-trigger-filter-example"></a> Example
@@ -6769,9 +6851,12 @@ Schema for a collection of Workflows
                   "items": {
                     "type": "array",
                     "items": {
-                      "type": "string"
-                    }
-                  }
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "maxItems": 100
+                  },
+                  "maxItems": 100
                 }
               },
               "additionalProperties": false,
@@ -6805,9 +6890,12 @@ Schema for a collection of Workflows
                   "items": {
                     "type": "array",
                     "items": {
-                      "type": "string"
-                    }
-                  }
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "maxItems": 100
+                  },
+                  "maxItems": 100
                 }
               },
               "additionalProperties": false,
@@ -7047,14 +7135,16 @@ Schema for the body of a last value query request
           }
         },
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     },
     "deviceIds": {
       "type": "array",
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     }
   },
   "additionalProperties": false
@@ -7578,14 +7668,16 @@ Schema for the body of a request to send a command to multiple Devices
           }
         },
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     },
     "deviceIds": {
       "type": "array",
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     }
   },
   "required": [
@@ -8932,21 +9024,24 @@ Schema for the body of a resource transfer request
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     },
     "dashboardIds": {
       "type": "array",
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     },
     "solutionIds": {
       "type": "array",
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     },
     "strict": {
       "type": "boolean"
@@ -9309,7 +9404,8 @@ Schema for a single Solution User
           "items": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
-          }
+          },
+          "maxItems": 1000
         }
       }
     }
@@ -9459,7 +9555,8 @@ Schema for the body of a Solution User modification request
           "items": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
-          }
+          },
+          "maxItems": 1000
         },
         "additionalProperties": false
       }
@@ -9542,7 +9639,8 @@ Schema for the body of a Solution User creation request
           "items": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
-          }
+          },
+          "maxItems": 1000
         },
         "additionalProperties": false
       }
@@ -9678,7 +9776,8 @@ Schema for a collection of Solution Users
                 "items": {
                   "type": "string",
                   "pattern": "^[A-Fa-f\\d]{24}$"
-                }
+                },
+                "maxItems": 1000
               }
             }
           }
@@ -10157,14 +10256,16 @@ Schema for the body of a time series query request
           }
         },
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     },
     "deviceIds": {
       "type": "array",
       "items": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
-      }
+      },
+      "maxItems": 1000
     },
     "limit": {
       "type": "number"

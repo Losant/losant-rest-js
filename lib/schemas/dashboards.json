@@ -157,7 +157,8 @@
                       "items": {
                         "type": "string",
                         "pattern": "^[A-Fa-f\\d]{24}$"
-                      }
+                      },
+                      "maxItems": 1000
                     },
                     "deviceTags": {
                       "type": "array",
@@ -175,7 +176,8 @@
                           }
                         },
                         "additionalProperties": false
-                      }
+                      },
+                      "maxItems": 100
                     }
                   },
                   "additionalProperties": false

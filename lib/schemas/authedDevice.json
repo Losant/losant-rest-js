@@ -16,8 +16,7 @@
         "standalone",
         "gateway",
         "peripheral",
-        "floating",
-        "virtual"
+        "floating"
       ]
     },
     "token": {

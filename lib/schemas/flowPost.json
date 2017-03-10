@@ -39,9 +39,12 @@
             "items": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
-            }
+                "type": "string",
+                "maxLength": 255
+              },
+              "maxItems": 100
+            },
+            "maxItems": 100
           }
         },
         "additionalProperties": false,
@@ -75,9 +78,12 @@
             "items": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
-            }
+                "type": "string",
+                "maxLength": 255
+              },
+              "maxItems": 100
+            },
+            "maxItems": 100
           }
         },
         "additionalProperties": false,

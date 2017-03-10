@@ -86,7 +86,8 @@
           "items": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
-          }
+          },
+          "maxItems": 1000
         }
       }
     }
