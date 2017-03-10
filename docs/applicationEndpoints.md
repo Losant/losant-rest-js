@@ -140,7 +140,7 @@ client.applicationEndpoints.setOrder(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, applicationEndpoints.*, or applicationEndpoints.setPositions.
+all.Application, all.Organization, all.User, applicationEndpoints.*, or applicationEndpoints.setOrder.
 
 #### Available Parameters
 
