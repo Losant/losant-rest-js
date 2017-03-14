@@ -6174,8 +6174,20 @@ Schema for a single Workflow
           },
           "type": {
             "type": "string",
-            "minLength": 1,
-            "maxLength": 1024
+            "enum": [
+              "deviceId",
+              "deviceTag",
+              "mqttTopic",
+              "webhook",
+              "timer",
+              "event",
+              "virtualButton",
+              "endpoint",
+              "deviceIdConnect",
+              "deviceIdDisconnect",
+              "deviceTagConnect",
+              "deviceTagDisconnect"
+            ]
           },
           "config": {
             "type": "object"
@@ -6427,8 +6439,20 @@ Schema for the body of a Workflow modification request
           },
           "type": {
             "type": "string",
-            "minLength": 1,
-            "maxLength": 1024
+            "enum": [
+              "deviceId",
+              "deviceTag",
+              "mqttTopic",
+              "webhook",
+              "timer",
+              "event",
+              "virtualButton",
+              "endpoint",
+              "deviceIdConnect",
+              "deviceIdDisconnect",
+              "deviceTagConnect",
+              "deviceTagDisconnect"
+            ]
           },
           "config": {
             "type": "object"
@@ -6565,8 +6589,20 @@ Schema for the body of a Workflow creation request
           },
           "type": {
             "type": "string",
-            "minLength": 1,
-            "maxLength": 1024
+            "enum": [
+              "deviceId",
+              "deviceTag",
+              "mqttTopic",
+              "webhook",
+              "timer",
+              "event",
+              "virtualButton",
+              "endpoint",
+              "deviceIdConnect",
+              "deviceIdDisconnect",
+              "deviceTagConnect",
+              "deviceTagDisconnect"
+            ]
           },
           "config": {
             "type": "object"
@@ -6837,8 +6873,20 @@ Schema for a collection of Workflows
                 },
                 "type": {
                   "type": "string",
-                  "minLength": 1,
-                  "maxLength": 1024
+                  "enum": [
+                    "deviceId",
+                    "deviceTag",
+                    "mqttTopic",
+                    "webhook",
+                    "timer",
+                    "event",
+                    "virtualButton",
+                    "endpoint",
+                    "deviceIdConnect",
+                    "deviceIdDisconnect",
+                    "deviceTagConnect",
+                    "deviceTagDisconnect"
+                  ]
                 },
                 "config": {
                   "type": "object"

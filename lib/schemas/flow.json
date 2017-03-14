@@ -45,8 +45,20 @@
           },
           "type": {
             "type": "string",
-            "minLength": 1,
-            "maxLength": 1024
+            "enum": [
+              "deviceId",
+              "deviceTag",
+              "mqttTopic",
+              "webhook",
+              "timer",
+              "event",
+              "virtualButton",
+              "endpoint",
+              "deviceIdConnect",
+              "deviceIdDisconnect",
+              "deviceTagConnect",
+              "deviceTagDisconnect"
+            ]
           },
           "config": {
             "type": "object"
