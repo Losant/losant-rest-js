@@ -1,9 +1,0 @@
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "array",
-  "items": {
-    "type": "string",
-    "pattern": "^[A-Fa-f\\d]{24}$"
-  },
-  "maxItems": 1000
-}

@@ -32,9 +32,6 @@
         "group"
       ]
     },
-    "position": {
-      "type": "number"
-    },
     "applicationGroupIds": {
       "type": "array",
       "items": {

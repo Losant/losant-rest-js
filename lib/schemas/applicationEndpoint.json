@@ -52,9 +52,6 @@
         "group"
       ]
     },
-    "position": {
-      "type": "number"
-    },
     "applicationGroups": {
       "type": "array",
       "items": {

@@ -5,7 +5,6 @@
 *   [Application](#application)
 *   [Application API Token Post](#application-api-token-post)
 *   [Application Endpoint](#application-endpoint)
-*   [Application Endpoint Ids by Position](#application-endpoint-ids-by-position)
 *   [Application Endpoint Patch](#application-endpoint-patch)
 *   [Application Endpoint Post](#application-endpoint-post)
 *   [Application Endpoints](#application-endpoints)
@@ -312,6 +311,10 @@ Schema for a single Application
       "type": "string",
       "pattern": "^[0-9a-z_-]{1,255}$"
     },
+    "appUserTokenCutoff": {
+      "type": "string",
+      "format": "date-time"
+    },
     "summary": {
       "type": "object",
       "properties": {
@@ -563,9 +566,6 @@ Schema for a single Application Endpoint
         "group"
       ]
     },
-    "position": {
-      "type": "number"
-    },
     "applicationGroups": {
       "type": "array",
       "items": {
@@ -595,11 +595,10 @@ Schema for a single Application Endpoint
   "applicationId": "575ec8687ae143cd83dc4a97",
   "creationDate": "2016-06-13T04:00:00.000Z",
   "lastUpdated": "2016-06-13T04:00:00.000Z",
-  "route": "/my/route/:id",
+  "route": "/my/route/{id}",
   "enabled": true,
   "method": "get",
   "access": "group",
-  "position": 0,
   "applicationGroups": [
     {
       "name": "myGroup",
@@ -607,34 +606,6 @@ Schema for a single Application Endpoint
     }
   ]
 }
-```
-
-<br/>
-
-## Application Endpoint Ids by Position
-
-Array of application endpoint ids, in order of their position for route evaluation.
-
-### <a name="application-endpoint-ids-by-position-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "array",
-  "items": {
-    "type": "string",
-    "pattern": "^[A-Fa-f\\d]{24}$"
-  },
-  "maxItems": 1000
-}
-```
-### <a name="application-endpoint-ids-by-position-example"></a> Example
-
-```json
-[
-  "58b9d743cbfafe1be675744b",
-  "58b9d743cbfafe1be675744c"
-]
 ```
 
 <br/>
@@ -680,9 +651,6 @@ Schema for the body of an Application Endpoint modification request
         "group"
       ]
     },
-    "position": {
-      "type": "number"
-    },
     "applicationGroupIds": {
       "type": "array",
       "items": {
@@ -700,7 +668,6 @@ Schema for the body of an Application Endpoint modification request
 ```json
 {
   "access": "group",
-  "position": 1,
   "applicationGroupIds": [
     "58c1de6f8f812590d8e82983"
   ]
@@ -750,9 +717,6 @@ Schema for the body of an Application Endpoint creation request
         "group"
       ]
     },
-    "position": {
-      "type": "number"
-    },
     "applicationGroupIds": {
       "type": "array",
       "items": {
@@ -773,10 +737,9 @@ Schema for the body of an Application Endpoint creation request
 
 ```json
 {
-  "route": "/my/route/:id",
+  "route": "/my/route/{id}",
   "method": "get",
-  "access": "public",
-  "position": 0
+  "access": "public"
 }
 ```
 
@@ -849,11 +812,10 @@ Schema for a collection of Application Endpoints
       "applicationId": "575ec8687ae143cd83dc4a97",
       "creationDate": "2016-06-13T04:00:00.000Z",
       "lastUpdated": "2016-06-13T04:00:00.000Z",
-      "route": "/my/route/:id",
+      "route": "/my/route/{id}",
       "enabled": true,
       "method": "get",
       "access": "group",
-      "position": 0,
       "applicationGroups": [
         {
           "name": "myGroup",
@@ -1569,6 +1531,10 @@ Schema for the body of an Application modification request
     "endpointSlug": {
       "type": "string",
       "pattern": "^[0-9a-z_-]{1,255}$"
+    },
+    "appUserTokenCutoff": {
+      "type": "string",
+      "format": "date-time"
     }
   },
   "additionalProperties": false
@@ -1612,6 +1578,10 @@ Schema for the body of an Application creation request
     "endpointSlug": {
       "type": "string",
       "pattern": "^[0-9a-z_-]{1,255}$"
+    },
+    "appUserTokenCutoff": {
+      "type": "string",
+      "format": "date-time"
     }
   },
   "additionalProperties": false,
@@ -1691,6 +1661,10 @@ Schema for a single Application User
     "avatarUrl": {
       "type": "string",
       "format": "url"
+    },
+    "tokenCutoff": {
+      "type": "string",
+      "format": "date-time"
     },
     "metaData": {
       "type": "object",
@@ -1778,6 +1752,10 @@ Schema for the body of an Application User modification request
       "minLength": 8,
       "maxLength": 2048
     },
+    "tokenCutoff": {
+      "type": "string",
+      "format": "date-time"
+    },
     "metaData": {
       "type": "object",
       "patternProperties": {
@@ -1844,6 +1822,10 @@ Schema for the body of an Application User creation request
       "type": "string",
       "minLength": 8,
       "maxLength": 2048
+    },
+    "tokenCutoff": {
+      "type": "string",
+      "format": "date-time"
     },
     "metaData": {
       "type": "object",
@@ -1957,6 +1939,10 @@ Schema for a collection of Application Users
           "avatarUrl": {
             "type": "string",
             "format": "url"
+          },
+          "tokenCutoff": {
+            "type": "string",
+            "format": "date-time"
           },
           "metaData": {
             "type": "object",
@@ -2120,6 +2106,10 @@ Schema for a collection of Applications
           "endpointSlug": {
             "type": "string",
             "pattern": "^[0-9a-z_-]{1,255}$"
+          },
+          "appUserTokenCutoff": {
+            "type": "string",
+            "format": "date-time"
           },
           "summary": {
             "type": "object",

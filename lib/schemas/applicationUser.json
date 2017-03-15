@@ -52,6 +52,10 @@
       "type": "string",
       "format": "url"
     },
+    "tokenCutoff": {
+      "type": "string",
+      "format": "date-time"
+    },
     "metaData": {
       "type": "object",
       "patternProperties": {

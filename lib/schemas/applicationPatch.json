@@ -14,6 +14,10 @@
     "endpointSlug": {
       "type": "string",
       "pattern": "^[0-9a-z_-]{1,255}$"
+    },
+    "appUserTokenCutoff": {
+      "type": "string",
+      "format": "date-time"
     }
   },
   "additionalProperties": false
