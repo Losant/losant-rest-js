@@ -7,6 +7,7 @@
 *   [Application Endpoint](#application-endpoint)
 *   [Application Endpoint Patch](#application-endpoint-patch)
 *   [Application Endpoint Post](#application-endpoint-post)
+*   [Application Endpoint Stats](#application-endpoint-stats)
 *   [Application Endpoints](#application-endpoints)
 *   [Application Group](#application-group)
 *   [Application Group Patch](#application-group-patch)
@@ -745,6 +746,64 @@ Schema for the body of an Application Endpoint creation request
 
 <br/>
 
+## Application Endpoint Stats
+
+Schema for stats for an application&#x27;s endpoints
+
+### <a name="application-endpoint-stats-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "patternProperties": {
+    ".*": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "count": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}
+```
+### <a name="application-endpoint-stats-example"></a> Example
+
+```json
+{
+  "58cae95a0f5fcd000138ed0d": [
+    {
+      "time": "2017-03-21T20:00:00.000Z",
+      "count": 10
+    },
+    {
+      "time": "2017-03-21T21:00:00.000Z",
+      "count": 1
+    }
+  ],
+  "NotFound": [
+    {
+      "time": "2017-03-21T20:00:00.000Z",
+      "count": 1
+    },
+    {
+      "time": "2017-03-21T21:00:00.000Z",
+      "count": 4
+    }
+  ]
+}
+```
+
+<br/>
+
 ## Application Endpoints
 
 Schema for a collection of Application Endpoints
@@ -766,12 +825,6 @@ Schema for a collection of Application Endpoints
       "type": "integer"
     },
     "totalCount": {
-      "type": "integer"
-    },
-    "perPage": {
-      "type": "integer"
-    },
-    "page": {
       "type": "integer"
     },
     "filter": {
@@ -797,6 +850,9 @@ Schema for a collection of Application Endpoints
     "applicationGroupId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "notFoundRequestCount": {
+      "type": "number"
     }
   }
 }

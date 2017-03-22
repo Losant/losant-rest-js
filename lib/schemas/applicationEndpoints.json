@@ -14,12 +14,6 @@
     "totalCount": {
       "type": "integer"
     },
-    "perPage": {
-      "type": "integer"
-    },
-    "page": {
-      "type": "integer"
-    },
     "filter": {
       "type": "string"
     },
@@ -43,6 +37,9 @@
     "applicationGroupId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "notFoundRequestCount": {
+      "type": "number"
     }
   }
 }
