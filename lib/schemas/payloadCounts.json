@@ -81,6 +81,14 @@
           "type": "number"
         }
       }
+    },
+    "endpoint": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "number"
+        }
+      }
     }
   }
 }

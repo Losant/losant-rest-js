@@ -316,25 +316,40 @@ Schema for a single Application
       "type": "string",
       "format": "date-time"
     },
+    "endpointDefaultCors": {
+      "type": "boolean"
+    },
     "summary": {
       "type": "object",
       "properties": {
+        "apiTokenCount": {
+          "type": "number"
+        },
+        "applicationEndpointCount": {
+          "type": "number"
+        },
+        "applicationGroupCount": {
+          "type": "number"
+        },
+        "keyCount": {
+          "type": "number"
+        },
+        "applicationUserCount": {
+          "type": "number"
+        },
         "deviceCount": {
+          "type": "number"
+        },
+        "deviceRecipeCount": {
+          "type": "number"
+        },
+        "eventCount": {
           "type": "number"
         },
         "flowCount": {
           "type": "number"
         },
         "webhookCount": {
-          "type": "number"
-        },
-        "eventCount": {
-          "type": "number"
-        },
-        "keyCount": {
-          "type": "number"
-        },
-        "deviceRecipeCount": {
           "type": "number"
         }
       }
@@ -1613,6 +1628,9 @@ Schema for the body of an Application modification request
     "appUserTokenCutoff": {
       "type": "string",
       "format": "date-time"
+    },
+    "endpointDefaultCors": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false
@@ -1660,6 +1678,9 @@ Schema for the body of an Application creation request
     "appUserTokenCutoff": {
       "type": "string",
       "format": "date-time"
+    },
+    "endpointDefaultCors": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false,
@@ -2189,25 +2210,40 @@ Schema for a collection of Applications
             "type": "string",
             "format": "date-time"
           },
+          "endpointDefaultCors": {
+            "type": "boolean"
+          },
           "summary": {
             "type": "object",
             "properties": {
+              "apiTokenCount": {
+                "type": "number"
+              },
+              "applicationEndpointCount": {
+                "type": "number"
+              },
+              "applicationGroupCount": {
+                "type": "number"
+              },
+              "keyCount": {
+                "type": "number"
+              },
+              "applicationUserCount": {
+                "type": "number"
+              },
               "deviceCount": {
+                "type": "number"
+              },
+              "deviceRecipeCount": {
+                "type": "number"
+              },
+              "eventCount": {
                 "type": "number"
               },
               "flowCount": {
                 "type": "number"
               },
               "webhookCount": {
-                "type": "number"
-              },
-              "eventCount": {
-                "type": "number"
-              },
-              "keyCount": {
-                "type": "number"
-              },
-              "deviceRecipeCount": {
                 "type": "number"
               }
             }
@@ -7362,10 +7398,22 @@ Schema for information about the currently authenticated user
       "format": "url"
     },
     "limits": {
+      "apitoken": {
+        "type": "number"
+      },
       "application": {
         "type": "number"
       },
+      "applicationendpoint": {
+        "type": "number"
+      },
+      "applicationgroup": {
+        "type": "number"
+      },
       "applicationkey": {
+        "type": "number"
+      },
+      "applicationuser": {
         "type": "number"
       },
       "dashboard": {
@@ -7507,33 +7555,42 @@ Schema for information about the currently authenticated user
     "summary": {
       "type": "object",
       "properties": {
+        "apiTokenCount": {
+          "type": "number"
+        },
         "appCount": {
           "type": "number"
         },
-        "dashCount": {
+        "applicationEndpointCount": {
           "type": "number"
         },
-        "orgCount": {
-          "type": "number"
-        },
-        "deviceCount": {
-          "type": "number"
-        },
-        "flowCount": {
-          "type": "number"
-        },
-        "webhookCount": {
+        "applicationGroupCount": {
           "type": "number"
         },
         "keyCount": {
           "type": "number"
         },
+        "applicationUserCount": {
+          "type": "number"
+        },
+        "dashCount": {
+          "type": "number"
+        },
+        "deviceCount": {
+          "type": "number"
+        },
         "deviceRecipeCount": {
+          "type": "number"
+        },
+        "flowCount": {
+          "type": "number"
+        },
+        "orgCount": {
           "type": "number"
         },
         "payloadCount": {
           "title": "Payload Counts",
-          "description": "Schema the result of a payload count request",
+          "description": "Schema for the result of a payload count request",
           "type": "object",
           "properties": {
             "mqttOut": {
@@ -7615,8 +7672,19 @@ Schema for information about the currently authenticated user
                   "type": "number"
                 }
               }
+            },
+            "endpoint": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
             }
           }
+        },
+        "webhookCount": {
+          "type": "number"
         }
       }
     },
@@ -7905,10 +7973,22 @@ Schema for a single Organization
       }
     },
     "limits": {
+      "apitoken": {
+        "type": "number"
+      },
       "application": {
         "type": "number"
       },
+      "applicationendpoint": {
+        "type": "number"
+      },
+      "applicationgroup": {
+        "type": "number"
+      },
       "applicationkey": {
+        "type": "number"
+      },
+      "applicationuser": {
         "type": "number"
       },
       "dashboard": {
@@ -7942,33 +8022,45 @@ Schema for a single Organization
     "summary": {
       "type": "object",
       "properties": {
+        "apiTokenCount": {
+          "type": "number"
+        },
         "appCount": {
           "type": "number"
         },
-        "dashCount": {
+        "applicationEndpointCount": {
           "type": "number"
         },
-        "solutionCount": {
-          "type": "number"
-        },
-        "deviceCount": {
-          "type": "number"
-        },
-        "flowCount": {
-          "type": "number"
-        },
-        "webhookCount": {
+        "applicationGroupCount": {
           "type": "number"
         },
         "keyCount": {
           "type": "number"
         },
+        "applicationUserCount": {
+          "type": "number"
+        },
+        "dashCount": {
+          "type": "number"
+        },
+        "deviceCount": {
+          "type": "number"
+        },
         "deviceRecipeCount": {
+          "type": "number"
+        },
+        "flowCount": {
+          "type": "number"
+        },
+        "memberCount": {
+          "type": "number"
+        },
+        "pendingInviteCount": {
           "type": "number"
         },
         "payloadCount": {
           "title": "Payload Counts",
-          "description": "Schema the result of a payload count request",
+          "description": "Schema for the result of a payload count request",
           "type": "object",
           "properties": {
             "mqttOut": {
@@ -8050,13 +8142,21 @@ Schema for a single Organization
                   "type": "number"
                 }
               }
+            },
+            "endpoint": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
             }
           }
         },
-        "pendingInviteCount": {
+        "solutionCount": {
           "type": "number"
         },
-        "memberCount": {
+        "webhookCount": {
           "type": "number"
         }
       }
@@ -8604,10 +8704,22 @@ Schema for a collection of Organizations
             }
           },
           "limits": {
+            "apitoken": {
+              "type": "number"
+            },
             "application": {
               "type": "number"
             },
+            "applicationendpoint": {
+              "type": "number"
+            },
+            "applicationgroup": {
+              "type": "number"
+            },
             "applicationkey": {
+              "type": "number"
+            },
+            "applicationuser": {
               "type": "number"
             },
             "dashboard": {
@@ -8641,33 +8753,45 @@ Schema for a collection of Organizations
           "summary": {
             "type": "object",
             "properties": {
+              "apiTokenCount": {
+                "type": "number"
+              },
               "appCount": {
                 "type": "number"
               },
-              "dashCount": {
+              "applicationEndpointCount": {
                 "type": "number"
               },
-              "solutionCount": {
-                "type": "number"
-              },
-              "deviceCount": {
-                "type": "number"
-              },
-              "flowCount": {
-                "type": "number"
-              },
-              "webhookCount": {
+              "applicationGroupCount": {
                 "type": "number"
               },
               "keyCount": {
                 "type": "number"
               },
+              "applicationUserCount": {
+                "type": "number"
+              },
+              "dashCount": {
+                "type": "number"
+              },
+              "deviceCount": {
+                "type": "number"
+              },
               "deviceRecipeCount": {
+                "type": "number"
+              },
+              "flowCount": {
+                "type": "number"
+              },
+              "memberCount": {
+                "type": "number"
+              },
+              "pendingInviteCount": {
                 "type": "number"
               },
               "payloadCount": {
                 "title": "Payload Counts",
-                "description": "Schema the result of a payload count request",
+                "description": "Schema for the result of a payload count request",
                 "type": "object",
                 "properties": {
                   "mqttOut": {
@@ -8749,13 +8873,21 @@ Schema for a collection of Organizations
                         "type": "number"
                       }
                     }
+                  },
+                  "endpoint": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
                   }
                 }
               },
-              "pendingInviteCount": {
+              "solutionCount": {
                 "type": "number"
               },
-              "memberCount": {
+              "webhookCount": {
                 "type": "number"
               }
             }
@@ -8880,7 +9012,7 @@ Schema for a collection of Organizations
 
 ## Payload Counts
 
-Schema the result of a payload count request
+Schema for the result of a payload count request
 
 ### <a name="payload-counts-schema"></a> Schema
 
@@ -8962,6 +9094,14 @@ Schema the result of a payload count request
       }
     },
     "deviceDisconnect": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "number"
+        }
+      }
+    },
+    "endpoint": {
       "type": "object",
       "patternProperties": {
         ".*": {

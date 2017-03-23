@@ -73,10 +73,22 @@
       "format": "url"
     },
     "limits": {
+      "apitoken": {
+        "type": "number"
+      },
       "application": {
         "type": "number"
       },
+      "applicationendpoint": {
+        "type": "number"
+      },
+      "applicationgroup": {
+        "type": "number"
+      },
       "applicationkey": {
+        "type": "number"
+      },
+      "applicationuser": {
         "type": "number"
       },
       "dashboard": {
@@ -218,33 +230,42 @@
     "summary": {
       "type": "object",
       "properties": {
+        "apiTokenCount": {
+          "type": "number"
+        },
         "appCount": {
           "type": "number"
         },
-        "dashCount": {
+        "applicationEndpointCount": {
           "type": "number"
         },
-        "orgCount": {
-          "type": "number"
-        },
-        "deviceCount": {
-          "type": "number"
-        },
-        "flowCount": {
-          "type": "number"
-        },
-        "webhookCount": {
+        "applicationGroupCount": {
           "type": "number"
         },
         "keyCount": {
           "type": "number"
         },
+        "applicationUserCount": {
+          "type": "number"
+        },
+        "dashCount": {
+          "type": "number"
+        },
+        "deviceCount": {
+          "type": "number"
+        },
         "deviceRecipeCount": {
+          "type": "number"
+        },
+        "flowCount": {
+          "type": "number"
+        },
+        "orgCount": {
           "type": "number"
         },
         "payloadCount": {
           "title": "Payload Counts",
-          "description": "Schema the result of a payload count request",
+          "description": "Schema for the result of a payload count request",
           "type": "object",
           "properties": {
             "mqttOut": {
@@ -326,8 +347,19 @@
                   "type": "number"
                 }
               }
+            },
+            "endpoint": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
             }
           }
+        },
+        "webhookCount": {
+          "type": "number"
         }
       }
     },

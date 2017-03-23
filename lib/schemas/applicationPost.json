@@ -22,6 +22,9 @@
     "appUserTokenCutoff": {
       "type": "string",
       "format": "date-time"
+    },
+    "endpointDefaultCors": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false,

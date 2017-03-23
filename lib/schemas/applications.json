@@ -53,25 +53,40 @@
             "type": "string",
             "format": "date-time"
           },
+          "endpointDefaultCors": {
+            "type": "boolean"
+          },
           "summary": {
             "type": "object",
             "properties": {
+              "apiTokenCount": {
+                "type": "number"
+              },
+              "applicationEndpointCount": {
+                "type": "number"
+              },
+              "applicationGroupCount": {
+                "type": "number"
+              },
+              "keyCount": {
+                "type": "number"
+              },
+              "applicationUserCount": {
+                "type": "number"
+              },
               "deviceCount": {
+                "type": "number"
+              },
+              "deviceRecipeCount": {
+                "type": "number"
+              },
+              "eventCount": {
                 "type": "number"
               },
               "flowCount": {
                 "type": "number"
               },
               "webhookCount": {
-                "type": "number"
-              },
-              "eventCount": {
-                "type": "number"
-              },
-              "keyCount": {
-                "type": "number"
-              },
-              "deviceRecipeCount": {
                 "type": "number"
               }
             }
