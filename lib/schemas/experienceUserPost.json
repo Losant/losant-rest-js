@@ -26,7 +26,7 @@
       "type": "string",
       "format": "date-time"
     },
-    "metaData": {
+    "metaTags": {
       "type": "object",
       "patternProperties": {
         "^[0-9a-zA-Z_-]{1,255}$": {
@@ -37,7 +37,7 @@
       },
       "additionalProperties": false
     },
-    "applicationGroupIds": {
+    "experienceGroupIds": {
       "type": "array",
       "items": {
         "type": "string",
@@ -46,5 +46,11 @@
       "maxItems": 1000
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "required": [
+    "email",
+    "firstName",
+    "lastName",
+    "password"
+  ]
 }

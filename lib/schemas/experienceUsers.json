@@ -5,15 +5,15 @@
     "items": {
       "type": "array",
       "items": {
-        "title": "Application User",
-        "description": "Schema for a single Application User",
+        "title": "Experience User",
+        "description": "Schema for a single Experience User",
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
-          "applicationUserId": {
+          "experienceUserId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
@@ -63,7 +63,7 @@
             "type": "string",
             "format": "date-time"
           },
-          "metaData": {
+          "metaTags": {
             "type": "object",
             "patternProperties": {
               "^[0-9a-zA-Z_-]{1,255}$": {
@@ -74,7 +74,7 @@
             },
             "additionalProperties": false
           },
-          "applicationGroups": {
+          "experienceGroups": {
             "type": "array",
             "items": {
               "type": "object",
@@ -126,7 +126,7 @@
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "applicationGroupId": {
+    "experienceGroupId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     }

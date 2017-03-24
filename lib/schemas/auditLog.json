@@ -47,6 +47,9 @@
         "Device",
         "DeviceRecipe",
         "Event",
+        "ExperienceEndpoint",
+        "ExperienceGroup",
+        "ExperienceUser",
         "Flow",
         "SolutionUser",
         "Webhook"

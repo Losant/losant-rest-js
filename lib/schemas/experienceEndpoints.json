@@ -5,7 +5,7 @@
     "items": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/applicationEndpoints"
+        "$ref": "#/definitions/experienceEndpoints"
       }
     },
     "count": {
@@ -34,7 +34,7 @@
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "applicationGroupId": {
+    "experienceGroupId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },

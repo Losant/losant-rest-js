@@ -42,7 +42,7 @@
       "type": "string",
       "pattern": "^[0-9a-z_-]{1,255}$"
     },
-    "appUserTokenCutoff": {
+    "expUserTokenCutoff": {
       "type": "string",
       "format": "date-time"
     },
@@ -55,16 +55,7 @@
         "apiTokenCount": {
           "type": "number"
         },
-        "applicationEndpointCount": {
-          "type": "number"
-        },
-        "applicationGroupCount": {
-          "type": "number"
-        },
         "keyCount": {
-          "type": "number"
-        },
-        "applicationUserCount": {
           "type": "number"
         },
         "deviceCount": {
@@ -74,6 +65,15 @@
           "type": "number"
         },
         "eventCount": {
+          "type": "number"
+        },
+        "experienceEndpointCount": {
+          "type": "number"
+        },
+        "experienceGroupCount": {
+          "type": "number"
+        },
+        "experienceUserCount": {
           "type": "number"
         },
         "flowCount": {

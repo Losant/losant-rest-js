@@ -5,15 +5,15 @@
     "items": {
       "type": "array",
       "items": {
-        "title": "Application Group",
-        "description": "Schema for a single Application Group",
+        "title": "Experience Group",
+        "description": "Schema for a single Experience Group",
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
-          "applicationGroupId": {
+          "experienceGroupId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
@@ -38,7 +38,7 @@
             "type": "string",
             "maxLength": 32767
           },
-          "applicationUserIds": {
+          "experienceUserIds": {
             "type": "array",
             "items": {
               "type": "string",
@@ -46,7 +46,7 @@
             },
             "maxItems": 1000
           },
-          "applicationEndpointIds": {
+          "experienceEndpointIds": {
             "type": "array",
             "items": {
               "type": "string",

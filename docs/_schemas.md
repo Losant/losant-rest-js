@@ -4,25 +4,12 @@
 *   [API Token Patch](#api-token-patch)
 *   [Application](#application)
 *   [Application API Token Post](#application-api-token-post)
-*   [Application Endpoint](#application-endpoint)
-*   [Application Endpoint Patch](#application-endpoint-patch)
-*   [Application Endpoint Post](#application-endpoint-post)
-*   [Application Endpoint Stats](#application-endpoint-stats)
-*   [Application Endpoints](#application-endpoints)
-*   [Application Group](#application-group)
-*   [Application Group Patch](#application-group-patch)
-*   [Application Group Post](#application-group-post)
-*   [Application Groups](#application-groups)
 *   [Application Key](#application-key)
 *   [Application Key Patch](#application-key-patch)
 *   [Application Key Post](#application-key-post)
 *   [Application Keys](#application-keys)
 *   [Application Patch](#application-patch)
 *   [Application Post](#application-post)
-*   [Application User](#application-user)
-*   [Application User Patch](#application-user-patch)
-*   [Application User Post](#application-user-post)
-*   [Application Users](#application-users)
 *   [Applications](#applications)
 *   [Audit Log](#audit-log)
 *   [Audit Log Filter](#audit-log-filter)
@@ -60,6 +47,19 @@
 *   [Event Patch](#event-patch)
 *   [Event Post](#event-post)
 *   [Events](#events)
+*   [Experience Endpoint](#experience-endpoint)
+*   [Experience Endpoint Patch](#experience-endpoint-patch)
+*   [Experience Endpoint Post](#experience-endpoint-post)
+*   [Experience Endpoint Stats](#experience-endpoint-stats)
+*   [Experience Endpoints](#experience-endpoints)
+*   [Experience Group](#experience-group)
+*   [Experience Group Patch](#experience-group-patch)
+*   [Experience Group Post](#experience-group-post)
+*   [Experience Groups](#experience-groups)
+*   [Experience User](#experience-user)
+*   [Experience User Patch](#experience-user-patch)
+*   [Experience User Post](#experience-user-post)
+*   [Experience Users](#experience-users)
 *   [Workflow](#workflow)
 *   [Workflow Log](#workflow-log)
 *   [Workflow Patch](#workflow-patch)
@@ -312,7 +312,7 @@ Schema for a single Application
       "type": "string",
       "pattern": "^[0-9a-z_-]{1,255}$"
     },
-    "appUserTokenCutoff": {
+    "expUserTokenCutoff": {
       "type": "string",
       "format": "date-time"
     },
@@ -325,16 +325,7 @@ Schema for a single Application
         "apiTokenCount": {
           "type": "number"
         },
-        "applicationEndpointCount": {
-          "type": "number"
-        },
-        "applicationGroupCount": {
-          "type": "number"
-        },
         "keyCount": {
-          "type": "number"
-        },
-        "applicationUserCount": {
           "type": "number"
         },
         "deviceCount": {
@@ -344,6 +335,15 @@ Schema for a single Application
           "type": "number"
         },
         "eventCount": {
+          "type": "number"
+        },
+        "experienceEndpointCount": {
+          "type": "number"
+        },
+        "experienceGroupCount": {
+          "type": "number"
+        },
+        "experienceUserCount": {
           "type": "number"
         },
         "flowCount": {
@@ -418,14 +418,8 @@ Schema for the body of an Application API Token creation request
           "application.*",
           "applicationApiToken.*",
           "applicationApiTokens.*",
-          "applicationEndpoint.*",
-          "applicationEndpoints.*",
-          "applicationGroup.*",
-          "applicationGroups.*",
           "applicationKey.*",
           "applicationKeys.*",
-          "applicationUser.*",
-          "applicationUsers.*",
           "data.*",
           "device.*",
           "deviceRecipe.*",
@@ -433,6 +427,12 @@ Schema for the body of an Application API Token creation request
           "devices.*",
           "event.*",
           "events.*",
+          "experienceEndpoint.*",
+          "experienceEndpoints.*",
+          "experienceGroup.*",
+          "experienceGroups.*",
+          "experienceUser.*",
+          "experienceUsers.*",
           "flow.*",
           "flows.*",
           "webhook.*",
@@ -446,27 +446,11 @@ Schema for the body of an Application API Token creation request
           "applicationApiToken.patch",
           "applicationApiTokens.get",
           "applicationApiTokens.post",
-          "applicationEndpoint.delete",
-          "applicationEndpoint.get",
-          "applicationEndpoint.patch",
-          "applicationEndpoints.get",
-          "applicationEndpoints.post",
-          "applicationEndpoints.stats",
-          "applicationGroup.delete",
-          "applicationGroup.get",
-          "applicationGroup.patch",
-          "applicationGroups.get",
-          "applicationGroups.post",
           "applicationKey.delete",
           "applicationKey.get",
           "applicationKey.patch",
           "applicationKeys.get",
           "applicationKeys.post",
-          "applicationUser.delete",
-          "applicationUser.get",
-          "applicationUser.patch",
-          "applicationUsers.get",
-          "applicationUsers.post",
           "data.lastValueQuery",
           "data.timeSeriesQuery",
           "device.delete",
@@ -497,6 +481,22 @@ Schema for the body of an Application API Token creation request
           "events.mostRecentBySeverity",
           "events.patch",
           "events.post",
+          "experienceEndpoint.delete",
+          "experienceEndpoint.get",
+          "experienceEndpoint.patch",
+          "experienceEndpoints.get",
+          "experienceEndpoints.post",
+          "experienceEndpoints.stats",
+          "experienceGroup.delete",
+          "experienceGroup.get",
+          "experienceGroup.patch",
+          "experienceGroups.get",
+          "experienceGroups.post",
+          "experienceUser.delete",
+          "experienceUser.get",
+          "experienceUser.patch",
+          "experienceUsers.get",
+          "experienceUsers.post",
           "flow.delete",
           "flow.get",
           "flow.getStorageEntries",
@@ -538,728 +538,6 @@ Schema for the body of an Application API Token creation request
     "all.Application"
   ],
   "status": "active"
-}
-```
-
-<br/>
-
-## Application Endpoint
-
-Schema for a single Application Endpoint
-
-### <a name="application-endpoint-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationEndpointId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "creationDate": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "lastUpdated": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "description": {
-      "type": "string",
-      "maxLength": 32767
-    },
-    "route": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 1024
-    },
-    "enabled": {
-      "type": "boolean"
-    },
-    "method": {
-      "type": "string",
-      "enum": [
-        "get",
-        "post",
-        "patch",
-        "put",
-        "options"
-      ]
-    },
-    "access": {
-      "type": "string",
-      "enum": [
-        "public",
-        "authenticated",
-        "group"
-      ]
-    },
-    "applicationGroups": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 255
-          },
-          "id": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          }
-        }
-      }
-    }
-  }
-}
-```
-### <a name="application-endpoint-example"></a> Example
-
-```json
-{
-  "id": "58c1de6c8f812590d8e82980",
-  "applicationEndpointId": "58c1de6c8f812590d8e82980",
-  "applicationId": "575ec8687ae143cd83dc4a97",
-  "creationDate": "2016-06-13T04:00:00.000Z",
-  "lastUpdated": "2016-06-13T04:00:00.000Z",
-  "route": "/my/route/{id}",
-  "enabled": true,
-  "method": "get",
-  "access": "group",
-  "applicationGroups": [
-    {
-      "name": "myGroup",
-      "id": "58b9d794cbfafe1be675744f"
-    }
-  ]
-}
-```
-
-<br/>
-
-## Application Endpoint Patch
-
-Schema for the body of an Application Endpoint modification request
-
-### <a name="application-endpoint-patch-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "description": {
-      "type": "string",
-      "maxLength": 32767
-    },
-    "route": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 1024
-    },
-    "enabled": {
-      "type": "boolean"
-    },
-    "method": {
-      "type": "string",
-      "enum": [
-        "get",
-        "post",
-        "patch",
-        "put",
-        "options"
-      ]
-    },
-    "access": {
-      "type": "string",
-      "enum": [
-        "public",
-        "authenticated",
-        "group"
-      ]
-    },
-    "applicationGroupIds": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
-      },
-      "maxItems": 1000
-    }
-  },
-  "additionalProperties": false
-}
-```
-### <a name="application-endpoint-patch-example"></a> Example
-
-```json
-{
-  "access": "group",
-  "applicationGroupIds": [
-    "58c1de6f8f812590d8e82983"
-  ]
-}
-```
-
-<br/>
-
-## Application Endpoint Post
-
-Schema for the body of an Application Endpoint creation request
-
-### <a name="application-endpoint-post-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "description": {
-      "type": "string",
-      "maxLength": 32767
-    },
-    "route": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 1024
-    },
-    "enabled": {
-      "type": "boolean"
-    },
-    "method": {
-      "type": "string",
-      "enum": [
-        "get",
-        "post",
-        "patch",
-        "put",
-        "options"
-      ]
-    },
-    "access": {
-      "type": "string",
-      "enum": [
-        "public",
-        "authenticated",
-        "group"
-      ]
-    },
-    "applicationGroupIds": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
-      },
-      "maxItems": 1000
-    }
-  },
-  "additionalProperties": false,
-  "required": [
-    "route",
-    "method"
-  ]
-}
-```
-### <a name="application-endpoint-post-example"></a> Example
-
-```json
-{
-  "route": "/my/route/{id}",
-  "method": "get",
-  "access": "public"
-}
-```
-
-<br/>
-
-## Application Endpoint Stats
-
-Schema for stats for an application&#x27;s endpoints
-
-### <a name="application-endpoint-stats-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "patternProperties": {
-    ".*": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "time": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "count": {
-            "type": "number"
-          }
-        }
-      }
-    }
-  }
-}
-```
-### <a name="application-endpoint-stats-example"></a> Example
-
-```json
-{
-  "58cae95a0f5fcd000138ed0d": [
-    {
-      "time": "2017-03-21T20:00:00.000Z",
-      "count": 10
-    },
-    {
-      "time": "2017-03-21T21:00:00.000Z",
-      "count": 1
-    }
-  ],
-  "NotFound": [
-    {
-      "time": "2017-03-21T20:00:00.000Z",
-      "count": 1
-    },
-    {
-      "time": "2017-03-21T21:00:00.000Z",
-      "count": 4
-    }
-  ]
-}
-```
-
-<br/>
-
-## Application Endpoints
-
-Schema for a collection of Application Endpoints
-
-### <a name="application-endpoints-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "items": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/applicationEndpoints"
-      }
-    },
-    "count": {
-      "type": "integer"
-    },
-    "totalCount": {
-      "type": "integer"
-    },
-    "filter": {
-      "type": "string"
-    },
-    "filterField": {
-      "type": "string"
-    },
-    "sortField": {
-      "type": "string"
-    },
-    "sortDirection": {
-      "type": "string",
-      "enum": [
-        "asc",
-        "desc"
-      ]
-    },
-    "applicationId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationGroupId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "notFoundRequestCount": {
-      "type": "number"
-    }
-  }
-}
-```
-### <a name="application-endpoints-example"></a> Example
-
-```json
-{
-  "items": [
-    {
-      "id": "58c1de6c8f812590d8e82980",
-      "applicationEndpointId": "58c1de6c8f812590d8e82980",
-      "applicationId": "575ec8687ae143cd83dc4a97",
-      "creationDate": "2016-06-13T04:00:00.000Z",
-      "lastUpdated": "2016-06-13T04:00:00.000Z",
-      "route": "/my/route/{id}",
-      "enabled": true,
-      "method": "get",
-      "access": "group",
-      "applicationGroups": [
-        {
-          "name": "myGroup",
-          "id": "58b9d794cbfafe1be675744f"
-        }
-      ]
-    }
-  ],
-  "count": 1,
-  "totalCount": 4,
-  "perPage": 1,
-  "page": 0,
-  "sortField": "name",
-  "sortDirection": "asc",
-  "applicationId": "575ec8687ae143cd83dc4a97"
-}
-```
-
-<br/>
-
-## Application Group
-
-Schema for a single Application Group
-
-### <a name="application-group-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationGroupId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "creationDate": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "lastUpdated": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "name": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 255
-    },
-    "description": {
-      "type": "string",
-      "maxLength": 32767
-    },
-    "applicationUserIds": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
-      },
-      "maxItems": 1000
-    },
-    "applicationEndpointIds": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
-      },
-      "maxItems": 1000
-    }
-  }
-}
-```
-### <a name="application-group-example"></a> Example
-
-```json
-{
-  "id": "58b9d794cbfafe1be675744f",
-  "applicationGroupId": "58b9d794cbfafe1be675744f",
-  "applicationId": "575ec8687ae143cd83dc4a97",
-  "creationDate": "2016-06-13T04:00:00.000Z",
-  "lastUpdated": "2016-06-13T04:00:00.000Z",
-  "name": "My Group",
-  "applicationUserIds": [
-    "58b9d782cbfafe1be675744d",
-    "58b9d787cbfafe1be675744e"
-  ],
-  "applicationEndpointIds": [
-    "58b9d743cbfafe1be675744b",
-    "58b9d743cbfafe1be675744c"
-  ]
-}
-```
-
-<br/>
-
-## Application Group Patch
-
-Schema for the body of an Application Group modification request
-
-### <a name="application-group-patch-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "name": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 255
-    },
-    "description": {
-      "type": "string",
-      "maxLength": 32767
-    },
-    "applicationUserIds": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
-      },
-      "maxItems": 1000
-    },
-    "applicationEndpointIds": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
-      },
-      "maxItems": 1000
-    }
-  },
-  "additionalProperties": false
-}
-```
-### <a name="application-group-patch-example"></a> Example
-
-```json
-{
-  "name": "My New Group Name",
-  "applicationUserIds": [
-    "575ed70c7ae143cd83dc4aa9",
-    "675ed70c7ae143cd83dc4aa9"
-  ],
-  "applicationEndpointIds": [
-    "58b9d743cbfafe1be675744b",
-    "58b9d743cbfafe1be675744c"
-  ]
-}
-```
-
-<br/>
-
-## Application Group Post
-
-Schema for the body of an Application Group creation request
-
-### <a name="application-group-post-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "name": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 255
-    },
-    "description": {
-      "type": "string",
-      "maxLength": 32767
-    },
-    "applicationUserIds": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
-      },
-      "maxItems": 1000
-    },
-    "applicationEndpointIds": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
-      },
-      "maxItems": 1000
-    }
-  },
-  "additionalProperties": false,
-  "required": [
-    "name"
-  ]
-}
-```
-### <a name="application-group-post-example"></a> Example
-
-```json
-{
-  "name": "My Group",
-  "applicationUserIds": [
-    "575ed70c7ae143cd83dc4aa9",
-    "675ed70c7ae143cd83dc4aa9"
-  ],
-  "applicationEndpointIds": [
-    "58b9d743cbfafe1be675744b",
-    "58b9d743cbfafe1be675744c"
-  ]
-}
-```
-
-<br/>
-
-## Application Groups
-
-Schema for a collection of Application Groups
-
-### <a name="application-groups-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "items": {
-      "type": "array",
-      "items": {
-        "title": "Application Group",
-        "description": "Schema for a single Application Group",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "applicationGroupId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "applicationId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "creationDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "lastUpdated": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "name": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 255
-          },
-          "description": {
-            "type": "string",
-            "maxLength": 32767
-          },
-          "applicationUserIds": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "pattern": "^[A-Fa-f\\d]{24}$"
-            },
-            "maxItems": 1000
-          },
-          "applicationEndpointIds": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "pattern": "^[A-Fa-f\\d]{24}$"
-            },
-            "maxItems": 1000
-          }
-        }
-      }
-    },
-    "count": {
-      "type": "integer"
-    },
-    "totalCount": {
-      "type": "integer"
-    },
-    "perPage": {
-      "type": "integer"
-    },
-    "page": {
-      "type": "integer"
-    },
-    "filter": {
-      "type": "string"
-    },
-    "filterField": {
-      "type": "string"
-    },
-    "sortField": {
-      "type": "string"
-    },
-    "sortDirection": {
-      "type": "string",
-      "enum": [
-        "asc",
-        "desc"
-      ]
-    },
-    "applicationId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    }
-  }
-}
-```
-### <a name="application-groups-example"></a> Example
-
-```json
-{
-  "items": [
-    {
-      "id": "58b9d794cbfafe1be675744f",
-      "applicationGroupId": "58b9d794cbfafe1be675744f",
-      "applicationId": "575ec8687ae143cd83dc4a97",
-      "creationDate": "2016-06-13T04:00:00.000Z",
-      "lastUpdated": "2016-06-13T04:00:00.000Z",
-      "name": "My Group",
-      "applicationUserIds": [
-        "58b9d782cbfafe1be675744d",
-        "58b9d787cbfafe1be675744e"
-      ],
-      "applicationEndpointIds": [
-        "58b9d743cbfafe1be675744b",
-        "58b9d743cbfafe1be675744c"
-      ]
-    }
-  ],
-  "count": 1,
-  "totalCount": 4,
-  "perPage": 1,
-  "page": 0,
-  "sortField": "name",
-  "sortDirection": "asc",
-  "applicationId": "575ec8687ae143cd83dc4a97"
 }
 ```
 
@@ -1625,7 +903,7 @@ Schema for the body of an Application modification request
       "type": "string",
       "pattern": "^[0-9a-z_-]{1,255}$"
     },
-    "appUserTokenCutoff": {
+    "expUserTokenCutoff": {
       "type": "string",
       "format": "date-time"
     },
@@ -1675,7 +953,7 @@ Schema for the body of an Application creation request
       "type": "string",
       "pattern": "^[0-9a-z_-]{1,255}$"
     },
-    "appUserTokenCutoff": {
+    "expUserTokenCutoff": {
       "type": "string",
       "format": "date-time"
     },
@@ -1695,454 +973,6 @@ Schema for the body of an Application creation request
 {
   "name": "My New Application",
   "description": "Description of my new application"
-}
-```
-
-<br/>
-
-## Application User
-
-Schema for a single Application User
-
-### <a name="application-user-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationUserId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "creationDate": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "lastUpdated": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "passwordLastUpdated": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "lastLogin": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "email": {
-      "type": "string",
-      "format": "email",
-      "maxLength": 1024
-    },
-    "firstName": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 1024
-    },
-    "lastName": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 1024
-    },
-    "fullName": {
-      "type": "string"
-    },
-    "avatarUrl": {
-      "type": "string",
-      "format": "url"
-    },
-    "tokenCutoff": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "metaData": {
-      "type": "object",
-      "patternProperties": {
-        "^[0-9a-zA-Z_-]{1,255}$": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 255
-        }
-      },
-      "additionalProperties": false
-    },
-    "applicationGroups": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 255
-          },
-          "id": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          }
-        }
-      }
-    }
-  }
-}
-```
-### <a name="application-user-example"></a> Example
-
-```json
-{
-  "id": "58b9d782cbfafe1be675744d",
-  "applicationUserId": "58b9d782cbfafe1be675744d",
-  "applicationId": "575ec8687ae143cd83dc4a97",
-  "creationDate": "2016-06-13T04:00:00.000Z",
-  "lastUpdated": "2016-06-13T04:00:00.000Z",
-  "passwordLastUpdated": "2016-06-13T04:00:00.000Z",
-  "lastLogin": "2016-06-13T04:00:00.000Z",
-  "email": "example@applicationuser.com",
-  "firstName": "Example",
-  "lastName": "Name",
-  "fullName": "Example Name",
-  "avatarUrl": "https://example.avatar.url/is_here.png",
-  "metaData": {
-    "customKey": "customValue"
-  }
-}
-```
-
-<br/>
-
-## Application User Patch
-
-Schema for the body of an Application User modification request
-
-### <a name="application-user-patch-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "email": {
-      "type": "string",
-      "format": "email",
-      "maxLength": 1024
-    },
-    "firstName": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 1024
-    },
-    "lastName": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 1024
-    },
-    "password": {
-      "type": "string",
-      "minLength": 8,
-      "maxLength": 2048
-    },
-    "tokenCutoff": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "metaData": {
-      "type": "object",
-      "patternProperties": {
-        "^[0-9a-zA-Z_-]{1,255}$": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 255
-        }
-      },
-      "additionalProperties": false
-    },
-    "applicationGroupIds": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
-      },
-      "maxItems": 1000
-    }
-  },
-  "additionalProperties": false
-}
-```
-### <a name="application-user-patch-example"></a> Example
-
-```json
-{
-  "password": "aNewPassword",
-  "metaData": {
-    "customKey": "newCustomValue"
-  }
-}
-```
-
-<br/>
-
-## Application User Post
-
-Schema for the body of an Application User creation request
-
-### <a name="application-user-post-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "email": {
-      "type": "string",
-      "format": "email",
-      "maxLength": 1024
-    },
-    "firstName": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 1024
-    },
-    "lastName": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 1024
-    },
-    "password": {
-      "type": "string",
-      "minLength": 8,
-      "maxLength": 2048
-    },
-    "tokenCutoff": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "metaData": {
-      "type": "object",
-      "patternProperties": {
-        "^[0-9a-zA-Z_-]{1,255}$": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 255
-        }
-      },
-      "additionalProperties": false
-    },
-    "applicationGroupIds": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
-      },
-      "maxItems": 1000
-    }
-  },
-  "additionalProperties": false,
-  "required": [
-    "email",
-    "firstName",
-    "lastName",
-    "password"
-  ]
-}
-```
-### <a name="application-user-post-example"></a> Example
-
-```json
-{
-  "email": "example@applicationuser.com",
-  "firstName": "Example",
-  "lastName": "Name",
-  "password": "aUserPassword",
-  "metaData": {
-    "customKey": "customValue"
-  }
-}
-```
-
-<br/>
-
-## Application Users
-
-Schema for a collection of Application Users
-
-### <a name="application-users-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "items": {
-      "type": "array",
-      "items": {
-        "title": "Application User",
-        "description": "Schema for a single Application User",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "applicationUserId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "applicationId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "creationDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "lastUpdated": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "passwordLastUpdated": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "lastLogin": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "email": {
-            "type": "string",
-            "format": "email",
-            "maxLength": 1024
-          },
-          "firstName": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 1024
-          },
-          "lastName": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 1024
-          },
-          "fullName": {
-            "type": "string"
-          },
-          "avatarUrl": {
-            "type": "string",
-            "format": "url"
-          },
-          "tokenCutoff": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "metaData": {
-            "type": "object",
-            "patternProperties": {
-              "^[0-9a-zA-Z_-]{1,255}$": {
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 255
-              }
-            },
-            "additionalProperties": false
-          },
-          "applicationGroups": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 255
-                },
-                "id": {
-                  "type": "string",
-                  "pattern": "^[A-Fa-f\\d]{24}$"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "count": {
-      "type": "integer"
-    },
-    "totalCount": {
-      "type": "integer"
-    },
-    "perPage": {
-      "type": "integer"
-    },
-    "page": {
-      "type": "integer"
-    },
-    "filter": {
-      "type": "string"
-    },
-    "filterField": {
-      "type": "string"
-    },
-    "sortField": {
-      "type": "string"
-    },
-    "sortDirection": {
-      "type": "string",
-      "enum": [
-        "asc",
-        "desc"
-      ]
-    },
-    "applicationId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationGroupId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    }
-  }
-}
-```
-### <a name="application-users-example"></a> Example
-
-```json
-{
-  "items": [
-    {
-      "id": "58b9d782cbfafe1be675744d",
-      "applicationUserId": "58b9d782cbfafe1be675744d",
-      "applicationId": "575ec8687ae143cd83dc4a97",
-      "creationDate": "2016-06-13T04:00:00.000Z",
-      "lastUpdated": "2016-06-13T04:00:00.000Z",
-      "passwordLastUpdated": "2016-06-13T04:00:00.000Z",
-      "lastLogin": "2016-06-13T04:00:00.000Z",
-      "email": "example@applicationuser.com",
-      "firstName": "Example",
-      "lastName": "Name",
-      "fullName": "Example Name",
-      "avatarUrl": "https://example.avatar.url/is_here.png",
-      "metaData": {
-        "customKey": "customValue"
-      }
-    }
-  ],
-  "count": 1,
-  "totalCount": 4,
-  "perPage": 1,
-  "page": 0,
-  "sortField": "name",
-  "sortDirection": "asc",
-  "applicationId": "575ec8687ae143cd83dc4a97"
 }
 ```
 
@@ -2206,7 +1036,7 @@ Schema for a collection of Applications
             "type": "string",
             "pattern": "^[0-9a-z_-]{1,255}$"
           },
-          "appUserTokenCutoff": {
+          "expUserTokenCutoff": {
             "type": "string",
             "format": "date-time"
           },
@@ -2219,16 +1049,7 @@ Schema for a collection of Applications
               "apiTokenCount": {
                 "type": "number"
               },
-              "applicationEndpointCount": {
-                "type": "number"
-              },
-              "applicationGroupCount": {
-                "type": "number"
-              },
               "keyCount": {
-                "type": "number"
-              },
-              "applicationUserCount": {
                 "type": "number"
               },
               "deviceCount": {
@@ -2238,6 +1059,15 @@ Schema for a collection of Applications
                 "type": "number"
               },
               "eventCount": {
+                "type": "number"
+              },
+              "experienceEndpointCount": {
+                "type": "number"
+              },
+              "experienceGroupCount": {
+                "type": "number"
+              },
+              "experienceUserCount": {
                 "type": "number"
               },
               "flowCount": {
@@ -2373,6 +1203,9 @@ Schema for a single Audit Log entry
         "Device",
         "DeviceRecipe",
         "Event",
+        "ExperienceEndpoint",
+        "ExperienceGroup",
+        "ExperienceUser",
         "Flow",
         "SolutionUser",
         "Webhook"
@@ -2513,6 +1346,9 @@ Schema for the filter of an audit log query
               "Device",
               "DeviceRecipe",
               "Event",
+              "ExperienceEndpoint",
+              "ExperienceGroup",
+              "ExperienceUser",
               "Flow",
               "SolutionUser",
               "Webhook"
@@ -2670,6 +1506,9 @@ Schema for a collection of Audit Logs
               "Device",
               "DeviceRecipe",
               "Event",
+              "ExperienceEndpoint",
+              "ExperienceGroup",
+              "ExperienceUser",
               "Flow",
               "SolutionUser",
               "Webhook"
@@ -6224,6 +5063,1176 @@ Schema for a collection of Events
 
 <br/>
 
+## Experience Endpoint
+
+Schema for a single Experience Endpoint
+
+### <a name="experience-endpoint-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "experienceEndpointId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "route": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "method": {
+      "type": "string",
+      "enum": [
+        "get",
+        "post",
+        "patch",
+        "put",
+        "options"
+      ]
+    },
+    "access": {
+      "type": "string",
+      "enum": [
+        "public",
+        "authenticated",
+        "group"
+      ]
+    },
+    "experienceGroups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          }
+        }
+      }
+    }
+  }
+}
+```
+### <a name="experience-endpoint-example"></a> Example
+
+```json
+{
+  "id": "58c1de6c8f812590d8e82980",
+  "experienceEndpointId": "58c1de6c8f812590d8e82980",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "route": "/my/route/{id}",
+  "enabled": true,
+  "method": "get",
+  "access": "group",
+  "experienceGroups": [
+    {
+      "name": "myGroup",
+      "id": "58b9d794cbfafe1be675744f"
+    }
+  ]
+}
+```
+
+<br/>
+
+## Experience Endpoint Patch
+
+Schema for the body of an Experience Endpoint modification request
+
+### <a name="experience-endpoint-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "route": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "method": {
+      "type": "string",
+      "enum": [
+        "get",
+        "post",
+        "patch",
+        "put",
+        "options"
+      ]
+    },
+    "access": {
+      "type": "string",
+      "enum": [
+        "public",
+        "authenticated",
+        "group"
+      ]
+    },
+    "experienceGroupIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="experience-endpoint-patch-example"></a> Example
+
+```json
+{
+  "access": "group",
+  "experienceGroupIds": [
+    "58c1de6f8f812590d8e82983"
+  ]
+}
+```
+
+<br/>
+
+## Experience Endpoint Post
+
+Schema for the body of an Experience Endpoint creation request
+
+### <a name="experience-endpoint-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "route": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "method": {
+      "type": "string",
+      "enum": [
+        "get",
+        "post",
+        "patch",
+        "put",
+        "options"
+      ]
+    },
+    "access": {
+      "type": "string",
+      "enum": [
+        "public",
+        "authenticated",
+        "group"
+      ]
+    },
+    "experienceGroupIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "route",
+    "method"
+  ]
+}
+```
+### <a name="experience-endpoint-post-example"></a> Example
+
+```json
+{
+  "route": "/my/route/{id}",
+  "method": "get",
+  "access": "public"
+}
+```
+
+<br/>
+
+## Experience Endpoint Stats
+
+Schema for stats for an experience&#x27;s endpoints
+
+### <a name="experience-endpoint-stats-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "patternProperties": {
+    ".*": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "count": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}
+```
+### <a name="experience-endpoint-stats-example"></a> Example
+
+```json
+{
+  "58cae95a0f5fcd000138ed0d": [
+    {
+      "time": "2017-03-21T20:00:00.000Z",
+      "count": 10
+    },
+    {
+      "time": "2017-03-21T21:00:00.000Z",
+      "count": 1
+    }
+  ],
+  "NotFound": [
+    {
+      "time": "2017-03-21T20:00:00.000Z",
+      "count": 1
+    },
+    {
+      "time": "2017-03-21T21:00:00.000Z",
+      "count": 4
+    }
+  ]
+}
+```
+
+<br/>
+
+## Experience Endpoints
+
+Schema for a collection of Experience Endpoints
+
+### <a name="experience-endpoints-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/experienceEndpoints"
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "experienceGroupId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "notFoundRequestCount": {
+      "type": "number"
+    }
+  }
+}
+```
+### <a name="experience-endpoints-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "58c1de6c8f812590d8e82980",
+      "experienceEndpointId": "58c1de6c8f812590d8e82980",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "route": "/my/route/{id}",
+      "enabled": true,
+      "method": "get",
+      "access": "group",
+      "experienceGroups": [
+        {
+          "name": "myGroup",
+          "id": "58b9d794cbfafe1be675744f"
+        }
+      ]
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
+
+## Experience Group
+
+Schema for a single Experience Group
+
+### <a name="experience-group-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "experienceGroupId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "experienceUserIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    },
+    "experienceEndpointIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    }
+  }
+}
+```
+### <a name="experience-group-example"></a> Example
+
+```json
+{
+  "id": "58b9d794cbfafe1be675744f",
+  "experienceGroupId": "58b9d794cbfafe1be675744f",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "name": "My Group",
+  "experienceUserIds": [
+    "58b9d782cbfafe1be675744d",
+    "58b9d787cbfafe1be675744e"
+  ],
+  "experienceEndpointIds": [
+    "58b9d743cbfafe1be675744b",
+    "58b9d743cbfafe1be675744c"
+  ]
+}
+```
+
+<br/>
+
+## Experience Group Patch
+
+Schema for the body of an Experience Group modification request
+
+### <a name="experience-group-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "experienceUserIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    },
+    "experienceEndpointIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="experience-group-patch-example"></a> Example
+
+```json
+{
+  "name": "My New Group Name",
+  "experienceUserIds": [
+    "575ed70c7ae143cd83dc4aa9",
+    "675ed70c7ae143cd83dc4aa9"
+  ],
+  "experienceEndpointIds": [
+    "58b9d743cbfafe1be675744b",
+    "58b9d743cbfafe1be675744c"
+  ]
+}
+```
+
+<br/>
+
+## Experience Group Post
+
+Schema for the body of an Experience Group creation request
+
+### <a name="experience-group-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "experienceUserIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    },
+    "experienceEndpointIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name"
+  ]
+}
+```
+### <a name="experience-group-post-example"></a> Example
+
+```json
+{
+  "name": "My Group",
+  "experienceUserIds": [
+    "575ed70c7ae143cd83dc4aa9",
+    "675ed70c7ae143cd83dc4aa9"
+  ],
+  "experienceEndpointIds": [
+    "58b9d743cbfafe1be675744b",
+    "58b9d743cbfafe1be675744c"
+  ]
+}
+```
+
+<br/>
+
+## Experience Groups
+
+Schema for a collection of Experience Groups
+
+### <a name="experience-groups-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Experience Group",
+        "description": "Schema for a single Experience Group",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "experienceGroupId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "experienceUserIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "maxItems": 1000
+          },
+          "experienceEndpointIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "maxItems": 1000
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  }
+}
+```
+### <a name="experience-groups-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "58b9d794cbfafe1be675744f",
+      "experienceGroupId": "58b9d794cbfafe1be675744f",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "name": "My Group",
+      "experienceUserIds": [
+        "58b9d782cbfafe1be675744d",
+        "58b9d787cbfafe1be675744e"
+      ],
+      "experienceEndpointIds": [
+        "58b9d743cbfafe1be675744b",
+        "58b9d743cbfafe1be675744c"
+      ]
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
+
+## Experience User
+
+Schema for a single Experience User
+
+### <a name="experience-user-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "experienceUserId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "passwordLastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastLogin": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "firstName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "fullName": {
+      "type": "string"
+    },
+    "avatarUrl": {
+      "type": "string",
+      "format": "url"
+    },
+    "tokenCutoff": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "metaTags": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      },
+      "additionalProperties": false
+    },
+    "experienceGroups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          }
+        }
+      }
+    }
+  }
+}
+```
+### <a name="experience-user-example"></a> Example
+
+```json
+{
+  "id": "58b9d782cbfafe1be675744d",
+  "experienceUserId": "58b9d782cbfafe1be675744d",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "passwordLastUpdated": "2016-06-13T04:00:00.000Z",
+  "lastLogin": "2016-06-13T04:00:00.000Z",
+  "email": "example@experienceuser.com",
+  "firstName": "Example",
+  "lastName": "Name",
+  "fullName": "Example Name",
+  "avatarUrl": "https://example.avatar.url/is_here.png",
+  "metaTags": {
+    "customKey": "customValue"
+  }
+}
+```
+
+<br/>
+
+## Experience User Patch
+
+Schema for the body of an Experience User modification request
+
+### <a name="experience-user-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "firstName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "password": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 2048
+    },
+    "tokenCutoff": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "metaTags": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      },
+      "additionalProperties": false
+    },
+    "experienceGroupIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="experience-user-patch-example"></a> Example
+
+```json
+{
+  "password": "aNewPassword",
+  "metaTags": {
+    "customKey": "newCustomValue"
+  }
+}
+```
+
+<br/>
+
+## Experience User Post
+
+Schema for the body of an Experience User creation request
+
+### <a name="experience-user-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "firstName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "password": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 2048
+    },
+    "tokenCutoff": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "metaTags": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      },
+      "additionalProperties": false
+    },
+    "experienceGroupIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "email",
+    "firstName",
+    "lastName",
+    "password"
+  ]
+}
+```
+### <a name="experience-user-post-example"></a> Example
+
+```json
+{
+  "email": "example@experienceuser.com",
+  "firstName": "Example",
+  "lastName": "Name",
+  "password": "aUserPassword",
+  "metaTags": {
+    "customKey": "customValue"
+  }
+}
+```
+
+<br/>
+
+## Experience Users
+
+Schema for a collection of Experience Users
+
+### <a name="experience-users-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Experience User",
+        "description": "Schema for a single Experience User",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "experienceUserId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "passwordLastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastLogin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 1024
+          },
+          "firstName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "lastName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "avatarUrl": {
+            "type": "string",
+            "format": "url"
+          },
+          "tokenCutoff": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "metaTags": {
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
+          },
+          "experienceGroups": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "experienceGroupId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  }
+}
+```
+### <a name="experience-users-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "58b9d782cbfafe1be675744d",
+      "experienceUserId": "58b9d782cbfafe1be675744d",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "passwordLastUpdated": "2016-06-13T04:00:00.000Z",
+      "lastLogin": "2016-06-13T04:00:00.000Z",
+      "email": "example@experienceuser.com",
+      "firstName": "Example",
+      "lastName": "Name",
+      "fullName": "Example Name",
+      "avatarUrl": "https://example.avatar.url/is_here.png",
+      "metaTags": {
+        "customKey": "customValue"
+      }
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
+
 ## Workflow
 
 Schema for a single Workflow
@@ -7404,16 +7413,7 @@ Schema for information about the currently authenticated user
       "application": {
         "type": "number"
       },
-      "applicationendpoint": {
-        "type": "number"
-      },
-      "applicationgroup": {
-        "type": "number"
-      },
       "applicationkey": {
-        "type": "number"
-      },
-      "applicationuser": {
         "type": "number"
       },
       "dashboard": {
@@ -7423,6 +7423,15 @@ Schema for information about the currently authenticated user
         "type": "number"
       },
       "devicerecipe": {
+        "type": "number"
+      },
+      "experienceendpoint": {
+        "type": "number"
+      },
+      "experiencegroup": {
+        "type": "number"
+      },
+      "experienceuser": {
         "type": "number"
       },
       "flow": {
@@ -7561,16 +7570,7 @@ Schema for information about the currently authenticated user
         "appCount": {
           "type": "number"
         },
-        "applicationEndpointCount": {
-          "type": "number"
-        },
-        "applicationGroupCount": {
-          "type": "number"
-        },
         "keyCount": {
-          "type": "number"
-        },
-        "applicationUserCount": {
           "type": "number"
         },
         "dashCount": {
@@ -7580,6 +7580,15 @@ Schema for information about the currently authenticated user
           "type": "number"
         },
         "deviceRecipeCount": {
+          "type": "number"
+        },
+        "experienceEndpointCount": {
+          "type": "number"
+        },
+        "experienceGroupCount": {
+          "type": "number"
+        },
+        "experienceUserCount": {
           "type": "number"
         },
         "flowCount": {
@@ -7979,16 +7988,7 @@ Schema for a single Organization
       "application": {
         "type": "number"
       },
-      "applicationendpoint": {
-        "type": "number"
-      },
-      "applicationgroup": {
-        "type": "number"
-      },
       "applicationkey": {
-        "type": "number"
-      },
-      "applicationuser": {
         "type": "number"
       },
       "dashboard": {
@@ -7998,6 +7998,15 @@ Schema for a single Organization
         "type": "number"
       },
       "devicerecipe": {
+        "type": "number"
+      },
+      "experienceendpoint": {
+        "type": "number"
+      },
+      "experiencegroup": {
+        "type": "number"
+      },
+      "experienceuser": {
         "type": "number"
       },
       "flow": {
@@ -8028,16 +8037,7 @@ Schema for a single Organization
         "appCount": {
           "type": "number"
         },
-        "applicationEndpointCount": {
-          "type": "number"
-        },
-        "applicationGroupCount": {
-          "type": "number"
-        },
         "keyCount": {
-          "type": "number"
-        },
-        "applicationUserCount": {
           "type": "number"
         },
         "dashCount": {
@@ -8047,6 +8047,15 @@ Schema for a single Organization
           "type": "number"
         },
         "deviceRecipeCount": {
+          "type": "number"
+        },
+        "experienceEndpointCount": {
+          "type": "number"
+        },
+        "experienceGroupCount": {
+          "type": "number"
+        },
+        "experienceUserCount": {
           "type": "number"
         },
         "flowCount": {
@@ -8710,16 +8719,7 @@ Schema for a collection of Organizations
             "application": {
               "type": "number"
             },
-            "applicationendpoint": {
-              "type": "number"
-            },
-            "applicationgroup": {
-              "type": "number"
-            },
             "applicationkey": {
-              "type": "number"
-            },
-            "applicationuser": {
               "type": "number"
             },
             "dashboard": {
@@ -8729,6 +8729,15 @@ Schema for a collection of Organizations
               "type": "number"
             },
             "devicerecipe": {
+              "type": "number"
+            },
+            "experienceendpoint": {
+              "type": "number"
+            },
+            "experiencegroup": {
+              "type": "number"
+            },
+            "experienceuser": {
               "type": "number"
             },
             "flow": {
@@ -8759,16 +8768,7 @@ Schema for a collection of Organizations
               "appCount": {
                 "type": "number"
               },
-              "applicationEndpointCount": {
-                "type": "number"
-              },
-              "applicationGroupCount": {
-                "type": "number"
-              },
               "keyCount": {
-                "type": "number"
-              },
-              "applicationUserCount": {
                 "type": "number"
               },
               "dashCount": {
@@ -8778,6 +8778,15 @@ Schema for a collection of Organizations
                 "type": "number"
               },
               "deviceRecipeCount": {
+                "type": "number"
+              },
+              "experienceEndpointCount": {
+                "type": "number"
+              },
+              "experienceGroupCount": {
+                "type": "number"
+              },
+              "experienceUserCount": {
                 "type": "number"
               },
               "flowCount": {

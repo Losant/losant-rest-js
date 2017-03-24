@@ -11,7 +11,7 @@
       "type": "string",
       "maxLength": 32767
     },
-    "applicationUserIds": {
+    "experienceUserIds": {
       "type": "array",
       "items": {
         "type": "string",
@@ -19,7 +19,7 @@
       },
       "maxItems": 1000
     },
-    "applicationEndpointIds": {
+    "experienceEndpointIds": {
       "type": "array",
       "items": {
         "type": "string",
@@ -28,8 +28,5 @@
       "maxItems": 1000
     }
   },
-  "additionalProperties": false,
-  "required": [
-    "name"
-  ]
+  "additionalProperties": false
 }

@@ -83,16 +83,7 @@
             "application": {
               "type": "number"
             },
-            "applicationendpoint": {
-              "type": "number"
-            },
-            "applicationgroup": {
-              "type": "number"
-            },
             "applicationkey": {
-              "type": "number"
-            },
-            "applicationuser": {
               "type": "number"
             },
             "dashboard": {
@@ -102,6 +93,15 @@
               "type": "number"
             },
             "devicerecipe": {
+              "type": "number"
+            },
+            "experienceendpoint": {
+              "type": "number"
+            },
+            "experiencegroup": {
+              "type": "number"
+            },
+            "experienceuser": {
               "type": "number"
             },
             "flow": {
@@ -132,16 +132,7 @@
               "appCount": {
                 "type": "number"
               },
-              "applicationEndpointCount": {
-                "type": "number"
-              },
-              "applicationGroupCount": {
-                "type": "number"
-              },
               "keyCount": {
-                "type": "number"
-              },
-              "applicationUserCount": {
                 "type": "number"
               },
               "dashCount": {
@@ -151,6 +142,15 @@
                 "type": "number"
               },
               "deviceRecipeCount": {
+                "type": "number"
+              },
+              "experienceEndpointCount": {
+                "type": "number"
+              },
+              "experienceGroupCount": {
+                "type": "number"
+              },
+              "experienceUserCount": {
                 "type": "number"
               },
               "flowCount": {

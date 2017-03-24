@@ -2,26 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationGroupId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "creationDate": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "lastUpdated": {
-      "type": "string",
-      "format": "date-time"
-    },
     "name": {
       "type": "string",
       "minLength": 1,
@@ -31,7 +11,7 @@
       "type": "string",
       "maxLength": 32767
     },
-    "applicationUserIds": {
+    "experienceUserIds": {
       "type": "array",
       "items": {
         "type": "string",
@@ -39,7 +19,7 @@
       },
       "maxItems": 1000
     },
-    "applicationEndpointIds": {
+    "experienceEndpointIds": {
       "type": "array",
       "items": {
         "type": "string",
@@ -47,5 +27,9 @@
       },
       "maxItems": 1000
     }
-  }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name"
+  ]
 }

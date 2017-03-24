@@ -1,7 +1,7 @@
-# Application Groups Actions
+# Experience Groups Actions
 
 Details on the various actions that can be performed on the
-Application Groups resource, including the expected
+Experience Groups resource, including the expected
 parameters and the potential responses.
 
 ##### Contents
@@ -13,7 +13,7 @@ parameters and the potential responses.
 
 ## Get
 
-Returns the application groups for an application
+Returns the experience groups for an application
 
 ```javascript
 var params = {
@@ -21,13 +21,13 @@ var params = {
 };
 
 // with callbacks
-client.applicationGroups.get(params, function (err, result) {
+client.experienceGroups.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.applicationGroups.get(params)
+client.experienceGroups.get(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -35,7 +35,7 @@ client.applicationGroups.get(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, applicationGroups.*, or applicationGroups.get.
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, experienceGroups.*, or experienceGroups.get.
 
 #### Available Parameters
 
@@ -53,7 +53,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Application Groups](_schemas.md#application-groups) | Collection of application groups |
+| 200 | [Experience Groups](_schemas.md#experience-groups) | Collection of experience groups |
 
 #### Error Responses
 
@@ -66,22 +66,22 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 ## Post
 
-Create a new application group for an application
+Create a new experience group for an application
 
 ```javascript
 var params = {
   applicationId: myApplicationId,
-  applicationGroup: myApplicationGroup
+  experienceGroup: myExperienceGroup
 };
 
 // with callbacks
-client.applicationGroups.post(params, function (err, result) {
+client.experienceGroups.post(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.applicationGroups.post(params)
+client.experienceGroups.post(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -89,20 +89,20 @@ client.applicationGroups.post(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, applicationGroups.*, or applicationGroups.post.
+all.Application, all.Organization, all.User, experienceGroups.*, or experienceGroups.post.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| applicationGroup | [Application Group Post](_schemas.md#application-group-post) | Y | New application group information |  | [Application Group Post Example](_schemas.md#application-group-post-example) |
+| experienceGroup | [Experience Group Post](_schemas.md#experience-group-post) | Y | New experience group information |  | [Experience Group Post Example](_schemas.md#experience-group-post-example) |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Application Group](_schemas.md#application-group) | Successfully created application group |
+| 201 | [Experience Group](_schemas.md#experience-group) | Successfully created experience group |
 
 #### Error Responses
 

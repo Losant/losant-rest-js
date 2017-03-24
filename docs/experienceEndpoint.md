@@ -1,7 +1,7 @@
-# Application Group Actions
+# Experience Endpoint Actions
 
 Details on the various actions that can be performed on the
-Application Group resource, including the expected
+Experience Endpoint resource, including the expected
 parameters and the potential responses.
 
 ##### Contents
@@ -14,22 +14,22 @@ parameters and the potential responses.
 
 ## Delete
 
-Deletes an application group
+Deletes an experience endpoint
 
 ```javascript
 var params = {
   applicationId: myApplicationId,
-  applicationGroupId: myApplicationGroupId
+  experienceEndpointId: myExperienceEndpointId
 };
 
 // with callbacks
-client.applicationGroup.delete(params, function (err, result) {
+client.experienceEndpoint.delete(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.applicationGroup.delete(params)
+client.experienceEndpoint.delete(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -37,48 +37,48 @@ client.applicationGroup.delete(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, applicationGroup.*, or applicationGroup.delete.
+all.Application, all.Organization, all.User, experienceEndpoint.*, or experienceEndpoint.delete.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| applicationGroupId | string | Y | ID associated with the application group |  | 575ed78e7ae143cd83dc4aab |
+| experienceEndpointId | string | Y | ID associated with the experience endpoint |  | 575ed78e7ae143cd83dc4aab |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If application group was successfully deleted |
+| 200 | [Success](_schemas.md#success) | If experience endpoint was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application group was not found |
+| 404 | [Error](_schemas.md#error) | Error if experience endpoint was not found |
 
 <br/>
 
 ## Get
 
-Retrieves information on an application group
+Retrieves information on an experience endpoint
 
 ```javascript
 var params = {
   applicationId: myApplicationId,
-  applicationGroupId: myApplicationGroupId
+  experienceEndpointId: myExperienceEndpointId
 };
 
 // with callbacks
-client.applicationGroup.get(params, function (err, result) {
+client.experienceEndpoint.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.applicationGroup.get(params)
+client.experienceEndpoint.get(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -86,49 +86,49 @@ client.applicationGroup.get(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, applicationGroup.*, or applicationGroup.get.
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, experienceEndpoint.*, or experienceEndpoint.get.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| applicationGroupId | string | Y | ID associated with the application group |  | 575ed78e7ae143cd83dc4aab |
+| experienceEndpointId | string | Y | ID associated with the experience endpoint |  | 575ed78e7ae143cd83dc4aab |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Application Group](_schemas.md#application-group) | Application group information |
+| 200 | [Experience Endpoint](_schemas.md#experience-endpoint) | Experience endpoint information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application group was not found |
+| 404 | [Error](_schemas.md#error) | Error if experience endpoint was not found |
 
 <br/>
 
 ## Patch
 
-Updates information about an application group
+Updates information about an experience endpoint
 
 ```javascript
 var params = {
   applicationId: myApplicationId,
-  applicationGroupId: myApplicationGroupId,
-  applicationGroup: myApplicationGroup
+  experienceEndpointId: myExperienceEndpointId,
+  experienceEndpoint: myExperienceEndpoint
 };
 
 // with callbacks
-client.applicationGroup.patch(params, function (err, result) {
+client.experienceEndpoint.patch(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.applicationGroup.patch(params)
+client.experienceEndpoint.patch(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -136,25 +136,25 @@ client.applicationGroup.patch(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, applicationGroup.*, or applicationGroup.patch.
+all.Application, all.Organization, all.User, experienceEndpoint.*, or experienceEndpoint.patch.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| applicationGroupId | string | Y | ID associated with the application group |  | 575ed78e7ae143cd83dc4aab |
-| applicationGroup | [Application Group Patch](_schemas.md#application-group-patch) | Y | Object containing new properties of the application group |  | [Application Group Patch Example](_schemas.md#application-group-patch-example) |
+| experienceEndpointId | string | Y | ID associated with the experience endpoint |  | 575ed78e7ae143cd83dc4aab |
+| experienceEndpoint | [Experience Endpoint Patch](_schemas.md#experience-endpoint-patch) | Y | Object containing new properties of the experience endpoint |  | [Experience Endpoint Patch Example](_schemas.md#experience-endpoint-patch-example) |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Application Group](_schemas.md#application-group) | Updated application group information |
+| 200 | [Experience Endpoint](_schemas.md#experience-endpoint) | Updated experience endpoint information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application group was not found |
+| 404 | [Error](_schemas.md#error) | Error if experience endpoint was not found |
