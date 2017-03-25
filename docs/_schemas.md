@@ -5831,16 +5831,11 @@ Schema for a single Experience User
     },
     "firstName": {
       "type": "string",
-      "minLength": 1,
       "maxLength": 1024
     },
     "lastName": {
       "type": "string",
-      "minLength": 1,
       "maxLength": 1024
-    },
-    "fullName": {
-      "type": "string"
     },
     "avatarUrl": {
       "type": "string",
@@ -5895,7 +5890,6 @@ Schema for a single Experience User
   "email": "example@experienceuser.com",
   "firstName": "Example",
   "lastName": "Name",
-  "fullName": "Example Name",
   "avatarUrl": "https://example.avatar.url/is_here.png",
   "metaTags": {
     "customKey": "customValue"
@@ -5923,12 +5917,10 @@ Schema for the body of an Experience User modification request
     },
     "firstName": {
       "type": "string",
-      "minLength": 1,
       "maxLength": 1024
     },
     "lastName": {
       "type": "string",
-      "minLength": 1,
       "maxLength": 1024
     },
     "password": {
@@ -5994,12 +5986,10 @@ Schema for the body of an Experience User creation request
     },
     "firstName": {
       "type": "string",
-      "minLength": 1,
       "maxLength": 1024
     },
     "lastName": {
       "type": "string",
-      "minLength": 1,
       "maxLength": 1024
     },
     "password": {
@@ -6034,8 +6024,6 @@ Schema for the body of an Experience User creation request
   "additionalProperties": false,
   "required": [
     "email",
-    "firstName",
-    "lastName",
     "password"
   ]
 }
@@ -6109,16 +6097,11 @@ Schema for a collection of Experience Users
           },
           "firstName": {
             "type": "string",
-            "minLength": 1,
             "maxLength": 1024
           },
           "lastName": {
             "type": "string",
-            "minLength": 1,
             "maxLength": 1024
-          },
-          "fullName": {
-            "type": "string"
           },
           "avatarUrl": {
             "type": "string",
@@ -6214,7 +6197,6 @@ Schema for a collection of Experience Users
       "email": "example@experienceuser.com",
       "firstName": "Example",
       "lastName": "Name",
-      "fullName": "Example Name",
       "avatarUrl": "https://example.avatar.url/is_here.png",
       "metaTags": {
         "customKey": "customValue"
