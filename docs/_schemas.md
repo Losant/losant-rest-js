@@ -6409,7 +6409,7 @@ Schema for a single Workflow
 
 ## Workflow Log
 
-Log of workflow run information
+Log of aggregated workflow run information
 
 ### <a name="workflow-log-schema"></a> Schema
 
@@ -6424,34 +6424,17 @@ Log of workflow run information
         "type": "string",
         "format": "date-time"
       },
-      "errorCount": {
+      "pathsFailed": {
         "type": "number"
       },
       "pathsCompleted": {
         "type": "number"
       },
-      "totalCount": {
-        "type": "number"
-      },
-      "totalTime": {
+      "runCount": {
         "type": "number"
       },
       "wallTime": {
         "type": "number"
-      },
-      "nodes": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "object",
-          "properties": {
-            "time": {
-              "type": "number"
-            },
-            "count": {
-              "type": "number"
-            }
-          }
-        }
       },
       "errors": {
         "type": "array",

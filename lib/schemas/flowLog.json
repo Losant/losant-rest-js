@@ -8,34 +8,17 @@
         "type": "string",
         "format": "date-time"
       },
-      "errorCount": {
+      "pathsFailed": {
         "type": "number"
       },
       "pathsCompleted": {
         "type": "number"
       },
-      "totalCount": {
-        "type": "number"
-      },
-      "totalTime": {
+      "runCount": {
         "type": "number"
       },
       "wallTime": {
         "type": "number"
-      },
-      "nodes": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "object",
-          "properties": {
-            "time": {
-              "type": "number"
-            },
-            "count": {
-              "type": "number"
-            }
-          }
-        }
       },
       "errors": {
         "type": "array",
