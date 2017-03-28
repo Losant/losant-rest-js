@@ -51,7 +51,7 @@
       "type": "string",
       "format": "date-time"
     },
-    "metaTags": {
+    "userTags": {
       "type": "object",
       "patternProperties": {
         "^[0-9a-zA-Z_-]{1,255}$": {

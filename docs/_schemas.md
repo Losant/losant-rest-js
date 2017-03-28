@@ -5853,7 +5853,7 @@ Schema for a single Experience User
       "type": "string",
       "format": "date-time"
     },
-    "metaTags": {
+    "userTags": {
       "type": "object",
       "patternProperties": {
         "^[0-9a-zA-Z_-]{1,255}$": {
@@ -5899,7 +5899,7 @@ Schema for a single Experience User
   "firstName": "Example",
   "lastName": "Name",
   "avatarUrl": "https://example.avatar.url/is_here.png",
-  "metaTags": {
+  "userTags": {
     "customKey": "customValue"
   }
 }
@@ -5940,7 +5940,7 @@ Schema for the body of an Experience User modification request
       "type": "string",
       "format": "date-time"
     },
-    "metaTags": {
+    "userTags": {
       "type": "object",
       "patternProperties": {
         "^[0-9a-zA-Z_-]{1,255}$": {
@@ -5968,7 +5968,7 @@ Schema for the body of an Experience User modification request
 ```json
 {
   "password": "aNewPassword",
-  "metaTags": {
+  "userTags": {
     "customKey": "newCustomValue"
   }
 }
@@ -6009,7 +6009,7 @@ Schema for the body of an Experience User creation request
       "type": "string",
       "format": "date-time"
     },
-    "metaTags": {
+    "userTags": {
       "type": "object",
       "patternProperties": {
         "^[0-9a-zA-Z_-]{1,255}$": {
@@ -6044,7 +6044,7 @@ Schema for the body of an Experience User creation request
   "firstName": "Example",
   "lastName": "Name",
   "password": "aUserPassword",
-  "metaTags": {
+  "userTags": {
     "customKey": "customValue"
   }
 }
@@ -6119,7 +6119,7 @@ Schema for a collection of Experience Users
             "type": "string",
             "format": "date-time"
           },
-          "metaTags": {
+          "userTags": {
             "type": "object",
             "patternProperties": {
               "^[0-9a-zA-Z_-]{1,255}$": {
@@ -6206,7 +6206,7 @@ Schema for a collection of Experience Users
       "firstName": "Example",
       "lastName": "Name",
       "avatarUrl": "https://example.avatar.url/is_here.png",
-      "metaTags": {
+      "userTags": {
         "customKey": "customValue"
       }
     }
