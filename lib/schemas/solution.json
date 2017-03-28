@@ -33,7 +33,9 @@
     },
     "slug": {
       "type": "string",
-      "pattern": "^[0-9a-z_-]{1,255}$"
+      "minLength": 4,
+      "maxLength": 255,
+      "pattern": "^[0-9a-z_-]*$"
     },
     "allowSelfDeletion": {
       "type": "boolean"
