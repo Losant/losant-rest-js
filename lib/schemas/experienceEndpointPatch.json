@@ -17,11 +17,12 @@
     "method": {
       "type": "string",
       "enum": [
+        "delete",
         "get",
-        "post",
+        "options",
         "patch",
-        "put",
-        "options"
+        "post",
+        "put"
       ]
     },
     "access": {

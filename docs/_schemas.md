@@ -5117,11 +5117,12 @@ Schema for a single Experience Endpoint
     "method": {
       "type": "string",
       "enum": [
+        "delete",
         "get",
-        "post",
+        "options",
         "patch",
-        "put",
-        "options"
+        "post",
+        "put"
       ]
     },
     "access": {
@@ -5202,11 +5203,12 @@ Schema for the body of an Experience Endpoint modification request
     "method": {
       "type": "string",
       "enum": [
+        "delete",
         "get",
-        "post",
+        "options",
         "patch",
-        "put",
-        "options"
+        "post",
+        "put"
       ]
     },
     "access": {
@@ -5268,11 +5270,12 @@ Schema for the body of an Experience Endpoint creation request
     "method": {
       "type": "string",
       "enum": [
+        "delete",
         "get",
-        "post",
+        "options",
         "patch",
-        "put",
-        "options"
+        "post",
+        "put"
       ]
     },
     "access": {
