@@ -92,7 +92,7 @@
 *   [Solution Patch](#solution-patch)
 *   [Solution Post](#solution-post)
 *   [Solution User](#solution-user)
-*   [User Credentials](#user-credentials)
+*   [Solution User Credentials](#solution-user-credentials)
 *   [Solution User Patch](#solution-user-patch)
 *   [Solution User Post](#solution-user-post)
 *   [Solution Users](#solution-users)
@@ -9685,11 +9685,11 @@ Schema for a single Solution User
 
 <br/>
 
-## User Credentials
+## Solution User Credentials
 
 Schema for the body of a Solution User authentication request
 
-### <a name="user-credentials-schema"></a> Schema
+### <a name="solution-user-credentials-schema"></a> Schema
 
 ```json
 {
@@ -9723,7 +9723,7 @@ Schema for the body of a Solution User authentication request
   "additionalProperties": false
 }
 ```
-### <a name="user-credentials-example"></a> Example
+### <a name="solution-user-credentials-example"></a> Example
 
 ```json
 {

@@ -86,7 +86,7 @@ No api access token is required to call this action.
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| credentials | [User Credentials](_schemas.md#user-credentials) | Y | Solution user authentication credentials. The included api access token has the scope &#x27;all.SolutionUser&#x27;. |  | [User Credentials Example](_schemas.md#user-credentials-example) |
+| credentials | [Solution User Credentials](_schemas.md#solution-user-credentials) | Y | Solution user authentication credentials. The included api access token has the scope &#x27;all.SolutionUser&#x27;. |  | [Solution User Credentials Example](_schemas.md#solution-user-credentials-example) |
 
 #### Successful Responses
 
