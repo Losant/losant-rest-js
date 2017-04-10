@@ -27,17 +27,18 @@
             "type": "string",
             "enum": [
               "deviceId",
-              "deviceTag",
-              "mqttTopic",
-              "webhook",
-              "timer",
-              "event",
-              "virtualButton",
-              "endpoint",
               "deviceIdConnect",
               "deviceIdDisconnect",
+              "deviceTag",
               "deviceTagConnect",
-              "deviceTagDisconnect"
+              "deviceTagDisconnect",
+              "endpoint",
+              "event",
+              "mqttTopic",
+              "subscription",
+              "timer",
+              "virtualButton",
+              "webhook"
             ]
           },
           "config": {

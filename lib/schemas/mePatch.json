@@ -37,6 +37,10 @@
       "type": "string",
       "minLength": 8,
       "maxLength": 2048
+    },
+    "tokenCutoff": {
+      "type": "string",
+      "format": "date-time"
     }
   },
   "additionalProperties": false

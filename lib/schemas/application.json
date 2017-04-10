@@ -81,6 +81,9 @@
         "flowCount": {
           "type": "number"
         },
+        "subscriptionCount": {
+          "type": "number"
+        },
         "webhookCount": {
           "type": "number"
         }

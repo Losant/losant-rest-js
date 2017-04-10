@@ -89,6 +89,14 @@
           "type": "number"
         }
       }
+    },
+    "subscription": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "number"
+        }
+      }
     }
   }
 }

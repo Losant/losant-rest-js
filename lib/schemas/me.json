@@ -53,6 +53,10 @@
       "type": "string",
       "maxLength": 1024
     },
+    "tokenCutoff": {
+      "type": "string",
+      "format": "date-time"
+    },
     "emailVerified": {
       "type": "boolean"
     },
@@ -101,6 +105,9 @@
         "type": "number"
       },
       "flow": {
+        "type": "number"
+      },
+      "subscription": {
         "type": "number"
       },
       "webhook": {
@@ -355,8 +362,19 @@
                   "type": "number"
                 }
               }
+            },
+            "subscription": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
             }
           }
+        },
+        "subscriptionCount": {
+          "type": "number"
         },
         "webhookCount": {
           "type": "number"

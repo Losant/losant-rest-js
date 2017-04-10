@@ -110,6 +110,9 @@
             "solution": {
               "type": "number"
             },
+            "subscription": {
+              "type": "number"
+            },
             "webhook": {
               "type": "number"
             },
@@ -254,10 +257,21 @@
                         "type": "number"
                       }
                     }
+                  },
+                  "subscription": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
                   }
                 }
               },
               "solutionCount": {
+                "type": "number"
+              },
+              "subscriptionCount": {
                 "type": "number"
               },
               "webhookCount": {
