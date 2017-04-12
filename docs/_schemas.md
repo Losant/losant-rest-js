@@ -10474,7 +10474,7 @@ Schema for a single Subscription
         },
         "caCertificate": {
           "type": "string",
-          "maxLength": 1024,
+          "maxLength": 32767,
           "minLength": 1
         }
       },
@@ -10488,8 +10488,12 @@ Schema for a single Subscription
     "status": {
       "lastKeepAlive": {
         "type": [
-          "number",
-          "null"
+          "number"
+        ]
+      },
+      "nextAttempt": {
+        "type": [
+          "number"
         ]
       },
       "connectInfo": {
@@ -10665,7 +10669,7 @@ Schema for the body of an Subscription modification request
         },
         "caCertificate": {
           "type": "string",
-          "maxLength": 1024,
+          "maxLength": 32767,
           "minLength": 1
         }
       },
@@ -10798,7 +10802,7 @@ Schema for the body of an Subscription creation request
         },
         "caCertificate": {
           "type": "string",
-          "maxLength": 1024,
+          "maxLength": 32767,
           "minLength": 1
         }
       },
@@ -10972,7 +10976,7 @@ Schema for a collection of Subscriptions
               },
               "caCertificate": {
                 "type": "string",
-                "maxLength": 1024,
+                "maxLength": 32767,
                 "minLength": 1
               }
             },
@@ -10986,8 +10990,12 @@ Schema for a collection of Subscriptions
           "status": {
             "lastKeepAlive": {
               "type": [
-                "number",
-                "null"
+                "number"
+              ]
+            },
+            "nextAttempt": {
+              "type": [
+                "number"
               ]
             },
             "connectInfo": {

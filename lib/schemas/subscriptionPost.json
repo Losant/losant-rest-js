@@ -97,7 +97,7 @@
         },
         "caCertificate": {
           "type": "string",
-          "maxLength": 1024,
+          "maxLength": 32767,
           "minLength": 1
         }
       },

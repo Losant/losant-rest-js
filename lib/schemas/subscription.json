@@ -117,7 +117,7 @@
         },
         "caCertificate": {
           "type": "string",
-          "maxLength": 1024,
+          "maxLength": 32767,
           "minLength": 1
         }
       },
@@ -131,8 +131,12 @@
     "status": {
       "lastKeepAlive": {
         "type": [
-          "number",
-          "null"
+          "number"
+        ]
+      },
+      "nextAttempt": {
+        "type": [
+          "number"
         ]
       },
       "connectInfo": {
