@@ -46,7 +46,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
 | page | string | N | Which page of results to return | 0 | 0 |
 | perPage | string | N | How many items to return per page | 1000 | 10 |
-| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name, streamType |  | email |
+| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name, streamType |  | streamType |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*sub |
 
 #### Successful Responses

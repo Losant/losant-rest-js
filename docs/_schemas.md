@@ -10413,7 +10413,7 @@ Schema for a single Subscription
         "keyJson": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 1
+          "minLength": 50
         }
       },
       "additionalProperties": false,
@@ -10465,17 +10465,17 @@ Schema for a single Subscription
         "privateKey": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 1
+          "minLength": 50
         },
         "certificate": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 1
+          "minLength": 50
         },
         "caCertificate": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 1
+          "minLength": 50
         }
       },
       "additionalProperties": false,
@@ -10608,7 +10608,7 @@ Schema for the body of an Subscription modification request
         "keyJson": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 1
+          "minLength": 50
         }
       },
       "additionalProperties": false,
@@ -10660,17 +10660,17 @@ Schema for the body of an Subscription modification request
         "privateKey": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 1
+          "minLength": 50
         },
         "certificate": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 1
+          "minLength": 50
         },
         "caCertificate": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 1
+          "minLength": 50
         }
       },
       "additionalProperties": false,
@@ -10741,7 +10741,7 @@ Schema for the body of an Subscription creation request
         "keyJson": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 1
+          "minLength": 50
         }
       },
       "additionalProperties": false,
@@ -10793,17 +10793,17 @@ Schema for the body of an Subscription creation request
         "privateKey": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 1
+          "minLength": 50
         },
         "certificate": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 1
+          "minLength": 50
         },
         "caCertificate": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 1
+          "minLength": 50
         }
       },
       "additionalProperties": false,
@@ -10915,7 +10915,7 @@ Schema for a collection of Subscriptions
               "keyJson": {
                 "type": "string",
                 "maxLength": 32767,
-                "minLength": 1
+                "minLength": 50
               }
             },
             "additionalProperties": false,
@@ -10967,17 +10967,17 @@ Schema for a collection of Subscriptions
               "privateKey": {
                 "type": "string",
                 "maxLength": 32767,
-                "minLength": 1
+                "minLength": 50
               },
               "certificate": {
                 "type": "string",
                 "maxLength": 32767,
-                "minLength": 1
+                "minLength": 50
               },
               "caCertificate": {
                 "type": "string",
                 "maxLength": 32767,
-                "minLength": 1
+                "minLength": 50
               }
             },
             "additionalProperties": false,
