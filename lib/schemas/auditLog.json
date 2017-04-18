@@ -52,7 +52,7 @@
         "ExperienceUser",
         "Flow",
         "SolutionUser",
-        "Subscription",
+        "Integration",
         "Webhook"
       ]
     },

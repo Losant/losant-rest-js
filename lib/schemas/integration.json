@@ -6,7 +6,7 @@
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "subscriptionId": {
+    "integrationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
@@ -27,7 +27,7 @@
       "minLength": 1,
       "maxLength": 1024
     },
-    "streamType": {
+    "integrationType": {
       "type": "string",
       "enum": [
         "mqtt",

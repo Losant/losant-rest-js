@@ -69,6 +69,10 @@
 *   [Workflow Trigger Filter](#workflow-trigger-filter)
 *   [Workflows](#workflows)
 *   [Github Login](#github-login)
+*   [Integrations](#integrations)
+*   [Integrations Patch](#integrations-patch)
+*   [Integrations Post](#integrations-post)
+*   [Integrations](#integrations)
 *   [Last Value Data](#last-value-data)
 *   [Last Value Query](#last-value-query)
 *   [Me](#me)
@@ -97,10 +101,6 @@
 *   [Solution User Post](#solution-user-post)
 *   [Solution Users](#solution-users)
 *   [Solutions](#solutions)
-*   [Subscription](#subscription)
-*   [Subscription Patch](#subscription-patch)
-*   [Subscription Post](#subscription-post)
-*   [Subscriptions](#subscriptions)
 *   [Success](#success)
 *   [Time Series Data](#time-series-data)
 *   [Time Series Query](#time-series-query)
@@ -355,7 +355,7 @@ Schema for a single Application
         "flowCount": {
           "type": "number"
         },
-        "subscriptionCount": {
+        "integrationCount": {
           "type": "number"
         },
         "webhookCount": {
@@ -442,8 +442,8 @@ Schema for the body of an Application API Token creation request
           "experienceGroups.*",
           "experienceUser.*",
           "experienceUsers.*",
-          "subscription.*",
-          "subscriptions.*",
+          "integration.*",
+          "integrations.*",
           "flow.*",
           "flows.*",
           "webhook.*",
@@ -517,11 +517,11 @@ Schema for the body of an Application API Token creation request
           "flow.setStorageEntry",
           "flows.get",
           "flows.post",
-          "solution.delete",
-          "solution.get",
-          "solution.patch",
-          "solutions.get",
-          "solutions.post",
+          "integration.delete",
+          "integration.get",
+          "integration.patch",
+          "integrations.get",
+          "integrations.post",
           "webhook.delete",
           "webhook.get",
           "webhook.patch",
@@ -1095,7 +1095,7 @@ Schema for a collection of Applications
               "flowCount": {
                 "type": "number"
               },
-              "subscriptionCount": {
+              "integrationCount": {
                 "type": "number"
               },
               "webhookCount": {
@@ -1233,7 +1233,7 @@ Schema for a single Audit Log entry
         "ExperienceUser",
         "Flow",
         "SolutionUser",
-        "Subscription",
+        "Integration",
         "Webhook"
       ]
     },
@@ -1377,7 +1377,7 @@ Schema for the filter of an audit log query
               "ExperienceUser",
               "Flow",
               "SolutionUser",
-              "Subscription",
+              "Integration",
               "Webhook"
             ]
           },
@@ -1538,7 +1538,7 @@ Schema for a collection of Audit Logs
               "ExperienceUser",
               "Flow",
               "SolutionUser",
-              "Subscription",
+              "Integration",
               "Webhook"
             ]
           },
@@ -6310,7 +6310,7 @@ Schema for a single Workflow
               "endpoint",
               "event",
               "mqttTopic",
-              "subscription",
+              "integration",
               "timer",
               "virtualButton",
               "webhook"
@@ -6559,7 +6559,7 @@ Schema for the body of a Workflow modification request
               "endpoint",
               "event",
               "mqttTopic",
-              "subscription",
+              "integration",
               "timer",
               "virtualButton",
               "webhook"
@@ -6710,7 +6710,7 @@ Schema for the body of a Workflow creation request
               "endpoint",
               "event",
               "mqttTopic",
-              "subscription",
+              "integration",
               "timer",
               "virtualButton",
               "webhook"
@@ -6995,7 +6995,7 @@ Schema for a collection of Workflows
                     "endpoint",
                     "event",
                     "mqttTopic",
-                    "subscription",
+                    "integration",
                     "timer",
                     "virtualButton",
                     "webhook"
@@ -7197,6 +7197,741 @@ Schema for the body of a Github login request
 ```json
 {
   "accessToken": "the github access token"
+}
+```
+
+<br/>
+
+## Integrations
+
+Schema for a single Integrations
+
+### <a name="integrations-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "integrationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "integrationType": {
+      "type": "string",
+      "enum": [
+        "mqtt",
+        "googlePubSub"
+      ]
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
+    },
+    "googlePubSubConfig": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "keyJson": {
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 50
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "projectId",
+        "keyJson"
+      ]
+    },
+    "mqttConfig": {
+      "type": "object",
+      "properties": {
+        "clientId": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "username": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "password": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "clean": {
+          "type": "boolean"
+        },
+        "port": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 65535
+        },
+        "protocol": {
+          "type": "string",
+          "enum": [
+            "mqtt",
+            "mqtts",
+            "ws",
+            "wss"
+          ]
+        },
+        "host": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "privateKey": {
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 50
+        },
+        "certificate": {
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 50
+        },
+        "caCertificate": {
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 50
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "port",
+        "protocol",
+        "host"
+      ]
+    },
+    "status": {
+      "lastKeepAlive": {
+        "type": [
+          "number"
+        ]
+      },
+      "nextAttempt": {
+        "type": [
+          "number"
+        ]
+      },
+      "connectInfo": {
+        "type": "object",
+        "properties": {
+          "ts": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        }
+      },
+      "disconnectInfo": {
+        "type": "object",
+        "properties": {
+          "ts": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
+```
+### <a name="integrations-example"></a> Example
+
+```json
+{
+  "id": "58ec07f20c747f65243d0d76",
+  "integrationId": "58ec07f20c747f65243d0d76",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "name": "Example Integrations",
+  "integrationType": "mqtt",
+  "enabled": true,
+  "topics": [
+    "myTopic"
+  ],
+  "mqttConfig": {
+    "clientId": "exampleClientId",
+    "username": "exampleUsername",
+    "password": "examplePassword",
+    "port": 8883,
+    "protocol": "mqtts",
+    "host": "broker.example.com"
+  },
+  "status": {
+    "lastKeepAlive": 1491863679994,
+    "connectInfo": {
+      "ts": 1490629589313
+    },
+    "disconnectInfo": {
+      "ts": 1490629587190,
+      "error": "Keepalive Timeout"
+    }
+  }
+}
+```
+
+<br/>
+
+## Integrations Patch
+
+Schema for the body of an Integrations modification request
+
+### <a name="integrations-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "integrationType": {
+      "type": "string",
+      "enum": [
+        "mqtt",
+        "googlePubSub"
+      ]
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
+    },
+    "googlePubSubConfig": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "keyJson": {
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 50
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "projectId",
+        "keyJson"
+      ]
+    },
+    "mqttConfig": {
+      "type": "object",
+      "properties": {
+        "clientId": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "username": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "password": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "clean": {
+          "type": "boolean"
+        },
+        "port": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 65535
+        },
+        "protocol": {
+          "type": "string",
+          "enum": [
+            "mqtt",
+            "mqtts",
+            "ws",
+            "wss"
+          ]
+        },
+        "host": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "privateKey": {
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 50
+        },
+        "certificate": {
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 50
+        },
+        "caCertificate": {
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 50
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "port",
+        "protocol",
+        "host"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="integrations-patch-example"></a> Example
+
+```json
+{
+  "topics": [
+    "differentTopic"
+  ]
+}
+```
+
+<br/>
+
+## Integrations Post
+
+Schema for the body of an Integrations creation request
+
+### <a name="integrations-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "integrationType": {
+      "type": "string",
+      "enum": [
+        "mqtt",
+        "googlePubSub"
+      ]
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
+    },
+    "googlePubSubConfig": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "keyJson": {
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 50
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "projectId",
+        "keyJson"
+      ]
+    },
+    "mqttConfig": {
+      "type": "object",
+      "properties": {
+        "clientId": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "username": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "password": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "clean": {
+          "type": "boolean"
+        },
+        "port": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 65535
+        },
+        "protocol": {
+          "type": "string",
+          "enum": [
+            "mqtt",
+            "mqtts",
+            "ws",
+            "wss"
+          ]
+        },
+        "host": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "privateKey": {
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 50
+        },
+        "certificate": {
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 50
+        },
+        "caCertificate": {
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 50
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "port",
+        "protocol",
+        "host"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "integrationType"
+  ]
+}
+```
+### <a name="integrations-post-example"></a> Example
+
+```json
+{
+  "name": "Example Integrations",
+  "integrationType": "mqtt",
+  "topics": [
+    "myTopic"
+  ],
+  "mqttConfig": {
+    "clientId": "exampleClientId",
+    "username": "exampleUsername",
+    "password": "examplePassword",
+    "port": 8883,
+    "protocol": "mqtts",
+    "host": "broker.example.com"
+  }
+}
+```
+
+<br/>
+
+## Integrations
+
+Schema for a collection of Integrations
+
+### <a name="integrations-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Integrations",
+        "description": "Schema for a single Integrations",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "integrationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "integrationType": {
+            "type": "string",
+            "enum": [
+              "mqtt",
+              "googlePubSub"
+            ]
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "topics": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024
+            }
+          },
+          "googlePubSubConfig": {
+            "type": "object",
+            "properties": {
+              "projectId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              },
+              "keyJson": {
+                "type": "string",
+                "maxLength": 32767,
+                "minLength": 50
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "projectId",
+              "keyJson"
+            ]
+          },
+          "mqttConfig": {
+            "type": "object",
+            "properties": {
+              "clientId": {
+                "type": "string",
+                "maxLength": 1024,
+                "minLength": 1
+              },
+              "username": {
+                "type": "string",
+                "maxLength": 1024,
+                "minLength": 1
+              },
+              "password": {
+                "type": "string",
+                "maxLength": 1024,
+                "minLength": 1
+              },
+              "clean": {
+                "type": "boolean"
+              },
+              "port": {
+                "type": "number",
+                "minimum": 1,
+                "maximum": 65535
+              },
+              "protocol": {
+                "type": "string",
+                "enum": [
+                  "mqtt",
+                  "mqtts",
+                  "ws",
+                  "wss"
+                ]
+              },
+              "host": {
+                "type": "string",
+                "maxLength": 1024,
+                "minLength": 1
+              },
+              "privateKey": {
+                "type": "string",
+                "maxLength": 32767,
+                "minLength": 50
+              },
+              "certificate": {
+                "type": "string",
+                "maxLength": 32767,
+                "minLength": 50
+              },
+              "caCertificate": {
+                "type": "string",
+                "maxLength": 32767,
+                "minLength": 50
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "port",
+              "protocol",
+              "host"
+            ]
+          },
+          "status": {
+            "lastKeepAlive": {
+              "type": [
+                "number"
+              ]
+            },
+            "nextAttempt": {
+              "type": [
+                "number"
+              ]
+            },
+            "connectInfo": {
+              "type": "object",
+              "properties": {
+                "ts": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "disconnectInfo": {
+              "type": "object",
+              "properties": {
+                "ts": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "error": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  }
+}
+```
+### <a name="integrations-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "$ref": "#/examples/integrations"
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97"
 }
 ```
 
@@ -7441,7 +8176,7 @@ Schema for information about the currently authenticated user
       "flow": {
         "type": "number"
       },
-      "subscription": {
+      "integration": {
         "type": "number"
       },
       "webhook": {
@@ -7697,7 +8432,7 @@ Schema for information about the currently authenticated user
                 }
               }
             },
-            "subscription": {
+            "integration": {
               "type": "object",
               "patternProperties": {
                 ".*": {
@@ -7707,7 +8442,7 @@ Schema for information about the currently authenticated user
             }
           }
         },
-        "subscriptionCount": {
+        "integrationCount": {
           "type": "number"
         },
         "webhookCount": {
@@ -8037,7 +8772,7 @@ Schema for a single Organization
       "solution": {
         "type": "number"
       },
-      "subscription": {
+      "integration": {
         "type": "number"
       },
       "webhook": {
@@ -8185,7 +8920,7 @@ Schema for a single Organization
                 }
               }
             },
-            "subscription": {
+            "integration": {
               "type": "object",
               "patternProperties": {
                 ".*": {
@@ -8198,7 +8933,7 @@ Schema for a single Organization
         "solutionCount": {
           "type": "number"
         },
-        "subscriptionCount": {
+        "integrationCount": {
           "type": "number"
         },
         "webhookCount": {
@@ -8782,7 +9517,7 @@ Schema for a collection of Organizations
             "solution": {
               "type": "number"
             },
-            "subscription": {
+            "integration": {
               "type": "number"
             },
             "webhook": {
@@ -8930,7 +9665,7 @@ Schema for a collection of Organizations
                       }
                     }
                   },
-                  "subscription": {
+                  "integration": {
                     "type": "object",
                     "patternProperties": {
                       ".*": {
@@ -8943,7 +9678,7 @@ Schema for a collection of Organizations
               "solutionCount": {
                 "type": "number"
               },
-              "subscriptionCount": {
+              "integrationCount": {
                 "type": "number"
               },
               "webhookCount": {
@@ -9168,7 +9903,7 @@ Schema for the result of a payload count request
         }
       }
     },
-    "subscription": {
+    "integration": {
       "type": "object",
       "patternProperties": {
         ".*": {
@@ -10343,769 +11078,6 @@ Schema for a collection of Solutions
   "sortField": "name",
   "sortDirection": "asc",
   "orgId": "575ed6e87ae143cd83dc4aa8"
-}
-```
-
-<br/>
-
-## Subscription
-
-Schema for a single Subscription
-
-### <a name="subscription-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "subscriptionId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "creationDate": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "lastUpdated": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "name": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 1024
-    },
-    "streamType": {
-      "type": "string",
-      "enum": [
-        "mqtt",
-        "googlePubSub"
-      ]
-    },
-    "enabled": {
-      "type": "boolean"
-    },
-    "topics": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 1024
-      }
-    },
-    "googlePubSubConfig": {
-      "type": "object",
-      "properties": {
-        "projectId": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 1024
-        },
-        "keyJson": {
-          "type": "string",
-          "maxLength": 32767,
-          "minLength": 50
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "projectId",
-        "keyJson"
-      ]
-    },
-    "mqttConfig": {
-      "type": "object",
-      "properties": {
-        "clientId": {
-          "type": "string",
-          "maxLength": 1024,
-          "minLength": 1
-        },
-        "username": {
-          "type": "string",
-          "maxLength": 1024,
-          "minLength": 1
-        },
-        "password": {
-          "type": "string",
-          "maxLength": 1024,
-          "minLength": 1
-        },
-        "clean": {
-          "type": "boolean"
-        },
-        "port": {
-          "type": "number",
-          "minimum": 1,
-          "maximum": 65535
-        },
-        "protocol": {
-          "type": "string",
-          "enum": [
-            "mqtt",
-            "mqtts",
-            "ws",
-            "wss"
-          ]
-        },
-        "host": {
-          "type": "string",
-          "maxLength": 1024,
-          "minLength": 1
-        },
-        "privateKey": {
-          "type": "string",
-          "maxLength": 32767,
-          "minLength": 50
-        },
-        "certificate": {
-          "type": "string",
-          "maxLength": 32767,
-          "minLength": 50
-        },
-        "caCertificate": {
-          "type": "string",
-          "maxLength": 32767,
-          "minLength": 50
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "port",
-        "protocol",
-        "host"
-      ]
-    },
-    "status": {
-      "lastKeepAlive": {
-        "type": [
-          "number"
-        ]
-      },
-      "nextAttempt": {
-        "type": [
-          "number"
-        ]
-      },
-      "connectInfo": {
-        "type": "object",
-        "properties": {
-          "ts": {
-            "type": [
-              "number",
-              "null"
-            ]
-          }
-        }
-      },
-      "disconnectInfo": {
-        "type": "object",
-        "properties": {
-          "ts": {
-            "type": [
-              "number",
-              "null"
-            ]
-          },
-          "error": {
-            "type": "string"
-          }
-        }
-      }
-    }
-  }
-}
-```
-### <a name="subscription-example"></a> Example
-
-```json
-{
-  "id": "58ec07f20c747f65243d0d76",
-  "subscriptionId": "58ec07f20c747f65243d0d76",
-  "applicationId": "575ec8687ae143cd83dc4a97",
-  "creationDate": "2016-06-13T04:00:00.000Z",
-  "lastUpdated": "2016-06-13T04:00:00.000Z",
-  "name": "Example Subscription",
-  "streamType": "mqtt",
-  "enabled": true,
-  "topics": [
-    "myTopic"
-  ],
-  "mqttConfig": {
-    "clientId": "exampleClientId",
-    "username": "exampleUsername",
-    "password": "examplePassword",
-    "port": 8883,
-    "protocol": "mqtts",
-    "host": "broker.example.com"
-  },
-  "status": {
-    "lastKeepAlive": 1491863679994,
-    "connectInfo": {
-      "ts": 1490629589313
-    },
-    "disconnectInfo": {
-      "ts": 1490629587190,
-      "error": "Keepalive Timeout"
-    }
-  }
-}
-```
-
-<br/>
-
-## Subscription Patch
-
-Schema for the body of an Subscription modification request
-
-### <a name="subscription-patch-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "name": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 1024
-    },
-    "streamType": {
-      "type": "string",
-      "enum": [
-        "mqtt",
-        "googlePubSub"
-      ]
-    },
-    "enabled": {
-      "type": "boolean"
-    },
-    "topics": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 1024
-      }
-    },
-    "googlePubSubConfig": {
-      "type": "object",
-      "properties": {
-        "projectId": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 1024
-        },
-        "keyJson": {
-          "type": "string",
-          "maxLength": 32767,
-          "minLength": 50
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "projectId",
-        "keyJson"
-      ]
-    },
-    "mqttConfig": {
-      "type": "object",
-      "properties": {
-        "clientId": {
-          "type": "string",
-          "maxLength": 1024,
-          "minLength": 1
-        },
-        "username": {
-          "type": "string",
-          "maxLength": 1024,
-          "minLength": 1
-        },
-        "password": {
-          "type": "string",
-          "maxLength": 1024,
-          "minLength": 1
-        },
-        "clean": {
-          "type": "boolean"
-        },
-        "port": {
-          "type": "number",
-          "minimum": 1,
-          "maximum": 65535
-        },
-        "protocol": {
-          "type": "string",
-          "enum": [
-            "mqtt",
-            "mqtts",
-            "ws",
-            "wss"
-          ]
-        },
-        "host": {
-          "type": "string",
-          "maxLength": 1024,
-          "minLength": 1
-        },
-        "privateKey": {
-          "type": "string",
-          "maxLength": 32767,
-          "minLength": 50
-        },
-        "certificate": {
-          "type": "string",
-          "maxLength": 32767,
-          "minLength": 50
-        },
-        "caCertificate": {
-          "type": "string",
-          "maxLength": 32767,
-          "minLength": 50
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "port",
-        "protocol",
-        "host"
-      ]
-    }
-  },
-  "additionalProperties": false
-}
-```
-### <a name="subscription-patch-example"></a> Example
-
-```json
-{
-  "topics": [
-    "differentTopic"
-  ]
-}
-```
-
-<br/>
-
-## Subscription Post
-
-Schema for the body of an Subscription creation request
-
-### <a name="subscription-post-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "name": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 1024
-    },
-    "streamType": {
-      "type": "string",
-      "enum": [
-        "mqtt",
-        "googlePubSub"
-      ]
-    },
-    "enabled": {
-      "type": "boolean"
-    },
-    "topics": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 1024
-      }
-    },
-    "googlePubSubConfig": {
-      "type": "object",
-      "properties": {
-        "projectId": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 1024
-        },
-        "keyJson": {
-          "type": "string",
-          "maxLength": 32767,
-          "minLength": 50
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "projectId",
-        "keyJson"
-      ]
-    },
-    "mqttConfig": {
-      "type": "object",
-      "properties": {
-        "clientId": {
-          "type": "string",
-          "maxLength": 1024,
-          "minLength": 1
-        },
-        "username": {
-          "type": "string",
-          "maxLength": 1024,
-          "minLength": 1
-        },
-        "password": {
-          "type": "string",
-          "maxLength": 1024,
-          "minLength": 1
-        },
-        "clean": {
-          "type": "boolean"
-        },
-        "port": {
-          "type": "number",
-          "minimum": 1,
-          "maximum": 65535
-        },
-        "protocol": {
-          "type": "string",
-          "enum": [
-            "mqtt",
-            "mqtts",
-            "ws",
-            "wss"
-          ]
-        },
-        "host": {
-          "type": "string",
-          "maxLength": 1024,
-          "minLength": 1
-        },
-        "privateKey": {
-          "type": "string",
-          "maxLength": 32767,
-          "minLength": 50
-        },
-        "certificate": {
-          "type": "string",
-          "maxLength": 32767,
-          "minLength": 50
-        },
-        "caCertificate": {
-          "type": "string",
-          "maxLength": 32767,
-          "minLength": 50
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "port",
-        "protocol",
-        "host"
-      ]
-    }
-  },
-  "additionalProperties": false,
-  "required": [
-    "name",
-    "streamType"
-  ]
-}
-```
-### <a name="subscription-post-example"></a> Example
-
-```json
-{
-  "name": "Example Subscription",
-  "streamType": "mqtt",
-  "topics": [
-    "myTopic"
-  ],
-  "mqttConfig": {
-    "clientId": "exampleClientId",
-    "username": "exampleUsername",
-    "password": "examplePassword",
-    "port": 8883,
-    "protocol": "mqtts",
-    "host": "broker.example.com"
-  }
-}
-```
-
-<br/>
-
-## Subscriptions
-
-Schema for a collection of Subscriptions
-
-### <a name="subscriptions-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "items": {
-      "type": "array",
-      "items": {
-        "title": "Subscription",
-        "description": "Schema for a single Subscription",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "subscriptionId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "applicationId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "creationDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "lastUpdated": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "name": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 1024
-          },
-          "streamType": {
-            "type": "string",
-            "enum": [
-              "mqtt",
-              "googlePubSub"
-            ]
-          },
-          "enabled": {
-            "type": "boolean"
-          },
-          "topics": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 1024
-            }
-          },
-          "googlePubSubConfig": {
-            "type": "object",
-            "properties": {
-              "projectId": {
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
-              },
-              "keyJson": {
-                "type": "string",
-                "maxLength": 32767,
-                "minLength": 50
-              }
-            },
-            "additionalProperties": false,
-            "required": [
-              "projectId",
-              "keyJson"
-            ]
-          },
-          "mqttConfig": {
-            "type": "object",
-            "properties": {
-              "clientId": {
-                "type": "string",
-                "maxLength": 1024,
-                "minLength": 1
-              },
-              "username": {
-                "type": "string",
-                "maxLength": 1024,
-                "minLength": 1
-              },
-              "password": {
-                "type": "string",
-                "maxLength": 1024,
-                "minLength": 1
-              },
-              "clean": {
-                "type": "boolean"
-              },
-              "port": {
-                "type": "number",
-                "minimum": 1,
-                "maximum": 65535
-              },
-              "protocol": {
-                "type": "string",
-                "enum": [
-                  "mqtt",
-                  "mqtts",
-                  "ws",
-                  "wss"
-                ]
-              },
-              "host": {
-                "type": "string",
-                "maxLength": 1024,
-                "minLength": 1
-              },
-              "privateKey": {
-                "type": "string",
-                "maxLength": 32767,
-                "minLength": 50
-              },
-              "certificate": {
-                "type": "string",
-                "maxLength": 32767,
-                "minLength": 50
-              },
-              "caCertificate": {
-                "type": "string",
-                "maxLength": 32767,
-                "minLength": 50
-              }
-            },
-            "additionalProperties": false,
-            "required": [
-              "port",
-              "protocol",
-              "host"
-            ]
-          },
-          "status": {
-            "lastKeepAlive": {
-              "type": [
-                "number"
-              ]
-            },
-            "nextAttempt": {
-              "type": [
-                "number"
-              ]
-            },
-            "connectInfo": {
-              "type": "object",
-              "properties": {
-                "ts": {
-                  "type": [
-                    "number",
-                    "null"
-                  ]
-                }
-              }
-            },
-            "disconnectInfo": {
-              "type": "object",
-              "properties": {
-                "ts": {
-                  "type": [
-                    "number",
-                    "null"
-                  ]
-                },
-                "error": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "count": {
-      "type": "integer"
-    },
-    "totalCount": {
-      "type": "integer"
-    },
-    "perPage": {
-      "type": "integer"
-    },
-    "page": {
-      "type": "integer"
-    },
-    "filter": {
-      "type": "string"
-    },
-    "filterField": {
-      "type": "string"
-    },
-    "sortField": {
-      "type": "string"
-    },
-    "sortDirection": {
-      "type": "string",
-      "enum": [
-        "asc",
-        "desc"
-      ]
-    },
-    "applicationId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    }
-  }
-}
-```
-### <a name="subscriptions-example"></a> Example
-
-```json
-{
-  "items": [
-    {
-      "id": "58ec07f20c747f65243d0d76",
-      "subscriptionId": "58ec07f20c747f65243d0d76",
-      "applicationId": "575ec8687ae143cd83dc4a97",
-      "creationDate": "2016-06-13T04:00:00.000Z",
-      "lastUpdated": "2016-06-13T04:00:00.000Z",
-      "name": "Example Subscription",
-      "streamType": "mqtt",
-      "enabled": true,
-      "topics": [
-        "myTopic"
-      ],
-      "mqttConfig": {
-        "clientId": "exampleClientId",
-        "username": "exampleUsername",
-        "password": "examplePassword",
-        "port": 8883,
-        "protocol": "mqtts",
-        "host": "broker.example.com"
-      },
-      "status": {
-        "lastKeepAlive": 1491863679994,
-        "connectInfo": {
-          "ts": 1490629589313
-        },
-        "disconnectInfo": {
-          "ts": 1490629587190,
-          "error": "Keepalive Timeout"
-        }
-      }
-    }
-  ],
-  "count": 1,
-  "totalCount": 4,
-  "perPage": 1,
-  "page": 0,
-  "sortField": "name",
-  "sortDirection": "asc",
-  "applicationId": "575ec8687ae143cd83dc4a97"
 }
 ```
 

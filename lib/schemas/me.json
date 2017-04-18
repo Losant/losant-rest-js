@@ -107,7 +107,7 @@
       "flow": {
         "type": "number"
       },
-      "subscription": {
+      "integration": {
         "type": "number"
       },
       "webhook": {
@@ -363,7 +363,7 @@
                 }
               }
             },
-            "subscription": {
+            "integration": {
               "type": "object",
               "patternProperties": {
                 ".*": {
@@ -373,7 +373,7 @@
             }
           }
         },
-        "subscriptionCount": {
+        "integrationCount": {
           "type": "number"
         },
         "webhookCount": {

@@ -103,7 +103,7 @@
       "solution": {
         "type": "number"
       },
-      "subscription": {
+      "integration": {
         "type": "number"
       },
       "webhook": {
@@ -251,7 +251,7 @@
                 }
               }
             },
-            "subscription": {
+            "integration": {
               "type": "object",
               "patternProperties": {
                 ".*": {
@@ -264,7 +264,7 @@
         "solutionCount": {
           "type": "number"
         },
-        "subscriptionCount": {
+        "integrationCount": {
           "type": "number"
         },
         "webhookCount": {

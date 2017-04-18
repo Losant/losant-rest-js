@@ -35,7 +35,7 @@
               "endpoint",
               "event",
               "mqttTopic",
-              "subscription",
+              "integration",
               "timer",
               "virtualButton",
               "webhook"

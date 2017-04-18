@@ -7,7 +7,7 @@
       "minLength": 1,
       "maxLength": 1024
     },
-    "streamType": {
+    "integrationType": {
       "type": "string",
       "enum": [
         "mqtt",

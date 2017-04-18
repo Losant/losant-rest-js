@@ -88,7 +88,7 @@
               "flowCount": {
                 "type": "number"
               },
-              "subscriptionCount": {
+              "integrationCount": {
                 "type": "number"
               },
               "webhookCount": {

@@ -1,7 +1,7 @@
-# Subscription Actions
+# Integration Actions
 
 Details on the various actions that can be performed on the
-Subscription resource, including the expected
+Integration resource, including the expected
 parameters and the potential responses.
 
 ##### Contents
@@ -14,22 +14,22 @@ parameters and the potential responses.
 
 ## Delete
 
-Deletes an subscription
+Deletes an integration
 
 ```javascript
 var params = {
   applicationId: myApplicationId,
-  subscriptionId: mySubscriptionId
+  integrationId: myIntegrationId
 };
 
 // with callbacks
-client.subscription.delete(params, function (err, result) {
+client.integration.delete(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.subscription.delete(params)
+client.integration.delete(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -37,48 +37,48 @@ client.subscription.delete(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, subscription.*, or subscription.delete.
+all.Application, all.Organization, all.User, integration.*, or integration.delete.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| subscriptionId | string | Y | ID associated with the subscription |  | 575ed78e7ae143cd83dc4aab |
+| integrationId | string | Y | ID associated with the integration |  | 575ed78e7ae143cd83dc4aab |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If subscription was successfully deleted |
+| 200 | [Success](_schemas.md#success) | If integration was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if subscription was not found |
+| 404 | [Error](_schemas.md#error) | Error if integration was not found |
 
 <br/>
 
 ## Get
 
-Retrieves information on an subscription
+Retrieves information on an integration
 
 ```javascript
 var params = {
   applicationId: myApplicationId,
-  subscriptionId: mySubscriptionId
+  integrationId: myIntegrationId
 };
 
 // with callbacks
-client.subscription.get(params, function (err, result) {
+client.integration.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.subscription.get(params)
+client.integration.get(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -86,49 +86,49 @@ client.subscription.get(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, subscription.*, or subscription.get.
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, integration.*, or integration.get.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| subscriptionId | string | Y | ID associated with the subscription |  | 575ed78e7ae143cd83dc4aab |
+| integrationId | string | Y | ID associated with the integration |  | 575ed78e7ae143cd83dc4aab |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Subscription](_schemas.md#subscription) | subscription information |
+| 200 | [Integrations](_schemas.md#integrations) | integration information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if subscription was not found |
+| 404 | [Error](_schemas.md#error) | Error if integration was not found |
 
 <br/>
 
 ## Patch
 
-Updates information about an subscription
+Updates information about an integration
 
 ```javascript
 var params = {
   applicationId: myApplicationId,
-  subscriptionId: mySubscriptionId,
-  subscription: mySubscription
+  integrationId: myIntegrationId,
+  integration: myIntegration
 };
 
 // with callbacks
-client.subscription.patch(params, function (err, result) {
+client.integration.patch(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.subscription.patch(params)
+client.integration.patch(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -136,25 +136,25 @@ client.subscription.patch(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, subscription.*, or subscription.patch.
+all.Application, all.Organization, all.User, integration.*, or integration.patch.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| subscriptionId | string | Y | ID associated with the subscription |  | 575ed78e7ae143cd83dc4aab |
-| subscription | [Subscription Patch](_schemas.md#subscription-patch) | Y | Object containing new properties of the subscription |  | [Subscription Patch Example](_schemas.md#subscription-patch-example) |
+| integrationId | string | Y | ID associated with the integration |  | 575ed78e7ae143cd83dc4aab |
+| integration | [Integrations Patch](_schemas.md#integrations-patch) | Y | Object containing new properties of the integration |  | [Integrations Patch Example](_schemas.md#integrations-patch-example) |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Subscription](_schemas.md#subscription) | Updated subscription information |
+| 200 | [Integrations](_schemas.md#integrations) | Updated integration information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if subscription was not found |
+| 404 | [Error](_schemas.md#error) | Error if integration was not found |

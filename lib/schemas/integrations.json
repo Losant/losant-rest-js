@@ -5,15 +5,15 @@
     "items": {
       "type": "array",
       "items": {
-        "title": "Subscription",
-        "description": "Schema for a single Subscription",
+        "title": "Integrations",
+        "description": "Schema for a single Integrations",
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
-          "subscriptionId": {
+          "integrationId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
@@ -34,7 +34,7 @@
             "minLength": 1,
             "maxLength": 1024
           },
-          "streamType": {
+          "integrationType": {
             "type": "string",
             "enum": [
               "mqtt",
