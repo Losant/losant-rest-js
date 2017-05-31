@@ -2,41 +2,17 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "flowId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "creationDate": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "lastUpdated": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "name": {
+    "version": {
       "type": "string",
       "minLength": 1,
       "maxLength": 255
     },
-    "description": {
+    "notes": {
       "type": "string",
       "maxLength": 32767
     },
     "enabled": {
       "type": "boolean"
-    },
-    "defaultVersionId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "triggers": {
       "type": "array",
@@ -149,17 +125,10 @@
           "json"
         ]
       }
-    },
-    "stats": {
-      "type": "object",
-      "properties": {
-        "runCount": {
-          "type": "number"
-        },
-        "errorCount": {
-          "type": "number"
-        }
-      }
     }
-  }
+  },
+  "additionalProperties": false,
+  "required": [
+    "version"
+  ]
 }

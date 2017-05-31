@@ -69,16 +69,16 @@
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "startX": {
-            "type": "integer"
+            "type": "number"
           },
           "startY": {
-            "type": "integer"
+            "type": "number"
           },
           "width": {
-            "type": "integer"
+            "type": "number"
           },
           "height": {
-            "type": "integer"
+            "type": "number"
           },
           "config": {
             "type": "object"

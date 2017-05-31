@@ -6,7 +6,12 @@
       "type": "string"
     },
     "payload": {},
-    "meta": {}
+    "meta": {},
+    "flowVersion": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    }
   },
   "required": [
     "key"

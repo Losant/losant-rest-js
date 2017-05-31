@@ -14,6 +14,17 @@
     "enabled": {
       "type": "boolean"
     },
+    "defaultVersionId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
     "triggers": {
       "type": "array",
       "items": {

@@ -5,11 +5,15 @@
     "items": {
       "type": "array",
       "items": {
-        "title": "Workflow",
-        "description": "Schema for a single Workflow",
+        "title": "Workflow Version",
+        "description": "Schema for a single Workflow Version",
         "type": "object",
         "properties": {
           "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "flowVersionId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
@@ -29,21 +33,17 @@
             "type": "string",
             "format": "date-time"
           },
-          "name": {
+          "version": {
             "type": "string",
             "minLength": 1,
             "maxLength": 255
           },
-          "description": {
+          "notes": {
             "type": "string",
             "maxLength": 32767
           },
           "enabled": {
             "type": "boolean"
-          },
-          "defaultVersionId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "triggers": {
             "type": "array",
@@ -156,17 +156,6 @@
                 "json"
               ]
             }
-          },
-          "stats": {
-            "type": "object",
-            "properties": {
-              "runCount": {
-                "type": "number"
-              },
-              "errorCount": {
-                "type": "number"
-              }
-            }
           }
         }
       }
@@ -200,6 +189,10 @@
       ]
     },
     "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "flowId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     }
