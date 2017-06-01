@@ -158,6 +158,22 @@
         },
         "errorCount": {
           "type": "number"
+        },
+        "byVersion": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "object",
+              "properties": {
+                "runCount": {
+                  "type": "number"
+                },
+                "errorCount": {
+                  "type": "number"
+                }
+              }
+            }
+          }
         }
       }
     }

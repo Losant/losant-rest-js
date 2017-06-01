@@ -4,6 +4,9 @@
   "items": {
     "type": "object",
     "properties": {
+      "flowVersionId": {
+        "type": "string"
+      },
       "time": {
         "type": "string",
         "format": "date-time"

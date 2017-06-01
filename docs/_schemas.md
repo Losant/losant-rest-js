@@ -525,6 +525,7 @@ Schema for the body of an Application API Token creation request
           "flows.post",
           "flowVersion.delete",
           "flowVersion.get",
+          "flowVersion.log",
           "flowVersion.patch",
           "flowVersions.get",
           "flowVersions.post",
@@ -6424,6 +6425,22 @@ Schema for a single Workflow
         },
         "errorCount": {
           "type": "number"
+        },
+        "byVersion": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "object",
+              "properties": {
+                "runCount": {
+                  "type": "number"
+                },
+                "errorCount": {
+                  "type": "number"
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -6467,6 +6484,9 @@ Log of aggregated workflow run information
   "items": {
     "type": "object",
     "properties": {
+      "flowVersionId": {
+        "type": "string"
+      },
       "time": {
         "type": "string",
         "format": "date-time"
@@ -7735,6 +7755,22 @@ Schema for a collection of Workflows
               },
               "errorCount": {
                 "type": "number"
+              },
+              "byVersion": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "object",
+                    "properties": {
+                      "runCount": {
+                        "type": "number"
+                      },
+                      "errorCount": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
               }
             }
           }

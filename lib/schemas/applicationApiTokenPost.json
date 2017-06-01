@@ -121,6 +121,7 @@
           "flows.post",
           "flowVersion.delete",
           "flowVersion.get",
+          "flowVersion.log",
           "flowVersion.patch",
           "flowVersions.get",
           "flowVersions.post",
