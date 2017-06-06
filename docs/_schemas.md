@@ -7919,7 +7919,8 @@ Schema for a single Integrations
       "type": "string",
       "enum": [
         "mqtt",
-        "googlePubSub"
+        "googlePubSub",
+        "particle"
       ]
     },
     "enabled": {
@@ -8014,6 +8015,35 @@ Schema for a single Integrations
         "port",
         "protocol",
         "host"
+      ]
+    },
+    "particleConfig": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "productSlugOrId": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "orgSlugOrId": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "deviceNameOrId": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "accessToken"
       ]
     },
     "status": {
@@ -8114,7 +8144,8 @@ Schema for the body of an Integrations modification request
       "type": "string",
       "enum": [
         "mqtt",
-        "googlePubSub"
+        "googlePubSub",
+        "particle"
       ]
     },
     "enabled": {
@@ -8247,7 +8278,8 @@ Schema for the body of an Integrations creation request
       "type": "string",
       "enum": [
         "mqtt",
-        "googlePubSub"
+        "googlePubSub",
+        "particle"
       ]
     },
     "enabled": {
@@ -8343,6 +8375,35 @@ Schema for the body of an Integrations creation request
         "protocol",
         "host"
       ]
+    },
+    "particleConfig": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "productSlugOrId": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "orgSlugOrId": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "deviceNameOrId": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "accessToken"
+      ]
     }
   },
   "additionalProperties": false,
@@ -8421,7 +8482,8 @@ Schema for a collection of Integrations
             "type": "string",
             "enum": [
               "mqtt",
-              "googlePubSub"
+              "googlePubSub",
+              "particle"
             ]
           },
           "enabled": {
@@ -8516,6 +8578,35 @@ Schema for a collection of Integrations
               "port",
               "protocol",
               "host"
+            ]
+          },
+          "particleConfig": {
+            "type": "object",
+            "properties": {
+              "accessToken": {
+                "type": "string",
+                "maxLength": 1024,
+                "minLength": 1
+              },
+              "productSlugOrId": {
+                "type": "string",
+                "maxLength": 1024,
+                "minLength": 1
+              },
+              "orgSlugOrId": {
+                "type": "string",
+                "maxLength": 1024,
+                "minLength": 1
+              },
+              "deviceNameOrId": {
+                "type": "string",
+                "maxLength": 1024,
+                "minLength": 1
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "accessToken"
             ]
           },
           "status": {
