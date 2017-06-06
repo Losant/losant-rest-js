@@ -8241,6 +8241,35 @@ Schema for the body of an Integrations modification request
         "protocol",
         "host"
       ]
+    },
+    "particleConfig": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "productSlugOrId": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "orgSlugOrId": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "deviceNameOrId": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "accessToken"
+      ]
     }
   },
   "additionalProperties": false
