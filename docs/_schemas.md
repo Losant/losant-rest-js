@@ -4123,6 +4123,11 @@ Schema for a single device state or an array of device states
             }
           },
           "additionalProperties": false
+        },
+        "flowVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
         }
       },
       "required": [
@@ -4177,6 +4182,11 @@ Schema for a single device state or an array of device states
               }
             },
             "additionalProperties": false
+          },
+          "flowVersion": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           }
         },
         "required": [
@@ -4254,6 +4264,11 @@ Schema for an array of Device states
           }
         },
         "additionalProperties": false
+      },
+      "flowVersion": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 255
       }
     },
     "required": [
