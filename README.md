@@ -259,6 +259,16 @@ Contains all the actions that can be performed against the collection of
 [Webhooks](https://docs.losant.com/applications/webhooks/) belonging
 to an Application - such as listing the webhooks or creating a new webhook.
 
+*   [Workflow Version](docs/flow-version.md)  
+Contains all the actions that can be performed against a single
+[Workflow Version](https://docs.losant.com/workflows/versioning/), such as enabling or
+disabling a workflow version, or updating the version notes.
+
+*   [Workflow Versions](docs/flow-versions.md)  
+Contains all the actions that can be performed against the collection of
+[Workflow Versions](https://docs.losant.com/workflows/versioning/) belonging
+to a Workflow - such as listing the versions or creating a new version.
+
 <br/>
 
 *****
