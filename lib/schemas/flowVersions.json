@@ -138,6 +138,7 @@
           },
           "globals": {
             "type": "array",
+            "maxItems": 100,
             "items": {
               "type": "object",
               "properties": {
@@ -147,7 +148,8 @@
                 },
                 "json": {
                   "type": "string",
-                  "minLength": 1
+                  "minLength": 1,
+                  "maxLength": 2048
                 }
               },
               "additionalProperties": false,

@@ -329,6 +329,29 @@ Schema for a single Application
     "endpointDefaultCors": {
       "type": "boolean"
     },
+    "globals": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "json": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "json"
+        ]
+      }
+    },
     "summary": {
       "type": "object",
       "properties": {
@@ -939,6 +962,29 @@ Schema for the body of an Application modification request
     },
     "endpointDefaultCors": {
       "type": "boolean"
+    },
+    "globals": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "json": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "json"
+        ]
+      }
     }
   },
   "additionalProperties": false
@@ -991,6 +1037,29 @@ Schema for the body of an Application creation request
     },
     "endpointDefaultCors": {
       "type": "boolean"
+    },
+    "globals": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "json": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "json"
+        ]
+      }
     }
   },
   "additionalProperties": false,
@@ -1076,6 +1145,29 @@ Schema for a collection of Applications
           },
           "endpointDefaultCors": {
             "type": "boolean"
+          },
+          "globals": {
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                },
+                "json": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2048
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "key",
+                "json"
+              ]
+            }
           },
           "summary": {
             "type": "object",
@@ -6413,6 +6505,7 @@ Schema for a single Workflow
     },
     "globals": {
       "type": "array",
+      "maxItems": 100,
       "items": {
         "type": "object",
         "properties": {
@@ -6422,7 +6515,8 @@ Schema for a single Workflow
           },
           "json": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "maxLength": 2048
           }
         },
         "additionalProperties": false,
@@ -6692,6 +6786,7 @@ Schema for the body of a Workflow modification request
     },
     "globals": {
       "type": "array",
+      "maxItems": 100,
       "items": {
         "type": "object",
         "properties": {
@@ -6701,7 +6796,8 @@ Schema for the body of a Workflow modification request
           },
           "json": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "maxLength": 2048
           }
         },
         "additionalProperties": false,
@@ -6843,6 +6939,7 @@ Schema for the body of a Workflow creation request
     },
     "globals": {
       "type": "array",
+      "maxItems": 100,
       "items": {
         "type": "object",
         "properties": {
@@ -6852,7 +6949,8 @@ Schema for the body of a Workflow creation request
           },
           "json": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "maxLength": 2048
           }
         },
         "additionalProperties": false,
@@ -7125,6 +7223,7 @@ Schema for a single Workflow Version
     },
     "globals": {
       "type": "array",
+      "maxItems": 100,
       "items": {
         "type": "object",
         "properties": {
@@ -7134,7 +7233,8 @@ Schema for a single Workflow Version
           },
           "json": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "maxLength": 2048
           }
         },
         "additionalProperties": false,
@@ -7317,6 +7417,7 @@ Schema for the body of a Workflow Version creation request
     },
     "globals": {
       "type": "array",
+      "maxItems": 100,
       "items": {
         "type": "object",
         "properties": {
@@ -7326,7 +7427,8 @@ Schema for the body of a Workflow Version creation request
           },
           "json": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "maxLength": 2048
           }
         },
         "additionalProperties": false,
@@ -7502,6 +7604,7 @@ Schema for a collection of Workflow Versions
           },
           "globals": {
             "type": "array",
+            "maxItems": 100,
             "items": {
               "type": "object",
               "properties": {
@@ -7511,7 +7614,8 @@ Schema for a collection of Workflow Versions
                 },
                 "json": {
                   "type": "string",
-                  "minLength": 1
+                  "minLength": 1,
+                  "maxLength": 2048
                 }
               },
               "additionalProperties": false,
@@ -7743,6 +7847,7 @@ Schema for a collection of Workflows
           },
           "globals": {
             "type": "array",
+            "maxItems": 100,
             "items": {
               "type": "object",
               "properties": {
@@ -7752,7 +7857,8 @@ Schema for a collection of Workflows
                 },
                 "json": {
                   "type": "string",
-                  "minLength": 1
+                  "minLength": 1,
+                  "maxLength": 2048
                 }
               },
               "additionalProperties": false,
