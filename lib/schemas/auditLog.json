@@ -44,6 +44,7 @@
       "enum": [
         "ApiToken",
         "ApplicationKey",
+        "DataTable",
         "Device",
         "DeviceRecipe",
         "Event",

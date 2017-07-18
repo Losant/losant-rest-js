@@ -93,6 +93,9 @@
               "deviceCount": {
                 "type": "number"
               },
+              "dataTableCount": {
+                "type": "number"
+              },
               "deviceRecipeCount": {
                 "type": "number"
               },

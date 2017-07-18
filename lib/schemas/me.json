@@ -89,6 +89,9 @@
       "dashboard": {
         "type": "number"
       },
+      "datatable": {
+        "type": "number"
+      },
       "device": {
         "type": "number"
       },
@@ -249,6 +252,9 @@
         "dashCount": {
           "type": "number"
         },
+        "dataTableCount": {
+          "type": "number"
+        },
         "deviceCount": {
           "type": "number"
         },
@@ -284,6 +290,14 @@
               }
             },
             "mqttIn": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "dataTable": {
               "type": "object",
               "patternProperties": {
                 ".*": {

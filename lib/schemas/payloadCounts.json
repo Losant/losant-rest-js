@@ -18,6 +18,14 @@
         }
       }
     },
+    "dataTable": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "number"
+        }
+      }
+    },
     "deviceState": {
       "type": "object",
       "patternProperties": {

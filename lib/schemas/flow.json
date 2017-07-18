@@ -50,6 +50,7 @@
           "type": {
             "type": "string",
             "enum": [
+              "dataTable",
               "deviceId",
               "deviceIdConnect",
               "deviceIdDisconnect",
