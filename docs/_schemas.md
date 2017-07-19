@@ -24,6 +24,7 @@
 *   [Dashboard Post](#dashboard-post)
 *   [Dashboards](#dashboards)
 *   [Data Table](#data-table)
+*   [Data Table Column](#data-table-column)
 *   [Data Table Patch](#data-table-patch)
 *   [Data Table Post](#data-table-post)
 *   [Data Tables](#data-tables)
@@ -502,9 +503,11 @@ Schema for the body of an Application API Token creation request
           "applicationKeys.post",
           "data.lastValueQuery",
           "data.timeSeriesQuery",
+          "dataTable.addColumn",
           "dataTable.delete",
           "dataTable.get",
           "dataTable.patch",
+          "dataTable.removeColumn",
           "dataTables.get",
           "dataTables.post",
           "device.delete",
@@ -2916,6 +2919,8 @@ Schema for a single Data Table
     "columns": {
       "type": "array",
       "items": {
+        "title": "Data Table Column",
+        "description": "Schema for a single Data Table Column",
         "type": "object",
         "properties": {
           "name": {
@@ -2930,14 +2935,13 @@ Schema for a single Data Table
               "boolean"
             ]
           },
-          "isUnique": {
-            "type": "boolean"
-          },
-          "isRequired": {
-            "type": "boolean"
-          },
-          "isQueryable": {
-            "type": "boolean"
+          "constraint": {
+            "type": "string",
+            "enum": [
+              "unique",
+              "required",
+              "optional"
+            ]
           },
           "defaultValue": {
             "type": [
@@ -2949,7 +2953,8 @@ Schema for a single Data Table
         },
         "required": [
           "name",
-          "dataType"
+          "dataType",
+          "constraint"
         ],
         "additionalProperties": false
       },
@@ -2980,6 +2985,66 @@ Schema for a single Data Table
 
 <br/>
 
+## Data Table Column
+
+Schema for a single Data Table Column
+
+### <a name="data-table-column-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+    },
+    "dataType": {
+      "type": "string",
+      "enum": [
+        "string",
+        "number",
+        "boolean"
+      ]
+    },
+    "constraint": {
+      "type": "string",
+      "enum": [
+        "unique",
+        "required",
+        "optional"
+      ]
+    },
+    "defaultValue": {
+      "type": [
+        "string",
+        "number",
+        "boolean"
+      ]
+    }
+  },
+  "required": [
+    "name",
+    "dataType",
+    "constraint"
+  ],
+  "additionalProperties": false
+}
+```
+### <a name="data-table-column-example"></a> Example
+
+```json
+{
+  "name": "myOptionalColumn",
+  "dataType": "string",
+  "constraint": "optional",
+  "defaultValue": "aDefault"
+}
+```
+
+<br/>
+
 ## Data Table Patch
 
 Schema for the body of a Data Table modification request
@@ -2999,48 +3064,6 @@ Schema for the body of a Data Table modification request
     "description": {
       "type": "string",
       "maxLength": 32767
-    },
-    "columns": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-          },
-          "dataType": {
-            "type": "string",
-            "enum": [
-              "string",
-              "number",
-              "boolean"
-            ]
-          },
-          "isUnique": {
-            "type": "boolean"
-          },
-          "isRequired": {
-            "type": "boolean"
-          },
-          "isQueryable": {
-            "type": "boolean"
-          },
-          "defaultValue": {
-            "type": [
-              "string",
-              "number",
-              "boolean"
-            ]
-          }
-        },
-        "required": [
-          "name",
-          "dataType"
-        ],
-        "additionalProperties": false
-      },
-      "maxItems": 100
     }
   },
   "additionalProperties": false
@@ -3050,14 +3073,7 @@ Schema for the body of a Data Table modification request
 
 ```json
 {
-  "name": "My Updated Data Table",
-  "columns": [
-    {
-      "name": "myColumn1",
-      "dataType": "string",
-      "defaultValue": "newDefault"
-    }
-  ]
+  "name": "My Updated Data Table"
 }
 ```
 
@@ -3086,6 +3102,8 @@ Schema for the body of a Data Table creation request
     "columns": {
       "type": "array",
       "items": {
+        "title": "Data Table Column",
+        "description": "Schema for a single Data Table Column",
         "type": "object",
         "properties": {
           "name": {
@@ -3100,14 +3118,13 @@ Schema for the body of a Data Table creation request
               "boolean"
             ]
           },
-          "isUnique": {
-            "type": "boolean"
-          },
-          "isRequired": {
-            "type": "boolean"
-          },
-          "isQueryable": {
-            "type": "boolean"
+          "constraint": {
+            "type": "string",
+            "enum": [
+              "unique",
+              "required",
+              "optional"
+            ]
           },
           "defaultValue": {
             "type": [
@@ -3119,7 +3136,8 @@ Schema for the body of a Data Table creation request
         },
         "required": [
           "name",
-          "dataType"
+          "dataType",
+          "constraint"
         ],
         "additionalProperties": false
       },
@@ -3141,7 +3159,7 @@ Schema for the body of a Data Table creation request
     {
       "name": "myColumn1",
       "dataType": "string",
-      "defaultValue": "aDefault"
+      "constraint": "unique"
     }
   ]
 }
@@ -3199,6 +3217,8 @@ Schema for a collection of Data Tables
           "columns": {
             "type": "array",
             "items": {
+              "title": "Data Table Column",
+              "description": "Schema for a single Data Table Column",
               "type": "object",
               "properties": {
                 "name": {
@@ -3213,14 +3233,13 @@ Schema for a collection of Data Tables
                     "boolean"
                   ]
                 },
-                "isUnique": {
-                  "type": "boolean"
-                },
-                "isRequired": {
-                  "type": "boolean"
-                },
-                "isQueryable": {
-                  "type": "boolean"
+                "constraint": {
+                  "type": "string",
+                  "enum": [
+                    "unique",
+                    "required",
+                    "optional"
+                  ]
                 },
                 "defaultValue": {
                   "type": [
@@ -3232,7 +3251,8 @@ Schema for a collection of Data Tables
               },
               "required": [
                 "name",
-                "dataType"
+                "dataType",
+                "constraint"
               ],
               "additionalProperties": false
             },

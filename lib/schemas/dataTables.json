@@ -41,6 +41,8 @@
           "columns": {
             "type": "array",
             "items": {
+              "title": "Data Table Column",
+              "description": "Schema for a single Data Table Column",
               "type": "object",
               "properties": {
                 "name": {
@@ -55,14 +57,13 @@
                     "boolean"
                   ]
                 },
-                "isUnique": {
-                  "type": "boolean"
-                },
-                "isRequired": {
-                  "type": "boolean"
-                },
-                "isQueryable": {
-                  "type": "boolean"
+                "constraint": {
+                  "type": "string",
+                  "enum": [
+                    "unique",
+                    "required",
+                    "optional"
+                  ]
                 },
                 "defaultValue": {
                   "type": [
@@ -74,7 +75,8 @@
               },
               "required": [
                 "name",
-                "dataType"
+                "dataType",
+                "constraint"
               ],
               "additionalProperties": false
             },
