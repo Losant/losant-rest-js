@@ -27,6 +27,10 @@
 *   [Data Table Column](#data-table-column)
 *   [Data Table Patch](#data-table-patch)
 *   [Data Table Post](#data-table-post)
+*   [Data Table Query](#data-table-query)
+*   [Data Table Row](#data-table-row)
+*   [Data Table Row Insert/Update](#data-table-row-insert/update)
+*   [Data Table Rows](#data-table-rows)
 *   [Data Tables](#data-tables)
 *   [Device](#device)
 *   [Device Command](#device-command)
@@ -508,6 +512,11 @@ Schema for the body of an Application API Token creation request
           "dataTable.get",
           "dataTable.patch",
           "dataTable.removeColumn",
+          "dataTableRow.delete",
+          "dataTableRow.get",
+          "dataTableRow.patch",
+          "dataTableRows.get",
+          "dataTableRows.post",
           "dataTables.get",
           "dataTables.post",
           "device.delete",
@@ -3162,6 +3171,302 @@ Schema for the body of a Data Table creation request
       "constraint": "unique"
     }
   ]
+}
+```
+
+<br/>
+
+## Data Table Query
+
+Schema for a data table query
+
+### <a name="data-table-query-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "$and": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/dataTableQuery"
+      }
+    },
+    "$or": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/dataTableQuery"
+      }
+    }
+  },
+  "patternProperties": {
+    "^[0-9a-zA-Z_-]{1,255}$": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="data-table-query-example"></a> Example
+
+```json
+{
+  "$or": [
+    {
+      "myCol1": {
+        "$ne": 0
+      }
+    },
+    {
+      "myCol2": 5
+    }
+  ]
+}
+```
+
+<br/>
+
+## Data Table Row
+
+Schema for a single Data Table Row
+
+### <a name="data-table-row-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "patternProperties": {
+    "^[0-9a-zA-Z_-]{1,255}$": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    }
+  }
+}
+```
+### <a name="data-table-row-example"></a> Example
+
+```json
+{
+  "id": "596fbb703fc088453872e609",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "myColumn": "myValue"
+}
+```
+
+<br/>
+
+## Data Table Row Insert/Update
+
+Schema for inserting or updating a data table row
+
+### <a name="data-table-row-insert/update-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "patternProperties": {
+    "^[0-9a-zA-Z_-]{1,255}$": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="data-table-row-insert/update-example"></a> Example
+
+```json
+{
+  "myColumn1": "myValue"
+}
+```
+
+<br/>
+
+## Data Table Rows
+
+Schema for a collection of Data Table Rows
+
+### <a name="data-table-rows-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Data Table Row",
+        "description": "Schema for a single Data Table Row",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "patternProperties": {
+          "^[0-9a-zA-Z_-]{1,255}$": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "limit": {
+      "type": "integer"
+    },
+    "offset": {
+      "type": "integer"
+    },
+    "sortColumn": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
+    },
+    "dataTableId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  }
+}
+```
+### <a name="data-table-rows-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "596fbb703fc088453872e609",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "myColumn": "myValue"
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "offset": 0,
+  "limit": 1,
+  "sortColumn": "myColumn1",
+  "sortDirection": "asc",
+  "dataTableId": "596e6ce831761df4231708f1",
+  "applicationId": "575ec8687ae143cd83dc4a97"
 }
 ```
 
