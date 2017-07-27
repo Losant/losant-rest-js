@@ -564,6 +564,7 @@ Schema for the body of an Application API Token creation request
           "experienceUsers.get",
           "experienceUsers.post",
           "flow.delete",
+          "flow.clearStorageEntries",
           "flow.get",
           "flow.getStorageEntries",
           "flow.log",

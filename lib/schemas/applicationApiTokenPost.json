@@ -125,6 +125,7 @@
           "experienceUsers.get",
           "experienceUsers.post",
           "flow.delete",
+          "flow.clearStorageEntries",
           "flow.get",
           "flow.getStorageEntries",
           "flow.log",
