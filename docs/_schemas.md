@@ -517,6 +517,7 @@ Schema for the body of an Application API Token creation request
           "dataTableRow.patch",
           "dataTableRows.get",
           "dataTableRows.post",
+          "dataTableRows.query",
           "dataTables.get",
           "dataTables.post",
           "device.delete",
