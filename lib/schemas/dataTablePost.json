@@ -53,7 +53,7 @@
         ],
         "additionalProperties": false
       },
-      "maxItems": 100
+      "maxItems": 50
     }
   },
   "required": [

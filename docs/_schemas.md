@@ -2969,7 +2969,7 @@ Schema for a single Data Table
         ],
         "additionalProperties": false
       },
-      "maxItems": 100
+      "maxItems": 50
     }
   }
 }
@@ -3152,7 +3152,7 @@ Schema for the body of a Data Table creation request
         ],
         "additionalProperties": false
       },
-      "maxItems": 100
+      "maxItems": 50
     }
   },
   "required": [
@@ -3563,7 +3563,7 @@ Schema for a collection of Data Tables
               ],
               "additionalProperties": false
             },
-            "maxItems": 100
+            "maxItems": 50
           }
         }
       }
