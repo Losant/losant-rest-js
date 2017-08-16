@@ -151,6 +151,27 @@ listing the dashboards or creating a new dashboard.
 Contains the actions for querying against historical Device
 data across an Application.
 
+*   [dataTable](docs/dataTable.md)  
+Contains all the actions that can be performed against a single
+[Data Table](/data-tables/overview/) -
+for instance, getting info on a single data table or modifying the columns
+of a data table.
+
+*   [dataTables](docs/dataTables.md)  
+Contains all of the actions that can be performed against the collection of
+[Data Tables](/data-tables/overview/) belonging
+to an Application - such as listing all data tables or creating a new data table.
+
+*   [dataTableRow](docs/dataTableRow.md)  
+Contains all the actions that can be performed against a single
+row inside of a [Data Table](/data-tables/overview/) -
+for instance, getting the contents of a row, or modifying a row.
+
+*   [dataTableRows](docs/dataTableRows.md)  
+Contains all of the actions that can be performed against the collection of
+rows that make up a [Data Table](/data-tables/overview/) - such as querying for
+rows in that table, or adding a new row to the table.
+
 *   [device](docs/device.md)  
 Contains all the actions that can be performed against a single
 [Device](https://docs.losant.com/devices/overview/) -
