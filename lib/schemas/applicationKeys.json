@@ -39,9 +39,6 @@
               "inactive"
             ]
           },
-          "secret": {
-            "type": "string"
-          },
           "deviceIds": {
             "type": "array",
             "items": {

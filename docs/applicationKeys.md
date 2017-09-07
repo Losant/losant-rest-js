@@ -102,7 +102,7 @@ all.Application, all.Organization, all.User, applicationKeys.*, or applicationKe
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Application Key](_schemas.md#application-key) | Successfully created applicationKey |
+| 201 | [Application Key Post Response](_schemas.md#application-key-post-response) | Successfully created applicationKey |
 
 #### Error Responses
 
