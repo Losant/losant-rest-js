@@ -10,6 +10,9 @@
     },
     "csv": {
       "type": "string"
+    },
+    "makeUniqueKeySecret": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false,

@@ -7,6 +7,7 @@
 *   [Application Key](#application-key)
 *   [Application Key Patch](#application-key-patch)
 *   [Application Key Post](#application-key-post)
+*   [Application Key Post Response](#application-key-post-response)
 *   [Application Keys](#application-keys)
 *   [Application Patch](#application-patch)
 *   [Application Post](#application-post)
@@ -663,9 +664,6 @@ Schema for a single Application Key
         "inactive"
       ]
     },
-    "secret": {
-      "type": "string"
-    },
     "deviceIds": {
       "type": "array",
       "items": {
@@ -810,6 +808,102 @@ Schema for the body of an Application Key creation request
 
 <br/>
 
+## Application Key Post Response
+
+Schema for a response of Application Key creation
+
+### <a name="application-key-post-response-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationKeyId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "key": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ]
+    },
+    "secret": {
+      "type": "string"
+    },
+    "deviceIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    },
+    "deviceTags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        },
+        "additionalProperties": false
+      },
+      "maxItems": 100
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    }
+  }
+}
+```
+### <a name="application-key-post-response-example"></a> Example
+
+```json
+{
+  "id": "575ec76c7ae143cd83dc4a96",
+  "applicationKeyId": "575ec76c7ae143cd83dc4a96",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "key": "this_would_be_the_key",
+  "status": "active",
+  "secret": "shhhSecret",
+  "description": "An example key description"
+}
+```
+
+<br/>
+
 ## Application Keys
 
 Schema for a collection of Application Keys
@@ -857,9 +951,6 @@ Schema for a collection of Application Keys
               "active",
               "inactive"
             ]
-          },
-          "secret": {
-            "type": "string"
           },
           "deviceIds": {
             "type": "array",
@@ -4479,6 +4570,9 @@ Schema for the body of a bulk Device creation request
     },
     "csv": {
       "type": "string"
+    },
+    "makeUniqueKeySecret": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false,
