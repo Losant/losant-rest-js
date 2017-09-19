@@ -4570,6 +4570,9 @@ Schema for the body of a bulk Device creation request
     },
     "csv": {
       "type": "string"
+    },
+    "makeUniqueKeySecret": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false,
