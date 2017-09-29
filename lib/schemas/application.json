@@ -101,6 +101,9 @@
         "experienceGroupCount": {
           "type": "number"
         },
+        "experienceTemplateCount": {
+          "type": "number"
+        },
         "experienceUserCount": {
           "type": "number"
         },

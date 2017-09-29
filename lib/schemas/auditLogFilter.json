@@ -48,6 +48,7 @@
               "Event",
               "ExperienceEndpoint",
               "ExperienceGroup",
+              "ExperienceTemplate",
               "ExperienceUser",
               "Flow",
               "SolutionUser",

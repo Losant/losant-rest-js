@@ -66,6 +66,10 @@
 *   [Experience Group Patch](#experience-group-patch)
 *   [Experience Group Post](#experience-group-post)
 *   [Experience Groups](#experience-groups)
+*   [Experience Template](#experience-template)
+*   [Experience Template Patch](#experience-template-patch)
+*   [Experience Template Post](#experience-template-post)
+*   [Experience Templates](#experience-templates)
 *   [Experience User](#experience-user)
 *   [Experience User Patch](#experience-user-patch)
 *   [Experience User Post](#experience-user-post)
@@ -389,6 +393,9 @@ Schema for a single Application
         "experienceGroupCount": {
           "type": "number"
         },
+        "experienceTemplateCount": {
+          "type": "number"
+        },
         "experienceUserCount": {
           "type": "number"
         },
@@ -482,6 +489,8 @@ Schema for the body of an Application API Token creation request
           "experienceEndpoints.*",
           "experienceGroup.*",
           "experienceGroups.*",
+          "experienceTemplate.*",
+          "experienceTemplates.*",
           "experienceUser.*",
           "experienceUsers.*",
           "integration.*",
@@ -560,6 +569,11 @@ Schema for the body of an Application API Token creation request
           "experienceGroup.patch",
           "experienceGroups.get",
           "experienceGroups.post",
+          "experienceTemplate.delete",
+          "experienceTemplate.get",
+          "experienceTemplate.patch",
+          "experienceTemplates.get",
+          "experienceTemplates.post",
           "experienceUser.delete",
           "experienceUser.get",
           "experienceUser.patch",
@@ -1315,6 +1329,9 @@ Schema for a collection of Applications
               "experienceGroupCount": {
                 "type": "number"
               },
+              "experienceTemplateCount": {
+                "type": "number"
+              },
               "experienceUserCount": {
                 "type": "number"
               },
@@ -1457,6 +1474,7 @@ Schema for a single Audit Log entry
         "Event",
         "ExperienceEndpoint",
         "ExperienceGroup",
+        "ExperienceTemplate",
         "ExperienceUser",
         "Flow",
         "SolutionUser",
@@ -1602,6 +1620,7 @@ Schema for the filter of an audit log query
               "Event",
               "ExperienceEndpoint",
               "ExperienceGroup",
+              "ExperienceTemplate",
               "ExperienceUser",
               "Flow",
               "SolutionUser",
@@ -1764,6 +1783,7 @@ Schema for a collection of Audit Logs
               "Event",
               "ExperienceEndpoint",
               "ExperienceGroup",
+              "ExperienceTemplate",
               "ExperienceUser",
               "Flow",
               "SolutionUser",
@@ -6812,6 +6832,377 @@ Schema for a collection of Experience Groups
 
 <br/>
 
+## Experience Template
+
+Schema for a single Experience Template
+
+### <a name="experience-template-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "experienceTemplateId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "templateType": {
+      "type": "string",
+      "enum": [
+        "layout",
+        "page",
+        "component"
+      ]
+    },
+    "layoutId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "body": {
+      "type": "string",
+      "maxLength": 131072
+    },
+    "templateTags": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
+```
+### <a name="experience-template-example"></a> Example
+
+```json
+{
+  "id": "59cc5c628246c6caed4b16c1",
+  "experienceTemplateId": "59cc5c628246c6caed4b16c1",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "name": "My Page Template",
+  "templateType": "page",
+  "body": "<p>{{data}}</p>",
+  "layoutId": "59cc5cad8246c6caed4b16c2",
+  "templateTags": {
+    "customKey": "customValue"
+  }
+}
+```
+
+<br/>
+
+## Experience Template Patch
+
+Schema for the body of an Experience Template modification request
+
+### <a name="experience-template-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "layoutId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "body": {
+      "type": "string",
+      "maxLength": 131072
+    },
+    "templateTags": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="experience-template-patch-example"></a> Example
+
+```json
+{
+  "body": "New Content! <p>{{newData}}</p>",
+  "templateTags": {
+    "customKey": "newCustomValue"
+  }
+}
+```
+
+<br/>
+
+## Experience Template Post
+
+Schema for the body of an Experience Template creation request
+
+### <a name="experience-template-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "templateType": {
+      "type": "string",
+      "enum": [
+        "layout",
+        "page",
+        "component"
+      ]
+    },
+    "layoutId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "body": {
+      "type": "string",
+      "maxLength": 131072
+    },
+    "templateTags": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "templateType",
+    "body"
+  ]
+}
+```
+### <a name="experience-template-post-example"></a> Example
+
+```json
+{
+  "name": "My Page Template",
+  "templateType": "page",
+  "body": "<p>{{data}}</p>",
+  "layoutId": "59cc5cad8246c6caed4b16c2",
+  "templateTags": {
+    "customKey": "customValue"
+  }
+}
+```
+
+<br/>
+
+## Experience Templates
+
+Schema for a collection of Experience Templates
+
+### <a name="experience-templates-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Experience Template",
+        "description": "Schema for a single Experience Template",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "experienceTemplateId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "templateType": {
+            "type": "string",
+            "enum": [
+              "layout",
+              "page",
+              "component"
+            ]
+          },
+          "layoutId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "body": {
+            "type": "string",
+            "maxLength": 131072
+          },
+          "templateTags": {
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "templateType": {
+      "type": "string",
+      "enum": [
+        "layout",
+        "page",
+        "component"
+      ]
+    }
+  }
+}
+```
+### <a name="experience-templates-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "59cc5c628246c6caed4b16c1",
+      "experienceTemplateId": "59cc5c628246c6caed4b16c1",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "name": "My Page Template",
+      "templateType": "page",
+      "body": "<p>{{data}}</p>",
+      "layoutId": "59cc5cad8246c6caed4b16c2",
+      "templateTags": {
+        "customKey": "customValue"
+      }
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
+
 ## Experience User
 
 Schema for a single Experience User
@@ -9989,6 +10380,9 @@ Schema for information about the currently authenticated user
       "experiencegroup": {
         "type": "number"
       },
+      "experiencetemplate": {
+        "type": "number"
+      },
       "experienceuser": {
         "type": "number"
       },
@@ -10150,6 +10544,9 @@ Schema for information about the currently authenticated user
           "type": "number"
         },
         "experienceGroupCount": {
+          "type": "number"
+        },
+        "experienceTemplateCount": {
           "type": "number"
         },
         "experienceUserCount": {
@@ -10596,6 +10993,9 @@ Schema for a single Organization
       "experiencegroup": {
         "type": "number"
       },
+      "experiencetemplate": {
+        "type": "number"
+      },
       "experienceuser": {
         "type": "number"
       },
@@ -10649,6 +11049,9 @@ Schema for a single Organization
           "type": "number"
         },
         "experienceGroupCount": {
+          "type": "number"
+        },
+        "experienceTemplateCount": {
           "type": "number"
         },
         "experienceUserCount": {
@@ -11355,6 +11758,9 @@ Schema for a collection of Organizations
             "experiencegroup": {
               "type": "number"
             },
+            "experiencetemplate": {
+              "type": "number"
+            },
             "experienceuser": {
               "type": "number"
             },
@@ -11408,6 +11814,9 @@ Schema for a collection of Organizations
                 "type": "number"
               },
               "experienceGroupCount": {
+                "type": "number"
+              },
+              "experienceTemplateCount": {
                 "type": "number"
               },
               "experienceUserCount": {
