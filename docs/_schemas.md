@@ -6881,12 +6881,16 @@ Schema for a single Experience Template
       ]
     },
     "layoutId": {
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "body": {
       "type": "string",
-      "maxLength": 131072
+      "maxLength": 131072,
+      "minLength": 1
     },
     "templateTags": {
       "type": "object",
@@ -6944,12 +6948,16 @@ Schema for the body of an Experience Template modification request
       "maxLength": 32767
     },
     "layoutId": {
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "body": {
       "type": "string",
-      "maxLength": 131072
+      "maxLength": 131072,
+      "minLength": 1
     },
     "templateTags": {
       "type": "object",
@@ -7008,12 +7016,16 @@ Schema for the body of an Experience Template creation request
       ]
     },
     "layoutId": {
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "body": {
       "type": "string",
-      "maxLength": 131072
+      "maxLength": 131072,
+      "minLength": 1
     },
     "templateTags": {
       "type": "object",
@@ -7107,12 +7119,16 @@ Schema for a collection of Experience Templates
             ]
           },
           "layoutId": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "body": {
             "type": "string",
-            "maxLength": 131072
+            "maxLength": 131072,
+            "minLength": 1
           },
           "templateTags": {
             "type": "object",

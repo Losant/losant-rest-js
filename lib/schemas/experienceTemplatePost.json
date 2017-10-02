@@ -20,12 +20,16 @@
       ]
     },
     "layoutId": {
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "body": {
       "type": "string",
-      "maxLength": 131072
+      "maxLength": 131072,
+      "minLength": 1
     },
     "templateTags": {
       "type": "object",
