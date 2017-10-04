@@ -65,6 +65,52 @@
       "minimum": 5,
       "maximum": 600
     },
+    "reportConfigs": {
+      "type": "array",
+      "max": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "cron",
+          "toEmail"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "max": 14
+          },
+          "cron": {
+            "type": "string"
+          },
+          "toEmail": {
+            "type": "array",
+            "min": 1,
+            "max": 10,
+            "items": {
+              "type": "string",
+              "format": "email",
+              "maxLength": 1024
+            }
+          },
+          "subject": {
+            "type": "string",
+            "max": 255
+          },
+          "message": {
+            "type": "string",
+            "max": 32767
+          },
+          "theme": {
+            "type": "string",
+            "enum": [
+              "dark",
+              "light"
+            ]
+          }
+        }
+      }
+    },
     "public": {
       "type": "boolean"
     },

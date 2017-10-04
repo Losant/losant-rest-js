@@ -2167,6 +2167,52 @@ Schema for a single Dashboard
     "public": {
       "type": "boolean"
     },
+    "reportConfigs": {
+      "type": "array",
+      "max": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "cron",
+          "toEmail"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "max": 14
+          },
+          "cron": {
+            "type": "string"
+          },
+          "toEmail": {
+            "type": "array",
+            "min": 1,
+            "max": 10,
+            "items": {
+              "type": "string",
+              "format": "email",
+              "maxLength": 1024
+            }
+          },
+          "subject": {
+            "type": "string",
+            "max": 255
+          },
+          "message": {
+            "type": "string",
+            "max": 32767
+          },
+          "theme": {
+            "type": "string",
+            "enum": [
+              "dark",
+              "light"
+            ]
+          }
+        }
+      }
+    },
     "blocks": {
       "type": "array",
       "items": {
@@ -2319,7 +2365,17 @@ Schema for a single Dashboard
   "description": "The best dashboard description",
   "refreshRate": 60,
   "public": false,
-  "blocks": []
+  "blocks": [],
+  "reportConfigs": [
+    {
+      "toEmail": [
+        "test@email.com"
+      ],
+      "cron": "0 0 12 * * MON-FRI *",
+      "theme": "dark",
+      "subject": "Daily Dashboard Report"
+    }
+  ]
 }
 ```
 
@@ -2416,6 +2472,52 @@ Schema for the body of a Dashboard modification request
           "height"
         ],
         "additionalProperties": false
+      }
+    },
+    "reportConfigs": {
+      "type": "array",
+      "max": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "cron",
+          "toEmail"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "max": 14
+          },
+          "cron": {
+            "type": "string"
+          },
+          "toEmail": {
+            "type": "array",
+            "min": 1,
+            "max": 10,
+            "items": {
+              "type": "string",
+              "format": "email",
+              "maxLength": 1024
+            }
+          },
+          "subject": {
+            "type": "string",
+            "max": 255
+          },
+          "message": {
+            "type": "string",
+            "max": 32767
+          },
+          "theme": {
+            "type": "string",
+            "enum": [
+              "dark",
+              "light"
+            ]
+          }
+        }
       }
     },
     "description": {
@@ -2617,6 +2719,52 @@ Schema for the body of a Dashboard creation request
       "minimum": 5,
       "maximum": 600
     },
+    "reportConfigs": {
+      "type": "array",
+      "max": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "cron",
+          "toEmail"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "max": 14
+          },
+          "cron": {
+            "type": "string"
+          },
+          "toEmail": {
+            "type": "array",
+            "min": 1,
+            "max": 10,
+            "items": {
+              "type": "string",
+              "format": "email",
+              "maxLength": 1024
+            }
+          },
+          "subject": {
+            "type": "string",
+            "max": 255
+          },
+          "message": {
+            "type": "string",
+            "max": 32767
+          },
+          "theme": {
+            "type": "string",
+            "enum": [
+              "dark",
+              "light"
+            ]
+          }
+        }
+      }
+    },
     "public": {
       "type": "boolean"
     },
@@ -2798,6 +2946,52 @@ Schema for a collection of Dashboards
           },
           "public": {
             "type": "boolean"
+          },
+          "reportConfigs": {
+            "type": "array",
+            "max": 10,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "cron",
+                "toEmail"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "max": 14
+                },
+                "cron": {
+                  "type": "string"
+                },
+                "toEmail": {
+                  "type": "array",
+                  "min": 1,
+                  "max": 10,
+                  "items": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 1024
+                  }
+                },
+                "subject": {
+                  "type": "string",
+                  "max": 255
+                },
+                "message": {
+                  "type": "string",
+                  "max": 32767
+                },
+                "theme": {
+                  "type": "string",
+                  "enum": [
+                    "dark",
+                    "light"
+                  ]
+                }
+              }
+            }
           },
           "blocks": {
             "type": "array",
@@ -2984,7 +3178,17 @@ Schema for a collection of Dashboards
       "description": "The best dashboard description",
       "refreshRate": 60,
       "public": false,
-      "blocks": []
+      "blocks": [],
+      "reportConfigs": [
+        {
+          "toEmail": [
+            "test@email.com"
+          ],
+          "cron": "0 0 12 * * MON-FRI *",
+          "theme": "dark",
+          "subject": "Daily Dashboard Report"
+        }
+      ]
     }
   ],
   "count": 1,
