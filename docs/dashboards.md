@@ -33,7 +33,7 @@ client.dashboards.get(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Organization, all.SolutionUser, all.SolutionUser.read, all.User, dashboards.*, or dashboards.get.
+all.Organization, all.Organization.read, all.SolutionUser, all.SolutionUser.read, all.User, all.User.read, dashboards.*, or dashboards.get.
 
 #### Available Parameters
 

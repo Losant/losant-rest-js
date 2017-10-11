@@ -107,6 +107,10 @@
               "dark",
               "light"
             ]
+          },
+          "timezone": {
+            "type": "string",
+            "max": 255
           }
         }
       }

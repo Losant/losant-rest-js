@@ -2209,6 +2209,10 @@ Schema for a single Dashboard
               "dark",
               "light"
             ]
+          },
+          "timezone": {
+            "type": "string",
+            "max": 255
           }
         }
       }
@@ -2516,6 +2520,10 @@ Schema for the body of a Dashboard modification request
               "dark",
               "light"
             ]
+          },
+          "timezone": {
+            "type": "string",
+            "max": 255
           }
         }
       }
@@ -2761,6 +2769,10 @@ Schema for the body of a Dashboard creation request
               "dark",
               "light"
             ]
+          },
+          "timezone": {
+            "type": "string",
+            "max": 255
           }
         }
       }
@@ -2989,6 +3001,10 @@ Schema for a collection of Dashboards
                     "dark",
                     "light"
                   ]
+                },
+                "timezone": {
+                  "type": "string",
+                  "max": 255
                 }
               }
             }
@@ -6626,7 +6642,79 @@ Schema for a collection of Experience Endpoints
     "items": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/experienceEndpoints"
+        "title": "Experience Endpoint",
+        "description": "Schema for a single Experience Endpoint",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "experienceEndpointId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "route": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "delete",
+              "get",
+              "options",
+              "patch",
+              "post",
+              "put"
+            ]
+          },
+          "access": {
+            "type": "string",
+            "enum": [
+              "public",
+              "authenticated",
+              "group"
+            ]
+          },
+          "experienceGroups": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "count": {
