@@ -57,6 +57,10 @@
 *   [Event Patch](#event-patch)
 *   [Event Post](#event-post)
 *   [Events](#events)
+*   [Experience Domain](#experience-domain)
+*   [Experience Domain Patch](#experience-domain-patch)
+*   [Experience Domain Post](#experience-domain-post)
+*   [Experience Domains](#experience-domains)
 *   [Experience Endpoint](#experience-endpoint)
 *   [Experience Endpoint Patch](#experience-endpoint-patch)
 *   [Experience Endpoint Post](#experience-endpoint-post)
@@ -87,9 +91,9 @@
 *   [Workflow Versions](#workflow-versions)
 *   [Workflows](#workflows)
 *   [Github Login](#github-login)
-*   [Integrations](#integrations)
-*   [Integrations Patch](#integrations-patch)
-*   [Integrations Post](#integrations-post)
+*   [Integration](#integration)
+*   [Integration Patch](#integration-patch)
+*   [Integration Post](#integration-post)
 *   [Integrations](#integrations)
 *   [Last Value Data](#last-value-data)
 *   [Last Value Query](#last-value-query)
@@ -387,6 +391,9 @@ Schema for a single Application
         "eventCount": {
           "type": "number"
         },
+        "experienceDomainCount": {
+          "type": "number"
+        },
         "experienceEndpointCount": {
           "type": "number"
         },
@@ -485,6 +492,8 @@ Schema for the body of an Application API Token creation request
           "devices.*",
           "event.*",
           "events.*",
+          "experienceDomain.*",
+          "experienceDomains.*",
           "experienceEndpoint.*",
           "experienceEndpoints.*",
           "experienceGroup.*",
@@ -558,6 +567,11 @@ Schema for the body of an Application API Token creation request
           "events.mostRecentBySeverity",
           "events.patch",
           "events.post",
+          "experienceDomain.delete",
+          "experienceDomain.get",
+          "experienceDomain.patch",
+          "experienceDomains.get",
+          "experienceDomains.post",
           "experienceEndpoint.delete",
           "experienceEndpoint.get",
           "experienceEndpoint.patch",
@@ -1323,6 +1337,9 @@ Schema for a collection of Applications
               "eventCount": {
                 "type": "number"
               },
+              "experienceDomainCount": {
+                "type": "number"
+              },
               "experienceEndpointCount": {
                 "type": "number"
               },
@@ -1472,6 +1489,7 @@ Schema for a single Audit Log entry
         "Device",
         "DeviceRecipe",
         "Event",
+        "ExperienceDomain",
         "ExperienceEndpoint",
         "ExperienceGroup",
         "ExperienceTemplate",
@@ -1618,6 +1636,7 @@ Schema for the filter of an audit log query
               "Device",
               "DeviceRecipe",
               "Event",
+              "ExperienceDomain",
               "ExperienceEndpoint",
               "ExperienceGroup",
               "ExperienceTemplate",
@@ -1781,6 +1800,7 @@ Schema for a collection of Audit Logs
               "Device",
               "DeviceRecipe",
               "Event",
+              "ExperienceDomain",
               "ExperienceEndpoint",
               "ExperienceGroup",
               "ExperienceTemplate",
@@ -6327,6 +6347,258 @@ Schema for a collection of Events
 
 <br/>
 
+## Experience Domain
+
+Schema for a single Experience Domain
+
+### <a name="experience-domain-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "experienceDomainId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sslCert": {
+      "type": "string",
+      "maxLength": 32767,
+      "minLength": 50
+    },
+    "sslBundle": {
+      "type": "string",
+      "maxLength": 32767,
+      "minLength": 50
+    },
+    "domainName": {
+      "type": "string",
+      "maxLength": 1024,
+      "minLength": 3
+    }
+  }
+}
+```
+### <a name="experience-domain-example"></a> Example
+
+```json
+{
+  "id": "58c1de6c8f812590d8e82980",
+  "experienceDomainId": "58c1de6c8f812590d8e82980",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "domainName": "my.example.domain.com"
+}
+```
+
+<br/>
+
+## Experience Domain Patch
+
+Schema for the body of an Experience Domain modification request
+
+### <a name="experience-domain-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "sslKey": {
+      "type": "string",
+      "maxLength": 32767,
+      "minLength": 50
+    },
+    "sslCert": {
+      "type": "string",
+      "maxLength": 32767,
+      "minLength": 50
+    },
+    "sslBundle": {
+      "type": "string",
+      "maxLength": 32767,
+      "minLength": 50
+    },
+    "domainName": {
+      "type": "string",
+      "maxLength": 1024,
+      "minLength": 3
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="experience-domain-patch-example"></a> Example
+
+```json
+{
+  "domainName": "my.example.domain.com",
+  "sslCert": "MY_SSL_CERTIFICATE",
+  "sslKey": "MY_SSL_KEY"
+}
+```
+
+<br/>
+
+## Experience Domain Post
+
+Schema for the body of an Experience Domain creation request
+
+### <a name="experience-domain-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "sslKey": {
+      "type": "string",
+      "maxLength": 32767,
+      "minLength": 50
+    },
+    "sslCert": {
+      "type": "string",
+      "maxLength": 32767,
+      "minLength": 50
+    },
+    "sslBundle": {
+      "type": "string",
+      "maxLength": 32767,
+      "minLength": 50
+    },
+    "domainName": {
+      "type": "string",
+      "maxLength": 1024,
+      "minLength": 3
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "domainName"
+  ]
+}
+```
+### <a name="experience-domain-post-example"></a> Example
+
+```json
+{
+  "domainName": "my.example.domain.com",
+  "sslCert": "MY_SSL_CERTIFICATE",
+  "sslKey": "MY_SSL_KEY"
+}
+```
+
+<br/>
+
+## Experience Domains
+
+Schema for a collection of Experience Domains
+
+### <a name="experience-domains-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Experience Domain",
+        "description": "Schema for a single Experience Domain",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "experienceDomainId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "sslCert": {
+            "type": "string",
+            "maxLength": 32767,
+            "minLength": 50
+          },
+          "sslBundle": {
+            "type": "string",
+            "maxLength": 32767,
+            "minLength": 50
+          },
+          "domainName": {
+            "type": "string",
+            "maxLength": 1024,
+            "minLength": 3
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  }
+}
+```
+### <a name="experience-domains-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "58c1de6c8f812590d8e82980",
+      "experienceDomainId": "58c1de6c8f812590d8e82980",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "domainName": "my.example.domain.com"
+    }
+  ],
+  "count": 1,
+  "totalCount": 1,
+  "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
+
 ## Experience Endpoint
 
 Schema for a single Experience Endpoint
@@ -9597,11 +9869,11 @@ Schema for the body of a Github login request
 
 <br/>
 
-## Integrations
+## Integration
 
-Schema for a single Integrations
+Schema for a single Integration
 
-### <a name="integrations-schema"></a> Schema
+### <a name="integration-schema"></a> Schema
 
 ```json
 {
@@ -9804,7 +10076,7 @@ Schema for a single Integrations
   }
 }
 ```
-### <a name="integrations-example"></a> Example
+### <a name="integration-example"></a> Example
 
 ```json
 {
@@ -9842,11 +10114,11 @@ Schema for a single Integrations
 
 <br/>
 
-## Integrations Patch
+## Integration Patch
 
-Schema for the body of an Integrations modification request
+Schema for the body of an Integration modification request
 
-### <a name="integrations-patch-schema"></a> Schema
+### <a name="integration-patch-schema"></a> Schema
 
 ```json
 {
@@ -9993,7 +10265,7 @@ Schema for the body of an Integrations modification request
   "additionalProperties": false
 }
 ```
-### <a name="integrations-patch-example"></a> Example
+### <a name="integration-patch-example"></a> Example
 
 ```json
 {
@@ -10005,11 +10277,11 @@ Schema for the body of an Integrations modification request
 
 <br/>
 
-## Integrations Post
+## Integration Post
 
-Schema for the body of an Integrations creation request
+Schema for the body of an Integration creation request
 
-### <a name="integrations-post-schema"></a> Schema
+### <a name="integration-post-schema"></a> Schema
 
 ```json
 {
@@ -10160,7 +10432,7 @@ Schema for the body of an Integrations creation request
   ]
 }
 ```
-### <a name="integrations-post-example"></a> Example
+### <a name="integration-post-example"></a> Example
 
 ```json
 {
@@ -10196,8 +10468,8 @@ Schema for a collection of Integrations
     "items": {
       "type": "array",
       "items": {
-        "title": "Integrations",
-        "description": "Schema for a single Integrations",
+        "title": "Integration",
+        "description": "Schema for a single Integration",
         "type": "object",
         "properties": {
           "id": {
@@ -10682,6 +10954,9 @@ Schema for information about the currently authenticated user
       "devicerecipe": {
         "type": "number"
       },
+      "experiencedomain": {
+        "type": "number"
+      },
       "experienceendpoint": {
         "type": "number"
       },
@@ -10846,6 +11121,9 @@ Schema for information about the currently authenticated user
           "type": "number"
         },
         "deviceRecipeCount": {
+          "type": "number"
+        },
+        "experienceDomainCount": {
           "type": "number"
         },
         "experienceEndpointCount": {
@@ -11295,6 +11573,9 @@ Schema for a single Organization
       "devicerecipe": {
         "type": "number"
       },
+      "experiencedomain": {
+        "type": "number"
+      },
       "experienceendpoint": {
         "type": "number"
       },
@@ -11351,6 +11632,9 @@ Schema for a single Organization
           "type": "number"
         },
         "deviceRecipeCount": {
+          "type": "number"
+        },
+        "experienceDomainCount": {
           "type": "number"
         },
         "experienceEndpointCount": {
@@ -12060,6 +12344,9 @@ Schema for a collection of Organizations
             "devicerecipe": {
               "type": "number"
             },
+            "experiencedomain": {
+              "type": "number"
+            },
             "experienceendpoint": {
               "type": "number"
             },
@@ -12116,6 +12403,9 @@ Schema for a collection of Organizations
                 "type": "number"
               },
               "deviceRecipeCount": {
+                "type": "number"
+              },
+              "experienceDomainCount": {
                 "type": "number"
               },
               "experienceEndpointCount": {

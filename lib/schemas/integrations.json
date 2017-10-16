@@ -5,8 +5,8 @@
     "items": {
       "type": "array",
       "items": {
-        "title": "Integrations",
-        "description": "Schema for a single Integrations",
+        "title": "Integration",
+        "description": "Schema for a single Integration",
         "type": "object",
         "properties": {
           "id": {

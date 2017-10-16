@@ -102,6 +102,9 @@
               "eventCount": {
                 "type": "number"
               },
+              "experienceDomainCount": {
+                "type": "number"
+              },
               "experienceEndpointCount": {
                 "type": "number"
               },

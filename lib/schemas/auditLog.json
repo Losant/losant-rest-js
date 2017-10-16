@@ -48,6 +48,7 @@
         "Device",
         "DeviceRecipe",
         "Event",
+        "ExperienceDomain",
         "ExperienceEndpoint",
         "ExperienceGroup",
         "ExperienceTemplate",
