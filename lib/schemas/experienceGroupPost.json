@@ -28,7 +28,15 @@
       "maxItems": 1000
     },
     "groupTags": {
-      "$ref": "#/definitions/experienceTemplate/properties/groupTags"
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": false,

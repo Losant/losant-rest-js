@@ -5,15 +5,15 @@
     "items": {
       "type": "array",
       "items": {
-        "title": "Experience Template",
-        "description": "Schema for a single Experience Template",
+        "title": "Experience View",
+        "description": "Schema for a single Experience View",
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
-          "experienceTemplateId": {
+          "experienceViewId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
@@ -38,7 +38,7 @@
             "type": "string",
             "maxLength": 32767
           },
-          "templateType": {
+          "viewType": {
             "type": "string",
             "enum": [
               "layout",
@@ -63,7 +63,7 @@
             "maxLength": 131072,
             "minLength": 1
           },
-          "templateTags": {
+          "viewTags": {
             "type": "object",
             "patternProperties": {
               "^[0-9a-zA-Z_-]{1,255}$": {
@@ -109,7 +109,7 @@
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "templateType": {
+    "viewType": {
       "type": "string",
       "enum": [
         "layout",

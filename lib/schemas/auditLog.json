@@ -51,7 +51,7 @@
         "ExperienceDomain",
         "ExperienceEndpoint",
         "ExperienceGroup",
-        "ExperienceTemplate",
+        "ExperienceView",
         "ExperienceUser",
         "Flow",
         "SolutionUser",

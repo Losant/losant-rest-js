@@ -100,10 +100,10 @@
       "experiencegroup": {
         "type": "number"
       },
-      "experiencetemplate": {
+      "experienceuser": {
         "type": "number"
       },
-      "experienceuser": {
+      "experienceview": {
         "type": "number"
       },
       "flow": {
@@ -161,10 +161,10 @@
         "experienceGroupCount": {
           "type": "number"
         },
-        "experienceTemplateCount": {
+        "experienceUserCount": {
           "type": "number"
         },
-        "experienceUserCount": {
+        "experienceViewCount": {
           "type": "number"
         },
         "flowCount": {

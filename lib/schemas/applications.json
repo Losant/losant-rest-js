@@ -111,10 +111,10 @@
               "experienceGroupCount": {
                 "type": "number"
               },
-              "experienceTemplateCount": {
+              "experienceUserCount": {
                 "type": "number"
               },
-              "experienceUserCount": {
+              "experienceViewCount": {
                 "type": "number"
               },
               "flowCount": {
