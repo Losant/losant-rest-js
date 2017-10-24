@@ -46,6 +46,10 @@
       "minLength": 52,
       "maxLength": 52
     },
+    "tokenCutoff": {
+      "type": "string",
+      "format": "date-time"
+    },
     "accessRestrictions": {
       "type": "object",
       "properties": {

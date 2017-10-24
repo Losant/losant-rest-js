@@ -13,6 +13,11 @@
     },
     "makeUniqueKeySecret": {
       "type": "boolean"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false,

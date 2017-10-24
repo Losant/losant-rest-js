@@ -54,6 +54,7 @@ all.Application, all.Organization, all.User, deviceRecipe.*, or deviceRecipe.bul
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 201 | [Device Recipe Bulk Create](_schemas.md#device-recipe-bulk-create) | If devices were successfully created |
+| 202 | [Device Recipe Bulk Create Enqueue](_schemas.md#device-recipe-bulk-create-enqueue) | If devices were enqueued to be created |
 
 #### Error Responses
 

@@ -33,6 +33,9 @@
         "group"
       ]
     },
+    "endpointTags": {
+      "$ref": "#/definitions/experienceTemplate/properties/endpointTags"
+    },
     "experienceGroupIds": {
       "type": "array",
       "items": {

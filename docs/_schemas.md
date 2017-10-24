@@ -18,6 +18,7 @@
 *   [Authenticated Device](#authenticated-device)
 *   [Authenticated Solution User](#authenticated-solution-user)
 *   [Authenticated User](#authenticated-user)
+*   [Change Password](#change-password)
 *   [Composite Device State](#composite-device-state)
 *   [Dashboard](#dashboard)
 *   [Dashboard Context Instance](#dashboard-context-instance)
@@ -42,6 +43,7 @@
 *   [Device Post](#device-post)
 *   [Device Recipe](#device-recipe)
 *   [Device Recipe Bulk Create](#device-recipe-bulk-create)
+*   [Device Recipe Bulk Create Enqueue](#device-recipe-bulk-create-enqueue)
 *   [Device Recipe Bulk Create Post](#device-recipe-bulk-create-post)
 *   [Device Recipe Patch](#device-recipe-patch)
 *   [Device Recipe Post](#device-recipe-post)
@@ -416,6 +418,35 @@ Schema for a single Application
           "type": "number"
         }
       }
+    },
+    "ftueTracking": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "version": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "skipped",
+              "completed"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "version",
+          "status"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 100
     }
   }
 }
@@ -1132,6 +1163,35 @@ Schema for the body of an Application modification request
           "json"
         ]
       }
+    },
+    "ftueTracking": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "version": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "skipped",
+              "completed"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "version",
+          "status"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 100
     }
   },
   "additionalProperties": false
@@ -1362,6 +1422,35 @@ Schema for a collection of Applications
                 "type": "number"
               }
             }
+          },
+          "ftueTracking": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                },
+                "version": {
+                  "type": "number"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "skipped",
+                    "completed"
+                  ]
+                }
+              },
+              "required": [
+                "name",
+                "version",
+                "status"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 100
           }
         }
       }
@@ -2055,6 +2144,54 @@ Schema for the successful response when authenticating a User
 {
   "userId": "575ed70c7ae143cd83dc4aa9",
   "token": "token_to_use_for_authenticating_subsequent_requests"
+}
+```
+
+<br/>
+
+## Change Password
+
+Schema for the body of a request to change the current user&#x27;s password
+
+### <a name="change-password-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "twoFactorCode": {
+      "type": "string",
+      "maxLength": 2048
+    },
+    "password": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 2048
+    },
+    "newPassword": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 2048
+    },
+    "invalidateExistingTokens": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "password",
+    "newPassword"
+  ],
+  "additionalProperties": false
+}
+```
+### <a name="change-password-example"></a> Example
+
+```json
+{
+  "newPassword": "yourNewPassword",
+  "password": "yourCurrentPassword",
+  "invalidateExistingTokens": true
 }
 ```
 
@@ -4811,6 +4948,33 @@ Schema for the result of a bulk Device creation request
 
 <br/>
 
+## Device Recipe Bulk Create Enqueue
+
+Schema for the result of a bulk Device creation request when creating more than 750 devices
+
+### <a name="device-recipe-bulk-create-enqueue-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "jobQueued": {
+      "type": "boolean"
+    }
+  }
+}
+```
+### <a name="device-recipe-bulk-create-enqueue-example"></a> Example
+
+```json
+{
+  "jobQueued": true
+}
+```
+
+<br/>
+
 ## Device Recipe Bulk Create Post
 
 Schema for the body of a bulk Device creation request
@@ -4833,6 +4997,11 @@ Schema for the body of a bulk Device creation request
     },
     "makeUniqueKeySecret": {
       "type": "boolean"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false,
@@ -6661,6 +6830,17 @@ Schema for a single Experience Endpoint
         "group"
       ]
     },
+    "endpointTags": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      },
+      "additionalProperties": false
+    },
     "experienceGroups": {
       "type": "array",
       "items": {
@@ -6747,6 +6927,9 @@ Schema for the body of an Experience Endpoint modification request
         "group"
       ]
     },
+    "endpointTags": {
+      "$ref": "#/definitions/experienceTemplate/properties/endpointTags"
+    },
     "experienceGroupIds": {
       "type": "array",
       "items": {
@@ -6813,6 +6996,9 @@ Schema for the body of an Experience Endpoint creation request
         "authenticated",
         "group"
       ]
+    },
+    "endpointTags": {
+      "$ref": "#/definitions/experienceTemplate/properties/endpointTags"
     },
     "experienceGroupIds": {
       "type": "array",
@@ -6969,6 +7155,17 @@ Schema for a collection of Experience Endpoints
               "group"
             ]
           },
+          "endpointTags": {
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
+          },
           "experienceGroups": {
             "type": "array",
             "items": {
@@ -7115,6 +7312,17 @@ Schema for a single Experience Group
         "pattern": "^[A-Fa-f\\d]{24}$"
       },
       "maxItems": 1000
+    },
+    "groupTags": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      },
+      "additionalProperties": false
     }
   }
 }
@@ -7177,6 +7385,9 @@ Schema for the body of an Experience Group modification request
         "pattern": "^[A-Fa-f\\d]{24}$"
       },
       "maxItems": 1000
+    },
+    "groupTags": {
+      "$ref": "#/definitions/experienceTemplate/properties/groupTags"
     }
   },
   "additionalProperties": false
@@ -7235,6 +7446,9 @@ Schema for the body of an Experience Group creation request
         "pattern": "^[A-Fa-f\\d]{24}$"
       },
       "maxItems": 1000
+    },
+    "groupTags": {
+      "$ref": "#/definitions/experienceTemplate/properties/groupTags"
     }
   },
   "additionalProperties": false,
@@ -7323,6 +7537,17 @@ Schema for a collection of Experience Groups
               "pattern": "^[A-Fa-f\\d]{24}$"
             },
             "maxItems": 1000
+          },
+          "groupTags": {
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
           }
         }
       }
@@ -7450,6 +7675,11 @@ Schema for a single Experience Template
         "null"
       ],
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "layoutName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
     },
     "body": {
       "type": "string",
@@ -7688,6 +7918,11 @@ Schema for a collection of Experience Templates
               "null"
             ],
             "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "layoutName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           },
           "body": {
             "type": "string",
@@ -13329,6 +13564,10 @@ Schema for a single Solution User
       "type": "string",
       "format": "url"
     },
+    "tokenCutoff": {
+      "type": "string",
+      "format": "date-time"
+    },
     "accessRestrictions": {
       "type": "object",
       "properties": {
@@ -13480,6 +13719,10 @@ Schema for the body of a Solution User modification request
       "minLength": 52,
       "maxLength": 52
     },
+    "tokenCutoff": {
+      "type": "string",
+      "format": "date-time"
+    },
     "accessRestrictions": {
       "type": "object",
       "properties": {
@@ -13563,6 +13806,10 @@ Schema for the body of a Solution User creation request
       "type": "string",
       "minLength": 52,
       "maxLength": 52
+    },
+    "tokenCutoff": {
+      "type": "string",
+      "format": "date-time"
     },
     "accessRestrictions": {
       "type": "object",
@@ -13700,6 +13947,10 @@ Schema for a collection of Solution Users
           "avatarUrl": {
             "type": "string",
             "format": "url"
+          },
+          "tokenCutoff": {
+            "type": "string",
+            "format": "date-time"
           },
           "accessRestrictions": {
             "type": "object",

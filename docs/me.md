@@ -7,6 +7,7 @@ parameters and the potential responses.
 ##### Contents
 
 *   [Add Recent Item](#add-recent-item)
+*   [Change Password](#change-password)
 *   [Delete](#delete)
 *   [Disable Two Factor Auth](#disable-two-factor-auth)
 *   [Disconnect Github](#disconnect-github)
@@ -58,6 +59,52 @@ all.SolutionUser, all.User, me.*, or me.addRecentItem.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Recent Item List](_schemas.md#recent-item-list) | Updated recent item list |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+
+<br/>
+
+## Change Password
+
+Changes the current user&#x27;s password and optionally logs out all other sessions
+
+```javascript
+var params = {
+  data: myData
+};
+
+// with callbacks
+client.me.changePassword(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.me.changePassword(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.SolutionUser, all.User, me.*, or me.changePassword.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| data | [Change Password](_schemas.md#change-password) | Y | Object containing the password change info |  | [Change Password Example](_schemas.md#change-password-example) |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Authenticated User](_schemas.md#authenticated-user) | A new, valid, auth token (potentially all previous tokens are now invalid) |
 
 #### Error Responses
 

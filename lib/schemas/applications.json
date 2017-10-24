@@ -127,6 +127,35 @@
                 "type": "number"
               }
             }
+          },
+          "ftueTracking": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                },
+                "version": {
+                  "type": "number"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "skipped",
+                    "completed"
+                  ]
+                }
+              },
+              "required": [
+                "name",
+                "version",
+                "status"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 100
           }
         }
       }
