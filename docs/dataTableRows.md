@@ -6,9 +6,60 @@ parameters and the potential responses.
 
 ##### Contents
 
+*   [Export](#export)
 *   [Get](#get)
 *   [Post](#post)
 *   [Query](#query)
+
+<br/>
+
+## Export
+
+Request an export of the data table&#x27;s data
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  dataTableId: myDataTableId
+};
+
+// with callbacks
+client.dataTableRows.export(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.dataTableRows.export(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, dataTableRows.*, or dataTableRows.export.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| dataTableId | string | Y | ID associated with the data table |  | 575ed78e7ae143cd83dc4aab |
+| exportData | [Data Table Export](_schemas.md#data-table-export) | N | Object containing export specifications |  | [Data Table Export Example](_schemas.md#data-table-export-example) |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Success](_schemas.md#success) | If request was successfully queued |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if data table was not found |
 
 <br/>
 

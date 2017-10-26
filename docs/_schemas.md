@@ -33,6 +33,7 @@
 *   [Data Table Row](#data-table-row)
 *   [Data Table Row Insert/Update](#data-table-row-insert/update)
 *   [Data Table Rows](#data-table-rows)
+*   [Data Table Export](#data-table-export)
 *   [Data Tables](#data-tables)
 *   [Device](#device)
 *   [Device Command](#device-command)
@@ -3957,6 +3958,76 @@ Schema for a collection of Data Table Rows
   "sortDirection": "asc",
   "dataTableId": "596e6ce831761df4231708f1",
   "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
+
+## Data Table Export
+
+Schema for the body of a data table export
+
+### <a name="data-table-export-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "query": {
+      "$ref": "#/definitions/dataTableQuery"
+    },
+    "queryOptions": {
+      "type": "object",
+      "properties": {
+        "sortDirection": {
+          "type": "string",
+          "enum": [
+            "desc",
+            "asc"
+          ]
+        },
+        "limit": {
+          "type": "number",
+          "default": 1000
+        },
+        "sortColumn": {
+          "type": "string"
+        },
+        "offset": {
+          "type": "number"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="data-table-export-example"></a> Example
+
+```json
+{
+  "email": "email@example.com",
+  "query": {
+    "$or": [
+      {
+        "myCol1": {
+          "$ne": 0
+        }
+      },
+      {
+        "myCol2": 5
+      }
+    ]
+  },
+  "queryOptions": {
+    "limit": 10000
+  }
 }
 ```
 
