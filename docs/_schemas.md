@@ -3993,8 +3993,7 @@ Schema for the body of a data table export
           ]
         },
         "limit": {
-          "type": "number",
-          "default": 1000
+          "type": "number"
         },
         "sortColumn": {
           "type": "string"
