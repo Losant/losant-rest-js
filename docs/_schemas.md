@@ -6662,19 +6662,40 @@ Schema for the body of an Experience Domain modification request
   "type": "object",
   "properties": {
     "sslKey": {
-      "type": "string",
-      "maxLength": 32767,
-      "minLength": 50
+      "$oneOf": [
+        {
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 50
+        },
+        {
+          "type": null
+        }
+      ]
     },
     "sslCert": {
-      "type": "string",
-      "maxLength": 32767,
-      "minLength": 50
+      "$oneOf": [
+        {
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 50
+        },
+        {
+          "type": null
+        }
+      ]
     },
     "sslBundle": {
-      "type": "string",
-      "maxLength": 32767,
-      "minLength": 50
+      "$oneOf": [
+        {
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 50
+        },
+        {
+          "type": null
+        }
+      ]
     },
     "domainName": {
       "type": "string",
