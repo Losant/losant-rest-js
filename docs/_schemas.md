@@ -33,6 +33,7 @@
 *   [Data Table Row](#data-table-row)
 *   [Data Table Row Insert/Update](#data-table-row-insert/update)
 *   [Data Table Rows](#data-table-rows)
+*   [Data Table Rows Delete](#data-table-rows-delete)
 *   [Data Table Export](#data-table-export)
 *   [Data Tables](#data-tables)
 *   [Device](#device)
@@ -569,6 +570,9 @@ Schema for the body of an Application API Token creation request
           "dataTableRows.get",
           "dataTableRows.post",
           "dataTableRows.query",
+          "dataTableRows.export",
+          "dataTableRows.delete",
+          "dataTableRows.truncate",
           "dataTables.get",
           "dataTables.post",
           "device.delete",
@@ -3958,6 +3962,33 @@ Schema for a collection of Data Table Rows
   "sortDirection": "asc",
   "dataTableId": "596e6ce831761df4231708f1",
   "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
+
+## Data Table Rows Delete
+
+Schema for response to data table rows removal
+
+### <a name="data-table-rows-delete-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "removed": {
+      "type": "Number"
+    }
+  }
+}
+```
+### <a name="data-table-rows-delete-example"></a> Example
+
+```json
+{
+  "removed": 100
 }
 ```
 
