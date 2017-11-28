@@ -152,7 +152,7 @@
                 "json": {
                   "type": "string",
                   "minLength": 1,
-                  "maxLength": 2048
+                  "maxLength": 32767
                 }
               },
               "additionalProperties": false,

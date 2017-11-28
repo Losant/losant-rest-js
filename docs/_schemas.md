@@ -364,7 +364,7 @@ Schema for a single Application
           "json": {
             "type": "string",
             "minLength": 1,
-            "maxLength": 2048
+            "maxLength": 32767
           }
         },
         "additionalProperties": false,
@@ -1159,7 +1159,7 @@ Schema for the body of an Application modification request
           "json": {
             "type": "string",
             "minLength": 1,
-            "maxLength": 2048
+            "maxLength": 32767
           }
         },
         "additionalProperties": false,
@@ -1263,7 +1263,7 @@ Schema for the body of an Application creation request
           "json": {
             "type": "string",
             "minLength": 1,
-            "maxLength": 2048
+            "maxLength": 32767
           }
         },
         "additionalProperties": false,
@@ -1371,7 +1371,7 @@ Schema for a collection of Applications
                 "json": {
                   "type": "string",
                   "minLength": 1,
-                  "maxLength": 2048
+                  "maxLength": 32767
                 }
               },
               "additionalProperties": false,
@@ -8756,7 +8756,7 @@ Schema for a single Workflow
           "json": {
             "type": "string",
             "minLength": 1,
-            "maxLength": 2048
+            "maxLength": 32767
           }
         },
         "additionalProperties": false,
@@ -9040,7 +9040,7 @@ Schema for the body of a Workflow modification request
           "json": {
             "type": "string",
             "minLength": 1,
-            "maxLength": 2048
+            "maxLength": 32767
           }
         },
         "additionalProperties": false,
@@ -9196,7 +9196,7 @@ Schema for the body of a Workflow creation request
           "json": {
             "type": "string",
             "minLength": 1,
-            "maxLength": 2048
+            "maxLength": 32767
           }
         },
         "additionalProperties": false,
@@ -9483,7 +9483,7 @@ Schema for a single Workflow Version
           "json": {
             "type": "string",
             "minLength": 1,
-            "maxLength": 2048
+            "maxLength": 32767
           }
         },
         "additionalProperties": false,
@@ -9680,7 +9680,7 @@ Schema for the body of a Workflow Version creation request
           "json": {
             "type": "string",
             "minLength": 1,
-            "maxLength": 2048
+            "maxLength": 32767
           }
         },
         "additionalProperties": false,
@@ -9870,7 +9870,7 @@ Schema for a collection of Workflow Versions
                 "json": {
                   "type": "string",
                   "minLength": 1,
-                  "maxLength": 2048
+                  "maxLength": 32767
                 }
               },
               "additionalProperties": false,
@@ -10116,7 +10116,7 @@ Schema for a collection of Workflows
                 "json": {
                   "type": "string",
                   "minLength": 1,
-                  "maxLength": 2048
+                  "maxLength": 32767
                 }
               },
               "additionalProperties": false,
