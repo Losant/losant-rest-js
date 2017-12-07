@@ -50,6 +50,87 @@
           "json"
         ]
       }
+    },
+    "archiveConfig": {
+      "type": "object",
+      "properties": {
+        "directory": {
+          "type": "string",
+          "max": 255
+        },
+        "whiteList": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "max": 100
+        },
+        "blackList": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "max": 100
+        },
+        "s3": {
+          "type": "object",
+          "properties": {
+            "bucket": {
+              "type": "string",
+              "max": 255
+            },
+            "accessKeyId": {
+              "type": "string",
+              "min": 16,
+              "max": 128
+            },
+            "secretAccessKey": {
+              "type": "string",
+              "min": 16,
+              "max": 128
+            },
+            "region": {
+              "type": "string",
+              "max": 128
+            }
+          },
+          "required": [
+            "bucket",
+            "accessKeyId",
+            "secretAccessKey",
+            "region"
+          ],
+          "additionalProperties": false
+        },
+        "gcs": {
+          "type": "object",
+          "properties": {
+            "projectId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024
+            },
+            "keyJson": {
+              "type": "string",
+              "maxLength": 32767,
+              "minLength": 50
+            },
+            "bucket": {
+              "type": "string",
+              "max": 255
+            }
+          },
+          "required": [
+            "projectId",
+            "keyJson",
+            "bucket"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": false,

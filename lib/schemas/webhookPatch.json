@@ -18,7 +18,8 @@
         "facebook",
         "fitbit",
         "none",
-        "twilio"
+        "twilio",
+        "alexa"
       ]
     },
     "verificationCode": {
