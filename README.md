@@ -144,6 +144,12 @@ Each of the following is a property on the client instance, and wraps the action
 * [events](docs/events.md)  
   Contains all the actions that can be performed against the collection of [Events](https://docs.losant.com/events/overview/) belonging to an Application - such as listing open events or creating a new event.
 
+* [experienceDomain](docs/experienceDomain.md)  
+  Contains all the actions that can be performed against a single [Experience Domain](https://docs.losant.com/experiences/domains/), such as updating SSL certificate information.
+
+* [experienceDomains](docs/experienceDomains.md)  
+  Contains all the actions that can be performed against the collection of [Experience Domains](https://docs.losant.com/experiences/domains/) belonging to an Application - such as listing domains or creating a new domain.
+
 * [experienceEndpoint](docs/experienceEndpoint.md)  
   Contains all the actions that can be performed against a single [Experience Endpoint](https://docs.losant.com/experiences/endpoints/), such as updating route information.
 
