@@ -457,21 +457,40 @@ Schema for a single Application
           "type": "string",
           "max": 255
         },
-        "whiteList": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "max": 100
+        "mode": {
+          "type": "string",
+          "enum": [
+            "all",
+            "whitelist",
+            "blacklist"
+          ]
         },
-        "blackList": {
+        "deviceIds": {
           "type": "array",
           "items": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
-          "max": 100
+          "maxItems": 1000
+        },
+        "deviceTags": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
+          },
+          "maxItems": 100
         },
         "s3": {
           "type": "object",
@@ -561,7 +580,8 @@ Schema for a single Application
       "accessSecretKey": "awsSecretKey",
       "region": "us-west-1"
     },
-    "blackList": [
+    "mode": "all",
+    "deviceIds": [
       "575ec8687ae143cd83dc4a95",
       "575ec8687ae143cd83dc4a91"
     ]
@@ -1298,21 +1318,40 @@ Schema for the body of an Application modification request
           "type": "string",
           "max": 255
         },
-        "whiteList": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "max": 100
+        "mode": {
+          "type": "string",
+          "enum": [
+            "all",
+            "whitelist",
+            "blacklist"
+          ]
         },
-        "blackList": {
+        "deviceIds": {
           "type": "array",
           "items": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
-          "max": 100
+          "maxItems": 1000
+        },
+        "deviceTags": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
+          },
+          "maxItems": 100
         },
         "s3": {
           "type": "object",
@@ -1454,21 +1493,40 @@ Schema for the body of an Application creation request
           "type": "string",
           "max": 255
         },
-        "whiteList": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "max": 100
+        "mode": {
+          "type": "string",
+          "enum": [
+            "all",
+            "whitelist",
+            "blacklist"
+          ]
         },
-        "blackList": {
+        "deviceIds": {
           "type": "array",
           "items": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
-          "max": 100
+          "maxItems": 1000
+        },
+        "deviceTags": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
+          },
+          "maxItems": 100
         },
         "s3": {
           "type": "object",
@@ -1719,21 +1777,40 @@ Schema for a collection of Applications
                 "type": "string",
                 "max": 255
               },
-              "whiteList": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "pattern": "^[A-Fa-f\\d]{24}$"
-                },
-                "max": 100
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "all",
+                  "whitelist",
+                  "blacklist"
+                ]
               },
-              "blackList": {
+              "deviceIds": {
                 "type": "array",
                 "items": {
                   "type": "string",
                   "pattern": "^[A-Fa-f\\d]{24}$"
                 },
-                "max": 100
+                "maxItems": 1000
+              },
+              "deviceTags": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "value": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "maxItems": 100
               },
               "s3": {
                 "type": "object",
@@ -1856,7 +1933,8 @@ Schema for a collection of Applications
           "accessSecretKey": "awsSecretKey",
           "region": "us-west-1"
         },
-        "blackList": [
+        "mode": "all",
+        "deviceIds": [
           "575ec8687ae143cd83dc4a95",
           "575ec8687ae143cd83dc4a91"
         ]
@@ -9213,34 +9291,22 @@ Log of aggregated workflow run information
 ```json
 [
   {
+    "flowVersionId": "develop",
     "time": "2016-06-03T00:56:22.447Z",
-    "errorCount": 0,
+    "pathsFailed": 0,
     "pathsCompleted": 1,
-    "totalCount": 1,
-    "totalTime": 24,
+    "runCount": 1,
     "wallTime": 450,
-    "errors": [],
-    "nodes": {
-      "SJaEw_dV": {
-        "time": 22,
-        "count": 1
-      }
-    }
+    "errors": []
   },
   {
-    "time": "2016-06-03T00:57:22.447Z",
-    "errorCount": 0,
+    "flowVersionId": "develop",
+    "time": "2016-06-03T00:56:22.447Z",
+    "pathsFailed": 0,
     "pathsCompleted": 1,
-    "totalCount": 3,
-    "totalTime": 58,
+    "runCount": 3,
     "wallTime": 152,
-    "errors": [],
-    "nodes": {
-      "SJaEw_dV": {
-        "time": 18,
-        "count": 3
-      }
-    }
+    "errors": []
   }
 ]
 ```
