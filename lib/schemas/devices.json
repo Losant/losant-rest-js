@@ -151,6 +151,36 @@
     "applicationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceClass": {
+      "type": "string",
+      "enum": [
+        "standalone",
+        "gateway",
+        "peripheral",
+        "floating"
+      ]
+    },
+    "tagFilter": {
+      "title": "Device Tag Filter",
+      "description": "Array of Tags for filtering devices. Tag keys and tag values are optional.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        },
+        "additionalProperties": false
+      },
+      "maxItems": 100
     }
   }
 }

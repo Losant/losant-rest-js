@@ -6428,6 +6428,36 @@ Schema for a collection of Devices
     "applicationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceClass": {
+      "type": "string",
+      "enum": [
+        "standalone",
+        "gateway",
+        "peripheral",
+        "floating"
+      ]
+    },
+    "tagFilter": {
+      "title": "Device Tag Filter",
+      "description": "Array of Tags for filtering devices. Tag keys and tag values are optional.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        },
+        "additionalProperties": false
+      },
+      "maxItems": 100
     }
   }
 }
@@ -11700,6 +11730,10 @@ Schema for information about the currently authenticated user
       "type": "string",
       "maxLength": 1024
     },
+    "title": {
+      "type": "string",
+      "maxLength": 1024
+    },
     "phoneNumber": {
       "type": "string",
       "maxLength": 1024
@@ -12136,6 +12170,10 @@ Schema for the body of request to modify the current user
       "maxLength": 1024
     },
     "companyName": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "title": {
       "type": "string",
       "maxLength": 1024
     },
@@ -14107,6 +14145,10 @@ Schema for a single Solution User
       "type": "string",
       "maxLength": 1024
     },
+    "title": {
+      "type": "string",
+      "maxLength": 1024
+    },
     "phoneNumber": {
       "type": "string",
       "maxLength": 1024
@@ -14262,6 +14304,10 @@ Schema for the body of a Solution User modification request
       "type": "string",
       "maxLength": 1024
     },
+    "title": {
+      "type": "string",
+      "maxLength": 1024
+    },
     "phoneNumber": {
       "type": "string",
       "maxLength": 1024
@@ -14347,6 +14393,10 @@ Schema for the body of a Solution User creation request
       "maxLength": 1024
     },
     "companyName": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "title": {
       "type": "string",
       "maxLength": 1024
     },
@@ -14488,6 +14538,10 @@ Schema for a collection of Solution Users
             "maxLength": 1024
           },
           "companyName": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "title": {
             "type": "string",
             "maxLength": 1024
           },

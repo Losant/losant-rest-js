@@ -60,6 +60,10 @@
             "type": "string",
             "maxLength": 1024
           },
+          "title": {
+            "type": "string",
+            "maxLength": 1024
+          },
           "phoneNumber": {
             "type": "string",
             "maxLength": 1024
