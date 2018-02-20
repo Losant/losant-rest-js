@@ -87,12 +87,17 @@
         "standalone",
         "gateway",
         "peripheral",
-        "floating"
+        "floating",
+        "edgeCompute"
       ]
     },
     "gatewayId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "edgeAgentVersion": {
+      "type": "string",
+      "pattern": "^(0|([1-9]\\d*))\\.(0|([1-9]\\d*))\\.(0|([1-9]\\d*))$"
     },
     "connectionInfo": {
       "type": "object",

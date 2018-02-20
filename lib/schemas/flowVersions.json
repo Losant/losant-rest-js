@@ -70,6 +70,7 @@
                     "event",
                     "integration",
                     "mqttTopic",
+                    "request",
                     "timer",
                     "virtualButton",
                     "webhook"
@@ -161,6 +162,10 @@
                 "json"
               ]
             }
+          },
+          "minimumAgentVersion": {
+            "type": "string",
+            "pattern": "^(0|([1-9]\\d*))\\.(0|([1-9]\\d*))\\.(0|([1-9]\\d*))$"
           }
         }
       }

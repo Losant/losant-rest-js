@@ -16,7 +16,8 @@
         "standalone",
         "gateway",
         "peripheral",
-        "floating"
+        "floating",
+        "edgeCompute"
       ]
     },
     "token": {

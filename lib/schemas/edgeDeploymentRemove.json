@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "flowId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "flowId",
+    "deviceId"
+  ]
+}

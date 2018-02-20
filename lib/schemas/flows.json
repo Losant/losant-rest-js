@@ -45,6 +45,17 @@
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
+          "minimumAgentVersion": {
+            "type": "string",
+            "pattern": "^(0|([1-9]\\d*))\\.(0|([1-9]\\d*))\\.(0|([1-9]\\d*))$"
+          },
+          "flowClass": {
+            "type": "string",
+            "enum": [
+              "cloud",
+              "edge"
+            ]
+          },
           "triggers": {
             "type": "array",
             "items": {
@@ -70,6 +81,7 @@
                     "event",
                     "integration",
                     "mqttTopic",
+                    "request",
                     "timer",
                     "virtualButton",
                     "webhook"
@@ -223,6 +235,13 @@
     "applicationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "flowClass": {
+      "type": "string",
+      "enum": [
+        "cloud",
+        "edge"
+      ]
     }
   }
 }

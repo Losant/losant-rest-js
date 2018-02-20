@@ -6,10 +6,108 @@ parameters and the potential responses.
 
 ##### Contents
 
+*   [Archive Data](#archive-data)
+*   [Backfill Archive Data](#backfill-archive-data)
 *   [Delete](#delete)
 *   [Get](#get)
 *   [Patch](#patch)
 *   [Payload Counts](#payload-counts)
+
+<br/>
+
+## Archive Data
+
+Returns success when a job has been enqueued to archive this application&#x27;s device data for a given day
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  date: myDate
+};
+
+// with callbacks
+client.application.archiveData(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.application.archiveData(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, application.*, or application.archiveData.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
+| date | string | Y | The date to archive data (ms since epoch), it must be within the archive time range older than 31 days and newer than the organizations dataTTL |  | 1518556791829 |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Success](_schemas.md#success) | Enqueued a job to archive this applications device data |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
+
+<br/>
+
+## Backfill Archive Data
+
+Returns success when a job has been enqueued to backfill all current data to it&#x27;s archive
+
+```javascript
+var params = {
+  applicationId: myApplicationId
+};
+
+// with callbacks
+client.application.backfillArchiveData(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.application.backfillArchiveData(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, application.*, or application.backfillArchiveData.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Success](_schemas.md#success) | Enqueued a job to backfill device data to this application archive location |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
 
 <br/>
 

@@ -39,6 +39,7 @@
               "event",
               "integration",
               "mqttTopic",
+              "request",
               "timer",
               "virtualButton",
               "webhook"
@@ -130,6 +131,17 @@
           "json"
         ]
       }
+    },
+    "flowClass": {
+      "type": "string",
+      "enum": [
+        "cloud",
+        "edge"
+      ]
+    },
+    "minimumAgentVersion": {
+      "type": "string",
+      "pattern": "^(0|([1-9]\\d*))\\.(0|([1-9]\\d*))\\.(0|([1-9]\\d*))$"
     }
   },
   "additionalProperties": false,
