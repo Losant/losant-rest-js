@@ -345,8 +345,8 @@ Schema for a single Application
     "endpointSlug": {
       "type": "string",
       "minLength": 4,
-      "maxLength": 255,
-      "pattern": "^[0-9a-z_-]*$"
+      "maxLength": 63,
+      "pattern": "^[0-9a-z-]*$"
     },
     "expUserTokenCutoff": {
       "type": "string",
@@ -1258,8 +1258,8 @@ Schema for the body of an Application modification request
     "endpointSlug": {
       "type": "string",
       "minLength": 4,
-      "maxLength": 255,
-      "pattern": "^[0-9a-z_-]*$"
+      "maxLength": 63,
+      "pattern": "^[0-9a-z-]*$"
     },
     "expUserTokenCutoff": {
       "type": "string",
@@ -1462,8 +1462,8 @@ Schema for the body of an Application creation request
     "endpointSlug": {
       "type": "string",
       "minLength": 4,
-      "maxLength": 255,
-      "pattern": "^[0-9a-z_-]*$"
+      "maxLength": 63,
+      "pattern": "^[0-9a-z-]*$"
     },
     "expUserTokenCutoff": {
       "type": "string",
@@ -1670,8 +1670,8 @@ Schema for a collection of Applications
           "endpointSlug": {
             "type": "string",
             "minLength": 4,
-            "maxLength": 255,
-            "pattern": "^[0-9a-z_-]*$"
+            "maxLength": 63,
+            "pattern": "^[0-9a-z-]*$"
           },
           "expUserTokenCutoff": {
             "type": "string",
@@ -14353,8 +14353,8 @@ Schema for a single Solution
     "slug": {
       "type": "string",
       "minLength": 4,
-      "maxLength": 255,
-      "pattern": "^[0-9a-z_-]*$"
+      "maxLength": 63,
+      "pattern": "^[0-9a-z-]*$"
     },
     "allowSelfDeletion": {
       "type": "boolean"
@@ -15191,8 +15191,8 @@ Schema for a collection of Solutions
           "slug": {
             "type": "string",
             "minLength": 4,
-            "maxLength": 255,
-            "pattern": "^[0-9a-z_-]*$"
+            "maxLength": 63,
+            "pattern": "^[0-9a-z-]*$"
           },
           "allowSelfDeletion": {
             "type": "boolean"
