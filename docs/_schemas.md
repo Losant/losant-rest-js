@@ -661,6 +661,8 @@ Schema for the body of an Application API Token creation request
           "flowVersions.*",
           "webhook.*",
           "webhooks.*",
+          "application.archiveData",
+          "application.backfillArchiveData",
           "application.delete",
           "application.get",
           "application.patch",
@@ -9536,6 +9538,7 @@ Schema for a single Workflow
             "type": "string",
             "enum": [
               "dataTable",
+              "deviceCommand",
               "deviceId",
               "deviceIdConnect",
               "deviceIdDisconnect",
@@ -9809,6 +9812,7 @@ Schema for the body of a Workflow modification request
             "type": "string",
             "enum": [
               "dataTable",
+              "deviceCommand",
               "deviceId",
               "deviceIdConnect",
               "deviceIdDisconnect",
@@ -9970,6 +9974,7 @@ Schema for the body of a Workflow creation request
             "type": "string",
             "enum": [
               "dataTable",
+              "deviceCommand",
               "deviceId",
               "deviceIdConnect",
               "deviceIdDisconnect",
@@ -10269,6 +10274,7 @@ Schema for a single Workflow Version
             "type": "string",
             "enum": [
               "dataTable",
+              "deviceCommand",
               "deviceId",
               "deviceIdConnect",
               "deviceIdDisconnect",
@@ -10471,6 +10477,7 @@ Schema for the body of a Workflow Version creation request
             "type": "string",
             "enum": [
               "dataTable",
+              "deviceCommand",
               "deviceId",
               "deviceIdConnect",
               "deviceIdDisconnect",
@@ -10666,6 +10673,7 @@ Schema for a collection of Workflow Versions
                   "type": "string",
                   "enum": [
                     "dataTable",
+                    "deviceCommand",
                     "deviceId",
                     "deviceIdConnect",
                     "deviceIdDisconnect",
@@ -10928,6 +10936,7 @@ Schema for a collection of Workflows
                   "type": "string",
                   "enum": [
                     "dataTable",
+                    "deviceCommand",
                     "deviceId",
                     "deviceIdConnect",
                     "deviceIdDisconnect",

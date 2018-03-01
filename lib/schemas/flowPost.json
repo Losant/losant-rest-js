@@ -27,6 +27,7 @@
             "type": "string",
             "enum": [
               "dataTable",
+              "deviceCommand",
               "deviceId",
               "deviceIdConnect",
               "deviceIdDisconnect",
