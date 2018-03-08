@@ -186,7 +186,7 @@ No api access token is required to call this action.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | dashboardId | string | Y | ID of the associated dashboard |  | 575ece2b7ae143cd83dc4a9b |
 | ctx | [Dashboard Context Instance](_schemas.md#dashboard-context-instance) | Y | The context object to validate |  | [Dashboard Context Instance Example](_schemas.md#dashboard-context-instance-example) |
-| password | string | N | Password for password-protected dashboards |  | undefined |
+| password | string | N | Password for password-protected dashboards |  | myPassword |
 
 #### Successful Responses
 
