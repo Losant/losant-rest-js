@@ -38,6 +38,10 @@
             "type": "string",
             "minLength": 1,
             "maxLength": 32767
+          },
+          "cloudOnly": {
+            "type": "boolean",
+            "default": false
           }
         },
         "additionalProperties": false,
