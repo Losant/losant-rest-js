@@ -4783,7 +4783,7 @@ Schema for a single Device
         ],
         "additionalProperties": false
       },
-      "maxItems": 100
+      "maxItems": 256
     },
     "deviceClass": {
       "type": "string",
@@ -5186,7 +5186,7 @@ Schema for the body of a Device modification request
         ],
         "additionalProperties": false
       },
-      "maxItems": 100
+      "maxItems": 256
     },
     "deviceClass": {
       "type": "string",
@@ -5298,7 +5298,7 @@ Schema for the body of a Device creation request
         ],
         "additionalProperties": false
       },
-      "maxItems": 100
+      "maxItems": 256
     },
     "deviceClass": {
       "type": "string",
@@ -5442,7 +5442,7 @@ Schema for a single Device Recipe
         ],
         "additionalProperties": false
       },
-      "maxItems": 100
+      "maxItems": 256
     },
     "deviceClass": {
       "type": "string",
@@ -5678,7 +5678,7 @@ Schema for the body of a Device Recipe modification request
         ],
         "additionalProperties": false
       },
-      "maxItems": 100
+      "maxItems": 256
     },
     "deviceClass": {
       "type": "string",
@@ -5801,7 +5801,7 @@ Schema for the body of a Device Recipe creation request
         ],
         "additionalProperties": false
       },
-      "maxItems": 100
+      "maxItems": 256
     },
     "deviceClass": {
       "type": "string",
@@ -5954,7 +5954,7 @@ Schema for a collection of Device Recipes
               ],
               "additionalProperties": false
             },
-            "maxItems": 100
+            "maxItems": 256
           },
           "deviceClass": {
             "type": "string",
@@ -6418,7 +6418,7 @@ Schema for a collection of Devices
               ],
               "additionalProperties": false
             },
-            "maxItems": 100
+            "maxItems": 256
           },
           "deviceClass": {
             "type": "string",

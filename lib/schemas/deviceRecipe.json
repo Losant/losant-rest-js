@@ -88,7 +88,7 @@
         ],
         "additionalProperties": false
       },
-      "maxItems": 100
+      "maxItems": 256
     },
     "deviceClass": {
       "type": "string",
