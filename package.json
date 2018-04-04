@@ -22,23 +22,21 @@
   },
   "scripts": {
     "lint": "eslint *.js lib test",
-    "test": "mocha test 2>&1",
-    "coverage": "rm -rf coverage; istanbul cover _mocha -- --recursive --reporter spec --bail"
+    "test": "mocha test 2>&1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Losant/losant-rest-js.git"
   },
   "dependencies": {
-    "axios": "^0.12.0",
+    "axios": "^0.18.0",
     "uri-template": "^1.0.1",
-    "qs": "^6.4.0"
+    "qs": "^6.5.1"
   },
   "devDependencies": {
-    "eslint": "^4.0.0",
-    "istanbul": "^0.4.5",
-    "mocha": "^3.4.2",
-    "nock": "9.1.10",
-    "should": "^11.2.1"
+    "eslint": "^4.19.1",
+    "mocha": "^5.0.5",
+    "nock": "^9.2.3",
+    "should": "^13.2.1"
   }
 }
