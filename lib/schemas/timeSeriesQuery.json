@@ -24,7 +24,8 @@
         "MIN",
         "MEDIAN",
         "MEAN",
-        "SUM"
+        "SUM",
+        "NONE"
       ]
     },
     "attributes": {

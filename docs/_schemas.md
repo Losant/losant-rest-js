@@ -86,6 +86,11 @@
 *   [Experience View Patch](#experience-view-patch)
 *   [Experience View Post](#experience-view-post)
 *   [Experience Views](#experience-views)
+*   [File Schema](#file-schema)
+*   [File Patch](#file-patch)
+*   [File Post](#file-post)
+*   [File Post Response](#file-post-response)
+*   [Files Schema](#files-schema)
 *   [Workflow](#workflow)
 *   [Workflow Log](#workflow-log)
 *   [Workflow Patch](#workflow-patch)
@@ -659,6 +664,8 @@ Schema for the body of an Application API Token creation request
           "experienceViews.*",
           "integration.*",
           "integrations.*",
+          "file.*",
+          "files.*",
           "flow.*",
           "flows.*",
           "flowVersion.*",
@@ -757,6 +764,12 @@ Schema for the body of an Application API Token creation request
           "experienceView.patch",
           "experienceViews.get",
           "experienceViews.post",
+          "file.get",
+          "file.patch",
+          "file.move",
+          "file.delete",
+          "files.get",
+          "files.post",
           "flow.delete",
           "flow.clearStorageEntries",
           "flow.get",
@@ -4481,91 +4494,7 @@ Schema for the body of a data table export
       "maxLength": 1024
     },
     "query": {
-      "title": "Data Table Query",
-      "description": "Schema for a data table query",
-      "type": "object",
-      "properties": {
-        "$and": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/dataTableQuery"
-          }
-        },
-        "$or": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/dataTableQuery"
-          }
-        }
-      },
-      "patternProperties": {
-        "^[0-9a-zA-Z_-]{1,255}$": {
-          "oneOf": [
-            {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                }
-              }
-            }
-          ]
-        }
-      },
-      "additionalProperties": false
+      "$ref": "#/definitions/dataTableQuery"
     },
     "queryOptions": {
       "type": "object",
@@ -9562,6 +9491,536 @@ Schema for a collection of Experience Views
   "sortField": "name",
   "sortDirection": "asc",
   "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
+
+## File Schema
+
+Schema for a single file
+
+### <a name="file-schema-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "authorId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "authorType": {
+      "type": "string",
+      "enum": [
+        "flow",
+        "user",
+        "device",
+        "apiToken"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "moving",
+        "deleting",
+        "completed"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048
+    },
+    "parentDirectory": {
+      "type": "string",
+      "maxLength": 2048
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "file",
+        "directory"
+      ]
+    },
+    "fileSize": {
+      "type": "number"
+    },
+    "contentType": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "fileDimensions": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
+```
+### <a name="file-schema-example"></a> Example
+
+```json
+{
+  "id": "575ec8687ae143cd83dc4a97",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "authorId": "575ed70c7ae143cd83dc4aa9",
+  "authorType": "user",
+  "status": "pending",
+  "name": "file.csv",
+  "type": "file",
+  "parentDirectory": "/",
+  "fileSize": 500,
+  "contentType": "text/csv"
+}
+```
+
+<br/>
+
+## File Patch
+
+Schema to patch a file
+
+### <a name="file-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "fileSize": {
+      "type": "number"
+    },
+    "contentType": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "fileDimensions": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
+```
+### <a name="file-patch-example"></a> Example
+
+```json
+{
+  "fileSize": 500,
+  "contentType": "image",
+  "fileDimensions": {
+    "width": 200,
+    "height": 200
+  }
+}
+```
+
+<br/>
+
+## File Post
+
+Schema to create a single file or directory
+
+### <a name="file-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048
+    },
+    "parentDirectory": {
+      "type": "string",
+      "maxLength": 2048
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "file",
+        "directory"
+      ]
+    },
+    "fileSize": {
+      "type": "number"
+    },
+    "contentType": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "fileDimensions": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
+```
+### <a name="file-post-example"></a> Example
+
+```json
+{
+  "name": "file.csv",
+  "type": "file",
+  "parentDirectory": "/",
+  "fileSize": 500,
+  "contentType": "text/csv"
+}
+```
+
+<br/>
+
+## File Post Response
+
+Schema to upload the file to s3
+
+### <a name="file-post-response-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "authorId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "authorType": {
+      "type": "string",
+      "enum": [
+        "flow",
+        "user",
+        "device",
+        "apiToken"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "moving",
+        "deleting",
+        "completed"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048
+    },
+    "parentDirectory": {
+      "type": "string",
+      "maxLength": 2048
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "file",
+        "directory"
+      ]
+    },
+    "fileSize": {
+      "type": "number"
+    },
+    "contentType": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "fileDimensions": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        }
+      }
+    },
+    "upload": {
+      "url": {
+        "type": "string"
+      },
+      "fields": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "bucket": {
+            "type": "string"
+          },
+          "X-Amz-Algorithm": {
+            "type": "string"
+          },
+          "X-Amz-Credential": {
+            "type": "string"
+          },
+          "X-Amz-Date": {
+            "type": "string"
+          },
+          "Policy": {
+            "type": "string"
+          },
+          "X-Amz-Signature": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
+```
+### <a name="file-post-response-example"></a> Example
+
+```json
+{
+  "id": "575ec8687ae143cd83dc4a97",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "authorId": "575ed70c7ae143cd83dc4aa9",
+  "authorType": "user",
+  "status": "pending",
+  "name": "file.csv",
+  "type": "file",
+  "parentDirectory": "/",
+  "fileSize": 500,
+  "contentType": "text/csv",
+  "upload": {
+    "url": "https://s3.us-west-1.amazonaws.com/a-bucket-on-amazon",
+    "fields": {
+      "key": "5630dcbe1035c9d0011/file.js",
+      "bucket": "a-bucket-on-amazon",
+      "X-Amz-Algorithm": "AWS4-HMAC-SHA256",
+      "X-Amz-Credential": "AKIAJPGQGBQX4PYM6FXA/20180416/us-west-1/s3/aws4_request",
+      "X-Amz-Date": "20180416T142402Z",
+      "Policy": "wMloiLCJjb25kaXRpb25zIjpbeyJrZXkiOiI1NjMwZGNiZTEwM2Y4ZTQ4NWM5ZDAwMTEvZmlsZS5qcyJ9LHsiYnVja2V0IjoibG9zYW50LWZpbGVzIn0seyJYLUFtei1BbGdvcml0aG0iOiJBV1M0LUhNQUMtU0hBMjU2In0seyJYLUFtei1DcmVkZW50aWFsIjoiQUtJQUpQR1FHQlFYNFBZTTZGWEEvMjAxODA0MTYvdXMtd2VzdC0xL3MzL2F3czRfcmVxdWVzdCJ9LHsiWC1BbXotRGF0ZSI6IjIwMTgwNDE2VDE0MjQwMloifV19",
+      "X-Amz-Signature": "a4a411df572c43b4427ff08ef51763bc2d834fa399c3688f347d936370"
+    }
+  }
+}
+```
+
+<br/>
+
+## Files Schema
+
+Schema for a collection of files
+
+### <a name="files-schema-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "File Schema",
+        "description": "Schema for a single file",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "authorId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "authorType": {
+            "type": "string",
+            "enum": [
+              "flow",
+              "user",
+              "device",
+              "apiToken"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "moving",
+              "deleting",
+              "completed"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          },
+          "parentDirectory": {
+            "type": "string",
+            "maxLength": 2048
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "file",
+              "directory"
+            ]
+          },
+          "fileSize": {
+            "type": "number"
+          },
+          "contentType": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "fileDimensions": {
+            "type": "object",
+            "properties": {
+              "width": {
+                "type": "number"
+              },
+              "height": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
+    }
+  }
+}
+```
+### <a name="files-schema-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "575ec8687ae143cd83dc4a97",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "authorId": "575ed70c7ae143cd83dc4aa9",
+      "authorType": "user",
+      "status": "pending",
+      "name": "file.csv",
+      "type": "file",
+      "parentDirectory": "/",
+      "fileSize": 500,
+      "contentType": "text/csv"
+    },
+    {
+      "id": "575ec8687ae143cd83dc4a96",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "authorId": "575ed70c7ae143cd83dc4aa9",
+      "authorType": "user",
+      "status": "completed",
+      "name": "b",
+      "type": "directory",
+      "parentDirectory": "/a/",
+      "fileSize": 500,
+      "contentType": "text/csv"
+    }
+  ],
+  "count": 2
 }
 ```
 
@@ -15578,7 +16037,8 @@ Schema for the result of a time series query
         "MIN",
         "MEDIAN",
         "MEAN",
-        "SUM"
+        "SUM",
+        "NONE"
       ]
     },
     "devices": {
@@ -15725,7 +16185,8 @@ Schema for the body of a time series query request
         "MIN",
         "MEDIAN",
         "MEAN",
-        "SUM"
+        "SUM",
+        "NONE"
       ]
     },
     "attributes": {

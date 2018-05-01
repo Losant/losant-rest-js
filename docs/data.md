@@ -44,6 +44,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | query | [Last Value Query](_schemas.md#last-value-query) | Y | The query parameters |  | [Last Value Query Example](_schemas.md#last-value-query-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -93,6 +94,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | query | [Time Series Query](_schemas.md#time-series-query) | Y | The query parameters |  | [Time Series Query Example](_schemas.md#time-series-query-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

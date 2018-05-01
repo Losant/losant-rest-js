@@ -53,6 +53,7 @@ all.Application, all.Organization, all.User, device.*, or device.delete.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -106,6 +107,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | end | string | N | End time of export (ms since epoch - 0 means now, negative is relative to now) | 0 | 1465790400000 |
 | email | string | N | Email address to send export to. Defaults to current user&#x27;s email. |  | email@example.com |
 | callbackUrl | string | N | Callback URL to call with export result. |  | https://example.com/cburl |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -155,6 +157,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -206,6 +209,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
 | limit | string | N | Max command entries to return (ordered by time descending) | 1 | 10 |
 | since | string | N | Look for command entries since this time (ms since epoch) |  | 1465790400000 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -257,6 +261,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
 | start | string | N | Start of time range to look at to build composite state | 1 | 1465790400000 |
 | end | string | N | End of time range to look at to build composite state | 0 | 1465790400000 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -308,6 +313,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
 | limit | string | N | Max log entries to return (ordered by time descending) | 1 | 10 |
 | since | string | N | Look for log entries since this time (ms since epoch) |  | 1465790400000 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -359,6 +365,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
 | limit | string | N | Max state entries to return (ordered by time descending) | 1 | 10 |
 | since | string | N | Look for state entries since this time (ms since epoch) |  | 1465790400000 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -410,6 +417,7 @@ all.Application, all.Organization, all.User, device.*, or device.patch.
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
 | device | [Device Patch](_schemas.md#device-patch) | Y | Object containing new properties of the device |  | [Device Patch Example](_schemas.md#device-patch-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -461,6 +469,7 @@ all.Application, all.Organization, all.User, device.*, or device.removeData.
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
 | start | string | N | Start time of export (ms since epoch - 0 means now, negative is relative to now) | 1 | 1465790400000 |
 | end | string | N | End time of export (ms since epoch - 0 means now, negative is relative to now) | 0 | 1465790400000 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -512,6 +521,7 @@ all.Application, all.Device, all.Organization, all.User, device.*, or device.sen
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
 | deviceCommand | [Device Command](_schemas.md#device-command) | Y | Command to send to the device |  | [Device Command Example](_schemas.md#device-command-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -563,6 +573,7 @@ all.Application, all.Device, all.Organization, all.User, device.*, or device.sen
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
 | deviceState | [Single or Multiple Device States](_schemas.md#single-or-multiple-device-states) | Y | A single device state object, or an array of device state objects |  | [Single or Multiple Device States Example](_schemas.md#single-or-multiple-device-states-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

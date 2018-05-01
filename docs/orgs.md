@@ -46,6 +46,7 @@ all.User, all.User.read, orgs.*, or orgs.get.
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*org |
 | summaryExclude | string | N | List of summary fields to exclude from org summaries |  | payloadCount |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -92,6 +93,7 @@ all.User, orgs.*, or orgs.post.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | organization | [Organization Post](_schemas.md#organization-post) | Y | New organization information |  | [Organization Post Example](_schemas.md#organization-post-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

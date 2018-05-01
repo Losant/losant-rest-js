@@ -1,35 +1,36 @@
-# Devices Actions
+# File Actions
 
 Details on the various actions that can be performed on the
-Devices resource, including the expected
+File resource, including the expected
 parameters and the potential responses.
 
 ##### Contents
 
-*   [Export](#export)
+*   [Delete](#delete)
 *   [Get](#get)
-*   [Post](#post)
-*   [Send Command](#send-command)
+*   [Move](#move)
+*   [Patch](#patch)
 
 <br/>
 
-## Export
+## Delete
 
-Creates an export of all device metadata.
+Deletes a file or directory, if directory all the contents that directory will also be removed.
 
 ```javascript
 var params = {
-  applicationId: myApplicationId
+  applicationId: myApplicationId,
+  fileId: myFileId
 };
 
 // with callbacks
-client.devices.export(params, function (err, result) {
+client.file.delete(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.devices.export(params)
+client.file.delete(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -37,49 +38,49 @@ client.devices.export(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, devices.*, or devices.export.
+all.Application, all.Organization, all.User, file.*, or file.delete.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| email | string | N | Email address to send export to. Defaults to current user&#x27;s email. |  | email@example.com |
-| callbackUrl | string | N | Callback URL to call with export result. |  | https://example.com/cburl |
+| fileId | string | Y | ID associated with the file |  | 575ec76c7ae143cd83dc4a96 |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If generation of export was successfully started |
+| 200 | [Success](_schemas.md#success) | If file was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
+| 404 | [Error](_schemas.md#error) | Error if event was not found |
 
 <br/>
 
 ## Get
 
-Returns the devices for an application
+Retrieves information on a file
 
 ```javascript
 var params = {
-  applicationId: myApplicationId
+  applicationId: myApplicationId,
+  fileId: myFileId
 };
 
 // with callbacks
-client.devices.get(params, function (err, result) {
+client.file.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.devices.get(params)
+client.file.get(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -87,28 +88,73 @@ client.devices.get(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Device, all.Device.read, all.Organization, all.Organization.read, all.User, all.User.read, devices.*, or devices.get.
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, file.*, or file.get.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| sortField | string | N | Field to sort the results by. Accepted values are: name, id, creationDate | name | name |
-| sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
-| page | string | N | Which page of results to return | 0 | 0 |
-| perPage | string | N | How many items to return per page | 1000 | 10 |
-| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
-| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my * device |
-| deviceClass | string | N | Filter the devices by the given device class. Accepted values are: standalone, gateway, peripheral, floating, edgeCompute |  | standalone |
-| tagFilter | [Device Tag Filter](_schemas.md#device-tag-filter) | N | Array of tag pairs to filter by. |  | [Device Tag Filter Example](_schemas.md#device-tag-filter-example) |
+| fileId | string | Y | ID associated with the file |  | 575ec76c7ae143cd83dc4a96 |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Devices](_schemas.md#devices) | Collection of devices |
+| 200 | [File Schema](_schemas.md#file-schema) | file information |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if file was not found |
+
+<br/>
+
+## Move
+
+Move a file or the entire contents of a directory
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  fileId: myFileId
+};
+
+// with callbacks
+client.file.move(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.file.move(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, file.*, or file.move.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| fileId | string | Y | ID associated with the file |  | 575ec76c7ae143cd83dc4a96 |
+| name | undefined | N | The new name of the file or directory |  | fileA |
+| parentDirectory | undefined | N | The new parent directory for the file or directory to move into. |  | /new/location/here |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 201 | [File Schema](_schemas.md#file-schema) | Returns a new file or directory that was created by the move, if a directory a job will kick off to move all the directories children. |
 
 #### Error Responses
 
@@ -119,24 +165,25 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 
 <br/>
 
-## Post
+## Patch
 
-Create a new device for an application
+Reupload a file
 
 ```javascript
 var params = {
   applicationId: myApplicationId,
-  device: myDevice
+  fileId: myFileId,
+  updates: myUpdates
 };
 
 // with callbacks
-client.devices.post(params, function (err, result) {
+client.file.patch(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.devices.post(params)
+client.file.patch(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -144,71 +191,22 @@ client.devices.post(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, devices.*, or devices.post.
+all.Application, all.Organization, all.User, file.*, or file.patch.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| device | [Device Post](_schemas.md#device-post) | Y | New device information |  | [Device Post Example](_schemas.md#device-post-example) |
+| fileId | string | Y | ID associated with the file |  | 575ec76c7ae143cd83dc4a96 |
+| updates | [File Patch](_schemas.md#file-patch) | Y | Reupload a file |  | [File Patch Example](_schemas.md#file-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Device](_schemas.md#device) | Successfully created device |
-
-#### Error Responses
-
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
-
-<br/>
-
-## Send Command
-
-Send a command to multiple devices
-
-```javascript
-var params = {
-  applicationId: myApplicationId,
-  multiDeviceCommand: myMultiDeviceCommand
-};
-
-// with callbacks
-client.devices.sendCommand(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.devices.sendCommand(params)
-  .then(console.log)
-  .catch(console.error);
-```
-
-#### Authentication
-The client must be configured with a valid api access token to call this
-action. The token must include at least one of the following scopes:
-all.Application, all.Device, all.Organization, all.User, devices.*, or devices.sendCommand.
-
-#### Available Parameters
-
-| Name | Type | Required | Description | Default | Example |
-| ---- | ---- | -------- | ----------- | ------- | ------- |
-| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| multiDeviceCommand | [Multi Device Command](_schemas.md#multi-device-command) | Y | Command to send to the device |  | [Multi Device Command Example](_schemas.md#multi-device-command-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
-
-#### Successful Responses
-
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If command was successfully sent |
+| 201 | [File Post Response](_schemas.md#file-post-response) | Successfully updated file and returned a post url to respond with |
 
 #### Error Responses
 

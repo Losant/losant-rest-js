@@ -45,6 +45,7 @@ all.Application, all.Organization, all.User, webhook.*, or webhook.delete.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | webhookId | string | Y | ID associated with the webhook |  | 575ed78e7ae143cd83dc4aab |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -94,6 +95,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | webhookId | string | Y | ID associated with the webhook |  | 575ed78e7ae143cd83dc4aab |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -145,6 +147,7 @@ all.Application, all.Organization, all.User, webhook.*, or webhook.patch.
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | webhookId | string | Y | ID associated with the webhook |  | 575ed78e7ae143cd83dc4aab |
 | webhook | [Webhook Patch](_schemas.md#webhook-patch) | Y | Object containing new properties of the webhook |  | [Webhook Patch Example](_schemas.md#webhook-patch-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

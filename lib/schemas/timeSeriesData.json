@@ -23,7 +23,8 @@
         "MIN",
         "MEDIAN",
         "MEAN",
-        "SUM"
+        "SUM",
+        "NONE"
       ]
     },
     "devices": {

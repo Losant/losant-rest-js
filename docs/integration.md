@@ -45,6 +45,7 @@ all.Application, all.Organization, all.User, integration.*, or integration.delet
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | integrationId | string | Y | ID associated with the integration |  | 575ed78e7ae143cd83dc4aab |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -94,6 +95,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | integrationId | string | Y | ID associated with the integration |  | 575ed78e7ae143cd83dc4aab |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -145,6 +147,7 @@ all.Application, all.Organization, all.User, integration.*, or integration.patch
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | integrationId | string | Y | ID associated with the integration |  | 575ed78e7ae143cd83dc4aab |
 | integration | [Integration Patch](_schemas.md#integration-patch) | Y | Object containing new properties of the integration |  | [Integration Patch Example](_schemas.md#integration-patch-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

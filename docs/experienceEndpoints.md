@@ -49,6 +49,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*route |
 | experienceGroupId | string | N | Filter endpoints to those only in the specified group |  | 575ec8687ae143cd83dc4a97 |
 | requestCountDuration | string | N | If set, a count of recent requests is included on each endpoint for the duration requested (milliseconds) |  | 86400000 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -98,6 +99,7 @@ all.Application, all.Organization, all.User, experienceEndpoints.*, or experienc
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | experienceEndpoint | [Experience Endpoint Post](_schemas.md#experience-endpoint-post) | Y | New experience endpoint information |  | [Experience Endpoint Post Example](_schemas.md#experience-endpoint-post-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -148,6 +150,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | statGrouping | string | N | Field to group the statistics by. Accepted values are: statusCode, endpointId | statusCode | statusCode |
 | duration | string | N | Duration in milliseconds | 86400000 | 86400000 |
 | resolution | string | N | Resolution in milliseconds | 3600000 | 3600000 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

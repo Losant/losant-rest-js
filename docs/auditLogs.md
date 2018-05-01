@@ -48,6 +48,7 @@ all.Organization, all.Organization.read, all.User, all.User.read, auditLogs.*, o
 | start | string | N | Start of time range for audit log query |  | 1465790400000 |
 | end | string | N | End of time range for audit log query |  | 1465790400000 |
 | auditLogFilter | [Audit Log Filter](_schemas.md#audit-log-filter) | N | Filters for the audit log query |  | [Audit Log Filter Example](_schemas.md#audit-log-filter-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
