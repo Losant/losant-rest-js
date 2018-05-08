@@ -49,7 +49,6 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*view |
 | viewType | string | N | Filter views to those only of the given type. Accepted values are: page, layout, component |  | page |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -99,7 +98,6 @@ all.Application, all.Organization, all.User, experienceViews.*, or experienceVie
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | experienceView | [Experience View Post](_schemas.md#experience-view-post) | Y | New experience view information |  | [Experience View Post Example](_schemas.md#experience-view-post-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

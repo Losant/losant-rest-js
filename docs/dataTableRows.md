@@ -50,7 +50,6 @@ all.Application, all.Organization, all.User, dataTableRows.*, or dataTableRows.d
 | dataTableId | string | Y | ID associated with the data table |  | 575ed78e7ae143cd83dc4aab |
 | query | [Data Table Query](_schemas.md#data-table-query) | N | Query to apply to filter the data table |  | [Data Table Query Example](_schemas.md#data-table-query-example) |
 | limit | string | N | Limit number of rows to delete from data table | 1000 | 10 |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -101,7 +100,6 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | dataTableId | string | Y | ID associated with the data table |  | 575ed78e7ae143cd83dc4aab |
 | exportData | [Data Table Export](_schemas.md#data-table-export) | N | Object containing export specifications |  | [Data Table Export Example](_schemas.md#data-table-export-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -155,7 +153,6 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | sortDirection | string | N | Direction to sort the rows by. Accepted values are: asc, desc | asc | asc |
 | limit | string | N | How many rows to return | 1000 | 0 |
 | offset | string | N | How many rows to skip | 0 | 0 |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -207,7 +204,6 @@ all.Application, all.Organization, all.User, dataTableRows.*, or dataTableRows.p
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | dataTableId | string | Y | ID associated with the data table |  | 575ed78e7ae143cd83dc4aab |
 | dataTableRow | [Data Table Row Insert/Update](_schemas.md#data-table-row-insert/update) | Y | The row to insert |  | [Data Table Row Insert/Update Example](_schemas.md#data-table-row-insert/update-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -262,7 +258,6 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | limit | string | N | How many rows to return | 1000 | 0 |
 | offset | string | N | How many rows to skip | 0 | 0 |
 | query | [Data Table Query](_schemas.md#data-table-query) | N | Query to apply to filter the data table |  | [Data Table Query Example](_schemas.md#data-table-query-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -312,7 +307,6 @@ all.Application, all.Organization, all.User, dataTableRows.*, or dataTableRows.t
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | dataTableId | string | Y | ID associated with the data table |  | 575ed78e7ae143cd83dc4aab |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

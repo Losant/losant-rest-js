@@ -46,10 +46,11 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
 | page | string | N | Which page of results to return | 0 | 0 |
 | perPage | string | N | How many items to return per page | 1000 | 10 |
+| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
+| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | myFile |
 | type | string | N | Limit by the type (file or directory) of the file |  | file |
 | status | string | N | Limit the result to only files of this status. Accepted values are: completed, pending |  | completed |
 | directory | string | N | Get files that are inside of this directory | / | /a/path/ |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -99,7 +100,6 @@ all.Application, all.Organization, all.User, files.*, or files.post.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | file | [File Post](_schemas.md#file-post) | Y | New file information |  | [File Post Example](_schemas.md#file-post-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

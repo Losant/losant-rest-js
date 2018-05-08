@@ -43,7 +43,6 @@ all.Organization, all.Organization.read, all.User, all.User.read, auditLog.*, or
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
 | auditLogId | string | Y | ID associated with the audit log |  | 57955788124b37010084c053 |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

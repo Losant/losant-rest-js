@@ -45,7 +45,6 @@ all.Organization, all.User, solution.*, or solution.delete.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
 | solutionId | string | Y | ID associated with the solution |  | 57955788124b37010084c053 |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -95,7 +94,6 @@ all.Organization, all.Organization.read, all.User, all.User.read, solution.*, or
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
 | solutionId | string | Y | ID associated with the solution |  | 57955788124b37010084c053 |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -147,7 +145,6 @@ all.Organization, all.User, solution.*, or solution.patch.
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
 | solutionId | string | Y | ID associated with the solution |  | 57955788124b37010084c053 |
 | solution | [Solution Patch](_schemas.md#solution-patch) | Y | Object containing new properties of the solution |  | [Solution Patch Example](_schemas.md#solution-patch-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

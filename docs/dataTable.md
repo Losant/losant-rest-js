@@ -49,7 +49,6 @@ all.Application, all.Organization, all.User, dataTable.*, or dataTable.addColumn
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | dataTableId | string | Y | ID associated with the data table |  | 575ed78e7ae143cd83dc4aab |
 | dataTableColumn | [Data Table Column](_schemas.md#data-table-column) | Y | Object containing the new column properties |  | [Data Table Column Example](_schemas.md#data-table-column-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -99,7 +98,6 @@ all.Application, all.Organization, all.User, dataTable.*, or dataTable.delete.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | dataTableId | string | Y | ID associated with the data table |  | 575ed78e7ae143cd83dc4aab |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -149,7 +147,6 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | dataTableId | string | Y | ID associated with the data table |  | 575ed78e7ae143cd83dc4aab |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -201,7 +198,6 @@ all.Application, all.Organization, all.User, dataTable.*, or dataTable.patch.
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | dataTableId | string | Y | ID associated with the data table |  | 575ed78e7ae143cd83dc4aab |
 | dataTable | [Data Table Patch](_schemas.md#data-table-patch) | Y | Object containing updated properties of the data table |  | [Data Table Patch Example](_schemas.md#data-table-patch-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -253,7 +249,6 @@ all.Application, all.Organization, all.User, dataTable.*, or dataTable.removeCol
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | dataTableId | string | Y | ID associated with the data table |  | 575ed78e7ae143cd83dc4aab |
 | columnName | string | Y | Name of the column to remove |  | myColumnName |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

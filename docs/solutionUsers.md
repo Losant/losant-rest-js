@@ -50,7 +50,6 @@ all.Organization, all.Organization.read, all.User, all.User.read, solutionUsers.
 | perPage | string | N | How many items to return per page | 1000 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: email, firstName, lastName |  | email |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | email*address |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -101,7 +100,6 @@ all.Organization, all.User, solutionUsers.*, or solutionUsers.post.
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
 | solutionId | string | Y | ID associated with the solution |  | 57955788124b37010084c053 |
 | solutionUser | [Solution User Post](_schemas.md#solution-user-post) | Y | New solution user information |  | [Solution User Post Example](_schemas.md#solution-user-post-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

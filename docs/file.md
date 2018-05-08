@@ -46,7 +46,6 @@ all.Application, all.Organization, all.User, file.*, or file.delete.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | fileId | string | Y | ID associated with the file |  | 575ec76c7ae143cd83dc4a96 |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -96,7 +95,6 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | fileId | string | Y | ID associated with the file |  | 575ec76c7ae143cd83dc4a96 |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -148,7 +146,6 @@ all.Application, all.Organization, all.User, file.*, or file.move.
 | fileId | string | Y | ID associated with the file |  | 575ec76c7ae143cd83dc4a96 |
 | name | undefined | N | The new name of the file or directory |  | fileA |
 | parentDirectory | undefined | N | The new parent directory for the file or directory to move into. |  | /new/location/here |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -200,7 +197,6 @@ all.Application, all.Organization, all.User, file.*, or file.patch.
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | fileId | string | Y | ID associated with the file |  | 575ec76c7ae143cd83dc4a96 |
 | updates | [File Patch](_schemas.md#file-patch) | Y | Reupload a file |  | [File Patch Example](_schemas.md#file-patch-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

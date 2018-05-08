@@ -50,7 +50,6 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | perPage | string | N | How many items to return per page | 1000 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: version |  | version |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*version |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -103,7 +102,6 @@ all.Application, all.Organization, all.User, flowVersions.*, or flowVersions.pos
 | flowId | string | Y | ID associated with the flow |  | 575ed18f7ae143cd83dc4aa6 |
 | flowVersion | [Workflow Version Post](_schemas.md#workflow-version-post) | Y | New flow version information |  | [Workflow Version Post Example](_schemas.md#workflow-version-post-example) |
 | allowReplacement | undefined | N | Allow replacement of an existing flow version with same version name | false | true |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

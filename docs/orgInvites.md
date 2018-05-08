@@ -42,7 +42,6 @@ No api access token is required to call this action.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | token | string | Y | The token associated with the invite |  | aTokenString |
 | email | string | Y | The email associated with the invite |  | example@example.com |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -89,7 +88,6 @@ No api access token is required to call this action.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | invite | [Organization Invitation Action](_schemas.md#organization-invitation-action) | Y | Invite info and acceptance |  | [Organization Invitation Action Example](_schemas.md#organization-invitation-action-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

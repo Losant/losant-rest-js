@@ -46,7 +46,6 @@ all.Organization, all.Organization.read, all.SolutionUser, all.SolutionUser.read
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my * dashboard |
 | orgId | string | N | If not provided, return all dashboards. If provided but blank, only return dashboards belonging to the current user. If provided and an id, only return dashboards belonging to the given organization id. |  | 575ece7e7ae143cd83dc4a9c |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -93,7 +92,6 @@ all.Organization, all.User, dashboards.*, or dashboards.post.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | dashboard | [Dashboard Post](_schemas.md#dashboard-post) | Y | New dashboard information |  | [Dashboard Post Example](_schemas.md#dashboard-post-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

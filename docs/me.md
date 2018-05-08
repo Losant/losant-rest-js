@@ -53,7 +53,6 @@ all.SolutionUser, all.User, me.*, or me.addRecentItem.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | data | [Recent Item](_schemas.md#recent-item) | Y | Object containing recent item info |  | [Recent Item Example](_schemas.md#recent-item-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -100,7 +99,6 @@ all.SolutionUser, all.User, me.*, or me.changePassword.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | data | [Change Password](_schemas.md#change-password) | Y | Object containing the password change info |  | [Change Password Example](_schemas.md#change-password-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -147,7 +145,6 @@ all.SolutionUser, all.User, me.*, or me.delete.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | credentials | [User Credentials](_schemas.md#user-credentials) | Y | User authentication credentials |  | [User Credentials Example](_schemas.md#user-credentials-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -194,7 +191,6 @@ all.SolutionUser, all.User, me.*, or me.disableTwoFactorAuth.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | data | [Disable Two Factor Auth](_schemas.md#disable-two-factor-auth) | Y | Object containing two factor auth properties |  | [Disable Two Factor Auth Example](_schemas.md#disable-two-factor-auth-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -236,9 +232,7 @@ all.SolutionUser, all.User, me.*, or me.disconnectGithub.
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default | Example |
-| ---- | ---- | -------- | ----------- | ------- | ------- |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+No parameters needed for this call.
 
 #### Successful Responses
 
@@ -280,9 +274,7 @@ all.SolutionUser, all.User, me.*, or me.disconnectTwitter.
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default | Example |
-| ---- | ---- | -------- | ----------- | ------- | ------- |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+No parameters needed for this call.
 
 #### Successful Responses
 
@@ -329,7 +321,6 @@ all.SolutionUser, all.User, me.*, or me.enableTwoFactorAuth.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | data | [Enable Two Factor Auth](_schemas.md#enable-two-factor-auth) | Y | Object containing two factor auth properties |  | [Enable Two Factor Auth Example](_schemas.md#enable-two-factor-auth-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -377,7 +368,6 @@ all.SolutionUser, all.SolutionUser.read, all.User, all.User.read, me.*, or me.fe
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | parentId | string | N | Parent id of the recent list |  | 575ec8687ae143cd83dc4a97 |
 | itemType | undefined | Y | Item type to get the recent list of. Accepted values are: application, device, flow, dashboard, organization |  | application |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -423,7 +413,6 @@ all.SolutionUser, all.SolutionUser.read, all.User, all.User.read, me.*, or me.ge
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | includeRecent | undefined | N | Should the user include recent app/dashboard info |  | true |
 | summaryExclude | string | N | List of summary fields to exclude from user summary |  | payloadCount |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -469,7 +458,6 @@ all.SolutionUser, all.User, me.*, or me.patch.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | user | [Me Patch](_schemas.md#me-patch) | Y | Object containing new user properties |  | [Me Patch Example](_schemas.md#me-patch-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -515,7 +503,6 @@ all.SolutionUser, all.User, all.User.read, me.*, or me.payloadCounts.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | start | string | N | Start of range for payload count query (ms since epoch) |  | 0 |
 | end | string | N | End of range for payload count query (ms since epoch) |  | 1465790400000 |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -562,7 +549,6 @@ all.SolutionUser, all.User, me.*, or me.transferResources.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | transfer | [Resource Transfer](_schemas.md#resource-transfer) | Y | Object containing properties of the transfer |  | [Resource Transfer Example](_schemas.md#resource-transfer-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -604,9 +590,7 @@ all.SolutionUser, all.User, me.*, or me.verifyEmail.
 
 #### Available Parameters
 
-| Name | Type | Required | Description | Default | Example |
-| ---- | ---- | -------- | ----------- | ------- | ------- |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+No parameters needed for this call.
 
 #### Successful Responses
 

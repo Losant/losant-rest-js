@@ -47,7 +47,6 @@ all.Organization, all.User, solutionUser.*, or solutionUser.delete.
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
 | solutionId | string | Y | ID associated with the solution |  | 57955788124b37010084c053 |
 | solutionUserId | string | Y | ID associated with the solution user |  | 566116085df4b701000258e3 |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -99,7 +98,6 @@ all.Organization, all.Organization.read, all.User, all.User.read, solutionUser.*
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
 | solutionId | string | Y | ID associated with the solution |  | 57955788124b37010084c053 |
 | solutionUserId | string | Y | ID associated with the solution user |  | 566116085df4b701000258e3 |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -153,7 +151,6 @@ all.Organization, all.User, solutionUser.*, or solutionUser.patch.
 | solutionId | string | Y | ID associated with the solution |  | 57955788124b37010084c053 |
 | solutionUserId | string | Y | ID associated with the solution user |  | 566116085df4b701000258e3 |
 | solutionUser | [Solution User Patch](_schemas.md#solution-user-patch) | Y | Object containing new properties of the solution user |  | [Solution User Patch Example](_schemas.md#solution-user-patch-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

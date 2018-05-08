@@ -52,7 +52,6 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | version | string | N | Filter deployments to the given Workflow Version (matches against both current and desired) |  | myFlowVersion |
 | filterEmpty | undefined | N | Filter out deployments where both the current and desired version are null. |  | true |
 | flowId | string | N | Filter deployments to the given Workflow ID |  | 575ed18f7ae143cd83dc4aa6 |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -102,7 +101,6 @@ all.Application, all.Organization, all.User, edgeDeployments.*, or edgeDeploymen
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deployment | [Edge Deployment Release](_schemas.md#edge-deployment-release) | Y | Deployment release information |  | [Edge Deployment Release Example](_schemas.md#edge-deployment-release-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -152,7 +150,6 @@ all.Application, all.Organization, all.User, edgeDeployments.*, or edgeDeploymen
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deployment | [Edge Deployment Remove](_schemas.md#edge-deployment-remove) | Y | Deployment removal information |  | [Edge Deployment Remove Example](_schemas.md#edge-deployment-remove-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -202,7 +199,6 @@ all.Application, all.Organization, all.User, edgeDeployments.*, or edgeDeploymen
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deployment | [Edge Deployment Replace](_schemas.md#edge-deployment-replace) | Y | Deployment replacement information |  | [Edge Deployment Replace Example](_schemas.md#edge-deployment-replace-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
