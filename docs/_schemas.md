@@ -2639,8 +2639,7 @@ Schema for the body of a request to change the current user&#x27;s password
     "password": {
       "type": "string",
       "minLength": 8,
-      "maxLength": 2048,
-      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{8,}$"
+      "maxLength": 2048
     },
     "newPassword": {
       "type": "string",
@@ -15559,7 +15558,8 @@ Schema for the body of a Solution User modification request
     "password": {
       "type": "string",
       "minLength": 8,
-      "maxLength": 2048
+      "maxLength": 2048,
+      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{8,}$"
     },
     "twoFactorAuthKey": {
       "type": "string",
@@ -15651,7 +15651,8 @@ Schema for the body of a Solution User creation request
     "password": {
       "type": "string",
       "minLength": 8,
-      "maxLength": 2048
+      "maxLength": 2048,
+      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{8,}$"
     },
     "twoFactorAuthKey": {
       "type": "string",
