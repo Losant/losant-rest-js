@@ -2639,12 +2639,14 @@ Schema for the body of a request to change the current user&#x27;s password
     "password": {
       "type": "string",
       "minLength": 8,
-      "maxLength": 2048
+      "maxLength": 2048,
+      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{8,}$"
     },
     "newPassword": {
       "type": "string",
       "minLength": 8,
-      "maxLength": 2048
+      "maxLength": 2048,
+      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{8,}$"
     },
     "invalidateExistingTokens": {
       "type": "boolean"
@@ -13422,7 +13424,8 @@ Schema for the body of request to modify the current user
     "password": {
       "type": "string",
       "minLength": 8,
-      "maxLength": 2048
+      "maxLength": 2048,
+      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{8,}$"
     },
     "tokenCutoff": {
       "type": "string",
