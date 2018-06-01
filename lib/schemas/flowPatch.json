@@ -53,6 +53,7 @@
               "mqttTopic",
               "request",
               "timer",
+              "udp",
               "virtualButton",
               "webhook"
             ]

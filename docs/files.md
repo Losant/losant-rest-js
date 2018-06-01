@@ -50,7 +50,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | myFile |
 | type | string | N | Limit by the type (file or directory) of the file |  | file |
 | status | string | N | Limit the result to only files of this status. Accepted values are: completed, pending |  | completed |
-| directory | string | N | Get files that are inside of this directory | / | /a/path/ |
+| directory | string | N | Get files that are inside of this directory |  | /a/path/ |
 
 #### Successful Responses
 

@@ -136,10 +136,11 @@
           "type": {
             "type": "string",
             "enum": [
-              "deviceId",
               "deviceAttribute",
-              "string",
-              "number"
+              "deviceId",
+              "deviceTag",
+              "number",
+              "string"
             ]
           },
           "applicationId": {
@@ -147,9 +148,29 @@
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "defaultValue": {
-            "type": [
-              "string",
-              "number"
+            "oneOf": [
+              {
+                "type": "string",
+                "maxLength": 32767
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  }
+                },
+                "additionalProperties": false
+              }
             ]
           },
           "validationEnabled": {
@@ -173,7 +194,8 @@
                 "items": {
                   "type": "string",
                   "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                }
+                },
+                "maxItems": 100
               },
               "deviceIds": {
                 "type": "array",
@@ -212,7 +234,8 @@
           "defaultValue"
         ],
         "additionalProperties": false
-      }
+      },
+      "maxItems": 100
     }
   },
   "additionalProperties": false

@@ -64,6 +64,14 @@
     },
     "limit": {
       "type": "number"
+    },
+    "order": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ],
+      "default": "asc"
     }
   },
   "additionalProperties": false

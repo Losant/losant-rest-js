@@ -73,6 +73,9 @@
           "type": "number"
         }
       }
+    },
+    "url": {
+      "type": "string"
     }
   }
 }
