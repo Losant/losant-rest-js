@@ -43,11 +43,11 @@
     "name": {
       "type": "string",
       "minLength": 1,
-      "maxLength": 2048
+      "maxLength": 1024
     },
     "parentDirectory": {
       "type": "string",
-      "maxLength": 2048
+      "maxLength": 1024
     },
     "type": {
       "type": "string",

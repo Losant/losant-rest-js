@@ -113,6 +113,9 @@
             "experienceview": {
               "type": "number"
             },
+            "file": {
+              "type": "number"
+            },
             "flow": {
               "type": "number"
             },
@@ -172,6 +175,9 @@
                 "type": "number"
               },
               "experienceViewCount": {
+                "type": "number"
+              },
+              "fileCount": {
                 "type": "number"
               },
               "flowCount": {

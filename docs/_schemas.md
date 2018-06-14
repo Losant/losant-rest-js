@@ -423,6 +423,9 @@ Schema for a single Application
         "experienceViewCount": {
           "type": "number"
         },
+        "fileCount": {
+          "type": "number"
+        },
         "flowCount": {
           "type": "number"
         },
@@ -1768,6 +1771,9 @@ Schema for a collection of Applications
                 "type": "number"
               },
               "experienceViewCount": {
+                "type": "number"
+              },
+              "fileCount": {
                 "type": "number"
               },
               "flowCount": {
@@ -9745,11 +9751,11 @@ Schema for a single file
     "name": {
       "type": "string",
       "minLength": 1,
-      "maxLength": 2048
+      "maxLength": 1024
     },
     "parentDirectory": {
       "type": "string",
-      "maxLength": 2048
+      "maxLength": 1024
     },
     "type": {
       "type": "string",
@@ -9775,6 +9781,10 @@ Schema for a single file
           "type": "number"
         }
       }
+    },
+    "moveIntoId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "url": {
       "type": "string"
@@ -9864,11 +9874,11 @@ Schema to create a single file or directory
     "name": {
       "type": "string",
       "minLength": 1,
-      "maxLength": 2048
+      "maxLength": 1024
     },
     "parentDirectory": {
       "type": "string",
-      "maxLength": 2048
+      "maxLength": 1024
     },
     "type": {
       "type": "string",
@@ -9964,11 +9974,11 @@ Schema to upload the file to s3
     "name": {
       "type": "string",
       "minLength": 1,
-      "maxLength": 2048
+      "maxLength": 1024
     },
     "parentDirectory": {
       "type": "string",
-      "maxLength": 2048
+      "maxLength": 1024
     },
     "type": {
       "type": "string",
@@ -10121,11 +10131,11 @@ Schema for a collection of files
           "name": {
             "type": "string",
             "minLength": 1,
-            "maxLength": 2048
+            "maxLength": 1024
           },
           "parentDirectory": {
             "type": "string",
-            "maxLength": 2048
+            "maxLength": 1024
           },
           "type": {
             "type": "string",
@@ -10151,6 +10161,10 @@ Schema for a collection of files
                 "type": "number"
               }
             }
+          },
+          "moveIntoId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "url": {
             "type": "string"
@@ -13162,6 +13176,9 @@ Schema for information about the currently authenticated user
       "experienceview": {
         "type": "number"
       },
+      "file": {
+        "type": "number"
+      },
       "flow": {
         "type": "number"
       },
@@ -13329,6 +13346,9 @@ Schema for information about the currently authenticated user
           "type": "number"
         },
         "experienceViewCount": {
+          "type": "number"
+        },
+        "fileCount": {
           "type": "number"
         },
         "flowCount": {
@@ -13786,6 +13806,9 @@ Schema for a single Organization
       "experienceview": {
         "type": "number"
       },
+      "file": {
+        "type": "number"
+      },
       "flow": {
         "type": "number"
       },
@@ -13845,6 +13868,9 @@ Schema for a single Organization
           "type": "number"
         },
         "experienceViewCount": {
+          "type": "number"
+        },
+        "fileCount": {
           "type": "number"
         },
         "flowCount": {
@@ -14557,6 +14583,9 @@ Schema for a collection of Organizations
             "experienceview": {
               "type": "number"
             },
+            "file": {
+              "type": "number"
+            },
             "flow": {
               "type": "number"
             },
@@ -14616,6 +14645,9 @@ Schema for a collection of Organizations
                 "type": "number"
               },
               "experienceViewCount": {
+                "type": "number"
+              },
+              "fileCount": {
                 "type": "number"
               },
               "flowCount": {

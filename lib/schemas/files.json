@@ -50,11 +50,11 @@
           "name": {
             "type": "string",
             "minLength": 1,
-            "maxLength": 2048
+            "maxLength": 1024
           },
           "parentDirectory": {
             "type": "string",
-            "maxLength": 2048
+            "maxLength": 1024
           },
           "type": {
             "type": "string",
@@ -80,6 +80,10 @@
                 "type": "number"
               }
             }
+          },
+          "moveIntoId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "url": {
             "type": "string"
