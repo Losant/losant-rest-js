@@ -177,6 +177,12 @@ Each of the following is a property on the client instance, and wraps the action
 * [experienceViews](docs/experienceViews.md)  
   Contains all the actions that can be performed against the collection of [Experience Views](https://docs.losant.com/experiences/views/) belonging to an Application - such as listing views or creating a new view.
 
+* [file](docs/file.md)  
+  Contains all the actions that can be performed against a single [File](/applications/files/), such as moving, renaming, or deleting.
+
+* [files](docs/files.md)  
+  Contains all the actions that can be performed against the collection of [Files](/applications/files/) belonging to an Application - such as listing files or uploading a new file.
+
 * [flow](docs/flow.md)  
   Contains all the actions that can be performed against a single [Workflow](https://docs.losant.com/workflows/overview/), such as enabling or disabling a workflow, or triggering a virtual button in the workflow.
 
