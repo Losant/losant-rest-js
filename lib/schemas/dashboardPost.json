@@ -69,6 +69,13 @@
       "minimum": 5,
       "maximum": 600
     },
+    "defaultTheme": {
+      "type": "string",
+      "enum": [
+        "dark",
+        "light"
+      ]
+    },
     "reportConfigs": {
       "type": "array",
       "max": 10,

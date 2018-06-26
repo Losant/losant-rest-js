@@ -2797,6 +2797,13 @@ Schema for a single Dashboard
       "minimum": 5,
       "maximum": 600
     },
+    "defaultTheme": {
+      "type": "string",
+      "enum": [
+        "dark",
+        "light"
+      ]
+    },
     "isPasswordProtected": {
       "type": "boolean"
     },
@@ -3224,6 +3231,13 @@ Schema for the body of a Dashboard modification request
       "minimum": 5,
       "maximum": 600
     },
+    "defaultTheme": {
+      "type": "string",
+      "enum": [
+        "dark",
+        "light"
+      ]
+    },
     "public": {
       "type": "boolean"
     },
@@ -3440,6 +3454,13 @@ Schema for the body of a Dashboard creation request
       "type": "number",
       "minimum": 5,
       "maximum": 600
+    },
+    "defaultTheme": {
+      "type": "string",
+      "enum": [
+        "dark",
+        "light"
+      ]
     },
     "reportConfigs": {
       "type": "array",
@@ -3689,6 +3710,13 @@ Schema for a collection of Dashboards
             "type": "number",
             "minimum": 5,
             "maximum": 600
+          },
+          "defaultTheme": {
+            "type": "string",
+            "enum": [
+              "dark",
+              "light"
+            ]
           },
           "isPasswordProtected": {
             "type": "boolean"
@@ -13763,8 +13791,66 @@ Schema for a single Organization
             "enum": [
               "admin",
               "edit",
-              "view"
+              "collaborate",
+              "view",
+              "none"
             ]
+          },
+          "applicationRoles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "resourceId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "admin",
+                    "edit",
+                    "collaborate",
+                    "view",
+                    "none"
+                  ]
+                }
+              },
+              "required": [
+                "resourceId",
+                "role"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 1000
+          },
+          "dashboardRoles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "resourceId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "admin",
+                    "edit",
+                    "collaborate",
+                    "view",
+                    "none"
+                  ]
+                }
+              },
+              "required": [
+                "resourceId",
+                "role"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 1000
           }
         }
       }
@@ -14151,7 +14237,9 @@ Schema for information about an invitation
       "enum": [
         "admin",
         "edit",
-        "view"
+        "collaborate",
+        "view",
+        "none"
       ]
     },
     "inviteDate": {
@@ -14199,8 +14287,66 @@ Schema for the body of a request to send an invitation
       "enum": [
         "admin",
         "edit",
-        "view"
+        "collaborate",
+        "view",
+        "none"
       ]
+    },
+    "applicationRoles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "resourceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "edit",
+              "collaborate",
+              "view",
+              "none"
+            ]
+          }
+        },
+        "required": [
+          "resourceId",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 1000
+    },
+    "dashboardRoles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "resourceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "edit",
+              "collaborate",
+              "view",
+              "none"
+            ]
+          }
+        },
+        "required": [
+          "resourceId",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 1000
     }
   },
   "additionalProperties": false,
@@ -14280,8 +14426,66 @@ Schema for an array of pending invitations to an Organization
         "enum": [
           "admin",
           "edit",
-          "view"
+          "collaborate",
+          "view",
+          "none"
         ]
+      },
+      "applicationRoles": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "resourceId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "role": {
+              "type": "string",
+              "enum": [
+                "admin",
+                "edit",
+                "collaborate",
+                "view",
+                "none"
+              ]
+            }
+          },
+          "required": [
+            "resourceId",
+            "role"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 1000
+      },
+      "dashboardRoles": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "resourceId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "role": {
+              "type": "string",
+              "enum": [
+                "admin",
+                "edit",
+                "collaborate",
+                "view",
+                "none"
+              ]
+            }
+          },
+          "required": [
+            "resourceId",
+            "role"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 1000
       },
       "inviteDate": {
         "type": "string",
@@ -14334,14 +14538,71 @@ Schema for the body of a request to modify an Organization member
       "enum": [
         "admin",
         "edit",
-        "view"
+        "collaborate",
+        "view",
+        "none"
       ]
+    },
+    "applicationRoles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "resourceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "edit",
+              "collaborate",
+              "view",
+              "none"
+            ]
+          }
+        },
+        "required": [
+          "resourceId",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 1000
+    },
+    "dashboardRoles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "resourceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "edit",
+              "collaborate",
+              "view",
+              "none"
+            ]
+          }
+        },
+        "required": [
+          "resourceId",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 1000
     }
   },
   "additionalProperties": false,
   "required": [
-    "userId",
-    "role"
+    "userId"
   ]
 }
 ```
@@ -14540,8 +14801,66 @@ Schema for a collection of Organizations
                   "enum": [
                     "admin",
                     "edit",
-                    "view"
+                    "collaborate",
+                    "view",
+                    "none"
                   ]
+                },
+                "applicationRoles": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "resourceId": {
+                        "type": "string",
+                        "pattern": "^[A-Fa-f\\d]{24}$"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "admin",
+                          "edit",
+                          "collaborate",
+                          "view",
+                          "none"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "resourceId",
+                      "role"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "maxItems": 1000
+                },
+                "dashboardRoles": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "resourceId": {
+                        "type": "string",
+                        "pattern": "^[A-Fa-f\\d]{24}$"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "admin",
+                          "edit",
+                          "collaborate",
+                          "view",
+                          "none"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "resourceId",
+                      "role"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "maxItems": 1000
                 }
               }
             }

@@ -43,6 +43,13 @@
       "minimum": 5,
       "maximum": 600
     },
+    "defaultTheme": {
+      "type": "string",
+      "enum": [
+        "dark",
+        "light"
+      ]
+    },
     "isPasswordProtected": {
       "type": "boolean"
     },

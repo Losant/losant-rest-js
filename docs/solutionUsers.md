@@ -44,7 +44,7 @@ all.Organization, all.Organization.read, all.User, all.User.read, solutionUsers.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
 | solutionId | string | Y | ID associated with the solution |  | 57955788124b37010084c053 |
-| sortField | string | N | Field to sort the results by. Accepted values are: email, firstName, lastName, id, creationDate, lastLogin | email | email |
+| sortField | string | N | Field to sort the results by. Accepted values are: email, firstName, lastName, id, creationDate, lastLogin, lastUpdated | email | email |
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
 | page | string | N | Which page of results to return | 0 | 0 |
 | perPage | string | N | How many items to return per page | 1000 | 10 |
