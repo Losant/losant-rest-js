@@ -50,6 +50,7 @@
 *   [Device Recipe Patch](#device-recipe-patch)
 *   [Device Recipe Post](#device-recipe-post)
 *   [Device Recipes](#device-recipes)
+*   [Device State](#device-state)
 *   [Single or Multiple Device States](#single-or-multiple-device-states)
 *   [Device States](#device-states)
 *   [Device Tag Filter](#device-tag-filter)
@@ -709,6 +710,7 @@ Schema for the body of an Application API Token creation request
           "dataTableRows.truncate",
           "dataTables.get",
           "dataTables.post",
+          "device.commandStream",
           "device.delete",
           "device.export",
           "device.get",
@@ -720,6 +722,7 @@ Schema for the body of an Application API Token creation request
           "device.removeData",
           "device.sendCommand",
           "device.sendState",
+          "device.stateStream",
           "deviceRecipe.bulkCreate",
           "deviceRecipe.delete",
           "deviceRecipe.get",
@@ -6289,6 +6292,81 @@ Schema for a collection of Device Recipes
   "sortField": "name",
   "sortDirection": "asc",
   "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
+
+## Device State
+
+Schema for a single Device state
+
+### <a name="device-state-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "time": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$date": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "$date"
+          ]
+        }
+      ]
+    },
+    "relayId": {
+      "type": "string"
+    },
+    "meta": {},
+    "data": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": [
+            "number",
+            "string",
+            "boolean"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "flowVersion": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    }
+  },
+  "required": [
+    "data"
+  ],
+  "additionalProperties": false
+}
+```
+### <a name="device-state-example"></a> Example
+
+```json
+{
+  "time": "2016-06-13T04:00:00.000Z",
+  "data": {
+    "voltage": 22.4
+  }
 }
 ```
 
