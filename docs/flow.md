@@ -148,6 +148,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | flowId | string | Y | ID associated with the flow |  | 575ed18f7ae143cd83dc4aa6 |
+| includeCustomNodes | string | N | If the result of the request should also include the details of any custom nodes referenced by the returned workflows | false | true |
 
 #### Successful Responses
 
@@ -298,6 +299,7 @@ all.Application, all.Organization, all.User, flow.*, or flow.patch.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | flowId | string | Y | ID associated with the flow |  | 575ed18f7ae143cd83dc4aa6 |
+| includeCustomNodes | string | N | If the result of the request should also include the details of any custom nodes referenced by the returned workflows | false | true |
 | flow | [Workflow Patch](_schemas.md#workflow-patch) | Y | Object containing new properties of the flow |  | [Workflow Patch Example](_schemas.md#workflow-patch-example) |
 
 #### Successful Responses

@@ -6634,11 +6634,11 @@ Array of Tags for filtering devices. Tag keys and tag values are optional.
 ```json
 [
   {
-    "value": "red"
+    "key": "Floor",
+    "value": "2"
   },
   {
-    "key": "floor",
-    "value": 2
+    "key": "Serial"
   }
 ]
 ```
