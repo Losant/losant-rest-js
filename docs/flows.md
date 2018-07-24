@@ -7,6 +7,7 @@ parameters and the potential responses.
 ##### Contents
 
 *   [Get](#get)
+*   [Import](#import)
 *   [Post](#post)
 
 <br/>
@@ -57,6 +58,55 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Workflows](_schemas.md#workflows) | Collection of flows |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
+
+<br/>
+
+## Import
+
+Import a set of flows and flow versions
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  importData: myImportData
+};
+
+// with callbacks
+client.flows.import(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.flows.import(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, flows.*, or flows.import.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| importData | [Workflow Import](_schemas.md#workflow-import) | Y | New flow and flow version information |  | [Workflow Import Example](_schemas.md#workflow-import-example) |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 201 | [Workflow Import Result](_schemas.md#workflow-import-result) | Successfully imported workflows |
 
 #### Error Responses
 

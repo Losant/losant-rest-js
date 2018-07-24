@@ -188,6 +188,10 @@
                   "none"
                 ]
               },
+              "resultDescription": {
+                "type": "string",
+                "maxLength": 32767
+              },
               "fields": {
                 "type": "array",
                 "maxItems": 100,

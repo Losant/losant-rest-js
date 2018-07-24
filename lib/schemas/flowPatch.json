@@ -11,9 +11,17 @@
       "type": "string",
       "maxLength": 32767
     },
-    "iconUrl": {
-      "type": "string",
-      "maxLength": 1024
+    "iconData": {
+      "oneOf": [
+        {
+          "type": "string",
+          "maxLength": 32767,
+          "pattern": "^[0-9a-zA-Z+/=]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "enabled": {
       "type": "boolean"
@@ -171,6 +179,10 @@
             "required",
             "none"
           ]
+        },
+        "resultDescription": {
+          "type": "string",
+          "maxLength": 32767
         },
         "fields": {
           "type": "array",
