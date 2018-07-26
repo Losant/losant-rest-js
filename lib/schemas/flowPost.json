@@ -12,9 +12,16 @@
       "maxLength": 32767
     },
     "iconData": {
-      "type": "string",
-      "maxLength": 32767,
-      "pattern": "^[0-9a-zA-Z+/=]*$"
+      "oneOf": [
+        {
+          "type": "string",
+          "maxLength": 32767,
+          "pattern": "^data:image/(jpg|jpeg|png|svg\\+xml);base64,[0-9a-zA-Z+/=]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "enabled": {
       "type": "boolean"

@@ -42,7 +42,7 @@
           "iconData": {
             "type": "string",
             "maxLength": 32767,
-            "pattern": "^[0-9a-zA-Z+/=]*$"
+            "pattern": "^data:image/(jpg|jpeg|png|svg\\+xml);base64,[0-9a-zA-Z+/=]*$"
           },
           "enabled": {
             "type": "boolean"

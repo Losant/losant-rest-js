@@ -53,6 +53,7 @@
         "ExperienceGroup",
         "ExperienceView",
         "ExperienceUser",
+        "File",
         "Flow",
         "SolutionUser",
         "Integration",

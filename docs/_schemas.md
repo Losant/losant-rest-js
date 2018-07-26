@@ -2065,6 +2065,7 @@ Schema for a single Audit Log entry
         "ExperienceGroup",
         "ExperienceView",
         "ExperienceUser",
+        "File",
         "Flow",
         "SolutionUser",
         "Integration",
@@ -2212,6 +2213,7 @@ Schema for the filter of an audit log query
               "ExperienceGroup",
               "ExperienceView",
               "ExperienceUser",
+              "File",
               "Flow",
               "SolutionUser",
               "Integration",
@@ -2376,6 +2378,7 @@ Schema for a collection of Audit Logs
               "ExperienceGroup",
               "ExperienceView",
               "ExperienceUser",
+              "File",
               "Flow",
               "SolutionUser",
               "Integration",
@@ -10394,7 +10397,7 @@ Schema for a single Workflow
     "iconData": {
       "type": "string",
       "maxLength": 32767,
-      "pattern": "^[0-9a-zA-Z+/=]*$"
+      "pattern": "^data:image/(jpg|jpeg|png|svg\\+xml);base64,[0-9a-zA-Z+/=]*$"
     },
     "enabled": {
       "type": "boolean"
@@ -11008,7 +11011,7 @@ Schema for the body of a Workflow modification request
         {
           "type": "string",
           "maxLength": 32767,
-          "pattern": "^[0-9a-zA-Z+/=]*$"
+          "pattern": "^data:image/(jpg|jpeg|png|svg\\+xml);base64,[0-9a-zA-Z+/=]*$"
         },
         {
           "type": "null"
@@ -11505,9 +11508,16 @@ Schema for the body of a Workflow creation request
       "maxLength": 32767
     },
     "iconData": {
-      "type": "string",
-      "maxLength": 32767,
-      "pattern": "^[0-9a-zA-Z+/=]*$"
+      "oneOf": [
+        {
+          "type": "string",
+          "maxLength": 32767,
+          "pattern": "^data:image/(jpg|jpeg|png|svg\\+xml);base64,[0-9a-zA-Z+/=]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "enabled": {
       "type": "boolean"
@@ -13733,7 +13743,7 @@ Schema for a collection of Workflows
           "iconData": {
             "type": "string",
             "maxLength": 32767,
-            "pattern": "^[0-9a-zA-Z+/=]*$"
+            "pattern": "^data:image/(jpg|jpeg|png|svg\\+xml);base64,[0-9a-zA-Z+/=]*$"
           },
           "enabled": {
             "type": "boolean"
@@ -14346,7 +14356,7 @@ Schema for the body of a workflow import request
           "iconData": {
             "type": "string",
             "maxLength": 32767,
-            "pattern": "^[0-9a-zA-Z+/=]*$"
+            "pattern": "^data:image/(jpg|jpeg|png|svg\\+xml);base64,[0-9a-zA-Z+/=]*$"
           },
           "enabled": {
             "type": "boolean"
@@ -15380,7 +15390,7 @@ Schema for the result of a workflow import request
           "iconData": {
             "type": "string",
             "maxLength": 32767,
-            "pattern": "^[0-9a-zA-Z+/=]*$"
+            "pattern": "^data:image/(jpg|jpeg|png|svg\\+xml);base64,[0-9a-zA-Z+/=]*$"
           },
           "enabled": {
             "type": "boolean"
