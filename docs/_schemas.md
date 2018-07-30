@@ -14490,6 +14490,17 @@ Schema for the body of a workflow import request
               "customNode"
             ]
           },
+          "defaultVersionId": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "minimumAgentVersion": {
             "type": "string",
             "pattern": "^(0|([1-9]\\d*))\\.(0|([1-9]\\d*))\\.(0|([1-9]\\d*))$"
