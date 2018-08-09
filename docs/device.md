@@ -6,6 +6,7 @@ parameters and the potential responses.
 
 ##### Contents
 
+*   [Command Stream](#command-stream)
 *   [Delete](#delete)
 *   [Export](#export)
 *   [Get](#get)
@@ -17,6 +18,57 @@ parameters and the potential responses.
 *   [Remove Data](#remove-data)
 *   [Send Command](#send-command)
 *   [Send State](#send-state)
+*   [State Stream](#state-stream)
+
+<br/>
+
+## Command Stream
+
+Attach to a real time stream of command messages to this device using Server Sent Events (SSE)
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  deviceId: myDeviceId
+};
+
+// with callbacks
+client.device.commandStream(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.device.commandStream(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Device, all.Device.read, all.Organization, all.Organization.read, all.User, all.User.read, device.*, or device.commandStream.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
+| keepAliveInterval | string | N | Number of seconds between keepalive messages | 2 | 2 |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | undefined | SSE stream of new command messages for this device |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if device was not found |
 
 <br/>
 
@@ -569,6 +621,56 @@ all.Application, all.Device, all.Organization, all.User, device.*, or device.sen
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Success](_schemas.md#success) | If state was successfully received |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if device was not found |
+
+<br/>
+
+## State Stream
+
+Attach to a real time stream of state messages from this device using Server Sent Events (SSE)
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  deviceId: myDeviceId
+};
+
+// with callbacks
+client.device.stateStream(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.device.stateStream(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Device, all.Device.read, all.Organization, all.Organization.read, all.User, all.User.read, device.*, or device.stateStream.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
+| keepAliveInterval | string | N | Number of seconds between keepalive messages | 2 | 2 |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | undefined | SSE stream of new state messages for this device |
 
 #### Error Responses
 
