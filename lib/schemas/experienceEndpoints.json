@@ -71,6 +71,52 @@
             },
             "additionalProperties": false
           },
+          "staticReply": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string",
+                "required": true
+              },
+              "statusCode": {
+                "type": "number",
+                "default": 200,
+                "min": 100,
+                "max": 599,
+                "integer": true
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "page",
+                  "redirect"
+                ]
+              }
+            }
+          },
+          "unauthorizedReply": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string",
+                "required": true
+              },
+              "statusCode": {
+                "type": "number",
+                "default": 200,
+                "min": 100,
+                "max": 599,
+                "integer": true
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "page",
+                  "redirect"
+                ]
+              }
+            }
+          },
           "experienceGroups": {
             "type": "array",
             "items": {
