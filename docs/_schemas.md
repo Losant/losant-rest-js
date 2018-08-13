@@ -39,6 +39,7 @@
 *   [Device](#device)
 *   [Device Command](#device-command)
 *   [Device Commands](#device-commands)
+*   [Device Connection Status](#device-connection-status)
 *   [Device Credentials](#device-credentials)
 *   [Device Log](#device-log)
 *   [Device Patch](#device-patch)
@@ -724,6 +725,7 @@ Schema for the body of an Application API Token creation request
           "device.removeData",
           "device.sendCommand",
           "device.sendState",
+          "device.setConnectionStatus",
           "device.stateStream",
           "deviceRecipe.bulkCreate",
           "deviceRecipe.delete",
@@ -5257,6 +5259,139 @@ Schema for an array of Device Commands
 
 <br/>
 
+## Device Connection Status
+
+Schema for the body of a request to set a device&#x27;s connection status
+
+### <a name="device-connection-status-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "oneOf": [
+    {
+      "title": "Device Connected",
+      "description": "Schema for marking a device as connected",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "connected"
+          ]
+        },
+        "connectedAt": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$date": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "$date"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "title": "Device Disconnected",
+      "description": "Schema for marking a device as disconnected",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "disconnected"
+          ]
+        },
+        "connectedAt": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$date": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "$date"
+              ]
+            }
+          ]
+        },
+        "disconnectedAt": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$date": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "$date"
+              ]
+            }
+          ]
+        },
+        "disconnectReason": {
+          "type": "string",
+          "maxLength": 1024
+        },
+        "messagesFromClient": {
+          "type": "number"
+        },
+        "messagesToClient": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}
+```
+### <a name="device-connection-status-example"></a> Example
+
+```json
+{
+  "status": "connected"
+}
+```
+
+<br/>
+
 ## Device Credentials
 
 Schema for the body of a Device authentication request
@@ -8172,50 +8307,70 @@ Schema for a single Experience Endpoint
       "additionalProperties": false
     },
     "staticReply": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "string",
-          "required": true
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string"
+            },
+            "statusCode": {
+              "type": "number",
+              "min": 100,
+              "max": 599,
+              "integer": true
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "page",
+                "redirect"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "type"
+          ],
+          "additionalProperties": false
         },
-        "statusCode": {
-          "type": "number",
-          "default": 200,
-          "min": 100,
-          "max": 599,
-          "integer": true
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "page",
-            "redirect"
-          ]
+        {
+          "type": "null"
         }
-      }
+      ]
     },
     "unauthorizedReply": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "string",
-          "required": true
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string"
+            },
+            "statusCode": {
+              "type": "number",
+              "min": 100,
+              "max": 599,
+              "integer": true
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "page",
+                "redirect"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "type"
+          ],
+          "additionalProperties": false
         },
-        "statusCode": {
-          "type": "number",
-          "default": 200,
-          "min": 100,
-          "max": 599,
-          "integer": true
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "page",
-            "redirect"
-          ]
+        {
+          "type": "null"
         }
-      }
+      ]
     },
     "experienceGroups": {
       "type": "array",
@@ -8323,50 +8478,70 @@ Schema for the body of an Experience Endpoint modification request
       "maxItems": 1000
     },
     "staticReply": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "string",
-          "required": true
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string"
+            },
+            "statusCode": {
+              "type": "number",
+              "min": 100,
+              "max": 599,
+              "integer": true
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "page",
+                "redirect"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "type"
+          ],
+          "additionalProperties": false
         },
-        "statusCode": {
-          "type": "number",
-          "default": 200,
-          "min": 100,
-          "max": 599,
-          "integer": true
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "page",
-            "redirect"
-          ]
+        {
+          "type": "null"
         }
-      }
+      ]
     },
     "unauthorizedReply": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "string",
-          "required": true
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string"
+            },
+            "statusCode": {
+              "type": "number",
+              "min": 100,
+              "max": 599,
+              "integer": true
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "page",
+                "redirect"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "type"
+          ],
+          "additionalProperties": false
         },
-        "statusCode": {
-          "type": "number",
-          "default": 200,
-          "min": 100,
-          "max": 599,
-          "integer": true
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "page",
-            "redirect"
-          ]
+        {
+          "type": "null"
         }
-      }
+      ]
     }
   },
   "additionalProperties": false
@@ -8447,50 +8622,70 @@ Schema for the body of an Experience Endpoint creation request
       "maxItems": 1000
     },
     "staticReply": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "string",
-          "required": true
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string"
+            },
+            "statusCode": {
+              "type": "number",
+              "min": 100,
+              "max": 599,
+              "integer": true
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "page",
+                "redirect"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "type"
+          ],
+          "additionalProperties": false
         },
-        "statusCode": {
-          "type": "number",
-          "default": 200,
-          "min": 100,
-          "max": 599,
-          "integer": true
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "page",
-            "redirect"
-          ]
+        {
+          "type": "null"
         }
-      }
+      ]
     },
     "unauthorizedReply": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "string",
-          "required": true
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string"
+            },
+            "statusCode": {
+              "type": "number",
+              "min": 100,
+              "max": 599,
+              "integer": true
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "page",
+                "redirect"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "type"
+          ],
+          "additionalProperties": false
         },
-        "statusCode": {
-          "type": "number",
-          "default": 200,
-          "min": 100,
-          "max": 599,
-          "integer": true
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "page",
-            "redirect"
-          ]
+        {
+          "type": "null"
         }
-      }
+      ]
     }
   },
   "additionalProperties": false,
@@ -8651,50 +8846,70 @@ Schema for a collection of Experience Endpoints
             "additionalProperties": false
           },
           "staticReply": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "required": true
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  },
+                  "statusCode": {
+                    "type": "number",
+                    "min": 100,
+                    "max": 599,
+                    "integer": true
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "page",
+                      "redirect"
+                    ]
+                  }
+                },
+                "required": [
+                  "value",
+                  "type"
+                ],
+                "additionalProperties": false
               },
-              "statusCode": {
-                "type": "number",
-                "default": 200,
-                "min": 100,
-                "max": 599,
-                "integer": true
-              },
-              "type": {
-                "type": "string",
-                "enum": [
-                  "page",
-                  "redirect"
-                ]
+              {
+                "type": "null"
               }
-            }
+            ]
           },
           "unauthorizedReply": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "required": true
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  },
+                  "statusCode": {
+                    "type": "number",
+                    "min": 100,
+                    "max": 599,
+                    "integer": true
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "page",
+                      "redirect"
+                    ]
+                  }
+                },
+                "required": [
+                  "value",
+                  "type"
+                ],
+                "additionalProperties": false
               },
-              "statusCode": {
-                "type": "number",
-                "default": 200,
-                "min": 100,
-                "max": 599,
-                "integer": true
-              },
-              "type": {
-                "type": "string",
-                "enum": [
-                  "page",
-                  "redirect"
-                ]
+              {
+                "type": "null"
               }
-            }
+            ]
           },
           "experienceGroups": {
             "type": "array",

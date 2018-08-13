@@ -17,6 +17,7 @@ parameters and the potential responses.
 *   [Remove Data](#remove-data)
 *   [Send Command](#send-command)
 *   [Send State](#send-state)
+*   [Set Connection Status](#set-connection-status)
 
 <br/>
 
@@ -569,6 +570,57 @@ all.Application, all.Device, all.Organization, all.User, device.*, or device.sen
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Success](_schemas.md#success) | If state was successfully received |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if device was not found |
+
+<br/>
+
+## Set Connection Status
+
+Set the current connection status of the device
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  deviceId: myDeviceId,
+  connectionStatus: myConnectionStatus
+};
+
+// with callbacks
+client.device.setConnectionStatus(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.device.setConnectionStatus(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Device, all.Organization, all.User, device.*, or device.setConnectionStatus.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
+| connectionStatus | [Device Connection Status](_schemas.md#device-connection-status) | Y | The current connection status of the device |  | [Device Connection Status Example](_schemas.md#device-connection-status-example) |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Success](_schemas.md#success) | If connection status was successfully applied |
 
 #### Error Responses
 
