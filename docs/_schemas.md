@@ -18686,8 +18686,6 @@ Schema for a single Organization
                 "role": {
                   "type": "string",
                   "enum": [
-                    "admin",
-                    "edit",
                     "collaborate",
                     "view",
                     "none"
@@ -18714,8 +18712,6 @@ Schema for a single Organization
                 "role": {
                   "type": "string",
                   "enum": [
-                    "admin",
-                    "edit",
                     "collaborate",
                     "view",
                     "none"
@@ -19182,8 +19178,6 @@ Schema for the body of a request to send an invitation
           "role": {
             "type": "string",
             "enum": [
-              "admin",
-              "edit",
               "collaborate",
               "view",
               "none"
@@ -19210,8 +19204,6 @@ Schema for the body of a request to send an invitation
           "role": {
             "type": "string",
             "enum": [
-              "admin",
-              "edit",
               "collaborate",
               "view",
               "none"
@@ -19321,8 +19313,6 @@ Schema for an array of pending invitations to an Organization
             "role": {
               "type": "string",
               "enum": [
-                "admin",
-                "edit",
                 "collaborate",
                 "view",
                 "none"
@@ -19349,8 +19339,6 @@ Schema for an array of pending invitations to an Organization
             "role": {
               "type": "string",
               "enum": [
-                "admin",
-                "edit",
                 "collaborate",
                 "view",
                 "none"
@@ -19433,8 +19421,6 @@ Schema for the body of a request to modify an Organization member
           "role": {
             "type": "string",
             "enum": [
-              "admin",
-              "edit",
               "collaborate",
               "view",
               "none"
@@ -19461,8 +19447,6 @@ Schema for the body of a request to modify an Organization member
           "role": {
             "type": "string",
             "enum": [
-              "admin",
-              "edit",
               "collaborate",
               "view",
               "none"
@@ -19696,8 +19680,6 @@ Schema for a collection of Organizations
                       "role": {
                         "type": "string",
                         "enum": [
-                          "admin",
-                          "edit",
                           "collaborate",
                           "view",
                           "none"
@@ -19724,8 +19706,6 @@ Schema for a collection of Organizations
                       "role": {
                         "type": "string",
                         "enum": [
-                          "admin",
-                          "edit",
                           "collaborate",
                           "view",
                           "none"

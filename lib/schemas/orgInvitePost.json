@@ -29,8 +29,6 @@
           "role": {
             "type": "string",
             "enum": [
-              "admin",
-              "edit",
               "collaborate",
               "view",
               "none"
@@ -57,8 +55,6 @@
           "role": {
             "type": "string",
             "enum": [
-              "admin",
-              "edit",
               "collaborate",
               "view",
               "none"
