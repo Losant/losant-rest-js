@@ -1,6 +1,6 @@
 {
   "name": "losant-rest",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "REST client for accessing the Losant API",
   "main": "lib/index.js",
   "homepage": "https://github.com/Losant/losant-rest-js#readme",
@@ -22,6 +22,7 @@
   },
   "scripts": {
     "lint": "eslint *.js lib test",
+    "reinstall": "rm -rf ./node-modules && yarn install",
     "test": "mocha test 2>&1"
   },
   "repository": {
