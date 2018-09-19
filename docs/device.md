@@ -156,6 +156,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
+| excludeConnectionInfo | string | N | If set, do not return connection info |  | true |
 
 #### Successful Responses
 
