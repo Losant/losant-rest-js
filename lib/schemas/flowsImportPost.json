@@ -159,6 +159,7 @@
             "enum": [
               "cloud",
               "edge",
+              "experience",
               "customNode"
             ]
           },

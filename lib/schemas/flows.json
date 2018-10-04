@@ -59,6 +59,7 @@
             "enum": [
               "cloud",
               "edge",
+              "experience",
               "customNode"
             ]
           },
@@ -508,6 +509,9 @@
                 "json"
               ]
             }
+          },
+          "deletedInDevelop": {
+            "type": "boolean"
           },
           "stats": {
             "type": "object",

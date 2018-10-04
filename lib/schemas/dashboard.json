@@ -72,7 +72,8 @@
             "max": 14
           },
           "cron": {
-            "type": "string"
+            "type": "string",
+            "max": 255
           },
           "toEmail": {
             "type": "array",
@@ -112,10 +113,34 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 255
           },
           "blockType": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "application-list",
+              "bar",
+              "custom-chart",
+              "dashboard-list",
+              "data-table",
+              "device-list",
+              "device-log",
+              "device-state-table",
+              "event-list",
+              "gauge",
+              "graph",
+              "heatmap",
+              "iframe",
+              "indicator",
+              "input",
+              "map",
+              "open-event-indicator",
+              "pie",
+              "position-chart",
+              "section-header",
+              "workflow-list"
+            ]
           },
           "title": {
             "type": "string",

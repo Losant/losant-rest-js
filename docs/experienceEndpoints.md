@@ -49,6 +49,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*route |
 | experienceGroupId | string | N | Filter endpoints to those only in the specified group |  | 575ec8687ae143cd83dc4a97 |
 | requestCountDuration | string | N | If set, a count of recent requests is included on each endpoint for the duration requested (milliseconds) |  | 86400000 |
+| version | string | N | Version of this experience view to return | develop | develop |
 
 #### Successful Responses
 
@@ -145,9 +146,13 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| statGrouping | string | N | Field to group the statistics by. Accepted values are: statusCode, endpointId | statusCode | statusCode |
+| statGrouping | string | N | Field to group the statistics by. Accepted values are: statusCode, endpointId, version, domain | statusCode | statusCode |
 | duration | string | N | Duration in milliseconds | 86400000 | 86400000 |
 | resolution | string | N | Resolution in milliseconds | 3600000 | 3600000 |
+| versionFilter | string | N | Filters the stats to a particular experience version |  | myVersion |
+| domainFilter | string | N | Filters the stats to a particular experience domain or slug |  | mycustomdomain.com |
+| statusCodeFilter | string | N | Filters the stats to a particular status code |  | 200 |
+| endpointIdFilter | string | N | Filters the stats to a particular endpoint |  | 575ec8687ae143cd83dc4a98 |
 
 #### Successful Responses
 

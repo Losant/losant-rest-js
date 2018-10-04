@@ -101,6 +101,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my * device |
 | deviceClass | string | N | Filter the devices by the given device class. Accepted values are: standalone, gateway, peripheral, floating, edgeCompute |  | standalone |
 | tagFilter | [Device Tag Filter](_schemas.md#device-tag-filter) | N | Array of tag pairs to filter by. |  | [Device Tag Filter Example](_schemas.md#device-tag-filter-example) |
+| excludeConnectionInfo | string | N | If set, do not return connection info |  | true |
 
 #### Successful Responses
 

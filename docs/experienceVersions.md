@@ -1,7 +1,7 @@
-# Experience Views Actions
+# Experience Versions Actions
 
 Details on the various actions that can be performed on the
-Experience Views resource, including the expected
+Experience Versions resource, including the expected
 parameters and the potential responses.
 
 ##### Contents
@@ -13,7 +13,7 @@ parameters and the potential responses.
 
 ## Get
 
-Returns the experience views for an application
+Returns the experience versions for an application
 
 ```javascript
 var params = {
@@ -21,13 +21,13 @@ var params = {
 };
 
 // with callbacks
-client.experienceViews.get(params, function (err, result) {
+client.experienceVersions.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.experienceViews.get(params)
+client.experienceVersions.get(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -35,27 +35,25 @@ client.experienceViews.get(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, experienceViews.*, or experienceViews.get.
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, experienceVersions.*, or experienceVersions.get.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| sortField | string | N | Field to sort the results by. Accepted values are: id, creationDate, name, lastUpdated | name | name |
+| sortField | string | N | Field to sort the results by. Accepted values are: version, id, creationDate, lastUpdated | version | version |
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
 | page | string | N | Which page of results to return | 0 | 0 |
 | perPage | string | N | How many items to return per page | 1000 | 10 |
-| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
-| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*view |
-| viewType | string | N | Filter views to those only of the given type. Accepted values are: page, layout, component |  | page |
-| version | string | N | Version of this experience view to return | develop | develop |
+| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: version |  | email |
+| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*version |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience Views](_schemas.md#experience-views) | Collection of experience views |
+| 200 | [Experience Versions](_schemas.md#experience-versions) | Collection of experience versions |
 
 #### Error Responses
 
@@ -68,22 +66,22 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 ## Post
 
-Create a new experience view for an application
+Create a new experience version for an application
 
 ```javascript
 var params = {
   applicationId: myApplicationId,
-  experienceView: myExperienceView
+  experienceVersion: myExperienceVersion
 };
 
 // with callbacks
-client.experienceViews.post(params, function (err, result) {
+client.experienceVersions.post(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.experienceViews.post(params)
+client.experienceVersions.post(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -91,20 +89,20 @@ client.experienceViews.post(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, experienceViews.*, or experienceViews.post.
+all.Application, all.Organization, all.User, experienceVersions.*, or experienceVersions.post.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| experienceView | [Experience View Post](_schemas.md#experience-view-post) | Y | New experience view information |  | [Experience View Post Example](_schemas.md#experience-view-post-example) |
+| experienceVersion | [Experience Version Post](_schemas.md#experience-version-post) | Y | New experience version information |  | [Experience Version Post Example](_schemas.md#experience-version-post-example) |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Experience View](_schemas.md#experience-view) | Successfully created experience view |
+| 201 | [Experience Version](_schemas.md#experience-version) | Successfully created experience version |
 
 #### Error Responses
 

@@ -38,6 +38,18 @@
         }
       ]
     },
+    "version": {
+      "$oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        {
+          "type": null
+        }
+      ]
+    },
     "domainName": {
       "type": "string",
       "maxLength": 1024,

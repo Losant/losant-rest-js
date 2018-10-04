@@ -6,7 +6,7 @@
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "experienceDomainId": {
+    "experienceSlugId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
@@ -22,20 +22,11 @@
       "type": "string",
       "format": "date-time"
     },
-    "sslCert": {
+    "slug": {
       "type": "string",
-      "maxLength": 32767,
-      "minLength": 50
-    },
-    "sslBundle": {
-      "type": "string",
-      "maxLength": 32767,
-      "minLength": 50
-    },
-    "domainName": {
-      "type": "string",
-      "maxLength": 1024,
-      "minLength": 3
+      "minLength": 4,
+      "maxLength": 63,
+      "pattern": "^[0-9a-z-]*$"
     },
     "version": {
       "type": "string",

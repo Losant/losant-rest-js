@@ -80,10 +80,18 @@
 *   [Experience Group Patch](#experience-group-patch)
 *   [Experience Group Post](#experience-group-post)
 *   [Experience Groups](#experience-groups)
+*   [Experience Slug](#experience-slug)
+*   [Experience Slug Patch](#experience-slug-patch)
+*   [Experience Slug Post](#experience-slug-post)
+*   [Experience Slugs](#experience-slugs)
 *   [Experience User](#experience-user)
 *   [Experience User Patch](#experience-user-patch)
 *   [Experience User Post](#experience-user-post)
 *   [Experience Users](#experience-users)
+*   [Experience Version](#experience-version)
+*   [Experience Version Patch](#experience-version-patch)
+*   [Experience Version Post](#experience-version-post)
+*   [Experience Versions](#experience-versions)
 *   [Experience View](#experience-view)
 *   [Experience View Patch](#experience-view-patch)
 *   [Experience View Post](#experience-view-post)
@@ -637,6 +645,7 @@ Schema for the body of an Application API Token creation request
     },
     "scope": {
       "type": "array",
+      "uniqueItems": true,
       "items": {
         "type": "string",
         "enum": [
@@ -652,6 +661,8 @@ Schema for the body of an Application API Token creation request
           "data.*",
           "dataTable.*",
           "dataTables.*",
+          "dataTableRow.*",
+          "dataTableRows.*",
           "device.*",
           "deviceRecipe.*",
           "deviceRecipes.*",
@@ -666,8 +677,12 @@ Schema for the body of an Application API Token creation request
           "experienceEndpoints.*",
           "experienceGroup.*",
           "experienceGroups.*",
+          "experienceSlug.*",
+          "experienceSlugs.*",
           "experienceUser.*",
           "experienceUsers.*",
+          "experienceVersion.*",
+          "experienceVersions.*",
           "experienceView.*",
           "experienceViews.*",
           "integration.*",
@@ -682,6 +697,7 @@ Schema for the body of an Application API Token creation request
           "webhooks.*",
           "application.archiveData",
           "application.backfillArchiveData",
+          "application.debug",
           "application.delete",
           "application.get",
           "application.patch",
@@ -715,6 +731,7 @@ Schema for the body of an Application API Token creation request
           "dataTables.get",
           "dataTables.post",
           "device.commandStream",
+          "device.debug",
           "device.delete",
           "device.export",
           "device.get",
@@ -734,6 +751,7 @@ Schema for the body of an Application API Token creation request
           "deviceRecipe.patch",
           "deviceRecipes.get",
           "deviceRecipes.post",
+          "devices.detailedSummary",
           "devices.export",
           "devices.get",
           "devices.post",
@@ -764,16 +782,31 @@ Schema for the body of an Application API Token creation request
           "experienceGroup.delete",
           "experienceGroup.get",
           "experienceGroup.patch",
+          "experienceGroups.detailedSummary",
           "experienceGroups.get",
           "experienceGroups.post",
+          "experienceSlug.delete",
+          "experienceSlug.get",
+          "experienceSlug.patch",
+          "experienceSlugs.get",
+          "experienceSlugs.post",
           "experienceUser.delete",
           "experienceUser.get",
           "experienceUser.patch",
+          "experienceUsers.detailedSummary",
           "experienceUsers.get",
           "experienceUsers.post",
+          "experienceVersion.delete",
+          "experienceVersion.get",
+          "experienceVersion.patch",
+          "experienceVersions.get",
+          "experienceVersions.post",
+          "experienceView.debug",
           "experienceView.delete",
           "experienceView.get",
           "experienceView.patch",
+          "experienceViews.debug",
+          "experienceViews.detailedSummary",
           "experienceViews.get",
           "experienceViews.post",
           "file.get",
@@ -782,6 +815,7 @@ Schema for the body of an Application API Token creation request
           "file.delete",
           "files.get",
           "files.post",
+          "flow.debug",
           "flow.delete",
           "flow.clearStorageEntries",
           "flow.get",
@@ -791,6 +825,8 @@ Schema for the body of an Application API Token creation request
           "flow.pressVirtualButton",
           "flow.setStorageEntry",
           "flows.get",
+          "flows.getByVersion",
+          "flows.import",
           "flows.post",
           "flowVersion.delete",
           "flowVersion.get",
@@ -2667,6 +2703,10 @@ Schema for the body of a request to change the current user&#x27;s password
     },
     "invalidateExistingTokens": {
       "type": "boolean"
+    },
+    "tokenTTL": {
+      "type": "integer",
+      "minimum": 0
     }
   },
   "required": [
@@ -2838,7 +2878,8 @@ Schema for a single Dashboard
             "max": 14
           },
           "cron": {
-            "type": "string"
+            "type": "string",
+            "max": 255
           },
           "toEmail": {
             "type": "array",
@@ -2878,10 +2919,34 @@ Schema for a single Dashboard
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 255
           },
           "blockType": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "application-list",
+              "bar",
+              "custom-chart",
+              "dashboard-list",
+              "data-table",
+              "device-list",
+              "device-log",
+              "device-state-table",
+              "event-list",
+              "gauge",
+              "graph",
+              "heatmap",
+              "iframe",
+              "indicator",
+              "input",
+              "map",
+              "open-event-indicator",
+              "pie",
+              "position-chart",
+              "section-header",
+              "workflow-list"
+            ]
           },
           "title": {
             "type": "string",
@@ -3141,10 +3206,34 @@ Schema for the body of a Dashboard modification request
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 255
           },
           "blockType": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "application-list",
+              "bar",
+              "custom-chart",
+              "dashboard-list",
+              "data-table",
+              "device-list",
+              "device-log",
+              "device-state-table",
+              "event-list",
+              "gauge",
+              "graph",
+              "heatmap",
+              "iframe",
+              "indicator",
+              "input",
+              "map",
+              "open-event-indicator",
+              "pie",
+              "position-chart",
+              "section-header",
+              "workflow-list"
+            ]
           },
           "title": {
             "type": "string",
@@ -3200,7 +3289,8 @@ Schema for the body of a Dashboard modification request
             "max": 14
           },
           "cron": {
-            "type": "string"
+            "type": "string",
+            "max": 255
           },
           "toEmail": {
             "type": "array",
@@ -3415,10 +3505,34 @@ Schema for the body of a Dashboard creation request
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 255
           },
           "blockType": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "application-list",
+              "bar",
+              "custom-chart",
+              "dashboard-list",
+              "data-table",
+              "device-list",
+              "device-log",
+              "device-state-table",
+              "event-list",
+              "gauge",
+              "graph",
+              "heatmap",
+              "iframe",
+              "indicator",
+              "input",
+              "map",
+              "open-event-indicator",
+              "pie",
+              "position-chart",
+              "section-header",
+              "workflow-list"
+            ]
           },
           "title": {
             "type": "string",
@@ -3490,7 +3604,8 @@ Schema for the body of a Dashboard creation request
             "max": 14
           },
           "cron": {
-            "type": "string"
+            "type": "string",
+            "max": 255
           },
           "toEmail": {
             "type": "array",
@@ -3752,7 +3867,8 @@ Schema for a collection of Dashboards
                   "max": 14
                 },
                 "cron": {
-                  "type": "string"
+                  "type": "string",
+                  "max": 255
                 },
                 "toEmail": {
                   "type": "array",
@@ -3792,10 +3908,34 @@ Schema for a collection of Dashboards
               "type": "object",
               "properties": {
                 "id": {
-                  "type": "string"
+                  "type": "string",
+                  "maxLength": 255
                 },
                 "blockType": {
-                  "type": "string"
+                  "type": "string",
+                  "enum": [
+                    "application-list",
+                    "bar",
+                    "custom-chart",
+                    "dashboard-list",
+                    "data-table",
+                    "device-list",
+                    "device-log",
+                    "device-state-table",
+                    "event-list",
+                    "gauge",
+                    "graph",
+                    "heatmap",
+                    "iframe",
+                    "indicator",
+                    "input",
+                    "map",
+                    "open-event-indicator",
+                    "pie",
+                    "position-chart",
+                    "section-header",
+                    "workflow-list"
+                  ]
                 },
                 "title": {
                   "type": "string",
@@ -5414,6 +5554,36 @@ Schema for the body of a Device authentication request
     },
     "secret": {
       "type": "string"
+    },
+    "tokenTTL": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "requestedScopes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "all.Device",
+          "all.Device.read",
+          "data.timeSeriesQuery",
+          "data.lastValueQuery",
+          "device.commandStream",
+          "device.get",
+          "device.getCompositeState",
+          "device.getState",
+          "device.stateStream",
+          "device.getLogEntries",
+          "device.getCommand",
+          "device.debug",
+          "device.sendState",
+          "device.sendCommand",
+          "device.setConnectionStatus",
+          "devices.get",
+          "devices.sendCommand"
+        ]
+      }
     }
   },
   "required": [
@@ -8007,6 +8177,11 @@ Schema for a single Experience Domain
       "type": "string",
       "maxLength": 1024,
       "minLength": 3
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
     }
   }
 }
@@ -8020,7 +8195,8 @@ Schema for a single Experience Domain
   "applicationId": "575ec8687ae143cd83dc4a97",
   "creationDate": "2016-06-13T04:00:00.000Z",
   "lastUpdated": "2016-06-13T04:00:00.000Z",
-  "domainName": "my.example.domain.com"
+  "domainName": "my.example.domain.com",
+  "version": "develop"
 }
 ```
 
@@ -8073,6 +8249,18 @@ Schema for the body of an Experience Domain modification request
         }
       ]
     },
+    "version": {
+      "$oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        {
+          "type": null
+        }
+      ]
+    },
     "domainName": {
       "type": "string",
       "maxLength": 1024,
@@ -8088,7 +8276,8 @@ Schema for the body of an Experience Domain modification request
 {
   "domainName": "my.example.domain.com",
   "sslCert": "MY_SSL_CERTIFICATE",
-  "sslKey": "MY_SSL_KEY"
+  "sslKey": "MY_SSL_KEY",
+  "version": "develop"
 }
 ```
 
@@ -8124,6 +8313,18 @@ Schema for the body of an Experience Domain creation request
       "type": "string",
       "maxLength": 1024,
       "minLength": 3
+    },
+    "version": {
+      "$oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        {
+          "type": null
+        }
+      ]
     }
   },
   "additionalProperties": false,
@@ -8138,7 +8339,8 @@ Schema for the body of an Experience Domain creation request
 {
   "domainName": "my.example.domain.com",
   "sslCert": "MY_SSL_CERTIFICATE",
-  "sslKey": "MY_SSL_KEY"
+  "sslKey": "MY_SSL_KEY",
+  "version": "develop"
 }
 ```
 
@@ -8196,6 +8398,11 @@ Schema for a collection of Experience Domains
             "type": "string",
             "maxLength": 1024,
             "minLength": 3
+          },
+          "version": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           }
         }
       }
@@ -8224,7 +8431,8 @@ Schema for a collection of Experience Domains
       "applicationId": "575ec8687ae143cd83dc4a97",
       "creationDate": "2016-06-13T04:00:00.000Z",
       "lastUpdated": "2016-06-13T04:00:00.000Z",
-      "domainName": "my.example.domain.com"
+      "domainName": "my.example.domain.com",
+      "version": "develop"
     }
   ],
   "count": 1,
@@ -9384,6 +9592,255 @@ Schema for a collection of Experience Groups
 
 <br/>
 
+## Experience Slug
+
+Schema for a single Experience Slug
+
+### <a name="experience-slug-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "experienceSlugId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "slug": {
+      "type": "string",
+      "minLength": 4,
+      "maxLength": 63,
+      "pattern": "^[0-9a-z-]*$"
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    }
+  }
+}
+```
+### <a name="experience-slug-example"></a> Example
+
+```json
+{
+  "id": "5b995e51ea9994b50d745284",
+  "experienceSlugId": "5b995e51ea9994b50d745284",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "slug": "my-custom-slug",
+  "version": "develop"
+}
+```
+
+<br/>
+
+## Experience Slug Patch
+
+Schema for the body of an Experience Slug modification request
+
+### <a name="experience-slug-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "version": {
+      "$oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        {
+          "type": null
+        }
+      ]
+    },
+    "slug": {
+      "type": "string",
+      "minLength": 4,
+      "maxLength": 63,
+      "pattern": "^[0-9a-z-]*$"
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="experience-slug-patch-example"></a> Example
+
+```json
+{
+  "slug": "my-new-slug",
+  "version": null
+}
+```
+
+<br/>
+
+## Experience Slug Post
+
+Schema for the body of an Experience Slug creation request
+
+### <a name="experience-slug-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "version": {
+      "$oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        {
+          "type": null
+        }
+      ]
+    },
+    "slug": {
+      "type": "string",
+      "minLength": 4,
+      "maxLength": 63,
+      "pattern": "^[0-9a-z-]*$"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "slug"
+  ]
+}
+```
+### <a name="experience-slug-post-example"></a> Example
+
+```json
+{
+  "slug": "my-custom-slug",
+  "version": "develop"
+}
+```
+
+<br/>
+
+## Experience Slugs
+
+Schema for a collection of Experience Slugs
+
+### <a name="experience-slugs-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Experience Domain",
+        "description": "Schema for a single Experience Domain",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "experienceDomainId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "sslCert": {
+            "type": "string",
+            "maxLength": 32767,
+            "minLength": 50
+          },
+          "sslBundle": {
+            "type": "string",
+            "maxLength": 32767,
+            "minLength": 50
+          },
+          "domainName": {
+            "type": "string",
+            "maxLength": 1024,
+            "minLength": 3
+          },
+          "version": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  }
+}
+```
+### <a name="experience-slugs-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "5b995e51ea9994b50d745284",
+      "experienceSlugId": "5b995e51ea9994b50d745284",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "slug": "my-custom-slug",
+      "version": "develop"
+    }
+  ],
+  "count": 1,
+  "totalCount": 1,
+  "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
+
 ## Experience User
 
 Schema for a single Experience User
@@ -9808,6 +10265,366 @@ Schema for a collection of Experience Users
   "page": 0,
   "sortField": "name",
   "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
+
+## Experience Version
+
+Schema for a single Experience Version
+
+### <a name="experience-version-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "experienceVersionId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "createdById": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "createdByType": {
+      "type": "string",
+      "enum": [
+        "flow",
+        "user",
+        "apiToken"
+      ]
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "endpointDefaultCors": {
+      "type": "boolean"
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "attachedDomains": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "domainName": {
+            "type": "string",
+            "maxLength": 1024,
+            "minLength": 3
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          }
+        }
+      }
+    },
+    "attachedSlugs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          }
+        }
+      }
+    }
+  }
+}
+```
+### <a name="experience-version-example"></a> Example
+
+```json
+{
+  "id": "5b995ec6ea9994b50d745285",
+  "experienceVersionId": "5b995ec6ea9994b50d745285",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "version": "myVersionName",
+  "endpointDefaultCors": true,
+  "attachedDomains": [
+    {
+      "id": "58c1de6c8f812590d8e82980",
+      "domainName": "my.example.domain.com"
+    }
+  ],
+  "attachedSlugs": [
+    {
+      "id": "5b995e51ea9994b50d745284",
+      "slug": "my-custom-slug"
+    }
+  ]
+}
+```
+
+<br/>
+
+## Experience Version Patch
+
+Schema for the body of an Experience Version modification request
+
+### <a name="experience-version-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "endpointDefaultCors": {
+      "type": "boolean"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "sourceVersionIdOrName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="experience-version-patch-example"></a> Example
+
+```json
+{
+  "endpointDefaultCors": false
+}
+```
+
+<br/>
+
+## Experience Version Post
+
+Schema for the body of an Experience Version creation request
+
+### <a name="experience-version-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "domainIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    },
+    "slugIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "version"
+  ]
+}
+```
+### <a name="experience-version-post-example"></a> Example
+
+```json
+{
+  "version": "myNewVersion",
+  "description": "my version description",
+  "domainIds": [
+    "58c1de6c8f812590d8e82980"
+  ],
+  "slugIds": [
+    "5b995e51ea9994b50d745284"
+  ]
+}
+```
+
+<br/>
+
+## Experience Versions
+
+Schema for a collection of Experience Versions
+
+### <a name="experience-versions-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Experience Version",
+        "description": "Schema for a single Experience Version",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "experienceVersionId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdById": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "createdByType": {
+            "type": "string",
+            "enum": [
+              "flow",
+              "user",
+              "apiToken"
+            ]
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endpointDefaultCors": {
+            "type": "boolean"
+          },
+          "version": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "attachedDomains": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "domainName": {
+                  "type": "string",
+                  "maxLength": 1024,
+                  "minLength": 3
+                },
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                }
+              }
+            }
+          },
+          "attachedSlugs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "slug": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  }
+}
+```
+### <a name="experience-versions-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "5b995ec6ea9994b50d745285",
+      "experienceVersionId": "5b995ec6ea9994b50d745285",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "version": "myVersionName",
+      "endpointDefaultCors": true,
+      "attachedDomains": [
+        {
+          "id": "58c1de6c8f812590d8e82980",
+          "domainName": "my.example.domain.com"
+        }
+      ],
+      "attachedSlugs": [
+        {
+          "id": "5b995e51ea9994b50d745284",
+          "slug": "my-custom-slug"
+        }
+      ]
+    }
+  ],
+  "count": 1,
+  "totalCount": 1,
   "applicationId": "575ec8687ae143cd83dc4a97"
 }
 ```
@@ -10816,6 +11633,7 @@ Schema for a single Workflow
       "enum": [
         "cloud",
         "edge",
+        "experience",
         "customNode"
       ]
     },
@@ -11265,6 +12083,9 @@ Schema for a single Workflow
           "json"
         ]
       }
+    },
+    "deletedInDevelop": {
+      "type": "boolean"
     },
     "stats": {
       "type": "object",
@@ -12049,6 +12870,7 @@ Schema for the body of a Workflow creation request
       "enum": [
         "cloud",
         "edge",
+        "experience",
         "customNode"
       ]
     },
@@ -12511,484 +13333,671 @@ Schema for a single Workflow Version
 ```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "flowVersionId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "flowId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "creationDate": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "lastUpdated": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "version": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 255
-    },
-    "notes": {
-      "type": "string",
-      "maxLength": 32767
-    },
-    "enabled": {
-      "type": "boolean"
-    },
-    "triggers": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "key": {
-            "type": "string",
-            "maxLength": 1024
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "dataTable",
-              "deviceCommand",
-              "deviceId",
-              "deviceIdConnect",
-              "deviceIdDisconnect",
-              "deviceIdInactivity",
-              "deviceTag",
-              "deviceTagConnect",
-              "deviceTagDisconnect",
-              "deviceTagInactivity",
-              "endpoint",
-              "event",
-              "integration",
-              "mqttTopic",
-              "request",
-              "customNodeStart",
-              "timer",
-              "udp",
-              "virtualButton",
-              "webhook"
-            ]
-          },
-          "config": {
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          },
-          "outputIds": {
-            "type": "array",
-            "items": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "maxLength": 255
-              },
-              "maxItems": 100
-            },
-            "maxItems": 100
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "type"
-        ]
-      }
-    },
-    "nodes": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "maxLength": 1024
-          },
-          "type": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 1024
-          },
-          "config": {
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          },
-          "outputIds": {
-            "type": "array",
-            "items": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "maxLength": 255
-              },
-              "maxItems": 100
-            },
-            "maxItems": 100
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "type"
-        ]
-      }
-    },
-    "globals": {
-      "type": "array",
-      "maxItems": 100,
-      "items": {
-        "type": "object",
-        "properties": {
-          "key": {
-            "type": "string",
-            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-          },
-          "json": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 32767
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "key",
-          "json"
-        ]
-      }
-    },
-    "minimumAgentVersion": {
-      "type": "string",
-      "pattern": "^(0|([1-9]\\d*))\\.(0|([1-9]\\d*))\\.(0|([1-9]\\d*))$"
-    },
-    "customNodeConfig": {
+  "oneOf": [
+    {
+      "description": "Schema for a single Cloud/Edge/Custom Node Workflow Version",
       "type": "object",
       "properties": {
-        "outputCount": {
-          "type": "number",
-          "enum": [
-            1,
-            2
-          ]
-        },
-        "resultMode": {
+        "id": {
           "type": "string",
-          "enum": [
-            "optional",
-            "required",
-            "none"
-          ]
+          "pattern": "^[A-Fa-f\\d]{24}$"
         },
-        "resultDescription": {
+        "flowVersionId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "flowId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "applicationId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "creationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "notes": {
           "type": "string",
           "maxLength": 32767
         },
-        "fields": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "dataTable",
+                  "deviceCommand",
+                  "deviceId",
+                  "deviceIdConnect",
+                  "deviceIdDisconnect",
+                  "deviceIdInactivity",
+                  "deviceTag",
+                  "deviceTagConnect",
+                  "deviceTagDisconnect",
+                  "deviceTagInactivity",
+                  "endpoint",
+                  "event",
+                  "integration",
+                  "mqttTopic",
+                  "request",
+                  "customNodeStart",
+                  "timer",
+                  "udp",
+                  "virtualButton",
+                  "webhook"
+                ]
+              },
+              "config": {
+                "type": "object"
+              },
+              "meta": {
+                "type": "object"
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "type"
+            ]
+          }
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              },
+              "config": {
+                "type": "object"
+              },
+              "meta": {
+                "type": "object"
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "type"
+            ]
+          }
+        },
+        "globals": {
           "type": "array",
           "maxItems": 100,
           "items": {
-            "oneOf": [
-              {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "enum": [
-                      "checkbox"
-                    ]
-                  },
-                  "label": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 1024
-                  },
-                  "id": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 1024
-                  },
-                  "description": {
-                    "type": "string",
-                    "maxLength": 32767
-                  },
-                  "defaultValue": {
-                    "type": "boolean"
-                  }
-                },
-                "additionalProperties": false,
-                "required": [
-                  "type",
-                  "label"
-                ]
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
               },
-              {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "enum": [
-                      "select"
-                    ]
-                  },
-                  "label": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 1024
-                  },
-                  "id": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 1024
-                  },
-                  "description": {
-                    "type": "string",
-                    "maxLength": 32767
-                  },
-                  "defaultValue": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 1024
-                  },
-                  "options": {
-                    "type": "array",
-                    "minItems": 1,
-                    "maxItems": 100,
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "label": {
-                          "type": "string",
-                          "maxLength": 1024
-                        },
-                        "value": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        }
+              "json": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 32767
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "key",
+              "json"
+            ]
+          }
+        },
+        "minimumAgentVersion": {
+          "type": "string",
+          "pattern": "^(0|([1-9]\\d*))\\.(0|([1-9]\\d*))\\.(0|([1-9]\\d*))$"
+        },
+        "customNodeConfig": {
+          "type": "object",
+          "properties": {
+            "outputCount": {
+              "type": "number",
+              "enum": [
+                1,
+                2
+              ]
+            },
+            "resultMode": {
+              "type": "string",
+              "enum": [
+                "optional",
+                "required",
+                "none"
+              ]
+            },
+            "resultDescription": {
+              "type": "string",
+              "maxLength": 32767
+            },
+            "fields": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "checkbox"
+                        ]
                       },
-                      "additionalProperties": false,
-                      "required": [
-                        "value"
-                      ]
-                    }
-                  }
-                },
-                "additionalProperties": false,
-                "required": [
-                  "type",
-                  "label",
-                  "defaultValue",
-                  "options"
-                ]
-              },
-              {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "enum": [
-                      "stringTemplate"
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1024
+                      },
+                      "id": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1024
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "defaultValue": {
+                        "type": "boolean"
+                      }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                      "type",
+                      "label"
                     ]
                   },
-                  "label": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 1024
-                  },
-                  "id": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 1024
-                  },
-                  "description": {
-                    "type": "string",
-                    "maxLength": 32767
-                  },
-                  "defaultValue": {
-                    "type": "string",
-                    "maxLength": 1024
-                  },
-                  "required": {
-                    "type": "boolean"
-                  },
-                  "validRegExp": {
-                    "type": "string",
-                    "maxLength": 1024
-                  }
-                },
-                "additionalProperties": false,
-                "required": [
-                  "type",
-                  "label"
-                ]
-              },
-              {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "enum": [
-                      "numberTemplate"
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "select"
+                        ]
+                      },
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1024
+                      },
+                      "id": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1024
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "defaultValue": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1024
+                      },
+                      "options": {
+                        "type": "array",
+                        "minItems": 1,
+                        "maxItems": 100,
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "value": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "value"
+                          ]
+                        }
+                      }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                      "type",
+                      "label",
+                      "defaultValue",
+                      "options"
                     ]
                   },
-                  "label": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 1024
-                  },
-                  "id": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 1024
-                  },
-                  "description": {
-                    "type": "string",
-                    "maxLength": 32767
-                  },
-                  "defaultValue": {
-                    "type": "number"
-                  },
-                  "required": {
-                    "type": "boolean"
-                  },
-                  "validMin": {
-                    "type": "number"
-                  },
-                  "validMax": {
-                    "type": "number"
-                  }
-                },
-                "additionalProperties": false,
-                "required": [
-                  "type",
-                  "label"
-                ]
-              },
-              {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "enum": [
-                      "jsonTemplate"
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "stringTemplate"
+                        ]
+                      },
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1024
+                      },
+                      "id": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1024
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "defaultValue": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "required": {
+                        "type": "boolean"
+                      },
+                      "validRegExp": {
+                        "type": "string",
+                        "maxLength": 1024
+                      }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                      "type",
+                      "label"
                     ]
                   },
-                  "label": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 1024
-                  },
-                  "id": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 1024
-                  },
-                  "description": {
-                    "type": "string",
-                    "maxLength": 32767
-                  },
-                  "defaultValue": {
-                    "type": "string",
-                    "maxLength": 32767
-                  },
-                  "required": {
-                    "type": "boolean"
-                  }
-                },
-                "additionalProperties": false,
-                "required": [
-                  "type",
-                  "label"
-                ]
-              },
-              {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "enum": [
-                      "payloadPath"
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "numberTemplate"
+                        ]
+                      },
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1024
+                      },
+                      "id": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1024
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "defaultValue": {
+                        "type": "number"
+                      },
+                      "required": {
+                        "type": "boolean"
+                      },
+                      "validMin": {
+                        "type": "number"
+                      },
+                      "validMax": {
+                        "type": "number"
+                      }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                      "type",
+                      "label"
                     ]
                   },
-                  "label": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 1024
-                  },
-                  "id": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 1024
-                  },
-                  "description": {
-                    "type": "string",
-                    "maxLength": 32767
-                  },
-                  "required": {
-                    "type": "boolean"
-                  }
-                },
-                "additionalProperties": false,
-                "required": [
-                  "type",
-                  "label"
-                ]
-              },
-              {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "enum": [
-                      "section"
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "jsonTemplate"
+                        ]
+                      },
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1024
+                      },
+                      "id": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1024
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "defaultValue": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "required": {
+                        "type": "boolean"
+                      }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                      "type",
+                      "label"
                     ]
                   },
-                  "label": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 1024
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "payloadPath"
+                        ]
+                      },
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1024
+                      },
+                      "id": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1024
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "required": {
+                        "type": "boolean"
+                      }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                      "type",
+                      "label"
+                    ]
                   },
-                  "id": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 1024
-                  },
-                  "description": {
-                    "type": "string",
-                    "maxLength": 32767
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "section"
+                        ]
+                      },
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1024
+                      },
+                      "id": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1024
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 32767
+                      }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                      "type",
+                      "label"
+                    ]
                   }
-                },
-                "additionalProperties": false,
-                "required": [
-                  "type",
-                  "label"
                 ]
               }
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "outputCount",
+            "resultMode",
+            "fields"
+          ]
+        }
+      }
+    },
+    {
+      "description": "Schema for a single Experience Workflow Version",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "flowVersionId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "flowId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "applicationId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "creationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 32767
+        },
+        "iconData": {
+          "type": "string",
+          "maxLength": 32767,
+          "pattern": "^data:image/(jpg|jpeg|png|svg\\+xml);base64,[0-9a-zA-Z+/=]*$"
+        },
+        "flowClass": {
+          "type": "string",
+          "enum": [
+            "experience"
+          ]
+        },
+        "versions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "dataTable",
+                  "deviceCommand",
+                  "deviceId",
+                  "deviceIdConnect",
+                  "deviceIdDisconnect",
+                  "deviceIdInactivity",
+                  "deviceTag",
+                  "deviceTagConnect",
+                  "deviceTagDisconnect",
+                  "deviceTagInactivity",
+                  "endpoint",
+                  "event",
+                  "integration",
+                  "mqttTopic",
+                  "request",
+                  "customNodeStart",
+                  "timer",
+                  "udp",
+                  "virtualButton",
+                  "webhook"
+                ]
+              },
+              "config": {
+                "type": "object"
+              },
+              "meta": {
+                "type": "object"
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "type"
+            ]
+          }
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              },
+              "config": {
+                "type": "object"
+              },
+              "meta": {
+                "type": "object"
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "type"
+            ]
+          }
+        },
+        "globals": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "json": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 32767
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "key",
+              "json"
             ]
           }
         }
-      },
-      "additionalProperties": false,
-      "required": [
-        "outputCount",
-        "resultMode",
-        "fields"
-      ]
+      }
     }
-  }
+  ]
 }
 ```
 ### <a name="workflow-version-example"></a> Example
@@ -13542,484 +14551,671 @@ Schema for a collection of Workflow Versions
       "items": {
         "title": "Workflow Version",
         "description": "Schema for a single Workflow Version",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "flowVersionId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "flowId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "applicationId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "creationDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "lastUpdated": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "version": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 255
-          },
-          "notes": {
-            "type": "string",
-            "maxLength": 32767
-          },
-          "enabled": {
-            "type": "boolean"
-          },
-          "triggers": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "key": {
-                  "type": "string",
-                  "maxLength": 1024
-                },
-                "type": {
-                  "type": "string",
-                  "enum": [
-                    "dataTable",
-                    "deviceCommand",
-                    "deviceId",
-                    "deviceIdConnect",
-                    "deviceIdDisconnect",
-                    "deviceIdInactivity",
-                    "deviceTag",
-                    "deviceTagConnect",
-                    "deviceTagDisconnect",
-                    "deviceTagInactivity",
-                    "endpoint",
-                    "event",
-                    "integration",
-                    "mqttTopic",
-                    "request",
-                    "customNodeStart",
-                    "timer",
-                    "udp",
-                    "virtualButton",
-                    "webhook"
-                  ]
-                },
-                "config": {
-                  "type": "object"
-                },
-                "meta": {
-                  "type": "object"
-                },
-                "outputIds": {
-                  "type": "array",
-                  "items": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "maxLength": 255
-                    },
-                    "maxItems": 100
-                  },
-                  "maxItems": 100
-                }
-              },
-              "additionalProperties": false,
-              "required": [
-                "type"
-              ]
-            }
-          },
-          "nodes": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string",
-                  "maxLength": 1024
-                },
-                "type": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 1024
-                },
-                "config": {
-                  "type": "object"
-                },
-                "meta": {
-                  "type": "object"
-                },
-                "outputIds": {
-                  "type": "array",
-                  "items": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "maxLength": 255
-                    },
-                    "maxItems": 100
-                  },
-                  "maxItems": 100
-                }
-              },
-              "additionalProperties": false,
-              "required": [
-                "type"
-              ]
-            }
-          },
-          "globals": {
-            "type": "array",
-            "maxItems": 100,
-            "items": {
-              "type": "object",
-              "properties": {
-                "key": {
-                  "type": "string",
-                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                },
-                "json": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 32767
-                }
-              },
-              "additionalProperties": false,
-              "required": [
-                "key",
-                "json"
-              ]
-            }
-          },
-          "minimumAgentVersion": {
-            "type": "string",
-            "pattern": "^(0|([1-9]\\d*))\\.(0|([1-9]\\d*))\\.(0|([1-9]\\d*))$"
-          },
-          "customNodeConfig": {
+        "oneOf": [
+          {
+            "description": "Schema for a single Cloud/Edge/Custom Node Workflow Version",
             "type": "object",
             "properties": {
-              "outputCount": {
-                "type": "number",
-                "enum": [
-                  1,
-                  2
-                ]
-              },
-              "resultMode": {
+              "id": {
                 "type": "string",
-                "enum": [
-                  "optional",
-                  "required",
-                  "none"
-                ]
+                "pattern": "^[A-Fa-f\\d]{24}$"
               },
-              "resultDescription": {
+              "flowVersionId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "flowId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "creationDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "lastUpdated": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              },
+              "notes": {
                 "type": "string",
                 "maxLength": 32767
               },
-              "fields": {
+              "enabled": {
+                "type": "boolean"
+              },
+              "triggers": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "dataTable",
+                        "deviceCommand",
+                        "deviceId",
+                        "deviceIdConnect",
+                        "deviceIdDisconnect",
+                        "deviceIdInactivity",
+                        "deviceTag",
+                        "deviceTagConnect",
+                        "deviceTagDisconnect",
+                        "deviceTagInactivity",
+                        "endpoint",
+                        "event",
+                        "integration",
+                        "mqttTopic",
+                        "request",
+                        "customNodeStart",
+                        "timer",
+                        "udp",
+                        "virtualButton",
+                        "webhook"
+                      ]
+                    },
+                    "config": {
+                      "type": "object"
+                    },
+                    "meta": {
+                      "type": "object"
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "type"
+                  ]
+                }
+              },
+              "nodes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024
+                    },
+                    "config": {
+                      "type": "object"
+                    },
+                    "meta": {
+                      "type": "object"
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "type"
+                  ]
+                }
+              },
+              "globals": {
                 "type": "array",
                 "maxItems": 100,
                 "items": {
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "checkbox"
-                          ]
-                        },
-                        "label": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "id": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "description": {
-                          "type": "string",
-                          "maxLength": 32767
-                        },
-                        "defaultValue": {
-                          "type": "boolean"
-                        }
-                      },
-                      "additionalProperties": false,
-                      "required": [
-                        "type",
-                        "label"
-                      ]
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
                     },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "select"
-                          ]
-                        },
-                        "label": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "id": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "description": {
-                          "type": "string",
-                          "maxLength": 32767
-                        },
-                        "defaultValue": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "options": {
-                          "type": "array",
-                          "minItems": 1,
-                          "maxItems": 100,
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "label": {
-                                "type": "string",
-                                "maxLength": 1024
-                              },
-                              "value": {
-                                "type": "string",
-                                "minLength": 1,
-                                "maxLength": 1024
-                              }
+                    "json": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 32767
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "key",
+                    "json"
+                  ]
+                }
+              },
+              "minimumAgentVersion": {
+                "type": "string",
+                "pattern": "^(0|([1-9]\\d*))\\.(0|([1-9]\\d*))\\.(0|([1-9]\\d*))$"
+              },
+              "customNodeConfig": {
+                "type": "object",
+                "properties": {
+                  "outputCount": {
+                    "type": "number",
+                    "enum": [
+                      1,
+                      2
+                    ]
+                  },
+                  "resultMode": {
+                    "type": "string",
+                    "enum": [
+                      "optional",
+                      "required",
+                      "none"
+                    ]
+                  },
+                  "resultDescription": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "fields": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "checkbox"
+                              ]
                             },
-                            "additionalProperties": false,
-                            "required": [
-                              "value"
-                            ]
-                          }
-                        }
-                      },
-                      "additionalProperties": false,
-                      "required": [
-                        "type",
-                        "label",
-                        "defaultValue",
-                        "options"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "stringTemplate"
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "id": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "defaultValue": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "type",
+                            "label"
                           ]
                         },
-                        "label": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "id": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "description": {
-                          "type": "string",
-                          "maxLength": 32767
-                        },
-                        "defaultValue": {
-                          "type": "string",
-                          "maxLength": 1024
-                        },
-                        "required": {
-                          "type": "boolean"
-                        },
-                        "validRegExp": {
-                          "type": "string",
-                          "maxLength": 1024
-                        }
-                      },
-                      "additionalProperties": false,
-                      "required": [
-                        "type",
-                        "label"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "numberTemplate"
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "select"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "id": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "defaultValue": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "options": {
+                              "type": "array",
+                              "minItems": 1,
+                              "maxItems": 100,
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "label": {
+                                    "type": "string",
+                                    "maxLength": 1024
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 1024
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                  "value"
+                                ]
+                              }
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "type",
+                            "label",
+                            "defaultValue",
+                            "options"
                           ]
                         },
-                        "label": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "id": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "description": {
-                          "type": "string",
-                          "maxLength": 32767
-                        },
-                        "defaultValue": {
-                          "type": "number"
-                        },
-                        "required": {
-                          "type": "boolean"
-                        },
-                        "validMin": {
-                          "type": "number"
-                        },
-                        "validMax": {
-                          "type": "number"
-                        }
-                      },
-                      "additionalProperties": false,
-                      "required": [
-                        "type",
-                        "label"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "jsonTemplate"
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "stringTemplate"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "id": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "defaultValue": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "required": {
+                              "type": "boolean"
+                            },
+                            "validRegExp": {
+                              "type": "string",
+                              "maxLength": 1024
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "type",
+                            "label"
                           ]
                         },
-                        "label": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "id": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "description": {
-                          "type": "string",
-                          "maxLength": 32767
-                        },
-                        "defaultValue": {
-                          "type": "string",
-                          "maxLength": 32767
-                        },
-                        "required": {
-                          "type": "boolean"
-                        }
-                      },
-                      "additionalProperties": false,
-                      "required": [
-                        "type",
-                        "label"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "payloadPath"
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "numberTemplate"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "id": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "defaultValue": {
+                              "type": "number"
+                            },
+                            "required": {
+                              "type": "boolean"
+                            },
+                            "validMin": {
+                              "type": "number"
+                            },
+                            "validMax": {
+                              "type": "number"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "type",
+                            "label"
                           ]
                         },
-                        "label": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "id": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "description": {
-                          "type": "string",
-                          "maxLength": 32767
-                        },
-                        "required": {
-                          "type": "boolean"
-                        }
-                      },
-                      "additionalProperties": false,
-                      "required": [
-                        "type",
-                        "label"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "section"
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "jsonTemplate"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "id": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "defaultValue": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "required": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "type",
+                            "label"
                           ]
                         },
-                        "label": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "payloadPath"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "id": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "required": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "type",
+                            "label"
+                          ]
                         },
-                        "id": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "description": {
-                          "type": "string",
-                          "maxLength": 32767
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "section"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "id": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "type",
+                            "label"
+                          ]
                         }
-                      },
-                      "additionalProperties": false,
-                      "required": [
-                        "type",
-                        "label"
                       ]
                     }
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "outputCount",
+                  "resultMode",
+                  "fields"
+                ]
+              }
+            }
+          },
+          {
+            "description": "Schema for a single Experience Workflow Version",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "flowVersionId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "flowId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "creationDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "lastUpdated": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              },
+              "description": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "iconData": {
+                "type": "string",
+                "maxLength": 32767,
+                "pattern": "^data:image/(jpg|jpeg|png|svg\\+xml);base64,[0-9a-zA-Z+/=]*$"
+              },
+              "flowClass": {
+                "type": "string",
+                "enum": [
+                  "experience"
+                ]
+              },
+              "versions": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                }
+              },
+              "enabled": {
+                "type": "boolean"
+              },
+              "triggers": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "dataTable",
+                        "deviceCommand",
+                        "deviceId",
+                        "deviceIdConnect",
+                        "deviceIdDisconnect",
+                        "deviceIdInactivity",
+                        "deviceTag",
+                        "deviceTagConnect",
+                        "deviceTagDisconnect",
+                        "deviceTagInactivity",
+                        "endpoint",
+                        "event",
+                        "integration",
+                        "mqttTopic",
+                        "request",
+                        "customNodeStart",
+                        "timer",
+                        "udp",
+                        "virtualButton",
+                        "webhook"
+                      ]
+                    },
+                    "config": {
+                      "type": "object"
+                    },
+                    "meta": {
+                      "type": "object"
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "type"
+                  ]
+                }
+              },
+              "nodes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024
+                    },
+                    "config": {
+                      "type": "object"
+                    },
+                    "meta": {
+                      "type": "object"
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "type"
+                  ]
+                }
+              },
+              "globals": {
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "json": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 32767
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "key",
+                    "json"
                   ]
                 }
               }
-            },
-            "additionalProperties": false,
-            "required": [
-              "outputCount",
-              "resultMode",
-              "fields"
-            ]
+            }
           }
-        }
+        ]
       }
     },
     "count": {
@@ -14162,6 +15358,7 @@ Schema for a collection of Workflows
             "enum": [
               "cloud",
               "edge",
+              "experience",
               "customNode"
             ]
           },
@@ -14612,6 +15809,9 @@ Schema for a collection of Workflows
               ]
             }
           },
+          "deletedInDevelop": {
+            "type": "boolean"
+          },
           "stats": {
             "type": "object",
             "properties": {
@@ -14888,6 +16088,7 @@ Schema for the body of a workflow import request
             "enum": [
               "cloud",
               "edge",
+              "experience",
               "customNode"
             ]
           },
@@ -15820,6 +17021,7 @@ Schema for the result of a workflow import request
             "enum": [
               "cloud",
               "edge",
+              "experience",
               "customNode"
             ]
           },
@@ -16270,6 +17472,9 @@ Schema for the result of a workflow import request
               ]
             }
           },
+          "deletedInDevelop": {
+            "type": "boolean"
+          },
           "stats": {
             "type": "object",
             "properties": {
@@ -16306,484 +17511,671 @@ Schema for the result of a workflow import request
       "items": {
         "title": "Workflow Version",
         "description": "Schema for a single Workflow Version",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "flowVersionId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "flowId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "applicationId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "creationDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "lastUpdated": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "version": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 255
-          },
-          "notes": {
-            "type": "string",
-            "maxLength": 32767
-          },
-          "enabled": {
-            "type": "boolean"
-          },
-          "triggers": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "key": {
-                  "type": "string",
-                  "maxLength": 1024
-                },
-                "type": {
-                  "type": "string",
-                  "enum": [
-                    "dataTable",
-                    "deviceCommand",
-                    "deviceId",
-                    "deviceIdConnect",
-                    "deviceIdDisconnect",
-                    "deviceIdInactivity",
-                    "deviceTag",
-                    "deviceTagConnect",
-                    "deviceTagDisconnect",
-                    "deviceTagInactivity",
-                    "endpoint",
-                    "event",
-                    "integration",
-                    "mqttTopic",
-                    "request",
-                    "customNodeStart",
-                    "timer",
-                    "udp",
-                    "virtualButton",
-                    "webhook"
-                  ]
-                },
-                "config": {
-                  "type": "object"
-                },
-                "meta": {
-                  "type": "object"
-                },
-                "outputIds": {
-                  "type": "array",
-                  "items": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "maxLength": 255
-                    },
-                    "maxItems": 100
-                  },
-                  "maxItems": 100
-                }
-              },
-              "additionalProperties": false,
-              "required": [
-                "type"
-              ]
-            }
-          },
-          "nodes": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string",
-                  "maxLength": 1024
-                },
-                "type": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 1024
-                },
-                "config": {
-                  "type": "object"
-                },
-                "meta": {
-                  "type": "object"
-                },
-                "outputIds": {
-                  "type": "array",
-                  "items": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "maxLength": 255
-                    },
-                    "maxItems": 100
-                  },
-                  "maxItems": 100
-                }
-              },
-              "additionalProperties": false,
-              "required": [
-                "type"
-              ]
-            }
-          },
-          "globals": {
-            "type": "array",
-            "maxItems": 100,
-            "items": {
-              "type": "object",
-              "properties": {
-                "key": {
-                  "type": "string",
-                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                },
-                "json": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 32767
-                }
-              },
-              "additionalProperties": false,
-              "required": [
-                "key",
-                "json"
-              ]
-            }
-          },
-          "minimumAgentVersion": {
-            "type": "string",
-            "pattern": "^(0|([1-9]\\d*))\\.(0|([1-9]\\d*))\\.(0|([1-9]\\d*))$"
-          },
-          "customNodeConfig": {
+        "oneOf": [
+          {
+            "description": "Schema for a single Cloud/Edge/Custom Node Workflow Version",
             "type": "object",
             "properties": {
-              "outputCount": {
-                "type": "number",
-                "enum": [
-                  1,
-                  2
-                ]
-              },
-              "resultMode": {
+              "id": {
                 "type": "string",
-                "enum": [
-                  "optional",
-                  "required",
-                  "none"
-                ]
+                "pattern": "^[A-Fa-f\\d]{24}$"
               },
-              "resultDescription": {
+              "flowVersionId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "flowId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "creationDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "lastUpdated": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              },
+              "notes": {
                 "type": "string",
                 "maxLength": 32767
               },
-              "fields": {
+              "enabled": {
+                "type": "boolean"
+              },
+              "triggers": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "dataTable",
+                        "deviceCommand",
+                        "deviceId",
+                        "deviceIdConnect",
+                        "deviceIdDisconnect",
+                        "deviceIdInactivity",
+                        "deviceTag",
+                        "deviceTagConnect",
+                        "deviceTagDisconnect",
+                        "deviceTagInactivity",
+                        "endpoint",
+                        "event",
+                        "integration",
+                        "mqttTopic",
+                        "request",
+                        "customNodeStart",
+                        "timer",
+                        "udp",
+                        "virtualButton",
+                        "webhook"
+                      ]
+                    },
+                    "config": {
+                      "type": "object"
+                    },
+                    "meta": {
+                      "type": "object"
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "type"
+                  ]
+                }
+              },
+              "nodes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024
+                    },
+                    "config": {
+                      "type": "object"
+                    },
+                    "meta": {
+                      "type": "object"
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "type"
+                  ]
+                }
+              },
+              "globals": {
                 "type": "array",
                 "maxItems": 100,
                 "items": {
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "checkbox"
-                          ]
-                        },
-                        "label": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "id": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "description": {
-                          "type": "string",
-                          "maxLength": 32767
-                        },
-                        "defaultValue": {
-                          "type": "boolean"
-                        }
-                      },
-                      "additionalProperties": false,
-                      "required": [
-                        "type",
-                        "label"
-                      ]
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
                     },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "select"
-                          ]
-                        },
-                        "label": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "id": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "description": {
-                          "type": "string",
-                          "maxLength": 32767
-                        },
-                        "defaultValue": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "options": {
-                          "type": "array",
-                          "minItems": 1,
-                          "maxItems": 100,
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "label": {
-                                "type": "string",
-                                "maxLength": 1024
-                              },
-                              "value": {
-                                "type": "string",
-                                "minLength": 1,
-                                "maxLength": 1024
-                              }
+                    "json": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 32767
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "key",
+                    "json"
+                  ]
+                }
+              },
+              "minimumAgentVersion": {
+                "type": "string",
+                "pattern": "^(0|([1-9]\\d*))\\.(0|([1-9]\\d*))\\.(0|([1-9]\\d*))$"
+              },
+              "customNodeConfig": {
+                "type": "object",
+                "properties": {
+                  "outputCount": {
+                    "type": "number",
+                    "enum": [
+                      1,
+                      2
+                    ]
+                  },
+                  "resultMode": {
+                    "type": "string",
+                    "enum": [
+                      "optional",
+                      "required",
+                      "none"
+                    ]
+                  },
+                  "resultDescription": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "fields": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "checkbox"
+                              ]
                             },
-                            "additionalProperties": false,
-                            "required": [
-                              "value"
-                            ]
-                          }
-                        }
-                      },
-                      "additionalProperties": false,
-                      "required": [
-                        "type",
-                        "label",
-                        "defaultValue",
-                        "options"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "stringTemplate"
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "id": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "defaultValue": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "type",
+                            "label"
                           ]
                         },
-                        "label": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "id": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "description": {
-                          "type": "string",
-                          "maxLength": 32767
-                        },
-                        "defaultValue": {
-                          "type": "string",
-                          "maxLength": 1024
-                        },
-                        "required": {
-                          "type": "boolean"
-                        },
-                        "validRegExp": {
-                          "type": "string",
-                          "maxLength": 1024
-                        }
-                      },
-                      "additionalProperties": false,
-                      "required": [
-                        "type",
-                        "label"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "numberTemplate"
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "select"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "id": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "defaultValue": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "options": {
+                              "type": "array",
+                              "minItems": 1,
+                              "maxItems": 100,
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "label": {
+                                    "type": "string",
+                                    "maxLength": 1024
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 1024
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                  "value"
+                                ]
+                              }
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "type",
+                            "label",
+                            "defaultValue",
+                            "options"
                           ]
                         },
-                        "label": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "id": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "description": {
-                          "type": "string",
-                          "maxLength": 32767
-                        },
-                        "defaultValue": {
-                          "type": "number"
-                        },
-                        "required": {
-                          "type": "boolean"
-                        },
-                        "validMin": {
-                          "type": "number"
-                        },
-                        "validMax": {
-                          "type": "number"
-                        }
-                      },
-                      "additionalProperties": false,
-                      "required": [
-                        "type",
-                        "label"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "jsonTemplate"
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "stringTemplate"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "id": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "defaultValue": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "required": {
+                              "type": "boolean"
+                            },
+                            "validRegExp": {
+                              "type": "string",
+                              "maxLength": 1024
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "type",
+                            "label"
                           ]
                         },
-                        "label": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "id": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "description": {
-                          "type": "string",
-                          "maxLength": 32767
-                        },
-                        "defaultValue": {
-                          "type": "string",
-                          "maxLength": 32767
-                        },
-                        "required": {
-                          "type": "boolean"
-                        }
-                      },
-                      "additionalProperties": false,
-                      "required": [
-                        "type",
-                        "label"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "payloadPath"
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "numberTemplate"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "id": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "defaultValue": {
+                              "type": "number"
+                            },
+                            "required": {
+                              "type": "boolean"
+                            },
+                            "validMin": {
+                              "type": "number"
+                            },
+                            "validMax": {
+                              "type": "number"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "type",
+                            "label"
                           ]
                         },
-                        "label": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "id": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "description": {
-                          "type": "string",
-                          "maxLength": 32767
-                        },
-                        "required": {
-                          "type": "boolean"
-                        }
-                      },
-                      "additionalProperties": false,
-                      "required": [
-                        "type",
-                        "label"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "section"
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "jsonTemplate"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "id": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "defaultValue": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "required": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "type",
+                            "label"
                           ]
                         },
-                        "label": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "payloadPath"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "id": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "required": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "type",
+                            "label"
+                          ]
                         },
-                        "id": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 1024
-                        },
-                        "description": {
-                          "type": "string",
-                          "maxLength": 32767
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "section"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "id": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1024
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "type",
+                            "label"
+                          ]
                         }
-                      },
-                      "additionalProperties": false,
-                      "required": [
-                        "type",
-                        "label"
                       ]
                     }
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "outputCount",
+                  "resultMode",
+                  "fields"
+                ]
+              }
+            }
+          },
+          {
+            "description": "Schema for a single Experience Workflow Version",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "flowVersionId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "flowId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "creationDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "lastUpdated": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              },
+              "description": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "iconData": {
+                "type": "string",
+                "maxLength": 32767,
+                "pattern": "^data:image/(jpg|jpeg|png|svg\\+xml);base64,[0-9a-zA-Z+/=]*$"
+              },
+              "flowClass": {
+                "type": "string",
+                "enum": [
+                  "experience"
+                ]
+              },
+              "versions": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                }
+              },
+              "enabled": {
+                "type": "boolean"
+              },
+              "triggers": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "dataTable",
+                        "deviceCommand",
+                        "deviceId",
+                        "deviceIdConnect",
+                        "deviceIdDisconnect",
+                        "deviceIdInactivity",
+                        "deviceTag",
+                        "deviceTagConnect",
+                        "deviceTagDisconnect",
+                        "deviceTagInactivity",
+                        "endpoint",
+                        "event",
+                        "integration",
+                        "mqttTopic",
+                        "request",
+                        "customNodeStart",
+                        "timer",
+                        "udp",
+                        "virtualButton",
+                        "webhook"
+                      ]
+                    },
+                    "config": {
+                      "type": "object"
+                    },
+                    "meta": {
+                      "type": "object"
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "type"
+                  ]
+                }
+              },
+              "nodes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024
+                    },
+                    "config": {
+                      "type": "object"
+                    },
+                    "meta": {
+                      "type": "object"
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "type"
+                  ]
+                }
+              },
+              "globals": {
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "json": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 32767
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "key",
+                    "json"
                   ]
                 }
               }
-            },
-            "additionalProperties": false,
-            "required": [
-              "outputCount",
-              "resultMode",
-              "fields"
-            ]
+            }
           }
-        }
+        ]
       }
     },
     "importedFlowIdMap": {
@@ -16854,6 +18246,296 @@ Schema for the body of a Github login request
     "accessToken": {
       "type": "string",
       "minLength": 1
+    },
+    "requestedScopes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "oneOf": [
+          {
+            "oneOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "all.Application",
+                  "all.Application.read",
+                  "all.Device",
+                  "all.Device.read",
+                  "application.*",
+                  "applicationApiToken.*",
+                  "applicationApiTokens.*",
+                  "applicationKey.*",
+                  "applicationKeys.*",
+                  "data.*",
+                  "dataTable.*",
+                  "dataTables.*",
+                  "dataTableRow.*",
+                  "dataTableRows.*",
+                  "device.*",
+                  "deviceRecipe.*",
+                  "deviceRecipes.*",
+                  "devices.*",
+                  "edgeDeployments.*",
+                  "event.*",
+                  "events.*",
+                  "experience.*",
+                  "experienceDomain.*",
+                  "experienceDomains.*",
+                  "experienceEndpoint.*",
+                  "experienceEndpoints.*",
+                  "experienceGroup.*",
+                  "experienceGroups.*",
+                  "experienceSlug.*",
+                  "experienceSlugs.*",
+                  "experienceUser.*",
+                  "experienceUsers.*",
+                  "experienceVersion.*",
+                  "experienceVersions.*",
+                  "experienceView.*",
+                  "experienceViews.*",
+                  "integration.*",
+                  "integrations.*",
+                  "file.*",
+                  "files.*",
+                  "flow.*",
+                  "flows.*",
+                  "flowVersion.*",
+                  "flowVersions.*",
+                  "webhook.*",
+                  "webhooks.*",
+                  "application.archiveData",
+                  "application.backfillArchiveData",
+                  "application.debug",
+                  "application.delete",
+                  "application.get",
+                  "application.patch",
+                  "application.payloadCounts",
+                  "applicationApiToken.delete",
+                  "applicationApiToken.get",
+                  "applicationApiToken.patch",
+                  "applicationApiTokens.get",
+                  "applicationApiTokens.post",
+                  "applicationKey.delete",
+                  "applicationKey.get",
+                  "applicationKey.patch",
+                  "applicationKeys.get",
+                  "applicationKeys.post",
+                  "data.lastValueQuery",
+                  "data.timeSeriesQuery",
+                  "dataTable.addColumn",
+                  "dataTable.delete",
+                  "dataTable.get",
+                  "dataTable.patch",
+                  "dataTable.removeColumn",
+                  "dataTableRow.delete",
+                  "dataTableRow.get",
+                  "dataTableRow.patch",
+                  "dataTableRows.get",
+                  "dataTableRows.post",
+                  "dataTableRows.query",
+                  "dataTableRows.export",
+                  "dataTableRows.delete",
+                  "dataTableRows.truncate",
+                  "dataTables.get",
+                  "dataTables.post",
+                  "device.commandStream",
+                  "device.debug",
+                  "device.delete",
+                  "device.export",
+                  "device.get",
+                  "device.getCommand",
+                  "device.getCompositeState",
+                  "device.getLogEntries",
+                  "device.getState",
+                  "device.patch",
+                  "device.removeData",
+                  "device.sendCommand",
+                  "device.sendState",
+                  "device.setConnectionStatus",
+                  "device.stateStream",
+                  "deviceRecipe.bulkCreate",
+                  "deviceRecipe.delete",
+                  "deviceRecipe.get",
+                  "deviceRecipe.patch",
+                  "deviceRecipes.get",
+                  "deviceRecipes.post",
+                  "devices.detailedSummary",
+                  "devices.export",
+                  "devices.get",
+                  "devices.post",
+                  "devices.sendCommand",
+                  "edgeDeployments.get",
+                  "edgeDeployments.release",
+                  "edgeDeployments.remove",
+                  "edgeDeployments.replace",
+                  "event.delete",
+                  "event.get",
+                  "event.patch",
+                  "events.get",
+                  "events.mostRecentBySeverity",
+                  "events.patch",
+                  "events.post",
+                  "experience.delete",
+                  "experienceDomain.delete",
+                  "experienceDomain.get",
+                  "experienceDomain.patch",
+                  "experienceDomains.get",
+                  "experienceDomains.post",
+                  "experienceEndpoint.delete",
+                  "experienceEndpoint.get",
+                  "experienceEndpoint.patch",
+                  "experienceEndpoints.get",
+                  "experienceEndpoints.post",
+                  "experienceEndpoints.stats",
+                  "experienceGroup.delete",
+                  "experienceGroup.get",
+                  "experienceGroup.patch",
+                  "experienceGroups.detailedSummary",
+                  "experienceGroups.get",
+                  "experienceGroups.post",
+                  "experienceSlug.delete",
+                  "experienceSlug.get",
+                  "experienceSlug.patch",
+                  "experienceSlugs.get",
+                  "experienceSlugs.post",
+                  "experienceUser.delete",
+                  "experienceUser.get",
+                  "experienceUser.patch",
+                  "experienceUsers.detailedSummary",
+                  "experienceUsers.get",
+                  "experienceUsers.post",
+                  "experienceVersion.delete",
+                  "experienceVersion.get",
+                  "experienceVersion.patch",
+                  "experienceVersions.get",
+                  "experienceVersions.post",
+                  "experienceView.debug",
+                  "experienceView.delete",
+                  "experienceView.get",
+                  "experienceView.patch",
+                  "experienceViews.debug",
+                  "experienceViews.detailedSummary",
+                  "experienceViews.get",
+                  "experienceViews.post",
+                  "file.get",
+                  "file.patch",
+                  "file.move",
+                  "file.delete",
+                  "files.get",
+                  "files.post",
+                  "flow.debug",
+                  "flow.delete",
+                  "flow.clearStorageEntries",
+                  "flow.get",
+                  "flow.getStorageEntries",
+                  "flow.log",
+                  "flow.patch",
+                  "flow.pressVirtualButton",
+                  "flow.setStorageEntry",
+                  "flows.get",
+                  "flows.getByVersion",
+                  "flows.import",
+                  "flows.post",
+                  "flowVersion.delete",
+                  "flowVersion.get",
+                  "flowVersion.log",
+                  "flowVersion.patch",
+                  "flowVersions.get",
+                  "flowVersions.post",
+                  "integration.delete",
+                  "integration.get",
+                  "integration.patch",
+                  "integrations.get",
+                  "integrations.post",
+                  "webhook.delete",
+                  "webhook.get",
+                  "webhook.patch",
+                  "webhooks.get",
+                  "webhooks.post"
+                ]
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "all.Organization",
+                  "all.Organization.read",
+                  "applications.*",
+                  "auditLog.*",
+                  "auditLogs.*",
+                  "dashboard.*",
+                  "dashboards.*",
+                  "org.*",
+                  "solution.*",
+                  "solutions.*",
+                  "solutionUser.*",
+                  "solutionUsers.*",
+                  "applications.get",
+                  "applications.post",
+                  "auditLog.get",
+                  "auditLogs.get",
+                  "dashboard.patch",
+                  "dashboard.delete",
+                  "dashboards.get",
+                  "dashboards.post",
+                  "org.get",
+                  "org.patch",
+                  "org.delete",
+                  "org.pendingInvites",
+                  "org.inviteMember",
+                  "org.revokeInvite",
+                  "org.modifyMember",
+                  "org.removeMember",
+                  "org.payloadCounts",
+                  "org.invoices",
+                  "org.currentCard",
+                  "org.chargeDetails",
+                  "org.transferResources",
+                  "solutionUser.get",
+                  "solutionUser.patch",
+                  "solutionUser.delete",
+                  "solutionUsers.get",
+                  "solutionUsers.post",
+                  "solution.get",
+                  "solution.patch",
+                  "solution.delete",
+                  "solutions.get",
+                  "solutions.post"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
+              "all.User",
+              "all.User.read",
+              "me.*",
+              "orgs.*",
+              "me.get",
+              "me.patch",
+              "me.delete",
+              "me.verifyEmail",
+              "me.changePassword",
+              "me.enableTwoFactorAuth",
+              "me.disableTwoFactorAuth",
+              "me.disconnectGithub",
+              "me.connectGithub",
+              "me.disconnectTwitter",
+              "me.connectTwitter",
+              "me.addRecentItem",
+              "me.fetchRecentItems",
+              "me.payloadCounts",
+              "me.transferResources",
+              "orgs.get",
+              "orgs.post"
+            ]
+          }
+        ]
+      }
+    },
+    "tokenTTL": {
+      "type": "integer",
+      "minimum": 0
     }
   },
   "required": [
@@ -20820,6 +22502,10 @@ Schema for the body of a Solution User authentication request
     "twoFactorCode": {
       "type": "string",
       "maxLength": 2048
+    },
+    "tokenTTL": {
+      "type": "integer",
+      "minimum": 0
     }
   },
   "required": [
@@ -21708,6 +23394,296 @@ Schema for the body of a User authentication request
     "twoFactorCode": {
       "type": "string",
       "maxLength": 2048
+    },
+    "requestedScopes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "oneOf": [
+          {
+            "oneOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "all.Application",
+                  "all.Application.read",
+                  "all.Device",
+                  "all.Device.read",
+                  "application.*",
+                  "applicationApiToken.*",
+                  "applicationApiTokens.*",
+                  "applicationKey.*",
+                  "applicationKeys.*",
+                  "data.*",
+                  "dataTable.*",
+                  "dataTables.*",
+                  "dataTableRow.*",
+                  "dataTableRows.*",
+                  "device.*",
+                  "deviceRecipe.*",
+                  "deviceRecipes.*",
+                  "devices.*",
+                  "edgeDeployments.*",
+                  "event.*",
+                  "events.*",
+                  "experience.*",
+                  "experienceDomain.*",
+                  "experienceDomains.*",
+                  "experienceEndpoint.*",
+                  "experienceEndpoints.*",
+                  "experienceGroup.*",
+                  "experienceGroups.*",
+                  "experienceSlug.*",
+                  "experienceSlugs.*",
+                  "experienceUser.*",
+                  "experienceUsers.*",
+                  "experienceVersion.*",
+                  "experienceVersions.*",
+                  "experienceView.*",
+                  "experienceViews.*",
+                  "integration.*",
+                  "integrations.*",
+                  "file.*",
+                  "files.*",
+                  "flow.*",
+                  "flows.*",
+                  "flowVersion.*",
+                  "flowVersions.*",
+                  "webhook.*",
+                  "webhooks.*",
+                  "application.archiveData",
+                  "application.backfillArchiveData",
+                  "application.debug",
+                  "application.delete",
+                  "application.get",
+                  "application.patch",
+                  "application.payloadCounts",
+                  "applicationApiToken.delete",
+                  "applicationApiToken.get",
+                  "applicationApiToken.patch",
+                  "applicationApiTokens.get",
+                  "applicationApiTokens.post",
+                  "applicationKey.delete",
+                  "applicationKey.get",
+                  "applicationKey.patch",
+                  "applicationKeys.get",
+                  "applicationKeys.post",
+                  "data.lastValueQuery",
+                  "data.timeSeriesQuery",
+                  "dataTable.addColumn",
+                  "dataTable.delete",
+                  "dataTable.get",
+                  "dataTable.patch",
+                  "dataTable.removeColumn",
+                  "dataTableRow.delete",
+                  "dataTableRow.get",
+                  "dataTableRow.patch",
+                  "dataTableRows.get",
+                  "dataTableRows.post",
+                  "dataTableRows.query",
+                  "dataTableRows.export",
+                  "dataTableRows.delete",
+                  "dataTableRows.truncate",
+                  "dataTables.get",
+                  "dataTables.post",
+                  "device.commandStream",
+                  "device.debug",
+                  "device.delete",
+                  "device.export",
+                  "device.get",
+                  "device.getCommand",
+                  "device.getCompositeState",
+                  "device.getLogEntries",
+                  "device.getState",
+                  "device.patch",
+                  "device.removeData",
+                  "device.sendCommand",
+                  "device.sendState",
+                  "device.setConnectionStatus",
+                  "device.stateStream",
+                  "deviceRecipe.bulkCreate",
+                  "deviceRecipe.delete",
+                  "deviceRecipe.get",
+                  "deviceRecipe.patch",
+                  "deviceRecipes.get",
+                  "deviceRecipes.post",
+                  "devices.detailedSummary",
+                  "devices.export",
+                  "devices.get",
+                  "devices.post",
+                  "devices.sendCommand",
+                  "edgeDeployments.get",
+                  "edgeDeployments.release",
+                  "edgeDeployments.remove",
+                  "edgeDeployments.replace",
+                  "event.delete",
+                  "event.get",
+                  "event.patch",
+                  "events.get",
+                  "events.mostRecentBySeverity",
+                  "events.patch",
+                  "events.post",
+                  "experience.delete",
+                  "experienceDomain.delete",
+                  "experienceDomain.get",
+                  "experienceDomain.patch",
+                  "experienceDomains.get",
+                  "experienceDomains.post",
+                  "experienceEndpoint.delete",
+                  "experienceEndpoint.get",
+                  "experienceEndpoint.patch",
+                  "experienceEndpoints.get",
+                  "experienceEndpoints.post",
+                  "experienceEndpoints.stats",
+                  "experienceGroup.delete",
+                  "experienceGroup.get",
+                  "experienceGroup.patch",
+                  "experienceGroups.detailedSummary",
+                  "experienceGroups.get",
+                  "experienceGroups.post",
+                  "experienceSlug.delete",
+                  "experienceSlug.get",
+                  "experienceSlug.patch",
+                  "experienceSlugs.get",
+                  "experienceSlugs.post",
+                  "experienceUser.delete",
+                  "experienceUser.get",
+                  "experienceUser.patch",
+                  "experienceUsers.detailedSummary",
+                  "experienceUsers.get",
+                  "experienceUsers.post",
+                  "experienceVersion.delete",
+                  "experienceVersion.get",
+                  "experienceVersion.patch",
+                  "experienceVersions.get",
+                  "experienceVersions.post",
+                  "experienceView.debug",
+                  "experienceView.delete",
+                  "experienceView.get",
+                  "experienceView.patch",
+                  "experienceViews.debug",
+                  "experienceViews.detailedSummary",
+                  "experienceViews.get",
+                  "experienceViews.post",
+                  "file.get",
+                  "file.patch",
+                  "file.move",
+                  "file.delete",
+                  "files.get",
+                  "files.post",
+                  "flow.debug",
+                  "flow.delete",
+                  "flow.clearStorageEntries",
+                  "flow.get",
+                  "flow.getStorageEntries",
+                  "flow.log",
+                  "flow.patch",
+                  "flow.pressVirtualButton",
+                  "flow.setStorageEntry",
+                  "flows.get",
+                  "flows.getByVersion",
+                  "flows.import",
+                  "flows.post",
+                  "flowVersion.delete",
+                  "flowVersion.get",
+                  "flowVersion.log",
+                  "flowVersion.patch",
+                  "flowVersions.get",
+                  "flowVersions.post",
+                  "integration.delete",
+                  "integration.get",
+                  "integration.patch",
+                  "integrations.get",
+                  "integrations.post",
+                  "webhook.delete",
+                  "webhook.get",
+                  "webhook.patch",
+                  "webhooks.get",
+                  "webhooks.post"
+                ]
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "all.Organization",
+                  "all.Organization.read",
+                  "applications.*",
+                  "auditLog.*",
+                  "auditLogs.*",
+                  "dashboard.*",
+                  "dashboards.*",
+                  "org.*",
+                  "solution.*",
+                  "solutions.*",
+                  "solutionUser.*",
+                  "solutionUsers.*",
+                  "applications.get",
+                  "applications.post",
+                  "auditLog.get",
+                  "auditLogs.get",
+                  "dashboard.patch",
+                  "dashboard.delete",
+                  "dashboards.get",
+                  "dashboards.post",
+                  "org.get",
+                  "org.patch",
+                  "org.delete",
+                  "org.pendingInvites",
+                  "org.inviteMember",
+                  "org.revokeInvite",
+                  "org.modifyMember",
+                  "org.removeMember",
+                  "org.payloadCounts",
+                  "org.invoices",
+                  "org.currentCard",
+                  "org.chargeDetails",
+                  "org.transferResources",
+                  "solutionUser.get",
+                  "solutionUser.patch",
+                  "solutionUser.delete",
+                  "solutionUsers.get",
+                  "solutionUsers.post",
+                  "solution.get",
+                  "solution.patch",
+                  "solution.delete",
+                  "solutions.get",
+                  "solutions.post"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
+              "all.User",
+              "all.User.read",
+              "me.*",
+              "orgs.*",
+              "me.get",
+              "me.patch",
+              "me.delete",
+              "me.verifyEmail",
+              "me.changePassword",
+              "me.enableTwoFactorAuth",
+              "me.disableTwoFactorAuth",
+              "me.disconnectGithub",
+              "me.connectGithub",
+              "me.disconnectTwitter",
+              "me.connectTwitter",
+              "me.addRecentItem",
+              "me.fetchRecentItems",
+              "me.payloadCounts",
+              "me.transferResources",
+              "orgs.get",
+              "orgs.post"
+            ]
+          }
+        ]
+      }
+    },
+    "tokenTTL": {
+      "type": "integer",
+      "minimum": 0
     }
   },
   "required": [
