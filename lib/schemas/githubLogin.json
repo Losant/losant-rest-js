@@ -67,6 +67,8 @@
                   "application.debug",
                   "application.delete",
                   "application.get",
+                  "application.mqttPublishMessage",
+                  "application.mqttSubscriptionStream",
                   "application.patch",
                   "application.payloadCounts",
                   "applicationApiToken.delete",

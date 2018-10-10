@@ -10,6 +10,7 @@ parameters and the potential responses.
 *   [Backfill Archive Data](#backfill-archive-data)
 *   [Delete](#delete)
 *   [Get](#get)
+*   [Mqtt Publish Message](#mqtt-publish-message)
 *   [Patch](#patch)
 *   [Payload Counts](#payload-counts)
 
@@ -195,6 +196,55 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Application](_schemas.md#application) | Application information |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
+
+<br/>
+
+## Mqtt Publish Message
+
+Publishes the given message to the given MQTT topic
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  payload: myPayload
+};
+
+// with callbacks
+client.application.mqttPublishMessage(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.application.mqttPublishMessage(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, application.*, or application.mqttPublishMessage.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
+| payload | [MQTT Publish Body](_schemas.md#mqtt-publish-body) | Y | Object containing topic and message |  | [MQTT Publish Body Example](_schemas.md#mqtt-publish-body-example) |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Success](_schemas.md#success) | Message successfully published |
 
 #### Error Responses
 

@@ -125,6 +125,7 @@
 *   [Last Value Query](#last-value-query)
 *   [Me](#me)
 *   [Me Patch](#me-patch)
+*   [MQTT Publish Body](#mqtt-publish-body)
 *   [Multi Device Command](#multi-device-command)
 *   [Organization](#organization)
 *   [Organization Invitation Action](#organization-invitation-action)
@@ -701,6 +702,8 @@ Schema for the body of an Application API Token creation request
           "application.debug",
           "application.delete",
           "application.get",
+          "application.mqttPublishMessage",
+          "application.mqttSubscriptionStream",
           "application.patch",
           "application.payloadCounts",
           "applicationApiToken.delete",
@@ -18357,6 +18360,8 @@ Schema for the body of a Github login request
                   "application.debug",
                   "application.delete",
                   "application.get",
+                  "application.mqttPublishMessage",
+                  "application.mqttSubscriptionStream",
                   "application.patch",
                   "application.payloadCounts",
                   "applicationApiToken.delete",
@@ -20228,6 +20233,45 @@ Schema for the body of request to modify the current user
   "companyName": "Losant IoT, Inc.",
   "url": "https://www.losant.com",
   "password": "my new password"
+}
+```
+
+<br/>
+
+## MQTT Publish Body
+
+Schema for the body an MQTT Publish Message request
+
+### <a name="mqtt-publish-body-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "topic": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 230
+    },
+    "message": {
+      "type": "string",
+      "maxLength": 32767
+    }
+  },
+  "required": [
+    "topic",
+    "message"
+  ],
+  "additionalProperties": false
+}
+```
+### <a name="mqtt-publish-body-example"></a> Example
+
+```json
+{
+  "topic": "an/mqtt/topic",
+  "message": "The MQTT message!"
 }
 ```
 
@@ -23505,6 +23549,8 @@ Schema for the body of a User authentication request
                   "application.debug",
                   "application.delete",
                   "application.get",
+                  "application.mqttPublishMessage",
+                  "application.mqttSubscriptionStream",
                   "application.patch",
                   "application.payloadCounts",
                   "applicationApiToken.delete",

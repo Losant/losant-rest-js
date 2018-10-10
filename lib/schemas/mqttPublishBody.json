@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "topic": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 230
+    },
+    "message": {
+      "type": "string",
+      "maxLength": 32767
+    }
+  },
+  "required": [
+    "topic",
+    "message"
+  ],
+  "additionalProperties": false
+}
