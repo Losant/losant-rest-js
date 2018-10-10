@@ -31,6 +31,7 @@
 *   [Data Table Post](#data-table-post)
 *   [Data Table Query](#data-table-query)
 *   [Data Table Row](#data-table-row)
+*   [Data Table Row Insert](#data-table-row-insert)
 *   [Data Table Row Insert/Update](#data-table-row-insert/update)
 *   [Data Table Rows](#data-table-rows)
 *   [Data Table Rows Delete](#data-table-rows-delete)
@@ -4610,6 +4611,53 @@ Schema for a single Data Table Row
   "creationDate": "2016-06-13T04:00:00.000Z",
   "lastUpdated": "2016-06-13T04:00:00.000Z",
   "myColumn": "myValue"
+}
+```
+
+<br/>
+
+## Data Table Row Insert
+
+Schema for inserting a data table row or rows
+
+### <a name="data-table-row-insert-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "oneOf": [
+    {
+      "title": "Data Table Row Insert/Update",
+      "description": "Schema for inserting or updating a data table row",
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "title": "Data Table Row Insert Multiple",
+      "description": "Schema for inserting data table rows",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/dataTableRowInSingle"
+      }
+    }
+  ]
+}
+```
+### <a name="data-table-row-insert-example"></a> Example
+
+```json
+{
+  "myColumn1": "myValue"
 }
 ```
 
@@ -15879,6 +15927,7 @@ Schema for a collection of Workflows
       "enum": [
         "cloud",
         "edge",
+        "experience",
         "customNode"
       ]
     }

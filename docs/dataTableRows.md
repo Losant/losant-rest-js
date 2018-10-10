@@ -203,7 +203,7 @@ all.Application, all.Organization, all.User, dataTableRows.*, or dataTableRows.p
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | dataTableId | string | Y | ID associated with the data table |  | 575ed78e7ae143cd83dc4aab |
-| dataTableRow | [Data Table Row Insert/Update](_schemas.md#data-table-row-insert/update) | Y | The row to insert |  | [Data Table Row Insert/Update Example](_schemas.md#data-table-row-insert/update-example) |
+| dataTableRow | [Data Table Row Insert](_schemas.md#data-table-row-insert) | Y | The row to insert |  | [Data Table Row Insert Example](_schemas.md#data-table-row-insert-example) |
 
 #### Successful Responses
 
