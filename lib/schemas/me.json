@@ -111,7 +111,13 @@
       "experiencegroup": {
         "type": "number"
       },
+      "experienceslug": {
+        "type": "number"
+      },
       "experienceuser": {
+        "type": "number"
+      },
+      "experienceversion": {
         "type": "number"
       },
       "experienceview": {
@@ -283,7 +289,13 @@
         "experienceGroupCount": {
           "type": "number"
         },
+        "experienceSlugCount": {
+          "type": "number"
+        },
         "experienceUserCount": {
+          "type": "number"
+        },
+        "experienceVersionCount": {
           "type": "number"
         },
         "experienceViewCount": {

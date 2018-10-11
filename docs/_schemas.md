@@ -431,7 +431,13 @@ Schema for a single Application
         "experienceGroupCount": {
           "type": "number"
         },
+        "experienceSlugCount": {
+          "type": "number"
+        },
         "experienceUserCount": {
+          "type": "number"
+        },
+        "experienceVersionCount": {
           "type": "number"
         },
         "experienceViewCount": {
@@ -1816,7 +1822,13 @@ Schema for a collection of Applications
               "experienceGroupCount": {
                 "type": "number"
               },
+              "experienceSlugCount": {
+                "type": "number"
+              },
               "experienceUserCount": {
+                "type": "number"
+              },
+              "experienceVersionCount": {
                 "type": "number"
               },
               "experienceViewCount": {
@@ -19814,7 +19826,13 @@ Schema for information about the currently authenticated user
       "experiencegroup": {
         "type": "number"
       },
+      "experienceslug": {
+        "type": "number"
+      },
       "experienceuser": {
+        "type": "number"
+      },
+      "experienceversion": {
         "type": "number"
       },
       "experienceview": {
@@ -19986,7 +20004,13 @@ Schema for information about the currently authenticated user
         "experienceGroupCount": {
           "type": "number"
         },
+        "experienceSlugCount": {
+          "type": "number"
+        },
         "experienceUserCount": {
+          "type": "number"
+        },
+        "experienceVersionCount": {
           "type": "number"
         },
         "experienceViewCount": {
@@ -20537,7 +20561,13 @@ Schema for a single Organization
       "experiencegroup": {
         "type": "number"
       },
+      "experienceslug": {
+        "type": "number"
+      },
       "experienceuser": {
+        "type": "number"
+      },
+      "experienceversion": {
         "type": "number"
       },
       "experienceview": {
@@ -20601,7 +20631,13 @@ Schema for a single Organization
         "experienceGroupCount": {
           "type": "number"
         },
+        "experienceSlugCount": {
+          "type": "number"
+        },
         "experienceUserCount": {
+          "type": "number"
+        },
+        "experienceVersionCount": {
           "type": "number"
         },
         "experienceViewCount": {
@@ -21531,7 +21567,13 @@ Schema for a collection of Organizations
             "experiencegroup": {
               "type": "number"
             },
+            "experienceslug": {
+              "type": "number"
+            },
             "experienceuser": {
+              "type": "number"
+            },
+            "experienceversion": {
               "type": "number"
             },
             "experienceview": {
@@ -21595,7 +21637,13 @@ Schema for a collection of Organizations
               "experienceGroupCount": {
                 "type": "number"
               },
+              "experienceSlugCount": {
+                "type": "number"
+              },
               "experienceUserCount": {
+                "type": "number"
+              },
+              "experienceVersionCount": {
                 "type": "number"
               },
               "experienceViewCount": {
