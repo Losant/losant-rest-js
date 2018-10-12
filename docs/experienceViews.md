@@ -49,7 +49,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*view |
 | viewType | string | N | Filter views to those only of the given type. Accepted values are: page, layout, component |  | page |
-| version | string | N | Version of this experience view to return | develop | develop |
+| version | string | N | Return the experience views belonging to this version | develop | develop |
 
 #### Successful Responses
 

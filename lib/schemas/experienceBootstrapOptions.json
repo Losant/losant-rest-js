@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "replaceExisting": {
+      "type": "boolean",
+      "default": false
+    },
+    "createUsers": {
+      "type": "boolean",
+      "default": true
+    },
+    "createGroups": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "additionalProperties": false
+}

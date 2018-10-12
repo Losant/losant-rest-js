@@ -142,6 +142,7 @@
           "events.patch",
           "events.post",
           "experience.delete",
+          "experience.bootstrap",
           "experienceDomain.delete",
           "experienceDomain.get",
           "experienceDomain.patch",

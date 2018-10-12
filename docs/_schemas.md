@@ -68,6 +68,7 @@
 *   [Event Patch](#event-patch)
 *   [Event Post](#event-post)
 *   [Events](#events)
+*   [Experience Bootstrap Options](#experience-bootstrap-options)
 *   [Experience Domain](#experience-domain)
 *   [Experience Domain Patch](#experience-domain-patch)
 *   [Experience Domain Post](#experience-domain-post)
@@ -778,6 +779,7 @@ Schema for the body of an Application API Token creation request
           "events.patch",
           "events.post",
           "experience.delete",
+          "experience.bootstrap",
           "experienceDomain.delete",
           "experienceDomain.get",
           "experienceDomain.patch",
@@ -8190,6 +8192,43 @@ Schema for a collection of Events
   "sortDirection": "asc",
   "applicationId": "575ec8687ae143cd83dc4a97",
   "state": "new"
+}
+```
+
+<br/>
+
+## Experience Bootstrap Options
+
+The body of an experience bootstrap request
+
+### <a name="experience-bootstrap-options-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "replaceExisting": {
+      "type": "boolean",
+      "default": false
+    },
+    "createUsers": {
+      "type": "boolean",
+      "default": true
+    },
+    "createGroups": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="experience-bootstrap-options-example"></a> Example
+
+```json
+{
+  "replaceExisting": true
 }
 ```
 
@@ -18442,6 +18481,7 @@ Schema for the body of a Github login request
                   "events.patch",
                   "events.post",
                   "experience.delete",
+                  "experience.bootstrap",
                   "experienceDomain.delete",
                   "experienceDomain.get",
                   "experienceDomain.patch",
@@ -23667,6 +23707,7 @@ Schema for the body of a User authentication request
                   "events.patch",
                   "events.post",
                   "experience.delete",
+                  "experience.bootstrap",
                   "experienceDomain.delete",
                   "experienceDomain.get",
                   "experienceDomain.patch",
