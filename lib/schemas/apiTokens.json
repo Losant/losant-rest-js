@@ -5,17 +5,52 @@
     "items": {
       "type": "array",
       "items": {
-        "title": "File Schema",
-        "description": "Schema for a single file",
+        "title": "API Token",
+        "description": "Schema for a single API Token",
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
-          "applicationId": {
+          "apiTokenId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "ownerId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "ownerType": {
+            "type": "string",
+            "enum": [
+              "application"
+            ]
+          },
+          "creatorId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creatorType": {
+            "type": "string",
+            "enum": [
+              "apiToken",
+              "user",
+              "flow"
+            ]
+          },
+          "creatorName": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
           },
           "creationDate": {
             "type": "string",
@@ -25,71 +60,28 @@
             "type": "string",
             "format": "date-time"
           },
-          "authorId": {
+          "expirationDate": {
             "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
+            "format": "date-time"
           },
-          "authorType": {
-            "type": "string",
-            "enum": [
-              "flow",
-              "user",
-              "device",
-              "apiToken"
-            ]
+          "scope": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024
+            }
           },
           "status": {
             "type": "string",
             "enum": [
-              "pending",
-              "moving",
-              "deleting",
-              "completed"
+              "active",
+              "inactive"
             ]
           },
-          "name": {
+          "token": {
             "type": "string",
-            "minLength": 1,
-            "maxLength": 1024
-          },
-          "parentDirectory": {
-            "type": "string",
-            "maxLength": 1024
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "file",
-              "directory"
-            ]
-          },
-          "fileSize": {
-            "type": "number"
-          },
-          "s3etag": {
-            "type": "string"
-          },
-          "contentType": {
-            "type": "string",
-            "maxLength": 1024
-          },
-          "fileDimensions": {
-            "type": "object",
-            "properties": {
-              "width": {
-                "type": "number"
-              },
-              "height": {
-                "type": "number"
-              }
-            }
-          },
-          "moveIntoId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "url": {
-            "type": "string"
+            "minLength": 1
           }
         }
       }
@@ -120,6 +112,16 @@
       "enum": [
         "asc",
         "desc"
+      ]
+    },
+    "ownerId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "ownerType": {
+      "type": "string",
+      "enum": [
+        "application"
       ]
     }
   }

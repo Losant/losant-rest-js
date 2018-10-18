@@ -59,6 +59,9 @@
     "fileSize": {
       "type": "number"
     },
+    "s3etag": {
+      "type": "string"
+    },
     "contentType": {
       "type": "string",
       "maxLength": 1024

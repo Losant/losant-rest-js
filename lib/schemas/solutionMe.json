@@ -1,0 +1,150 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "solutionUserId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "passwordLastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastLogin": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "firstName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "companyName": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "phoneNumber": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "location": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "url": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "forcePasswordResetOnNextLogin": {
+      "type": "boolean"
+    },
+    "fullName": {
+      "type": "string"
+    },
+    "twoFactorAuthEnabled": {
+      "type": "boolean"
+    },
+    "avatarUrl": {
+      "type": "string",
+      "format": "url"
+    },
+    "accessRestrictions": {
+      "type": "object",
+      "properties": {
+        "dashboardIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "maxItems": 1000
+        }
+      }
+    },
+    "recentDashboards": {
+      "title": "Recent Item List",
+      "description": "Schema for an array of recent items",
+      "type": "object",
+      "properties": {
+        "itemType": {
+          "type": "string",
+          "enum": [
+            "application",
+            "device",
+            "flow",
+            "dashboard",
+            "organization"
+          ]
+        },
+        "parentId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            }
+          }
+        }
+      }
+    },
+    "solution": {
+      "id": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "slug": {
+        "type": "string",
+        "pattern": "^[0-9a-z_-]{1,255}$"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 255
+      },
+      "allowSelfDeletion": {
+        "type": "boolean"
+      },
+      "allowSelfEmailChange": {
+        "type": "boolean"
+      }
+    }
+  }
+}

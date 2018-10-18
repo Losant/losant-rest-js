@@ -50,6 +50,7 @@
               "deviceTagInactivity",
               "endpoint",
               "event",
+              "fileWatch",
               "integration",
               "mqttTopic",
               "request",

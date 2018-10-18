@@ -171,7 +171,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 ## Post
 
-Inserts a new row into a data table
+Inserts a new row or rows into a data table
 
 ```javascript
 var params = {
@@ -203,13 +203,13 @@ all.Application, all.Organization, all.User, dataTableRows.*, or dataTableRows.p
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | dataTableId | string | Y | ID associated with the data table |  | 575ed78e7ae143cd83dc4aab |
-| dataTableRow | [Data Table Row Insert](_schemas.md#data-table-row-insert) | Y | The row to insert |  | [Data Table Row Insert Example](_schemas.md#data-table-row-insert-example) |
+| dataTableRow | [Data Table Row Insert](_schemas.md#data-table-row-insert) | Y | The row (or rows) to insert |  | [Data Table Row Insert Example](_schemas.md#data-table-row-insert-example) |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Data Table Row](_schemas.md#data-table-row) | Successfully created data table row |
+| 201 | [Data Table Row Insert Result](_schemas.md#data-table-row-insert-result) | Successfully created data table row, or bulk insert count |
 
 #### Error Responses
 

@@ -49,7 +49,7 @@ all.Application, all.Organization, all.User, experience.*, or experience.bootstr
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If deletion was successful |
+| 200 | [Experience Bootstrap Result](_schemas.md#experience-bootstrap-result) | If bootstrap was successful |
 
 #### Error Responses
 

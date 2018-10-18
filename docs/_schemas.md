@@ -2,6 +2,7 @@
 
 *   [API Token](#api-token)
 *   [API Token Patch](#api-token-patch)
+*   [API Tokens](#api-tokens)
 *   [Application](#application)
 *   [Application API Token Post](#application-api-token-post)
 *   [Application Key](#application-key)
@@ -31,7 +32,9 @@
 *   [Data Table Post](#data-table-post)
 *   [Data Table Query](#data-table-query)
 *   [Data Table Row](#data-table-row)
+*   [Data Table Row Insert Multiple](#data-table-row-insert-multiple)
 *   [Data Table Row Insert](#data-table-row-insert)
+*   [Data Table Row Insert Result](#data-table-row-insert-result)
 *   [Data Table Row Insert/Update](#data-table-row-insert/update)
 *   [Data Table Rows](#data-table-rows)
 *   [Data Table Rows Delete](#data-table-rows-delete)
@@ -58,10 +61,12 @@
 *   [Device Tag Filter](#device-tag-filter)
 *   [Devices](#devices)
 *   [Disable Two Factor Auth](#disable-two-factor-auth)
+*   [Edge Deployment](#edge-deployment)
 *   [Edge Deployment Release](#edge-deployment-release)
 *   [Edge Deployment Remove](#edge-deployment-remove)
 *   [Edge Deployment Replace](#edge-deployment-replace)
 *   [Edge Deployments](#edge-deployments)
+*   [Email Verification Verify](#email-verification-verify)
 *   [Enable Two Factor Auth](#enable-two-factor-auth)
 *   [Error](#error)
 *   [Event](#event)
@@ -69,6 +74,7 @@
 *   [Event Post](#event-post)
 *   [Events](#events)
 *   [Experience Bootstrap Options](#experience-bootstrap-options)
+*   [Experience Bootstrap Result](#experience-bootstrap-result)
 *   [Experience Domain](#experience-domain)
 *   [Experience Domain Patch](#experience-domain-patch)
 *   [Experience Domain Post](#experience-domain-post)
@@ -138,11 +144,15 @@
 *   [Organization Patch](#organization-patch)
 *   [Organization Post](#organization-post)
 *   [Organizations](#organizations)
+*   [Password Reset Finish](#password-reset-finish)
+*   [Password Reset Input](#password-reset-input)
+*   [Password Reset Response](#password-reset-response)
 *   [Payload Counts](#payload-counts)
 *   [Recent Item](#recent-item)
 *   [Recent Item List](#recent-item-list)
 *   [Resource Transfer](#resource-transfer)
 *   [Solution](#solution)
+*   [Solution Me](#solution-me)
 *   [Solution Patch](#solution-patch)
 *   [Solution Post](#solution-post)
 *   [Solution User](#solution-user)
@@ -155,6 +165,7 @@
 *   [Time Series Data](#time-series-data)
 *   [Time Series Query](#time-series-query)
 *   [User Credentials](#user-credentials)
+*   [User Post](#user-post)
 *   [Virtual Button Press](#virtual-button-press)
 *   [Webhook](#webhook)
 *   [Webhook Patch](#webhook-patch)
@@ -310,6 +321,178 @@ Schema for the body of an API Token modification request
 {
   "name": "My Updated API Token",
   "status": "inactive"
+}
+```
+
+<br/>
+
+## API Tokens
+
+Schema for a collection of API Tokens
+
+### <a name="api-tokens-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "API Token",
+        "description": "Schema for a single API Token",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "apiTokenId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "ownerId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "ownerType": {
+            "type": "string",
+            "enum": [
+              "application"
+            ]
+          },
+          "creatorId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creatorType": {
+            "type": "string",
+            "enum": [
+              "apiToken",
+              "user",
+              "flow"
+            ]
+          },
+          "creatorName": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expirationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "scope": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          },
+          "token": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
+    },
+    "ownerId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "ownerType": {
+      "type": "string",
+      "enum": [
+        "application"
+      ]
+    }
+  }
+}
+```
+### <a name="api-tokens-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "575ec7417ae143cd83dc4a95",
+      "apiTokenId": "575ec7417ae143cd83dc4a95",
+      "creatorId": "575ed70c7ae143cd83dc4aa9",
+      "creatorType": "user",
+      "ownerId": "575ec8687ae143cd83dc4a97",
+      "ownerType": "application",
+      "name": "My API Token",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "expirationDate": "2017-06-13T04:00:00.000Z",
+      "scope": [
+        "all.Application"
+      ],
+      "status": "active",
+      "token": "the_actual_token_string"
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc",
+  "ownerId": "575ec8687ae143cd83dc4a97",
+  "ownerType": "application"
 }
 ```
 
@@ -4633,6 +4816,49 @@ Schema for a single Data Table Row
 
 <br/>
 
+## Data Table Row Insert Multiple
+
+Schema for inserting data table rows
+
+### <a name="data-table-row-insert-multiple-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": {
+    "title": "Data Table Row Insert/Update",
+    "description": "Schema for inserting or updating a data table row",
+    "type": "object",
+    "patternProperties": {
+      "^[0-9a-zA-Z_-]{1,255}$": {
+        "type": [
+          "string",
+          "number",
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "additionalProperties": false
+  }
+}
+```
+### <a name="data-table-row-insert-multiple-example"></a> Example
+
+```json
+[
+  {
+    "myColumn1": "myValue"
+  },
+  {
+    "myColumn1": "myValue"
+  }
+]
+```
+
+<br/>
+
 ## Data Table Row Insert
 
 Schema for inserting a data table row or rows
@@ -4664,7 +4890,20 @@ Schema for inserting a data table row or rows
       "description": "Schema for inserting data table rows",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/dataTableRowInSingle"
+        "title": "Data Table Row Insert/Update",
+        "description": "Schema for inserting or updating a data table row",
+        "type": "object",
+        "patternProperties": {
+          "^[0-9a-zA-Z_-]{1,255}$": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
       }
     }
   ]
@@ -4675,6 +4914,73 @@ Schema for inserting a data table row or rows
 ```json
 {
   "myColumn1": "myValue"
+}
+```
+
+<br/>
+
+## Data Table Row Insert Result
+
+Schema for a the result of a single or multiple row insert
+
+### <a name="data-table-row-insert-result-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "oneOf": [
+    {
+      "title": "Data Table Row",
+      "description": "Schema for a single Data Table Row",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "count": {
+          "type": "number"
+        }
+      }
+    }
+  ]
+}
+```
+### <a name="data-table-row-insert-result-example"></a> Example
+
+```json
+{
+  "id": "596fbb703fc088453872e609",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "myColumn": "myValue"
 }
 ```
 
@@ -7309,6 +7615,161 @@ Schema for the body of a request to disable two factor auth
 
 <br/>
 
+## Edge Deployment
+
+Schema for a single deployment of an edge workflow to an edge device
+
+### <a name="edge-deployment-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "edgeDeploymentId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "flowId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "flowName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "currentVersion": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "desiredVersion": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "logs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sourceType": {
+            "type": "string",
+            "enum": [
+              "flow",
+              "user",
+              "device",
+              "apiToken"
+            ]
+          },
+          "sourceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "changeType": {
+            "type": "string",
+            "enum": [
+              "current",
+              "desired"
+            ]
+          },
+          "newValue": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "previousValue": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "attemptedValue": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
+```
+### <a name="edge-deployment-example"></a> Example
+
+```json
+{
+  "id": "5a591be186b70d7b9f9b0954",
+  "edgeDeploymentId": "5a591be186b70d7b9f9b0954",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "deviceId": "575ecf887ae143cd83dc4aa2",
+  "flowId": "575ed18f7ae143cd83dc4aa6",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "desiredVersion": "v1.4.0",
+  "currentVersion": null,
+  "logs": [
+    {
+      "sourceType": "user",
+      "sourceId": "575ed70c7ae143cd83dc4aa9",
+      "date": "2016-06-13T04:00:00.000Z",
+      "changeType": "desired",
+      "newValue": "v1.4.0",
+      "previousValue": null
+    }
+  ]
+}
+```
+
+<br/>
+
 ## Edge Deployment Release
 
 Schema for deploying an edge workflow to one or more edge devices
@@ -7668,6 +8129,45 @@ Schema for a collection of Edge Deployments
   "sortField": "id",
   "sortDirection": "asc",
   "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
+
+## Email Verification Verify
+
+Schema for the body of a request verifying an email
+
+### <a name="email-verification-verify-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "token": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "email",
+    "token"
+  ],
+  "additionalProperties": false
+}
+```
+### <a name="email-verification-verify-example"></a> Example
+
+```json
+{
+  "email": "example@losant.com",
+  "token": "the email verification token"
 }
 ```
 
@@ -8219,6 +8719,12 @@ The body of an experience bootstrap request
     "createGroups": {
       "type": "boolean",
       "default": true
+    },
+    "slug": {
+      "type": "string",
+      "minLength": 4,
+      "maxLength": 63,
+      "pattern": "^[0-9a-z-]*$"
     }
   },
   "additionalProperties": false
@@ -8229,6 +8735,42 @@ The body of an experience bootstrap request
 ```json
 {
   "replaceExisting": true
+}
+```
+
+<br/>
+
+## Experience Bootstrap Result
+
+The result of an experience bootstrap request
+
+### <a name="experience-bootstrap-result-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "resourceSuffix": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="experience-bootstrap-result-example"></a> Example
+
+```json
+{
+  "homePath": "/",
+  "password": "examplePass",
+  "email": "example.user@example.com"
 }
 ```
 
@@ -11198,6 +11740,9 @@ Schema for a single file
     "fileSize": {
       "type": "number"
     },
+    "s3etag": {
+      "type": "string"
+    },
     "contentType": {
       "type": "string",
       "maxLength": 1024
@@ -11578,6 +12123,9 @@ Schema for a collection of files
           "fileSize": {
             "type": "number"
           },
+          "s3etag": {
+            "type": "string"
+          },
           "contentType": {
             "type": "string",
             "maxLength": 1024
@@ -11763,6 +12311,7 @@ Schema for a single Workflow
               "deviceTagInactivity",
               "endpoint",
               "event",
+              "fileWatch",
               "integration",
               "mqttTopic",
               "request",
@@ -12380,6 +12929,7 @@ Schema for the body of a Workflow modification request
               "deviceTagInactivity",
               "endpoint",
               "event",
+              "fileWatch",
               "integration",
               "mqttTopic",
               "request",
@@ -12870,6 +13420,7 @@ Schema for the body of a Workflow creation request
               "deviceTagInactivity",
               "endpoint",
               "event",
+              "fileWatch",
               "integration",
               "mqttTopic",
               "request",
@@ -13500,6 +14051,7 @@ Schema for a single Workflow Version
                   "deviceTagInactivity",
                   "endpoint",
                   "event",
+                  "fileWatch",
                   "integration",
                   "mqttTopic",
                   "request",
@@ -14000,6 +14552,7 @@ Schema for a single Workflow Version
                   "deviceTagInactivity",
                   "endpoint",
                   "event",
+                  "fileWatch",
                   "integration",
                   "mqttTopic",
                   "request",
@@ -14203,6 +14756,7 @@ Schema for the body of a Workflow Version creation request
               "deviceTagInactivity",
               "endpoint",
               "event",
+              "fileWatch",
               "integration",
               "mqttTopic",
               "request",
@@ -14718,6 +15272,7 @@ Schema for a collection of Workflow Versions
                         "deviceTagInactivity",
                         "endpoint",
                         "event",
+                        "fileWatch",
                         "integration",
                         "mqttTopic",
                         "request",
@@ -15218,6 +15773,7 @@ Schema for a collection of Workflow Versions
                         "deviceTagInactivity",
                         "endpoint",
                         "event",
+                        "fileWatch",
                         "integration",
                         "mqttTopic",
                         "request",
@@ -15488,6 +16044,7 @@ Schema for a collection of Workflows
                     "deviceTagInactivity",
                     "endpoint",
                     "event",
+                    "fileWatch",
                     "integration",
                     "mqttTopic",
                     "request",
@@ -16089,6 +16646,7 @@ Schema for the body of a workflow import request
                     "deviceTagInactivity",
                     "endpoint",
                     "event",
+                    "fileWatch",
                     "integration",
                     "mqttTopic",
                     "request",
@@ -16597,6 +17155,7 @@ Schema for the body of a workflow import request
                     "deviceTagInactivity",
                     "endpoint",
                     "event",
+                    "fileWatch",
                     "integration",
                     "mqttTopic",
                     "request",
@@ -17152,6 +17711,7 @@ Schema for the result of a workflow import request
                     "deviceTagInactivity",
                     "endpoint",
                     "event",
+                    "fileWatch",
                     "integration",
                     "mqttTopic",
                     "request",
@@ -17679,6 +18239,7 @@ Schema for the result of a workflow import request
                         "deviceTagInactivity",
                         "endpoint",
                         "event",
+                        "fileWatch",
                         "integration",
                         "mqttTopic",
                         "request",
@@ -18179,6 +18740,7 @@ Schema for the result of a workflow import request
                         "deviceTagInactivity",
                         "endpoint",
                         "event",
+                        "fileWatch",
                         "integration",
                         "mqttTopic",
                         "request",
@@ -21941,6 +22503,132 @@ Schema for a collection of Organizations
 
 <br/>
 
+## Password Reset Finish
+
+Schema for the body of a request to complete the reset password flow
+
+### <a name="password-reset-finish-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "token": {
+      "type": "string",
+      "minLength": 1
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "password": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 2048,
+      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{8,}$"
+    },
+    "solutionId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  },
+  "required": [
+    "token",
+    "email",
+    "password"
+  ],
+  "additionalProperties": false
+}
+```
+### <a name="password-reset-finish-example"></a> Example
+
+```json
+{
+  "token": "the_password_reset_token",
+  "email": "example@losant.com",
+  "password": "the new password"
+}
+```
+
+<br/>
+
+## Password Reset Input
+
+Schema for the body of a request to start the reset password flow
+
+### <a name="password-reset-input-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "solutionId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  },
+  "required": [
+    "email"
+  ],
+  "additionalProperties": false
+}
+```
+### <a name="password-reset-input-example"></a> Example
+
+```json
+{
+  "email": "example@losant.com"
+}
+```
+
+<br/>
+
+## Password Reset Response
+
+Schema for result of a successful password reset
+
+### <a name="password-reset-response-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "boolean",
+      "enum": [
+        true
+      ]
+    },
+    "accountIsLocked": {
+      "type": "boolean"
+    },
+    "twoFactorAuthEnabled": {
+      "type": "boolean"
+    }
+  }
+}
+```
+### <a name="password-reset-response-example"></a> Example
+
+```json
+{
+  "success": true,
+  "accountIsLocked": false,
+  "twoFactorAuthEnabled": false
+}
+```
+
+<br/>
+
 ## Payload Counts
 
 Schema for the result of a payload count request
@@ -22370,6 +23058,192 @@ Schema for a single Solution
   "allowSelfEmailChange": false,
   "summary": {
     "solutionUserCount": 0
+  }
+}
+```
+
+<br/>
+
+## Solution Me
+
+Schema for information about the currently authenticated solution user
+
+### <a name="solution-me-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "solutionUserId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "passwordLastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastLogin": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "firstName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "companyName": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "phoneNumber": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "location": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "url": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "forcePasswordResetOnNextLogin": {
+      "type": "boolean"
+    },
+    "fullName": {
+      "type": "string"
+    },
+    "twoFactorAuthEnabled": {
+      "type": "boolean"
+    },
+    "avatarUrl": {
+      "type": "string",
+      "format": "url"
+    },
+    "accessRestrictions": {
+      "type": "object",
+      "properties": {
+        "dashboardIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "maxItems": 1000
+        }
+      }
+    },
+    "recentDashboards": {
+      "title": "Recent Item List",
+      "description": "Schema for an array of recent items",
+      "type": "object",
+      "properties": {
+        "itemType": {
+          "type": "string",
+          "enum": [
+            "application",
+            "device",
+            "flow",
+            "dashboard",
+            "organization"
+          ]
+        },
+        "parentId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            }
+          }
+        }
+      }
+    },
+    "solution": {
+      "id": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "slug": {
+        "type": "string",
+        "pattern": "^[0-9a-z_-]{1,255}$"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 255
+      },
+      "allowSelfDeletion": {
+        "type": "boolean"
+      },
+      "allowSelfEmailChange": {
+        "type": "boolean"
+      }
+    }
+  }
+}
+```
+### <a name="solution-me-example"></a> Example
+
+```json
+{
+  "id": "566116085df4b701000258e3",
+  "solutionUserId": "566116085df4b701000258e3",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "passwordLastUpdated": "2016-06-13T04:00:00.000Z",
+  "email": "example@solutionuser.com",
+  "firstName": "Example",
+  "lastName": "Name",
+  "companyName": "Losant IoT, Inc.",
+  "url": "https://www.losant.com",
+  "twoFactorAuthEnabled": false,
+  "fullName": "Example Name",
+  "solution": {
+    "id": "57955788124b37010084c053",
+    "slug": "my_solution",
+    "name": "My Solution",
+    "allowSelfDeletion": false,
+    "allowSelfEmailChange": false
   }
 }
 ```
@@ -23883,6 +24757,418 @@ Schema for the body of a User authentication request
 {
   "email": "example@losant.com",
   "password": "this is the password"
+}
+```
+
+<br/>
+
+## User Post
+
+Schema for the body of a User creation request
+
+### <a name="user-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "firstName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "companyName": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "phoneNumber": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "location": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "url": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "oauth": {
+      "type": "object",
+      "properties": {
+        "service": {
+          "type": "string"
+        },
+        "accessToken": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "service",
+        "accessToken"
+      ]
+    },
+    "password": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 2048,
+      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{8,}$"
+    },
+    "acceptTerms": {
+      "enum": [
+        "on"
+      ]
+    },
+    "hsToken": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "iotJourneyStage": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "requestedScopes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "oneOf": [
+          {
+            "oneOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "all.Application",
+                  "all.Application.read",
+                  "all.Device",
+                  "all.Device.read",
+                  "application.*",
+                  "applicationApiToken.*",
+                  "applicationApiTokens.*",
+                  "applicationKey.*",
+                  "applicationKeys.*",
+                  "data.*",
+                  "dataTable.*",
+                  "dataTables.*",
+                  "dataTableRow.*",
+                  "dataTableRows.*",
+                  "device.*",
+                  "deviceRecipe.*",
+                  "deviceRecipes.*",
+                  "devices.*",
+                  "edgeDeployments.*",
+                  "event.*",
+                  "events.*",
+                  "experience.*",
+                  "experienceDomain.*",
+                  "experienceDomains.*",
+                  "experienceEndpoint.*",
+                  "experienceEndpoints.*",
+                  "experienceGroup.*",
+                  "experienceGroups.*",
+                  "experienceSlug.*",
+                  "experienceSlugs.*",
+                  "experienceUser.*",
+                  "experienceUsers.*",
+                  "experienceVersion.*",
+                  "experienceVersions.*",
+                  "experienceView.*",
+                  "experienceViews.*",
+                  "integration.*",
+                  "integrations.*",
+                  "file.*",
+                  "files.*",
+                  "flow.*",
+                  "flows.*",
+                  "flowVersion.*",
+                  "flowVersions.*",
+                  "webhook.*",
+                  "webhooks.*",
+                  "application.archiveData",
+                  "application.backfillArchiveData",
+                  "application.debug",
+                  "application.delete",
+                  "application.get",
+                  "application.mqttPublishMessage",
+                  "application.mqttSubscriptionStream",
+                  "application.patch",
+                  "application.payloadCounts",
+                  "applicationApiToken.delete",
+                  "applicationApiToken.get",
+                  "applicationApiToken.patch",
+                  "applicationApiTokens.get",
+                  "applicationApiTokens.post",
+                  "applicationKey.delete",
+                  "applicationKey.get",
+                  "applicationKey.patch",
+                  "applicationKeys.get",
+                  "applicationKeys.post",
+                  "data.lastValueQuery",
+                  "data.timeSeriesQuery",
+                  "dataTable.addColumn",
+                  "dataTable.delete",
+                  "dataTable.get",
+                  "dataTable.patch",
+                  "dataTable.removeColumn",
+                  "dataTableRow.delete",
+                  "dataTableRow.get",
+                  "dataTableRow.patch",
+                  "dataTableRows.get",
+                  "dataTableRows.post",
+                  "dataTableRows.query",
+                  "dataTableRows.export",
+                  "dataTableRows.delete",
+                  "dataTableRows.truncate",
+                  "dataTables.get",
+                  "dataTables.post",
+                  "device.commandStream",
+                  "device.debug",
+                  "device.delete",
+                  "device.export",
+                  "device.get",
+                  "device.getCommand",
+                  "device.getCompositeState",
+                  "device.getLogEntries",
+                  "device.getState",
+                  "device.patch",
+                  "device.removeData",
+                  "device.sendCommand",
+                  "device.sendState",
+                  "device.setConnectionStatus",
+                  "device.stateStream",
+                  "deviceRecipe.bulkCreate",
+                  "deviceRecipe.delete",
+                  "deviceRecipe.get",
+                  "deviceRecipe.patch",
+                  "deviceRecipes.get",
+                  "deviceRecipes.post",
+                  "devices.detailedSummary",
+                  "devices.export",
+                  "devices.get",
+                  "devices.post",
+                  "devices.sendCommand",
+                  "edgeDeployments.get",
+                  "edgeDeployments.release",
+                  "edgeDeployments.remove",
+                  "edgeDeployments.replace",
+                  "event.delete",
+                  "event.get",
+                  "event.patch",
+                  "events.get",
+                  "events.mostRecentBySeverity",
+                  "events.patch",
+                  "events.post",
+                  "experience.delete",
+                  "experience.bootstrap",
+                  "experienceDomain.delete",
+                  "experienceDomain.get",
+                  "experienceDomain.patch",
+                  "experienceDomains.get",
+                  "experienceDomains.post",
+                  "experienceEndpoint.delete",
+                  "experienceEndpoint.get",
+                  "experienceEndpoint.patch",
+                  "experienceEndpoints.get",
+                  "experienceEndpoints.post",
+                  "experienceEndpoints.stats",
+                  "experienceGroup.delete",
+                  "experienceGroup.get",
+                  "experienceGroup.patch",
+                  "experienceGroups.detailedSummary",
+                  "experienceGroups.get",
+                  "experienceGroups.post",
+                  "experienceSlug.delete",
+                  "experienceSlug.get",
+                  "experienceSlug.patch",
+                  "experienceSlugs.get",
+                  "experienceSlugs.post",
+                  "experienceUser.delete",
+                  "experienceUser.get",
+                  "experienceUser.patch",
+                  "experienceUsers.detailedSummary",
+                  "experienceUsers.get",
+                  "experienceUsers.post",
+                  "experienceVersion.delete",
+                  "experienceVersion.get",
+                  "experienceVersion.patch",
+                  "experienceVersions.get",
+                  "experienceVersions.post",
+                  "experienceView.debug",
+                  "experienceView.delete",
+                  "experienceView.get",
+                  "experienceView.patch",
+                  "experienceViews.debug",
+                  "experienceViews.detailedSummary",
+                  "experienceViews.get",
+                  "experienceViews.post",
+                  "file.get",
+                  "file.patch",
+                  "file.move",
+                  "file.delete",
+                  "files.get",
+                  "files.post",
+                  "flow.debug",
+                  "flow.delete",
+                  "flow.clearStorageEntries",
+                  "flow.get",
+                  "flow.getStorageEntries",
+                  "flow.log",
+                  "flow.patch",
+                  "flow.pressVirtualButton",
+                  "flow.setStorageEntry",
+                  "flows.get",
+                  "flows.getByVersion",
+                  "flows.import",
+                  "flows.post",
+                  "flowVersion.delete",
+                  "flowVersion.get",
+                  "flowVersion.log",
+                  "flowVersion.patch",
+                  "flowVersions.get",
+                  "flowVersions.post",
+                  "integration.delete",
+                  "integration.get",
+                  "integration.patch",
+                  "integrations.get",
+                  "integrations.post",
+                  "webhook.delete",
+                  "webhook.get",
+                  "webhook.patch",
+                  "webhooks.get",
+                  "webhooks.post"
+                ]
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "all.Organization",
+                  "all.Organization.read",
+                  "applications.*",
+                  "auditLog.*",
+                  "auditLogs.*",
+                  "dashboard.*",
+                  "dashboards.*",
+                  "org.*",
+                  "solution.*",
+                  "solutions.*",
+                  "solutionUser.*",
+                  "solutionUsers.*",
+                  "applications.get",
+                  "applications.post",
+                  "auditLog.get",
+                  "auditLogs.get",
+                  "dashboard.patch",
+                  "dashboard.delete",
+                  "dashboards.get",
+                  "dashboards.post",
+                  "org.get",
+                  "org.patch",
+                  "org.delete",
+                  "org.pendingInvites",
+                  "org.inviteMember",
+                  "org.revokeInvite",
+                  "org.modifyMember",
+                  "org.removeMember",
+                  "org.payloadCounts",
+                  "org.invoices",
+                  "org.currentCard",
+                  "org.chargeDetails",
+                  "org.transferResources",
+                  "solutionUser.get",
+                  "solutionUser.patch",
+                  "solutionUser.delete",
+                  "solutionUsers.get",
+                  "solutionUsers.post",
+                  "solution.get",
+                  "solution.patch",
+                  "solution.delete",
+                  "solutions.get",
+                  "solutions.post"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
+              "all.User",
+              "all.User.read",
+              "me.*",
+              "orgs.*",
+              "me.get",
+              "me.patch",
+              "me.delete",
+              "me.verifyEmail",
+              "me.changePassword",
+              "me.enableTwoFactorAuth",
+              "me.disableTwoFactorAuth",
+              "me.disconnectGithub",
+              "me.connectGithub",
+              "me.disconnectTwitter",
+              "me.connectTwitter",
+              "me.addRecentItem",
+              "me.fetchRecentItems",
+              "me.payloadCounts",
+              "me.transferResources",
+              "orgs.get",
+              "orgs.post"
+            ]
+          }
+        ]
+      }
+    },
+    "tokenTTL": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "anyOf": [
+    {
+      "required": [
+        "email",
+        "firstName",
+        "lastName",
+        "password",
+        "acceptTerms"
+      ]
+    },
+    {
+      "required": [
+        "email",
+        "firstName",
+        "lastName",
+        "oauth",
+        "acceptTerms"
+      ]
+    }
+  ]
+}
+```
+### <a name="user-post-example"></a> Example
+
+```json
+{
+  "email": "example@losant.com",
+  "firstName": "Example",
+  "lastName": "Name",
+  "companyName": "Losant IoT, Inc.",
+  "url": "https://www.losant.com",
+  "password": "the new password",
+  "acceptTerms": "on"
 }
 ```
 
