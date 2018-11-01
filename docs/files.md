@@ -51,6 +51,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | type | string | N | Limit by the type (file or directory) of the file |  | file |
 | status | string | N | Limit the result to only files of this status. Accepted values are: completed, pending |  | completed |
 | directory | string | N | Get files that are inside of this directory |  | /a/path/ |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -100,6 +101,7 @@ all.Application, all.Organization, all.User, files.*, or files.post.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | file | [File Post](_schemas.md#file-post) | Y | New file information |  | [File Post Example](_schemas.md#file-post-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

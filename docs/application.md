@@ -49,6 +49,7 @@ all.Application, all.Organization, all.User, application.*, or application.archi
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
 | date | string | Y | The date to archive data (ms since epoch), it must be within the archive time range older than 31 days and newer than the organizations dataTTL |  | 1518556791829 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -96,6 +97,7 @@ all.Application, all.Organization, all.User, application.*, or application.backf
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -143,6 +145,7 @@ all.Application, all.Organization, all.User, application.*, or application.delet
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -190,6 +193,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -239,6 +243,7 @@ all.Application, all.Organization, all.User, application.*, or application.mqttP
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
 | payload | [MQTT Publish Body](_schemas.md#mqtt-publish-body) | Y | Object containing topic and message |  | [MQTT Publish Body Example](_schemas.md#mqtt-publish-body-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -288,6 +293,7 @@ all.Application, all.Organization, all.User, application.*, or application.patch
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
 | application | [Application Patch](_schemas.md#application-patch) | Y | Object containing new application properties |  | [Application Patch Example](_schemas.md#application-patch-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -337,6 +343,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
 | start | string | N | Start of range for payload count query (ms since epoch) | -2592000000 | 0 |
 | end | string | N | End of range for payload count query (ms since epoch) | 0 | 1465790400000 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

@@ -46,6 +46,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | email | string | N | Email address to send export to. Defaults to current user&#x27;s email. |  | email@example.com |
 | callbackUrl | string | N | Callback URL to call with export result. |  | https://example.com/cburl |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -102,6 +103,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | deviceClass | string | N | Filter the devices by the given device class. Accepted values are: standalone, gateway, peripheral, floating, edgeCompute |  | standalone |
 | tagFilter | [Device Tag Filter](_schemas.md#device-tag-filter) | N | Array of tag pairs to filter by. |  | [Device Tag Filter Example](_schemas.md#device-tag-filter-example) |
 | excludeConnectionInfo | string | N | If set, do not return connection info |  | true |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -151,6 +153,7 @@ all.Application, all.Organization, all.User, devices.*, or devices.post.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | device | [Device Post](_schemas.md#device-post) | Y | New device information |  | [Device Post Example](_schemas.md#device-post-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -200,6 +203,7 @@ all.Application, all.Device, all.Organization, all.User, devices.*, or devices.s
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | multiDeviceCommand | [Multi Device Command](_schemas.md#multi-device-command) | Y | Command to send to the device |  | [Multi Device Command Example](_schemas.md#multi-device-command-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

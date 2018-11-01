@@ -44,6 +44,7 @@ all.Organization, all.User, dashboard.*, or dashboard.delete.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | dashboardId | string | Y | ID of the associated dashboard |  | 575ece2b7ae143cd83dc4a9b |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -90,6 +91,7 @@ No api access token is required to call this action.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | dashboardId | string | Y | ID of the associated dashboard |  | 575ece2b7ae143cd83dc4a9b |
 | password | string | N | Password for password-protected dashboards |  | myPassword |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -139,6 +141,7 @@ all.Organization, all.User, dashboard.*, or dashboard.patch.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | dashboardId | string | Y | ID of the associated dashboard |  | 575ece2b7ae143cd83dc4a9b |
 | dashboard | [Dashboard Patch](_schemas.md#dashboard-patch) | Y | Object containing new dashboard properties |  | [Dashboard Patch Example](_schemas.md#dashboard-patch-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -187,6 +190,7 @@ No api access token is required to call this action.
 | dashboardId | string | Y | ID of the associated dashboard |  | 575ece2b7ae143cd83dc4a9b |
 | ctx | [Dashboard Context Instance](_schemas.md#dashboard-context-instance) | Y | The context object to validate |  | [Dashboard Context Instance Example](_schemas.md#dashboard-context-instance-example) |
 | password | string | N | Password for password-protected dashboards |  | myPassword |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

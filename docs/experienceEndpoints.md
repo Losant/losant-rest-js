@@ -50,6 +50,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | experienceGroupId | string | N | Filter endpoints to those only in the specified group |  | 575ec8687ae143cd83dc4a97 |
 | requestCountDuration | string | N | If set, a count of recent requests is included on each endpoint for the duration requested (milliseconds) |  | 86400000 |
 | version | string | N | Return the experience endpoints belonging to this version | develop | develop |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -99,6 +100,7 @@ all.Application, all.Organization, all.User, experienceEndpoints.*, or experienc
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | experienceEndpoint | [Experience Endpoint Post](_schemas.md#experience-endpoint-post) | Y | New experience endpoint information |  | [Experience Endpoint Post Example](_schemas.md#experience-endpoint-post-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -153,6 +155,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | domainFilter | string | N | Filters the stats to a particular experience domain or slug |  | mycustomdomain.com |
 | statusCodeFilter | string | N | Filters the stats to a particular status code |  | 200 |
 | endpointIdFilter | string | N | Filters the stats to a particular endpoint |  | 575ec8687ae143cd83dc4a98 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

@@ -48,6 +48,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | perPage | string | N | How many items to return per page | 1000 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: version |  | email |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*version |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -97,6 +98,7 @@ all.Application, all.Organization, all.User, experienceVersions.*, or experience
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | experienceVersion | [Experience Version Post](_schemas.md#experience-version-post) | Y | New experience version information |  | [Experience Version Post Example](_schemas.md#experience-version-post-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

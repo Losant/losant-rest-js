@@ -42,6 +42,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -91,6 +92,7 @@ all.Application, all.Organization, all.User, experienceDomains.*, or experienceD
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | experienceDomain | [Experience Domain Post](_schemas.md#experience-domain-post) | Y | New experience domain information |  | [Experience Domain Post Example](_schemas.md#experience-domain-post-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

@@ -4967,6 +4967,14 @@ Schema for a the result of a single or multiple row insert
         },
         "count": {
           "type": "number"
+        },
+        "rowIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "maxItems": 1000
         }
       }
     }
@@ -10402,15 +10410,15 @@ Schema for a collection of Experience Slugs
     "items": {
       "type": "array",
       "items": {
-        "title": "Experience Domain",
-        "description": "Schema for a single Experience Domain",
+        "title": "Experience Slug",
+        "description": "Schema for a single Experience Slug",
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
-          "experienceDomainId": {
+          "experienceSlugId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
@@ -10426,20 +10434,11 @@ Schema for a collection of Experience Slugs
             "type": "string",
             "format": "date-time"
           },
-          "sslCert": {
+          "slug": {
             "type": "string",
-            "maxLength": 32767,
-            "minLength": 50
-          },
-          "sslBundle": {
-            "type": "string",
-            "maxLength": 32767,
-            "minLength": 50
-          },
-          "domainName": {
-            "type": "string",
-            "maxLength": 1024,
-            "minLength": 3
+            "minLength": 4,
+            "maxLength": 63,
+            "pattern": "^[0-9a-z-]*$"
           },
           "version": {
             "type": "string",

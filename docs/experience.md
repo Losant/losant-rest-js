@@ -44,6 +44,7 @@ all.Application, all.Organization, all.User, experience.*, or experience.bootstr
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | options | [Experience Bootstrap Options](_schemas.md#experience-bootstrap-options) | Y | Bootstrap options |  | [Experience Bootstrap Options Example](_schemas.md#experience-bootstrap-options-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -99,6 +100,7 @@ all.Application, all.Organization, all.User, experience.*, or experience.delete.
 | keepViews | string | N | If this is set, Experience Views (in the develop version) will not be removed. |  | true |
 | keepEndpoints | string | N | If this is set, Experience Endpoints (in the develop version) will not be removed. |  | true |
 | removeWorkflows | string | N | If this is set, all Experience Workflows (in the develop version) will ve removed. |  | true |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

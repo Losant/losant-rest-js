@@ -51,6 +51,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: version |  | version |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*version |
 | includeCustomNodes | string | N | If the result of the request should also include the details of any custom nodes referenced by the returned workflows | false | true |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -104,6 +105,7 @@ all.Application, all.Organization, all.User, flowVersions.*, or flowVersions.pos
 | flowVersion | [Workflow Version Post](_schemas.md#workflow-version-post) | Y | New flow version information |  | [Workflow Version Post Example](_schemas.md#workflow-version-post-example) |
 | includeCustomNodes | string | N | If the result of the request should also include the details of any custom nodes referenced by the returned workflows | false | true |
 | allowReplacement | string | N | Allow replacement of an existing flow version with same version name | false | true |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

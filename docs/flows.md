@@ -53,6 +53,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | flowClass | string | N | Filter the workflows by the given flow class. Accepted values are: edge, cloud, customNode, experience | cloud | cloud |
 | triggerFilter | [Workflow Trigger Filter](_schemas.md#workflow-trigger-filter) | N | Array of triggers to filter by - always filters against default flow version. |  | [Workflow Trigger Filter Example](_schemas.md#workflow-trigger-filter-example) |
 | includeCustomNodes | string | N | If the result of the request should also include the details of any custom nodes referenced by the returned workflows | false | true |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -111,6 +112,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | version | string | Y | Return the workflow versions for the given version. |  | myVersion |
 | triggerFilter | [Workflow Trigger Filter](_schemas.md#workflow-trigger-filter) | N | Array of triggers to filter by - always filters against default flow version. |  | [Workflow Trigger Filter Example](_schemas.md#workflow-trigger-filter-example) |
 | includeCustomNodes | string | N | If the result of the request should also include the details of any custom nodes referenced by the returned workflows | false | true |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -160,6 +162,7 @@ all.Application, all.Organization, all.User, flows.*, or flows.import.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | importData | [Workflow Import](_schemas.md#workflow-import) | Y | New flow and flow version information |  | [Workflow Import Example](_schemas.md#workflow-import-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -210,6 +213,7 @@ all.Application, all.Organization, all.User, flows.*, or flows.post.
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | flow | [Workflow Post](_schemas.md#workflow-post) | Y | New flow information |  | [Workflow Post Example](_schemas.md#workflow-post-example) |
 | includeCustomNodes | string | N | If the result of the request should also include the details of any custom nodes referenced by the returned workflows | false | true |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

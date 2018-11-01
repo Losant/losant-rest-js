@@ -48,6 +48,7 @@ all.Organization, all.Organization.read, all.User, all.User.read, solutions.*, o
 | perPage | string | N | How many items to return per page | 1000 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*solution |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -96,6 +97,7 @@ all.Organization, all.User, solutions.*, or solutions.post.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
 | solution | [Solution Post](_schemas.md#solution-post) | Y | New solution information |  | [Solution Post Example](_schemas.md#solution-post-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

@@ -49,6 +49,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: firstName, lastName, email |  | email |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*user |
 | experienceGroupId | string | N | Filter users to those only in the specified group |  | 575ec8687ae143cd83dc4a97 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -98,6 +99,7 @@ all.Application, all.Organization, all.User, experienceUsers.*, or experienceUse
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | experienceUser | [Experience User Post](_schemas.md#experience-user-post) | Y | New experience user information |  | [Experience User Post Example](_schemas.md#experience-user-post-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

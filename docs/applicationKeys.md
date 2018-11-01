@@ -48,6 +48,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | perPage | string | N | How many items to return per page | 1000 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: key, status |  | key |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | the*key |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -97,6 +98,7 @@ all.Application, all.Organization, all.User, applicationKeys.*, or applicationKe
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | applicationKey | [Application Key Post](_schemas.md#application-key-post) | Y | ApplicationKey information |  | [Application Key Post Example](_schemas.md#application-key-post-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

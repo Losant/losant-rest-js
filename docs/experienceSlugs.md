@@ -42,6 +42,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -91,6 +92,7 @@ all.Application, all.Organization, all.User, experienceSlugs.*, or experienceSlu
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | experienceSlug | [Experience Slug Post](_schemas.md#experience-slug-post) | Y | New experience slug information |  | [Experience Slug Post Example](_schemas.md#experience-slug-post-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

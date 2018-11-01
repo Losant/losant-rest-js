@@ -45,6 +45,7 @@ all.Application, all.Organization, all.User, applicationApiToken.*, or applicati
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | apiTokenId | string | Y | ID associated with the API token |  | 575ec7417ae143cd83dc4a95 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -94,6 +95,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | apiTokenId | string | Y | ID associated with the API token |  | 575ec7417ae143cd83dc4a95 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -145,6 +147,7 @@ all.Application, all.Organization, all.User, applicationApiToken.*, or applicati
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | apiTokenId | string | Y | ID associated with the API token |  | 575ec7417ae143cd83dc4a95 |
 | apiToken | [API Token Patch](_schemas.md#api-token-patch) | Y | Object containing new properties of the API token |  | [API Token Patch Example](_schemas.md#api-token-patch-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 

@@ -48,6 +48,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | perPage | string | N | How many items to return per page | 1000 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name, status |  | key |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*token |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
@@ -96,6 +97,7 @@ all.Application, all.Organization, all.User, applicationApiTokens.*, or applicat
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | apiToken | [Application API Token Post](_schemas.md#application-api-token-post) | Y | API token information |  | [Application API Token Post Example](_schemas.md#application-api-token-post-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
