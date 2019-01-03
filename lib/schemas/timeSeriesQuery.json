@@ -25,6 +25,7 @@
         "MEDIAN",
         "MEAN",
         "SUM",
+        "STD_DEV",
         "NONE"
       ]
     },

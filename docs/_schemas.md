@@ -24470,6 +24470,7 @@ Schema for the result of a time series query
         "MEDIAN",
         "MEAN",
         "SUM",
+        "STD_DEV",
         "NONE"
       ]
     },
@@ -24618,6 +24619,7 @@ Schema for the body of a time series query request
         "MEDIAN",
         "MEAN",
         "SUM",
+        "STD_DEV",
         "NONE"
       ]
     },
