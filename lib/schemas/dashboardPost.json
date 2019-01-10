@@ -6,6 +6,10 @@
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "name": {
       "type": "string",
       "minLength": 1,

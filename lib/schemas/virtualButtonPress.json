@@ -11,6 +11,10 @@
       "type": "string",
       "minLength": 1,
       "maxLength": 255
+    },
+    "deviceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     }
   },
   "required": [

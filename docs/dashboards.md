@@ -45,6 +45,7 @@ all.Organization, all.Organization.read, all.SolutionUser, all.SolutionUser.read
 | perPage | string | N | How many items to return per page | 1000 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my * dashboard |
+| applicationId | string | N | If not provided, return all dashboards. If provided but blank, only return dashboards that are not linked to applications. If provided and an id, only return dashboards linked to the given application id. |  | 575ec8687ae143cd83dc4a97 |
 | orgId | string | N | If not provided, return all dashboards. If provided but blank, only return dashboards belonging to the current user. If provided and an id, only return dashboards belonging to the given organization id. |  | 575ece7e7ae143cd83dc4a9c |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 

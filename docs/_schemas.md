@@ -3042,6 +3042,10 @@ Schema for a single Dashboard
         "organization"
       ]
     },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "name": {
       "type": "string",
       "minLength": 1,
@@ -3703,6 +3707,10 @@ Schema for the body of a Dashboard creation request
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "name": {
       "type": "string",
       "minLength": 1,
@@ -4034,6 +4042,10 @@ Schema for a collection of Dashboards
               "organization"
             ]
           },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
           "name": {
             "type": "string",
             "minLength": 1,
@@ -4329,6 +4341,14 @@ Schema for a collection of Dashboards
         "asc",
         "desc"
       ]
+    },
+    "orgId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     }
   }
 }
@@ -25463,6 +25483,10 @@ Schema for the body of a request to press a Workflow virtual button
       "type": "string",
       "minLength": 1,
       "maxLength": 255
+    },
+    "deviceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     }
   },
   "required": [
