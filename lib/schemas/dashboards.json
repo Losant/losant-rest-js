@@ -36,9 +36,22 @@
               "organization"
             ]
           },
+          "organizationName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "organizationIconColor": {
+            "type": "string"
+          },
           "applicationId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           },
           "name": {
             "type": "string",

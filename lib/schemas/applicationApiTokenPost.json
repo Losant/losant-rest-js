@@ -76,6 +76,7 @@
           "application.mqttSubscriptionStream",
           "application.patch",
           "application.payloadCounts",
+          "application.search",
           "applicationApiToken.delete",
           "applicationApiToken.get",
           "applicationApiToken.patch",

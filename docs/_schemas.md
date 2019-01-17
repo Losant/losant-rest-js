@@ -12,6 +12,7 @@
 *   [Application Keys](#application-keys)
 *   [Application Patch](#application-patch)
 *   [Application Post](#application-post)
+*   [Application Search Result](#application-search-result)
 *   [Applications](#applications)
 *   [Audit Log](#audit-log)
 *   [Audit Log Filter](#audit-log-filter)
@@ -896,6 +897,7 @@ Schema for the body of an Application API Token creation request
           "application.mqttSubscriptionStream",
           "application.patch",
           "application.payloadCounts",
+          "application.search",
           "applicationApiToken.delete",
           "applicationApiToken.get",
           "applicationApiToken.patch",
@@ -1879,6 +1881,83 @@ Schema for the body of an Application creation request
   "name": "My New Application",
   "description": "Description of my new application"
 }
+```
+
+<br/>
+
+## Application Search Result
+
+Results of a search of an application&#x27;s resources
+
+### <a name="application-search-result-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "name": {
+        "type": "string"
+      },
+      "metadata": {
+        "type": "object"
+      },
+      "viewType": {
+        "type": "string"
+      },
+      "version": {
+        "type": "string"
+      },
+      "_type": {
+        "type": "string",
+        "enum": [
+          "applicationKey",
+          "dashboard",
+          "dataTable",
+          "deviceRecipe",
+          "device",
+          "domain",
+          "event",
+          "experienceEndpoint",
+          "experienceGroup",
+          "experienceSlug",
+          "experienceUser",
+          "experienceVersion",
+          "experienceView",
+          "file",
+          "flow",
+          "integration",
+          "webhook"
+        ]
+      }
+    },
+    "required": [
+      "id",
+      "name",
+      "_type"
+    ]
+  }
+}
+```
+### <a name="application-search-result-example"></a> Example
+
+```json
+[
+  {
+    "type": "device",
+    "name": "My Device #1",
+    "metadata": {
+      "descriptor": "a basic description of device #1"
+    },
+    "id": "575ec8687ae143cd83dc4a97"
+  }
+]
 ```
 
 <br/>
@@ -3042,9 +3121,22 @@ Schema for a single Dashboard
         "organization"
       ]
     },
+    "organizationName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "organizationIconColor": {
+      "type": "string"
+    },
     "applicationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
     },
     "name": {
       "type": "string",
@@ -4042,9 +4134,22 @@ Schema for a collection of Dashboards
               "organization"
             ]
           },
+          "organizationName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "organizationIconColor": {
+            "type": "string"
+          },
           "applicationId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           },
           "name": {
             "type": "string",
@@ -19264,6 +19369,7 @@ Schema for the body of a Github login request
                   "application.mqttSubscriptionStream",
                   "application.patch",
                   "application.payloadCounts",
+                  "application.search",
                   "applicationApiToken.delete",
                   "applicationApiToken.get",
                   "applicationApiToken.patch",
@@ -19426,6 +19532,7 @@ Schema for the body of a Github login request
                   "solutionUsers.*",
                   "applications.get",
                   "applications.post",
+                  "applications.detailedSummary",
                   "auditLog.get",
                   "auditLogs.get",
                   "dashboard.patch",
@@ -24804,6 +24911,7 @@ Schema for the body of a User authentication request
                   "application.mqttSubscriptionStream",
                   "application.patch",
                   "application.payloadCounts",
+                  "application.search",
                   "applicationApiToken.delete",
                   "applicationApiToken.get",
                   "applicationApiToken.patch",
@@ -24966,6 +25074,7 @@ Schema for the body of a User authentication request
                   "solutionUsers.*",
                   "applications.get",
                   "applications.post",
+                  "applications.detailedSummary",
                   "auditLog.get",
                   "auditLogs.get",
                   "dashboard.patch",
@@ -25196,6 +25305,7 @@ Schema for the body of a User creation request
                   "application.mqttSubscriptionStream",
                   "application.patch",
                   "application.payloadCounts",
+                  "application.search",
                   "applicationApiToken.delete",
                   "applicationApiToken.get",
                   "applicationApiToken.patch",
@@ -25358,6 +25468,7 @@ Schema for the body of a User creation request
                   "solutionUsers.*",
                   "applications.get",
                   "applications.post",
+                  "applications.detailedSummary",
                   "auditLog.get",
                   "auditLogs.get",
                   "dashboard.patch",
