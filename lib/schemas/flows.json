@@ -75,6 +75,7 @@
                 "type": {
                   "type": "string",
                   "enum": [
+                    "customNodeStart",
                     "dataTable",
                     "deviceCommand",
                     "deviceId",
@@ -90,8 +91,8 @@
                     "fileWatch",
                     "integration",
                     "mqttTopic",
+                    "redis",
                     "request",
-                    "customNodeStart",
                     "timer",
                     "udp",
                     "virtualButton",

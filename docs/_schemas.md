@@ -537,6 +537,14 @@ Schema for a single Application
         "organization"
       ]
     },
+    "organizationName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "organizationIconColor": {
+      "type": "string"
+    },
     "name": {
       "type": "string",
       "minLength": 1,
@@ -2006,6 +2014,14 @@ Schema for a collection of Applications
               "user",
               "organization"
             ]
+          },
+          "organizationName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "organizationIconColor": {
+            "type": "string"
           },
           "name": {
             "type": "string",
@@ -12529,6 +12545,7 @@ Schema for a single Workflow
           "type": {
             "type": "string",
             "enum": [
+              "customNodeStart",
               "dataTable",
               "deviceCommand",
               "deviceId",
@@ -12544,8 +12561,8 @@ Schema for a single Workflow
               "fileWatch",
               "integration",
               "mqttTopic",
+              "redis",
               "request",
-              "customNodeStart",
               "timer",
               "udp",
               "virtualButton",
@@ -13147,6 +13164,7 @@ Schema for the body of a Workflow modification request
           "type": {
             "type": "string",
             "enum": [
+              "customNodeStart",
               "dataTable",
               "deviceCommand",
               "deviceId",
@@ -13162,8 +13180,8 @@ Schema for the body of a Workflow modification request
               "fileWatch",
               "integration",
               "mqttTopic",
+              "redis",
               "request",
-              "customNodeStart",
               "timer",
               "udp",
               "virtualButton",
@@ -13638,6 +13656,7 @@ Schema for the body of a Workflow creation request
           "type": {
             "type": "string",
             "enum": [
+              "customNodeStart",
               "dataTable",
               "deviceCommand",
               "deviceId",
@@ -13653,8 +13672,8 @@ Schema for the body of a Workflow creation request
               "fileWatch",
               "integration",
               "mqttTopic",
+              "redis",
               "request",
-              "customNodeStart",
               "timer",
               "udp",
               "virtualButton",
@@ -14269,6 +14288,7 @@ Schema for a single Workflow Version
               "type": {
                 "type": "string",
                 "enum": [
+                  "customNodeStart",
                   "dataTable",
                   "deviceCommand",
                   "deviceId",
@@ -14284,8 +14304,8 @@ Schema for a single Workflow Version
                   "fileWatch",
                   "integration",
                   "mqttTopic",
+                  "redis",
                   "request",
-                  "customNodeStart",
                   "timer",
                   "udp",
                   "virtualButton",
@@ -14797,6 +14817,7 @@ Schema for a single Workflow Version
               "type": {
                 "type": "string",
                 "enum": [
+                  "customNodeStart",
                   "dataTable",
                   "deviceCommand",
                   "deviceId",
@@ -14812,8 +14833,8 @@ Schema for a single Workflow Version
                   "fileWatch",
                   "integration",
                   "mqttTopic",
+                  "redis",
                   "request",
-                  "customNodeStart",
                   "timer",
                   "udp",
                   "virtualButton",
@@ -15028,6 +15049,7 @@ Schema for the body of a Workflow Version creation request
           "type": {
             "type": "string",
             "enum": [
+              "customNodeStart",
               "dataTable",
               "deviceCommand",
               "deviceId",
@@ -15043,8 +15065,8 @@ Schema for the body of a Workflow Version creation request
               "fileWatch",
               "integration",
               "mqttTopic",
+              "redis",
               "request",
-              "customNodeStart",
               "timer",
               "udp",
               "virtualButton",
@@ -15544,6 +15566,7 @@ Schema for a collection of Workflow Versions
                     "type": {
                       "type": "string",
                       "enum": [
+                        "customNodeStart",
                         "dataTable",
                         "deviceCommand",
                         "deviceId",
@@ -15559,8 +15582,8 @@ Schema for a collection of Workflow Versions
                         "fileWatch",
                         "integration",
                         "mqttTopic",
+                        "redis",
                         "request",
-                        "customNodeStart",
                         "timer",
                         "udp",
                         "virtualButton",
@@ -16072,6 +16095,7 @@ Schema for a collection of Workflow Versions
                     "type": {
                       "type": "string",
                       "enum": [
+                        "customNodeStart",
                         "dataTable",
                         "deviceCommand",
                         "deviceId",
@@ -16087,8 +16111,8 @@ Schema for a collection of Workflow Versions
                         "fileWatch",
                         "integration",
                         "mqttTopic",
+                        "redis",
                         "request",
-                        "customNodeStart",
                         "timer",
                         "udp",
                         "virtualButton",
@@ -16370,6 +16394,7 @@ Schema for a collection of Workflows
                 "type": {
                   "type": "string",
                   "enum": [
+                    "customNodeStart",
                     "dataTable",
                     "deviceCommand",
                     "deviceId",
@@ -16385,8 +16410,8 @@ Schema for a collection of Workflows
                     "fileWatch",
                     "integration",
                     "mqttTopic",
+                    "redis",
                     "request",
-                    "customNodeStart",
                     "timer",
                     "udp",
                     "virtualButton",
@@ -16972,6 +16997,7 @@ Schema for the body of a workflow import request
                 "type": {
                   "type": "string",
                   "enum": [
+                    "customNodeStart",
                     "dataTable",
                     "deviceCommand",
                     "deviceId",
@@ -16987,8 +17013,8 @@ Schema for the body of a workflow import request
                     "fileWatch",
                     "integration",
                     "mqttTopic",
+                    "redis",
                     "request",
-                    "customNodeStart",
                     "timer",
                     "udp",
                     "virtualButton",
@@ -17481,6 +17507,7 @@ Schema for the body of a workflow import request
                 "type": {
                   "type": "string",
                   "enum": [
+                    "customNodeStart",
                     "dataTable",
                     "deviceCommand",
                     "deviceId",
@@ -17496,8 +17523,8 @@ Schema for the body of a workflow import request
                     "fileWatch",
                     "integration",
                     "mqttTopic",
+                    "redis",
                     "request",
-                    "customNodeStart",
                     "timer",
                     "udp",
                     "virtualButton",
@@ -18037,6 +18064,7 @@ Schema for the result of a workflow import request
                 "type": {
                   "type": "string",
                   "enum": [
+                    "customNodeStart",
                     "dataTable",
                     "deviceCommand",
                     "deviceId",
@@ -18052,8 +18080,8 @@ Schema for the result of a workflow import request
                     "fileWatch",
                     "integration",
                     "mqttTopic",
+                    "redis",
                     "request",
-                    "customNodeStart",
                     "timer",
                     "udp",
                     "virtualButton",
@@ -18565,6 +18593,7 @@ Schema for the result of a workflow import request
                     "type": {
                       "type": "string",
                       "enum": [
+                        "customNodeStart",
                         "dataTable",
                         "deviceCommand",
                         "deviceId",
@@ -18580,8 +18609,8 @@ Schema for the result of a workflow import request
                         "fileWatch",
                         "integration",
                         "mqttTopic",
+                        "redis",
                         "request",
-                        "customNodeStart",
                         "timer",
                         "udp",
                         "virtualButton",
@@ -19093,6 +19122,7 @@ Schema for the result of a workflow import request
                     "type": {
                       "type": "string",
                       "enum": [
+                        "customNodeStart",
                         "dataTable",
                         "deviceCommand",
                         "deviceId",
@@ -19108,8 +19138,8 @@ Schema for the result of a workflow import request
                         "fileWatch",
                         "integration",
                         "mqttTopic",
+                        "redis",
                         "request",
-                        "customNodeStart",
                         "timer",
                         "udp",
                         "virtualButton",
@@ -20564,7 +20594,35 @@ Schema for a collection of Integrations
 {
   "items": [
     {
-      "$ref": "#/examples/integrations"
+      "id": "58ec07f20c747f65243d0d76",
+      "integrationId": "58ec07f20c747f65243d0d76",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "name": "Example Integrations",
+      "integrationType": "mqtt",
+      "enabled": true,
+      "topics": [
+        "myTopic"
+      ],
+      "mqttConfig": {
+        "clientId": "exampleClientId",
+        "username": "exampleUsername",
+        "password": "examplePassword",
+        "port": 8883,
+        "protocol": "mqtts",
+        "host": "broker.example.com"
+      },
+      "status": {
+        "lastKeepAlive": 1491863679994,
+        "connectInfo": {
+          "ts": 1490629589313
+        },
+        "disconnectInfo": {
+          "ts": 1490629587190,
+          "error": "Keepalive Timeout"
+        }
+      }
     }
   ],
   "count": 1,

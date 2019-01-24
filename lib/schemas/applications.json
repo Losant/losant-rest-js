@@ -36,6 +36,14 @@
               "organization"
             ]
           },
+          "organizationName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "organizationIconColor": {
+            "type": "string"
+          },
           "name": {
             "type": "string",
             "minLength": 1,
