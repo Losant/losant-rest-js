@@ -152,7 +152,7 @@ all.Application, all.Organization, all.User, dataTableRow.*, or dataTableRow.pat
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | dataTableId | string | Y | ID associated with the data table |  | 575ed78e7ae143cd83dc4aab |
 | rowId | string | Y | ID associated with the data table row |  | 596f832b128eda5cfe765443 |
-| dataTableRow | [Data Table Row Insert/Update](_schemas.md#data-table-row-insert/update) | Y | Object containing updated properties for the data table row |  | [Data Table Row Insert/Update Example](_schemas.md#data-table-row-insert/update-example) |
+| dataTableRow | [Data Table Row Insert Update](_schemas.md#data-table-row-insert-update) | Y | Object containing updated properties for the data table row |  | [Data Table Row Insert Update Example](_schemas.md#data-table-row-insert-update-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

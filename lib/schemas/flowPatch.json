@@ -67,6 +67,7 @@
               "mqttTopic",
               "redis",
               "request",
+              "serial",
               "timer",
               "udp",
               "virtualButton",

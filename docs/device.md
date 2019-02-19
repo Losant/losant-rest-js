@@ -574,7 +574,7 @@ all.Application, all.Device, all.Organization, all.User, device.*, or device.sen
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
-| deviceState | [Single or Multiple Device States](_schemas.md#single-or-multiple-device-states) | Y | A single device state object, or an array of device state objects |  | [Single or Multiple Device States Example](_schemas.md#single-or-multiple-device-states-example) |
+| deviceState | [Device State or States](_schemas.md#device-state-or-states) | Y | A single device state object, or an array of device state objects |  | [Device State or States Example](_schemas.md#device-state-or-states-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

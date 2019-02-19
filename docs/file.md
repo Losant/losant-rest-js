@@ -206,7 +206,7 @@ all.Application, all.Organization, all.User, file.*, or file.patch.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [File Post Response](_schemas.md#file-post-response) | Successfully updated file and returned a post url to respond with |
+| 201 | [File Upload Post Response](_schemas.md#file-upload-post-response) | Successfully updated file and returned a post url to respond with |
 
 #### Error Responses
 

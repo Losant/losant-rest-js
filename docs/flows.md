@@ -161,7 +161,7 @@ all.Application, all.Organization, all.User, flows.*, or flows.import.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| importData | [Workflow Import](_schemas.md#workflow-import) | Y | New flow and flow version information |  | [Workflow Import Example](_schemas.md#workflow-import-example) |
+| importData | [Workflows Import Post](_schemas.md#workflows-import-post) | Y | New flow and flow version information |  | [Workflows Import Post Example](_schemas.md#workflows-import-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

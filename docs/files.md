@@ -107,7 +107,7 @@ all.Application, all.Organization, all.User, files.*, or files.post.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [File Post Response](_schemas.md#file-post-response) | Successfully created file and returned a post url to respond with |
+| 201 | [File Upload Post Response](_schemas.md#file-upload-post-response) | Successfully created file and returned a post url to respond with |
 
 #### Error Responses
 

@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "array",
   "items": {
-    "title": "Data Table Row Insert/Update",
+    "title": "Data Table Row Insert Update",
     "description": "Schema for inserting or updating a data table row",
     "type": "object",
     "patternProperties": {

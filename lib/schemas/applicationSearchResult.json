@@ -23,12 +23,12 @@
       "_type": {
         "type": "string",
         "enum": [
-          "applicationKey",
+          "applicationApiToken",
           "dashboard",
           "dataTable",
           "deviceRecipe",
           "device",
-          "domain",
+          "experienceDomain",
           "event",
           "experienceEndpoint",
           "experienceGroup",
