@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "notebookExecutionId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "notebookId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "applicationId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "inProgress",
+          "completed",
+          "errored",
+          "timeout"
+        ]
+      },
+      "runStartedAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "inputsCompletedAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "notebookCompletedAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "outputsCompletedAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "inputInfo": {
+        "type": "array",
+        "items": {
+          "fileName": {
+            "type": "string"
+          },
+          "size": {
+            "type": "number"
+          }
+        }
+      },
+      "outputInfo": {
+        "type": "array",
+        "items": {
+          "fileName": {
+            "type": "string"
+          },
+          "size": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}

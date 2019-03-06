@@ -28,9 +28,6 @@
           }
         ]
       },
-      "relayId": {
-        "type": "string"
-      },
       "meta": {},
       "data": {
         "type": "object",

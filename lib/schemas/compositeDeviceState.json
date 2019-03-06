@@ -33,9 +33,6 @@
               ]
             }
           ]
-        },
-        "relayId": {
-          "type": "string"
         }
       }
     }
