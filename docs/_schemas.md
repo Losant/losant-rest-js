@@ -21635,6 +21635,14 @@ Schema for a single Notebook
       "type": "string",
       "maxLength": 32767
     },
+    "jupyterFileName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "jupyterFileUrl": {
+      "type": "string"
+    },
     "inputs": {
       "type": "array",
       "items": {
@@ -21688,6 +21696,12 @@ Schema for a single Notebook
                   "type": "string",
                   "pattern": "^[0-9a-zA-Z_-]{1,255}$"
                 }
+              },
+              "start": {
+                "type": "number"
+              },
+              "end": {
+                "type": "number"
               }
             },
             "required": [
@@ -21909,6 +21923,28 @@ Schema for the options for a nodebook data export request
       "type": "string",
       "format": "email",
       "maxLength": 1024
+    },
+    "relativeTo": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$date": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "$date"
+          ]
+        }
+      ]
     }
   },
   "additionalProperties": false
@@ -21962,6 +21998,10 @@ Schema for a set of notebook execution logs
           "timeout"
         ]
       },
+      "executionRelativeTo": {
+        "type": "string",
+        "format": "date-time"
+      },
       "runStartedAt": {
         "type": "string",
         "format": "date-time"
@@ -21986,6 +22026,9 @@ Schema for a set of notebook execution logs
           },
           "size": {
             "type": "number"
+          },
+          "url": {
+            "type": "string"
           }
         }
       },
@@ -21996,6 +22039,20 @@ Schema for a set of notebook execution logs
             "type": "string"
           },
           "size": {
+            "type": "number"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      },
+      "executionErrors": {
+        "type": "array",
+        "items": {
+          "name": {
+            "type": "string"
+          },
+          "message": {
             "type": "number"
           }
         }
@@ -22033,7 +22090,30 @@ Schema for the options for a nodebook execution request
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
-  "properties": {},
+  "properties": {
+    "relativeTo": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$date": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "$date"
+          ]
+        }
+      ]
+    }
+  },
   "additionalProperties": false
 }
 ```
@@ -22118,6 +22198,12 @@ Schema for the body of a Notebook modification request
                   "type": "string",
                   "pattern": "^[0-9a-zA-Z_-]{1,255}$"
                 }
+              },
+              "start": {
+                "type": "number"
+              },
+              "end": {
+                "type": "number"
               }
             },
             "required": [
@@ -22393,6 +22479,12 @@ Schema for the body of an Notebook creation request
                   "type": "string",
                   "pattern": "^[0-9a-zA-Z_-]{1,255}$"
                 }
+              },
+              "start": {
+                "type": "number"
+              },
+              "end": {
+                "type": "number"
               }
             },
             "required": [
@@ -22645,6 +22737,14 @@ Schema for a collection of Notebooks
             "type": "string",
             "maxLength": 32767
           },
+          "jupyterFileName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "jupyterFileUrl": {
+            "type": "string"
+          },
           "inputs": {
             "type": "array",
             "items": {
@@ -22698,6 +22798,12 @@ Schema for a collection of Notebooks
                         "type": "string",
                         "pattern": "^[0-9a-zA-Z_-]{1,255}$"
                       }
+                    },
+                    "start": {
+                      "type": "number"
+                    },
+                    "end": {
+                      "type": "number"
                     }
                   },
                   "required": [

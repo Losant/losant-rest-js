@@ -29,6 +29,10 @@
           "timeout"
         ]
       },
+      "executionRelativeTo": {
+        "type": "string",
+        "format": "date-time"
+      },
       "runStartedAt": {
         "type": "string",
         "format": "date-time"
@@ -53,6 +57,9 @@
           },
           "size": {
             "type": "number"
+          },
+          "url": {
+            "type": "string"
           }
         }
       },
@@ -63,6 +70,20 @@
             "type": "string"
           },
           "size": {
+            "type": "number"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      },
+      "executionErrors": {
+        "type": "array",
+        "items": {
+          "name": {
+            "type": "string"
+          },
+          "message": {
             "type": "number"
           }
         }

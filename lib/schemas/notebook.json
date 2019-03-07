@@ -31,6 +31,14 @@
       "type": "string",
       "maxLength": 32767
     },
+    "jupyterFileName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "jupyterFileUrl": {
+      "type": "string"
+    },
     "inputs": {
       "type": "array",
       "items": {
@@ -84,6 +92,12 @@
                   "type": "string",
                   "pattern": "^[0-9a-zA-Z_-]{1,255}$"
                 }
+              },
+              "start": {
+                "type": "number"
+              },
+              "end": {
+                "type": "number"
               }
             },
             "required": [

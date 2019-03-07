@@ -64,6 +64,12 @@
                   "type": "string",
                   "pattern": "^[0-9a-zA-Z_-]{1,255}$"
                 }
+              },
+              "start": {
+                "type": "number"
+              },
+              "end": {
+                "type": "number"
               }
             },
             "required": [

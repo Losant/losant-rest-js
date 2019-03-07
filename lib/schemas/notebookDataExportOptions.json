@@ -6,6 +6,28 @@
       "type": "string",
       "format": "email",
       "maxLength": 1024
+    },
+    "relativeTo": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$date": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "$date"
+          ]
+        }
+      ]
     }
   },
   "additionalProperties": false
