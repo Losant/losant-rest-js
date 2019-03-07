@@ -21910,7 +21910,7 @@ Schema for a single Notebook
 
 ## Notebook Data Export Options
 
-Schema for the options for a nodebook data export request
+Schema for the options for a Notebook data export request
 
 ### <a name="notebook-data-export-options-schema"></a> Schema
 
@@ -21962,7 +21962,7 @@ Schema for the options for a nodebook data export request
 
 ## Notebook Execution Logs
 
-Schema for a set of notebook execution logs
+Schema for a set of Notebook execution logs
 
 ### <a name="notebook-execution-logs-schema"></a> Schema
 
@@ -22053,7 +22053,7 @@ Schema for a set of notebook execution logs
             "type": "string"
           },
           "message": {
-            "type": "number"
+            "type": "string"
           }
         }
       }
@@ -22082,7 +22082,7 @@ Schema for a set of notebook execution logs
 
 ## Notebook Execution Options
 
-Schema for the options for a nodebook execution request
+Schema for the options for a Notebook execution request
 
 ### <a name="notebook-execution-options-schema"></a> Schema
 

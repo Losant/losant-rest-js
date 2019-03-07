@@ -84,7 +84,7 @@
             "type": "string"
           },
           "message": {
-            "type": "number"
+            "type": "string"
           }
         }
       }
