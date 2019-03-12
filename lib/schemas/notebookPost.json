@@ -254,6 +254,39 @@
               "destinationFileNameTemplate"
             ],
             "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "outputType": {
+                "type": "string",
+                "enum": [
+                  "executionResult"
+                ]
+              },
+              "fileName": {
+                "type": "string",
+                "enum": [
+                  "result.html",
+                  "result.pdf"
+                ]
+              },
+              "destinationDirectory": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              },
+              "destinationFileNameTemplate": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              }
+            },
+            "required": [
+              "fileName",
+              "outputType"
+            ],
+            "additionalProperties": false
           }
         ]
       }

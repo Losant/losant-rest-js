@@ -316,6 +316,7 @@
                   "auditLogs.get",
                   "dashboard.patch",
                   "dashboard.delete",
+                  "dashboard.sendReport",
                   "dashboards.get",
                   "dashboards.post",
                   "org.get",

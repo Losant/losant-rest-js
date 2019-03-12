@@ -26,6 +26,7 @@
 *   [Dashboard Context Instance](#dashboard-context-instance)
 *   [Dashboard Patch](#dashboard-patch)
 *   [Dashboard Post](#dashboard-post)
+*   [Dashboard Send Report](#dashboard-send-report)
 *   [Dashboards](#dashboards)
 *   [Data Export](#data-export)
 *   [Data Table](#data-table)
@@ -3422,6 +3423,9 @@ Schema for a single Dashboard
                   "additionalProperties": false
                 },
                 "maxItems": 100
+              },
+              "includeFullDevice": {
+                "type": "boolean"
               }
             },
             "additionalProperties": false
@@ -3786,6 +3790,9 @@ Schema for the body of a Dashboard modification request
                   "additionalProperties": false
                 },
                 "maxItems": 100
+              },
+              "includeFullDevice": {
+                "type": "boolean"
               }
             },
             "additionalProperties": false
@@ -4090,6 +4097,9 @@ Schema for the body of a Dashboard creation request
                   "additionalProperties": false
                 },
                 "maxItems": 100
+              },
+              "includeFullDevice": {
+                "type": "boolean"
               }
             },
             "additionalProperties": false
@@ -4117,6 +4127,68 @@ Schema for the body of a Dashboard creation request
 {
   "name": "My New Dashboard",
   "public": false
+}
+```
+
+<br/>
+
+## Dashboard Send Report
+
+Schema for the body of a Dashboard report request
+
+### <a name="dashboard-send-report-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "toEmail"
+  ],
+  "properties": {
+    "toEmail": {
+      "type": "array",
+      "min": 1,
+      "max": 10,
+      "items": {
+        "type": "string",
+        "format": "email",
+        "maxLength": 1024
+      }
+    },
+    "subject": {
+      "type": "string",
+      "max": 255
+    },
+    "message": {
+      "type": "string",
+      "max": 32767
+    },
+    "theme": {
+      "type": "string",
+      "enum": [
+        "dark",
+        "light"
+      ]
+    },
+    "time": {
+      "type": "number"
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="dashboard-send-report-example"></a> Example
+
+```json
+{
+  "toEmail": [
+    "test@email.com"
+  ],
+  "subject": "Dashboard Report",
+  "message": "Lookit",
+  "time": 1551887386704,
+  "theme": "dark"
 }
 ```
 
@@ -4435,6 +4507,9 @@ Schema for a collection of Dashboards
                         "additionalProperties": false
                       },
                       "maxItems": 100
+                    },
+                    "includeFullDevice": {
+                      "type": "boolean"
                     }
                   },
                   "additionalProperties": false
@@ -19710,6 +19785,7 @@ Schema for the body of a Github login request
                   "auditLogs.get",
                   "dashboard.patch",
                   "dashboard.delete",
+                  "dashboard.sendReport",
                   "dashboards.get",
                   "dashboards.post",
                   "org.get",
@@ -21886,6 +21962,39 @@ Schema for a single Notebook
               "destinationFileNameTemplate"
             ],
             "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "outputType": {
+                "type": "string",
+                "enum": [
+                  "executionResult"
+                ]
+              },
+              "fileName": {
+                "type": "string",
+                "enum": [
+                  "result.html",
+                  "result.pdf"
+                ]
+              },
+              "destinationDirectory": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              },
+              "destinationFileNameTemplate": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              }
+            },
+            "required": [
+              "fileName",
+              "outputType"
+            ],
+            "additionalProperties": false
           }
         ]
       }
@@ -22388,6 +22497,39 @@ Schema for the body of a Notebook modification request
               "destinationFileNameTemplate"
             ],
             "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "outputType": {
+                "type": "string",
+                "enum": [
+                  "executionResult"
+                ]
+              },
+              "fileName": {
+                "type": "string",
+                "enum": [
+                  "result.html",
+                  "result.pdf"
+                ]
+              },
+              "destinationDirectory": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              },
+              "destinationFileNameTemplate": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              }
+            },
+            "required": [
+              "fileName",
+              "outputType"
+            ],
+            "additionalProperties": false
           }
         ]
       }
@@ -22667,6 +22809,39 @@ Schema for the body of an Notebook creation request
               "fileName",
               "outputType",
               "destinationFileNameTemplate"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "outputType": {
+                "type": "string",
+                "enum": [
+                  "executionResult"
+                ]
+              },
+              "fileName": {
+                "type": "string",
+                "enum": [
+                  "result.html",
+                  "result.pdf"
+                ]
+              },
+              "destinationDirectory": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              },
+              "destinationFileNameTemplate": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              }
+            },
+            "required": [
+              "fileName",
+              "outputType"
             ],
             "additionalProperties": false
           }
@@ -22986,6 +23161,39 @@ Schema for a collection of Notebooks
                     "fileName",
                     "outputType",
                     "destinationFileNameTemplate"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "outputType": {
+                      "type": "string",
+                      "enum": [
+                        "executionResult"
+                      ]
+                    },
+                    "fileName": {
+                      "type": "string",
+                      "enum": [
+                        "result.html",
+                        "result.pdf"
+                      ]
+                    },
+                    "destinationDirectory": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024
+                    },
+                    "destinationFileNameTemplate": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024
+                    }
+                  },
+                  "required": [
+                    "fileName",
+                    "outputType"
                   ],
                   "additionalProperties": false
                 }
@@ -26753,6 +26961,7 @@ Schema for the body of a User authentication request
                   "auditLogs.get",
                   "dashboard.patch",
                   "dashboard.delete",
+                  "dashboard.sendReport",
                   "dashboards.get",
                   "dashboards.post",
                   "org.get",
@@ -27159,6 +27368,7 @@ Schema for the body of a User creation request
                   "auditLogs.get",
                   "dashboard.patch",
                   "dashboard.delete",
+                  "dashboard.sendReport",
                   "dashboards.get",
                   "dashboards.post",
                   "org.get",
