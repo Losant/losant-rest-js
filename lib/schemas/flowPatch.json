@@ -65,6 +65,7 @@
               "fileWatch",
               "integration",
               "mqttTopic",
+              "notebook",
               "redis",
               "request",
               "serial",
