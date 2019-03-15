@@ -247,11 +247,11 @@ No api access token is required to call this action.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If context is valid |
+| 200 | [Validate Context Success](_schemas.md#validate-context-success) | If context is valid |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if context is invalid |
+| 400 | [Validate Context Error](_schemas.md#validate-context-error) | Error if context is invalid |
 | 404 | [Error](_schemas.md#error) | Error if dashboard or application was not found |
