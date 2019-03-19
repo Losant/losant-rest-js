@@ -28,9 +28,6 @@
             }
           ]
         },
-        "relayId": {
-          "type": "string"
-        },
         "meta": {},
         "data": {
           "type": "object",
@@ -86,9 +83,6 @@
                 ]
               }
             ]
-          },
-          "relayId": {
-            "type": "string"
           },
           "meta": {},
           "data": {

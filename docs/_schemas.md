@@ -26,6 +26,7 @@
 *   [Dashboard Context Instance](#dashboard-context-instance)
 *   [Dashboard Patch](#dashboard-patch)
 *   [Dashboard Post](#dashboard-post)
+*   [Dashboard Send Report](#dashboard-send-report)
 *   [Dashboards](#dashboards)
 *   [Data Table](#data-table)
 *   [Data Table Column](#data-table-column)
@@ -167,6 +168,8 @@
 *   [Time Series Query](#time-series-query)
 *   [User Credentials](#user-credentials)
 *   [User Post](#user-post)
+*   [Validate Context Error](#validate-context-error)
+*   [Validate Context Success](#validate-context-success)
 *   [Virtual Button Press](#virtual-button-press)
 *   [Webhook](#webhook)
 *   [Webhook Patch](#webhook-patch)
@@ -3072,9 +3075,6 @@ Schema for a composite Device state
               ]
             }
           ]
-        },
-        "relayId": {
-          "type": "string"
         }
       }
     }
@@ -3405,6 +3405,9 @@ Schema for a single Dashboard
                   "additionalProperties": false
                 },
                 "maxItems": 100
+              },
+              "includeFullDevice": {
+                "type": "boolean"
               }
             },
             "additionalProperties": false
@@ -3430,13 +3433,18 @@ Schema for a single Dashboard
   "dashboardId": "575ece2b7ae143cd83dc4a9b",
   "creationDate": "2016-06-13T04:00:00.000Z",
   "lastUpdated": "2016-06-13T04:00:00.000Z",
-  "ownerId": "575ed70c7ae143cd83dc4aa9",
-  "ownerType": "user",
+  "organizationName": "Losant",
+  "organizationIconColor": "#284fff",
+  "ownerType": "organization",
+  "ownerId": "58238ff2fe7b4b01009a0554",
   "name": "My Dashboard",
   "description": "The best dashboard description",
   "refreshRate": 60,
   "public": false,
+  "isPasswordProtected": false,
+  "defaultTheme": "light",
   "blocks": [],
+  "_currentRole": "admin",
   "reportConfigs": [
     {
       "toEmail": [
@@ -3445,6 +3453,88 @@ Schema for a single Dashboard
       "cron": "0 0 12 * * MON-FRI *",
       "theme": "dark",
       "subject": "Daily Dashboard Report"
+    }
+  ],
+  "contextConfiguration": [
+    {
+      "validationEnabled": true,
+      "validationConfig": {
+        "deviceIds": [
+          "589de9bca1975a00017b2293"
+        ],
+        "deviceTags": [
+          {
+            "key": "type",
+            "value": "Weather Station"
+          }
+        ],
+        "includeFullDevice": true
+      },
+      "name": "deviceId-withIdAndTagValidationAndIncludeFullDevice",
+      "type": "deviceId",
+      "applicationId": "589de7d2a1975a00017b227f",
+      "defaultValue": "589de9bca1975a00017b2295"
+    },
+    {
+      "validationEnabled": false,
+      "validationConfig": {
+        "includeFullDevice": false
+      },
+      "name": "deviceId-noValidationNoFullDevice",
+      "type": "deviceId",
+      "applicationId": "589de7d2a1975a00017b227f",
+      "defaultValue": "589de9bca1975a00017b2295"
+    },
+    {
+      "validationEnabled": true,
+      "validationConfig": {
+        "attributes": [
+          "dew-point",
+          "feels-like",
+          "humidity",
+          "location",
+          "pressure",
+          "temp",
+          "visibility",
+          "wind-speed"
+        ]
+      },
+      "name": "attr",
+      "type": "deviceAttribute",
+      "applicationId": "589de7d2a1975a00017b227f",
+      "defaultValue": "temp"
+    },
+    {
+      "validationEnabled": true,
+      "validationConfig": {
+        "deviceTags": [
+          {
+            "key": "DeviceRecipe",
+            "value": "Weather Station"
+          },
+          {
+            "key": "region"
+          }
+        ]
+      },
+      "name": "deviceTag-withValidation",
+      "type": "deviceTag",
+      "applicationId": "589de7d2a1975a00017b227f",
+      "defaultValue": {
+        "key": "DeviceRecipe",
+        "value": "Weather Station"
+      }
+    },
+    {
+      "validationEnabled": false,
+      "validationConfig": {},
+      "name": "deviceTag-noValidation",
+      "type": "deviceTag",
+      "applicationId": "589de7d2a1975a00017b227f",
+      "defaultValue": {
+        "key": "DeviceRecipe",
+        "value": "Weather Station"
+      }
     }
   ]
 }
@@ -3769,6 +3859,9 @@ Schema for the body of a Dashboard modification request
                   "additionalProperties": false
                 },
                 "maxItems": 100
+              },
+              "includeFullDevice": {
+                "type": "boolean"
               }
             },
             "additionalProperties": false
@@ -4073,6 +4166,9 @@ Schema for the body of a Dashboard creation request
                   "additionalProperties": false
                 },
                 "maxItems": 100
+              },
+              "includeFullDevice": {
+                "type": "boolean"
               }
             },
             "additionalProperties": false
@@ -4100,6 +4196,68 @@ Schema for the body of a Dashboard creation request
 {
   "name": "My New Dashboard",
   "public": false
+}
+```
+
+<br/>
+
+## Dashboard Send Report
+
+Schema for the body of a Dashboard report request
+
+### <a name="dashboard-send-report-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "toEmail"
+  ],
+  "properties": {
+    "toEmail": {
+      "type": "array",
+      "min": 1,
+      "max": 10,
+      "items": {
+        "type": "string",
+        "format": "email",
+        "maxLength": 1024
+      }
+    },
+    "subject": {
+      "type": "string",
+      "max": 255
+    },
+    "message": {
+      "type": "string",
+      "max": 32767
+    },
+    "theme": {
+      "type": "string",
+      "enum": [
+        "dark",
+        "light"
+      ]
+    },
+    "time": {
+      "type": "number"
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="dashboard-send-report-example"></a> Example
+
+```json
+{
+  "toEmail": [
+    "test@email.com"
+  ],
+  "subject": "Dashboard Report",
+  "message": "Lookit",
+  "time": 1551887386704,
+  "theme": "dark"
 }
 ```
 
@@ -4418,6 +4576,9 @@ Schema for a collection of Dashboards
                         "additionalProperties": false
                       },
                       "maxItems": 100
+                    },
+                    "includeFullDevice": {
+                      "type": "boolean"
                     }
                   },
                   "additionalProperties": false
@@ -4484,13 +4645,18 @@ Schema for a collection of Dashboards
       "dashboardId": "575ece2b7ae143cd83dc4a9b",
       "creationDate": "2016-06-13T04:00:00.000Z",
       "lastUpdated": "2016-06-13T04:00:00.000Z",
-      "ownerId": "575ed70c7ae143cd83dc4aa9",
-      "ownerType": "user",
+      "organizationName": "Losant",
+      "organizationIconColor": "#284fff",
+      "ownerType": "organization",
+      "ownerId": "58238ff2fe7b4b01009a0554",
       "name": "My Dashboard",
       "description": "The best dashboard description",
       "refreshRate": 60,
       "public": false,
+      "isPasswordProtected": false,
+      "defaultTheme": "light",
       "blocks": [],
+      "_currentRole": "admin",
       "reportConfigs": [
         {
           "toEmail": [
@@ -4499,6 +4665,88 @@ Schema for a collection of Dashboards
           "cron": "0 0 12 * * MON-FRI *",
           "theme": "dark",
           "subject": "Daily Dashboard Report"
+        }
+      ],
+      "contextConfiguration": [
+        {
+          "validationEnabled": true,
+          "validationConfig": {
+            "deviceIds": [
+              "589de9bca1975a00017b2293"
+            ],
+            "deviceTags": [
+              {
+                "key": "type",
+                "value": "Weather Station"
+              }
+            ],
+            "includeFullDevice": true
+          },
+          "name": "deviceId-withIdAndTagValidationAndIncludeFullDevice",
+          "type": "deviceId",
+          "applicationId": "589de7d2a1975a00017b227f",
+          "defaultValue": "589de9bca1975a00017b2295"
+        },
+        {
+          "validationEnabled": false,
+          "validationConfig": {
+            "includeFullDevice": false
+          },
+          "name": "deviceId-noValidationNoFullDevice",
+          "type": "deviceId",
+          "applicationId": "589de7d2a1975a00017b227f",
+          "defaultValue": "589de9bca1975a00017b2295"
+        },
+        {
+          "validationEnabled": true,
+          "validationConfig": {
+            "attributes": [
+              "dew-point",
+              "feels-like",
+              "humidity",
+              "location",
+              "pressure",
+              "temp",
+              "visibility",
+              "wind-speed"
+            ]
+          },
+          "name": "attr",
+          "type": "deviceAttribute",
+          "applicationId": "589de7d2a1975a00017b227f",
+          "defaultValue": "temp"
+        },
+        {
+          "validationEnabled": true,
+          "validationConfig": {
+            "deviceTags": [
+              {
+                "key": "DeviceRecipe",
+                "value": "Weather Station"
+              },
+              {
+                "key": "region"
+              }
+            ]
+          },
+          "name": "deviceTag-withValidation",
+          "type": "deviceTag",
+          "applicationId": "589de7d2a1975a00017b227f",
+          "defaultValue": {
+            "key": "DeviceRecipe",
+            "value": "Weather Station"
+          }
+        },
+        {
+          "validationEnabled": false,
+          "validationConfig": {},
+          "name": "deviceTag-noValidation",
+          "type": "deviceTag",
+          "applicationId": "589de7d2a1975a00017b227f",
+          "defaultValue": {
+            "key": "DeviceRecipe",
+            "value": "Weather Station"
+          }
         }
       ]
     }
@@ -7190,9 +7438,6 @@ Schema for a single Device state
         }
       ]
     },
-    "relayId": {
-      "type": "string"
-    },
     "meta": {},
     "data": {
       "type": "object",
@@ -7269,9 +7514,6 @@ Schema for a single device state or an array of device states
             }
           ]
         },
-        "relayId": {
-          "type": "string"
-        },
         "meta": {},
         "data": {
           "type": "object",
@@ -7327,9 +7569,6 @@ Schema for a single device state or an array of device states
                 ]
               }
             ]
-          },
-          "relayId": {
-            "type": "string"
           },
           "meta": {},
           "data": {
@@ -7409,9 +7648,6 @@ Schema for an array of Device states
             ]
           }
         ]
-      },
-      "relayId": {
-        "type": "string"
       },
       "meta": {},
       "data": {
@@ -19599,6 +19835,7 @@ Schema for the body of a Github login request
                   "auditLogs.get",
                   "dashboard.patch",
                   "dashboard.delete",
+                  "dashboard.sendReport",
                   "dashboards.get",
                   "dashboards.post",
                   "org.get",
@@ -25169,6 +25406,7 @@ Schema for the body of a User authentication request
                   "auditLogs.get",
                   "dashboard.patch",
                   "dashboard.delete",
+                  "dashboard.sendReport",
                   "dashboards.get",
                   "dashboards.post",
                   "org.get",
@@ -25563,6 +25801,7 @@ Schema for the body of a User creation request
                   "auditLogs.get",
                   "dashboard.patch",
                   "dashboard.delete",
+                  "dashboard.sendReport",
                   "dashboards.get",
                   "dashboards.post",
                   "org.get",
@@ -25659,6 +25898,245 @@ Schema for the body of a User creation request
   "url": "https://www.losant.com",
   "password": "the new password",
   "acceptTerms": "on"
+}
+```
+
+<br/>
+
+## Validate Context Error
+
+Schema for the result of a validateContext call when invalid context is passed
+
+### <a name="validate-context-error-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "ctx": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "anyOf": [
+            [
+              {
+                "type": "string",
+                "maxLength": 32767
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  }
+                },
+                "additionalProperties": false
+              }
+            ],
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "tags": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}$": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
+```
+### <a name="validate-context-error-example"></a> Example
+
+```json
+{
+  "type": "Validation",
+  "message": "deviceId-noValidationNoFullDevice (589de9bca1975a00017b22ff) is not a valid deviceId",
+  "ctx": {
+    "deviceId-withIdAndTagValidationAndIncludeFullDevice": {
+      "id": "589de9bca1975a00017b2295",
+      "name": "Cincinnati",
+      "tags": {
+        "type": [
+          "Weather Station"
+        ],
+        "region": [
+          "Midwest"
+        ],
+        "DeviceRecipe": [
+          "Weather Station"
+        ]
+      }
+    },
+    "deviceId-noValidationNoFullDevice": "589de9bca1975a00017b2296",
+    "deviceAttribute": "dew-point",
+    "deviceTag-withValidation": {
+      "key": "DeviceRecipe",
+      "value": "Weather Station"
+    },
+    "deviceTag-noValidation": {
+      "key": "DeviceRecipe",
+      "value": "Weather Station"
+    }
+  }
+}
+```
+
+<br/>
+
+## Validate Context Success
+
+Schema for the result of a successful validateContext call
+
+### <a name="validate-context-success-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "boolean",
+      "enum": [
+        true
+      ]
+    },
+    "ctx": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "anyOf": [
+            [
+              {
+                "type": "string",
+                "maxLength": 32767
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  }
+                },
+                "additionalProperties": false
+              }
+            ],
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "tags": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}$": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
+```
+### <a name="validate-context-success-example"></a> Example
+
+```json
+{
+  "success": true,
+  "ctx": {
+    "deviceId-withIdAndTagValidationAndIncludeFullDevice": {
+      "id": "589de9bca1975a00017b2295",
+      "name": "Cincinnati",
+      "tags": {
+        "type": [
+          "Weather Station"
+        ],
+        "region": [
+          "Midwest"
+        ],
+        "DeviceRecipe": [
+          "Weather Station"
+        ]
+      }
+    },
+    "deviceId-noValidationNoFullDevice": "589de9bca1975a00017b2296",
+    "deviceAttribute": "dew-point",
+    "deviceTag-withValidation": {
+      "key": "DeviceRecipe",
+      "value": "Weather Station"
+    },
+    "deviceTag-noValidation": {
+      "key": "DeviceRecipe",
+      "value": "Weather Station"
+    }
+  }
 }
 ```
 
