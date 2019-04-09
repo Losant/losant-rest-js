@@ -109,7 +109,9 @@
                   },
                   "required": [
                     "inputType",
-                    "fileName"
+                    "fileName",
+                    "start",
+                    "end"
                   ],
                   "additionalProperties": false
                 },
@@ -272,7 +274,7 @@
                       "minLength": 1,
                       "maxLength": 1024
                     },
-                    "destinationDirectory": {
+                    "destinationDirectoryTemplate": {
                       "type": "string",
                       "minLength": 1,
                       "maxLength": 1024
@@ -303,10 +305,13 @@
                       "type": "string",
                       "enum": [
                         "result.html",
-                        "result.pdf"
+                        "result.pdf",
+                        "result.ipynb",
+                        "result.error.log",
+                        "result.log"
                       ]
                     },
-                    "destinationDirectory": {
+                    "destinationDirectoryTemplate": {
                       "type": "string",
                       "minLength": 1,
                       "maxLength": 1024

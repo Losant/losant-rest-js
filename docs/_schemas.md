@@ -4841,11 +4841,13 @@ Schema for exporting data devices query
     "options": {
       "type": "object",
       "properties": {
-        "noDate": {
-          "type": "boolean"
+        "includeDate": {
+          "type": "boolean",
+          "default": true
         },
-        "noID": {
-          "type": "boolean"
+        "includeID": {
+          "type": "boolean",
+          "default": true
         }
       }
     }
@@ -4867,8 +4869,8 @@ Schema for exporting data devices query
   ],
   "end": 0,
   "options": {
-    "noDate": true,
-    "noID": false
+    "includeDate": false,
+    "includeID": true
   }
 }
 ```
@@ -12596,32 +12598,25 @@ Schema to upload the file to s3
       }
     },
     "upload": {
-      "url": {
-        "type": "string"
-      },
-      "fields": {
-        "type": "object",
-        "properties": {
-          "key": {
-            "type": "string"
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "object",
+          "patternProperties": {
+            "^.*$": {
+              "type": "string"
+            }
           },
-          "bucket": {
-            "type": "string"
-          },
-          "X-Amz-Algorithm": {
-            "type": "string"
-          },
-          "X-Amz-Credential": {
-            "type": "string"
-          },
-          "X-Amz-Date": {
-            "type": "string"
-          },
-          "Policy": {
-            "type": "string"
-          },
-          "X-Amz-Signature": {
-            "type": "string"
+          "properties": {
+            "key": {
+              "type": "string"
+            },
+            "bucket": {
+              "type": "string"
+            }
           }
         }
       }
@@ -21972,7 +21967,9 @@ Schema for a single Notebook
             },
             "required": [
               "inputType",
-              "fileName"
+              "fileName",
+              "start",
+              "end"
             ],
             "additionalProperties": false
           },
@@ -22135,7 +22132,7 @@ Schema for a single Notebook
                 "minLength": 1,
                 "maxLength": 1024
               },
-              "destinationDirectory": {
+              "destinationDirectoryTemplate": {
                 "type": "string",
                 "minLength": 1,
                 "maxLength": 1024
@@ -22166,10 +22163,13 @@ Schema for a single Notebook
                 "type": "string",
                 "enum": [
                   "result.html",
-                  "result.pdf"
+                  "result.pdf",
+                  "result.ipynb",
+                  "result.error.log",
+                  "result.log"
                 ]
               },
-              "destinationDirectory": {
+              "destinationDirectoryTemplate": {
                 "type": "string",
                 "minLength": 1,
                 "maxLength": 1024
@@ -22201,7 +22201,113 @@ Schema for a single Notebook
   "applicationId": "575ec8687ae143cd83dc4a97",
   "creationDate": "2016-06-13T04:00:00.000Z",
   "lastUpdated": "2016-06-13T04:00:00.000Z",
-  "name": "Example Notebook"
+  "name": "Example Notebook",
+  "jupyterFileName": "myNotebook.ipynb",
+  "jupyterFileUrl": "https://mystoragedomain.com/myNotebook.ipynb",
+  "inputs": [
+    {
+      "fileName": "deviceDataWithAttributes",
+      "inputType": "deviceData",
+      "attributes": [
+        "aNumber"
+      ],
+      "deviceIds": [
+        "5c926894a111ea00063978ac"
+      ],
+      "deviceTags": [],
+      "start": -10368000000,
+      "end": 0
+    },
+    {
+      "fileName": "dataTableWithQuery",
+      "inputType": "dataTable",
+      "dataTableId": "5c91584211126400069179c1",
+      "queryJson": "{\n  \"$or\": [\n    {\n      \"createdAt\": {\n        \"$gt\": \"12345\"\n      }\n    }\n  ]\n}"
+    },
+    {
+      "fileName": "deviceMetaData",
+      "inputType": "deviceMetadata",
+      "deviceIds": [
+        "5c926894a111ea00063978ac"
+      ],
+      "deviceTags": [
+        {
+          "key": "aTag",
+          "value": "and value"
+        }
+      ]
+    },
+    {
+      "fileName": "deviceDataAllAttributes",
+      "inputType": "deviceData",
+      "attributes": [],
+      "deviceIds": [],
+      "deviceTags": [
+        {
+          "value": "and value"
+        }
+      ],
+      "start": -43200000,
+      "end": 0
+    },
+    {
+      "fileName": "anExternalUrl",
+      "inputType": "externalUrl",
+      "sourceUrl": "https://foo.com"
+    }
+  ],
+  "outputs": [
+    {
+      "fileName": "result.html",
+      "outputType": "executionResult",
+      "destinationDirectoryTemplate": "/{{notebook.name}}/{{execution.runStartedAt}}",
+      "destinationFileNameTemplate": "result.html"
+    },
+    {
+      "fileName": "result.pdf",
+      "outputType": "executionResult",
+      "destinationDirectoryTemplate": "/{{notebook.name}}/{{execution.runStartedAt}}",
+      "destinationFileNameTemplate": "result.pdf"
+    },
+    {
+      "fileName": "result.ipynb",
+      "outputType": "executionResult",
+      "destinationDirectoryTemplate": "/{{notebook.name}}/{{execution.runStartedAt}}",
+      "destinationFileNameTemplate": "result.ipynb"
+    },
+    {
+      "fileName": "result.error.log",
+      "outputType": "executionResult",
+      "destinationDirectoryTemplate": "/{{notebook.name}}/{{execution.runStartedAt}}",
+      "destinationFileNameTemplate": "result.error.log"
+    },
+    {
+      "fileName": "result.log",
+      "outputType": "executionResult",
+      "destinationDirectoryTemplate": "/{{notebook.name}}/{{execution.runStartedAt}}",
+      "destinationFileNameTemplate": "result.log"
+    },
+    {
+      "fileName": "myDataTableFile.csv",
+      "outputType": "dataTable",
+      "dataTableId": "5c925132a111ea00063978a7",
+      "createMissingColumns": true,
+      "truncateExistingTable": false
+    },
+    {
+      "fileName": "myDataTableFileTwo.csv",
+      "outputType": "dataTable",
+      "dataTableId": "5c91584211126400069179c1",
+      "createMissingColumns": false,
+      "truncateExistingTable": true
+    },
+    {
+      "fileName": "myApplicationFile.png",
+      "outputType": "file",
+      "destinationDirectoryTemplate": "/{{notebook.name}}/{{execution.runStartedAt}}",
+      "destinationFileNameTemplate": "myApplicationFile.png"
+    }
+  ]
 }
 ```
 
@@ -22301,6 +22407,9 @@ Schema for a set of Notebook execution logs
         "type": "string",
         "format": "date-time"
       },
+      "maxAllowedRunMinutes": {
+        "type": "number"
+      },
       "runStartedAt": {
         "type": "string",
         "format": "date-time"
@@ -22318,41 +22427,51 @@ Schema for a set of Notebook execution logs
         "format": "date-time"
       },
       "inputInfo": {
-        "type": "array",
-        "items": {
-          "fileName": {
-            "type": "string"
-          },
-          "size": {
-            "type": "number"
-          },
-          "url": {
-            "type": "string"
+        "type": "object",
+        "patternProperties": {
+          ".*": {
+            "type": "object",
+            "properties": {
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
           }
         }
       },
       "outputInfo": {
-        "type": "array",
-        "items": {
-          "fileName": {
-            "type": "string"
-          },
-          "size": {
-            "type": "number"
-          },
-          "url": {
-            "type": "string"
+        "type": "object",
+        "patternProperties": {
+          ".*": {
+            "type": "object",
+            "properties": {
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "contentType": {
+                "type": "string"
+              }
+            }
           }
         }
       },
       "executionErrors": {
         "type": "array",
         "items": {
-          "name": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
           }
         }
       }
@@ -22507,7 +22626,9 @@ Schema for the body of a Notebook modification request
             },
             "required": [
               "inputType",
-              "fileName"
+              "fileName",
+              "start",
+              "end"
             ],
             "additionalProperties": false
           },
@@ -22670,7 +22791,7 @@ Schema for the body of a Notebook modification request
                 "minLength": 1,
                 "maxLength": 1024
               },
-              "destinationDirectory": {
+              "destinationDirectoryTemplate": {
                 "type": "string",
                 "minLength": 1,
                 "maxLength": 1024
@@ -22701,10 +22822,13 @@ Schema for the body of a Notebook modification request
                 "type": "string",
                 "enum": [
                   "result.html",
-                  "result.pdf"
+                  "result.pdf",
+                  "result.ipynb",
+                  "result.error.log",
+                  "result.log"
                 ]
               },
-              "destinationDirectory": {
+              "destinationDirectoryTemplate": {
                 "type": "string",
                 "minLength": 1,
                 "maxLength": 1024
@@ -22821,7 +22945,9 @@ Schema for the body of an Notebook creation request
             },
             "required": [
               "inputType",
-              "fileName"
+              "fileName",
+              "start",
+              "end"
             ],
             "additionalProperties": false
           },
@@ -22984,7 +23110,7 @@ Schema for the body of an Notebook creation request
                 "minLength": 1,
                 "maxLength": 1024
               },
-              "destinationDirectory": {
+              "destinationDirectoryTemplate": {
                 "type": "string",
                 "minLength": 1,
                 "maxLength": 1024
@@ -23015,10 +23141,13 @@ Schema for the body of an Notebook creation request
                 "type": "string",
                 "enum": [
                   "result.html",
-                  "result.pdf"
+                  "result.pdf",
+                  "result.ipynb",
+                  "result.error.log",
+                  "result.log"
                 ]
               },
-              "destinationDirectory": {
+              "destinationDirectoryTemplate": {
                 "type": "string",
                 "minLength": 1,
                 "maxLength": 1024
@@ -23173,7 +23302,9 @@ Schema for a collection of Notebooks
                   },
                   "required": [
                     "inputType",
-                    "fileName"
+                    "fileName",
+                    "start",
+                    "end"
                   ],
                   "additionalProperties": false
                 },
@@ -23336,7 +23467,7 @@ Schema for a collection of Notebooks
                       "minLength": 1,
                       "maxLength": 1024
                     },
-                    "destinationDirectory": {
+                    "destinationDirectoryTemplate": {
                       "type": "string",
                       "minLength": 1,
                       "maxLength": 1024
@@ -23367,10 +23498,13 @@ Schema for a collection of Notebooks
                       "type": "string",
                       "enum": [
                         "result.html",
-                        "result.pdf"
+                        "result.pdf",
+                        "result.ipynb",
+                        "result.error.log",
+                        "result.log"
                       ]
                     },
-                    "destinationDirectory": {
+                    "destinationDirectoryTemplate": {
                       "type": "string",
                       "minLength": 1,
                       "maxLength": 1024
@@ -23439,7 +23573,113 @@ Schema for a collection of Notebooks
       "applicationId": "575ec8687ae143cd83dc4a97",
       "creationDate": "2016-06-13T04:00:00.000Z",
       "lastUpdated": "2016-06-13T04:00:00.000Z",
-      "name": "Example Notebook"
+      "name": "Example Notebook",
+      "jupyterFileName": "myNotebook.ipynb",
+      "jupyterFileUrl": "https://mystoragedomain.com/myNotebook.ipynb",
+      "inputs": [
+        {
+          "fileName": "deviceDataWithAttributes",
+          "inputType": "deviceData",
+          "attributes": [
+            "aNumber"
+          ],
+          "deviceIds": [
+            "5c926894a111ea00063978ac"
+          ],
+          "deviceTags": [],
+          "start": -10368000000,
+          "end": 0
+        },
+        {
+          "fileName": "dataTableWithQuery",
+          "inputType": "dataTable",
+          "dataTableId": "5c91584211126400069179c1",
+          "queryJson": "{\n  \"$or\": [\n    {\n      \"createdAt\": {\n        \"$gt\": \"12345\"\n      }\n    }\n  ]\n}"
+        },
+        {
+          "fileName": "deviceMetaData",
+          "inputType": "deviceMetadata",
+          "deviceIds": [
+            "5c926894a111ea00063978ac"
+          ],
+          "deviceTags": [
+            {
+              "key": "aTag",
+              "value": "and value"
+            }
+          ]
+        },
+        {
+          "fileName": "deviceDataAllAttributes",
+          "inputType": "deviceData",
+          "attributes": [],
+          "deviceIds": [],
+          "deviceTags": [
+            {
+              "value": "and value"
+            }
+          ],
+          "start": -43200000,
+          "end": 0
+        },
+        {
+          "fileName": "anExternalUrl",
+          "inputType": "externalUrl",
+          "sourceUrl": "https://foo.com"
+        }
+      ],
+      "outputs": [
+        {
+          "fileName": "result.html",
+          "outputType": "executionResult",
+          "destinationDirectoryTemplate": "/{{notebook.name}}/{{execution.runStartedAt}}",
+          "destinationFileNameTemplate": "result.html"
+        },
+        {
+          "fileName": "result.pdf",
+          "outputType": "executionResult",
+          "destinationDirectoryTemplate": "/{{notebook.name}}/{{execution.runStartedAt}}",
+          "destinationFileNameTemplate": "result.pdf"
+        },
+        {
+          "fileName": "result.ipynb",
+          "outputType": "executionResult",
+          "destinationDirectoryTemplate": "/{{notebook.name}}/{{execution.runStartedAt}}",
+          "destinationFileNameTemplate": "result.ipynb"
+        },
+        {
+          "fileName": "result.error.log",
+          "outputType": "executionResult",
+          "destinationDirectoryTemplate": "/{{notebook.name}}/{{execution.runStartedAt}}",
+          "destinationFileNameTemplate": "result.error.log"
+        },
+        {
+          "fileName": "result.log",
+          "outputType": "executionResult",
+          "destinationDirectoryTemplate": "/{{notebook.name}}/{{execution.runStartedAt}}",
+          "destinationFileNameTemplate": "result.log"
+        },
+        {
+          "fileName": "myDataTableFile.csv",
+          "outputType": "dataTable",
+          "dataTableId": "5c925132a111ea00063978a7",
+          "createMissingColumns": true,
+          "truncateExistingTable": false
+        },
+        {
+          "fileName": "myDataTableFileTwo.csv",
+          "outputType": "dataTable",
+          "dataTableId": "5c91584211126400069179c1",
+          "createMissingColumns": false,
+          "truncateExistingTable": true
+        },
+        {
+          "fileName": "myApplicationFile.png",
+          "outputType": "file",
+          "destinationDirectoryTemplate": "/{{notebook.name}}/{{execution.runStartedAt}}",
+          "destinationFileNameTemplate": "myApplicationFile.png"
+        }
+      ]
     }
   ],
   "count": 1,
@@ -27718,6 +27958,10 @@ Schema for the result of a validateContext call when invalid context is passed
                   "minLength": 1,
                   "maxLength": 255
                 },
+                "description": {
+                  "type": "string",
+                  "maxLength": 32767
+                },
                 "tags": {
                   "type": "object",
                   "patternProperties": {
@@ -27837,6 +28081,10 @@ Schema for the result of a successful validateContext call
                   "type": "string",
                   "minLength": 1,
                   "maxLength": 255
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 32767
                 },
                 "tags": {
                   "type": "object",

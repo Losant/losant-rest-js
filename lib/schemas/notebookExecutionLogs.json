@@ -33,6 +33,9 @@
         "type": "string",
         "format": "date-time"
       },
+      "maxAllowedRunMinutes": {
+        "type": "number"
+      },
       "runStartedAt": {
         "type": "string",
         "format": "date-time"
@@ -50,41 +53,51 @@
         "format": "date-time"
       },
       "inputInfo": {
-        "type": "array",
-        "items": {
-          "fileName": {
-            "type": "string"
-          },
-          "size": {
-            "type": "number"
-          },
-          "url": {
-            "type": "string"
+        "type": "object",
+        "patternProperties": {
+          ".*": {
+            "type": "object",
+            "properties": {
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
           }
         }
       },
       "outputInfo": {
-        "type": "array",
-        "items": {
-          "fileName": {
-            "type": "string"
-          },
-          "size": {
-            "type": "number"
-          },
-          "url": {
-            "type": "string"
+        "type": "object",
+        "patternProperties": {
+          ".*": {
+            "type": "object",
+            "properties": {
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "contentType": {
+                "type": "string"
+              }
+            }
           }
         }
       },
       "executionErrors": {
         "type": "array",
         "items": {
-          "name": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
           }
         }
       }

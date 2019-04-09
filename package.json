@@ -1,6 +1,6 @@
 {
   "name": "losant-rest",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "description": "REST client for accessing the Losant API",
   "main": "lib/index.js",
   "homepage": "https://github.com/Losant/losant-rest-js#readme",
@@ -39,8 +39,8 @@
   },
   "devDependencies": {
     "eslint": "^4.19.1",
-    "mocha": "^5.0.5",
-    "nock": "^9.2.3",
-    "should": "^13.2.1"
+    "mocha": "^5.2.0",
+    "nock": "^9.6.1",
+    "should": "^13.2.3"
   }
 }

@@ -75,32 +75,25 @@
       }
     },
     "upload": {
-      "url": {
-        "type": "string"
-      },
-      "fields": {
-        "type": "object",
-        "properties": {
-          "key": {
-            "type": "string"
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "object",
+          "patternProperties": {
+            "^.*$": {
+              "type": "string"
+            }
           },
-          "bucket": {
-            "type": "string"
-          },
-          "X-Amz-Algorithm": {
-            "type": "string"
-          },
-          "X-Amz-Credential": {
-            "type": "string"
-          },
-          "X-Amz-Date": {
-            "type": "string"
-          },
-          "Policy": {
-            "type": "string"
-          },
-          "X-Amz-Signature": {
-            "type": "string"
+          "properties": {
+            "key": {
+              "type": "string"
+            },
+            "bucket": {
+              "type": "string"
+            }
           }
         }
       }

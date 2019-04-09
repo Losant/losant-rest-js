@@ -50,11 +50,13 @@
     "options": {
       "type": "object",
       "properties": {
-        "noDate": {
-          "type": "boolean"
+        "includeDate": {
+          "type": "boolean",
+          "default": true
         },
-        "noID": {
-          "type": "boolean"
+        "includeID": {
+          "type": "boolean",
+          "default": true
         }
       }
     }
