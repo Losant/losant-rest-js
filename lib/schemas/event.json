@@ -28,7 +28,8 @@
         "flow",
         "user",
         "device",
-        "apiToken"
+        "apiToken",
+        "notebook"
       ]
     },
     "sourceId": {
@@ -73,7 +74,8 @@
               "flow",
               "user",
               "device",
-              "apiToken"
+              "apiToken",
+              "notebook"
             ]
           },
           "sourceId": {

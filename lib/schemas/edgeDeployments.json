@@ -74,7 +74,8 @@
                     "flow",
                     "user",
                     "device",
-                    "apiToken"
+                    "apiToken",
+                    "notebook"
                   ]
                 },
                 "sourceId": {

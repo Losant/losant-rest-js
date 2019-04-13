@@ -27,8 +27,7 @@
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "deviceTags": {
                 "type": "array",
@@ -91,8 +90,7 @@
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "deviceTags": {
                 "type": "array",
@@ -139,8 +137,7 @@
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "dataTableId": {
                 "type": "string",
@@ -169,8 +166,7 @@
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "sourceUrl": {
                 "type": "string",
@@ -204,8 +200,7 @@
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "dataTableId": {
                 "type": "string",
@@ -236,8 +231,7 @@
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "destinationDirectoryTemplate": {
                 "type": "string",

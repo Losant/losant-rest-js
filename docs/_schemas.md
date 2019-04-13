@@ -8220,7 +8220,8 @@ Schema for a single deployment of an edge workflow to an edge device
               "flow",
               "user",
               "device",
-              "apiToken"
+              "apiToken",
+              "notebook"
             ]
           },
           "sourceId": {
@@ -8547,7 +8548,8 @@ Schema for a collection of Edge Deployments
                     "flow",
                     "user",
                     "device",
-                    "apiToken"
+                    "apiToken",
+                    "notebook"
                   ]
                 },
                 "sourceId": {
@@ -8810,7 +8812,8 @@ Schema for a single Event
         "flow",
         "user",
         "device",
-        "apiToken"
+        "apiToken",
+        "notebook"
       ]
     },
     "sourceId": {
@@ -8855,7 +8858,8 @@ Schema for a single Event
               "flow",
               "user",
               "device",
-              "apiToken"
+              "apiToken",
+              "notebook"
             ]
           },
           "sourceId": {
@@ -9062,7 +9066,8 @@ Schema for a collection of Events
               "flow",
               "user",
               "device",
-              "apiToken"
+              "apiToken",
+              "notebook"
             ]
           },
           "sourceId": {
@@ -9107,7 +9112,8 @@ Schema for a collection of Events
                     "flow",
                     "user",
                     "device",
-                    "apiToken"
+                    "apiToken",
+                    "notebook"
                   ]
                 },
                 "sourceId": {
@@ -12325,7 +12331,8 @@ Schema for a single file
         "flow",
         "user",
         "device",
-        "apiToken"
+        "apiToken",
+        "notebook"
       ]
     },
     "status": {
@@ -12551,7 +12558,8 @@ Schema to upload the file to s3
         "flow",
         "user",
         "device",
-        "apiToken"
+        "apiToken",
+        "notebook"
       ]
     },
     "status": {
@@ -12701,7 +12709,8 @@ Schema for a collection of files
               "flow",
               "user",
               "device",
-              "apiToken"
+              "apiToken",
+              "notebook"
             ]
           },
           "status": {
@@ -21920,8 +21929,7 @@ Schema for a single Notebook
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "deviceTags": {
                 "type": "array",
@@ -21984,8 +21992,7 @@ Schema for a single Notebook
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "deviceTags": {
                 "type": "array",
@@ -22032,8 +22039,7 @@ Schema for a single Notebook
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "dataTableId": {
                 "type": "string",
@@ -22062,8 +22068,7 @@ Schema for a single Notebook
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "sourceUrl": {
                 "type": "string",
@@ -22097,8 +22102,7 @@ Schema for a single Notebook
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "dataTableId": {
                 "type": "string",
@@ -22129,8 +22133,7 @@ Schema for a single Notebook
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "destinationDirectoryTemplate": {
                 "type": "string",
@@ -22579,8 +22582,7 @@ Schema for the body of a Notebook modification request
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "deviceTags": {
                 "type": "array",
@@ -22643,8 +22645,7 @@ Schema for the body of a Notebook modification request
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "deviceTags": {
                 "type": "array",
@@ -22691,8 +22692,7 @@ Schema for the body of a Notebook modification request
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "dataTableId": {
                 "type": "string",
@@ -22721,8 +22721,7 @@ Schema for the body of a Notebook modification request
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "sourceUrl": {
                 "type": "string",
@@ -22756,8 +22755,7 @@ Schema for the body of a Notebook modification request
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "dataTableId": {
                 "type": "string",
@@ -22788,8 +22786,7 @@ Schema for the body of a Notebook modification request
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "destinationDirectoryTemplate": {
                 "type": "string",
@@ -22898,8 +22895,7 @@ Schema for the body of an Notebook creation request
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "deviceTags": {
                 "type": "array",
@@ -22962,8 +22958,7 @@ Schema for the body of an Notebook creation request
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "deviceTags": {
                 "type": "array",
@@ -23010,8 +23005,7 @@ Schema for the body of an Notebook creation request
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "dataTableId": {
                 "type": "string",
@@ -23040,8 +23034,7 @@ Schema for the body of an Notebook creation request
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "sourceUrl": {
                 "type": "string",
@@ -23075,8 +23068,7 @@ Schema for the body of an Notebook creation request
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "dataTableId": {
                 "type": "string",
@@ -23107,8 +23099,7 @@ Schema for the body of an Notebook creation request
               },
               "fileName": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
               },
               "destinationDirectoryTemplate": {
                 "type": "string",
@@ -23255,8 +23246,7 @@ Schema for a collection of Notebooks
                     },
                     "fileName": {
                       "type": "string",
-                      "minLength": 1,
-                      "maxLength": 1024
+                      "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
                     },
                     "deviceTags": {
                       "type": "array",
@@ -23319,8 +23309,7 @@ Schema for a collection of Notebooks
                     },
                     "fileName": {
                       "type": "string",
-                      "minLength": 1,
-                      "maxLength": 1024
+                      "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
                     },
                     "deviceTags": {
                       "type": "array",
@@ -23367,8 +23356,7 @@ Schema for a collection of Notebooks
                     },
                     "fileName": {
                       "type": "string",
-                      "minLength": 1,
-                      "maxLength": 1024
+                      "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
                     },
                     "dataTableId": {
                       "type": "string",
@@ -23397,8 +23385,7 @@ Schema for a collection of Notebooks
                     },
                     "fileName": {
                       "type": "string",
-                      "minLength": 1,
-                      "maxLength": 1024
+                      "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
                     },
                     "sourceUrl": {
                       "type": "string",
@@ -23432,8 +23419,7 @@ Schema for a collection of Notebooks
                     },
                     "fileName": {
                       "type": "string",
-                      "minLength": 1,
-                      "maxLength": 1024
+                      "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
                     },
                     "dataTableId": {
                       "type": "string",
@@ -23464,8 +23450,7 @@ Schema for a collection of Notebooks
                     },
                     "fileName": {
                       "type": "string",
-                      "minLength": 1,
-                      "maxLength": 1024
+                      "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
                     },
                     "destinationDirectoryTemplate": {
                       "type": "string",
