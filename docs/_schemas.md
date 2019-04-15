@@ -22414,6 +22414,20 @@ Schema for a set of Notebook execution logs
       "maxAllowedRunMinutes": {
         "type": "number"
       },
+      "sourceType": {
+        "type": "string",
+        "enum": [
+          "flow",
+          "user",
+          "device",
+          "apiToken",
+          "notebook"
+        ]
+      },
+      "sourceId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
       "runQueuedAt": {
         "type": "string",
         "format": "date-time"
@@ -22497,9 +22511,14 @@ Schema for a set of Notebook execution logs
     "notebookId": "5c782b8d4f3a8e51c1db42e4",
     "applicationId": "575ec8687ae143cd83dc4a97",
     "runStartedAt": "2016-06-13T04:00:00.000Z",
+    "runQueuedAt": "2016-06-13T03:59:00.000Z",
+    "sourceId": "575ed70c7ae143cd83dc4aa9",
+    "sourceType": "user",
     "status": "inProgress",
-    "inputInfo": [],
-    "outputInfo": []
+    "maxAllowedRunMinutes": 5,
+    "inputInfo": {},
+    "outputInfo": {},
+    "executionErrors": []
   }
 ]
 ```

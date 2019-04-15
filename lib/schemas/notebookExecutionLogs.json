@@ -37,6 +37,20 @@
       "maxAllowedRunMinutes": {
         "type": "number"
       },
+      "sourceType": {
+        "type": "string",
+        "enum": [
+          "flow",
+          "user",
+          "device",
+          "apiToken",
+          "notebook"
+        ]
+      },
+      "sourceId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
       "runQueuedAt": {
         "type": "string",
         "format": "date-time"
