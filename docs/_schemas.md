@@ -22400,6 +22400,7 @@ Schema for a set of Notebook execution logs
       "status": {
         "type": "string",
         "enum": [
+          "queued",
           "inProgress",
           "completed",
           "errored",
@@ -22412,6 +22413,10 @@ Schema for a set of Notebook execution logs
       },
       "maxAllowedRunMinutes": {
         "type": "number"
+      },
+      "runQueuedAt": {
+        "type": "string",
+        "format": "date-time"
       },
       "runStartedAt": {
         "type": "string",

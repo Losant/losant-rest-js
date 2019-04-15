@@ -23,6 +23,7 @@
       "status": {
         "type": "string",
         "enum": [
+          "queued",
           "inProgress",
           "completed",
           "errored",
@@ -35,6 +36,10 @@
       },
       "maxAllowedRunMinutes": {
         "type": "number"
+      },
+      "runQueuedAt": {
+        "type": "string",
+        "format": "date-time"
       },
       "runStartedAt": {
         "type": "string",
