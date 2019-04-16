@@ -194,8 +194,8 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
-| summaryExclude | string | N | Comma seperated list of summary fields to exclude from application summary |  | payloadCount |
-| summaryInclude | string | N | Comma seperated list of summary fields to include in application summary |  | payloadCount |
+| summaryExclude | string | N | Comma-separated list of summary fields to exclude from application summary |  | payloadCount |
+| summaryInclude | string | N | Comma-separated list of summary fields to include in application summary |  | payloadCount |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

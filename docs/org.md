@@ -98,8 +98,8 @@ all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
-| summaryExclude | string | N | Comma seperated list of summary fields to exclude from org summary |  | payloadCount |
-| summaryInclude | string | N | Comma seperated list of summary fields to include in org summary |  | payloadCount |
+| summaryExclude | string | N | Comma-separated list of summary fields to exclude from org summary |  | payloadCount |
+| summaryInclude | string | N | Comma-separated list of summary fields to include in org summary |  | payloadCount |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

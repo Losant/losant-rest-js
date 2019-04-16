@@ -132,6 +132,9 @@
       "integration": {
         "type": "number"
       },
+      "notebook": {
+        "type": "number"
+      },
       "webhook": {
         "type": "number"
       },
@@ -139,6 +142,15 @@
         "type": "number"
       },
       "payload": {
+        "type": "number"
+      },
+      "notebookMinutesPerRun": {
+        "type": "number"
+      },
+      "notebookMinutesPerMonth": {
+        "type": "number"
+      },
+      "notebookInParallel": {
         "type": "number"
       }
     },
@@ -265,9 +277,6 @@
         "appCount": {
           "type": "number"
         },
-        "keyCount": {
-          "type": "number"
-        },
         "dashCount": {
           "type": "number"
         },
@@ -278,9 +287,6 @@
           "type": "number"
         },
         "deviceRecipeCount": {
-          "type": "number"
-        },
-        "experienceDomainCount": {
           "type": "number"
         },
         "experienceEndpointCount": {
@@ -305,6 +311,12 @@
           "type": "number"
         },
         "flowCount": {
+          "type": "number"
+        },
+        "integrationCount": {
+          "type": "number"
+        },
+        "keyCount": {
           "type": "number"
         },
         "orgCount": {
@@ -421,8 +433,16 @@
             }
           }
         },
-        "integrationCount": {
-          "type": "number"
+        "storageStats": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "type": "number"
+            },
+            "size": {
+              "type": "number"
+            }
+          }
         },
         "webhookCount": {
           "type": "number"

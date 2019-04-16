@@ -611,13 +611,10 @@ Schema for a single Application
         "apiTokenCount": {
           "type": "number"
         },
-        "keyCount": {
+        "dataTableCount": {
           "type": "number"
         },
         "deviceCount": {
-          "type": "number"
-        },
-        "dataTableCount": {
           "type": "number"
         },
         "deviceRecipeCount": {
@@ -655,6 +652,20 @@ Schema for a single Application
         },
         "integrationCount": {
           "type": "number"
+        },
+        "keyCount": {
+          "type": "number"
+        },
+        "storageStats": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "type": "number"
+            },
+            "size": {
+              "type": "number"
+            }
+          }
         },
         "webhookCount": {
           "type": "number"
@@ -2101,13 +2112,10 @@ Schema for a collection of Applications
               "apiTokenCount": {
                 "type": "number"
               },
-              "keyCount": {
+              "dataTableCount": {
                 "type": "number"
               },
               "deviceCount": {
-                "type": "number"
-              },
-              "dataTableCount": {
                 "type": "number"
               },
               "deviceRecipeCount": {
@@ -2145,6 +2153,20 @@ Schema for a collection of Applications
               },
               "integrationCount": {
                 "type": "number"
+              },
+              "keyCount": {
+                "type": "number"
+              },
+              "storageStats": {
+                "type": "object",
+                "properties": {
+                  "count": {
+                    "type": "number"
+                  },
+                  "size": {
+                    "type": "number"
+                  }
+                }
               },
               "webhookCount": {
                 "type": "number"
@@ -21314,6 +21336,9 @@ Schema for information about the currently authenticated user
       "integration": {
         "type": "number"
       },
+      "notebook": {
+        "type": "number"
+      },
       "webhook": {
         "type": "number"
       },
@@ -21321,6 +21346,15 @@ Schema for information about the currently authenticated user
         "type": "number"
       },
       "payload": {
+        "type": "number"
+      },
+      "notebookMinutesPerRun": {
+        "type": "number"
+      },
+      "notebookMinutesPerMonth": {
+        "type": "number"
+      },
+      "notebookInParallel": {
         "type": "number"
       }
     },
@@ -21447,9 +21481,6 @@ Schema for information about the currently authenticated user
         "appCount": {
           "type": "number"
         },
-        "keyCount": {
-          "type": "number"
-        },
         "dashCount": {
           "type": "number"
         },
@@ -21460,9 +21491,6 @@ Schema for information about the currently authenticated user
           "type": "number"
         },
         "deviceRecipeCount": {
-          "type": "number"
-        },
-        "experienceDomainCount": {
           "type": "number"
         },
         "experienceEndpointCount": {
@@ -21487,6 +21515,12 @@ Schema for information about the currently authenticated user
           "type": "number"
         },
         "flowCount": {
+          "type": "number"
+        },
+        "integrationCount": {
+          "type": "number"
+        },
+        "keyCount": {
           "type": "number"
         },
         "orgCount": {
@@ -21603,8 +21637,16 @@ Schema for information about the currently authenticated user
             }
           }
         },
-        "integrationCount": {
-          "type": "number"
+        "storageStats": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "type": "number"
+            },
+            "size": {
+              "type": "number"
+            }
+          }
         },
         "webhookCount": {
           "type": "number"
@@ -23884,10 +23926,10 @@ Schema for a single Organization
       "flow": {
         "type": "number"
       },
-      "solution": {
+      "integration": {
         "type": "number"
       },
-      "integration": {
+      "notebook": {
         "type": "number"
       },
       "webhook": {
@@ -23901,6 +23943,15 @@ Schema for a single Organization
       },
       "payload": {
         "type": "number"
+      },
+      "notebookMinutesPerRun": {
+        "type": "number"
+      },
+      "notebookMinutesPerMonth": {
+        "type": "number"
+      },
+      "notebookInParallel": {
+        "type": "number"
       }
     },
     "summary": {
@@ -23910,9 +23961,6 @@ Schema for a single Organization
           "type": "number"
         },
         "appCount": {
-          "type": "number"
-        },
-        "keyCount": {
           "type": "number"
         },
         "dashCount": {
@@ -23954,10 +24002,13 @@ Schema for a single Organization
         "flowCount": {
           "type": "number"
         },
-        "memberCount": {
+        "integrationCount": {
           "type": "number"
         },
-        "pendingInviteCount": {
+        "keyCount": {
+          "type": "number"
+        },
+        "memberCount": {
           "type": "number"
         },
         "payloadCount": {
@@ -24071,11 +24122,19 @@ Schema for a single Organization
             }
           }
         },
-        "solutionCount": {
+        "pendingInviteCount": {
           "type": "number"
         },
-        "integrationCount": {
-          "type": "number"
+        "storageStats": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "type": "number"
+            },
+            "size": {
+              "type": "number"
+            }
+          }
         },
         "webhookCount": {
           "type": "number"
@@ -24890,10 +24949,10 @@ Schema for a collection of Organizations
             "flow": {
               "type": "number"
             },
-            "solution": {
+            "integration": {
               "type": "number"
             },
-            "integration": {
+            "notebook": {
               "type": "number"
             },
             "webhook": {
@@ -24907,6 +24966,15 @@ Schema for a collection of Organizations
             },
             "payload": {
               "type": "number"
+            },
+            "notebookMinutesPerRun": {
+              "type": "number"
+            },
+            "notebookMinutesPerMonth": {
+              "type": "number"
+            },
+            "notebookInParallel": {
+              "type": "number"
             }
           },
           "summary": {
@@ -24916,9 +24984,6 @@ Schema for a collection of Organizations
                 "type": "number"
               },
               "appCount": {
-                "type": "number"
-              },
-              "keyCount": {
                 "type": "number"
               },
               "dashCount": {
@@ -24960,10 +25025,13 @@ Schema for a collection of Organizations
               "flowCount": {
                 "type": "number"
               },
-              "memberCount": {
+              "integrationCount": {
                 "type": "number"
               },
-              "pendingInviteCount": {
+              "keyCount": {
+                "type": "number"
+              },
+              "memberCount": {
                 "type": "number"
               },
               "payloadCount": {
@@ -25077,11 +25145,19 @@ Schema for a collection of Organizations
                   }
                 }
               },
-              "solutionCount": {
+              "pendingInviteCount": {
                 "type": "number"
               },
-              "integrationCount": {
-                "type": "number"
+              "storageStats": {
+                "type": "object",
+                "properties": {
+                  "count": {
+                    "type": "number"
+                  },
+                  "size": {
+                    "type": "number"
+                  }
+                }
               },
               "webhookCount": {
                 "type": "number"

@@ -46,8 +46,8 @@ all.Organization, all.Organization.read, all.User, all.User.read, applications.*
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my * app |
 | orgId | string | N | If not provided, return all applications. If provided but blank, only return applications belonging to the current user. If provided and an id, only return applications belonging to the given organization id. |  | 575ecdf07ae143cd83dc4a9a |
-| summaryExclude | string | N | Comma seperated list of summary fields to exclude from application summary |  | payloadCount |
-| summaryInclude | string | N | Comma seperated list of summary fields to include in application summary |  | payloadCount |
+| summaryExclude | string | N | Comma-separated list of summary fields to exclude from application summary |  | payloadCount |
+| summaryInclude | string | N | Comma-separated list of summary fields to include in application summary |  | payloadCount |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

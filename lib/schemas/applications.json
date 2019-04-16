@@ -99,13 +99,10 @@
               "apiTokenCount": {
                 "type": "number"
               },
-              "keyCount": {
+              "dataTableCount": {
                 "type": "number"
               },
               "deviceCount": {
-                "type": "number"
-              },
-              "dataTableCount": {
                 "type": "number"
               },
               "deviceRecipeCount": {
@@ -143,6 +140,20 @@
               },
               "integrationCount": {
                 "type": "number"
+              },
+              "keyCount": {
+                "type": "number"
+              },
+              "storageStats": {
+                "type": "object",
+                "properties": {
+                  "count": {
+                    "type": "number"
+                  },
+                  "size": {
+                    "type": "number"
+                  }
+                }
               },
               "webhookCount": {
                 "type": "number"

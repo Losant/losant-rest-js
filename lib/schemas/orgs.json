@@ -179,10 +179,10 @@
             "flow": {
               "type": "number"
             },
-            "solution": {
+            "integration": {
               "type": "number"
             },
-            "integration": {
+            "notebook": {
               "type": "number"
             },
             "webhook": {
@@ -196,6 +196,15 @@
             },
             "payload": {
               "type": "number"
+            },
+            "notebookMinutesPerRun": {
+              "type": "number"
+            },
+            "notebookMinutesPerMonth": {
+              "type": "number"
+            },
+            "notebookInParallel": {
+              "type": "number"
             }
           },
           "summary": {
@@ -205,9 +214,6 @@
                 "type": "number"
               },
               "appCount": {
-                "type": "number"
-              },
-              "keyCount": {
                 "type": "number"
               },
               "dashCount": {
@@ -249,10 +255,13 @@
               "flowCount": {
                 "type": "number"
               },
-              "memberCount": {
+              "integrationCount": {
                 "type": "number"
               },
-              "pendingInviteCount": {
+              "keyCount": {
+                "type": "number"
+              },
+              "memberCount": {
                 "type": "number"
               },
               "payloadCount": {
@@ -366,11 +375,19 @@
                   }
                 }
               },
-              "solutionCount": {
+              "pendingInviteCount": {
                 "type": "number"
               },
-              "integrationCount": {
-                "type": "number"
+              "storageStats": {
+                "type": "object",
+                "properties": {
+                  "count": {
+                    "type": "number"
+                  },
+                  "size": {
+                    "type": "number"
+                  }
+                }
               },
               "webhookCount": {
                 "type": "number"
