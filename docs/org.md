@@ -200,6 +200,8 @@ all.Organization, all.User, org.*, or org.modifyMember.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
 | member | [Organization Member Patch](_schemas.md#organization-member-patch) | Y | Object containing new member pair |  | [Organization Member Patch Example](_schemas.md#organization-member-patch-example) |
+| summaryExclude | string | N | Comma-separated list of summary fields to exclude from org summary |  | payloadCount |
+| summaryInclude | string | N | Comma-separated list of summary fields to include in org summary |  | payloadCount |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -250,6 +252,8 @@ all.Organization, all.User, org.*, or org.patch.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
 | organization | [Organization Patch](_schemas.md#organization-patch) | Y | Object containing new organization properties |  | [Organization Patch Example](_schemas.md#organization-patch-example) |
+| summaryExclude | string | N | Comma-separated list of summary fields to exclude from org summary |  | payloadCount |
+| summaryInclude | string | N | Comma-separated list of summary fields to include in org summary |  | payloadCount |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -398,6 +402,8 @@ all.Organization, all.User, org.*, or org.removeMember.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
 | userId | string | Y | Id of user to remove |  | 575ed70c7ae143cd83dc4aa9 |
+| summaryExclude | string | N | Comma-separated list of summary fields to exclude from org summary |  | payloadCount |
+| summaryInclude | string | N | Comma-separated list of summary fields to include in org summary |  | payloadCount |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

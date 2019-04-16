@@ -95,6 +95,8 @@ all.Organization, all.User, applications.*, or applications.post.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | application | [Application Post](_schemas.md#application-post) | Y | New application information |  | [Application Post Example](_schemas.md#application-post-example) |
+| summaryExclude | string | N | Comma-separated list of summary fields to exclude from application summary |  | payloadCount |
+| summaryInclude | string | N | Comma-separated list of summary fields to include in application summary |  | payloadCount |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

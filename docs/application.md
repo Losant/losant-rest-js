@@ -296,6 +296,8 @@ all.Application, all.Organization, all.User, application.*, or application.patch
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
 | application | [Application Patch](_schemas.md#application-patch) | Y | Object containing new application properties |  | [Application Patch Example](_schemas.md#application-patch-example) |
+| summaryExclude | string | N | Comma-separated list of summary fields to exclude from application summary |  | payloadCount |
+| summaryInclude | string | N | Comma-separated list of summary fields to include in application summary |  | payloadCount |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
