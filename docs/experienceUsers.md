@@ -48,7 +48,8 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | perPage | string | N | How many items to return per page | 1000 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: firstName, lastName, email |  | email |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*user |
-| experienceGroupId | string | N | Filter users to those only in the specified group |  | 575ec8687ae143cd83dc4a97 |
+| experienceGroupId | string | N | Filter users to those only in the specified group, special experienceGroupIds of &#x27;any&#x27; which will give users who are in at least one group and &#x27;none&#x27; will give you users who are not in any groups. |  | 575ec8687ae143cd83dc4a97 |
+| includeAncestorGroups | string | N | If set will include members from ancestors of the specified experienceGroupId |  | true |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

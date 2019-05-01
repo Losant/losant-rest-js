@@ -10527,6 +10527,37 @@ Schema for a single Experience Group
         }
       },
       "additionalProperties": false
+    },
+    "deviceIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    },
+    "deviceTags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        },
+        "additionalProperties": false
+      },
+      "maxItems": 100
+    },
+    "parentId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     }
   }
 }
@@ -10600,6 +10631,37 @@ Schema for the body of an Experience Group modification request
         }
       },
       "additionalProperties": false
+    },
+    "deviceIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    },
+    "deviceTags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        },
+        "additionalProperties": false
+      },
+      "maxItems": 100
+    },
+    "parentId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     }
   },
   "additionalProperties": false
@@ -10617,6 +10679,16 @@ Schema for the body of an Experience Group modification request
   "experienceEndpointIds": [
     "58b9d743cbfafe1be675744b",
     "58b9d743cbfafe1be675744c"
+  ],
+  "parentId": "775ed70c7ae143cd83dc4aa9",
+  "deviceIds": [
+    "58b9d743cbfafe1be675744d"
+  ],
+  "deviceTags": [
+    {
+      "key": "myKey",
+      "value": "foo"
+    }
   ]
 }
 ```
@@ -10669,6 +10741,37 @@ Schema for the body of an Experience Group creation request
         }
       },
       "additionalProperties": false
+    },
+    "deviceIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    },
+    "deviceTags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        },
+        "additionalProperties": false
+      },
+      "maxItems": 100
+    },
+    "parentId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     }
   },
   "additionalProperties": false,
@@ -10689,7 +10792,17 @@ Schema for the body of an Experience Group creation request
   "experienceEndpointIds": [
     "58b9d743cbfafe1be675744b",
     "58b9d743cbfafe1be675744c"
-  ]
+  ],
+  "deviceIds": [
+    "58b9d743cbfafe1be675744d"
+  ],
+  "deviceTags": [
+    {
+      "key": "floor",
+      "value": 8
+    }
+  ],
+  "parentId": "58b9d743cbfafe1be675744e"
 }
 ```
 
@@ -10768,6 +10881,37 @@ Schema for a collection of Experience Groups
               }
             },
             "additionalProperties": false
+          },
+          "deviceIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "maxItems": 1000
+          },
+          "deviceTags": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                },
+                "value": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                }
+              },
+              "additionalProperties": false
+            },
+            "maxItems": 100
+          },
+          "parentId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
           }
         }
       }
