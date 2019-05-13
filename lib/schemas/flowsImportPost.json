@@ -168,13 +168,13 @@
             ]
           },
           "defaultVersionId": {
-            "oneOf": [
+            "$oneOf": [
               {
                 "type": "string",
                 "pattern": "^[A-Fa-f\\d]{24}$"
               },
               {
-                "type": "null"
+                "type": null
               }
             ]
           },

@@ -17,9 +17,7 @@
     "sslCert": {
       "$oneOf": [
         {
-          "type": "string",
-          "maxLength": 32767,
-          "minLength": 50
+          "$ref": "#/definitions/common/certificateString"
         },
         {
           "type": null
@@ -29,9 +27,7 @@
     "sslBundle": {
       "$oneOf": [
         {
-          "type": "string",
-          "maxLength": 32767,
-          "minLength": 50
+          "$ref": "#/definitions/common/certificateString"
         },
         {
           "type": null

@@ -66,8 +66,15 @@
       "maxItems": 100
     },
     "parentId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
+      "$oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": null
+        }
+      ]
     }
   },
   "additionalProperties": false,

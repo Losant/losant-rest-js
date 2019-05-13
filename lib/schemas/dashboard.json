@@ -201,36 +201,137 @@
     "contextConfiguration": {
       "type": "array",
       "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "deviceAttribute",
-              "deviceId",
-              "deviceTag",
-              "number",
-              "string"
-            ]
-          },
-          "applicationId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "defaultValue": {
-            "oneOf": [
-              {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "deviceAttribute"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
                 "type": "string",
                 "maxLength": 32767
               },
-              {
-                "type": "number"
+              "validationEnabled": {
+                "type": "boolean"
               },
-              {
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "maxItems": 100
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "deviceId"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "validationEnabled": {
+                "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "deviceIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    "maxItems": 1000
+                  },
+                  "deviceTags": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        },
+                        "value": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "maxItems": 100
+                  },
+                  "includeFullDevice": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "deviceTag"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
                 "type": "object",
                 "properties": {
                   "key": {
@@ -244,73 +345,174 @@
                   }
                 },
                 "additionalProperties": false
-              }
-            ]
-          },
-          "validationEnabled": {
-            "type": "boolean"
-          },
-          "validationConfig": {
-            "type": "object",
-            "properties": {
-              "min": {
-                "type": "number"
               },
-              "max": {
-                "type": "number"
-              },
-              "regExp": {
-                "type": "string",
-                "maxLength": 1024
-              },
-              "attributes": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                },
-                "maxItems": 100
-              },
-              "deviceIds": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "pattern": "^[A-Fa-f\\d]{24}$"
-                },
-                "maxItems": 1000
-              },
-              "deviceTags": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "key": {
-                      "type": "string",
-                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                    },
-                    "value": {
-                      "type": "string",
-                      "minLength": 1,
-                      "maxLength": 255
-                    }
-                  },
-                  "additionalProperties": false
-                },
-                "maxItems": 100
-              },
-              "includeFullDevice": {
+              "validationEnabled": {
                 "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "deviceTags": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        },
+                        "value": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "maxItems": 100
+                  }
+                },
+                "additionalProperties": false
               }
             },
-            "additionalProperties": false
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "number"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
+                "type": [
+                  "number",
+                  "string"
+                ]
+              },
+              "validationEnabled": {
+                "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "min": {
+                    "type": "number"
+                  },
+                  "max": {
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "string"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "validationEnabled": {
+                "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "regExp": {
+                    "type": "string",
+                    "maxLength": 1024
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "experienceUser"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "validationEnabled": {
+                "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "experienceGroupIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    "maxItems": 1000
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
           }
-        },
-        "required": [
-          "name",
-          "type",
-          "defaultValue"
-        ],
-        "additionalProperties": false
+        ]
       },
       "maxItems": 100
     }

@@ -2,41 +2,16 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "name": {
+    "status": {
       "type": "string",
-      "minLength": 1,
-      "maxLength": 255
+      "enum": [
+        "active",
+        "inactive"
+      ]
     },
     "description": {
       "type": "string",
       "maxLength": 32767
-    },
-    "experienceUserIds": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
-      },
-      "maxItems": 1000
-    },
-    "experienceEndpointIds": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
-      },
-      "maxItems": 1000
-    },
-    "groupTags": {
-      "type": "object",
-      "patternProperties": {
-        "^[0-9a-zA-Z_-]{1,255}$": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 255
-        }
-      },
-      "additionalProperties": false
     },
     "deviceIds": {
       "type": "array",
@@ -65,17 +40,12 @@
       },
       "maxItems": 100
     },
-    "parentId": {
-      "$oneOf": [
-        {
-          "type": "string",
-          "pattern": "^[A-Fa-f\\d]{24}$"
-        },
-        {
-          "type": null
-        }
-      ]
+    "certificate": {
+      "$ref": "#/definitions/common/certificateString"
     }
   },
+  "required": [
+    "certificate"
+  ],
   "additionalProperties": false
 }

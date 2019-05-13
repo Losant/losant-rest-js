@@ -5,6 +5,14 @@
 *   [API Tokens](#api-tokens)
 *   [Application](#application)
 *   [Application API Token Post](#application-api-token-post)
+*   [Application Certificate](#application-certificate)
+*   [Application Certificate Authorities](#application-certificate-authorities)
+*   [Application Certificate Authority](#application-certificate-authority)
+*   [Application Key Patch](#application-key-patch)
+*   [Application Key Post](#application-key-post)
+*   [Application Certificate Patch](#application-certificate-patch)
+*   [Application Certificate Post](#application-certificate-post)
+*   [Application Certificates](#application-certificates)
 *   [Application Key](#application-key)
 *   [Application Key Patch](#application-key-patch)
 *   [Application Key Post](#application-key-post)
@@ -879,6 +887,10 @@ Schema for the body of an Application API Token creation request
           "application.*",
           "applicationApiToken.*",
           "applicationApiTokens.*",
+          "applicationCertificate.*",
+          "applicationCertificates.*",
+          "applicationCertificateAuthority.*",
+          "applicationCertificateAuthorities.*",
           "applicationKey.*",
           "applicationKeys.*",
           "data.*",
@@ -935,6 +947,16 @@ Schema for the body of an Application API Token creation request
           "applicationApiToken.patch",
           "applicationApiTokens.get",
           "applicationApiTokens.post",
+          "applicationCertificate.delete",
+          "applicationCertificate.get",
+          "applicationCertificate.patch",
+          "applicationCertificates.get",
+          "applicationCertificates.post",
+          "applicationCertificateAuthority.delete",
+          "applicationCertificateAuthority.get",
+          "applicationCertificateAuthority.patch",
+          "applicationCertificateAuthorities.get",
+          "applicationCertificateAuthorities.post",
           "applicationKey.delete",
           "applicationKey.get",
           "applicationKey.patch",
@@ -1110,6 +1132,689 @@ Schema for the body of an Application API Token creation request
     "all.Application"
   ],
   "status": "active"
+}
+```
+
+<br/>
+
+## Application Certificate
+
+Schema for a single Application Certificate
+
+### <a name="application-certificate-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationCertificateId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "deviceIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    },
+    "deviceTags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        },
+        "additionalProperties": false
+      },
+      "maxItems": 100
+    },
+    "certificateInfo": {
+      "$ref": "#/definitions/certificateInfo"
+    }
+  }
+}
+```
+### <a name="application-certificate-example"></a> Example
+
+```json
+{
+  "id": "5cd02a50df66feb0994c7196",
+  "applicationCertificateId": "5cd02a50df66feb0994c7196",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "status": "active",
+  "description": "An example certificate description",
+  "certificateInfo": {
+    "serialNumber": "ad:0e:ff:63:27:83:e5:3e:6b:a9:fb:57:0d:37:fc:e9",
+    "fingerprint": "FF:4A:88:5D:93:E7:FF:61:E4:72:94:EE:82:4B:56:B2:AB:71:38:06",
+    "commonName": "myDomain.com",
+    "issuerName": "Network Solutions OV Server CA 2",
+    "notValidBefore": "2019-04-10T00:00:00.000Z",
+    "notValidAfter": "2020-04-10T00:00:00.000Z"
+  }
+}
+```
+
+<br/>
+
+## Application Certificate Authorities
+
+Schema for a collection of Application Certificate Authorities
+
+### <a name="application-certificate-authorities-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Application Certificate Authority",
+        "description": "Schema for a single Application Certificate Authority",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationCertificateAuthorityId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "caBundle": {
+            "$ref": "#/definitions/common/certificateString"
+          },
+          "caInfo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/certificateInfo"
+            }
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  }
+}
+```
+### <a name="application-certificate-authorities-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "5cd02a7bdf66feb0994c7197",
+      "applicationCertificateAuthorityId": "5cd02a7bdf66feb0994c7197",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "status": "active",
+      "name": "my certificate authority",
+      "description": "An example certificate authority description",
+      "caBundle": "MY_SSL_CERTIFICATE",
+      "caInfo": [
+        {
+          "serialNumber": "ad:0e:ff:63:27:83:e5:3e:6b:a9:fb:57:0d:37:fc:e9",
+          "fingerprint": "FF:4A:88:5D:93:E7:FF:61:E4:72:94:EE:82:4B:56:B2:AB:71:38:06",
+          "commonName": "myDomain.com",
+          "issuerName": "Network Solutions OV Server CA 2",
+          "notValidBefore": "2019-04-10T00:00:00.000Z",
+          "notValidAfter": "2020-04-10T00:00:00.000Z"
+        }
+      ]
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "key",
+  "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
+
+## Application Certificate Authority
+
+Schema for a single Application Certificate Authority
+
+### <a name="application-certificate-authority-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationCertificateAuthorityId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "caBundle": {
+      "$ref": "#/definitions/common/certificateString"
+    },
+    "caInfo": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/certificateInfo"
+      }
+    }
+  }
+}
+```
+### <a name="application-certificate-authority-example"></a> Example
+
+```json
+{
+  "id": "5cd02a7bdf66feb0994c7197",
+  "applicationCertificateAuthorityId": "5cd02a7bdf66feb0994c7197",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "status": "active",
+  "name": "my certificate authority",
+  "description": "An example certificate authority description",
+  "caBundle": "MY_SSL_CERTIFICATE",
+  "caInfo": [
+    {
+      "serialNumber": "ad:0e:ff:63:27:83:e5:3e:6b:a9:fb:57:0d:37:fc:e9",
+      "fingerprint": "FF:4A:88:5D:93:E7:FF:61:E4:72:94:EE:82:4B:56:B2:AB:71:38:06",
+      "commonName": "myDomain.com",
+      "issuerName": "Network Solutions OV Server CA 2",
+      "notValidBefore": "2019-04-10T00:00:00.000Z",
+      "notValidAfter": "2020-04-10T00:00:00.000Z"
+    }
+  ]
+}
+```
+
+<br/>
+
+## Application Key Patch
+
+Schema for the body of an Application Certificate Authority modification request
+
+### <a name="application-key-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "caBundle": {
+      "$ref": "#/definitions/common/certificateString"
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="application-key-patch-example"></a> Example
+
+```json
+{
+  "status": "active",
+  "description": "An example updated authority description"
+}
+```
+
+<br/>
+
+## Application Key Post
+
+Schema for the body of an Application Key creation request
+
+### <a name="application-key-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "caBundle": {
+      "$ref": "#/definitions/common/certificateString"
+    }
+  },
+  "required": [
+    "name",
+    "caBundle"
+  ],
+  "additionalProperties": false
+}
+```
+### <a name="application-key-post-example"></a> Example
+
+```json
+{
+  "name": "my certificate authority",
+  "description": "An example new authority description",
+  "caBundle": "MY_SSL_CERTIFICATE"
+}
+```
+
+<br/>
+
+## Application Certificate Patch
+
+Schema for the body of an Application Certificate modification request
+
+### <a name="application-certificate-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "certificate": {
+      "$ref": "#/definitions/common/certificateString"
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="application-certificate-patch-example"></a> Example
+
+```json
+{
+  "status": "active",
+  "description": "An example updated certificate description"
+}
+```
+
+<br/>
+
+## Application Certificate Post
+
+Schema for the body of an Application Certificate creation request
+
+### <a name="application-certificate-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "deviceIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    },
+    "deviceTags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        },
+        "additionalProperties": false
+      },
+      "maxItems": 100
+    },
+    "certificate": {
+      "$ref": "#/definitions/common/certificateString"
+    }
+  },
+  "required": [
+    "certificate"
+  ],
+  "additionalProperties": false
+}
+```
+### <a name="application-certificate-post-example"></a> Example
+
+```json
+{
+  "description": "An example new certificate description",
+  "certificate": "MY_SSL_CERTIFICATE"
+}
+```
+
+<br/>
+
+## Application Certificates
+
+Schema for a collection of Application Certificates
+
+### <a name="application-certificates-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Application Certificate",
+        "description": "Schema for a single Application Certificate",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationCertificateId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "deviceIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "maxItems": 1000
+          },
+          "deviceTags": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                },
+                "value": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                }
+              },
+              "additionalProperties": false
+            },
+            "maxItems": 100
+          },
+          "certificateInfo": {
+            "$ref": "#/definitions/certificateInfo"
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  }
+}
+```
+### <a name="application-certificates-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "5cd02a50df66feb0994c7196",
+      "applicationCertificateId": "5cd02a50df66feb0994c7196",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "status": "active",
+      "description": "An example certificate description",
+      "certificateInfo": {
+        "serialNumber": "ad:0e:ff:63:27:83:e5:3e:6b:a9:fb:57:0d:37:fc:e9",
+        "fingerprint": "FF:4A:88:5D:93:E7:FF:61:E4:72:94:EE:82:4B:56:B2:AB:71:38:06",
+        "commonName": "myDomain.com",
+        "issuerName": "Network Solutions OV Server CA 2",
+        "notValidBefore": "2019-04-10T00:00:00.000Z",
+        "notValidAfter": "2020-04-10T00:00:00.000Z"
+      }
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "key",
+  "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97"
 }
 ```
 
@@ -3351,36 +4056,137 @@ Schema for a single Dashboard
     "contextConfiguration": {
       "type": "array",
       "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "deviceAttribute",
-              "deviceId",
-              "deviceTag",
-              "number",
-              "string"
-            ]
-          },
-          "applicationId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "defaultValue": {
-            "oneOf": [
-              {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "deviceAttribute"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
                 "type": "string",
                 "maxLength": 32767
               },
-              {
-                "type": "number"
+              "validationEnabled": {
+                "type": "boolean"
               },
-              {
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "maxItems": 100
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "deviceId"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "validationEnabled": {
+                "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "deviceIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    "maxItems": 1000
+                  },
+                  "deviceTags": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        },
+                        "value": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "maxItems": 100
+                  },
+                  "includeFullDevice": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "deviceTag"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
                 "type": "object",
                 "properties": {
                   "key": {
@@ -3394,73 +4200,174 @@ Schema for a single Dashboard
                   }
                 },
                 "additionalProperties": false
-              }
-            ]
-          },
-          "validationEnabled": {
-            "type": "boolean"
-          },
-          "validationConfig": {
-            "type": "object",
-            "properties": {
-              "min": {
-                "type": "number"
               },
-              "max": {
-                "type": "number"
-              },
-              "regExp": {
-                "type": "string",
-                "maxLength": 1024
-              },
-              "attributes": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                },
-                "maxItems": 100
-              },
-              "deviceIds": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "pattern": "^[A-Fa-f\\d]{24}$"
-                },
-                "maxItems": 1000
-              },
-              "deviceTags": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "key": {
-                      "type": "string",
-                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                    },
-                    "value": {
-                      "type": "string",
-                      "minLength": 1,
-                      "maxLength": 255
-                    }
-                  },
-                  "additionalProperties": false
-                },
-                "maxItems": 100
-              },
-              "includeFullDevice": {
+              "validationEnabled": {
                 "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "deviceTags": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        },
+                        "value": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "maxItems": 100
+                  }
+                },
+                "additionalProperties": false
               }
             },
-            "additionalProperties": false
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "number"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
+                "type": [
+                  "number",
+                  "string"
+                ]
+              },
+              "validationEnabled": {
+                "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "min": {
+                    "type": "number"
+                  },
+                  "max": {
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "string"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "validationEnabled": {
+                "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "regExp": {
+                    "type": "string",
+                    "maxLength": 1024
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "experienceUser"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "validationEnabled": {
+                "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "experienceGroupIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    "maxItems": 1000
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
           }
-        },
-        "required": [
-          "name",
-          "type",
-          "defaultValue"
-        ],
-        "additionalProperties": false
+        ]
       },
       "maxItems": 100
     }
@@ -3805,36 +4712,137 @@ Schema for the body of a Dashboard modification request
     "contextConfiguration": {
       "type": "array",
       "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "deviceAttribute",
-              "deviceId",
-              "deviceTag",
-              "number",
-              "string"
-            ]
-          },
-          "applicationId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "defaultValue": {
-            "oneOf": [
-              {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "deviceAttribute"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
                 "type": "string",
                 "maxLength": 32767
               },
-              {
-                "type": "number"
+              "validationEnabled": {
+                "type": "boolean"
               },
-              {
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "maxItems": 100
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "deviceId"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "validationEnabled": {
+                "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "deviceIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    "maxItems": 1000
+                  },
+                  "deviceTags": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        },
+                        "value": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "maxItems": 100
+                  },
+                  "includeFullDevice": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "deviceTag"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
                 "type": "object",
                 "properties": {
                   "key": {
@@ -3848,73 +4856,174 @@ Schema for the body of a Dashboard modification request
                   }
                 },
                 "additionalProperties": false
-              }
-            ]
-          },
-          "validationEnabled": {
-            "type": "boolean"
-          },
-          "validationConfig": {
-            "type": "object",
-            "properties": {
-              "min": {
-                "type": "number"
               },
-              "max": {
-                "type": "number"
-              },
-              "regExp": {
-                "type": "string",
-                "maxLength": 1024
-              },
-              "attributes": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                },
-                "maxItems": 100
-              },
-              "deviceIds": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "pattern": "^[A-Fa-f\\d]{24}$"
-                },
-                "maxItems": 1000
-              },
-              "deviceTags": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "key": {
-                      "type": "string",
-                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                    },
-                    "value": {
-                      "type": "string",
-                      "minLength": 1,
-                      "maxLength": 255
-                    }
-                  },
-                  "additionalProperties": false
-                },
-                "maxItems": 100
-              },
-              "includeFullDevice": {
+              "validationEnabled": {
                 "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "deviceTags": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        },
+                        "value": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "maxItems": 100
+                  }
+                },
+                "additionalProperties": false
               }
             },
-            "additionalProperties": false
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "number"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
+                "type": [
+                  "number",
+                  "string"
+                ]
+              },
+              "validationEnabled": {
+                "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "min": {
+                    "type": "number"
+                  },
+                  "max": {
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "string"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "validationEnabled": {
+                "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "regExp": {
+                    "type": "string",
+                    "maxLength": 1024
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "experienceUser"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "validationEnabled": {
+                "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "experienceGroupIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    "maxItems": 1000
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
           }
-        },
-        "required": [
-          "name",
-          "type",
-          "defaultValue"
-        ],
-        "additionalProperties": false
+        ]
       },
       "maxItems": 100
     }
@@ -4112,36 +5221,137 @@ Schema for the body of a Dashboard creation request
     "contextConfiguration": {
       "type": "array",
       "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "deviceAttribute",
-              "deviceId",
-              "deviceTag",
-              "number",
-              "string"
-            ]
-          },
-          "applicationId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "defaultValue": {
-            "oneOf": [
-              {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "deviceAttribute"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
                 "type": "string",
                 "maxLength": 32767
               },
-              {
-                "type": "number"
+              "validationEnabled": {
+                "type": "boolean"
               },
-              {
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "maxItems": 100
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "deviceId"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "validationEnabled": {
+                "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "deviceIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    "maxItems": 1000
+                  },
+                  "deviceTags": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        },
+                        "value": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "maxItems": 100
+                  },
+                  "includeFullDevice": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "deviceTag"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
                 "type": "object",
                 "properties": {
                   "key": {
@@ -4155,73 +5365,174 @@ Schema for the body of a Dashboard creation request
                   }
                 },
                 "additionalProperties": false
-              }
-            ]
-          },
-          "validationEnabled": {
-            "type": "boolean"
-          },
-          "validationConfig": {
-            "type": "object",
-            "properties": {
-              "min": {
-                "type": "number"
               },
-              "max": {
-                "type": "number"
-              },
-              "regExp": {
-                "type": "string",
-                "maxLength": 1024
-              },
-              "attributes": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                },
-                "maxItems": 100
-              },
-              "deviceIds": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "pattern": "^[A-Fa-f\\d]{24}$"
-                },
-                "maxItems": 1000
-              },
-              "deviceTags": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "key": {
-                      "type": "string",
-                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                    },
-                    "value": {
-                      "type": "string",
-                      "minLength": 1,
-                      "maxLength": 255
-                    }
-                  },
-                  "additionalProperties": false
-                },
-                "maxItems": 100
-              },
-              "includeFullDevice": {
+              "validationEnabled": {
                 "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "deviceTags": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        },
+                        "value": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "maxItems": 100
+                  }
+                },
+                "additionalProperties": false
               }
             },
-            "additionalProperties": false
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "number"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
+                "type": [
+                  "number",
+                  "string"
+                ]
+              },
+              "validationEnabled": {
+                "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "min": {
+                    "type": "number"
+                  },
+                  "max": {
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "string"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "validationEnabled": {
+                "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "regExp": {
+                    "type": "string",
+                    "maxLength": 1024
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "experienceUser"
+                ]
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "defaultValue": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "validationEnabled": {
+                "type": "boolean"
+              },
+              "validationConfig": {
+                "type": "object",
+                "properties": {
+                  "experienceGroupIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    "maxItems": 1000
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "defaultValue"
+            ]
           }
-        },
-        "required": [
-          "name",
-          "type",
-          "defaultValue"
-        ],
-        "additionalProperties": false
+        ]
       },
       "maxItems": 100
     }
@@ -4522,36 +5833,137 @@ Schema for a collection of Dashboards
           "contextConfiguration": {
             "type": "array",
             "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                },
-                "type": {
-                  "type": "string",
-                  "enum": [
-                    "deviceAttribute",
-                    "deviceId",
-                    "deviceTag",
-                    "number",
-                    "string"
-                  ]
-                },
-                "applicationId": {
-                  "type": "string",
-                  "pattern": "^[A-Fa-f\\d]{24}$"
-                },
-                "defaultValue": {
-                  "oneOf": [
-                    {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "deviceAttribute"
+                      ]
+                    },
+                    "applicationId": {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    "defaultValue": {
                       "type": "string",
                       "maxLength": 32767
                     },
-                    {
-                      "type": "number"
+                    "validationEnabled": {
+                      "type": "boolean"
                     },
-                    {
+                    "validationConfig": {
+                      "type": "object",
+                      "properties": {
+                        "attributes": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "type",
+                    "defaultValue"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "deviceId"
+                      ]
+                    },
+                    "applicationId": {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    "defaultValue": {
+                      "type": "string",
+                      "maxLength": 32767
+                    },
+                    "validationEnabled": {
+                      "type": "boolean"
+                    },
+                    "validationConfig": {
+                      "type": "object",
+                      "properties": {
+                        "deviceIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "pattern": "^[A-Fa-f\\d]{24}$"
+                          },
+                          "maxItems": 1000
+                        },
+                        "deviceTags": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string",
+                                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                              },
+                              "value": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 255
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "maxItems": 100
+                        },
+                        "includeFullDevice": {
+                          "type": "boolean"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "type",
+                    "defaultValue"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "deviceTag"
+                      ]
+                    },
+                    "applicationId": {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    "defaultValue": {
                       "type": "object",
                       "properties": {
                         "key": {
@@ -4565,73 +5977,174 @@ Schema for a collection of Dashboards
                         }
                       },
                       "additionalProperties": false
-                    }
-                  ]
-                },
-                "validationEnabled": {
-                  "type": "boolean"
-                },
-                "validationConfig": {
-                  "type": "object",
-                  "properties": {
-                    "min": {
-                      "type": "number"
                     },
-                    "max": {
-                      "type": "number"
-                    },
-                    "regExp": {
-                      "type": "string",
-                      "maxLength": 1024
-                    },
-                    "attributes": {
-                      "type": "array",
-                      "items": {
-                        "type": "string",
-                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                      },
-                      "maxItems": 100
-                    },
-                    "deviceIds": {
-                      "type": "array",
-                      "items": {
-                        "type": "string",
-                        "pattern": "^[A-Fa-f\\d]{24}$"
-                      },
-                      "maxItems": 1000
-                    },
-                    "deviceTags": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "key": {
-                            "type": "string",
-                            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                          },
-                          "value": {
-                            "type": "string",
-                            "minLength": 1,
-                            "maxLength": 255
-                          }
-                        },
-                        "additionalProperties": false
-                      },
-                      "maxItems": 100
-                    },
-                    "includeFullDevice": {
+                    "validationEnabled": {
                       "type": "boolean"
+                    },
+                    "validationConfig": {
+                      "type": "object",
+                      "properties": {
+                        "deviceTags": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string",
+                                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                              },
+                              "value": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 255
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
-                  "additionalProperties": false
+                  "required": [
+                    "name",
+                    "type",
+                    "defaultValue"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "number"
+                      ]
+                    },
+                    "applicationId": {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    "defaultValue": {
+                      "type": [
+                        "number",
+                        "string"
+                      ]
+                    },
+                    "validationEnabled": {
+                      "type": "boolean"
+                    },
+                    "validationConfig": {
+                      "type": "object",
+                      "properties": {
+                        "min": {
+                          "type": "number"
+                        },
+                        "max": {
+                          "type": "number"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "type",
+                    "defaultValue"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "string"
+                      ]
+                    },
+                    "applicationId": {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    "defaultValue": {
+                      "type": "string",
+                      "maxLength": 32767
+                    },
+                    "validationEnabled": {
+                      "type": "boolean"
+                    },
+                    "validationConfig": {
+                      "type": "object",
+                      "properties": {
+                        "regExp": {
+                          "type": "string",
+                          "maxLength": 1024
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "type",
+                    "defaultValue"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "experienceUser"
+                      ]
+                    },
+                    "applicationId": {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    "defaultValue": {
+                      "type": "string",
+                      "maxLength": 32767
+                    },
+                    "validationEnabled": {
+                      "type": "boolean"
+                    },
+                    "validationConfig": {
+                      "type": "object",
+                      "properties": {
+                        "experienceGroupIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "pattern": "^[A-Fa-f\\d]{24}$"
+                          },
+                          "maxItems": 1000
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "type",
+                    "defaultValue"
+                  ]
                 }
-              },
-              "required": [
-                "name",
-                "type",
-                "defaultValue"
-              ],
-              "additionalProperties": false
+              ]
             },
             "maxItems": 100
           }
@@ -6469,7 +7982,7 @@ Schema for the body of a request to set a device&#x27;s connection status
 
 ## Device Credentials
 
-Schema for the body of a Device authentication request
+Schema for the body of a device authentication request
 
 ### <a name="device-credentials-schema"></a> Schema
 
@@ -6521,9 +8034,7 @@ Schema for the body of a Device authentication request
     }
   },
   "required": [
-    "deviceId",
-    "key",
-    "secret"
+    "deviceId"
   ],
   "additionalProperties": false
 }
@@ -9365,14 +10876,10 @@ Schema for a single Experience Domain
       "format": "date-time"
     },
     "sslCert": {
-      "type": "string",
-      "maxLength": 32767,
-      "minLength": 50
+      "$ref": "#/definitions/common/certificateString"
     },
     "sslBundle": {
-      "type": "string",
-      "maxLength": 32767,
-      "minLength": 50
+      "$ref": "#/definitions/common/certificateString"
     },
     "domainName": {
       "type": "string",
@@ -9429,9 +10936,7 @@ Schema for the body of an Experience Domain modification request
     "sslCert": {
       "$oneOf": [
         {
-          "type": "string",
-          "maxLength": 32767,
-          "minLength": 50
+          "$ref": "#/definitions/common/certificateString"
         },
         {
           "type": null
@@ -9441,9 +10946,7 @@ Schema for the body of an Experience Domain modification request
     "sslBundle": {
       "$oneOf": [
         {
-          "type": "string",
-          "maxLength": 32767,
-          "minLength": 50
+          "$ref": "#/definitions/common/certificateString"
         },
         {
           "type": null
@@ -9501,14 +11004,10 @@ Schema for the body of an Experience Domain creation request
       "minLength": 50
     },
     "sslCert": {
-      "type": "string",
-      "maxLength": 32767,
-      "minLength": 50
+      "$ref": "#/definitions/common/certificateString"
     },
     "sslBundle": {
-      "type": "string",
-      "maxLength": 32767,
-      "minLength": 50
+      "$ref": "#/definitions/common/certificateString"
     },
     "domainName": {
       "type": "string",
@@ -9586,14 +11085,10 @@ Schema for a collection of Experience Domains
             "format": "date-time"
           },
           "sslCert": {
-            "type": "string",
-            "maxLength": 32767,
-            "minLength": 50
+            "$ref": "#/definitions/common/certificateString"
           },
           "sslBundle": {
-            "type": "string",
-            "maxLength": 32767,
-            "minLength": 50
+            "$ref": "#/definitions/common/certificateString"
           },
           "domainName": {
             "type": "string",
@@ -10556,8 +12051,15 @@ Schema for a single Experience Group
       "maxItems": 100
     },
     "parentId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
+      "$oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": null
+        }
+      ]
     }
   }
 }
@@ -10660,8 +12162,15 @@ Schema for the body of an Experience Group modification request
       "maxItems": 100
     },
     "parentId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
+      "$oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": null
+        }
+      ]
     }
   },
   "additionalProperties": false
@@ -10770,8 +12279,15 @@ Schema for the body of an Experience Group creation request
       "maxItems": 100
     },
     "parentId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
+      "$oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": null
+        }
+      ]
     }
   },
   "additionalProperties": false,
@@ -10910,8 +12426,15 @@ Schema for a collection of Experience Groups
             "maxItems": 100
           },
           "parentId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
+            "$oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              {
+                "type": null
+              }
+            ]
           }
         }
       }
@@ -13682,13 +15205,13 @@ Schema for the body of a Workflow modification request
       "type": "boolean"
     },
     "defaultVersionId": {
-      "oneOf": [
+      "$oneOf": [
         {
           "type": "string",
           "pattern": "^[A-Fa-f\\d]{24}$"
         },
         {
-          "type": "null"
+          "type": null
         }
       ]
     },
@@ -17676,13 +19199,13 @@ Schema for the body of a workflow import request
             ]
           },
           "defaultVersionId": {
-            "oneOf": [
+            "$oneOf": [
               {
                 "type": "string",
                 "pattern": "^[A-Fa-f\\d]{24}$"
               },
               {
-                "type": "null"
+                "type": null
               }
             ]
           },
@@ -19917,6 +21440,10 @@ Schema for the body of a Github login request
                   "application.*",
                   "applicationApiToken.*",
                   "applicationApiTokens.*",
+                  "applicationCertificate.*",
+                  "applicationCertificates.*",
+                  "applicationCertificateAuthority.*",
+                  "applicationCertificateAuthorities.*",
                   "applicationKey.*",
                   "applicationKeys.*",
                   "data.*",
@@ -19973,6 +21500,16 @@ Schema for the body of a Github login request
                   "applicationApiToken.patch",
                   "applicationApiTokens.get",
                   "applicationApiTokens.post",
+                  "applicationCertificate.delete",
+                  "applicationCertificate.get",
+                  "applicationCertificate.patch",
+                  "applicationCertificates.get",
+                  "applicationCertificates.post",
+                  "applicationCertificateAuthority.delete",
+                  "applicationCertificateAuthority.get",
+                  "applicationCertificateAuthority.patch",
+                  "applicationCertificateAuthorities.get",
+                  "applicationCertificateAuthorities.post",
                   "applicationKey.delete",
                   "applicationKey.get",
                   "applicationKey.patch",
@@ -27392,6 +28929,10 @@ Schema for the body of a User authentication request
                   "application.*",
                   "applicationApiToken.*",
                   "applicationApiTokens.*",
+                  "applicationCertificate.*",
+                  "applicationCertificates.*",
+                  "applicationCertificateAuthority.*",
+                  "applicationCertificateAuthorities.*",
                   "applicationKey.*",
                   "applicationKeys.*",
                   "data.*",
@@ -27448,6 +28989,16 @@ Schema for the body of a User authentication request
                   "applicationApiToken.patch",
                   "applicationApiTokens.get",
                   "applicationApiTokens.post",
+                  "applicationCertificate.delete",
+                  "applicationCertificate.get",
+                  "applicationCertificate.patch",
+                  "applicationCertificates.get",
+                  "applicationCertificates.post",
+                  "applicationCertificateAuthority.delete",
+                  "applicationCertificateAuthority.get",
+                  "applicationCertificateAuthority.patch",
+                  "applicationCertificateAuthorities.get",
+                  "applicationCertificateAuthorities.post",
                   "applicationKey.delete",
                   "applicationKey.get",
                   "applicationKey.patch",
@@ -27799,6 +29350,10 @@ Schema for the body of a User creation request
                   "application.*",
                   "applicationApiToken.*",
                   "applicationApiTokens.*",
+                  "applicationCertificate.*",
+                  "applicationCertificates.*",
+                  "applicationCertificateAuthority.*",
+                  "applicationCertificateAuthorities.*",
                   "applicationKey.*",
                   "applicationKeys.*",
                   "data.*",
@@ -27855,6 +29410,16 @@ Schema for the body of a User creation request
                   "applicationApiToken.patch",
                   "applicationApiTokens.get",
                   "applicationApiTokens.post",
+                  "applicationCertificate.delete",
+                  "applicationCertificate.get",
+                  "applicationCertificate.patch",
+                  "applicationCertificates.get",
+                  "applicationCertificates.post",
+                  "applicationCertificateAuthority.delete",
+                  "applicationCertificateAuthority.get",
+                  "applicationCertificateAuthority.patch",
+                  "applicationCertificateAuthorities.get",
+                  "applicationCertificateAuthorities.post",
                   "applicationKey.delete",
                   "applicationKey.get",
                   "applicationKey.patch",

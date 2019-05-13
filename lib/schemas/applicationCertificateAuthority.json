@@ -6,7 +6,7 @@
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "experienceDomainId": {
+    "applicationCertificateAuthorityId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
@@ -22,21 +22,30 @@
       "type": "string",
       "format": "date-time"
     },
-    "sslCert": {
-      "$ref": "#/definitions/common/certificateString"
-    },
-    "sslBundle": {
-      "$ref": "#/definitions/common/certificateString"
-    },
-    "domainName": {
+    "status": {
       "type": "string",
-      "maxLength": 1024,
-      "minLength": 3
+      "enum": [
+        "active",
+        "inactive"
+      ]
     },
-    "version": {
+    "name": {
       "type": "string",
       "minLength": 1,
       "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "caBundle": {
+      "$ref": "#/definitions/common/certificateString"
+    },
+    "caInfo": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/certificateInfo"
+      }
     }
   }
 }

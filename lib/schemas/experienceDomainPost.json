@@ -8,14 +8,10 @@
       "minLength": 50
     },
     "sslCert": {
-      "type": "string",
-      "maxLength": 32767,
-      "minLength": 50
+      "$ref": "#/definitions/common/certificateString"
     },
     "sslBundle": {
-      "type": "string",
-      "maxLength": 32767,
-      "minLength": 50
+      "$ref": "#/definitions/common/certificateString"
     },
     "domainName": {
       "type": "string",

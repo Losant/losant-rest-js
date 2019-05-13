@@ -48,7 +48,7 @@ No api access token is required to call this action.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Authenticated Device](_schemas.md#authenticated-device) | Successful authentication. The included api access token has the scope &#x27;all.Device&#x27;. |
+| 200 | [Authenticated Device](_schemas.md#authenticated-device) | Successful authentication. The included api access token by default has the scope &#x27;all.Device&#x27;. |
 
 #### Error Responses
 
