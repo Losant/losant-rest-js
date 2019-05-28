@@ -6798,6 +6798,18 @@ Schema for a data table query
                 "boolean",
                 "null"
               ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
             }
           }
         }
@@ -7312,6 +7324,18 @@ Schema for the body of a data table export
                     "boolean",
                     "null"
                   ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
                 }
               }
             }
@@ -10380,6 +10404,21 @@ Schema for a single Event
       "maxLength": 32767
     },
     "data": {},
+    "deviceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "eventTags": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      },
+      "additionalProperties": false
+    },
     "updates": {
       "type": "array",
       "items": {
@@ -10450,7 +10489,12 @@ Schema for a single Event
   "state": "new",
   "subject": "Power levels critical",
   "message": "Power levels on device 432 have surpassed critical thresholds",
-  "updates": []
+  "updates": [],
+  "deviceId": "575ecf887ae143cd83dc4aa2",
+  "eventTags": {
+    "key": "myKey",
+    "value": "foo"
+  }
 }
 ```
 
@@ -10479,7 +10523,18 @@ Schema for the body of an Event modification request
       "type": "string",
       "maxLength": 32767
     },
-    "data": {}
+    "data": {},
+    "eventTags": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      },
+      "additionalProperties": false
+    }
   },
   "additionalProperties": false
 }
@@ -10532,7 +10587,22 @@ Schema for the body of an Event creation request
       "type": "string",
       "maxLength": 32767
     },
-    "data": {}
+    "data": {},
+    "deviceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "eventTags": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      },
+      "additionalProperties": false
+    }
   },
   "required": [
     "level",
@@ -10634,6 +10704,21 @@ Schema for a collection of Events
             "maxLength": 32767
           },
           "data": {},
+          "deviceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "eventTags": {
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
+          },
           "updates": {
             "type": "array",
             "items": {
@@ -10749,7 +10834,12 @@ Schema for a collection of Events
       "state": "new",
       "subject": "Power levels critical",
       "message": "Power levels on device 432 have surpassed critical thresholds",
-      "updates": []
+      "updates": [],
+      "deviceId": "575ecf887ae143cd83dc4aa2",
+      "eventTags": {
+        "key": "myKey",
+        "value": "foo"
+      }
     }
   ],
   "count": 1,

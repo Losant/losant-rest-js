@@ -14,7 +14,18 @@
       "type": "string",
       "maxLength": 32767
     },
-    "data": {}
+    "data": {},
+    "eventTags": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      },
+      "additionalProperties": false
+    }
   },
   "additionalProperties": false
 }

@@ -156,6 +156,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | sortDirection | string | N | Direction to sort the rows by. Accepted values are: asc, desc | asc | asc |
 | limit | string | N | How many rows to return | 1000 | 0 |
 | offset | string | N | How many rows to skip | 0 | 0 |
+| includeFields | string | N | Comma-separated list of fields to include in resulting rows. When not provided, returns all fields. |  | id,createdAt |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -262,6 +263,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | sortDirection | string | N | Direction to sort the rows by. Accepted values are: asc, desc | asc | asc |
 | limit | string | N | How many rows to return | 1000 | 0 |
 | offset | string | N | How many rows to skip | 0 | 0 |
+| includeFields | string | N | Comma-separated list of fields to include in resulting rows. When not provided, returns all fields. |  | id,createdAt |
 | query | [Data Table Query](_schemas.md#data-table-query) | N | Query to apply to filter the data table |  | [Data Table Query Example](_schemas.md#data-table-query-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
