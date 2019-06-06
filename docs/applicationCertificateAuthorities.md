@@ -97,7 +97,7 @@ all.Application, all.Organization, all.User, applicationCertificateAuthorities.*
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| applicationCertificateAuthority | [Application Key Post](_schemas.md#application-key-post) | Y | Application certificate authority information |  | [Application Key Post Example](_schemas.md#application-key-post-example) |
+| applicationCertificateAuthority | [Application Certificate Authority Post](_schemas.md#application-certificate-authority-post) | Y | Application certificate authority information |  | [Application Certificate Authority Post Example](_schemas.md#application-certificate-authority-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

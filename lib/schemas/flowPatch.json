@@ -66,6 +66,7 @@
               "integration",
               "mqttTopic",
               "notebook",
+              "opcua",
               "redis",
               "request",
               "serial",

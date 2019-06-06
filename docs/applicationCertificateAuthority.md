@@ -146,7 +146,7 @@ all.Application, all.Organization, all.User, applicationCertificateAuthority.*, 
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | applicationCertificateAuthorityId | string | Y | ID associated with the application certificate authority |  | 575ec76c7ae143cd83dc4a96 |
-| applicationCertificateAuthority | [Application Key Patch](_schemas.md#application-key-patch) | Y | Object containing new properties of the application certificate authority |  | [Application Key Patch Example](_schemas.md#application-key-patch-example) |
+| applicationCertificateAuthority | [Application Certificate Authority Patch](_schemas.md#application-certificate-authority-patch) | Y | Object containing new properties of the application certificate authority |  | [Application Certificate Authority Patch Example](_schemas.md#application-certificate-authority-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
