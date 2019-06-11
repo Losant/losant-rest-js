@@ -179,6 +179,9 @@
     "applicationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "query": {
+      "$ref": "#/definitions/common/advancedFilter"
     }
   }
 }

@@ -35,13 +35,14 @@
 *   [Dashboard Patch](#dashboard-patch)
 *   [Dashboard Post](#dashboard-post)
 *   [Dashboard Send Report](#dashboard-send-report)
+*   [Dashboard Update Events](#dashboard-update-events)
 *   [Dashboards](#dashboards)
 *   [Data Export](#data-export)
 *   [Data Table](#data-table)
 *   [Data Table Column](#data-table-column)
 *   [Data Table Patch](#data-table-patch)
 *   [Data Table Post](#data-table-post)
-*   [Data Table Query](#data-table-query)
+*   [Advanced Query](#advanced-query)
 *   [Data Table Row](#data-table-row)
 *   [Data Table Row Insert Multiple](#data-table-row-insert-multiple)
 *   [Data Table Row Insert](#data-table-row-insert)
@@ -81,9 +82,12 @@
 *   [Enable Two Factor Auth](#enable-two-factor-auth)
 *   [Error](#error)
 *   [Event](#event)
+*   [Advanced Query](#advanced-query)
 *   [Event Patch](#event-patch)
 *   [Event Post](#event-post)
+*   [Event Tags Summary](#event-tags-summary)
 *   [Events](#events)
+*   [Events Deleted](#events-deleted)
 *   [Experience Bootstrap Options](#experience-bootstrap-options)
 *   [Experience Bootstrap Result](#experience-bootstrap-result)
 *   [Experience Domain](#experience-domain)
@@ -1014,6 +1018,7 @@ Schema for the body of an Application API Token creation request
           "event.delete",
           "event.get",
           "event.patch",
+          "events.delete",
           "events.get",
           "events.mostRecentBySeverity",
           "events.patch",
@@ -5616,6 +5621,85 @@ Schema for the body of a Dashboard report request
 
 <br/>
 
+## Dashboard Update Events
+
+Schema for the body of an update events request
+
+### <a name="dashboard-update-events-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "eventIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
+    },
+    "updates": {
+      "title": "Event Patch",
+      "description": "Schema for the body of an Event modification request",
+      "type": "object",
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": [
+            "new",
+            "acknowledged",
+            "resolved"
+          ]
+        },
+        "level": {
+          "type": "string",
+          "enum": [
+            "info",
+            "warning",
+            "error",
+            "critical"
+          ]
+        },
+        "comment": {
+          "type": "string",
+          "maxLength": 32767
+        },
+        "data": {},
+        "eventTags": {
+          "type": "object",
+          "patternProperties": {
+            "^[0-9a-zA-Z_-]{1,255}$": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 255
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="dashboard-update-events-example"></a> Example
+
+```json
+{
+  "eventIds": [
+    "596e6ce831761df4231708f1"
+  ],
+  "updates": {
+    "state": "acknowledged",
+    "comment": "Looking into this issue"
+  }
+}
+```
+
+<br/>
+
 ## Dashboards
 
 Schema for a collection of Dashboards
@@ -6713,11 +6797,11 @@ Schema for the body of a Data Table creation request
 
 <br/>
 
-## Data Table Query
+## Advanced Query
 
-Schema for a data table query
+Schema for advanced filters and queries
 
-### <a name="data-table-query-schema"></a> Schema
+### <a name="advanced-query-schema"></a> Schema
 
 ```json
 {
@@ -6727,18 +6811,18 @@ Schema for a data table query
     "$and": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/dataTableQuery"
+        "$ref": "#/definitions/common/advancedQuery"
       }
     },
     "$or": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/dataTableQuery"
+        "$ref": "#/definitions/common/advancedQuery"
       }
     }
   },
   "patternProperties": {
-    "^[0-9a-zA-Z_-]{1,255}$": {
+    "^[0-9a-zA-Z_-]{1,255}": {
       "oneOf": [
         {
           "type": [
@@ -6819,7 +6903,7 @@ Schema for a data table query
   "additionalProperties": false
 }
 ```
-### <a name="data-table-query-example"></a> Example
+### <a name="advanced-query-example"></a> Example
 
 ```json
 {
@@ -7246,25 +7330,25 @@ Schema for the body of a data table export
       "maxLength": 1024
     },
     "query": {
-      "title": "Data Table Query",
-      "description": "Schema for a data table query",
+      "title": "Advanced Query",
+      "description": "Schema for advanced filters and queries",
       "type": "object",
       "properties": {
         "$and": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/dataTableQuery"
+            "$ref": "#/definitions/common/advancedQuery"
           }
         },
         "$or": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/dataTableQuery"
+            "$ref": "#/definitions/common/advancedQuery"
           }
         }
       },
       "patternProperties": {
-        "^[0-9a-zA-Z_-]{1,255}$": {
+        "^[0-9a-zA-Z_-]{1,255}": {
           "oneOf": [
             {
               "type": [
@@ -10492,9 +10576,133 @@ Schema for a single Event
   "updates": [],
   "deviceId": "575ecf887ae143cd83dc4aa2",
   "eventTags": {
-    "key": "myKey",
-    "value": "foo"
+    "customKey": "customValue"
   }
+}
+```
+
+<br/>
+
+## Advanced Query
+
+Schema for advanced filters and queries
+
+### <a name="advanced-query-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "$and": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/common/advancedQuery"
+      }
+    },
+    "$or": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/common/advancedQuery"
+      }
+    }
+  },
+  "patternProperties": {
+    "^[0-9a-zA-Z_-]{1,255}": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="advanced-query-example"></a> Example
+
+```json
+{
+  "$or": [
+    {
+      "level": {
+        "$ne": "myValue"
+      }
+    },
+    {
+      "level": 5
+    }
+  ]
 }
 ```
 
@@ -10517,6 +10725,15 @@ Schema for the body of an Event modification request
         "new",
         "acknowledged",
         "resolved"
+      ]
+    },
+    "level": {
+      "type": "string",
+      "enum": [
+        "info",
+        "warning",
+        "error",
+        "critical"
       ]
     },
     "comment": {
@@ -10620,6 +10837,61 @@ Schema for the body of an Event creation request
   "state": "new",
   "subject": "Power levels critical",
   "message": "Power levels on device 432 have surpassed critical thresholds"
+}
+```
+
+<br/>
+
+## Event Tags Summary
+
+Summary of all unique event tags and values in an application.
+
+### <a name="event-tags-summary-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "eventTags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        },
+        "required": [
+          "key",
+          "value"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+}
+```
+### <a name="event-tags-summary-example"></a> Example
+
+```json
+{
+  "eventTags": [
+    {
+      "key": "TagKey",
+      "value": "TagValue"
+    },
+    {
+      "key": "floor",
+      "value": "8"
+    }
+  ]
 }
 ```
 
@@ -10813,6 +11085,9 @@ Schema for a collection of Events
     "applicationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "query": {
+      "$ref": "#/definitions/common/advancedFilter"
     }
   }
 }
@@ -10837,8 +11112,7 @@ Schema for a collection of Events
       "updates": [],
       "deviceId": "575ecf887ae143cd83dc4aa2",
       "eventTags": {
-        "key": "myKey",
-        "value": "foo"
+        "customKey": "customValue"
       }
     }
   ],
@@ -10850,6 +11124,33 @@ Schema for a collection of Events
   "sortDirection": "asc",
   "applicationId": "575ec8687ae143cd83dc4a97",
   "state": "new"
+}
+```
+
+<br/>
+
+## Events Deleted
+
+Schema for response to events removal
+
+### <a name="events-deleted-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "removed": {
+      "type": "Number"
+    }
+  }
+}
+```
+### <a name="events-deleted-example"></a> Example
+
+```json
+{
+  "removed": 3
 }
 ```
 
@@ -21671,6 +21972,7 @@ Schema for the body of a Github login request
                   "event.delete",
                   "event.get",
                   "event.patch",
+                  "events.delete",
                   "events.get",
                   "events.mostRecentBySeverity",
                   "events.patch",
@@ -29160,6 +29462,7 @@ Schema for the body of a User authentication request
                   "event.delete",
                   "event.get",
                   "event.patch",
+                  "events.delete",
                   "events.get",
                   "events.mostRecentBySeverity",
                   "events.patch",
@@ -29581,6 +29884,7 @@ Schema for the body of a User creation request
                   "event.delete",
                   "event.get",
                   "event.patch",
+                  "events.delete",
                   "events.get",
                   "events.mostRecentBySeverity",
                   "events.patch",

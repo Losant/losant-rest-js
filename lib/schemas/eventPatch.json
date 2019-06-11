@@ -10,6 +10,15 @@
         "resolved"
       ]
     },
+    "level": {
+      "type": "string",
+      "enum": [
+        "info",
+        "warning",
+        "error",
+        "critical"
+      ]
+    },
     "comment": {
       "type": "string",
       "maxLength": 32767

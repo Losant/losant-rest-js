@@ -8,25 +8,25 @@
       "maxLength": 1024
     },
     "query": {
-      "title": "Data Table Query",
-      "description": "Schema for a data table query",
+      "title": "Advanced Query",
+      "description": "Schema for advanced filters and queries",
       "type": "object",
       "properties": {
         "$and": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/dataTableQuery"
+            "$ref": "#/definitions/common/advancedQuery"
           }
         },
         "$or": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/dataTableQuery"
+            "$ref": "#/definitions/common/advancedQuery"
           }
         }
       },
       "patternProperties": {
-        "^[0-9a-zA-Z_-]{1,255}$": {
+        "^[0-9a-zA-Z_-]{1,255}": {
           "oneOf": [
             {
               "type": [

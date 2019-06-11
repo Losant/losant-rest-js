@@ -150,6 +150,7 @@
                   "event.delete",
                   "event.get",
                   "event.patch",
+                  "events.delete",
                   "events.get",
                   "events.mostRecentBySeverity",
                   "events.patch",

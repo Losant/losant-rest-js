@@ -48,7 +48,7 @@ all.Application, all.Organization, all.User, dataTableRows.*, or dataTableRows.d
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | dataTableId | string | Y | ID associated with the data table |  | 575ed78e7ae143cd83dc4aab |
-| query | [Data Table Query](_schemas.md#data-table-query) | N | Query to apply to filter the data table |  | [Data Table Query Example](_schemas.md#data-table-query-example) |
+| query | [Advanced Query](_schemas.md#advanced-query) | N | Query to apply to filter the data table |  | [Advanced Query Example](_schemas.md#advanced-query-example) |
 | limit | string | N | Limit number of rows to delete from data table | 1000 | 10 |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
@@ -264,7 +264,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | limit | string | N | How many rows to return | 1000 | 0 |
 | offset | string | N | How many rows to skip | 0 | 0 |
 | includeFields | string | N | Comma-separated list of fields to include in resulting rows. When not provided, returns all fields. |  | id,createdAt |
-| query | [Data Table Query](_schemas.md#data-table-query) | N | Query to apply to filter the data table |  | [Data Table Query Example](_schemas.md#data-table-query-example) |
+| query | [Advanced Query](_schemas.md#advanced-query) | N | Query to apply to filter the data table |  | [Advanced Query Example](_schemas.md#advanced-query-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
