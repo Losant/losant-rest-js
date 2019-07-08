@@ -10,6 +10,7 @@ parameters and the potential responses.
 *   [Get](#get)
 *   [Move](#move)
 *   [Patch](#patch)
+*   [Upload](#upload)
 
 <br/>
 
@@ -207,6 +208,58 @@ all.Application, all.Organization, all.User, file.*, or file.patch.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 201 | [File Upload Post Response](_schemas.md#file-upload-post-response) | Successfully updated file and returned a post url to respond with |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
+
+<br/>
+
+## Upload
+
+Uploads the file
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  fileId: myFileId,
+  file: myFile
+};
+
+// with callbacks
+client.file.upload(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.file.upload(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, file.*, or file.upload.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| fileId | string | Y | ID associated with the file |  | 575ec76c7ae143cd83dc4a96 |
+| file | file | Y | The content of the file to upload |  | undefined |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [File Schema](_schemas.md#file-schema) | Updated file content |
 
 #### Error Responses
 

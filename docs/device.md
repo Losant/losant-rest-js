@@ -263,6 +263,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
 | start | string | N | Start of time range to look at to build composite state | 1 | 1465790400000 |
 | end | string | N | End of time range to look at to build composite state | 0 | 1465790400000 |
+| attributes | string | N | Comma-separated list of attributes to include. When not provided, returns all attributes. |  | myAttr1,myAttr2 |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

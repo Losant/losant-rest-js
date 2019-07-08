@@ -7,6 +7,7 @@ parameters and the potential responses.
 ##### Contents
 
 *   [Delete](#delete)
+*   [Export](#export)
 *   [Get](#get)
 *   [Most Recent by Severity](#most-recent-by-severity)
 *   [Patch](#patch)
@@ -60,6 +61,55 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if events were not found |
+
+<br/>
+
+## Export
+
+Request an export of an application&#x27;s event data
+
+```javascript
+var params = {
+  applicationId: myApplicationId
+};
+
+// with callbacks
+client.events.export(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.events.export(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, events.*, or events.export.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| exportData | [Event Export Options](_schemas.md#event-export-options) | N | Export options for events |  | [Event Export Options Example](_schemas.md#event-export-options-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Success](_schemas.md#success) | If generation of export was successfully started |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
 
 <br/>
 

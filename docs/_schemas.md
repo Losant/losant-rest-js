@@ -88,6 +88,7 @@
 *   [Event Tags Summary](#event-tags-summary)
 *   [Events](#events)
 *   [Events Deleted](#events-deleted)
+*   [Event Export Options](#event-export-options)
 *   [Experience Bootstrap Options](#experience-bootstrap-options)
 *   [Experience Bootstrap Result](#experience-bootstrap-result)
 *   [Experience Domain](#experience-domain)
@@ -755,6 +756,14 @@ Schema for a single Application
           },
           "maxItems": 100
         },
+        "includeDevices": {
+          "type": "boolean",
+          "default": true
+        },
+        "includeEvents": {
+          "type": "boolean",
+          "default": false
+        },
         "s3": {
           "type": "object",
           "properties": {
@@ -938,6 +947,7 @@ Schema for the body of an Application API Token creation request
           "webhooks.*",
           "application.archiveData",
           "application.backfillArchiveData",
+          "application.fullEventsArchive",
           "application.debug",
           "application.delete",
           "application.get",
@@ -1023,6 +1033,7 @@ Schema for the body of an Application API Token creation request
           "events.mostRecentBySeverity",
           "events.patch",
           "events.post",
+          "events.export",
           "experience.delete",
           "experience.bootstrap",
           "experienceDomain.delete",
@@ -1070,6 +1081,7 @@ Schema for the body of an Application API Token creation request
           "file.patch",
           "file.move",
           "file.delete",
+          "file.upload",
           "files.get",
           "files.post",
           "flow.debug",
@@ -2382,6 +2394,14 @@ Schema for the body of an Application modification request
           },
           "maxItems": 100
         },
+        "includeDevices": {
+          "type": "boolean",
+          "default": true
+        },
+        "includeEvents": {
+          "type": "boolean",
+          "default": false
+        },
         "s3": {
           "type": "object",
           "properties": {
@@ -2560,6 +2580,14 @@ Schema for the body of an Application creation request
             "additionalProperties": false
           },
           "maxItems": 100
+        },
+        "includeDevices": {
+          "type": "boolean",
+          "default": true
+        },
+        "includeEvents": {
+          "type": "boolean",
+          "default": false
         },
         "s3": {
           "type": "object",
@@ -2953,6 +2981,14 @@ Schema for a collection of Applications
                   "additionalProperties": false
                 },
                 "maxItems": 100
+              },
+              "includeDevices": {
+                "type": "boolean",
+                "default": true
+              },
+              "includeEvents": {
+                "type": "boolean",
+                "default": false
               },
               "s3": {
                 "type": "object",
@@ -6833,22 +6869,105 @@ Schema for advanced filters and queries
           ]
         },
         {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "$tagKey": {
+                  "type": "string"
+                },
+                "$tagValue": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "patternProperties": {
+                "^[0-9a-zA-Z_-]{1,255}": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        {
           "type": "object",
           "properties": {
             "$eq": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
+              "oneOf": [
+                {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "$tagKey": {
+                          "type": "string"
+                        },
+                        "$tagValue": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "patternProperties": {
+                        "^[0-9a-zA-Z_-]{1,255}": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                }
               ]
             },
             "$ne": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
+              "oneOf": [
+                {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "$tagKey": {
+                          "type": "string"
+                        },
+                        "$tagValue": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "patternProperties": {
+                        "^[0-9a-zA-Z_-]{1,255}": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                }
               ]
             },
             "$gt": {
@@ -6895,7 +7014,8 @@ Schema for advanced filters and queries
               "type": "string",
               "minLength": 1
             }
-          }
+          },
+          "additionalProperties": false
         }
       ]
     }
@@ -7359,22 +7479,105 @@ Schema for the body of a data table export
               ]
             },
             {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "$tagKey": {
+                      "type": "string"
+                    },
+                    "$tagValue": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            },
+            {
               "type": "object",
               "properties": {
                 "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
+                  "oneOf": [
+                    {
+                      "type": [
+                        "string",
+                        "number",
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$tagKey": {
+                              "type": "string"
+                            },
+                            "$tagValue": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "patternProperties": {
+                            "^[0-9a-zA-Z_-]{1,255}": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
                   ]
                 },
                 "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
+                  "oneOf": [
+                    {
+                      "type": [
+                        "string",
+                        "number",
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$tagKey": {
+                              "type": "string"
+                            },
+                            "$tagValue": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "patternProperties": {
+                            "^[0-9a-zA-Z_-]{1,255}": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
                   ]
                 },
                 "$gt": {
@@ -7421,7 +7624,8 @@ Schema for the body of a data table export
                   "type": "string",
                   "minLength": 1
                 }
-              }
+              },
+              "additionalProperties": false
             }
           ]
         }
@@ -10454,12 +10658,18 @@ Schema for a single Event
         "user",
         "device",
         "apiToken",
-        "notebook"
+        "experienceUser",
+        "public"
       ]
     },
     "sourceId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "sourceName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
     },
     "level": {
       "type": "string",
@@ -10492,6 +10702,11 @@ Schema for a single Event
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
+    "deviceName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
     "eventTags": {
       "type": "object",
       "patternProperties": {
@@ -10515,12 +10730,18 @@ Schema for a single Event
               "user",
               "device",
               "apiToken",
-              "notebook"
+              "experienceUser",
+              "public"
             ]
           },
           "sourceId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "sourceName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           },
           "creationDate": {
             "type": "string",
@@ -10619,22 +10840,105 @@ Schema for advanced filters and queries
           ]
         },
         {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "$tagKey": {
+                  "type": "string"
+                },
+                "$tagValue": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "patternProperties": {
+                "^[0-9a-zA-Z_-]{1,255}": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        {
           "type": "object",
           "properties": {
             "$eq": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
+              "oneOf": [
+                {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "$tagKey": {
+                          "type": "string"
+                        },
+                        "$tagValue": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "patternProperties": {
+                        "^[0-9a-zA-Z_-]{1,255}": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                }
               ]
             },
             "$ne": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
+              "oneOf": [
+                {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "$tagKey": {
+                          "type": "string"
+                        },
+                        "$tagValue": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "patternProperties": {
+                        "^[0-9a-zA-Z_-]{1,255}": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                }
               ]
             },
             "$gt": {
@@ -10681,7 +10985,8 @@ Schema for advanced filters and queries
               "type": "string",
               "minLength": 1
             }
-          }
+          },
+          "additionalProperties": false
         }
       ]
     }
@@ -10942,12 +11247,18 @@ Schema for a collection of Events
               "user",
               "device",
               "apiToken",
-              "notebook"
+              "experienceUser",
+              "public"
             ]
           },
           "sourceId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "sourceName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           },
           "level": {
             "type": "string",
@@ -10980,6 +11291,11 @@ Schema for a collection of Events
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
+          "deviceName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
           "eventTags": {
             "type": "object",
             "patternProperties": {
@@ -11003,12 +11319,18 @@ Schema for a collection of Events
                     "user",
                     "device",
                     "apiToken",
-                    "notebook"
+                    "experienceUser",
+                    "public"
                   ]
                 },
                 "sourceId": {
                   "type": "string",
                   "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "sourceName": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
                 },
                 "creationDate": {
                   "type": "string",
@@ -11151,6 +11473,231 @@ Schema for response to events removal
 ```json
 {
   "removed": 3
+}
+```
+
+<br/>
+
+## Event Export Options
+
+Export options for events
+
+### <a name="event-export-options-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "query": {
+      "title": "Advanced Query",
+      "description": "Schema for advanced filters and queries",
+      "type": "object",
+      "properties": {
+        "$and": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/common/advancedQuery"
+          }
+        },
+        "$or": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/common/advancedQuery"
+          }
+        }
+      },
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "$tagKey": {
+                      "type": "string"
+                    },
+                    "$tagValue": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "oneOf": [
+                    {
+                      "type": [
+                        "string",
+                        "number",
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$tagKey": {
+                              "type": "string"
+                            },
+                            "$tagValue": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "patternProperties": {
+                            "^[0-9a-zA-Z_-]{1,255}": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "$ne": {
+                  "oneOf": [
+                    {
+                      "type": [
+                        "string",
+                        "number",
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$tagKey": {
+                              "type": "string"
+                            },
+                            "$tagValue": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "patternProperties": {
+                            "^[0-9a-zA-Z_-]{1,255}": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="event-export-options-example"></a> Example
+
+```json
+{
+  "email": "email@example.com",
+  "query": {
+    "$or": [
+      {
+        "subject": {
+          "$ne": "myValue"
+        }
+      },
+      {
+        "level": "info"
+      }
+    ]
+  }
 }
 ```
 
@@ -21892,6 +22439,7 @@ Schema for the body of a Github login request
                   "webhooks.*",
                   "application.archiveData",
                   "application.backfillArchiveData",
+                  "application.fullEventsArchive",
                   "application.debug",
                   "application.delete",
                   "application.get",
@@ -21977,6 +22525,7 @@ Schema for the body of a Github login request
                   "events.mostRecentBySeverity",
                   "events.patch",
                   "events.post",
+                  "events.export",
                   "experience.delete",
                   "experience.bootstrap",
                   "experienceDomain.delete",
@@ -22024,6 +22573,7 @@ Schema for the body of a Github login request
                   "file.patch",
                   "file.move",
                   "file.delete",
+                  "file.upload",
                   "files.get",
                   "files.post",
                   "flow.debug",
@@ -29382,6 +29932,7 @@ Schema for the body of a User authentication request
                   "webhooks.*",
                   "application.archiveData",
                   "application.backfillArchiveData",
+                  "application.fullEventsArchive",
                   "application.debug",
                   "application.delete",
                   "application.get",
@@ -29467,6 +30018,7 @@ Schema for the body of a User authentication request
                   "events.mostRecentBySeverity",
                   "events.patch",
                   "events.post",
+                  "events.export",
                   "experience.delete",
                   "experience.bootstrap",
                   "experienceDomain.delete",
@@ -29514,6 +30066,7 @@ Schema for the body of a User authentication request
                   "file.patch",
                   "file.move",
                   "file.delete",
+                  "file.upload",
                   "files.get",
                   "files.post",
                   "flow.debug",
@@ -29804,6 +30357,7 @@ Schema for the body of a User creation request
                   "webhooks.*",
                   "application.archiveData",
                   "application.backfillArchiveData",
+                  "application.fullEventsArchive",
                   "application.debug",
                   "application.delete",
                   "application.get",
@@ -29889,6 +30443,7 @@ Schema for the body of a User creation request
                   "events.mostRecentBySeverity",
                   "events.patch",
                   "events.post",
+                  "events.export",
                   "experience.delete",
                   "experience.bootstrap",
                   "experienceDomain.delete",
@@ -29936,6 +30491,7 @@ Schema for the body of a User creation request
                   "file.patch",
                   "file.move",
                   "file.delete",
+                  "file.upload",
                   "files.get",
                   "files.post",
                   "flow.debug",

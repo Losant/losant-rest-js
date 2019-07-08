@@ -9,6 +9,7 @@ parameters and the potential responses.
 *   [Archive Data](#archive-data)
 *   [Backfill Archive Data](#backfill-archive-data)
 *   [Delete](#delete)
+*   [Full Events Archive](#full-events-archive)
 *   [Get](#get)
 *   [Mqtt Publish Message](#mqtt-publish-message)
 *   [Patch](#patch)
@@ -153,6 +154,54 @@ all.Application, all.Organization, all.User, application.*, or application.delet
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Success](_schemas.md#success) | If application was successfully deleted |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
+
+<br/>
+
+## Full Events Archive
+
+Returns success when a job has been enqueued to archive all current events
+
+```javascript
+var params = {
+  applicationId: myApplicationId
+};
+
+// with callbacks
+client.application.fullEventsArchive(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.application.fullEventsArchive(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, application.*, or application.fullEventsArchive.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Success](_schemas.md#success) | Enqueued a job to archive all events to this application archive location |
 
 #### Error Responses
 

@@ -17,6 +17,7 @@ parameters and the potential responses.
 *   [Get](#get)
 *   [Patch](#patch)
 *   [Payload Counts](#payload-counts)
+*   [Refresh Token](#refresh-token)
 *   [Transfer Resources](#transfer-resources)
 *   [Verify Email](#verify-email)
 
@@ -531,6 +532,51 @@ all.SolutionUser, all.User, all.User.read, me.*, or me.payloadCounts.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
+
+<br/>
+
+## Refresh Token
+
+Returns a new auth token based on the current auth token
+
+```javascript
+var params = {}; // all params are optional
+
+// with callbacks
+client.me.refreshToken(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.me.refreshToken(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.SolutionUser, all.User, or me.*.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Authenticated User](_schemas.md#authenticated-user) | Successful token regeneration |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 401 | [Error](_schemas.md#error) | Unauthorized error if authentication fails |
 
 <br/>
 

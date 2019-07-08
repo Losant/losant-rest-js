@@ -189,27 +189,6 @@
         }
       },
       "additionalProperties": false
-    },
-    "queryOptions": {
-      "type": "object",
-      "properties": {
-        "sortDirection": {
-          "type": "string",
-          "enum": [
-            "desc",
-            "asc"
-          ]
-        },
-        "limit": {
-          "type": "number"
-        },
-        "sortColumn": {
-          "type": "string"
-        },
-        "offset": {
-          "type": "number"
-        }
-      }
     }
   },
   "additionalProperties": false

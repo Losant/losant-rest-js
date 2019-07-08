@@ -36,12 +36,18 @@
               "user",
               "device",
               "apiToken",
-              "notebook"
+              "experienceUser",
+              "public"
             ]
           },
           "sourceId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "sourceName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           },
           "level": {
             "type": "string",
@@ -74,6 +80,11 @@
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
+          "deviceName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
           "eventTags": {
             "type": "object",
             "patternProperties": {
@@ -97,12 +108,18 @@
                     "user",
                     "device",
                     "apiToken",
-                    "notebook"
+                    "experienceUser",
+                    "public"
                   ]
                 },
                 "sourceId": {
                   "type": "string",
                   "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "sourceName": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
                 },
                 "creationDate": {
                   "type": "string",

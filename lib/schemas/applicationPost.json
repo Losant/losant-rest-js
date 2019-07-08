@@ -97,6 +97,14 @@
           },
           "maxItems": 100
         },
+        "includeDevices": {
+          "type": "boolean",
+          "default": true
+        },
+        "includeEvents": {
+          "type": "boolean",
+          "default": false
+        },
         "s3": {
           "type": "object",
           "properties": {
