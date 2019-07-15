@@ -71,6 +71,7 @@
                   "application.archiveData",
                   "application.backfillArchiveData",
                   "application.fullEventsArchive",
+                  "application.fullDataTablesArchive",
                   "application.debug",
                   "application.delete",
                   "application.get",

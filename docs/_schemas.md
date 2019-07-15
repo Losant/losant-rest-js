@@ -764,6 +764,26 @@ Schema for a single Application
           "type": "boolean",
           "default": false
         },
+        "includeDataTables": {
+          "type": "boolean",
+          "default": false
+        },
+        "dataTablesMode": {
+          "type": "string",
+          "enum": [
+            "all",
+            "whitelist",
+            "blacklist"
+          ]
+        },
+        "dataTableIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "maxItems": 1000
+        },
         "s3": {
           "type": "object",
           "properties": {
@@ -948,6 +968,7 @@ Schema for the body of an Application API Token creation request
           "application.archiveData",
           "application.backfillArchiveData",
           "application.fullEventsArchive",
+          "application.fullDataTablesArchive",
           "application.debug",
           "application.delete",
           "application.get",
@@ -2402,6 +2423,26 @@ Schema for the body of an Application modification request
           "type": "boolean",
           "default": false
         },
+        "includeDataTables": {
+          "type": "boolean",
+          "default": false
+        },
+        "dataTablesMode": {
+          "type": "string",
+          "enum": [
+            "all",
+            "whitelist",
+            "blacklist"
+          ]
+        },
+        "dataTableIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "maxItems": 1000
+        },
         "s3": {
           "type": "object",
           "properties": {
@@ -2588,6 +2629,26 @@ Schema for the body of an Application creation request
         "includeEvents": {
           "type": "boolean",
           "default": false
+        },
+        "includeDataTables": {
+          "type": "boolean",
+          "default": false
+        },
+        "dataTablesMode": {
+          "type": "string",
+          "enum": [
+            "all",
+            "whitelist",
+            "blacklist"
+          ]
+        },
+        "dataTableIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "maxItems": 1000
         },
         "s3": {
           "type": "object",
@@ -2989,6 +3050,26 @@ Schema for a collection of Applications
               "includeEvents": {
                 "type": "boolean",
                 "default": false
+              },
+              "includeDataTables": {
+                "type": "boolean",
+                "default": false
+              },
+              "dataTablesMode": {
+                "type": "string",
+                "enum": [
+                  "all",
+                  "whitelist",
+                  "blacklist"
+                ]
+              },
+              "dataTableIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "maxItems": 1000
               },
               "s3": {
                 "type": "object",
@@ -11128,7 +11209,6 @@ Schema for the body of an Event creation request
   },
   "required": [
     "level",
-    "state",
     "subject"
   ],
   "additionalProperties": false
@@ -22440,6 +22520,7 @@ Schema for the body of a Github login request
                   "application.archiveData",
                   "application.backfillArchiveData",
                   "application.fullEventsArchive",
+                  "application.fullDataTablesArchive",
                   "application.debug",
                   "application.delete",
                   "application.get",
@@ -29933,6 +30014,7 @@ Schema for the body of a User authentication request
                   "application.archiveData",
                   "application.backfillArchiveData",
                   "application.fullEventsArchive",
+                  "application.fullDataTablesArchive",
                   "application.debug",
                   "application.delete",
                   "application.get",
@@ -30358,6 +30440,7 @@ Schema for the body of a User creation request
                   "application.archiveData",
                   "application.backfillArchiveData",
                   "application.fullEventsArchive",
+                  "application.fullDataTablesArchive",
                   "application.debug",
                   "application.delete",
                   "application.get",
