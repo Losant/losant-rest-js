@@ -1,5 +1,6 @@
 # Schemas
 
+*   [Advanced Query](#advanced-query)
 *   [API Token](#api-token)
 *   [API Token Patch](#api-token-patch)
 *   [API Tokens](#api-tokens)
@@ -42,7 +43,6 @@
 *   [Data Table Column](#data-table-column)
 *   [Data Table Patch](#data-table-patch)
 *   [Data Table Post](#data-table-post)
-*   [Advanced Query](#advanced-query)
 *   [Data Table Row](#data-table-row)
 *   [Data Table Row Insert Multiple](#data-table-row-insert-multiple)
 *   [Data Table Row Insert](#data-table-row-insert)
@@ -82,7 +82,6 @@
 *   [Enable Two Factor Auth](#enable-two-factor-auth)
 *   [Error](#error)
 *   [Event](#event)
-*   [Advanced Query](#advanced-query)
 *   [Event Patch](#event-patch)
 *   [Event Post](#event-post)
 *   [Event Tags Summary](#event-tags-summary)
@@ -196,6 +195,215 @@
 *   [Webhook Patch](#webhook-patch)
 *   [Webhook Post](#webhook-post)
 *   [Webhooks](#webhooks)
+
+## Advanced Query
+
+Schema for advanced filters and queries
+
+### <a name="advanced-query-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "$and": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedQuery"
+      }
+    },
+    "$or": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedQuery"
+      }
+    }
+  },
+  "patternProperties": {
+    "^[0-9a-zA-Z_-]{1,255}": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "$tagKey": {
+                  "type": "string"
+                },
+                "$tagValue": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "patternProperties": {
+                "^[0-9a-zA-Z_-]{1,255}": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "$tagKey": {
+                          "type": "string"
+                        },
+                        "$tagValue": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "patternProperties": {
+                        "^[0-9a-zA-Z_-]{1,255}": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "$tagKey": {
+                          "type": "string"
+                        },
+                        "$tagValue": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "patternProperties": {
+                        "^[0-9a-zA-Z_-]{1,255}": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="advanced-query-example"></a> Example
+
+```json
+{
+  "$or": [
+    {
+      "level": {
+        "$ne": "myValue"
+      }
+    },
+    {
+      "level": 5
+    }
+  ]
+}
+```
+
+<br/>
 
 ## API Token
 
@@ -5769,15 +5977,6 @@ Schema for the body of an update events request
             "resolved"
           ]
         },
-        "level": {
-          "type": "string",
-          "enum": [
-            "info",
-            "warning",
-            "error",
-            "critical"
-          ]
-        },
         "comment": {
           "type": "string",
           "maxLength": 32767
@@ -6914,215 +7113,6 @@ Schema for the body of a Data Table creation request
 
 <br/>
 
-## Advanced Query
-
-Schema for advanced filters and queries
-
-### <a name="advanced-query-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "$and": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/common/advancedQuery"
-      }
-    },
-    "$or": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/common/advancedQuery"
-      }
-    }
-  },
-  "patternProperties": {
-    "^[0-9a-zA-Z_-]{1,255}": {
-      "oneOf": [
-        {
-          "type": [
-            "string",
-            "number",
-            "boolean",
-            "null"
-          ]
-        },
-        {
-          "oneOf": [
-            {
-              "type": "object",
-              "properties": {
-                "$tagKey": {
-                  "type": "string"
-                },
-                "$tagValue": {
-                  "type": "string"
-                }
-              },
-              "additionalProperties": false
-            },
-            {
-              "type": "object",
-              "patternProperties": {
-                "^[0-9a-zA-Z_-]{1,255}": {
-                  "type": "string"
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        {
-          "type": "object",
-          "properties": {
-            "$eq": {
-              "oneOf": [
-                {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                {
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "$tagKey": {
-                          "type": "string"
-                        },
-                        "$tagValue": {
-                          "type": "string"
-                        }
-                      },
-                      "additionalProperties": false
-                    },
-                    {
-                      "type": "object",
-                      "patternProperties": {
-                        "^[0-9a-zA-Z_-]{1,255}": {
-                          "type": "string"
-                        }
-                      },
-                      "additionalProperties": false
-                    }
-                  ]
-                }
-              ]
-            },
-            "$ne": {
-              "oneOf": [
-                {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                {
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "$tagKey": {
-                          "type": "string"
-                        },
-                        "$tagValue": {
-                          "type": "string"
-                        }
-                      },
-                      "additionalProperties": false
-                    },
-                    {
-                      "type": "object",
-                      "patternProperties": {
-                        "^[0-9a-zA-Z_-]{1,255}": {
-                          "type": "string"
-                        }
-                      },
-                      "additionalProperties": false
-                    }
-                  ]
-                }
-              ]
-            },
-            "$gt": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            "$lt": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            "$gte": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            "$lte": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            "$startsWith": {
-              "type": "string",
-              "minLength": 1
-            },
-            "$endsWith": {
-              "type": "string",
-              "minLength": 1
-            },
-            "$contains": {
-              "type": "string",
-              "minLength": 1
-            }
-          },
-          "additionalProperties": false
-        }
-      ]
-    }
-  },
-  "additionalProperties": false
-}
-```
-### <a name="advanced-query-example"></a> Example
-
-```json
-{
-  "$or": [
-    {
-      "myColumn1": {
-        "$ne": "myValue"
-      }
-    },
-    {
-      "myColumn2": 5
-    }
-  ]
-}
-```
-
-<br/>
-
 ## Data Table Row
 
 Schema for a single Data Table Row
@@ -7538,13 +7528,13 @@ Schema for the body of a data table export
         "$and": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/common/advancedQuery"
+            "$ref": "#/definitions/advancedQuery"
           }
         },
         "$or": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/common/advancedQuery"
+            "$ref": "#/definitions/advancedQuery"
           }
         }
       },
@@ -10871,224 +10861,17 @@ Schema for a single Event
   "lastUpdated": "2016-06-13T04:00:00.000Z",
   "sourceType": "user",
   "sourceId": "575ed70c7ae143cd83dc4aa9",
+  "sourceName": "hello@example.com",
   "level": "info",
   "state": "new",
   "subject": "Power levels critical",
   "message": "Power levels on device 432 have surpassed critical thresholds",
   "updates": [],
   "deviceId": "575ecf887ae143cd83dc4aa2",
+  "deviceName": "My Device",
   "eventTags": {
     "customKey": "customValue"
   }
-}
-```
-
-<br/>
-
-## Advanced Query
-
-Schema for advanced filters and queries
-
-### <a name="advanced-query-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "$and": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/common/advancedQuery"
-      }
-    },
-    "$or": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/common/advancedQuery"
-      }
-    }
-  },
-  "patternProperties": {
-    "^[0-9a-zA-Z_-]{1,255}": {
-      "oneOf": [
-        {
-          "type": [
-            "string",
-            "number",
-            "boolean",
-            "null"
-          ]
-        },
-        {
-          "oneOf": [
-            {
-              "type": "object",
-              "properties": {
-                "$tagKey": {
-                  "type": "string"
-                },
-                "$tagValue": {
-                  "type": "string"
-                }
-              },
-              "additionalProperties": false
-            },
-            {
-              "type": "object",
-              "patternProperties": {
-                "^[0-9a-zA-Z_-]{1,255}": {
-                  "type": "string"
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        {
-          "type": "object",
-          "properties": {
-            "$eq": {
-              "oneOf": [
-                {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                {
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "$tagKey": {
-                          "type": "string"
-                        },
-                        "$tagValue": {
-                          "type": "string"
-                        }
-                      },
-                      "additionalProperties": false
-                    },
-                    {
-                      "type": "object",
-                      "patternProperties": {
-                        "^[0-9a-zA-Z_-]{1,255}": {
-                          "type": "string"
-                        }
-                      },
-                      "additionalProperties": false
-                    }
-                  ]
-                }
-              ]
-            },
-            "$ne": {
-              "oneOf": [
-                {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                {
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "$tagKey": {
-                          "type": "string"
-                        },
-                        "$tagValue": {
-                          "type": "string"
-                        }
-                      },
-                      "additionalProperties": false
-                    },
-                    {
-                      "type": "object",
-                      "patternProperties": {
-                        "^[0-9a-zA-Z_-]{1,255}": {
-                          "type": "string"
-                        }
-                      },
-                      "additionalProperties": false
-                    }
-                  ]
-                }
-              ]
-            },
-            "$gt": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            "$lt": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            "$gte": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            "$lte": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            "$startsWith": {
-              "type": "string",
-              "minLength": 1
-            },
-            "$endsWith": {
-              "type": "string",
-              "minLength": 1
-            },
-            "$contains": {
-              "type": "string",
-              "minLength": 1
-            }
-          },
-          "additionalProperties": false
-        }
-      ]
-    }
-  },
-  "additionalProperties": false
-}
-```
-### <a name="advanced-query-example"></a> Example
-
-```json
-{
-  "$or": [
-    {
-      "level": {
-        "$ne": "myValue"
-      }
-    },
-    {
-      "level": 5
-    }
-  ]
 }
 ```
 
@@ -11111,15 +10894,6 @@ Schema for the body of an Event modification request
         "new",
         "acknowledged",
         "resolved"
-      ]
-    },
-    "level": {
-      "type": "string",
-      "enum": [
-        "info",
-        "warning",
-        "error",
-        "critical"
       ]
     },
     "comment": {
@@ -11221,7 +10995,8 @@ Schema for the body of an Event creation request
   "level": "info",
   "state": "new",
   "subject": "Power levels critical",
-  "message": "Power levels on device 432 have surpassed critical thresholds"
+  "message": "Power levels on device 432 have surpassed critical thresholds",
+  "deviceId": "575ecf887ae143cd83dc4aa2"
 }
 ```
 
@@ -11507,12 +11282,14 @@ Schema for a collection of Events
       "lastUpdated": "2016-06-13T04:00:00.000Z",
       "sourceType": "user",
       "sourceId": "575ed70c7ae143cd83dc4aa9",
+      "sourceName": "hello@example.com",
       "level": "info",
       "state": "new",
       "subject": "Power levels critical",
       "message": "Power levels on device 432 have surpassed critical thresholds",
       "updates": [],
       "deviceId": "575ecf887ae143cd83dc4aa2",
+      "deviceName": "My Device",
       "eventTags": {
         "customKey": "customValue"
       }
@@ -11582,13 +11359,13 @@ Export options for events
         "$and": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/common/advancedQuery"
+            "$ref": "#/definitions/advancedQuery"
           }
         },
         "$or": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/common/advancedQuery"
+            "$ref": "#/definitions/advancedQuery"
           }
         }
       },

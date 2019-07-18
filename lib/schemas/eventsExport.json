@@ -15,13 +15,13 @@
         "$and": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/common/advancedQuery"
+            "$ref": "#/definitions/advancedQuery"
           }
         },
         "$or": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/common/advancedQuery"
+            "$ref": "#/definitions/advancedQuery"
           }
         }
       },
