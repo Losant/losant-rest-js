@@ -27,9 +27,6 @@
       "type": "string",
       "maxLength": 32767
     },
-    "solutionsEnabled": {
-      "type": "boolean"
-    },
     "members": {
       "type": "array",
       "items": {

@@ -27,7 +27,6 @@
       "enum": [
         "Application",
         "Dashboard",
-        "Solution",
         "OrgInvite"
       ]
     },
@@ -57,7 +56,6 @@
         "ExperienceView",
         "File",
         "Flow",
-        "SolutionUser",
         "Integration",
         "Webhook"
       ]
@@ -76,7 +74,6 @@
         "Application",
         "Device",
         "Flow",
-        "SolutionUser",
         "User",
         "ApiToken"
       ]

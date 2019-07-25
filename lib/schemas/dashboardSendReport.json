@@ -32,6 +32,10 @@
     },
     "time": {
       "type": "number"
+    },
+    "timezone": {
+      "type": "string",
+      "max": 255
     }
   },
   "additionalProperties": false

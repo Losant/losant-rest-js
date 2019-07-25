@@ -324,10 +324,6 @@
                   "dashboard.*",
                   "dashboards.*",
                   "org.*",
-                  "solution.*",
-                  "solutions.*",
-                  "solutionUser.*",
-                  "solutionUsers.*",
                   "applications.get",
                   "applications.post",
                   "applications.detailedSummary",
@@ -350,17 +346,7 @@
                   "org.invoices",
                   "org.currentCard",
                   "org.chargeDetails",
-                  "org.transferResources",
-                  "solutionUser.get",
-                  "solutionUser.patch",
-                  "solutionUser.delete",
-                  "solutionUsers.get",
-                  "solutionUsers.post",
-                  "solution.get",
-                  "solution.patch",
-                  "solution.delete",
-                  "solutions.get",
-                  "solutions.post"
+                  "org.transferResources"
                 ]
               }
             ]

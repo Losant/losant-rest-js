@@ -47,7 +47,7 @@ client.me.addRecentItem(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.SolutionUser, all.User, me.*, or me.addRecentItem.
+all.User, me.*, or me.addRecentItem.
 
 #### Available Parameters
 
@@ -94,7 +94,7 @@ client.me.changePassword(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.SolutionUser, all.User, me.*, or me.changePassword.
+all.User, me.*, or me.changePassword.
 
 #### Available Parameters
 
@@ -141,7 +141,7 @@ client.me.delete(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.SolutionUser, all.User, me.*, or me.delete.
+all.User, me.*, or me.delete.
 
 #### Available Parameters
 
@@ -188,7 +188,7 @@ client.me.disableTwoFactorAuth(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.SolutionUser, all.User, me.*, or me.disableTwoFactorAuth.
+all.User, me.*, or me.disableTwoFactorAuth.
 
 #### Available Parameters
 
@@ -233,7 +233,7 @@ client.me.disconnectGithub(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.SolutionUser, all.User, me.*, or me.disconnectGithub.
+all.User, me.*, or me.disconnectGithub.
 
 #### Available Parameters
 
@@ -277,7 +277,7 @@ client.me.disconnectTwitter(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.SolutionUser, all.User, me.*, or me.disconnectTwitter.
+all.User, me.*, or me.disconnectTwitter.
 
 #### Available Parameters
 
@@ -323,7 +323,7 @@ client.me.enableTwoFactorAuth(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.SolutionUser, all.User, me.*, or me.enableTwoFactorAuth.
+all.User, me.*, or me.enableTwoFactorAuth.
 
 #### Available Parameters
 
@@ -370,7 +370,7 @@ client.me.fetchRecentItems(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.SolutionUser, all.SolutionUser.read, all.User, all.User.read, me.*, or me.fetchRecentItems.
+all.User, all.User.read, me.*, or me.fetchRecentItems.
 
 #### Available Parameters
 
@@ -416,7 +416,7 @@ client.me.get(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.SolutionUser, all.SolutionUser.read, all.User, all.User.read, me.*, or me.get.
+all.User, all.User.read, me.*, or me.get.
 
 #### Available Parameters
 
@@ -464,7 +464,7 @@ client.me.patch(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.SolutionUser, all.User, me.*, or me.patch.
+all.User, me.*, or me.patch.
 
 #### Available Parameters
 
@@ -511,7 +511,7 @@ client.me.payloadCounts(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.SolutionUser, all.User, all.User.read, me.*, or me.payloadCounts.
+all.User, all.User.read, me.*, or me.payloadCounts.
 
 #### Available Parameters
 
@@ -557,7 +557,7 @@ client.me.refreshToken(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.SolutionUser, all.User, or me.*.
+all.User, or me.*.
 
 #### Available Parameters
 
@@ -604,7 +604,7 @@ client.me.transferResources(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.SolutionUser, all.User, me.*, or me.transferResources.
+all.User, me.*, or me.transferResources.
 
 #### Available Parameters
 
@@ -649,7 +649,7 @@ client.me.verifyEmail(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.SolutionUser, all.User, me.*, or me.verifyEmail.
+all.User, me.*, or me.verifyEmail.
 
 #### Available Parameters
 

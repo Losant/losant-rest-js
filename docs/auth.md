@@ -7,7 +7,6 @@ parameters and the potential responses.
 ##### Contents
 
 *   [Authenticate Device](#authenticate-device)
-*   [Authenticate Solution User](#authenticate-solution-user)
 *   [Authenticate User](#authenticate-user)
 *   [Authenticate User Github](#authenticate-user-github)
 
@@ -49,52 +48,6 @@ No api access token is required to call this action.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Authenticated Device](_schemas.md#authenticated-device) | Successful authentication. The included api access token by default has the scope &#x27;all.Device&#x27;. |
-
-#### Error Responses
-
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 401 | [Error](_schemas.md#error) | Unauthorized error if authentication fails |
-
-<br/>
-
-## Authenticate Solution User
-
-Authenticates a solution user using the provided credentials.
-
-```javascript
-var params = {
-  credentials: myCredentials
-};
-
-// with callbacks
-client.auth.authenticateSolutionUser(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.auth.authenticateSolutionUser(params)
-  .then(console.log)
-  .catch(console.error);
-```
-
-#### Authentication
-No api access token is required to call this action.
-
-#### Available Parameters
-
-| Name | Type | Required | Description | Default | Example |
-| ---- | ---- | -------- | ----------- | ------- | ------- |
-| credentials | [Solution User Credentials](_schemas.md#solution-user-credentials) | Y | Solution user authentication credentials. The included api access token has the scope &#x27;all.SolutionUser&#x27;. |  | [Solution User Credentials Example](_schemas.md#solution-user-credentials-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
-
-#### Successful Responses
-
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [Authenticated Solution User](_schemas.md#authenticated-solution-user) | Successful authentication |
 
 #### Error Responses
 
