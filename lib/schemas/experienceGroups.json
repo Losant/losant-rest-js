@@ -93,13 +93,13 @@
             "maxItems": 100
           },
           "parentId": {
-            "$oneOf": [
+            "oneOf": [
               {
                 "type": "string",
                 "pattern": "^[A-Fa-f\\d]{24}$"
               },
               {
-                "type": null
+                "type": "null"
               }
             ]
           }
@@ -131,7 +131,10 @@
       "type": "string",
       "enum": [
         "asc",
-        "desc"
+        "desc",
+        "ASC",
+        "DESC",
+        ""
       ]
     },
     "applicationId": {

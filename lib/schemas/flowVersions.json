@@ -73,10 +73,14 @@
                         "deviceTagInactivity",
                         "endpoint",
                         "event",
+                        "fileTail",
                         "fileWatch",
                         "integration",
                         "mqttTopic",
                         "notebook",
+                        "onBoot",
+                        "onConnect",
+                        "onDisconnect",
                         "opcua",
                         "redis",
                         "request",
@@ -605,10 +609,14 @@
                         "deviceTagInactivity",
                         "endpoint",
                         "event",
+                        "fileTail",
                         "fileWatch",
                         "integration",
                         "mqttTopic",
                         "notebook",
+                        "onBoot",
+                        "onConnect",
+                        "onDisconnect",
                         "opcua",
                         "redis",
                         "request",
@@ -763,7 +771,10 @@
       "type": "string",
       "enum": [
         "asc",
-        "desc"
+        "desc",
+        "ASC",
+        "DESC",
+        ""
       ]
     },
     "applicationId": {

@@ -19,7 +19,9 @@
       "maxLength": 32767
     },
     "caBundle": {
-      "$ref": "#/definitions/common/certificateString"
+      "type": "string",
+      "maxLength": 32767,
+      "minLength": 50
     }
   },
   "required": [

@@ -35,7 +35,8 @@
       "maxLength": 255
     },
     "organizationIconColor": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 64
     },
     "name": {
       "type": "string",

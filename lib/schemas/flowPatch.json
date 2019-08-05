@@ -27,13 +27,13 @@
       "type": "boolean"
     },
     "defaultVersionId": {
-      "$oneOf": [
+      "oneOf": [
         {
           "type": "string",
           "pattern": "^[A-Fa-f\\d]{24}$"
         },
         {
-          "type": null
+          "type": "null"
         }
       ]
     },
@@ -62,10 +62,14 @@
               "deviceTagInactivity",
               "endpoint",
               "event",
+              "fileTail",
               "fileWatch",
               "integration",
               "mqttTopic",
               "notebook",
+              "onBoot",
+              "onConnect",
+              "onDisconnect",
               "opcua",
               "redis",
               "request",

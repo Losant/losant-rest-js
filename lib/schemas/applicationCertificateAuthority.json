@@ -39,12 +39,42 @@
       "maxLength": 32767
     },
     "caBundle": {
-      "$ref": "#/definitions/common/certificateString"
+      "type": "string",
+      "maxLength": 32767,
+      "minLength": 50
     },
     "caInfo": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/certificateInfo"
+        "type": "object",
+        "properties": {
+          "serialNumber": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "fingerprint": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "commonName": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "issuerName": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "notValidBefore": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "notValidAfter": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
       }
     }
   }

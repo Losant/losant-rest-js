@@ -41,7 +41,9 @@
       "maxItems": 100
     },
     "certificate": {
-      "$ref": "#/definitions/common/certificateString"
+      "type": "string",
+      "maxLength": 32767,
+      "minLength": 50
     }
   },
   "required": [

@@ -3,46 +3,50 @@
   "type": "object",
   "properties": {
     "sslKey": {
-      "$oneOf": [
+      "oneOf": [
         {
           "type": "string",
           "maxLength": 32767,
           "minLength": 50
         },
         {
-          "type": null
+          "type": "null"
         }
       ]
     },
     "sslCert": {
-      "$oneOf": [
+      "oneOf": [
         {
-          "$ref": "#/definitions/common/certificateString"
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 50
         },
         {
-          "type": null
+          "type": "null"
         }
       ]
     },
     "sslBundle": {
-      "$oneOf": [
+      "oneOf": [
         {
-          "$ref": "#/definitions/common/certificateString"
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 50
         },
         {
-          "type": null
+          "type": "null"
         }
       ]
     },
     "version": {
-      "$oneOf": [
+      "oneOf": [
         {
           "type": "string",
           "minLength": 1,
           "maxLength": 255
         },
         {
-          "type": null
+          "type": "null"
         }
       ]
     },

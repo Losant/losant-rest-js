@@ -111,7 +111,10 @@
       "type": "string",
       "enum": [
         "asc",
-        "desc"
+        "desc",
+        "ASC",
+        "DESC",
+        ""
       ]
     },
     "ownerId": {

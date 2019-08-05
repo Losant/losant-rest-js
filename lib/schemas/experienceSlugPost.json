@@ -3,14 +3,14 @@
   "type": "object",
   "properties": {
     "version": {
-      "$oneOf": [
+      "oneOf": [
         {
           "type": "string",
           "minLength": 1,
           "maxLength": 255
         },
         {
-          "type": null
+          "type": "null"
         }
       ]
     },

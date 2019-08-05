@@ -422,7 +422,8 @@
             "type": "boolean"
           },
           "iconColor": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 64
           }
         }
       }
@@ -452,7 +453,10 @@
       "type": "string",
       "enum": [
         "asc",
-        "desc"
+        "desc",
+        "ASC",
+        "DESC",
+        ""
       ]
     }
   }

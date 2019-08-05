@@ -46,7 +46,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| query | [Advanced Query](_schemas.md#advanced-query) | N | Query to apply to filter the events |  | [Advanced Query Example](_schemas.md#advanced-query-example) |
+| query | [Advanced Event Query](_schemas.md#advanced-event-query) | N | Query to apply to filter the events |  | [Advanced Event Query Example](_schemas.md#advanced-event-query-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -151,7 +151,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: subject |  | subject |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | abnormal power to * |
 | state | string | N | If provided, return events only in the given state. Accepted values are: new, acknowledged, resolved |  | new |
-| query | [Advanced Query](_schemas.md#advanced-query) | N | Event filter JSON object which overides the filterField, filter, and state parameters. |  | [Advanced Query Example](_schemas.md#advanced-query-example) |
+| query | [Advanced Event Query](_schemas.md#advanced-event-query) | N | Event filter JSON object which overides the filterField, filter, and state parameters. |  | [Advanced Event Query Example](_schemas.md#advanced-event-query-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -201,7 +201,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | filter | string | N | Filter to apply against event subjects. Supports globbing. Blank or not provided means no filtering. |  | abnormal power to * |
-| query | [Advanced Query](_schemas.md#advanced-query) | N | Event filter JSON object which overides the filter parameter. |  | [Advanced Query Example](_schemas.md#advanced-query-example) |
+| query | [Advanced Event Query](_schemas.md#advanced-event-query) | N | Event filter JSON object which overides the filter parameter. |  | [Advanced Event Query Example](_schemas.md#advanced-event-query-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -253,7 +253,7 @@ all.Application, all.Organization, all.User, events.*, or events.patch.
 | filterField | string | N | Field to filter the events to act on by. Blank or not provided means no filtering. Accepted values are: subject |  | subject |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | abnormal power to * |
 | state | string | N | If provided, act on events only in the given state. Accepted values are: new, acknowledged, resolved |  | new |
-| query | [Advanced Query](_schemas.md#advanced-query) | N | Event filter JSON object which overides the filterField, filter, and state parameters. |  | [Advanced Query Example](_schemas.md#advanced-query-example) |
+| query | [Advanced Event Query](_schemas.md#advanced-event-query) | N | Event filter JSON object which overides the filterField, filter, and state parameters. |  | [Advanced Event Query Example](_schemas.md#advanced-event-query-example) |
 | updates | [Event Patch](_schemas.md#event-patch) | Y | Object containing updated information for the events |  | [Event Patch Example](_schemas.md#event-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 

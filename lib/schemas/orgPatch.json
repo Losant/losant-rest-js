@@ -25,7 +25,8 @@
       "maxLength": 1024
     },
     "iconColor": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 64
     }
   },
   "additionalProperties": false

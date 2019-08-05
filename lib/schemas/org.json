@@ -415,7 +415,8 @@
       "type": "boolean"
     },
     "iconColor": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 64
     }
   }
 }
