@@ -4846,6 +4846,13 @@ Schema for the successful response when authenticating a Device
     "token": {
       "type": "string",
       "minLength": 1
+    },
+    "ownerType": {
+      "type": "string",
+      "enum": [
+        "user",
+        "organization"
+      ]
     }
   },
   "required": [
@@ -4863,7 +4870,8 @@ Schema for the successful response when authenticating a Device
   "applicationId": "575ec8687ae143cd83dc4a97",
   "deviceId": "575ecf887ae143cd83dc4aa2",
   "deviceClass": "standalone",
-  "token": "token_to_use_for_authenticating_subsequent_requests"
+  "token": "token_to_use_for_authenticating_subsequent_requests",
+  "ownerType": "organization"
 }
 ```
 
@@ -7308,10 +7316,6 @@ Schema for a single Dashboard
                             "valueTemplate": {
                               "type": "string",
                               "maxLength": 255
-                            },
-                            "unit": {
-                              "type": "string",
-                              "maxLength": 255
                             }
                           },
                           "required": [
@@ -7445,6 +7449,14 @@ Schema for a single Dashboard
                                   "maxLength": 64
                                 }
                               ]
+                            },
+                            "backgroundColor": {
+                              "type": "string",
+                              "maxLength": 64
+                            },
+                            "valueTemplate": {
+                              "type": "string",
+                              "maxLength": 255
                             },
                             "length": {
                               "type": "integer",
@@ -11781,10 +11793,6 @@ Schema for the body of a Dashboard modification request
                             "valueTemplate": {
                               "type": "string",
                               "maxLength": 255
-                            },
-                            "unit": {
-                              "type": "string",
-                              "maxLength": 255
                             }
                           },
                           "required": [
@@ -11918,6 +11926,14 @@ Schema for the body of a Dashboard modification request
                                   "maxLength": 64
                                 }
                               ]
+                            },
+                            "backgroundColor": {
+                              "type": "string",
+                              "maxLength": 64
+                            },
+                            "valueTemplate": {
+                              "type": "string",
+                              "maxLength": 255
                             },
                             "length": {
                               "type": "integer",
@@ -16183,10 +16199,6 @@ Schema for the body of a Dashboard creation request
                             "valueTemplate": {
                               "type": "string",
                               "maxLength": 255
-                            },
-                            "unit": {
-                              "type": "string",
-                              "maxLength": 255
                             }
                           },
                           "required": [
@@ -16320,6 +16332,14 @@ Schema for the body of a Dashboard creation request
                                   "maxLength": 64
                                 }
                               ]
+                            },
+                            "backgroundColor": {
+                              "type": "string",
+                              "maxLength": 64
+                            },
+                            "valueTemplate": {
+                              "type": "string",
+                              "maxLength": 255
                             },
                             "length": {
                               "type": "integer",
@@ -20840,10 +20860,6 @@ Schema for a collection of Dashboards
                                   "valueTemplate": {
                                     "type": "string",
                                     "maxLength": 255
-                                  },
-                                  "unit": {
-                                    "type": "string",
-                                    "maxLength": 255
                                   }
                                 },
                                 "required": [
@@ -20977,6 +20993,14 @@ Schema for a collection of Dashboards
                                         "maxLength": 64
                                       }
                                     ]
+                                  },
+                                  "backgroundColor": {
+                                    "type": "string",
+                                    "maxLength": 64
+                                  },
+                                  "valueTemplate": {
+                                    "type": "string",
+                                    "maxLength": 255
                                   },
                                   "length": {
                                     "type": "integer",

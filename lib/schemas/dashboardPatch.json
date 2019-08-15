@@ -2156,10 +2156,6 @@
                             "valueTemplate": {
                               "type": "string",
                               "maxLength": 255
-                            },
-                            "unit": {
-                              "type": "string",
-                              "maxLength": 255
                             }
                           },
                           "required": [
@@ -2293,6 +2289,14 @@
                                   "maxLength": 64
                                 }
                               ]
+                            },
+                            "backgroundColor": {
+                              "type": "string",
+                              "maxLength": 64
+                            },
+                            "valueTemplate": {
+                              "type": "string",
+                              "maxLength": 255
                             },
                             "length": {
                               "type": "integer",

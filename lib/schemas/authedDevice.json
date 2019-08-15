@@ -23,6 +23,13 @@
     "token": {
       "type": "string",
       "minLength": 1
+    },
+    "ownerType": {
+      "type": "string",
+      "enum": [
+        "user",
+        "organization"
+      ]
     }
   },
   "required": [
