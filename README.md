@@ -213,6 +213,12 @@ Each of the following is a property on the client instance, and wraps the action
 * [me](docs/me.md)  
   Contains the actions for operating against the currently authenticated [User](https://docs.losant.com/user-accounts/overview/) such as changing the password or linking against external services.
 
+* [notebook](docs/notebook.md)  
+  Contains all the actions that can be performed against a single [Notebook](https://docs.losant.com/notebooks/overview/), which include things like removing a notebook or executing a notebook.
+
+* [notebooks](docs/notebooks.md)  
+  Contains all the actions that can be performed against the collection of [Notebooks](https://docs.losant.com/notebooks/overview/) belonging to an Application - such as listing notebooks or creating a new notebook.
+
 * [integration](docs/integration.md)  
   Contains all the actions that can be performed against a single [Integration](https://docs.losant.com/applications/integrations/), which include things like removing an integration or updating integration configuration.
 
