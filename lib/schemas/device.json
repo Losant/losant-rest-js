@@ -88,7 +88,8 @@
         "gateway",
         "peripheral",
         "floating",
-        "edgeCompute"
+        "edgeCompute",
+        "system"
       ]
     },
     "gatewayId": {

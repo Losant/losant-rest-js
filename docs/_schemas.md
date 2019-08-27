@@ -53,6 +53,7 @@
 *   [Data Table Rows Export](#data-table-rows-export)
 *   [Data Tables](#data-tables)
 *   [Device](#device)
+*   [Device Class Filter](#device-class-filter)
 *   [Device Command](#device-command)
 *   [Device Commands](#device-commands)
 *   [Device Connection Status](#device-connection-status)
@@ -4840,7 +4841,8 @@ Schema for the successful response when authenticating a Device
         "gateway",
         "peripheral",
         "floating",
-        "edgeCompute"
+        "edgeCompute",
+        "system"
       ]
     },
     "token": {
@@ -24398,7 +24400,8 @@ Schema for a single Device
         "gateway",
         "peripheral",
         "floating",
-        "edgeCompute"
+        "edgeCompute",
+        "system"
       ]
     },
     "gatewayId": {
@@ -24461,6 +24464,56 @@ Schema for a single Device
     "connected": 1
   }
 }
+```
+
+<br/>
+
+## Device Class Filter
+
+Select one or multiple device classes
+
+### <a name="device-class-filter-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "oneOf": [
+    {
+      "type": "string",
+      "enum": [
+        "standalone",
+        "gateway",
+        "peripheral",
+        "floating",
+        "edgeCompute",
+        "system"
+      ]
+    },
+    {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "standalone",
+          "gateway",
+          "peripheral",
+          "floating",
+          "edgeCompute",
+          "system"
+        ]
+      },
+      "additionalProperties": false
+    }
+  ]
+}
+```
+### <a name="device-class-filter-example"></a> Example
+
+```json
+[
+  "standalone",
+  "edgeCompute"
+]
 ```
 
 <br/>
@@ -24963,7 +25016,8 @@ Schema for the body of a Device modification request
         "gateway",
         "peripheral",
         "floating",
-        "edgeCompute"
+        "edgeCompute",
+        "system"
       ]
     },
     "gatewayId": {
@@ -25075,7 +25129,8 @@ Schema for the body of a Device creation request
         "gateway",
         "peripheral",
         "floating",
-        "edgeCompute"
+        "edgeCompute",
+        "system"
       ]
     },
     "gatewayId": {
@@ -25219,7 +25274,8 @@ Schema for a single Device Recipe
         "gateway",
         "peripheral",
         "floating",
-        "edgeCompute"
+        "edgeCompute",
+        "system"
       ]
     },
     "gatewayId": {
@@ -25455,7 +25511,8 @@ Schema for the body of a Device Recipe modification request
         "gateway",
         "peripheral",
         "floating",
-        "edgeCompute"
+        "edgeCompute",
+        "system"
       ]
     },
     "gatewayId": {
@@ -25578,7 +25635,8 @@ Schema for the body of a Device Recipe creation request
         "gateway",
         "peripheral",
         "floating",
-        "edgeCompute"
+        "edgeCompute",
+        "system"
       ]
     },
     "gatewayId": {
@@ -25731,7 +25789,8 @@ Schema for a collection of Device Recipes
               "gateway",
               "peripheral",
               "floating",
-              "edgeCompute"
+              "edgeCompute",
+              "system"
             ]
           },
           "gatewayId": {
@@ -26261,7 +26320,8 @@ Schema for a collection of Devices
               "gateway",
               "peripheral",
               "floating",
-              "edgeCompute"
+              "edgeCompute",
+              "system"
             ]
           },
           "gatewayId": {
@@ -26333,7 +26393,8 @@ Schema for a collection of Devices
         "gateway",
         "peripheral",
         "floating",
-        "edgeCompute"
+        "edgeCompute",
+        "system"
       ]
     },
     "tagFilter": {
