@@ -1802,6 +1802,31 @@ Schema for a single Application
             "bucket"
           ],
           "additionalProperties": false
+        },
+        "azure": {
+          "type": "object",
+          "properties": {
+            "account": {
+              "type": "string",
+              "min": 3,
+              "max": 24
+            },
+            "accountKey": {
+              "type": "string",
+              "max": 255
+            },
+            "bucket": {
+              "type": "string",
+              "min": 3,
+              "max": 63
+            }
+          },
+          "required": [
+            "account",
+            "accountKey",
+            "bucket"
+          ],
+          "additionalProperties": false
         }
       },
       "additionalProperties": false
@@ -3594,6 +3619,31 @@ Schema for the body of an Application modification request
             "bucket"
           ],
           "additionalProperties": false
+        },
+        "azure": {
+          "type": "object",
+          "properties": {
+            "account": {
+              "type": "string",
+              "min": 3,
+              "max": 24
+            },
+            "accountKey": {
+              "type": "string",
+              "max": 255
+            },
+            "bucket": {
+              "type": "string",
+              "min": 3,
+              "max": 63
+            }
+          },
+          "required": [
+            "account",
+            "accountKey",
+            "bucket"
+          ],
+          "additionalProperties": false
         }
       },
       "additionalProperties": false
@@ -3798,6 +3848,31 @@ Schema for the body of an Application creation request
           "required": [
             "projectId",
             "keyJson",
+            "bucket"
+          ],
+          "additionalProperties": false
+        },
+        "azure": {
+          "type": "object",
+          "properties": {
+            "account": {
+              "type": "string",
+              "min": 3,
+              "max": 24
+            },
+            "accountKey": {
+              "type": "string",
+              "max": 255
+            },
+            "bucket": {
+              "type": "string",
+              "min": 3,
+              "max": 63
+            }
+          },
+          "required": [
+            "account",
+            "accountKey",
             "bucket"
           ],
           "additionalProperties": false
@@ -4220,6 +4295,31 @@ Schema for a collection of Applications
                 "required": [
                   "projectId",
                   "keyJson",
+                  "bucket"
+                ],
+                "additionalProperties": false
+              },
+              "azure": {
+                "type": "object",
+                "properties": {
+                  "account": {
+                    "type": "string",
+                    "min": 3,
+                    "max": 24
+                  },
+                  "accountKey": {
+                    "type": "string",
+                    "max": 255
+                  },
+                  "bucket": {
+                    "type": "string",
+                    "min": 3,
+                    "max": 63
+                  }
+                },
+                "required": [
+                  "account",
+                  "accountKey",
                   "bucket"
                 ],
                 "additionalProperties": false
@@ -24427,6 +24527,17 @@ Schema for a single Device
           ]
         }
       }
+    },
+    "parentId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
     }
   }
 }
@@ -25023,6 +25134,17 @@ Schema for the body of a Device modification request
     "gatewayId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "parentId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
     }
   },
   "additionalProperties": false
@@ -25136,6 +25258,17 @@ Schema for the body of a Device creation request
     "gatewayId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "parentId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
     }
   },
   "additionalProperties": false,
@@ -26347,6 +26480,17 @@ Schema for a collection of Devices
                 ]
               }
             }
+          },
+          "parentId": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         }
       }
@@ -26417,6 +26561,17 @@ Schema for a collection of Devices
         "additionalProperties": false
       },
       "maxItems": 100
+    },
+    "parentId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
     }
   }
 }

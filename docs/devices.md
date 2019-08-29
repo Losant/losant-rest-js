@@ -103,6 +103,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | deviceClass | [Device Class Filter](_schemas.md#device-class-filter) | N | Filter the devices by the given device class or classes. |  | [Device Class Filter Example](_schemas.md#device-class-filter-example) |
 | tagFilter | [Device Tag Filter](_schemas.md#device-tag-filter) | N | Array of tag pairs to filter by. |  | [Device Tag Filter Example](_schemas.md#device-tag-filter-example) |
 | excludeConnectionInfo | string | N | If set, do not return connection info |  | true |
+| parentId | string | N | Filter devices as children of a given system id. |  | 575ecf887ae143cd83dc4aa2 |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
