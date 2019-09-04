@@ -24483,6 +24483,80 @@ Schema for a single Device
               "gps",
               "boolean"
             ]
+          },
+          "system": {
+            "type": "object",
+            "properties": {
+              "aggregation": {
+                "type": "string",
+                "enum": [
+                  "FIRST",
+                  "LAST",
+                  "COUNT",
+                  "MAX",
+                  "MIN",
+                  "MEDIAN",
+                  "MEAN",
+                  "SUM",
+                  "STD_DEV",
+                  "NONE"
+                ]
+              },
+              "childAttributes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "mode": {
+                      "type": "string",
+                      "enum": [
+                        "all",
+                        "whitelist",
+                        "blacklist"
+                      ]
+                    },
+                    "deviceIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^[A-Fa-f\\d]{24}$"
+                      },
+                      "maxItems": 1000
+                    },
+                    "deviceTags": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          },
+                          "value": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 255
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "mode"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 256
+              }
+            },
+            "additionalProperties": false
           }
         },
         "required": [
@@ -24538,6 +24612,14 @@ Schema for a single Device
           "type": "null"
         }
       ]
+    },
+    "systemInterval": {
+      "type": "integer",
+      "minimum": 5,
+      "maximum": 3600
+    },
+    "keepDuplicates": {
+      "type": "boolean"
     }
   }
 }
@@ -25110,6 +25192,80 @@ Schema for the body of a Device modification request
               "gps",
               "boolean"
             ]
+          },
+          "system": {
+            "type": "object",
+            "properties": {
+              "aggregation": {
+                "type": "string",
+                "enum": [
+                  "FIRST",
+                  "LAST",
+                  "COUNT",
+                  "MAX",
+                  "MIN",
+                  "MEDIAN",
+                  "MEAN",
+                  "SUM",
+                  "STD_DEV",
+                  "NONE"
+                ]
+              },
+              "childAttributes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "mode": {
+                      "type": "string",
+                      "enum": [
+                        "all",
+                        "whitelist",
+                        "blacklist"
+                      ]
+                    },
+                    "deviceIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^[A-Fa-f\\d]{24}$"
+                      },
+                      "maxItems": 1000
+                    },
+                    "deviceTags": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          },
+                          "value": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 255
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "mode"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 256
+              }
+            },
+            "additionalProperties": false
           }
         },
         "required": [
@@ -25234,6 +25390,80 @@ Schema for the body of a Device creation request
               "gps",
               "boolean"
             ]
+          },
+          "system": {
+            "type": "object",
+            "properties": {
+              "aggregation": {
+                "type": "string",
+                "enum": [
+                  "FIRST",
+                  "LAST",
+                  "COUNT",
+                  "MAX",
+                  "MIN",
+                  "MEDIAN",
+                  "MEAN",
+                  "SUM",
+                  "STD_DEV",
+                  "NONE"
+                ]
+              },
+              "childAttributes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "mode": {
+                      "type": "string",
+                      "enum": [
+                        "all",
+                        "whitelist",
+                        "blacklist"
+                      ]
+                    },
+                    "deviceIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^[A-Fa-f\\d]{24}$"
+                      },
+                      "maxItems": 1000
+                    },
+                    "deviceTags": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          },
+                          "value": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 255
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "mode"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 256
+              }
+            },
+            "additionalProperties": false
           }
         },
         "required": [
@@ -25269,6 +25499,14 @@ Schema for the body of a Device creation request
           "type": "null"
         }
       ]
+    },
+    "systemInterval": {
+      "type": "integer",
+      "minimum": 5,
+      "maximum": 3600
+    },
+    "keepDuplicates": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false,
@@ -25390,6 +25628,80 @@ Schema for a single Device Recipe
               "gps",
               "boolean"
             ]
+          },
+          "system": {
+            "type": "object",
+            "properties": {
+              "aggregation": {
+                "type": "string",
+                "enum": [
+                  "FIRST",
+                  "LAST",
+                  "COUNT",
+                  "MAX",
+                  "MIN",
+                  "MEDIAN",
+                  "MEAN",
+                  "SUM",
+                  "STD_DEV",
+                  "NONE"
+                ]
+              },
+              "childAttributes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "mode": {
+                      "type": "string",
+                      "enum": [
+                        "all",
+                        "whitelist",
+                        "blacklist"
+                      ]
+                    },
+                    "deviceIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^[A-Fa-f\\d]{24}$"
+                      },
+                      "maxItems": 1000
+                    },
+                    "deviceTags": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          },
+                          "value": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 255
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "mode"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 256
+              }
+            },
+            "additionalProperties": false
           }
         },
         "required": [
@@ -25627,6 +25939,80 @@ Schema for the body of a Device Recipe modification request
               "gps",
               "boolean"
             ]
+          },
+          "system": {
+            "type": "object",
+            "properties": {
+              "aggregation": {
+                "type": "string",
+                "enum": [
+                  "FIRST",
+                  "LAST",
+                  "COUNT",
+                  "MAX",
+                  "MIN",
+                  "MEDIAN",
+                  "MEAN",
+                  "SUM",
+                  "STD_DEV",
+                  "NONE"
+                ]
+              },
+              "childAttributes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "mode": {
+                      "type": "string",
+                      "enum": [
+                        "all",
+                        "whitelist",
+                        "blacklist"
+                      ]
+                    },
+                    "deviceIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^[A-Fa-f\\d]{24}$"
+                      },
+                      "maxItems": 1000
+                    },
+                    "deviceTags": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          },
+                          "value": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 255
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "mode"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 256
+              }
+            },
+            "additionalProperties": false
           }
         },
         "required": [
@@ -25751,6 +26137,80 @@ Schema for the body of a Device Recipe creation request
               "gps",
               "boolean"
             ]
+          },
+          "system": {
+            "type": "object",
+            "properties": {
+              "aggregation": {
+                "type": "string",
+                "enum": [
+                  "FIRST",
+                  "LAST",
+                  "COUNT",
+                  "MAX",
+                  "MIN",
+                  "MEDIAN",
+                  "MEAN",
+                  "SUM",
+                  "STD_DEV",
+                  "NONE"
+                ]
+              },
+              "childAttributes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "mode": {
+                      "type": "string",
+                      "enum": [
+                        "all",
+                        "whitelist",
+                        "blacklist"
+                      ]
+                    },
+                    "deviceIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^[A-Fa-f\\d]{24}$"
+                      },
+                      "maxItems": 1000
+                    },
+                    "deviceTags": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          },
+                          "value": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 255
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "mode"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 256
+              }
+            },
+            "additionalProperties": false
           }
         },
         "required": [
@@ -25905,6 +26365,80 @@ Schema for a collection of Device Recipes
                     "gps",
                     "boolean"
                   ]
+                },
+                "system": {
+                  "type": "object",
+                  "properties": {
+                    "aggregation": {
+                      "type": "string",
+                      "enum": [
+                        "FIRST",
+                        "LAST",
+                        "COUNT",
+                        "MAX",
+                        "MIN",
+                        "MEDIAN",
+                        "MEAN",
+                        "SUM",
+                        "STD_DEV",
+                        "NONE"
+                      ]
+                    },
+                    "childAttributes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          },
+                          "mode": {
+                            "type": "string",
+                            "enum": [
+                              "all",
+                              "whitelist",
+                              "blacklist"
+                            ]
+                          },
+                          "deviceIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "pattern": "^[A-Fa-f\\d]{24}$"
+                            },
+                            "maxItems": 1000
+                          },
+                          "deviceTags": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "key": {
+                                  "type": "string",
+                                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 255
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "maxItems": 100
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "mode"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "maxItems": 256
+                    }
+                  },
+                  "additionalProperties": false
                 }
               },
               "required": [
@@ -26436,6 +26970,80 @@ Schema for a collection of Devices
                     "gps",
                     "boolean"
                   ]
+                },
+                "system": {
+                  "type": "object",
+                  "properties": {
+                    "aggregation": {
+                      "type": "string",
+                      "enum": [
+                        "FIRST",
+                        "LAST",
+                        "COUNT",
+                        "MAX",
+                        "MIN",
+                        "MEDIAN",
+                        "MEAN",
+                        "SUM",
+                        "STD_DEV",
+                        "NONE"
+                      ]
+                    },
+                    "childAttributes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          },
+                          "mode": {
+                            "type": "string",
+                            "enum": [
+                              "all",
+                              "whitelist",
+                              "blacklist"
+                            ]
+                          },
+                          "deviceIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "pattern": "^[A-Fa-f\\d]{24}$"
+                            },
+                            "maxItems": 1000
+                          },
+                          "deviceTags": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "key": {
+                                  "type": "string",
+                                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 255
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "maxItems": 100
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "mode"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "maxItems": 256
+                    }
+                  },
+                  "additionalProperties": false
                 }
               },
               "required": [
@@ -26491,6 +27099,14 @@ Schema for a collection of Devices
                 "type": "null"
               }
             ]
+          },
+          "systemInterval": {
+            "type": "integer",
+            "minimum": 5,
+            "maximum": 3600
+          },
+          "keepDuplicates": {
+            "type": "boolean"
           }
         }
       }
@@ -26572,6 +27188,14 @@ Schema for a collection of Devices
           "type": "null"
         }
       ]
+    },
+    "systemInterval": {
+      "type": "integer",
+      "minimum": 5,
+      "maximum": 3600
+    },
+    "keepDuplicates": {
+      "type": "boolean"
     }
   }
 }
