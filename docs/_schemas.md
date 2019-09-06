@@ -24484,6 +24484,21 @@ Schema for a single Device
               "boolean"
             ]
           },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "attributeTags": {
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
+          },
           "system": {
             "type": "object",
             "properties": {
@@ -25193,6 +25208,21 @@ Schema for the body of a Device modification request
               "boolean"
             ]
           },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "attributeTags": {
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
+          },
           "system": {
             "type": "object",
             "properties": {
@@ -25301,6 +25331,14 @@ Schema for the body of a Device modification request
           "type": "null"
         }
       ]
+    },
+    "systemInterval": {
+      "type": "integer",
+      "minimum": 5,
+      "maximum": 3600
+    },
+    "keepDuplicates": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false
@@ -25390,6 +25428,21 @@ Schema for the body of a Device creation request
               "gps",
               "boolean"
             ]
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "attributeTags": {
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
           },
           "system": {
             "type": "object",
@@ -25628,6 +25681,21 @@ Schema for a single Device Recipe
               "gps",
               "boolean"
             ]
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "attributeTags": {
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
           },
           "system": {
             "type": "object",
@@ -25940,6 +26008,21 @@ Schema for the body of a Device Recipe modification request
               "boolean"
             ]
           },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "attributeTags": {
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
+          },
           "system": {
             "type": "object",
             "properties": {
@@ -26137,6 +26220,21 @@ Schema for the body of a Device Recipe creation request
               "gps",
               "boolean"
             ]
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "attributeTags": {
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
           },
           "system": {
             "type": "object",
@@ -26365,6 +26463,21 @@ Schema for a collection of Device Recipes
                     "gps",
                     "boolean"
                   ]
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 32767
+                },
+                "attributeTags": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}$": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
                 },
                 "system": {
                   "type": "object",
@@ -26971,6 +27084,21 @@ Schema for a collection of Devices
                     "boolean"
                   ]
                 },
+                "description": {
+                  "type": "string",
+                  "maxLength": 32767
+                },
+                "attributeTags": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}$": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                },
                 "system": {
                   "type": "object",
                   "properties": {
@@ -27188,14 +27316,6 @@ Schema for a collection of Devices
           "type": "null"
         }
       ]
-    },
-    "systemInterval": {
-      "type": "integer",
-      "minimum": 5,
-      "maximum": 3600
-    },
-    "keepDuplicates": {
-      "type": "boolean"
     }
   }
 }
