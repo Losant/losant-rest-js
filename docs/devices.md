@@ -8,6 +8,7 @@ parameters and the potential responses.
 
 *   [Export](#export)
 *   [Get](#get)
+*   [Patch](#patch)
 *   [Post](#post)
 *   [Send Command](#send-command)
 
@@ -111,6 +112,55 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Devices](_schemas.md#devices) | Collection of devices |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
+
+<br/>
+
+## Patch
+
+Update the fields of one or more devices.
+
+```javascript
+var params = {
+  applicationId: myApplicationId
+};
+
+// with callbacks
+client.devices.patch(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.devices.patch(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, devices.*, or devices.patch.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| patchInfo | [Devices Patch](_schemas.md#devices-patch) | N | Object containing device filter fields and updated properties. |  | [Devices Patch Example](_schemas.md#devices-patch-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 201 | [Success](_schemas.md#success) | Successfully queued bulk update job. |
 
 #### Error Responses
 

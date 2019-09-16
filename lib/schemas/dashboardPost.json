@@ -283,7 +283,8 @@
               "blockType": {
                 "type": "string",
                 "enum": [
-                  "custom-chart"
+                  "custom-chart",
+                  "custom-html"
                 ]
               },
               "config": {
@@ -1444,6 +1445,10 @@
                         },
                         "detectDataGaps": {
                           "type": "boolean"
+                        },
+                        "expression": {
+                          "type": "string",
+                          "maxLength": 255
                         },
                         "graphType": {
                           "type": "string",
@@ -4004,11 +4009,11 @@
         "properties": {
           "id": {
             "type": "string",
-            "max": 14
+            "maxLength": 14
           },
           "cron": {
             "type": "string",
-            "max": 255
+            "maxLength": 255
           },
           "toEmail": {
             "type": "array",
@@ -4022,11 +4027,11 @@
           },
           "subject": {
             "type": "string",
-            "max": 255
+            "maxLength": 255
           },
           "message": {
             "type": "string",
-            "max": 32767
+            "maxLength": 32767
           },
           "theme": {
             "type": "string",
@@ -4037,7 +4042,7 @@
           },
           "timezone": {
             "type": "string",
-            "max": 255
+            "maxLength": 255
           }
         },
         "additionalProperties": false,
