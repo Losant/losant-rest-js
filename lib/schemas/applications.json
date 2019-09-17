@@ -314,6 +314,31 @@
                   "bucket"
                 ],
                 "additionalProperties": false
+              },
+              "azure": {
+                "type": "object",
+                "properties": {
+                  "account": {
+                    "type": "string",
+                    "min": 3,
+                    "max": 24
+                  },
+                  "accountKey": {
+                    "type": "string",
+                    "max": 255
+                  },
+                  "bucket": {
+                    "type": "string",
+                    "min": 3,
+                    "max": 63
+                  }
+                },
+                "required": [
+                  "account",
+                  "accountKey",
+                  "bucket"
+                ],
+                "additionalProperties": false
               }
             },
             "additionalProperties": false
