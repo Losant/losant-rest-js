@@ -81,7 +81,7 @@
             "properties": {
               "id": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48
               },
               "title": {
                 "type": "string",
@@ -998,7 +998,7 @@
             "properties": {
               "id": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48
               },
               "title": {
                 "type": "string",
@@ -2372,7 +2372,7 @@
             "properties": {
               "id": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48
               },
               "title": {
                 "type": "string",
@@ -4027,7 +4027,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "maxLength": 14
+            "maxLength": 48
           },
           "cron": {
             "type": "string",

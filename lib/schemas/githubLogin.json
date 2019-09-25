@@ -140,6 +140,7 @@
                   "deviceRecipe.patch",
                   "deviceRecipes.get",
                   "deviceRecipes.post",
+                  "devices.patch",
                   "devices.detailedSummary",
                   "devices.export",
                   "devices.get",

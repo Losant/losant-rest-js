@@ -53,6 +53,7 @@
 *   [Data Table Rows Export](#data-table-rows-export)
 *   [Data Tables](#data-tables)
 *   [Device](#device)
+*   [Device Class Filter](#device-class-filter)
 *   [Device Command](#device-command)
 *   [Device Commands](#device-commands)
 *   [Device Connection Status](#device-connection-status)
@@ -72,6 +73,7 @@
 *   [Device States](#device-states)
 *   [Device Tag Filter](#device-tag-filter)
 *   [Devices](#devices)
+*   [Devices Patch](#devices-patch)
 *   [Disable Two Factor Auth](#disable-two-factor-auth)
 *   [Edge Deployment](#edge-deployment)
 *   [Edge Deployment Release](#edge-deployment-release)
@@ -2025,6 +2027,7 @@ Schema for the body of an Application API Token creation request
           "deviceRecipe.patch",
           "deviceRecipes.get",
           "deviceRecipes.post",
+          "devices.patch",
           "devices.detailedSummary",
           "devices.export",
           "devices.get",
@@ -4940,7 +4943,8 @@ Schema for the successful response when authenticating a Device
         "gateway",
         "peripheral",
         "floating",
-        "edgeCompute"
+        "edgeCompute",
+        "system"
       ]
     },
     "token": {
@@ -5224,7 +5228,7 @@ Schema for a single Dashboard
         "properties": {
           "id": {
             "type": "string",
-            "maxLength": 14
+            "maxLength": 48
           },
           "cron": {
             "type": "string",
@@ -5333,7 +5337,7 @@ Schema for a single Dashboard
             "properties": {
               "id": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48
               },
               "title": {
                 "type": "string",
@@ -6250,7 +6254,7 @@ Schema for a single Dashboard
             "properties": {
               "id": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48
               },
               "title": {
                 "type": "string",
@@ -7624,7 +7628,7 @@ Schema for a single Dashboard
             "properties": {
               "id": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48
               },
               "title": {
                 "type": "string",
@@ -9833,7 +9837,7 @@ Schema for the body of a Dashboard modification request
             "properties": {
               "id": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48
               },
               "title": {
                 "type": "string",
@@ -10750,7 +10754,7 @@ Schema for the body of a Dashboard modification request
             "properties": {
               "id": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48
               },
               "title": {
                 "type": "string",
@@ -12124,7 +12128,7 @@ Schema for the body of a Dashboard modification request
             "properties": {
               "id": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48
               },
               "title": {
                 "type": "string",
@@ -13763,7 +13767,7 @@ Schema for the body of a Dashboard modification request
         "properties": {
           "id": {
             "type": "string",
-            "maxLength": 14
+            "maxLength": 48
           },
           "cron": {
             "type": "string",
@@ -14262,7 +14266,7 @@ Schema for the body of a Dashboard creation request
             "properties": {
               "id": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48
               },
               "title": {
                 "type": "string",
@@ -15179,7 +15183,7 @@ Schema for the body of a Dashboard creation request
             "properties": {
               "id": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48
               },
               "title": {
                 "type": "string",
@@ -16553,7 +16557,7 @@ Schema for the body of a Dashboard creation request
             "properties": {
               "id": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48
               },
               "title": {
                 "type": "string",
@@ -18208,7 +18212,7 @@ Schema for the body of a Dashboard creation request
         "properties": {
           "id": {
             "type": "string",
-            "maxLength": 14
+            "maxLength": 48
           },
           "cron": {
             "type": "string",
@@ -18837,7 +18841,7 @@ Schema for a collection of Dashboards
               "properties": {
                 "id": {
                   "type": "string",
-                  "maxLength": 14
+                  "maxLength": 48
                 },
                 "cron": {
                   "type": "string",
@@ -18946,7 +18950,7 @@ Schema for a collection of Dashboards
                   "properties": {
                     "id": {
                       "type": "string",
-                      "maxLength": 255
+                      "maxLength": 48
                     },
                     "title": {
                       "type": "string",
@@ -19863,7 +19867,7 @@ Schema for a collection of Dashboards
                   "properties": {
                     "id": {
                       "type": "string",
-                      "maxLength": 255
+                      "maxLength": 48
                     },
                     "title": {
                       "type": "string",
@@ -21237,7 +21241,7 @@ Schema for a collection of Dashboards
                   "properties": {
                     "id": {
                       "type": "string",
-                      "maxLength": 255
+                      "maxLength": 48
                     },
                     "title": {
                       "type": "string",
@@ -24573,6 +24577,95 @@ Schema for a single Device
               "gps",
               "boolean"
             ]
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "attributeTags": {
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
+          },
+          "system": {
+            "type": "object",
+            "properties": {
+              "aggregation": {
+                "type": "string",
+                "enum": [
+                  "FIRST",
+                  "LAST",
+                  "COUNT",
+                  "MAX",
+                  "MIN",
+                  "MEDIAN",
+                  "MEAN",
+                  "SUM",
+                  "STD_DEV",
+                  "NONE"
+                ]
+              },
+              "childAttributes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "mode": {
+                      "type": "string",
+                      "enum": [
+                        "all",
+                        "whitelist",
+                        "blacklist"
+                      ]
+                    },
+                    "deviceIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^[A-Fa-f\\d]{24}$"
+                      },
+                      "maxItems": 1000
+                    },
+                    "deviceTags": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          },
+                          "value": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 255
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "mode"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 256
+              }
+            },
+            "additionalProperties": false
           }
         },
         "required": [
@@ -24590,7 +24683,8 @@ Schema for a single Device
         "gateway",
         "peripheral",
         "floating",
-        "edgeCompute"
+        "edgeCompute",
+        "system"
       ]
     },
     "gatewayId": {
@@ -24616,6 +24710,25 @@ Schema for a single Device
           ]
         }
       }
+    },
+    "parentId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "systemInterval": {
+      "type": "integer",
+      "minimum": 5,
+      "maximum": 3600
+    },
+    "keepDuplicates": {
+      "type": "boolean"
     }
   }
 }
@@ -24647,12 +24760,63 @@ Schema for a single Device
       "dataType": "number"
     }
   ],
+  "parentId": "5d8a0da7ce2f3d37c205d0c5",
   "deviceClass": "standalone",
   "connectionInfo": {
     "time": "2016-06-14T08:15:00.000Z",
     "connected": 1
   }
 }
+```
+
+<br/>
+
+## Device Class Filter
+
+Select one or multiple device classes
+
+### <a name="device-class-filter-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "oneOf": [
+    {
+      "type": "string",
+      "enum": [
+        "standalone",
+        "gateway",
+        "peripheral",
+        "floating",
+        "edgeCompute",
+        "system"
+      ]
+    },
+    {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "standalone",
+          "gateway",
+          "peripheral",
+          "floating",
+          "edgeCompute",
+          "system"
+        ]
+      },
+      "additionalProperties": false
+    }
+  ]
+}
+```
+### <a name="device-class-filter-example"></a> Example
+
+```json
+[
+  "standalone",
+  "edgeCompute"
+]
 ```
 
 <br/>
@@ -25138,6 +25302,95 @@ Schema for the body of a Device modification request
               "gps",
               "boolean"
             ]
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "attributeTags": {
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
+          },
+          "system": {
+            "type": "object",
+            "properties": {
+              "aggregation": {
+                "type": "string",
+                "enum": [
+                  "FIRST",
+                  "LAST",
+                  "COUNT",
+                  "MAX",
+                  "MIN",
+                  "MEDIAN",
+                  "MEAN",
+                  "SUM",
+                  "STD_DEV",
+                  "NONE"
+                ]
+              },
+              "childAttributes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "mode": {
+                      "type": "string",
+                      "enum": [
+                        "all",
+                        "whitelist",
+                        "blacklist"
+                      ]
+                    },
+                    "deviceIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^[A-Fa-f\\d]{24}$"
+                      },
+                      "maxItems": 1000
+                    },
+                    "deviceTags": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          },
+                          "value": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 255
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "mode"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 256
+              }
+            },
+            "additionalProperties": false
           }
         },
         "required": [
@@ -25155,12 +25408,32 @@ Schema for the body of a Device modification request
         "gateway",
         "peripheral",
         "floating",
-        "edgeCompute"
+        "edgeCompute",
+        "system"
       ]
     },
     "gatewayId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "parentId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "systemInterval": {
+      "type": "integer",
+      "minimum": 5,
+      "maximum": 3600
+    },
+    "keepDuplicates": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false
@@ -25250,6 +25523,95 @@ Schema for the body of a Device creation request
               "gps",
               "boolean"
             ]
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "attributeTags": {
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
+          },
+          "system": {
+            "type": "object",
+            "properties": {
+              "aggregation": {
+                "type": "string",
+                "enum": [
+                  "FIRST",
+                  "LAST",
+                  "COUNT",
+                  "MAX",
+                  "MIN",
+                  "MEDIAN",
+                  "MEAN",
+                  "SUM",
+                  "STD_DEV",
+                  "NONE"
+                ]
+              },
+              "childAttributes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "mode": {
+                      "type": "string",
+                      "enum": [
+                        "all",
+                        "whitelist",
+                        "blacklist"
+                      ]
+                    },
+                    "deviceIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^[A-Fa-f\\d]{24}$"
+                      },
+                      "maxItems": 1000
+                    },
+                    "deviceTags": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          },
+                          "value": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 255
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "mode"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 256
+              }
+            },
+            "additionalProperties": false
           }
         },
         "required": [
@@ -25267,12 +25629,32 @@ Schema for the body of a Device creation request
         "gateway",
         "peripheral",
         "floating",
-        "edgeCompute"
+        "edgeCompute",
+        "system"
       ]
     },
     "gatewayId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "parentId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "systemInterval": {
+      "type": "integer",
+      "minimum": 5,
+      "maximum": 3600
+    },
+    "keepDuplicates": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false,
@@ -25394,6 +25776,95 @@ Schema for a single Device Recipe
               "gps",
               "boolean"
             ]
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "attributeTags": {
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
+          },
+          "system": {
+            "type": "object",
+            "properties": {
+              "aggregation": {
+                "type": "string",
+                "enum": [
+                  "FIRST",
+                  "LAST",
+                  "COUNT",
+                  "MAX",
+                  "MIN",
+                  "MEDIAN",
+                  "MEAN",
+                  "SUM",
+                  "STD_DEV",
+                  "NONE"
+                ]
+              },
+              "childAttributes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "mode": {
+                      "type": "string",
+                      "enum": [
+                        "all",
+                        "whitelist",
+                        "blacklist"
+                      ]
+                    },
+                    "deviceIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^[A-Fa-f\\d]{24}$"
+                      },
+                      "maxItems": 1000
+                    },
+                    "deviceTags": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          },
+                          "value": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 255
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "mode"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 256
+              }
+            },
+            "additionalProperties": false
           }
         },
         "required": [
@@ -25411,12 +25882,32 @@ Schema for a single Device Recipe
         "gateway",
         "peripheral",
         "floating",
-        "edgeCompute"
+        "edgeCompute",
+        "system"
       ]
     },
     "gatewayId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "parentId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "systemInterval": {
+      "type": "integer",
+      "minimum": 5,
+      "maximum": 3600
+    },
+    "keepDuplicates": {
+      "type": "boolean"
     }
   }
 }
@@ -25630,6 +26121,95 @@ Schema for the body of a Device Recipe modification request
               "gps",
               "boolean"
             ]
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "attributeTags": {
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
+          },
+          "system": {
+            "type": "object",
+            "properties": {
+              "aggregation": {
+                "type": "string",
+                "enum": [
+                  "FIRST",
+                  "LAST",
+                  "COUNT",
+                  "MAX",
+                  "MIN",
+                  "MEDIAN",
+                  "MEAN",
+                  "SUM",
+                  "STD_DEV",
+                  "NONE"
+                ]
+              },
+              "childAttributes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "mode": {
+                      "type": "string",
+                      "enum": [
+                        "all",
+                        "whitelist",
+                        "blacklist"
+                      ]
+                    },
+                    "deviceIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^[A-Fa-f\\d]{24}$"
+                      },
+                      "maxItems": 1000
+                    },
+                    "deviceTags": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          },
+                          "value": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 255
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "mode"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 256
+              }
+            },
+            "additionalProperties": false
           }
         },
         "required": [
@@ -25647,12 +26227,32 @@ Schema for the body of a Device Recipe modification request
         "gateway",
         "peripheral",
         "floating",
-        "edgeCompute"
+        "edgeCompute",
+        "system"
       ]
     },
     "gatewayId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "parentId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "systemInterval": {
+      "type": "integer",
+      "minimum": 5,
+      "maximum": 3600
+    },
+    "keepDuplicates": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false
@@ -25753,6 +26353,95 @@ Schema for the body of a Device Recipe creation request
               "gps",
               "boolean"
             ]
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "attributeTags": {
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "additionalProperties": false
+          },
+          "system": {
+            "type": "object",
+            "properties": {
+              "aggregation": {
+                "type": "string",
+                "enum": [
+                  "FIRST",
+                  "LAST",
+                  "COUNT",
+                  "MAX",
+                  "MIN",
+                  "MEDIAN",
+                  "MEAN",
+                  "SUM",
+                  "STD_DEV",
+                  "NONE"
+                ]
+              },
+              "childAttributes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "mode": {
+                      "type": "string",
+                      "enum": [
+                        "all",
+                        "whitelist",
+                        "blacklist"
+                      ]
+                    },
+                    "deviceIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^[A-Fa-f\\d]{24}$"
+                      },
+                      "maxItems": 1000
+                    },
+                    "deviceTags": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          },
+                          "value": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 255
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "mode"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 256
+              }
+            },
+            "additionalProperties": false
           }
         },
         "required": [
@@ -25770,12 +26459,32 @@ Schema for the body of a Device Recipe creation request
         "gateway",
         "peripheral",
         "floating",
-        "edgeCompute"
+        "edgeCompute",
+        "system"
       ]
     },
     "gatewayId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "parentId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "systemInterval": {
+      "type": "integer",
+      "minimum": 5,
+      "maximum": 3600
+    },
+    "keepDuplicates": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false,
@@ -25906,6 +26615,95 @@ Schema for a collection of Device Recipes
                     "gps",
                     "boolean"
                   ]
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 32767
+                },
+                "attributeTags": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}$": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "system": {
+                  "type": "object",
+                  "properties": {
+                    "aggregation": {
+                      "type": "string",
+                      "enum": [
+                        "FIRST",
+                        "LAST",
+                        "COUNT",
+                        "MAX",
+                        "MIN",
+                        "MEDIAN",
+                        "MEAN",
+                        "SUM",
+                        "STD_DEV",
+                        "NONE"
+                      ]
+                    },
+                    "childAttributes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          },
+                          "mode": {
+                            "type": "string",
+                            "enum": [
+                              "all",
+                              "whitelist",
+                              "blacklist"
+                            ]
+                          },
+                          "deviceIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "pattern": "^[A-Fa-f\\d]{24}$"
+                            },
+                            "maxItems": 1000
+                          },
+                          "deviceTags": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "key": {
+                                  "type": "string",
+                                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 255
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "maxItems": 100
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "mode"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "maxItems": 256
+                    }
+                  },
+                  "additionalProperties": false
                 }
               },
               "required": [
@@ -25923,12 +26721,32 @@ Schema for a collection of Device Recipes
               "gateway",
               "peripheral",
               "floating",
-              "edgeCompute"
+              "edgeCompute",
+              "system"
             ]
           },
           "gatewayId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "parentId": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "systemInterval": {
+            "type": "integer",
+            "minimum": 5,
+            "maximum": 3600
+          },
+          "keepDuplicates": {
+            "type": "boolean"
           }
         }
       }
@@ -26436,6 +27254,95 @@ Schema for a collection of Devices
                     "gps",
                     "boolean"
                   ]
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 32767
+                },
+                "attributeTags": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}$": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "system": {
+                  "type": "object",
+                  "properties": {
+                    "aggregation": {
+                      "type": "string",
+                      "enum": [
+                        "FIRST",
+                        "LAST",
+                        "COUNT",
+                        "MAX",
+                        "MIN",
+                        "MEDIAN",
+                        "MEAN",
+                        "SUM",
+                        "STD_DEV",
+                        "NONE"
+                      ]
+                    },
+                    "childAttributes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          },
+                          "mode": {
+                            "type": "string",
+                            "enum": [
+                              "all",
+                              "whitelist",
+                              "blacklist"
+                            ]
+                          },
+                          "deviceIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "pattern": "^[A-Fa-f\\d]{24}$"
+                            },
+                            "maxItems": 1000
+                          },
+                          "deviceTags": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "key": {
+                                  "type": "string",
+                                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 255
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "maxItems": 100
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "mode"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "maxItems": 256
+                    }
+                  },
+                  "additionalProperties": false
                 }
               },
               "required": [
@@ -26453,7 +27360,8 @@ Schema for a collection of Devices
               "gateway",
               "peripheral",
               "floating",
-              "edgeCompute"
+              "edgeCompute",
+              "system"
             ]
           },
           "gatewayId": {
@@ -26479,6 +27387,25 @@ Schema for a collection of Devices
                 ]
               }
             }
+          },
+          "parentId": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "systemInterval": {
+            "type": "integer",
+            "minimum": 5,
+            "maximum": 3600
+          },
+          "keepDuplicates": {
+            "type": "boolean"
           }
         }
       }
@@ -26525,7 +27452,8 @@ Schema for a collection of Devices
         "gateway",
         "peripheral",
         "floating",
-        "edgeCompute"
+        "edgeCompute",
+        "system"
       ]
     },
     "tagFilter": {
@@ -26548,6 +27476,17 @@ Schema for a collection of Devices
         "additionalProperties": false
       },
       "maxItems": 100
+    },
+    "parentId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
     }
   }
 }
@@ -26581,6 +27520,7 @@ Schema for a collection of Devices
           "dataType": "number"
         }
       ],
+      "parentId": "5d8a0da7ce2f3d37c205d0c5",
       "deviceClass": "standalone",
       "connectionInfo": {
         "time": "2016-06-14T08:15:00.000Z",
@@ -26595,6 +27535,254 @@ Schema for a collection of Devices
   "sortField": "name",
   "sortDirection": "asc",
   "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
+
+## Devices Patch
+
+Schema for the body of a Devices modification request
+
+### <a name="devices-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "updateFields": {
+      "title": "Device Patch",
+      "description": "Schema for the body of a Device modification request",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 32767
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "required": [
+              "key",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 100
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "dataType": {
+                "type": "string",
+                "enum": [
+                  "string",
+                  "number",
+                  "gps",
+                  "boolean"
+                ]
+              },
+              "description": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "attributeTags": {
+                "type": "object",
+                "patternProperties": {
+                  "^[0-9a-zA-Z_-]{1,255}$": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  }
+                },
+                "additionalProperties": false
+              },
+              "system": {
+                "type": "object",
+                "properties": {
+                  "aggregation": {
+                    "type": "string",
+                    "enum": [
+                      "FIRST",
+                      "LAST",
+                      "COUNT",
+                      "MAX",
+                      "MIN",
+                      "MEDIAN",
+                      "MEAN",
+                      "SUM",
+                      "STD_DEV",
+                      "NONE"
+                    ]
+                  },
+                  "childAttributes": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        },
+                        "mode": {
+                          "type": "string",
+                          "enum": [
+                            "all",
+                            "whitelist",
+                            "blacklist"
+                          ]
+                        },
+                        "deviceIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "pattern": "^[A-Fa-f\\d]{24}$"
+                          },
+                          "maxItems": 1000
+                        },
+                        "deviceTags": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string",
+                                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                              },
+                              "value": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 255
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "mode"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 256
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "dataType"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 256
+        },
+        "deviceClass": {
+          "type": "string",
+          "enum": [
+            "standalone",
+            "gateway",
+            "peripheral",
+            "floating",
+            "edgeCompute",
+            "system"
+          ]
+        },
+        "gatewayId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "parentId": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "systemInterval": {
+          "type": "integer",
+          "minimum": 5,
+          "maximum": 3600
+        },
+        "keepDuplicates": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "deviceIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "updateFields",
+    "deviceIds"
+  ]
+}
+```
+### <a name="devices-patch-example"></a> Example
+
+```json
+{
+  "updateFields": {
+    "name": "My Updated Device",
+    "description": "Description of my updated device",
+    "tags": [
+      {
+        "key": "TagKey",
+        "value": "TagValue"
+      }
+    ],
+    "attributes": [
+      {
+        "name": "voltage",
+        "dataType": "number"
+      }
+    ],
+    "deviceClass": "standalone"
+  },
+  "deviceIds": [
+    "575ecec57ae143cd83dc4a9f",
+    "575ecec57ae143cd83dc4a9e",
+    "575ecec57ae143cd83dc4a9a"
+  ]
 }
 ```
 
@@ -60609,6 +61797,7 @@ Schema for the body of a Github login request
                   "deviceRecipe.patch",
                   "deviceRecipes.get",
                   "deviceRecipes.post",
+                  "devices.patch",
                   "devices.detailedSummary",
                   "devices.export",
                   "devices.get",
@@ -66897,6 +68086,7 @@ Schema for the body of a User authentication request
                   "deviceRecipe.patch",
                   "deviceRecipes.get",
                   "deviceRecipes.post",
+                  "devices.patch",
                   "devices.detailedSummary",
                   "devices.export",
                   "devices.get",
@@ -67309,6 +68499,7 @@ Schema for the body of a User creation request
                   "deviceRecipe.patch",
                   "deviceRecipes.get",
                   "deviceRecipes.post",
+                  "devices.patch",
                   "devices.detailedSummary",
                   "devices.export",
                   "devices.get",

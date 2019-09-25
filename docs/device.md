@@ -107,7 +107,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | start | string | N | Start time of export (ms since epoch - 0 means now, negative is relative to now) | 1 | 1465790400000 |
 | end | string | N | End time of export (ms since epoch - 0 means now, negative is relative to now) | 0 | 1465790400000 |
 | email | string | N | Email address to send export to. Defaults to current user&#x27;s email. |  | email@example.com |
-| callbackUrl | string | N | Callback URL to call with export result. |  | https://example.com/cburl |
+| callbackUrl | string | N | Callback URL to call with export result |  | https://example.com/cburl |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
