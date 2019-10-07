@@ -82,11 +82,11 @@
         "properties": {
           "id": {
             "type": "string",
-            "max": 14
+            "maxLength": 48
           },
           "cron": {
             "type": "string",
-            "max": 255
+            "maxLength": 255
           },
           "toEmail": {
             "type": "array",
@@ -100,11 +100,11 @@
           },
           "subject": {
             "type": "string",
-            "max": 255
+            "maxLength": 255
           },
           "message": {
             "type": "string",
-            "max": 32767
+            "maxLength": 32767
           },
           "theme": {
             "type": "string",
@@ -115,7 +115,7 @@
           },
           "timezone": {
             "type": "string",
-            "max": 255
+            "maxLength": 255
           }
         },
         "additionalProperties": false,
@@ -191,7 +191,7 @@
             "properties": {
               "id": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48
               },
               "title": {
                 "type": "string",
@@ -393,15 +393,34 @@
               "blockType": {
                 "type": "string",
                 "enum": [
-                  "custom-chart"
+                  "custom-chart",
+                  "custom-html"
                 ]
               },
               "config": {
                 "type": "object",
                 "properties": {
                   "configuration": {
-                    "type": "string",
-                    "maxLength": 32767
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "headContent": {
+                            "type": "string",
+                            "maxLength": 32767
+                          },
+                          "bodyContent": {
+                            "type": "string",
+                            "maxLength": 32767
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "string",
+                        "maxLength": 32767
+                      }
+                    ]
                   },
                   "segments": {
                     "type": "array",
@@ -1089,7 +1108,7 @@
             "properties": {
               "id": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48
               },
               "title": {
                 "type": "string",
@@ -1554,6 +1573,10 @@
                         },
                         "detectDataGaps": {
                           "type": "boolean"
+                        },
+                        "expression": {
+                          "type": "string",
+                          "maxLength": 255
                         },
                         "graphType": {
                           "type": "string",
@@ -2459,7 +2482,7 @@
             "properties": {
               "id": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48
               },
               "title": {
                 "type": "string",

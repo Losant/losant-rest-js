@@ -8,6 +8,7 @@ parameters and the potential responses.
 
 *   [Export](#export)
 *   [Get](#get)
+*   [Patch](#patch)
 *   [Post](#post)
 *   [Send Command](#send-command)
 
@@ -15,7 +16,7 @@ parameters and the potential responses.
 
 ## Export
 
-Creates an export of all device metadata.
+Creates an export of all device metadata
 
 ```javascript
 var params = {
@@ -45,7 +46,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | email | string | N | Email address to send export to. Defaults to current user&#x27;s email. |  | email@example.com |
-| callbackUrl | string | N | Callback URL to call with export result. |  | https://example.com/cburl |
+| callbackUrl | string | N | Callback URL to call with export result |  | https://example.com/cburl |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -100,9 +101,10 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | perPage | string | N | How many items to return per page | 1000 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my * device |
-| deviceClass | string | N | Filter the devices by the given device class. Accepted values are: standalone, gateway, peripheral, floating, edgeCompute |  | standalone |
-| tagFilter | [Device Tag Filter](_schemas.md#device-tag-filter) | N | Array of tag pairs to filter by. |  | [Device Tag Filter Example](_schemas.md#device-tag-filter-example) |
+| deviceClass | [Device Class Filter](_schemas.md#device-class-filter) | N | Filter the devices by the given device class or classes |  | [Device Class Filter Example](_schemas.md#device-class-filter-example) |
+| tagFilter | [Device Tag Filter](_schemas.md#device-tag-filter) | N | Array of tag pairs to filter by |  | [Device Tag Filter Example](_schemas.md#device-tag-filter-example) |
 | excludeConnectionInfo | string | N | If set, do not return connection info |  | true |
+| parentId | string | N | Filter devices as children of a given system id |  | 575ecf887ae143cd83dc4aa2 |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -110,6 +112,55 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Devices](_schemas.md#devices) | Collection of devices |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
+
+<br/>
+
+## Patch
+
+Update the fields of one or more devices
+
+```javascript
+var params = {
+  applicationId: myApplicationId
+};
+
+// with callbacks
+client.devices.patch(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.devices.patch(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, devices.*, or devices.patch.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| patchInfo | [Devices Patch](_schemas.md#devices-patch) | N | Object containing device filter fields and updated properties |  | [Devices Patch Example](_schemas.md#devices-patch-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 201 | [Success](_schemas.md#success) | Successfully queued bulk update job |
 
 #### Error Responses
 
