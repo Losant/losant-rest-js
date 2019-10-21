@@ -5760,6 +5760,15 @@ Schema for a single Dashboard
                         }
                       ]
                     }
+                  },
+                  "vegaVersion": {
+                    "type": "string",
+                    "enum": [
+                      "vegaLite2",
+                      "vegaLite3",
+                      "vega4",
+                      "vega5"
+                    ]
                   }
                 },
                 "additionalProperties": false
@@ -10260,6 +10269,15 @@ Schema for the body of a Dashboard modification request
                         }
                       ]
                     }
+                  },
+                  "vegaVersion": {
+                    "type": "string",
+                    "enum": [
+                      "vegaLite2",
+                      "vegaLite3",
+                      "vega4",
+                      "vega5"
+                    ]
                   }
                 },
                 "additionalProperties": false
@@ -14689,6 +14707,15 @@ Schema for the body of a Dashboard creation request
                         }
                       ]
                     }
+                  },
+                  "vegaVersion": {
+                    "type": "string",
+                    "enum": [
+                      "vegaLite2",
+                      "vegaLite3",
+                      "vega4",
+                      "vega5"
+                    ]
                   }
                 },
                 "additionalProperties": false
@@ -19373,6 +19400,15 @@ Schema for a collection of Dashboards
                               }
                             ]
                           }
+                        },
+                        "vegaVersion": {
+                          "type": "string",
+                          "enum": [
+                            "vegaLite2",
+                            "vegaLite3",
+                            "vega4",
+                            "vega5"
+                          ]
                         }
                       },
                       "additionalProperties": false
@@ -64117,6 +64153,32 @@ Schema for a single Notebook
               "outputType": {
                 "type": "string",
                 "enum": [
+                  "directory"
+                ]
+              },
+              "directoryName": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+              },
+              "destinationDirectoryTemplate": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              }
+            },
+            "required": [
+              "directoryName",
+              "outputType",
+              "destinationDirectoryTemplate"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "outputType": {
+                "type": "string",
+                "enum": [
                   "executionResult"
                 ]
               },
@@ -64267,6 +64329,11 @@ Schema for a single Notebook
       "outputType": "file",
       "destinationDirectoryTemplate": "/{{notebook.name}}/{{execution.runStartedAt}}",
       "destinationFileNameTemplate": "myApplicationFile.png"
+    },
+    {
+      "directoryName": "myApplicationFolder",
+      "outputType": "directory",
+      "destinationDirectoryTemplate": "/{{notebook.name}}/{{execution.runStartedAt}}"
     }
   ]
 }
@@ -64523,7 +64590,9 @@ Schema for the options for a Notebook execution request
 ### <a name="notebook-execution-options-example"></a> Example
 
 ```json
-{}
+{
+  "relativeTo": 1570549199451
+}
 ```
 
 <br/>
@@ -64785,6 +64854,32 @@ Schema for the body of a Notebook modification request
               "fileName",
               "outputType",
               "destinationFileNameTemplate"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "outputType": {
+                "type": "string",
+                "enum": [
+                  "directory"
+                ]
+              },
+              "directoryName": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+              },
+              "destinationDirectoryTemplate": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              }
+            },
+            "required": [
+              "directoryName",
+              "outputType",
+              "destinationDirectoryTemplate"
             ],
             "additionalProperties": false
           },
@@ -65098,6 +65193,32 @@ Schema for the body of an Notebook creation request
               "fileName",
               "outputType",
               "destinationFileNameTemplate"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "outputType": {
+                "type": "string",
+                "enum": [
+                  "directory"
+                ]
+              },
+              "directoryName": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+              },
+              "destinationDirectoryTemplate": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              }
+            },
+            "required": [
+              "directoryName",
+              "outputType",
+              "destinationDirectoryTemplate"
             ],
             "additionalProperties": false
           },
@@ -65458,6 +65579,32 @@ Schema for a collection of Notebooks
                     "outputType": {
                       "type": "string",
                       "enum": [
+                        "directory"
+                      ]
+                    },
+                    "directoryName": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    },
+                    "destinationDirectoryTemplate": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024
+                    }
+                  },
+                  "required": [
+                    "directoryName",
+                    "outputType",
+                    "destinationDirectoryTemplate"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "outputType": {
+                      "type": "string",
+                      "enum": [
                         "executionResult"
                       ]
                     },
@@ -65648,6 +65795,11 @@ Schema for a collection of Notebooks
           "outputType": "file",
           "destinationDirectoryTemplate": "/{{notebook.name}}/{{execution.runStartedAt}}",
           "destinationFileNameTemplate": "myApplicationFile.png"
+        },
+        {
+          "directoryName": "myApplicationFolder",
+          "outputType": "directory",
+          "destinationDirectoryTemplate": "/{{notebook.name}}/{{execution.runStartedAt}}"
         }
       ]
     }
