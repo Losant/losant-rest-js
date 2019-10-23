@@ -3020,7 +3020,7 @@ Schema for reporting a successful dry run of clone application
 
 ## Application Clone Enqueue
 
-Schema for the result of a application clone request when creating more than 1000 resources
+Schema for the result of an application clone request when creating more than 1000 resources
 
 ### <a name="application-clone-enqueue-schema"></a> Schema
 

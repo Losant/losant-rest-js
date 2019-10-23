@@ -156,8 +156,8 @@ all.Application, all.Organization, all.User, application.*, or application.clone
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success Dry Run](_schemas.md#success-dry-run) | if dryRun is set an successful, then return success |
-| 201 | [Application Clone](_schemas.md#application-clone) | If application was successfully clone |
+| 200 | [Success Dry Run](_schemas.md#success-dry-run) | if dryRun is set and successful, then return success |
+| 201 | [Application Clone](_schemas.md#application-clone) | If application was successfully cloned |
 | 202 | [Application Clone Enqueue](_schemas.md#application-clone-enqueue) | If application was enqueued to be cloned |
 
 #### Error Responses
