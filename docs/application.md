@@ -8,6 +8,7 @@ parameters and the potential responses.
 
 *   [Archive Data](#archive-data)
 *   [Backfill Archive Data](#backfill-archive-data)
+*   [Clone](#clone)
 *   [Delete](#delete)
 *   [Full Data Tables Archive](#full-data-tables-archive)
 *   [Full Events Archive](#full-events-archive)
@@ -114,6 +115,57 @@ all.Application, all.Organization, all.User, application.*, or application.backf
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if application was not found |
+
+<br/>
+
+## Clone
+
+Copy an application into a new application
+
+```javascript
+var params = {
+  applicationId: myApplicationId
+};
+
+// with callbacks
+client.application.clone(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.application.clone(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, application.*, or application.clone.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
+| options | [Application Clone Post Schema](_schemas.md#application-clone-post-schema) | N | Object containing optional clone fields |  | [Application Clone Post Schema Example](_schemas.md#application-clone-post-schema-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Success Dry Run](_schemas.md#success-dry-run) | if dryRun is set an successful, then return success |
+| 201 | [Application Clone](_schemas.md#application-clone) | If application was successfully clone |
+| 202 | [Application Clone Enqueue](_schemas.md#application-clone-enqueue) | If application was enqueued to be cloned |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application is not found |
 
 <br/>
 

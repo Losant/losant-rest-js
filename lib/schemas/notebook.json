@@ -285,6 +285,32 @@
               "outputType": {
                 "type": "string",
                 "enum": [
+                  "directory"
+                ]
+              },
+              "directoryName": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+              },
+              "destinationDirectoryTemplate": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              }
+            },
+            "required": [
+              "directoryName",
+              "outputType",
+              "destinationDirectoryTemplate"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "outputType": {
+                "type": "string",
+                "enum": [
                   "executionResult"
                 ]
               },

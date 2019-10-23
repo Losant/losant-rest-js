@@ -496,6 +496,15 @@
                         }
                       ]
                     }
+                  },
+                  "vegaVersion": {
+                    "type": "string",
+                    "enum": [
+                      "vegaLite2",
+                      "vegaLite3",
+                      "vega4",
+                      "vega5"
+                    ]
                   }
                 },
                 "additionalProperties": false
