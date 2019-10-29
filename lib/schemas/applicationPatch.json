@@ -42,6 +42,10 @@
           "cloudOnly": {
             "type": "boolean",
             "default": false
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
           }
         },
         "additionalProperties": false,
