@@ -70,6 +70,7 @@
                   "webhooks.*",
                   "application.archiveData",
                   "application.backfillArchiveData",
+                  "application.clone",
                   "application.fullEventsArchive",
                   "application.fullDataTablesArchive",
                   "application.debug",
