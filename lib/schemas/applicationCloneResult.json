@@ -346,6 +346,27 @@
           "additionalProperties": false
         }
       }
+    },
+    "validationErrors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
     }
   }
 }

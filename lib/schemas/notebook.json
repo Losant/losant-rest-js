@@ -54,35 +54,61 @@
                 ]
               },
               "fileName": {
-                "type": "string",
-                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                  },
+                  {
+                    "type": "string",
+                    "maxLength": 255,
+                    "pattern": ".*{{.+}}.*"
+                  }
+                ]
               },
               "deviceTags": {
                 "type": "array",
+                "maxItems": 100,
                 "items": {
                   "type": "object",
                   "properties": {
                     "key": {
-                      "type": "string",
-                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        },
+                        {
+                          "type": "string",
+                          "maxLength": 255,
+                          "pattern": ".*{{.+}}.*"
+                        }
+                      ]
                     },
                     "value": {
                       "type": "string",
                       "minLength": 1,
                       "maxLength": 255
                     }
-                  },
-                  "additionalProperties": false
-                },
-                "maxItems": 100
+                  }
+                }
               },
               "deviceIds": {
                 "type": "array",
+                "maxItems": 100,
                 "items": {
-                  "type": "string",
-                  "pattern": "^[A-Fa-f\\d]{24}$"
-                },
-                "maxItems": 1000
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "string",
+                      "maxLength": 255,
+                      "pattern": ".*{{.+}}.*"
+                    }
+                  ]
+                }
               },
               "attributes": {
                 "type": "array",
@@ -117,35 +143,61 @@
                 ]
               },
               "fileName": {
-                "type": "string",
-                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                  },
+                  {
+                    "type": "string",
+                    "maxLength": 255,
+                    "pattern": ".*{{.+}}.*"
+                  }
+                ]
               },
               "deviceTags": {
                 "type": "array",
+                "maxItems": 100,
                 "items": {
                   "type": "object",
                   "properties": {
                     "key": {
-                      "type": "string",
-                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        },
+                        {
+                          "type": "string",
+                          "maxLength": 255,
+                          "pattern": ".*{{.+}}.*"
+                        }
+                      ]
                     },
                     "value": {
                       "type": "string",
                       "minLength": 1,
                       "maxLength": 255
                     }
-                  },
-                  "additionalProperties": false
-                },
-                "maxItems": 100
+                  }
+                }
               },
               "deviceIds": {
                 "type": "array",
+                "maxItems": 100,
                 "items": {
-                  "type": "string",
-                  "pattern": "^[A-Fa-f\\d]{24}$"
-                },
-                "maxItems": 1000
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "string",
+                      "maxLength": 255,
+                      "pattern": ".*{{.+}}.*"
+                    }
+                  ]
+                }
               }
             },
             "required": [
@@ -164,12 +216,30 @@
                 ]
               },
               "fileName": {
-                "type": "string",
-                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                  },
+                  {
+                    "type": "string",
+                    "maxLength": 255,
+                    "pattern": ".*{{.+}}.*"
+                  }
+                ]
               },
               "dataTableId": {
-                "type": "string",
-                "pattern": "^[A-Fa-f\\d]{24}$"
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  {
+                    "type": "string",
+                    "maxLength": 255,
+                    "pattern": ".*{{.+}}.*"
+                  }
+                ]
               },
               "queryJson": {
                 "type": "string",
@@ -193,8 +263,17 @@
                 ]
               },
               "fileName": {
-                "type": "string",
-                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                  },
+                  {
+                    "type": "string",
+                    "maxLength": 255,
+                    "pattern": ".*{{.+}}.*"
+                  }
+                ]
               },
               "sourceUrl": {
                 "type": "string",
@@ -227,12 +306,30 @@
                 ]
               },
               "fileName": {
-                "type": "string",
-                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                  },
+                  {
+                    "type": "string",
+                    "maxLength": 255,
+                    "pattern": ".*{{.+}}.*"
+                  }
+                ]
               },
               "dataTableId": {
-                "type": "string",
-                "pattern": "^[A-Fa-f\\d]{24}$"
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  {
+                    "type": "string",
+                    "maxLength": 255,
+                    "pattern": ".*{{.+}}.*"
+                  }
+                ]
               },
               "createMissingColumns": {
                 "type": "boolean"
@@ -258,8 +355,17 @@
                 ]
               },
               "fileName": {
-                "type": "string",
-                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                  },
+                  {
+                    "type": "string",
+                    "maxLength": 255,
+                    "pattern": ".*{{.+}}.*"
+                  }
+                ]
               },
               "destinationDirectoryTemplate": {
                 "type": "string",
@@ -289,8 +395,17 @@
                 ]
               },
               "directoryName": {
-                "type": "string",
-                "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                  },
+                  {
+                    "type": "string",
+                    "maxLength": 255,
+                    "pattern": ".*{{.+}}.*"
+                  }
+                ]
               },
               "destinationDirectoryTemplate": {
                 "type": "string",

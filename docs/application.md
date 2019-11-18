@@ -166,6 +166,7 @@ all.Application, all.Organization, all.User, application.*, or application.clone
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if application is not found |
+| 422 | [Validation Clone Error](_schemas.md#validation-clone-error) | Error if too many validation errors occurred on other resources |
 
 <br/>
 

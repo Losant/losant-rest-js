@@ -71,6 +71,10 @@
         "type": "string",
         "format": "date-time"
       },
+      "templateContext": {
+        "type": "string",
+        "maxLength": 32767
+      },
       "inputInfo": {
         "type": "object",
         "patternProperties": {
