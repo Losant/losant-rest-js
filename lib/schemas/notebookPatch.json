@@ -33,6 +33,7 @@
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -52,6 +53,7 @@
                         },
                         {
                           "type": "string",
+                          "minLength": 4,
                           "maxLength": 255,
                           "pattern": ".*{{.+}}.*"
                         }
@@ -62,7 +64,8 @@
                       "minLength": 1,
                       "maxLength": 255
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "deviceIds": {
@@ -76,6 +79,7 @@
                     },
                     {
                       "type": "string",
+                      "minLength": 4,
                       "maxLength": 255,
                       "pattern": ".*{{.+}}.*"
                     }
@@ -122,6 +126,7 @@
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -141,6 +146,7 @@
                         },
                         {
                           "type": "string",
+                          "minLength": 4,
                           "maxLength": 255,
                           "pattern": ".*{{.+}}.*"
                         }
@@ -151,7 +157,8 @@
                       "minLength": 1,
                       "maxLength": 255
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "deviceIds": {
@@ -165,6 +172,7 @@
                     },
                     {
                       "type": "string",
+                      "minLength": 4,
                       "maxLength": 255,
                       "pattern": ".*{{.+}}.*"
                     }
@@ -195,6 +203,7 @@
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -208,6 +217,7 @@
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -231,6 +241,40 @@
               "inputType": {
                 "type": "string",
                 "enum": [
+                  "eventData"
+                ]
+              },
+              "fileName": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 4,
+                    "maxLength": 255,
+                    "pattern": ".*{{.+}}.*"
+                  }
+                ]
+              },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 32767
+              }
+            },
+            "required": [
+              "inputType",
+              "fileName"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inputType": {
+                "type": "string",
+                "enum": [
                   "externalUrl"
                 ]
               },
@@ -242,6 +286,7 @@
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -285,6 +330,7 @@
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -298,6 +344,7 @@
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -334,6 +381,7 @@
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -374,6 +422,7 @@
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }

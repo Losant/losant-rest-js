@@ -824,6 +824,24 @@
                     "config": {
                       "type": "object",
                       "properties": {
+                        "additionalAttributes": {
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "array",
+                              "maxItems": 100,
+                              "items": {
+                                "type": "string",
+                                "maxLength": 255
+                              }
+                            }
+                          ]
+                        },
+                        "excludeConnectionInfo": {
+                          "type": "boolean"
+                        },
                         "deviceLinkNewWindow": {
                           "type": "boolean"
                         },
@@ -896,6 +914,43 @@
                               "additionalProperties": false
                             }
                           ]
+                        },
+                        "columns": {
+                          "type": "array",
+                          "maxItems": 100,
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "maxLength": 48
+                              },
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "id",
+                                  "connectionStatus",
+                                  "attribute",
+                                  "tag",
+                                  "name",
+                                  "custom"
+                                ]
+                              },
+                              "source": {
+                                "type": "string",
+                                "maxLength": 255
+                              },
+                              "headerTemplate": {
+                                "type": "string",
+                                "maxLength": 1024
+                              },
+                              "rowTemplate": {
+                                "type": "string",
+                                "maxLength": 32767
+                              }
+                            },
+                            "additionalProperties": false
+                          }
                         }
                       },
                       "additionalProperties": false

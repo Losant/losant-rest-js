@@ -43,7 +43,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| sortField | string | N | Field to sort the results by. Accepted values are: order, method, route, id, creationDate, requestCount, lastUpdated | order | position |
+| sortField | string | N | Field to sort the results by. Accepted values are: order, method, route, id, creationDate, requestCount, lastUpdated | order | order |
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: method, route |  | method |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*route |

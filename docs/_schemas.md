@@ -6538,6 +6538,24 @@ Schema for a single Dashboard
               "config": {
                 "type": "object",
                 "properties": {
+                  "additionalAttributes": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "array",
+                        "maxItems": 100,
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        }
+                      }
+                    ]
+                  },
+                  "excludeConnectionInfo": {
+                    "type": "boolean"
+                  },
                   "deviceLinkNewWindow": {
                     "type": "boolean"
                   },
@@ -6610,6 +6628,43 @@ Schema for a single Dashboard
                         "additionalProperties": false
                       }
                     ]
+                  },
+                  "columns": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "id",
+                            "connectionStatus",
+                            "attribute",
+                            "tag",
+                            "name",
+                            "custom"
+                          ]
+                        },
+                        "source": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "headerTemplate": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "rowTemplate": {
+                          "type": "string",
+                          "maxLength": 32767
+                        }
+                      },
+                      "additionalProperties": false
+                    }
                   }
                 },
                 "additionalProperties": false
@@ -11047,6 +11102,24 @@ Schema for the body of a Dashboard modification request
               "config": {
                 "type": "object",
                 "properties": {
+                  "additionalAttributes": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "array",
+                        "maxItems": 100,
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        }
+                      }
+                    ]
+                  },
+                  "excludeConnectionInfo": {
+                    "type": "boolean"
+                  },
                   "deviceLinkNewWindow": {
                     "type": "boolean"
                   },
@@ -11119,6 +11192,43 @@ Schema for the body of a Dashboard modification request
                         "additionalProperties": false
                       }
                     ]
+                  },
+                  "columns": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "id",
+                            "connectionStatus",
+                            "attribute",
+                            "tag",
+                            "name",
+                            "custom"
+                          ]
+                        },
+                        "source": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "headerTemplate": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "rowTemplate": {
+                          "type": "string",
+                          "maxLength": 32767
+                        }
+                      },
+                      "additionalProperties": false
+                    }
                   }
                 },
                 "additionalProperties": false
@@ -15485,6 +15595,24 @@ Schema for the body of a Dashboard creation request
               "config": {
                 "type": "object",
                 "properties": {
+                  "additionalAttributes": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "array",
+                        "maxItems": 100,
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        }
+                      }
+                    ]
+                  },
+                  "excludeConnectionInfo": {
+                    "type": "boolean"
+                  },
                   "deviceLinkNewWindow": {
                     "type": "boolean"
                   },
@@ -15557,6 +15685,43 @@ Schema for the body of a Dashboard creation request
                         "additionalProperties": false
                       }
                     ]
+                  },
+                  "columns": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "id",
+                            "connectionStatus",
+                            "attribute",
+                            "tag",
+                            "name",
+                            "custom"
+                          ]
+                        },
+                        "source": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "headerTemplate": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "rowTemplate": {
+                          "type": "string",
+                          "maxLength": 32767
+                        }
+                      },
+                      "additionalProperties": false
+                    }
                   }
                 },
                 "additionalProperties": false
@@ -20178,6 +20343,24 @@ Schema for a collection of Dashboards
                     "config": {
                       "type": "object",
                       "properties": {
+                        "additionalAttributes": {
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "array",
+                              "maxItems": 100,
+                              "items": {
+                                "type": "string",
+                                "maxLength": 255
+                              }
+                            }
+                          ]
+                        },
+                        "excludeConnectionInfo": {
+                          "type": "boolean"
+                        },
                         "deviceLinkNewWindow": {
                           "type": "boolean"
                         },
@@ -20250,6 +20433,43 @@ Schema for a collection of Dashboards
                               "additionalProperties": false
                             }
                           ]
+                        },
+                        "columns": {
+                          "type": "array",
+                          "maxItems": 100,
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "maxLength": 48
+                              },
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "id",
+                                  "connectionStatus",
+                                  "attribute",
+                                  "tag",
+                                  "name",
+                                  "custom"
+                                ]
+                              },
+                              "source": {
+                                "type": "string",
+                                "maxLength": 255
+                              },
+                              "headerTemplate": {
+                                "type": "string",
+                                "maxLength": 1024
+                              },
+                              "rowTemplate": {
+                                "type": "string",
+                                "maxLength": 32767
+                              }
+                            },
+                            "additionalProperties": false
+                          }
                         }
                       },
                       "additionalProperties": false
@@ -72258,6 +72478,7 @@ Schema for a single Notebook
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -72277,6 +72498,7 @@ Schema for a single Notebook
                         },
                         {
                           "type": "string",
+                          "minLength": 4,
                           "maxLength": 255,
                           "pattern": ".*{{.+}}.*"
                         }
@@ -72287,7 +72509,8 @@ Schema for a single Notebook
                       "minLength": 1,
                       "maxLength": 255
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "deviceIds": {
@@ -72301,6 +72524,7 @@ Schema for a single Notebook
                     },
                     {
                       "type": "string",
+                      "minLength": 4,
                       "maxLength": 255,
                       "pattern": ".*{{.+}}.*"
                     }
@@ -72347,6 +72571,7 @@ Schema for a single Notebook
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -72366,6 +72591,7 @@ Schema for a single Notebook
                         },
                         {
                           "type": "string",
+                          "minLength": 4,
                           "maxLength": 255,
                           "pattern": ".*{{.+}}.*"
                         }
@@ -72376,7 +72602,8 @@ Schema for a single Notebook
                       "minLength": 1,
                       "maxLength": 255
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "deviceIds": {
@@ -72390,6 +72617,7 @@ Schema for a single Notebook
                     },
                     {
                       "type": "string",
+                      "minLength": 4,
                       "maxLength": 255,
                       "pattern": ".*{{.+}}.*"
                     }
@@ -72420,6 +72648,7 @@ Schema for a single Notebook
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -72433,6 +72662,7 @@ Schema for a single Notebook
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -72456,6 +72686,40 @@ Schema for a single Notebook
               "inputType": {
                 "type": "string",
                 "enum": [
+                  "eventData"
+                ]
+              },
+              "fileName": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 4,
+                    "maxLength": 255,
+                    "pattern": ".*{{.+}}.*"
+                  }
+                ]
+              },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 32767
+              }
+            },
+            "required": [
+              "inputType",
+              "fileName"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inputType": {
+                "type": "string",
+                "enum": [
                   "externalUrl"
                 ]
               },
@@ -72467,6 +72731,7 @@ Schema for a single Notebook
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -72510,6 +72775,7 @@ Schema for a single Notebook
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -72523,6 +72789,7 @@ Schema for a single Notebook
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -72559,6 +72826,7 @@ Schema for a single Notebook
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -72599,6 +72867,7 @@ Schema for a single Notebook
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -73095,6 +73364,7 @@ Schema for the body of a Notebook modification request
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -73114,6 +73384,7 @@ Schema for the body of a Notebook modification request
                         },
                         {
                           "type": "string",
+                          "minLength": 4,
                           "maxLength": 255,
                           "pattern": ".*{{.+}}.*"
                         }
@@ -73124,7 +73395,8 @@ Schema for the body of a Notebook modification request
                       "minLength": 1,
                       "maxLength": 255
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "deviceIds": {
@@ -73138,6 +73410,7 @@ Schema for the body of a Notebook modification request
                     },
                     {
                       "type": "string",
+                      "minLength": 4,
                       "maxLength": 255,
                       "pattern": ".*{{.+}}.*"
                     }
@@ -73184,6 +73457,7 @@ Schema for the body of a Notebook modification request
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -73203,6 +73477,7 @@ Schema for the body of a Notebook modification request
                         },
                         {
                           "type": "string",
+                          "minLength": 4,
                           "maxLength": 255,
                           "pattern": ".*{{.+}}.*"
                         }
@@ -73213,7 +73488,8 @@ Schema for the body of a Notebook modification request
                       "minLength": 1,
                       "maxLength": 255
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "deviceIds": {
@@ -73227,6 +73503,7 @@ Schema for the body of a Notebook modification request
                     },
                     {
                       "type": "string",
+                      "minLength": 4,
                       "maxLength": 255,
                       "pattern": ".*{{.+}}.*"
                     }
@@ -73257,6 +73534,7 @@ Schema for the body of a Notebook modification request
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -73270,6 +73548,7 @@ Schema for the body of a Notebook modification request
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -73293,6 +73572,40 @@ Schema for the body of a Notebook modification request
               "inputType": {
                 "type": "string",
                 "enum": [
+                  "eventData"
+                ]
+              },
+              "fileName": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 4,
+                    "maxLength": 255,
+                    "pattern": ".*{{.+}}.*"
+                  }
+                ]
+              },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 32767
+              }
+            },
+            "required": [
+              "inputType",
+              "fileName"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inputType": {
+                "type": "string",
+                "enum": [
                   "externalUrl"
                 ]
               },
@@ -73304,6 +73617,7 @@ Schema for the body of a Notebook modification request
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -73347,6 +73661,7 @@ Schema for the body of a Notebook modification request
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -73360,6 +73675,7 @@ Schema for the body of a Notebook modification request
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -73396,6 +73712,7 @@ Schema for the body of a Notebook modification request
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -73436,6 +73753,7 @@ Schema for the body of a Notebook modification request
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -73549,6 +73867,7 @@ Schema for the body of an Notebook creation request
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -73568,6 +73887,7 @@ Schema for the body of an Notebook creation request
                         },
                         {
                           "type": "string",
+                          "minLength": 4,
                           "maxLength": 255,
                           "pattern": ".*{{.+}}.*"
                         }
@@ -73578,7 +73898,8 @@ Schema for the body of an Notebook creation request
                       "minLength": 1,
                       "maxLength": 255
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "deviceIds": {
@@ -73592,6 +73913,7 @@ Schema for the body of an Notebook creation request
                     },
                     {
                       "type": "string",
+                      "minLength": 4,
                       "maxLength": 255,
                       "pattern": ".*{{.+}}.*"
                     }
@@ -73638,6 +73960,7 @@ Schema for the body of an Notebook creation request
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -73657,6 +73980,7 @@ Schema for the body of an Notebook creation request
                         },
                         {
                           "type": "string",
+                          "minLength": 4,
                           "maxLength": 255,
                           "pattern": ".*{{.+}}.*"
                         }
@@ -73667,7 +73991,8 @@ Schema for the body of an Notebook creation request
                       "minLength": 1,
                       "maxLength": 255
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "deviceIds": {
@@ -73681,6 +74006,7 @@ Schema for the body of an Notebook creation request
                     },
                     {
                       "type": "string",
+                      "minLength": 4,
                       "maxLength": 255,
                       "pattern": ".*{{.+}}.*"
                     }
@@ -73711,6 +74037,7 @@ Schema for the body of an Notebook creation request
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -73724,6 +74051,7 @@ Schema for the body of an Notebook creation request
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -73747,6 +74075,40 @@ Schema for the body of an Notebook creation request
               "inputType": {
                 "type": "string",
                 "enum": [
+                  "eventData"
+                ]
+              },
+              "fileName": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 4,
+                    "maxLength": 255,
+                    "pattern": ".*{{.+}}.*"
+                  }
+                ]
+              },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 32767
+              }
+            },
+            "required": [
+              "inputType",
+              "fileName"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inputType": {
+                "type": "string",
+                "enum": [
                   "externalUrl"
                 ]
               },
@@ -73758,6 +74120,7 @@ Schema for the body of an Notebook creation request
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -73801,6 +74164,7 @@ Schema for the body of an Notebook creation request
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -73814,6 +74178,7 @@ Schema for the body of an Notebook creation request
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -73850,6 +74215,7 @@ Schema for the body of an Notebook creation request
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -73890,6 +74256,7 @@ Schema for the body of an Notebook creation request
                   },
                   {
                     "type": "string",
+                    "minLength": 4,
                     "maxLength": 255,
                     "pattern": ".*{{.+}}.*"
                   }
@@ -74041,6 +74408,7 @@ Schema for a collection of Notebooks
                         },
                         {
                           "type": "string",
+                          "minLength": 4,
                           "maxLength": 255,
                           "pattern": ".*{{.+}}.*"
                         }
@@ -74060,6 +74428,7 @@ Schema for a collection of Notebooks
                               },
                               {
                                 "type": "string",
+                                "minLength": 4,
                                 "maxLength": 255,
                                 "pattern": ".*{{.+}}.*"
                               }
@@ -74070,7 +74439,8 @@ Schema for a collection of Notebooks
                             "minLength": 1,
                             "maxLength": 255
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "deviceIds": {
@@ -74084,6 +74454,7 @@ Schema for a collection of Notebooks
                           },
                           {
                             "type": "string",
+                            "minLength": 4,
                             "maxLength": 255,
                             "pattern": ".*{{.+}}.*"
                           }
@@ -74130,6 +74501,7 @@ Schema for a collection of Notebooks
                         },
                         {
                           "type": "string",
+                          "minLength": 4,
                           "maxLength": 255,
                           "pattern": ".*{{.+}}.*"
                         }
@@ -74149,6 +74521,7 @@ Schema for a collection of Notebooks
                               },
                               {
                                 "type": "string",
+                                "minLength": 4,
                                 "maxLength": 255,
                                 "pattern": ".*{{.+}}.*"
                               }
@@ -74159,7 +74532,8 @@ Schema for a collection of Notebooks
                             "minLength": 1,
                             "maxLength": 255
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "deviceIds": {
@@ -74173,6 +74547,7 @@ Schema for a collection of Notebooks
                           },
                           {
                             "type": "string",
+                            "minLength": 4,
                             "maxLength": 255,
                             "pattern": ".*{{.+}}.*"
                           }
@@ -74203,6 +74578,7 @@ Schema for a collection of Notebooks
                         },
                         {
                           "type": "string",
+                          "minLength": 4,
                           "maxLength": 255,
                           "pattern": ".*{{.+}}.*"
                         }
@@ -74216,6 +74592,7 @@ Schema for a collection of Notebooks
                         },
                         {
                           "type": "string",
+                          "minLength": 4,
                           "maxLength": 255,
                           "pattern": ".*{{.+}}.*"
                         }
@@ -74239,6 +74616,40 @@ Schema for a collection of Notebooks
                     "inputType": {
                       "type": "string",
                       "enum": [
+                        "eventData"
+                      ]
+                    },
+                    "fileName": {
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                        },
+                        {
+                          "type": "string",
+                          "minLength": 4,
+                          "maxLength": 255,
+                          "pattern": ".*{{.+}}.*"
+                        }
+                      ]
+                    },
+                    "queryJson": {
+                      "type": "string",
+                      "maxLength": 32767
+                    }
+                  },
+                  "required": [
+                    "inputType",
+                    "fileName"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "inputType": {
+                      "type": "string",
+                      "enum": [
                         "externalUrl"
                       ]
                     },
@@ -74250,6 +74661,7 @@ Schema for a collection of Notebooks
                         },
                         {
                           "type": "string",
+                          "minLength": 4,
                           "maxLength": 255,
                           "pattern": ".*{{.+}}.*"
                         }
@@ -74293,6 +74705,7 @@ Schema for a collection of Notebooks
                         },
                         {
                           "type": "string",
+                          "minLength": 4,
                           "maxLength": 255,
                           "pattern": ".*{{.+}}.*"
                         }
@@ -74306,6 +74719,7 @@ Schema for a collection of Notebooks
                         },
                         {
                           "type": "string",
+                          "minLength": 4,
                           "maxLength": 255,
                           "pattern": ".*{{.+}}.*"
                         }
@@ -74342,6 +74756,7 @@ Schema for a collection of Notebooks
                         },
                         {
                           "type": "string",
+                          "minLength": 4,
                           "maxLength": 255,
                           "pattern": ".*{{.+}}.*"
                         }
@@ -74382,6 +74797,7 @@ Schema for a collection of Notebooks
                         },
                         {
                           "type": "string",
+                          "minLength": 4,
                           "maxLength": 255,
                           "pattern": ".*{{.+}}.*"
                         }
