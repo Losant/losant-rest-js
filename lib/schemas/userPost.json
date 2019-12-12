@@ -136,6 +136,7 @@
                   "application.archiveData",
                   "application.backfillArchiveData",
                   "application.clone",
+                  "application.export",
                   "application.fullEventsArchive",
                   "application.fullDataTablesArchive",
                   "application.debug",

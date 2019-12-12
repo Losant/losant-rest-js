@@ -31,6 +31,40 @@
         "user",
         "organization"
       ]
+    },
+    "filterType": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "all",
+            "whitelist",
+            "blacklist"
+          ]
+        },
+        {
+          "type": "string",
+          "enum": [
+            "none"
+          ]
+        }
+      ]
+    },
+    "pubTopics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
+    },
+    "subTopics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
     }
   },
   "required": [

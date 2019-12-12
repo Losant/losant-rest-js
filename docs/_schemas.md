@@ -19,6 +19,9 @@
 *   [Application Clone Enqueue](#application-clone-enqueue)
 *   [Application Clone Post Schema](#application-clone-post-schema)
 *   [Application Clone](#application-clone)
+*   [Application Export Enqueue](#application-export-enqueue)
+*   [Application Export Post Schema](#application-export-post-schema)
+*   [Application Export Result](#application-export-result)
 *   [Application Key](#application-key)
 *   [Application Key Patch](#application-key-patch)
 *   [Application Key Post](#application-key-post)
@@ -1968,6 +1971,7 @@ Schema for the body of an Application API Token creation request
           "application.archiveData",
           "application.backfillArchiveData",
           "application.clone",
+          "application.export",
           "application.fullEventsArchive",
           "application.fullDataTablesArchive",
           "application.debug",
@@ -2278,6 +2282,40 @@ Schema for a single Application Certificate
           "format": "date-time"
         }
       }
+    },
+    "filterType": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "all",
+            "whitelist",
+            "blacklist"
+          ]
+        },
+        {
+          "type": "string",
+          "enum": [
+            "none"
+          ]
+        }
+      ]
+    },
+    "pubTopics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
+    },
+    "subTopics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
     }
   }
 }
@@ -2300,7 +2338,10 @@ Schema for a single Application Certificate
     "issuerName": "Network Solutions OV Server CA 2",
     "notValidBefore": "2019-04-10T00:00:00.000Z",
     "notValidAfter": "2020-04-10T00:00:00.000Z"
-  }
+  },
+  "filterType": "all",
+  "pubTopics": [],
+  "subTopics": []
 }
 ```
 
@@ -2790,6 +2831,40 @@ Schema for the body of an Application Certificate creation request
       "type": "string",
       "maxLength": 32767,
       "minLength": 50
+    },
+    "filterType": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "all",
+            "whitelist",
+            "blacklist"
+          ]
+        },
+        {
+          "type": "string",
+          "enum": [
+            "none"
+          ]
+        }
+      ]
+    },
+    "pubTopics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
+    },
+    "subTopics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
     }
   },
   "required": [
@@ -2803,7 +2878,10 @@ Schema for the body of an Application Certificate creation request
 ```json
 {
   "description": "An example new certificate description",
-  "certificate": "MY_SSL_CERTIFICATE"
+  "certificate": "MY_SSL_CERTIFICATE",
+  "filterType": "all",
+  "pubTopics": [],
+  "subTopics": []
 }
 ```
 
@@ -2915,6 +2993,40 @@ Schema for a collection of Application Certificates
                 "format": "date-time"
               }
             }
+          },
+          "filterType": {
+            "oneOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "all",
+                  "whitelist",
+                  "blacklist"
+                ]
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "none"
+                ]
+              }
+            ]
+          },
+          "pubTopics": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024
+            }
+          },
+          "subTopics": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024
+            }
           }
         }
       }
@@ -2977,7 +3089,10 @@ Schema for a collection of Application Certificates
         "issuerName": "Network Solutions OV Server CA 2",
         "notValidBefore": "2019-04-10T00:00:00.000Z",
         "notValidAfter": "2020-04-10T00:00:00.000Z"
-      }
+      },
+      "filterType": "all",
+      "pubTopics": [],
+      "subTopics": []
     }
   ],
   "count": 1,
@@ -3542,6 +3657,105 @@ Schema for the result of an application clone request
 
 <br/>
 
+## Application Export Enqueue
+
+Schema for the result of an application export request when exporting more than 1000 resources
+
+### <a name="application-export-enqueue-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "jobQueued": {
+      "type": "boolean"
+    }
+  }
+}
+```
+### <a name="application-export-enqueue-example"></a> Example
+
+```json
+{
+  "jobQueued": true
+}
+```
+
+<br/>
+
+## Application Export Post Schema
+
+Schema for the body of an application export request
+
+### <a name="application-export-post-schema-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "includeFiles": {
+      "type": "boolean",
+      "default": false
+    },
+    "includeDataTableRows": {
+      "type": "boolean",
+      "default": false
+    },
+    "includeDevices": {
+      "type": "boolean",
+      "default": false
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="application-export-post-schema-example"></a> Example
+
+```json
+{
+  "includeFiles": true,
+  "includeDevices": true,
+  "email": "test@losant.com"
+}
+```
+
+<br/>
+
+## Application Export Result
+
+Schema for an application export result
+
+### <a name="application-export-result-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="application-export-result-example"></a> Example
+
+```json
+{
+  "url": "https://s3.us-west-1.amazonaws.com/a-bucket-on-amazon/applicationExport.zip"
+}
+```
+
+<br/>
+
 ## Application Key
 
 Schema for a single Application Key
@@ -3613,6 +3827,40 @@ Schema for a single Application Key
     "description": {
       "type": "string",
       "maxLength": 32767
+    },
+    "filterType": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "all",
+            "whitelist",
+            "blacklist"
+          ]
+        },
+        {
+          "type": "string",
+          "enum": [
+            "none"
+          ]
+        }
+      ]
+    },
+    "pubTopics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
+    },
+    "subTopics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
     }
   }
 }
@@ -3628,7 +3876,10 @@ Schema for a single Application Key
   "lastUpdated": "2016-06-13T04:00:00.000Z",
   "key": "this_would_be_the_key",
   "status": "active",
-  "description": "An example key description"
+  "description": "An example key description",
+  "filterType": "all",
+  "pubTopics": [],
+  "subTopics": []
 }
 ```
 
@@ -3712,6 +3963,40 @@ Schema for the body of an Application Key creation request
     "description": {
       "type": "string",
       "maxLength": 32767
+    },
+    "filterType": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "all",
+            "whitelist",
+            "blacklist"
+          ]
+        },
+        {
+          "type": "string",
+          "enum": [
+            "none"
+          ]
+        }
+      ]
+    },
+    "pubTopics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
+    },
+    "subTopics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
     }
   },
   "additionalProperties": false
@@ -3721,7 +4006,10 @@ Schema for the body of an Application Key creation request
 
 ```json
 {
-  "description": "An example new key description"
+  "description": "An example new key description",
+  "filterType": "all",
+  "pubTopics": [],
+  "subTopics": []
 }
 ```
 
@@ -3801,6 +4089,40 @@ Schema for a response of Application Key creation
     "description": {
       "type": "string",
       "maxLength": 32767
+    },
+    "filterType": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "all",
+            "whitelist",
+            "blacklist"
+          ]
+        },
+        {
+          "type": "string",
+          "enum": [
+            "none"
+          ]
+        }
+      ]
+    },
+    "pubTopics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
+    },
+    "subTopics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
     }
   }
 }
@@ -3817,7 +4139,10 @@ Schema for a response of Application Key creation
   "key": "this_would_be_the_key",
   "status": "active",
   "secret": "shhhSecret",
-  "description": "An example key description"
+  "description": "An example key description",
+  "filterType": "all",
+  "pubTopics": [],
+  "subTopics": []
 }
 ```
 
@@ -3901,6 +4226,40 @@ Schema for a collection of Application Keys
           "description": {
             "type": "string",
             "maxLength": 32767
+          },
+          "filterType": {
+            "oneOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "all",
+                  "whitelist",
+                  "blacklist"
+                ]
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "none"
+                ]
+              }
+            ]
+          },
+          "pubTopics": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024
+            }
+          },
+          "subTopics": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024
+            }
           }
         }
       }
@@ -3956,7 +4315,10 @@ Schema for a collection of Application Keys
       "lastUpdated": "2016-06-13T04:00:00.000Z",
       "key": "this_would_be_the_key",
       "status": "active",
-      "description": "An example key description"
+      "description": "An example key description",
+      "filterType": "all",
+      "pubTopics": [],
+      "subTopics": []
     }
   ],
   "count": 1,
@@ -5532,6 +5894,40 @@ Schema for the successful response when authenticating a Device
         "user",
         "organization"
       ]
+    },
+    "filterType": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "all",
+            "whitelist",
+            "blacklist"
+          ]
+        },
+        {
+          "type": "string",
+          "enum": [
+            "none"
+          ]
+        }
+      ]
+    },
+    "pubTopics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
+    },
+    "subTopics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
     }
   },
   "required": [
@@ -5550,7 +5946,14 @@ Schema for the successful response when authenticating a Device
   "deviceId": "575ecf887ae143cd83dc4aa2",
   "deviceClass": "standalone",
   "token": "token_to_use_for_authenticating_subsequent_requests",
-  "ownerType": "organization"
+  "ownerType": "organization",
+  "filterType": "whitelist",
+  "pubTopics": [
+    "#"
+  ],
+  "subTopics": [
+    "#"
+  ]
 }
 ```
 
@@ -70310,6 +70713,7 @@ Schema for the body of a Github login request
                   "application.archiveData",
                   "application.backfillArchiveData",
                   "application.clone",
+                  "application.export",
                   "application.fullEventsArchive",
                   "application.fullDataTablesArchive",
                   "application.debug",
@@ -77386,6 +77790,7 @@ Schema for the body of a User authentication request
                   "application.archiveData",
                   "application.backfillArchiveData",
                   "application.clone",
+                  "application.export",
                   "application.fullEventsArchive",
                   "application.fullDataTablesArchive",
                   "application.debug",
@@ -77802,6 +78207,7 @@ Schema for the body of a User creation request
                   "application.archiveData",
                   "application.backfillArchiveData",
                   "application.clone",
+                  "application.export",
                   "application.fullEventsArchive",
                   "application.fullDataTablesArchive",
                   "application.debug",
