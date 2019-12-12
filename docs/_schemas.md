@@ -1771,12 +1771,12 @@ Schema for a single Application
             },
             "accessKeyId": {
               "type": "string",
-              "min": 16,
+              "min": 4,
               "max": 128
             },
             "secretAccessKey": {
               "type": "string",
-              "min": 16,
+              "min": 4,
               "max": 128
             },
             "region": {
@@ -1803,7 +1803,7 @@ Schema for a single Application
             "keyJson": {
               "type": "string",
               "maxLength": 32767,
-              "minLength": 50
+              "minLength": 4
             },
             "bucket": {
               "type": "string",
@@ -3517,12 +3517,12 @@ Schema for the result of an application clone request
                 },
                 "accessKeyId": {
                   "type": "string",
-                  "min": 16,
+                  "min": 4,
                   "max": 128
                 },
                 "secretAccessKey": {
                   "type": "string",
-                  "min": 16,
+                  "min": 4,
                   "max": 128
                 },
                 "region": {
@@ -3549,7 +3549,7 @@ Schema for the result of an application clone request
                 "keyJson": {
                   "type": "string",
                   "maxLength": 32767,
-                  "minLength": 50
+                  "minLength": 4
                 },
                 "bucket": {
                   "type": "string",
@@ -4505,12 +4505,12 @@ Schema for the body of an Application modification request
             },
             "accessKeyId": {
               "type": "string",
-              "min": 16,
+              "min": 4,
               "max": 128
             },
             "secretAccessKey": {
               "type": "string",
-              "min": 16,
+              "min": 4,
               "max": 128
             },
             "region": {
@@ -4537,7 +4537,7 @@ Schema for the body of an Application modification request
             "keyJson": {
               "type": "string",
               "maxLength": 32767,
-              "minLength": 50
+              "minLength": 4
             },
             "bucket": {
               "type": "string",
@@ -4741,12 +4741,12 @@ Schema for the body of an Application creation request
             },
             "accessKeyId": {
               "type": "string",
-              "min": 16,
+              "min": 4,
               "max": 128
             },
             "secretAccessKey": {
               "type": "string",
-              "min": 16,
+              "min": 4,
               "max": 128
             },
             "region": {
@@ -4773,7 +4773,7 @@ Schema for the body of an Application creation request
             "keyJson": {
               "type": "string",
               "maxLength": 32767,
-              "minLength": 50
+              "minLength": 4
             },
             "bucket": {
               "type": "string",
@@ -5192,12 +5192,12 @@ Schema for a collection of Applications
                   },
                   "accessKeyId": {
                     "type": "string",
-                    "min": 16,
+                    "min": 4,
                     "max": 128
                   },
                   "secretAccessKey": {
                     "type": "string",
-                    "min": 16,
+                    "min": 4,
                     "max": 128
                   },
                   "region": {
@@ -5224,7 +5224,7 @@ Schema for a collection of Applications
                   "keyJson": {
                     "type": "string",
                     "maxLength": 32767,
-                    "minLength": 50
+                    "minLength": 4
                   },
                   "bucket": {
                     "type": "string",
@@ -71050,7 +71050,7 @@ Schema for a single Integration
         "keyJson": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 50
+          "minLength": 4
         }
       },
       "additionalProperties": false,
@@ -71102,17 +71102,17 @@ Schema for a single Integration
         "privateKey": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 50
+          "minLength": 4
         },
         "certificate": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 50
+          "minLength": 4
         },
         "caCertificate": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 50
+          "minLength": 4
         }
       },
       "additionalProperties": false,
@@ -71302,7 +71302,7 @@ Schema for the body of an Integration modification request
         "keyJson": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 50
+          "minLength": 4
         }
       },
       "additionalProperties": false,
@@ -71354,17 +71354,17 @@ Schema for the body of an Integration modification request
         "privateKey": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 50
+          "minLength": 4
         },
         "certificate": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 50
+          "minLength": 4
         },
         "caCertificate": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 50
+          "minLength": 4
         }
       },
       "additionalProperties": false,
@@ -71492,7 +71492,7 @@ Schema for the body of an Integration creation request
         "keyJson": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 50
+          "minLength": 4
         }
       },
       "additionalProperties": false,
@@ -71544,17 +71544,17 @@ Schema for the body of an Integration creation request
         "privateKey": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 50
+          "minLength": 4
         },
         "certificate": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 50
+          "minLength": 4
         },
         "caCertificate": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 50
+          "minLength": 4
         }
       },
       "additionalProperties": false,
@@ -71723,7 +71723,7 @@ Schema for a collection of Integrations
               "keyJson": {
                 "type": "string",
                 "maxLength": 32767,
-                "minLength": 50
+                "minLength": 4
               }
             },
             "additionalProperties": false,
@@ -71775,17 +71775,17 @@ Schema for a collection of Integrations
               "privateKey": {
                 "type": "string",
                 "maxLength": 32767,
-                "minLength": 50
+                "minLength": 4
               },
               "certificate": {
                 "type": "string",
                 "maxLength": 32767,
-                "minLength": 50
+                "minLength": 4
               },
               "caCertificate": {
                 "type": "string",
                 "maxLength": 32767,
-                "minLength": 50
+                "minLength": 4
               }
             },
             "additionalProperties": false,

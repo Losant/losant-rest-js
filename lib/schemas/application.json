@@ -266,12 +266,12 @@
             },
             "accessKeyId": {
               "type": "string",
-              "min": 16,
+              "min": 4,
               "max": 128
             },
             "secretAccessKey": {
               "type": "string",
-              "min": 16,
+              "min": 4,
               "max": 128
             },
             "region": {
@@ -298,7 +298,7 @@
             "keyJson": {
               "type": "string",
               "maxLength": 32767,
-              "minLength": 50
+              "minLength": 4
             },
             "bucket": {
               "type": "string",

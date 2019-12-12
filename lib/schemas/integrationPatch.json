@@ -38,7 +38,7 @@
         "keyJson": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 50
+          "minLength": 4
         }
       },
       "additionalProperties": false,
@@ -90,17 +90,17 @@
         "privateKey": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 50
+          "minLength": 4
         },
         "certificate": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 50
+          "minLength": 4
         },
         "caCertificate": {
           "type": "string",
           "maxLength": 32767,
-          "minLength": 50
+          "minLength": 4
         }
       },
       "additionalProperties": false,
