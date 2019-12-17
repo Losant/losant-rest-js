@@ -750,6 +750,25 @@
                   "showPublicFilter": {
                     "type": "boolean"
                   },
+                  "sortField": {
+                    "type": "string",
+                    "enum": [
+                      "id",
+                      "creationDate",
+                      "lastUpdated",
+                      "name"
+                    ]
+                  },
+                  "sortDirection": {
+                    "type": "string",
+                    "enum": [
+                      "asc",
+                      "desc",
+                      "ASC",
+                      "DESC",
+                      ""
+                    ]
+                  },
                   "filter": {
                     "oneOf": [
                       {
@@ -816,7 +835,9 @@
                             "attribute",
                             "tag",
                             "name",
-                            "custom"
+                            "custom",
+                            "created",
+                            "updated"
                           ]
                         },
                         "source": {

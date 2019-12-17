@@ -6984,6 +6984,25 @@ Schema for a single Dashboard
                   "showPublicFilter": {
                     "type": "boolean"
                   },
+                  "sortField": {
+                    "type": "string",
+                    "enum": [
+                      "id",
+                      "creationDate",
+                      "lastUpdated",
+                      "name"
+                    ]
+                  },
+                  "sortDirection": {
+                    "type": "string",
+                    "enum": [
+                      "asc",
+                      "desc",
+                      "ASC",
+                      "DESC",
+                      ""
+                    ]
+                  },
                   "filter": {
                     "oneOf": [
                       {
@@ -7050,7 +7069,9 @@ Schema for a single Dashboard
                             "attribute",
                             "tag",
                             "name",
-                            "custom"
+                            "custom",
+                            "created",
+                            "updated"
                           ]
                         },
                         "source": {
@@ -11548,6 +11569,25 @@ Schema for the body of a Dashboard modification request
                   "showPublicFilter": {
                     "type": "boolean"
                   },
+                  "sortField": {
+                    "type": "string",
+                    "enum": [
+                      "id",
+                      "creationDate",
+                      "lastUpdated",
+                      "name"
+                    ]
+                  },
+                  "sortDirection": {
+                    "type": "string",
+                    "enum": [
+                      "asc",
+                      "desc",
+                      "ASC",
+                      "DESC",
+                      ""
+                    ]
+                  },
                   "filter": {
                     "oneOf": [
                       {
@@ -11614,7 +11654,9 @@ Schema for the body of a Dashboard modification request
                             "attribute",
                             "tag",
                             "name",
-                            "custom"
+                            "custom",
+                            "created",
+                            "updated"
                           ]
                         },
                         "source": {
@@ -16041,6 +16083,25 @@ Schema for the body of a Dashboard creation request
                   "showPublicFilter": {
                     "type": "boolean"
                   },
+                  "sortField": {
+                    "type": "string",
+                    "enum": [
+                      "id",
+                      "creationDate",
+                      "lastUpdated",
+                      "name"
+                    ]
+                  },
+                  "sortDirection": {
+                    "type": "string",
+                    "enum": [
+                      "asc",
+                      "desc",
+                      "ASC",
+                      "DESC",
+                      ""
+                    ]
+                  },
                   "filter": {
                     "oneOf": [
                       {
@@ -16107,7 +16168,9 @@ Schema for the body of a Dashboard creation request
                             "attribute",
                             "tag",
                             "name",
-                            "custom"
+                            "custom",
+                            "created",
+                            "updated"
                           ]
                         },
                         "source": {
@@ -20789,6 +20852,25 @@ Schema for a collection of Dashboards
                         "showPublicFilter": {
                           "type": "boolean"
                         },
+                        "sortField": {
+                          "type": "string",
+                          "enum": [
+                            "id",
+                            "creationDate",
+                            "lastUpdated",
+                            "name"
+                          ]
+                        },
+                        "sortDirection": {
+                          "type": "string",
+                          "enum": [
+                            "asc",
+                            "desc",
+                            "ASC",
+                            "DESC",
+                            ""
+                          ]
+                        },
                         "filter": {
                           "oneOf": [
                             {
@@ -20855,7 +20937,9 @@ Schema for a collection of Dashboards
                                   "attribute",
                                   "tag",
                                   "name",
-                                  "custom"
+                                  "custom",
+                                  "created",
+                                  "updated"
                                 ]
                               },
                               "source": {
