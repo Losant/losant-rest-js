@@ -16,10 +16,8 @@
 *   [Application Certificate Post](#application-certificate-post)
 *   [Application Certificates](#application-certificates)
 *   [Success Dry Run](#success-dry-run)
-*   [Application Clone Enqueue](#application-clone-enqueue)
 *   [Application Clone Post Schema](#application-clone-post-schema)
-*   [Application Clone](#application-clone)
-*   [Application Export Enqueue](#application-export-enqueue)
+*   [Application Creation By Template Result](#application-creation-by-template-result)
 *   [Application Export Post Schema](#application-export-post-schema)
 *   [Application Export Result](#application-export-result)
 *   [Application Key](#application-key)
@@ -153,6 +151,7 @@
 *   [Integration Patch](#integration-patch)
 *   [Integration Post](#integration-post)
 *   [Integrations](#integrations)
+*   [Jon Enqueued API Result](#jon-enqueued-api-result)
 *   [Last Value Data](#last-value-data)
 *   [Last Value Query](#last-value-query)
 *   [Me](#me)
@@ -190,7 +189,7 @@
 *   [User Post](#user-post)
 *   [Validate Context Error](#validate-context-error)
 *   [Validate Context Success](#validate-context-success)
-*   [Validation Clone Error](#validation-clone-error)
+*   [Validation Error](#validation-error)
 *   [Virtual Button Press](#virtual-button-press)
 *   [Webhook](#webhook)
 *   [Webhook Patch](#webhook-patch)
@@ -2762,6 +2761,40 @@ Schema for the body of an Application Certificate modification request
       "type": "string",
       "maxLength": 32767,
       "minLength": 50
+    },
+    "filterType": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "all",
+            "whitelist",
+            "blacklist"
+          ]
+        },
+        {
+          "type": "string",
+          "enum": [
+            "none"
+          ]
+        }
+      ]
+    },
+    "pubTopics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
+    },
+    "subTopics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
     }
   },
   "additionalProperties": false
@@ -3141,33 +3174,6 @@ Schema for reporting a successful dry run of clone application
 
 <br/>
 
-## Application Clone Enqueue
-
-Schema for the result of an application clone request when creating more than 1000 resources
-
-### <a name="application-clone-enqueue-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "jobQueued": {
-      "type": "boolean"
-    }
-  }
-}
-```
-### <a name="application-clone-enqueue-example"></a> Example
-
-```json
-{
-  "jobQueued": true
-}
-```
-
-<br/>
-
 ## Application Clone Post Schema
 
 Schema for the body of an application clone request
@@ -3237,11 +3243,11 @@ Schema for the body of an application clone request
 
 <br/>
 
-## Application Clone
+## Application Creation By Template Result
 
-Schema for the result of an application clone request
+Schema for creating an application by template result
 
-### <a name="application-clone-schema"></a> Schema
+### <a name="application-creation-by-template-result-schema"></a> Schema
 
 ```json
 {
@@ -3605,8 +3611,15 @@ Schema for the result of an application clone request
             "type": "string"
           },
           "id": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "message": {
             "type": "string"
@@ -3614,10 +3627,11 @@ Schema for the result of an application clone request
         }
       }
     }
-  }
+  },
+  "additionalProperties": false
 }
 ```
-### <a name="application-clone-example"></a> Example
+### <a name="application-creation-by-template-result-example"></a> Example
 
 ```json
 {
@@ -3652,33 +3666,6 @@ Schema for the result of an application clone request
       ]
     }
   }
-}
-```
-
-<br/>
-
-## Application Export Enqueue
-
-Schema for the result of an application export request when exporting more than 1000 resources
-
-### <a name="application-export-enqueue-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "jobQueued": {
-      "type": "boolean"
-    }
-  }
-}
-```
-### <a name="application-export-enqueue-example"></a> Example
-
-```json
-{
-  "jobQueued": true
 }
 ```
 
@@ -3906,6 +3893,40 @@ Schema for the body of an Application Key modification request
     "description": {
       "type": "string",
       "maxLength": 32767
+    },
+    "filterType": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "all",
+            "whitelist",
+            "blacklist"
+          ]
+        },
+        {
+          "type": "string",
+          "enum": [
+            "none"
+          ]
+        }
+      ]
+    },
+    "pubTopics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
+    },
+    "subTopics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
     }
   },
   "additionalProperties": false
@@ -70992,6 +71013,7 @@ Schema for the body of a Github login request
                   "org.*",
                   "applications.get",
                   "applications.post",
+                  "applications.import",
                   "applications.detailedSummary",
                   "auditLog.get",
                   "auditLogs.get",
@@ -72056,6 +72078,33 @@ Schema for a collection of Integrations
   "sortField": "name",
   "sortDirection": "asc",
   "applicationId": "575ec8687ae143cd83dc4a97"
+}
+```
+
+<br/>
+
+## Jon Enqueued API Result
+
+Schema for the result of an job being queued
+
+### <a name="jon-enqueued-api-result-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "jobQueued": {
+      "type": "boolean"
+    }
+  }
+}
+```
+### <a name="jon-enqueued-api-result-example"></a> Example
+
+```json
+{
+  "jobQueued": true
 }
 ```
 
@@ -78069,6 +78118,7 @@ Schema for the body of a User authentication request
                   "org.*",
                   "applications.get",
                   "applications.post",
+                  "applications.import",
                   "applications.detailedSummary",
                   "auditLog.get",
                   "auditLogs.get",
@@ -78486,6 +78536,7 @@ Schema for the body of a User creation request
                   "org.*",
                   "applications.get",
                   "applications.post",
+                  "applications.import",
                   "applications.detailedSummary",
                   "auditLog.get",
                   "auditLogs.get",
@@ -78830,11 +78881,11 @@ Schema for the result of a successful validateContext call
 
 <br/>
 
-## Validation Clone Error
+## Validation Error
 
 Schema for validation errors returned by the API
 
-### <a name="validation-clone-error-schema"></a> Schema
+### <a name="validation-error-schema"></a> Schema
 
 ```json
 {
@@ -78859,8 +78910,15 @@ Schema for validation errors returned by the API
             "type": "string"
           },
           "id": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "message": {
             "type": "string"
@@ -78871,12 +78929,12 @@ Schema for validation errors returned by the API
   }
 }
 ```
-### <a name="validation-clone-error-example"></a> Example
+### <a name="validation-error-example"></a> Example
 
 ```json
 {
   "type": "Validation",
-  "message": "Too many validation errors occurred during clone.",
+  "message": "Too many validation errors occurred.",
   "validationErrors": [
     {
       "type": "Notebook",

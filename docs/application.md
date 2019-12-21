@@ -158,8 +158,8 @@ all.Application, all.Organization, all.User, application.*, or application.clone
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Success Dry Run](_schemas.md#success-dry-run) | if dryRun is set and successful, then return success |
-| 201 | [Application Clone](_schemas.md#application-clone) | If application was successfully cloned |
-| 202 | [Application Clone Enqueue](_schemas.md#application-clone-enqueue) | If application was enqueued to be cloned |
+| 201 | [Application Creation By Template Result](_schemas.md#application-creation-by-template-result) | If application was successfully cloned |
+| 202 | [Jon Enqueued API Result](_schemas.md#jon-enqueued-api-result) | If application was enqueued to be cloned |
 
 #### Error Responses
 
@@ -167,7 +167,7 @@ all.Application, all.Organization, all.User, application.*, or application.clone
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if application is not found |
-| 422 | [Validation Clone Error](_schemas.md#validation-clone-error) | Error if too many validation errors occurred on other resources |
+| 422 | [Validation Error](_schemas.md#validation-error) | Error if too many validation errors occurred on other resources |
 
 <br/>
 
@@ -259,7 +259,7 @@ all.Application, all.Organization, all.User, application.*, or application.expor
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Application Export Result](_schemas.md#application-export-result) | a url to download the zip of exported resources |
-| 202 | [Application Export Enqueue](_schemas.md#application-export-enqueue) | If application was enqueued to be exported |
+| 202 | [Jon Enqueued API Result](_schemas.md#jon-enqueued-api-result) | If application was enqueued to be exported |
 
 #### Error Responses
 

@@ -7,6 +7,7 @@ parameters and the potential responses.
 ##### Contents
 
 *   [Get](#get)
+*   [Import](#import)
 *   [Post](#post)
 
 <br/>
@@ -61,6 +62,62 @@ all.Organization, all.Organization.read, all.User, all.User.read, applications.*
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
+
+<br/>
+
+## Import
+
+Create a new application from a template
+
+```javascript
+var params = {
+  importBundle: myImportBundle
+};
+
+// with callbacks
+client.applications.import(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.applications.import(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Organization, all.User, applications.*, or applications.import.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| importBundle | file | Y | The import zip file templates to create the new application and its resources. |  | undefined |
+| ownerId | string | N | The owner id of the new application, defaults to the user id making the request |  | undefined |
+| ownerType | string | N | The type of the owner id. Accepted values are: user, organization | user | undefined |
+| includeDevices | string | N | If set, import devices from the import bundle |  | undefined |
+| includeDataTableRows | string | N | If set, import data tables from import bundle |  | undefined |
+| includeFiles | string | N | If set, import files from import bundle |  | undefined |
+| email | string | N | Email to notify the user when the job to import the application has completed or errored |  | undefined |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 201 | [Application Creation By Template Result](_schemas.md#application-creation-by-template-result) | Successfully created application |
+| 202 | [Jon Enqueued API Result](_schemas.md#jon-enqueued-api-result) | If application was enqueued to be imported |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application is not found |
+| 422 | [Validation Error](_schemas.md#validation-error) | Error if too many validation errors occurred on other resources |
 
 <br/>
 
