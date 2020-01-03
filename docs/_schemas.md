@@ -151,7 +151,7 @@
 *   [Integration Patch](#integration-patch)
 *   [Integration Post](#integration-post)
 *   [Integrations](#integrations)
-*   [Jon Enqueued API Result](#jon-enqueued-api-result)
+*   [Job Enqueued API Result](#job-enqueued-api-result)
 *   [Last Value Data](#last-value-data)
 *   [Last Value Query](#last-value-query)
 *   [Me](#me)
@@ -72083,11 +72083,11 @@ Schema for a collection of Integrations
 
 <br/>
 
-## Jon Enqueued API Result
+## Job Enqueued API Result
 
 Schema for the result of an job being queued
 
-### <a name="jon-enqueued-api-result-schema"></a> Schema
+### <a name="job-enqueued-api-result-schema"></a> Schema
 
 ```json
 {
@@ -72100,7 +72100,7 @@ Schema for the result of an job being queued
   }
 }
 ```
-### <a name="jon-enqueued-api-result-example"></a> Example
+### <a name="job-enqueued-api-result-example"></a> Example
 
 ```json
 {

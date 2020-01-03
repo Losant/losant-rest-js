@@ -109,7 +109,7 @@ all.Organization, all.User, applications.*, or applications.import.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 201 | [Application Creation By Template Result](_schemas.md#application-creation-by-template-result) | Successfully created application |
-| 202 | [Jon Enqueued API Result](_schemas.md#jon-enqueued-api-result) | If application was enqueued to be imported |
+| 202 | [Job Enqueued API Result](_schemas.md#job-enqueued-api-result) | If application was enqueued to be imported |
 
 #### Error Responses
 
