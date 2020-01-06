@@ -67,7 +67,7 @@ all.Organization, all.Organization.read, all.User, all.User.read, applications.*
 
 ## Import
 
-Create a new application from a template
+Create a new application from an import bundle
 
 ```javascript
 var params = {
@@ -95,13 +95,13 @@ all.Organization, all.User, applications.*, or applications.import.
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| importBundle | file | Y | The import zip file templates to create the new application and its resources. |  | undefined |
-| ownerId | string | N | The owner id of the new application, defaults to the user id making the request |  | undefined |
-| ownerType | string | N | The type of the owner id. Accepted values are: user, organization | user | undefined |
-| includeDevices | string | N | If set, import devices from the import bundle |  | undefined |
-| includeDataTableRows | string | N | If set, import data tables from import bundle |  | undefined |
-| includeFiles | string | N | If set, import files from import bundle |  | undefined |
-| email | string | N | Email to notify the user when the job to import the application has completed or errored |  | undefined |
+| importBundle | file | Y | The zip file containing the application to import and all of its resources |  | undefined |
+| ownerId | string | N | The owner id of the new application, defaults to the id of the user making the request |  | 575ed6e87ae143cd83dc4aa8 |
+| ownerType | string | N | The type of the owner id. Accepted values are: user, organization | user | user |
+| includeDevices | string | N | If set, import devices from the import bundle |  | true |
+| includeDataTableRows | string | N | If set, import data table rows from import bundle |  | true |
+| includeFiles | string | N | If set, import files from import bundle |  | true |
+| email | string | N | Email address to notify the user when the job to import the application has completed or errored, defaults to the email address of the user making the request |  | email@example.com |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
