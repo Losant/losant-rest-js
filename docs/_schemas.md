@@ -27,6 +27,8 @@
 *   [Application Keys](#application-keys)
 *   [Application Patch](#application-patch)
 *   [Application Post](#application-post)
+*   [Application Readme](#application-readme)
+*   [Application Readme Patch](#application-readme-patch)
 *   [Application Search Result](#application-search-result)
 *   [Applications](#applications)
 *   [Audit Log](#audit-log)
@@ -4849,6 +4851,87 @@ Schema for the body of an Application creation request
 {
   "name": "My New Application",
   "description": "Description of my new application"
+}
+```
+
+<br/>
+
+## Application Readme
+
+Schema for an Application Readme
+
+### <a name="application-readme-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdatedById": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "lastUpdatedByType": {
+      "type": "string",
+      "enum": [
+        "flow",
+        "user",
+        "apiToken"
+      ]
+    },
+    "content": {
+      "type": "string"
+    }
+  }
+}
+```
+### <a name="application-readme-example"></a> Example
+
+```json
+{
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "lastUpdatedById": "575ed70c7ae143cd83dc4aa9",
+  "lastUpdatedByType": "user",
+  "content": "The readme content"
+}
+```
+
+<br/>
+
+## Application Readme Patch
+
+Schema for the body of an Application Readme modification request
+
+### <a name="application-readme-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "content": {
+      "type": "string",
+      "maxLength": 131072
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="application-readme-patch-example"></a> Example
+
+```json
+{
+  "content": "The new readme content"
 }
 ```
 
@@ -73011,7 +73094,7 @@ Schema for a single Notebook
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -73104,7 +73187,7 @@ Schema for a single Notebook
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -73181,7 +73264,7 @@ Schema for a single Notebook
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -73230,7 +73313,7 @@ Schema for a single Notebook
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -73264,7 +73347,7 @@ Schema for a single Notebook
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -73308,7 +73391,7 @@ Schema for a single Notebook
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -73359,7 +73442,7 @@ Schema for a single Notebook
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -73400,7 +73483,7 @@ Schema for a single Notebook
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -73897,7 +73980,7 @@ Schema for the body of a Notebook modification request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -73990,7 +74073,7 @@ Schema for the body of a Notebook modification request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74067,7 +74150,7 @@ Schema for the body of a Notebook modification request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74116,7 +74199,7 @@ Schema for the body of a Notebook modification request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74150,7 +74233,7 @@ Schema for the body of a Notebook modification request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74194,7 +74277,7 @@ Schema for the body of a Notebook modification request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74245,7 +74328,7 @@ Schema for the body of a Notebook modification request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74286,7 +74369,7 @@ Schema for the body of a Notebook modification request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74400,7 +74483,7 @@ Schema for the body of an Notebook creation request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74493,7 +74576,7 @@ Schema for the body of an Notebook creation request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74570,7 +74653,7 @@ Schema for the body of an Notebook creation request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74619,7 +74702,7 @@ Schema for the body of an Notebook creation request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74653,7 +74736,7 @@ Schema for the body of an Notebook creation request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74697,7 +74780,7 @@ Schema for the body of an Notebook creation request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74748,7 +74831,7 @@ Schema for the body of an Notebook creation request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74789,7 +74872,7 @@ Schema for the body of an Notebook creation request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74941,7 +75024,7 @@ Schema for a collection of Notebooks
                       "oneOf": [
                         {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                          "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                         },
                         {
                           "type": "string",
@@ -75034,7 +75117,7 @@ Schema for a collection of Notebooks
                       "oneOf": [
                         {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                          "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                         },
                         {
                           "type": "string",
@@ -75111,7 +75194,7 @@ Schema for a collection of Notebooks
                       "oneOf": [
                         {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                          "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                         },
                         {
                           "type": "string",
@@ -75160,7 +75243,7 @@ Schema for a collection of Notebooks
                       "oneOf": [
                         {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                          "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                         },
                         {
                           "type": "string",
@@ -75194,7 +75277,7 @@ Schema for a collection of Notebooks
                       "oneOf": [
                         {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                          "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                         },
                         {
                           "type": "string",
@@ -75238,7 +75321,7 @@ Schema for a collection of Notebooks
                       "oneOf": [
                         {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                          "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                         },
                         {
                           "type": "string",
@@ -75289,7 +75372,7 @@ Schema for a collection of Notebooks
                       "oneOf": [
                         {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                          "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                         },
                         {
                           "type": "string",
@@ -75330,7 +75413,7 @@ Schema for a collection of Notebooks
                       "oneOf": [
                         {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                          "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                         },
                         {
                           "type": "string",

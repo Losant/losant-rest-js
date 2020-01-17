@@ -57,7 +57,7 @@
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -150,7 +150,7 @@
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -227,7 +227,7 @@
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -276,7 +276,7 @@
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -310,7 +310,7 @@
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -354,7 +354,7 @@
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -405,7 +405,7 @@
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -446,7 +446,7 @@
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
