@@ -105,6 +105,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | tagFilter | [Device Tag Filter](_schemas.md#device-tag-filter) | N | Array of tag pairs to filter by |  | [Device Tag Filter Example](_schemas.md#device-tag-filter-example) |
 | excludeConnectionInfo | string | N | If set, do not return connection info |  | true |
 | parentId | string | N | Filter devices as children of a given system id |  | 575ecf887ae143cd83dc4aa2 |
+| query | [Advanced Device Query](_schemas.md#advanced-device-query) | N | Device filter JSON object which overides the filterField, filter, deviceClass, tagFilter, and parentId parameters. |  | [Advanced Device Query Example](_schemas.md#advanced-device-query-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

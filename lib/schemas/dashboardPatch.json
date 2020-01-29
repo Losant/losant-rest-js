@@ -809,6 +809,10 @@
                       }
                     ]
                   },
+                  "query": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
                   "columns": {
                     "type": "array",
                     "maxItems": 100,

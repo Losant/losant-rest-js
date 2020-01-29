@@ -1,5 +1,6 @@
 # Schemas
 
+*   [Advanced Device Query](#advanced-device-query)
 *   [Advanced Event Query](#advanced-event-query)
 *   [Advanced Query](#advanced-query)
 *   [API Token](#api-token)
@@ -201,6 +202,694 @@
 *   [Webhook Patch](#webhook-patch)
 *   [Webhook Post](#webhook-post)
 *   [Webhooks](#webhooks)
+
+## Advanced Device Query
+
+Schema for advanced device queries
+
+### <a name="advanced-device-query-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "$and": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedDeviceQuery"
+      }
+    },
+    "$or": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedDeviceQuery"
+      }
+    },
+    "id": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "creationDate": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "lastUpdated": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "name": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "deviceClass": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "gatewayId": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "parentId": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "tags": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "$tagKey": {
+                  "type": "string"
+                },
+                "$tagValue": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "minProperties": 1
+            },
+            {
+              "type": "object",
+              "patternProperties": {
+                "^[0-9a-zA-Z_-]{1,255}": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "$tagKey": {
+                      "type": "string"
+                    },
+                    "$tagValue": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "minProperties": 1
+                },
+                {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "$tagKey": {
+                      "type": "string"
+                    },
+                    "$tagValue": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "minProperties": 1
+                },
+                {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="advanced-device-query-example"></a> Example
+
+```json
+{
+  "$or": [
+    {
+      "name": {
+        "$ne": "myValue"
+      }
+    },
+    {
+      "parentId": "575ec8687ae143cd83dc4a97"
+    }
+  ]
+}
+```
+
+<br/>
 
 ## Advanced Event Query
 
@@ -7470,6 +8159,10 @@ Schema for a single Dashboard
                       }
                     ]
                   },
+                  "query": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
                   "columns": {
                     "type": "array",
                     "maxItems": 100,
@@ -12055,6 +12748,10 @@ Schema for the body of a Dashboard modification request
                       }
                     ]
                   },
+                  "query": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
                   "columns": {
                     "type": "array",
                     "maxItems": 100,
@@ -16568,6 +17265,10 @@ Schema for the body of a Dashboard creation request
                         "additionalProperties": false
                       }
                     ]
+                  },
+                  "query": {
+                    "type": "string",
+                    "maxLength": 32767
                   },
                   "columns": {
                     "type": "array",
@@ -21337,6 +22038,10 @@ Schema for a collection of Dashboards
                               "additionalProperties": false
                             }
                           ]
+                        },
+                        "query": {
+                          "type": "string",
+                          "maxLength": 32767
                         },
                         "columns": {
                           "type": "array",
