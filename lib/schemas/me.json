@@ -456,6 +456,9 @@
     "currentPeriodEnd": {
       "type": "string",
       "format": "date-time"
+    },
+    "ssoLinked": {
+      "type": "boolean"
     }
   }
 }

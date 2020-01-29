@@ -30,6 +30,8 @@
 *   [Application Readme](#application-readme)
 *   [Application Readme Patch](#application-readme-patch)
 *   [Application Search Result](#application-search-result)
+*   [Application Template](#application-template)
+*   [Application Templates](#application-templates)
 *   [Applications](#applications)
 *   [Audit Log](#audit-log)
 *   [Audit Log Filter](#audit-log-filter)
@@ -184,6 +186,8 @@
 *   [Recent Item](#recent-item)
 *   [Recent Item List](#recent-item-list)
 *   [Resource Transfer](#resource-transfer)
+*   [SAML Response](#saml-response)
+*   [SSO Request](#sso-request)
 *   [Success](#success)
 *   [Time Series Data](#time-series-data)
 *   [Time Series Query](#time-series-query)
@@ -1551,7 +1555,7 @@ Schema for a single Application
     },
     "description": {
       "type": "string",
-      "maxLength": 32767
+      "maxLength": 1024
     },
     "endpointSlug": {
       "type": "string",
@@ -1587,7 +1591,7 @@ Schema for a single Application
           },
           "description": {
             "type": "string",
-            "maxLength": 32767
+            "maxLength": 1024
           }
         },
         "additionalProperties": false,
@@ -3304,7 +3308,7 @@ Schema for creating an application by template result
         },
         "description": {
           "type": "string",
-          "maxLength": 32767
+          "maxLength": 1024
         },
         "endpointSlug": {
           "type": "string",
@@ -3340,7 +3344,7 @@ Schema for creating an application by template result
               },
               "description": {
                 "type": "string",
-                "maxLength": 32767
+                "maxLength": 1024
               }
             },
             "additionalProperties": false,
@@ -4374,7 +4378,7 @@ Schema for the body of an Application modification request
     },
     "description": {
       "type": "string",
-      "maxLength": 32767
+      "maxLength": 1024
     },
     "endpointSlug": {
       "type": "string",
@@ -4410,7 +4414,7 @@ Schema for the body of an Application modification request
           },
           "description": {
             "type": "string",
-            "maxLength": 32767
+            "maxLength": 1024
           }
         },
         "additionalProperties": false,
@@ -4632,6 +4636,10 @@ Schema for the body of an Application creation request
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
+    "applicationTemplateId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "name": {
       "type": "string",
       "minLength": 1,
@@ -4639,7 +4647,7 @@ Schema for the body of an Application creation request
     },
     "description": {
       "type": "string",
-      "maxLength": 32767
+      "maxLength": 1024
     },
     "endpointSlug": {
       "type": "string",
@@ -4675,7 +4683,7 @@ Schema for the body of an Application creation request
           },
           "description": {
             "type": "string",
-            "maxLength": 32767
+            "maxLength": 1024
           }
         },
         "additionalProperties": false,
@@ -5014,6 +5022,313 @@ Results of a search of an application&#x27;s resources
 
 <br/>
 
+## Application Template
+
+Schema for a single Application Template
+
+### <a name="application-template-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "public": {
+      "type": "boolean"
+    },
+    "imageUrl": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "applicationCertificateAuthorityCount": {
+          "type": "number"
+        },
+        "dashboardCount": {
+          "type": "number"
+        },
+        "deviceCount": {
+          "type": "number"
+        },
+        "deviceRecipeCount": {
+          "type": "number"
+        },
+        "dataTableCount": {
+          "type": "number"
+        },
+        "experienceGroupCount": {
+          "type": "number"
+        },
+        "experienceUserCount": {
+          "type": "number"
+        },
+        "experienceVersionCount": {
+          "type": "number"
+        },
+        "experienceViewCount": {
+          "type": "number"
+        },
+        "experienceEndpointCount": {
+          "type": "number"
+        },
+        "fileCount": {
+          "type": "number"
+        },
+        "flowCount": {
+          "type": "number"
+        },
+        "integrationCount": {
+          "type": "number"
+        },
+        "notebookCount": {
+          "type": "number"
+        },
+        "dataTableCsvSize": {
+          "type": "number"
+        },
+        "webhookCount": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
+```
+### <a name="application-template-example"></a> Example
+
+```json
+{
+  "id": "586e9d5151265cb9d72f6ec6",
+  "creationDate": "2020-01-13T04:00:00.000Z",
+  "lastUpdated": "2020-01-13T04:00:00.000Z",
+  "name": "smart environment",
+  "description": "a smart env set up",
+  "public": true,
+  "summary": {
+    "applicationCertificateAuthorityCount": 0,
+    "dashboardCount": 0,
+    "deviceCount": 1,
+    "deviceRecipeCount": 0,
+    "dataTableCount": 2,
+    "fileCount": 0,
+    "experienceGroupCount": 1,
+    "experienceUserCount": 1,
+    "experienceVersionCount": 3,
+    "experienceViewCount": 6,
+    "experienceEndpointCount": 6,
+    "flowCount": 1,
+    "integrationCount": 0,
+    "notebookCount": 0,
+    "dataTableCsvSize": 4008,
+    "webhookCount": 0
+  }
+}
+```
+
+<br/>
+
+## Application Templates
+
+Schema for a collection of Application Templates
+
+### <a name="application-templates-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Application Template",
+        "description": "Schema for a single Application Template",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "public": {
+            "type": "boolean"
+          },
+          "imageUrl": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "summary": {
+            "type": "object",
+            "properties": {
+              "applicationCertificateAuthorityCount": {
+                "type": "number"
+              },
+              "dashboardCount": {
+                "type": "number"
+              },
+              "deviceCount": {
+                "type": "number"
+              },
+              "deviceRecipeCount": {
+                "type": "number"
+              },
+              "dataTableCount": {
+                "type": "number"
+              },
+              "experienceGroupCount": {
+                "type": "number"
+              },
+              "experienceUserCount": {
+                "type": "number"
+              },
+              "experienceVersionCount": {
+                "type": "number"
+              },
+              "experienceViewCount": {
+                "type": "number"
+              },
+              "experienceEndpointCount": {
+                "type": "number"
+              },
+              "fileCount": {
+                "type": "number"
+              },
+              "flowCount": {
+                "type": "number"
+              },
+              "integrationCount": {
+                "type": "number"
+              },
+              "notebookCount": {
+                "type": "number"
+              },
+              "dataTableCsvSize": {
+                "type": "number"
+              },
+              "webhookCount": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc",
+        "ASC",
+        "DESC",
+        ""
+      ]
+    }
+  }
+}
+```
+### <a name="application-templates-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "586e9d5151265cb9d72f6ec6",
+      "creationDate": "2020-01-13T04:00:00.000Z",
+      "lastUpdated": "2020-01-13T04:00:00.000Z",
+      "name": "smart environment",
+      "description": "a smart env set up",
+      "public": true,
+      "summary": {
+        "applicationCertificateAuthorityCount": 0,
+        "dashboardCount": 0,
+        "deviceCount": 1,
+        "deviceRecipeCount": 0,
+        "dataTableCount": 2,
+        "fileCount": 0,
+        "experienceGroupCount": 1,
+        "experienceUserCount": 1,
+        "experienceVersionCount": 3,
+        "experienceViewCount": 6,
+        "experienceEndpointCount": 6,
+        "flowCount": 1,
+        "integrationCount": 0,
+        "notebookCount": 0,
+        "dataTableCsvSize": 4008,
+        "webhookCount": 0
+      }
+    }
+  ],
+  "count": 1,
+  "totalCount": 8,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc"
+}
+```
+
+<br/>
+
 ## Applications
 
 Schema for a collection of Applications
@@ -5075,7 +5390,7 @@ Schema for a collection of Applications
           },
           "description": {
             "type": "string",
-            "maxLength": 32767
+            "maxLength": 1024
           },
           "endpointSlug": {
             "type": "string",
@@ -5111,7 +5426,7 @@ Schema for a collection of Applications
                 },
                 "description": {
                   "type": "string",
-                  "maxLength": 32767
+                  "maxLength": 1024
                 }
               },
               "additionalProperties": false,
@@ -71127,6 +71442,8 @@ Schema for the body of a Github login request
             "enum": [
               "all.User",
               "all.User.read",
+              "applicationTemplates.*",
+              "applicationTemplates.get",
               "me.*",
               "orgs.*",
               "me.get",
@@ -72781,6 +73098,9 @@ Schema for information about the currently authenticated user
     "currentPeriodEnd": {
       "type": "string",
       "format": "date-time"
+    },
+    "ssoLinked": {
+      "type": "boolean"
     }
   }
 }
@@ -72811,7 +73131,8 @@ Schema for information about the currently authenticated user
     "webhookCount": 0,
     "keyCount": 2,
     "deviceRecipeCount": 0
-  }
+  },
+  "ssoLinked": false
 }
 ```
 
@@ -77629,6 +77950,85 @@ Schema for the body of a resource transfer request
 
 <br/>
 
+## SAML Response
+
+SAML Response body for login
+
+### <a name="saml-response-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "SAMLResponse": {
+      "type": "string",
+      "minLength": 4,
+      "maxLength": 100000
+    },
+    "SAMLDomain": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 1024
+    }
+  },
+  "required": [
+    "SAMLResponse",
+    "SAMLDomain"
+  ],
+  "additionalProperties": false
+}
+```
+### <a name="saml-response-example"></a> Example
+
+```json
+{
+  "SAMLResponse": "PHNhbWxwOlJlc3BvbnNlIHhtbG5zOnNhbWxwPSJ1cm46b2FzaXM6bmFtZXM6dGM6U0FNTDoy...",
+  "SAMLDomain": "losant.com"
+}
+```
+
+<br/>
+
+## SSO Request
+
+SSO Request built from the SP and IDP config
+
+### <a name="sso-request-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "ssoType": {
+      "type": "string",
+      "enum": [
+        "SAML"
+      ]
+    },
+    "ssoRequest": {
+      "type": "string",
+      "maxLength": 32767
+    }
+  },
+  "required": [
+    "ssoType",
+    "ssoRequest"
+  ]
+}
+```
+### <a name="sso-request-example"></a> Example
+
+```json
+{
+  "ssoType": "SAML",
+  "ssoRequest": "http://localhost:8080/simplesaml/saml2/idp/SSOService.php?SAMLRequest=fZJdT8MgFIb%2..."
+}
+```
+
+<br/>
+
 ## Success
 
 Schema for reporting a successful operation
@@ -78232,6 +78632,8 @@ Schema for the body of a User authentication request
             "enum": [
               "all.User",
               "all.User.read",
+              "applicationTemplates.*",
+              "applicationTemplates.get",
               "me.*",
               "orgs.*",
               "me.get",
@@ -78650,6 +79052,8 @@ Schema for the body of a User creation request
             "enum": [
               "all.User",
               "all.User.read",
+              "applicationTemplates.*",
+              "applicationTemplates.get",
               "me.*",
               "orgs.*",
               "me.get",
