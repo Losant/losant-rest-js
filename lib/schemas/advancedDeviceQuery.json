@@ -6,89 +6,74 @@
       "type": "array",
       "items": {
         "$ref": "#/definitions/advancedDeviceQuery"
-      }
+      },
+      "maxItems": 100
     },
     "$or": {
       "type": "array",
       "items": {
         "$ref": "#/definitions/advancedDeviceQuery"
-      }
+      },
+      "maxItems": 100
     },
     "id": {
       "oneOf": [
         {
-          "type": [
-            "string",
-            "number",
-            "boolean",
-            "null"
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
           ]
         },
         {
           "type": "object",
           "properties": {
             "$eq": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
               ]
             },
             "$ne": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
               ]
             },
-            "$gt": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
             },
-            "$lt": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            "$gte": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            "$lte": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            "$startsWith": {
-              "type": "string",
-              "minLength": 1
-            },
-            "$endsWith": {
-              "type": "string",
-              "minLength": 1
-            },
-            "$contains": {
-              "type": "string",
-              "minLength": 1
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
             }
           },
-          "additionalProperties": false
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
         }
       ]
     },
@@ -407,6 +392,189 @@
     "gatewayId": {
       "oneOf": [
         {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    },
+    "parentId": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    },
+    "ancestorId": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    },
+    "attributeName": {
+      "oneOf": [
+        {
           "type": [
             "string",
             "number",
@@ -482,81 +650,125 @@
         }
       ]
     },
-    "parentId": {
+    "experienceUserId": {
       "oneOf": [
         {
-          "type": [
-            "string",
-            "number",
-            "boolean",
-            "null"
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
           ]
         },
         {
           "type": "object",
           "properties": {
             "$eq": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
               ]
             },
             "$ne": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
               ]
             },
-            "$gt": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
             },
-            "$lt": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            "$gte": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            "$lte": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            "$startsWith": {
-              "type": "string",
-              "minLength": 1
-            },
-            "$endsWith": {
-              "type": "string",
-              "minLength": 1
-            },
-            "$contains": {
-              "type": "string",
-              "minLength": 1
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
             }
           },
-          "additionalProperties": false
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    },
+    "experienceGroupId": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
         }
       ]
     },
