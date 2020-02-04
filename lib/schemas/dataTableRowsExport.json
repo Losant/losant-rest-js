@@ -98,6 +98,9 @@
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false

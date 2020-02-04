@@ -149,6 +149,9 @@
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -227,6 +230,9 @@
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -305,6 +311,9 @@
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -383,6 +392,9 @@
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -644,6 +656,9 @@
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -780,10 +795,12 @@
               "type": "object",
               "properties": {
                 "$tagKey": {
-                  "type": "string"
+                  "type": "string",
+                  "maxLength": 255
                 },
                 "$tagValue": {
-                  "type": "string"
+                  "type": "string",
+                  "maxLength": 255
                 }
               },
               "additionalProperties": false,
@@ -793,7 +810,8 @@
               "type": "object",
               "patternProperties": {
                 "^[0-9a-zA-Z_-]{1,255}": {
-                  "type": "string"
+                  "type": "string",
+                  "maxLength": 255
                 }
               },
               "additionalProperties": false
@@ -809,10 +827,12 @@
                   "type": "object",
                   "properties": {
                     "$tagKey": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     },
                     "$tagValue": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false,
@@ -822,7 +842,8 @@
                   "type": "object",
                   "patternProperties": {
                     "^[0-9a-zA-Z_-]{1,255}": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false
@@ -830,7 +851,9 @@
               ]
             }
           },
-          "minProperties": 1,
+          "required": [
+            "$eq"
+          ],
           "additionalProperties": false
         },
         {
@@ -842,10 +865,12 @@
                   "type": "object",
                   "properties": {
                     "$tagKey": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     },
                     "$tagValue": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false,
@@ -855,7 +880,8 @@
                   "type": "object",
                   "patternProperties": {
                     "^[0-9a-zA-Z_-]{1,255}": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false
@@ -863,7 +889,9 @@
               ]
             }
           },
-          "minProperties": 1,
+          "required": [
+            "$ne"
+          ],
           "additionalProperties": false
         }
       ]

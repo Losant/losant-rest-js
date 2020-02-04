@@ -361,6 +361,9 @@ Schema for advanced device queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -439,6 +442,9 @@ Schema for advanced device queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -517,6 +523,9 @@ Schema for advanced device queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -595,6 +604,9 @@ Schema for advanced device queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -856,6 +868,9 @@ Schema for advanced device queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -992,10 +1007,12 @@ Schema for advanced device queries
               "type": "object",
               "properties": {
                 "$tagKey": {
-                  "type": "string"
+                  "type": "string",
+                  "maxLength": 255
                 },
                 "$tagValue": {
-                  "type": "string"
+                  "type": "string",
+                  "maxLength": 255
                 }
               },
               "additionalProperties": false,
@@ -1005,7 +1022,8 @@ Schema for advanced device queries
               "type": "object",
               "patternProperties": {
                 "^[0-9a-zA-Z_-]{1,255}": {
-                  "type": "string"
+                  "type": "string",
+                  "maxLength": 255
                 }
               },
               "additionalProperties": false
@@ -1021,10 +1039,12 @@ Schema for advanced device queries
                   "type": "object",
                   "properties": {
                     "$tagKey": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     },
                     "$tagValue": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false,
@@ -1034,7 +1054,8 @@ Schema for advanced device queries
                   "type": "object",
                   "patternProperties": {
                     "^[0-9a-zA-Z_-]{1,255}": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false
@@ -1042,7 +1063,9 @@ Schema for advanced device queries
               ]
             }
           },
-          "minProperties": 1,
+          "required": [
+            "$eq"
+          ],
           "additionalProperties": false
         },
         {
@@ -1054,10 +1077,12 @@ Schema for advanced device queries
                   "type": "object",
                   "properties": {
                     "$tagKey": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     },
                     "$tagValue": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false,
@@ -1067,7 +1092,8 @@ Schema for advanced device queries
                   "type": "object",
                   "patternProperties": {
                     "^[0-9a-zA-Z_-]{1,255}": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false
@@ -1075,7 +1101,9 @@ Schema for advanced device queries
               ]
             }
           },
-          "minProperties": 1,
+          "required": [
+            "$ne"
+          ],
           "additionalProperties": false
         }
       ]
@@ -1118,13 +1146,15 @@ Schema for advanced event queries
       "type": "array",
       "items": {
         "$ref": "#/definitions/advancedEventQuery"
-      }
+      },
+      "maxItems": 100
     },
     "$or": {
       "type": "array",
       "items": {
         "$ref": "#/definitions/advancedEventQuery"
-      }
+      },
+      "maxItems": 100
     },
     "id": {
       "oneOf": [
@@ -1198,6 +1228,9 @@ Schema for advanced event queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -1276,6 +1309,9 @@ Schema for advanced event queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -1354,6 +1390,9 @@ Schema for advanced event queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -1432,6 +1471,9 @@ Schema for advanced event queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -1510,6 +1552,9 @@ Schema for advanced event queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -1588,6 +1633,9 @@ Schema for advanced event queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -1666,6 +1714,9 @@ Schema for advanced event queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -1744,6 +1795,9 @@ Schema for advanced event queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -1822,9 +1876,134 @@ Schema for advanced event queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
+        }
+      ]
+    },
+    "experienceUserId": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    },
+    "experienceGroupId": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
         }
       ]
     },
@@ -1836,10 +2015,12 @@ Schema for advanced event queries
               "type": "object",
               "properties": {
                 "$tagKey": {
-                  "type": "string"
+                  "type": "string",
+                  "maxLength": 255
                 },
                 "$tagValue": {
-                  "type": "string"
+                  "type": "string",
+                  "maxLength": 255
                 }
               },
               "additionalProperties": false,
@@ -1849,7 +2030,8 @@ Schema for advanced event queries
               "type": "object",
               "patternProperties": {
                 "^[0-9a-zA-Z_-]{1,255}": {
-                  "type": "string"
+                  "type": "string",
+                  "maxLength": 255
                 }
               },
               "additionalProperties": false
@@ -1865,10 +2047,12 @@ Schema for advanced event queries
                   "type": "object",
                   "properties": {
                     "$tagKey": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     },
                     "$tagValue": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false,
@@ -1878,7 +2062,8 @@ Schema for advanced event queries
                   "type": "object",
                   "patternProperties": {
                     "^[0-9a-zA-Z_-]{1,255}": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false
@@ -1886,7 +2071,9 @@ Schema for advanced event queries
               ]
             }
           },
-          "minProperties": 1,
+          "required": [
+            "$eq"
+          ],
           "additionalProperties": false
         },
         {
@@ -1898,10 +2085,12 @@ Schema for advanced event queries
                   "type": "object",
                   "properties": {
                     "$tagKey": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     },
                     "$tagValue": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false,
@@ -1911,7 +2100,8 @@ Schema for advanced event queries
                   "type": "object",
                   "patternProperties": {
                     "^[0-9a-zA-Z_-]{1,255}": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false
@@ -1919,7 +2109,9 @@ Schema for advanced event queries
               ]
             }
           },
-          "minProperties": 1,
+          "required": [
+            "$ne"
+          ],
           "additionalProperties": false
         }
       ]
@@ -2044,6 +2236,9 @@ Schema for advanced filters and queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -26919,6 +27114,9 @@ Schema for the body of a data table export
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -31696,13 +31894,15 @@ Schema for a collection of Events
           "type": "array",
           "items": {
             "$ref": "#/definitions/advancedEventQuery"
-          }
+          },
+          "maxItems": 100
         },
         "$or": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/advancedEventQuery"
-          }
+          },
+          "maxItems": 100
         },
         "id": {
           "oneOf": [
@@ -31776,6 +31976,9 @@ Schema for a collection of Events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -31854,6 +32057,9 @@ Schema for a collection of Events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -31932,6 +32138,9 @@ Schema for a collection of Events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -32010,6 +32219,9 @@ Schema for a collection of Events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -32088,6 +32300,9 @@ Schema for a collection of Events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -32166,6 +32381,9 @@ Schema for a collection of Events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -32244,6 +32462,9 @@ Schema for a collection of Events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -32322,6 +32543,9 @@ Schema for a collection of Events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -32400,9 +32624,134 @@ Schema for a collection of Events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
+            }
+          ]
+        },
+        "experienceUserId": {
+          "oneOf": [
+            {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "minProperties": 1,
+              "maxProperties": 1
+            }
+          ]
+        },
+        "experienceGroupId": {
+          "oneOf": [
+            {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "minProperties": 1,
+              "maxProperties": 1
             }
           ]
         },
@@ -32414,10 +32763,12 @@ Schema for a collection of Events
                   "type": "object",
                   "properties": {
                     "$tagKey": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     },
                     "$tagValue": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false,
@@ -32427,7 +32778,8 @@ Schema for a collection of Events
                   "type": "object",
                   "patternProperties": {
                     "^[0-9a-zA-Z_-]{1,255}": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false
@@ -32443,10 +32795,12 @@ Schema for a collection of Events
                       "type": "object",
                       "properties": {
                         "$tagKey": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 255
                         },
                         "$tagValue": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 255
                         }
                       },
                       "additionalProperties": false,
@@ -32456,7 +32810,8 @@ Schema for a collection of Events
                       "type": "object",
                       "patternProperties": {
                         "^[0-9a-zA-Z_-]{1,255}": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 255
                         }
                       },
                       "additionalProperties": false
@@ -32464,7 +32819,9 @@ Schema for a collection of Events
                   ]
                 }
               },
-              "minProperties": 1,
+              "required": [
+                "$eq"
+              ],
               "additionalProperties": false
             },
             {
@@ -32476,10 +32833,12 @@ Schema for a collection of Events
                       "type": "object",
                       "properties": {
                         "$tagKey": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 255
                         },
                         "$tagValue": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 255
                         }
                       },
                       "additionalProperties": false,
@@ -32489,7 +32848,8 @@ Schema for a collection of Events
                       "type": "object",
                       "patternProperties": {
                         "^[0-9a-zA-Z_-]{1,255}": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 255
                         }
                       },
                       "additionalProperties": false
@@ -32497,7 +32857,9 @@ Schema for a collection of Events
                   ]
                 }
               },
-              "minProperties": 1,
+              "required": [
+                "$ne"
+              ],
               "additionalProperties": false
             }
           ]
@@ -32599,13 +32961,15 @@ Export options for events
           "type": "array",
           "items": {
             "$ref": "#/definitions/advancedEventQuery"
-          }
+          },
+          "maxItems": 100
         },
         "$or": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/advancedEventQuery"
-          }
+          },
+          "maxItems": 100
         },
         "id": {
           "oneOf": [
@@ -32679,6 +33043,9 @@ Export options for events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -32757,6 +33124,9 @@ Export options for events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -32835,6 +33205,9 @@ Export options for events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -32913,6 +33286,9 @@ Export options for events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -32991,6 +33367,9 @@ Export options for events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -33069,6 +33448,9 @@ Export options for events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -33147,6 +33529,9 @@ Export options for events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -33225,6 +33610,9 @@ Export options for events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -33303,9 +33691,134 @@ Export options for events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
+            }
+          ]
+        },
+        "experienceUserId": {
+          "oneOf": [
+            {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "minProperties": 1,
+              "maxProperties": 1
+            }
+          ]
+        },
+        "experienceGroupId": {
+          "oneOf": [
+            {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "minProperties": 1,
+              "maxProperties": 1
             }
           ]
         },
@@ -33317,10 +33830,12 @@ Export options for events
                   "type": "object",
                   "properties": {
                     "$tagKey": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     },
                     "$tagValue": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false,
@@ -33330,7 +33845,8 @@ Export options for events
                   "type": "object",
                   "patternProperties": {
                     "^[0-9a-zA-Z_-]{1,255}": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false
@@ -33346,10 +33862,12 @@ Export options for events
                       "type": "object",
                       "properties": {
                         "$tagKey": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 255
                         },
                         "$tagValue": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 255
                         }
                       },
                       "additionalProperties": false,
@@ -33359,7 +33877,8 @@ Export options for events
                       "type": "object",
                       "patternProperties": {
                         "^[0-9a-zA-Z_-]{1,255}": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 255
                         }
                       },
                       "additionalProperties": false
@@ -33367,7 +33886,9 @@ Export options for events
                   ]
                 }
               },
-              "minProperties": 1,
+              "required": [
+                "$eq"
+              ],
               "additionalProperties": false
             },
             {
@@ -33379,10 +33900,12 @@ Export options for events
                       "type": "object",
                       "properties": {
                         "$tagKey": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 255
                         },
                         "$tagValue": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 255
                         }
                       },
                       "additionalProperties": false,
@@ -33392,7 +33915,8 @@ Export options for events
                       "type": "object",
                       "patternProperties": {
                         "^[0-9a-zA-Z_-]{1,255}": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 255
                         }
                       },
                       "additionalProperties": false
@@ -33400,7 +33924,9 @@ Export options for events
                   ]
                 }
               },
-              "minProperties": 1,
+              "required": [
+                "$ne"
+              ],
               "additionalProperties": false
             }
           ]
