@@ -9,8 +9,8 @@
     },
     "SAMLDomain": {
       "type": "string",
-      "minLength": 3,
-      "maxLength": 1024
+      "maxLength": 1024,
+      "minLength": 3
     }
   },
   "required": [

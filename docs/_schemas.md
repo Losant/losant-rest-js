@@ -26950,6 +26950,9 @@ Schema for a collection of Data Table Rows
     "applicationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "query": {
+      "type": "object"
     }
   }
 }
@@ -30339,6 +30342,9 @@ Schema for a collection of Devices
           "type": "null"
         }
       ]
+    },
+    "query": {
+      "type": "object"
     }
   }
 }
@@ -31886,986 +31892,7 @@ Schema for a collection of Events
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "query": {
-      "title": "Advanced Event Query",
-      "description": "Schema for advanced event queries",
-      "type": "object",
-      "properties": {
-        "$and": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/advancedEventQuery"
-          },
-          "maxItems": 100
-        },
-        "$or": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/advancedEventQuery"
-          },
-          "maxItems": 100
-        },
-        "id": {
-          "oneOf": [
-            {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$startsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$endsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$contains": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$ci": {
-                  "type": "boolean"
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        "creationDate": {
-          "oneOf": [
-            {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$startsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$endsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$contains": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$ci": {
-                  "type": "boolean"
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        "lastUpdated": {
-          "oneOf": [
-            {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$startsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$endsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$contains": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$ci": {
-                  "type": "boolean"
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        "sourceId": {
-          "oneOf": [
-            {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$startsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$endsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$contains": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$ci": {
-                  "type": "boolean"
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        "sourceType": {
-          "oneOf": [
-            {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$startsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$endsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$contains": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$ci": {
-                  "type": "boolean"
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        "level": {
-          "oneOf": [
-            {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$startsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$endsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$contains": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$ci": {
-                  "type": "boolean"
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        "state": {
-          "oneOf": [
-            {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$startsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$endsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$contains": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$ci": {
-                  "type": "boolean"
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        "subject": {
-          "oneOf": [
-            {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$startsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$endsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$contains": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$ci": {
-                  "type": "boolean"
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        "deviceId": {
-          "oneOf": [
-            {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$startsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$endsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$contains": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$ci": {
-                  "type": "boolean"
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        "experienceUserId": {
-          "oneOf": [
-            {
-              "oneOf": [
-                {
-                  "type": "string",
-                  "pattern": "^[A-Fa-f\\d]{24}$"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "oneOf": [
-                    {
-                      "type": "string",
-                      "pattern": "^[A-Fa-f\\d]{24}$"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
-                },
-                "$ne": {
-                  "oneOf": [
-                    {
-                      "type": "string",
-                      "pattern": "^[A-Fa-f\\d]{24}$"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
-                },
-                "$in": {
-                  "type": "array",
-                  "maxItems": 100,
-                  "items": {
-                    "type": "string",
-                    "pattern": "^[A-Fa-f\\d]{24}$"
-                  }
-                },
-                "$nin": {
-                  "type": "array",
-                  "maxItems": 100,
-                  "items": {
-                    "type": "string",
-                    "pattern": "^[A-Fa-f\\d]{24}$"
-                  }
-                }
-              },
-              "additionalProperties": false,
-              "minProperties": 1,
-              "maxProperties": 1
-            }
-          ]
-        },
-        "experienceGroupId": {
-          "oneOf": [
-            {
-              "oneOf": [
-                {
-                  "type": "string",
-                  "pattern": "^[A-Fa-f\\d]{24}$"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "oneOf": [
-                    {
-                      "type": "string",
-                      "pattern": "^[A-Fa-f\\d]{24}$"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
-                },
-                "$ne": {
-                  "oneOf": [
-                    {
-                      "type": "string",
-                      "pattern": "^[A-Fa-f\\d]{24}$"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
-                },
-                "$in": {
-                  "type": "array",
-                  "maxItems": 100,
-                  "items": {
-                    "type": "string",
-                    "pattern": "^[A-Fa-f\\d]{24}$"
-                  }
-                },
-                "$nin": {
-                  "type": "array",
-                  "maxItems": 100,
-                  "items": {
-                    "type": "string",
-                    "pattern": "^[A-Fa-f\\d]{24}$"
-                  }
-                }
-              },
-              "additionalProperties": false,
-              "minProperties": 1,
-              "maxProperties": 1
-            }
-          ]
-        },
-        "eventTags": {
-          "oneOf": [
-            {
-              "oneOf": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "$tagKey": {
-                      "type": "string",
-                      "maxLength": 255
-                    },
-                    "$tagValue": {
-                      "type": "string",
-                      "maxLength": 255
-                    }
-                  },
-                  "additionalProperties": false,
-                  "minProperties": 1
-                },
-                {
-                  "type": "object",
-                  "patternProperties": {
-                    "^[0-9a-zA-Z_-]{1,255}": {
-                      "type": "string",
-                      "maxLength": 255
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "$tagKey": {
-                          "type": "string",
-                          "maxLength": 255
-                        },
-                        "$tagValue": {
-                          "type": "string",
-                          "maxLength": 255
-                        }
-                      },
-                      "additionalProperties": false,
-                      "minProperties": 1
-                    },
-                    {
-                      "type": "object",
-                      "patternProperties": {
-                        "^[0-9a-zA-Z_-]{1,255}": {
-                          "type": "string",
-                          "maxLength": 255
-                        }
-                      },
-                      "additionalProperties": false
-                    }
-                  ]
-                }
-              },
-              "required": [
-                "$eq"
-              ],
-              "additionalProperties": false
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$ne": {
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "$tagKey": {
-                          "type": "string",
-                          "maxLength": 255
-                        },
-                        "$tagValue": {
-                          "type": "string",
-                          "maxLength": 255
-                        }
-                      },
-                      "additionalProperties": false,
-                      "minProperties": 1
-                    },
-                    {
-                      "type": "object",
-                      "patternProperties": {
-                        "^[0-9a-zA-Z_-]{1,255}": {
-                          "type": "string",
-                          "maxLength": 255
-                        }
-                      },
-                      "additionalProperties": false
-                    }
-                  ]
-                }
-              },
-              "required": [
-                "$ne"
-              ],
-              "additionalProperties": false
-            }
-          ]
-        }
-      },
-      "additionalProperties": false
+      "type": "object"
     }
   }
 }
@@ -77843,6 +76870,14 @@ Schema for a single Organization
     "iconColor": {
       "type": "string",
       "maxLength": 64
+    },
+    "whitelistedEmailDomains": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 1024,
+        "minLength": 3
+      }
     }
   }
 }
@@ -77881,7 +76916,11 @@ Schema for a single Organization
     "webhookCount": 0,
     "keyCount": 2,
     "deviceRecipeCount": 0
-  }
+  },
+  "whitelistedEmailDomains": [
+    "email.com",
+    "losant.com"
+  ]
 }
 ```
 
@@ -78361,6 +77400,15 @@ Schema for the body of an Organization modification request
     "iconColor": {
       "type": "string",
       "maxLength": 64
+    },
+    "whitelistedEmailDomains": {
+      "type": "array",
+      "maxItems": 25,
+      "items": {
+        "type": "string",
+        "maxLength": 1024,
+        "minLength": 3
+      }
     }
   },
   "additionalProperties": false
@@ -78413,6 +77461,15 @@ Schema for the body of an Organization creation request
     "iconColor": {
       "type": "string",
       "maxLength": 64
+    },
+    "whitelistedEmailDomains": {
+      "type": "array",
+      "maxItems": 25,
+      "items": {
+        "type": "string",
+        "maxLength": 1024,
+        "minLength": 3
+      }
     }
   },
   "additionalProperties": false,
@@ -78865,6 +77922,14 @@ Schema for a collection of Organizations
           "iconColor": {
             "type": "string",
             "maxLength": 64
+          },
+          "whitelistedEmailDomains": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 1024,
+              "minLength": 3
+            }
           }
         }
       }
@@ -78939,7 +78004,11 @@ Schema for a collection of Organizations
         "webhookCount": 0,
         "keyCount": 2,
         "deviceRecipeCount": 0
-      }
+      },
+      "whitelistedEmailDomains": [
+        "email.com",
+        "losant.com"
+      ]
     }
   ],
   "count": 1,
@@ -79411,8 +78480,8 @@ SAML Response body for login
     },
     "SAMLDomain": {
       "type": "string",
-      "minLength": 3,
-      "maxLength": 1024
+      "maxLength": 1024,
+      "minLength": 3
     }
   },
   "required": [

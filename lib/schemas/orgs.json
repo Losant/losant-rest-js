@@ -424,6 +424,14 @@
           "iconColor": {
             "type": "string",
             "maxLength": 64
+          },
+          "whitelistedEmailDomains": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 1024,
+              "minLength": 3
+            }
           }
         }
       }
