@@ -45,7 +45,7 @@
     },
     "description": {
       "type": "string",
-      "maxLength": 32767
+      "maxLength": 1024
     },
     "endpointSlug": {
       "type": "string",
@@ -81,7 +81,7 @@
           },
           "description": {
             "type": "string",
-            "maxLength": 32767
+            "maxLength": 1024
           }
         },
         "additionalProperties": false,

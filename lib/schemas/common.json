@@ -1,0 +1,3823 @@
+{
+  "advancedTagQuery": {
+    "oneOf": [
+      {
+        "type": "object",
+        "properties": {
+          "$tagKey": {
+            "type": "string"
+          },
+          "$tagValue": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "minProperties": 1
+      },
+      {
+        "type": "object",
+        "patternProperties": {
+          "^[0-9a-zA-Z_-]{1,255}": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    ]
+  },
+  "advancedValueQuery": {
+    "oneOf": [
+      {
+        "type": [
+          "string",
+          "number",
+          "boolean",
+          "null"
+        ]
+      },
+      {
+        "type": "object",
+        "properties": {
+          "$eq": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          },
+          "$ne": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          },
+          "$gt": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          },
+          "$lt": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          },
+          "$gte": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          },
+          "$lte": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          },
+          "$startsWith": {
+            "type": "string",
+            "minLength": 1
+          },
+          "$endsWith": {
+            "type": "string",
+            "minLength": 1
+          },
+          "$contains": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    ]
+  },
+  "aggregation": {
+    "type": "string",
+    "enum": [
+      "FIRST",
+      "LAST",
+      "COUNT",
+      "MAX",
+      "MIN",
+      "MEDIAN",
+      "MEAN",
+      "SUM",
+      "STD_DEV",
+      "NONE"
+    ]
+  },
+  "applicationApiScope": {
+    "type": "string",
+    "enum": [
+      "all.Application",
+      "all.Application.read",
+      "all.Device",
+      "all.Device.read",
+      "application.*",
+      "applicationApiToken.*",
+      "applicationApiTokens.*",
+      "applicationCertificate.*",
+      "applicationCertificates.*",
+      "applicationCertificateAuthority.*",
+      "applicationCertificateAuthorities.*",
+      "applicationKey.*",
+      "applicationKeys.*",
+      "data.*",
+      "dataTable.*",
+      "dataTables.*",
+      "dataTableRow.*",
+      "dataTableRows.*",
+      "device.*",
+      "deviceRecipe.*",
+      "deviceRecipes.*",
+      "devices.*",
+      "edgeDeployments.*",
+      "event.*",
+      "events.*",
+      "experience.*",
+      "experienceDomain.*",
+      "experienceDomains.*",
+      "experienceEndpoint.*",
+      "experienceEndpoints.*",
+      "experienceGroup.*",
+      "experienceGroups.*",
+      "experienceSlug.*",
+      "experienceSlugs.*",
+      "experienceUser.*",
+      "experienceUsers.*",
+      "experienceVersion.*",
+      "experienceVersions.*",
+      "experienceView.*",
+      "experienceViews.*",
+      "integration.*",
+      "integrations.*",
+      "file.*",
+      "files.*",
+      "flow.*",
+      "flows.*",
+      "flowVersion.*",
+      "flowVersions.*",
+      "notebook.*",
+      "notebooks.*",
+      "webhook.*",
+      "webhooks.*",
+      "application.archiveData",
+      "application.backfillArchiveData",
+      "application.fullEventsArchive",
+      "application.fullDataTablesArchive",
+      "application.debug",
+      "application.delete",
+      "application.get",
+      "application.mqttPublishMessage",
+      "application.mqttSubscriptionStream",
+      "application.patch",
+      "application.payloadCounts",
+      "application.search",
+      "applicationApiToken.delete",
+      "applicationApiToken.get",
+      "applicationApiToken.patch",
+      "applicationApiTokens.get",
+      "applicationApiTokens.post",
+      "applicationCertificate.delete",
+      "applicationCertificate.get",
+      "applicationCertificate.patch",
+      "applicationCertificates.get",
+      "applicationCertificates.post",
+      "applicationCertificateAuthority.delete",
+      "applicationCertificateAuthority.get",
+      "applicationCertificateAuthority.patch",
+      "applicationCertificateAuthorities.get",
+      "applicationCertificateAuthorities.post",
+      "applicationKey.delete",
+      "applicationKey.get",
+      "applicationKey.patch",
+      "applicationKeys.get",
+      "applicationKeys.post",
+      "data.export",
+      "data.lastValueQuery",
+      "data.timeSeriesQuery",
+      "dataTable.addColumn",
+      "dataTable.delete",
+      "dataTable.get",
+      "dataTable.patch",
+      "dataTable.removeColumn",
+      "dataTableRow.delete",
+      "dataTableRow.get",
+      "dataTableRow.patch",
+      "dataTableRows.get",
+      "dataTableRows.post",
+      "dataTableRows.query",
+      "dataTableRows.export",
+      "dataTableRows.delete",
+      "dataTableRows.truncate",
+      "dataTables.get",
+      "dataTables.post",
+      "device.commandStream",
+      "device.debug",
+      "device.delete",
+      "device.export",
+      "device.get",
+      "device.getCommand",
+      "device.getCompositeState",
+      "device.getLogEntries",
+      "device.getState",
+      "device.patch",
+      "device.removeData",
+      "device.sendCommand",
+      "device.sendState",
+      "device.setConnectionStatus",
+      "device.stateStream",
+      "deviceRecipe.bulkCreate",
+      "deviceRecipe.delete",
+      "deviceRecipe.get",
+      "deviceRecipe.patch",
+      "deviceRecipes.get",
+      "deviceRecipes.post",
+      "devices.detailedSummary",
+      "devices.export",
+      "devices.get",
+      "devices.post",
+      "devices.sendCommand",
+      "edgeDeployments.get",
+      "edgeDeployments.release",
+      "edgeDeployments.remove",
+      "edgeDeployments.replace",
+      "event.delete",
+      "event.get",
+      "event.patch",
+      "events.delete",
+      "events.get",
+      "events.mostRecentBySeverity",
+      "events.patch",
+      "events.post",
+      "events.export",
+      "experience.delete",
+      "experience.bootstrap",
+      "experienceDomain.delete",
+      "experienceDomain.get",
+      "experienceDomain.patch",
+      "experienceDomains.get",
+      "experienceDomains.post",
+      "experienceEndpoint.delete",
+      "experienceEndpoint.get",
+      "experienceEndpoint.patch",
+      "experienceEndpoints.get",
+      "experienceEndpoints.post",
+      "experienceEndpoints.stats",
+      "experienceGroup.delete",
+      "experienceGroup.get",
+      "experienceGroup.patch",
+      "experienceGroups.detailedSummary",
+      "experienceGroups.get",
+      "experienceGroups.post",
+      "experienceSlug.delete",
+      "experienceSlug.get",
+      "experienceSlug.patch",
+      "experienceSlugs.get",
+      "experienceSlugs.post",
+      "experienceUser.delete",
+      "experienceUser.get",
+      "experienceUser.patch",
+      "experienceUsers.detailedSummary",
+      "experienceUsers.get",
+      "experienceUsers.post",
+      "experienceVersion.delete",
+      "experienceVersion.get",
+      "experienceVersion.patch",
+      "experienceVersions.get",
+      "experienceVersions.post",
+      "experienceView.debug",
+      "experienceView.delete",
+      "experienceView.get",
+      "experienceView.patch",
+      "experienceViews.debug",
+      "experienceViews.detailedSummary",
+      "experienceViews.get",
+      "experienceViews.post",
+      "file.get",
+      "file.patch",
+      "file.move",
+      "file.delete",
+      "file.upload",
+      "files.get",
+      "files.post",
+      "flow.debug",
+      "flow.delete",
+      "flow.clearStorageEntries",
+      "flow.get",
+      "flow.getStorageEntries",
+      "flow.log",
+      "flow.patch",
+      "flow.pressVirtualButton",
+      "flow.setStorageEntry",
+      "flows.get",
+      "flows.getByVersion",
+      "flows.import",
+      "flows.post",
+      "flowVersion.delete",
+      "flowVersion.get",
+      "flowVersion.log",
+      "flowVersion.patch",
+      "flowVersions.get",
+      "flowVersions.post",
+      "integration.delete",
+      "integration.get",
+      "integration.patch",
+      "integrations.get",
+      "integrations.post",
+      "notebook.delete",
+      "notebook.execute",
+      "notebook.get",
+      "notebook.logs",
+      "notebook.patch",
+      "notebook.requestInputDataExport",
+      "notebook.upload",
+      "notebooks.get",
+      "notebooks.post",
+      "webhook.delete",
+      "webhook.get",
+      "webhook.patch",
+      "webhooks.get",
+      "webhooks.post"
+    ]
+  },
+  "applicationGlobals": {
+    "type": "array",
+    "maxItems": 100,
+    "items": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/definitions/common/key"
+        },
+        "json": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32767
+        },
+        "cloudOnly": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "json"
+      ]
+    }
+  },
+  "certificateInfo": {
+    "type": "object",
+    "properties": {
+      "serialNumber": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      },
+      "fingerprint": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      },
+      "commonName": {
+        "type": "string",
+        "maxLength": 1024
+      },
+      "issuerName": {
+        "type": "string",
+        "maxLength": 1024
+      },
+      "notValidBefore": {
+        "$ref": "#/definitions/common/date"
+      },
+      "notValidAfter": {
+        "$ref": "#/definitions/common/date"
+      }
+    }
+  },
+  "certificateString": {
+    "type": "string",
+    "maxLength": 32767,
+    "minLength": 50
+  },
+  "color": {
+    "type": "string",
+    "maxLength": 64
+  },
+  "contextVariableValue": {
+    "oneOf": [
+      {
+        "type": "string",
+        "maxLength": 32767
+      },
+      {
+        "type": "number"
+      },
+      {
+        "$ref": "#/definitions/common/tagOptional"
+      }
+    ]
+  },
+  "customNodeFieldConfig": {
+    "oneOf": [
+      {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "checkbox"
+            ]
+          },
+          "label": {
+            "$ref": "#/definitions/common/reqMedStr"
+          },
+          "id": {
+            "$ref": "#/definitions/common/reqMedStr"
+          },
+          "description": {
+            "$ref": "#/definitions/common/description"
+          },
+          "defaultValue": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "label"
+        ]
+      },
+      {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "select"
+            ]
+          },
+          "label": {
+            "$ref": "#/definitions/common/reqMedStr"
+          },
+          "id": {
+            "$ref": "#/definitions/common/reqMedStr"
+          },
+          "description": {
+            "$ref": "#/definitions/common/description"
+          },
+          "defaultValue": {
+            "$ref": "#/definitions/common/reqMedStr"
+          },
+          "options": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 100,
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/definitions/common/optMedStr"
+                },
+                "value": {
+                  "$ref": "#/definitions/common/reqMedStr"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "value"
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "label",
+          "defaultValue",
+          "options"
+        ]
+      },
+      {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "stringTemplate"
+            ]
+          },
+          "label": {
+            "$ref": "#/definitions/common/reqMedStr"
+          },
+          "id": {
+            "$ref": "#/definitions/common/reqMedStr"
+          },
+          "description": {
+            "$ref": "#/definitions/common/description"
+          },
+          "defaultValue": {
+            "$ref": "#/definitions/common/optMedStr"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "validRegExp": {
+            "$ref": "#/definitions/common/optMedStr"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "label"
+        ]
+      },
+      {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "numberTemplate"
+            ]
+          },
+          "label": {
+            "$ref": "#/definitions/common/reqMedStr"
+          },
+          "id": {
+            "$ref": "#/definitions/common/reqMedStr"
+          },
+          "description": {
+            "$ref": "#/definitions/common/description"
+          },
+          "defaultValue": {
+            "type": "number"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "validMin": {
+            "type": "number"
+          },
+          "validMax": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "label"
+        ]
+      },
+      {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "jsonTemplate"
+            ]
+          },
+          "label": {
+            "$ref": "#/definitions/common/reqMedStr"
+          },
+          "id": {
+            "$ref": "#/definitions/common/reqMedStr"
+          },
+          "description": {
+            "$ref": "#/definitions/common/description"
+          },
+          "defaultValue": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "required": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "label"
+        ]
+      },
+      {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "payloadPath"
+            ]
+          },
+          "label": {
+            "$ref": "#/definitions/common/reqMedStr"
+          },
+          "id": {
+            "$ref": "#/definitions/common/reqMedStr"
+          },
+          "description": {
+            "$ref": "#/definitions/common/description"
+          },
+          "required": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "label"
+        ]
+      },
+      {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "section"
+            ]
+          },
+          "label": {
+            "$ref": "#/definitions/common/reqMedStr"
+          },
+          "id": {
+            "$ref": "#/definitions/common/reqMedStr"
+          },
+          "description": {
+            "$ref": "#/definitions/common/description"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "label"
+        ]
+      }
+    ]
+  },
+  "date": {
+    "type": "string",
+    "format": "date-time"
+  },
+  "description": {
+    "type": "string",
+    "maxLength": 32767
+  },
+  "deviceAttributes": {
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/common/key"
+        },
+        "dataType": {
+          "type": "string",
+          "enum": [
+            "string",
+            "number",
+            "gps",
+            "boolean"
+          ]
+        },
+        "system": {
+          "$ref": "#/definitions/common/systemAttributes"
+        }
+      },
+      "required": [
+        "name",
+        "dataType"
+      ],
+      "additionalProperties": false
+    },
+    "maxItems": 256
+  },
+  "deviceClass": {
+    "type": "string",
+    "enum": [
+      "standalone",
+      "gateway",
+      "peripheral",
+      "floating",
+      "edgeCompute",
+      "system"
+    ]
+  },
+  "email": {
+    "type": "string",
+    "format": "email",
+    "maxLength": 1024
+  },
+  "eventSourceType": {
+    "type": "string",
+    "enum": [
+      "flow",
+      "user",
+      "device",
+      "apiToken",
+      "experienceUser",
+      "public"
+    ]
+  },
+  "eventState": {
+    "type": "string",
+    "enum": [
+      "new",
+      "acknowledged",
+      "resolved"
+    ]
+  },
+  "expSourceType": {
+    "type": "string",
+    "enum": [
+      "flow",
+      "user",
+      "apiToken"
+    ]
+  },
+  "globals": {
+    "type": "array",
+    "maxItems": 100,
+    "items": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/definitions/common/key"
+        },
+        "json": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32767
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "json"
+      ]
+    }
+  },
+  "imageDataUri": {
+    "type": "string",
+    "maxLength": 32767,
+    "pattern": "^data:image/(jpg|jpeg|png|svg\\+xml);base64,[0-9a-zA-Z+/=]*$"
+  },
+  "name": {
+    "type": "string",
+    "minLength": 1,
+    "maxLength": 255
+  },
+  "nullableName": {
+    "type": [
+      "string",
+      "null"
+    ],
+    "minLength": 1,
+    "maxLength": 255
+  },
+  "key": {
+    "type": "string",
+    "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+  },
+  "nullableObjectId": {
+    "type": [
+      "string",
+      "null"
+    ],
+    "pattern": "^[A-Fa-f\\d]{24}$"
+  },
+  "objectId": {
+    "type": "string",
+    "pattern": "^[A-Fa-f\\d]{24}$"
+  },
+  "objectIdOrNull": {
+    "oneOf": [
+      {
+        "$ref": "#/definitions/common/objectId"
+      },
+      {
+        "type": "null"
+      }
+    ]
+  },
+  "objectIds": {
+    "type": "array",
+    "items": {
+      "$ref": "#/definitions/common/objectId"
+    },
+    "maxItems": 1000
+  },
+  "optMedStr": {
+    "type": "string",
+    "maxLength": 1024
+  },
+  "orgApiScope": {
+    "oneOf": [
+      {
+        "$ref": "#/definitions/common/applicationApiScope"
+      },
+      {
+        "type": "string",
+        "enum": [
+          "all.Organization",
+          "all.Organization.read",
+          "applications.*",
+          "auditLog.*",
+          "auditLogs.*",
+          "dashboard.*",
+          "dashboards.*",
+          "org.*",
+          "applications.get",
+          "applications.post",
+          "applications.detailedSummary",
+          "auditLog.get",
+          "auditLogs.get",
+          "dashboard.patch",
+          "dashboard.delete",
+          "dashboard.sendReport",
+          "dashboards.get",
+          "dashboards.post",
+          "org.get",
+          "org.patch",
+          "org.delete",
+          "org.pendingInvites",
+          "org.inviteMember",
+          "org.revokeInvite",
+          "org.modifyMember",
+          "org.removeMember",
+          "org.payloadCounts",
+          "org.invoices",
+          "org.currentCard",
+          "org.chargeDetails",
+          "org.transferResources"
+        ]
+      }
+    ]
+  },
+  "orgRole": {
+    "type": "string",
+    "enum": [
+      "admin",
+      "edit",
+      "collaborate",
+      "view",
+      "none"
+    ]
+  },
+  "outputIds": {
+    "type": "array",
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 255
+      },
+      "maxItems": 100
+    },
+    "maxItems": 100
+  },
+  "ownerType": {
+    "type": "string",
+    "enum": [
+      "user",
+      "organization"
+    ]
+  },
+  "password": {
+    "type": "string",
+    "minLength": 8,
+    "maxLength": 2048
+  },
+  "reqMedStr": {
+    "type": "string",
+    "minLength": 1,
+    "maxLength": 1024
+  },
+  "resourceRoles": {
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "resourceId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "collaborate",
+            "view",
+            "none"
+          ]
+        }
+      },
+      "required": [
+        "resourceId",
+        "role"
+      ],
+      "additionalProperties": false
+    },
+    "maxItems": 1000
+  },
+  "responseCode": {
+    "type": "integer",
+    "minimum": 100,
+    "maximum": 599
+  },
+  "safeFileName": {
+    "type": "string",
+    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+  },
+  "slug": {
+    "type": "string",
+    "minLength": 4,
+    "maxLength": 63,
+    "pattern": "^[0-9a-z-]*$"
+  },
+  "sortDirection": {
+    "type": "string",
+    "enum": [
+      "asc",
+      "desc",
+      "ASC",
+      "DESC",
+      ""
+    ]
+  },
+  "sourceType": {
+    "type": "string",
+    "enum": [
+      "flow",
+      "user",
+      "device",
+      "apiToken",
+      "notebook"
+    ]
+  },
+  "staticReply": {
+    "oneOf": [
+      {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "statusCode": {
+            "type": "number",
+            "min": 100,
+            "max": 599,
+            "integer": true
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "page",
+              "redirect"
+            ]
+          }
+        },
+        "required": [
+          "value",
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "null"
+      }
+    ]
+  },
+  "status": {
+    "type": "string",
+    "enum": [
+      "active",
+      "inactive"
+    ]
+  },
+  "systemAttributes": {
+    "type": "object",
+    "properties": {
+      "aggregation": {
+        "$ref": "#/definitions/common/aggregation"
+      },
+      "childAttributes": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "$ref": "#/definitions/common/key"
+            },
+            "mode": {
+              "type": "string",
+              "enum": [
+                "all",
+                "whitelist",
+                "blacklist"
+              ]
+            },
+            "deviceIds": {
+              "$ref": "#/definitions/common/objectIds"
+            },
+            "deviceTags": {
+              "$ref": "#/definitions/common/tagsOptional"
+            }
+          },
+          "required": [
+            "name",
+            "mode"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 256
+      }
+    },
+    "additionalProperties": false
+  },
+  "systemInterval": {
+    "type": "integer",
+    "minimum": 5,
+    "maximum": 3600
+  },
+  "tagOptional": {
+    "type": "object",
+    "properties": {
+      "key": {
+        "$ref": "#/definitions/common/key"
+      },
+      "value": {
+        "$ref": "#/definitions/common/name"
+      }
+    },
+    "additionalProperties": false
+  },
+  "tagRequired": {
+    "type": "object",
+    "properties": {
+      "key": {
+        "$ref": "#/definitions/common/key"
+      },
+      "value": {
+        "$ref": "#/definitions/common/name"
+      }
+    },
+    "required": [
+      "key",
+      "value"
+    ],
+    "additionalProperties": false
+  },
+  "tagsOptional": {
+    "type": "array",
+    "items": {
+      "$ref": "#/definitions/common/tagOptional"
+    },
+    "maxItems": 100
+  },
+  "tagsRequired": {
+    "type": "array",
+    "items": {
+      "$ref": "#/definitions/common/tagRequired"
+    },
+    "maxItems": 100
+  },
+  "timeFormats": {
+    "oneOf": [
+      {
+        "type": "string"
+      },
+      {
+        "type": "number"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "$date": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "$date"
+        ]
+      }
+    ]
+  },
+  "token": {
+    "type": "string",
+    "minLength": 1
+  },
+  "upload": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string"
+      },
+      "fields": {
+        "type": "object",
+        "patternProperties": {
+          "^.*$": {
+            "type": "string"
+          }
+        },
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "bucket": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "userApiScope": {
+    "oneOf": [
+      {
+        "$ref": "#/definitions/common/orgApiScope"
+      },
+      {
+        "type": "string",
+        "enum": [
+          "all.User",
+          "all.User.read",
+          "me.*",
+          "orgs.*",
+          "me.get",
+          "me.patch",
+          "me.delete",
+          "me.verifyEmail",
+          "me.changePassword",
+          "me.enableTwoFactorAuth",
+          "me.disableTwoFactorAuth",
+          "me.disconnectGithub",
+          "me.connectGithub",
+          "me.disconnectTwitter",
+          "me.connectTwitter",
+          "me.addRecentItem",
+          "me.fetchRecentItems",
+          "me.payloadCounts",
+          "me.transferResources",
+          "orgs.get",
+          "orgs.post"
+        ]
+      }
+    ]
+  },
+  "userPassword": {
+    "type": "string",
+    "minLength": 8,
+    "maxLength": 2048,
+    "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{8,}$"
+  },
+  "validateContextCtx": {
+    "type": "object",
+    "patternProperties": {
+      "^[0-9a-zA-Z_-]{1,255}$": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/common/contextVariableValue/oneOf"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "$ref": "#/definitions/common/objectId"
+              },
+              "name": {
+                "$ref": "#/definitions/common/name"
+              },
+              "description": {
+                "$ref": "#/definitions/common/description"
+              },
+              "tags": {
+                "type": "object",
+                "patternProperties": {
+                  "^[0-9a-zA-Z_-]{1,255}$": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/definitions/common/name"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "version": {
+    "type": "string",
+    "pattern": "^(0|([1-9]\\d*))\\.(0|([1-9]\\d*))\\.(0|([1-9]\\d*))$"
+  },
+  "blockComponents": {
+    "attributes": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "type": "string",
+            "maxLength": 255
+          }
+        }
+      ]
+    },
+    "commonSegment": {
+      "type": "object",
+      "properties": {
+        "attribute": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "aggregation": {
+          "$ref": "#/definitions/common/aggregation"
+        },
+        "color": {
+          "$ref": "#/definitions/common/color"
+        },
+        "deviceIds": {
+          "$ref": "#/definitions/common/blockComponents/deviceIdsAllowCtx"
+        },
+        "deviceTags": {
+          "$ref": "#/definitions/common/blockComponents/deviceTagsAllowCtx"
+        },
+        "label": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "yAxisLabel": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "lineWeight": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "detectDataGaps": {
+          "type": "boolean"
+        },
+        "graphType": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "additionalProperties": false
+    },
+    "commonSegments": {
+      "type": "array",
+      "maxItems": 255,
+      "items": {
+        "$ref": "#/definitions/common/blockComponents/commonSegment"
+      }
+    },
+    "condition": {
+      "type": "object",
+      "properties": {
+        "color": {
+          "$ref": "#/definitions/common/color"
+        },
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "label": {
+          "$ref": "#/definitions/common/description"
+        },
+        "condition": {
+          "type": "string",
+          "maxLength": 2048
+        },
+        "imageUrl": {
+          "$ref": "#/definitions/common/description"
+        },
+        "shape": {
+          "type": "string",
+          "enum": [
+            "circle",
+            "square",
+            "triangle-down",
+            "triangle-up",
+            "octagon"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "conditions": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "$ref": "#/definitions/common/blockComponents/condition"
+      }
+    },
+    "deviceIdsAllowCtx": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "string",
+        "maxLength": 255
+      }
+    },
+    "deviceTagsAllowCtx": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "value": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "fromCtx": {
+            "type": "string",
+            "maxLength": 255
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "duration": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "imageOverlayRequiredOverlayProps": [
+      "type",
+      "position",
+      "size",
+      "defaultCondition"
+    ],
+    "imageOverlaySizes": {
+      "type": "string",
+      "enum": [
+        "small",
+        "medium",
+        "large"
+      ]
+    },
+    "inputControlDefaultQuery": {
+      "type": "object",
+      "properties": {
+        "attribute": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "aggregation": {
+          "$ref": "#/definitions/common/aggregation"
+        },
+        "deviceIds": {
+          "$ref": "#/definitions/common/blockComponents/deviceIdsAllowCtx"
+        },
+        "deviceTags": {
+          "$ref": "#/definitions/common/blockComponents/deviceTagsAllowCtx"
+        }
+      },
+      "additionalProperties": false
+    },
+    "inputControlGrid": {
+      "type": "object",
+      "properties": {
+        "h": {
+          "type": "number"
+        },
+        "w": {
+          "type": "number"
+        },
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    },
+    "largeString": {
+      "type": "string",
+      "maxLength": 73727
+    },
+    "resolution": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "maxLength": 255
+        }
+      ]
+    },
+    "shortStringOrNumber": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "maxLength": 64
+        }
+      ]
+    },
+    "stringXyCoordinate": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 255
+    }
+  },
+  "blocks": {
+    "applicationList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "application-list"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "filter": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "bar": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "bar"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "realTime": {
+              "type": "boolean"
+            },
+            "duration": {
+              "$ref": "#/definitions/common/blockComponents/duration"
+            },
+            "xAxisFormat": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "xAxisLabel": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "xAxisMax": {
+              "$ref": "#/definitions/common/blockComponents/shortStringOrNumber"
+            },
+            "xAxisMin": {
+              "$ref": "#/definitions/common/blockComponents/shortStringOrNumber"
+            },
+            "segments": {
+              "$ref": "#/definitions/common/blockComponents/commonSegments"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "customChart": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "custom-chart"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "configuration": {
+              "$ref": "#/definitions/common/description"
+            },
+            "segments": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "queryType": {
+                        "type": "string",
+                        "enum": [
+                          "time-series"
+                        ]
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "attribute": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "aggregation": {
+                        "$ref": "#/definitions/common/aggregation"
+                      },
+                      "deviceIds": {
+                        "$ref": "#/definitions/common/blockComponents/deviceIdsAllowCtx"
+                      },
+                      "deviceTags": {
+                        "$ref": "#/definitions/common/blockComponents/deviceTagsAllowCtx"
+                      },
+                      "duration": {
+                        "$ref": "#/definitions/common/blockComponents/duration"
+                      },
+                      "resolution": {
+                        "$ref": "#/definitions/common/blockComponents/resolution"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "queryType": {
+                        "type": "string",
+                        "enum": [
+                          "gauge"
+                        ]
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "attribute": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "aggregation": {
+                        "$ref": "#/definitions/common/aggregation"
+                      },
+                      "deviceIds": {
+                        "$ref": "#/definitions/common/blockComponents/deviceIdsAllowCtx"
+                      },
+                      "deviceTags": {
+                        "$ref": "#/definitions/common/blockComponents/deviceTagsAllowCtx"
+                      },
+                      "duration": {
+                        "$ref": "#/definitions/common/blockComponents/duration"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "queryType": {
+                        "type": "string",
+                        "enum": [
+                          "data-table"
+                        ]
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "dataTableId": {
+                        "$ref": "#/definitions/common/objectId"
+                      },
+                      "query": {
+                        "$ref": "#/definitions/common/description"
+                      },
+                      "queryMode": {
+                        "type": "string",
+                        "enum": [
+                          "$or",
+                          "$and",
+                          "advanced"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "dashboardList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "dashboard-list"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "filter": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "dataTable": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "data-table"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "dataTableId": {
+              "$ref": "#/definitions/common/objectId"
+            },
+            "defaultSortColumn": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "defaultSortDirection": {
+              "$ref": "#/definitions/common/sortDirection"
+            },
+            "query": {
+              "$ref": "#/definitions/common/description"
+            },
+            "queryMode": {
+              "type": "string",
+              "enum": [
+                "$or",
+                "$and",
+                "advanced"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "deviceList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "device-list"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "deviceLinkNewWindow": {
+              "type": "boolean"
+            },
+            "deviceLinkType": {
+              "type": "string",
+              "enum": [
+                "custom",
+                "default"
+              ]
+            },
+            "deviceLinkUrl": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "match": {
+              "type": "string",
+              "enum": [
+                "unfiltered",
+                "all",
+                "any"
+              ]
+            },
+            "showPublicFilter": {
+              "type": "boolean"
+            },
+            "filter": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "ids": {
+                      "$ref": "#/definitions/common/blockComponents/deviceIdsAllowCtx"
+                    },
+                    "tags": {
+                      "$ref": "#/definitions/common/blockComponents/deviceTagsAllowCtx"
+                    },
+                    "searchParam": {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "deviceLog": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "device-log"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "deviceIds": {
+              "$ref": "#/definitions/common/blockComponents/deviceIdsAllowCtx"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "deviceStateTable": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "device-state-table"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "attributes": {
+              "$ref": "#/definitions/common/blockComponents/attributes"
+            },
+            "deviceIds": {
+              "$ref": "#/definitions/common/blockComponents/deviceIdsAllowCtx"
+            },
+            "deviceTags": {
+              "$ref": "#/definitions/common/blockComponents/deviceTagsAllowCtx"
+            },
+            "duration": {
+              "$ref": "#/definitions/common/blockComponents/duration"
+            },
+            "sortDirection": {
+              "type": "integer",
+              "minimum": -1,
+              "maximum": 1
+            },
+            "sortIndex": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "columns": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "headerTemplate": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "rowTemplate": {
+                    "$ref": "#/definitions/common/description"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "deviceTags",
+                      "deviceId",
+                      "deviceName",
+                      "timestamp",
+                      "attribute"
+                    ]
+                  },
+                  "attribute": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "eventList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "event-list"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "allowUpdates": {
+              "type": "boolean"
+            },
+            "query": {
+              "$ref": "#/definitions/common/description"
+            },
+            "sortDirection": {
+              "$ref": "#/definitions/common/sortDirection"
+            },
+            "sortField": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "filter": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "eventState": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "columnErrors": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "columns": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "selectedTag": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "level",
+                      "subject",
+                      "subjectWithMessage",
+                      "creationDate",
+                      "creationDateWithSource",
+                      "lastUpdatedDate",
+                      "lastUpdatedDateWithSource",
+                      "id",
+                      "state",
+                      "tag",
+                      "deviceName",
+                      "sourceId"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "gauge": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "gauge"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "realTime": {
+              "type": "boolean"
+            },
+            "displayAsPercentage": {
+              "type": "boolean"
+            },
+            "duration": {
+              "$ref": "#/definitions/common/blockComponents/duration"
+            },
+            "gaugeMax": {
+              "$ref": "#/definitions/common/blockComponents/shortStringOrNumber"
+            },
+            "gaugeMin": {
+              "$ref": "#/definitions/common/blockComponents/shortStringOrNumber"
+            },
+            "gaugeType": {
+              "type": "string",
+              "enum": [
+                "battery",
+                "dial",
+                "number",
+                "tank",
+                "thermometer"
+              ]
+            },
+            "precision": {
+              "$ref": "#/definitions/common/blockComponents/shortStringOrNumber"
+            },
+            "precisionType": {
+              "type": "string",
+              "enum": [
+                "floating",
+                "significant"
+              ]
+            },
+            "segment": {
+              "$ref": "#/definitions/common/blockComponents/commonSegment"
+            },
+            "conditions": {
+              "$ref": "#/definitions/common/blockComponents/conditions"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "graph": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "graph"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "realTime": {
+              "type": "boolean"
+            },
+            "duration": {
+              "$ref": "#/definitions/common/blockComponents/duration"
+            },
+            "resolution": {
+              "$ref": "#/definitions/common/blockComponents/resolution"
+            },
+            "recharts": {
+              "type": "boolean"
+            },
+            "displayType": {
+              "type": "string",
+              "enum": [
+                "stick",
+                "line"
+              ]
+            },
+            "segments": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "attribute": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "aggregation": {
+                    "$ref": "#/definitions/common/aggregation"
+                  },
+                  "color": {
+                    "$ref": "#/definitions/common/color"
+                  },
+                  "cumulative": {
+                    "type": "boolean"
+                  },
+                  "detectDataGaps": {
+                    "type": "boolean"
+                  },
+                  "graphType": {
+                    "type": "string",
+                    "enum": [
+                      "area",
+                      "bar",
+                      "line"
+                    ]
+                  },
+                  "label": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "yAxisFormat": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "yAxisLabel": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "yAxisMax": {
+                    "$ref": "#/definitions/common/blockComponents/shortStringOrNumber"
+                  },
+                  "yAxisMin": {
+                    "$ref": "#/definitions/common/blockComponents/shortStringOrNumber"
+                  },
+                  "lineType": {
+                    "type": "string",
+                    "enum": [
+                      "monotone",
+                      "step",
+                      "stepAfter",
+                      "linear",
+                      "stepBefore"
+                    ]
+                  },
+                  "lineWeight": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 5
+                  },
+                  "dotWeight": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 5
+                  },
+                  "deviceIds": {
+                    "$ref": "#/definitions/common/blockComponents/deviceIdsAllowCtx"
+                  },
+                  "deviceTags": {
+                    "$ref": "#/definitions/common/blockComponents/deviceTagsAllowCtx"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "heatmap": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "heatmap"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "additionalAttributes": {
+              "$ref": "#/definitions/common/blockComponents/attributes"
+            },
+            "attribute": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "defaultBearing": {
+              "type": "number"
+            },
+            "defaultCenter": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "defaultPitch": {
+              "type": "number"
+            },
+            "defaultZoom": {
+              "$ref": "#/definitions/common/blockComponents/shortStringOrNumber"
+            },
+            "deviceIds": {
+              "$ref": "#/definitions/common/blockComponents/deviceIdsAllowCtx"
+            },
+            "deviceTags": {
+              "$ref": "#/definitions/common/blockComponents/deviceTagsAllowCtx"
+            },
+            "duration": {
+              "$ref": "#/definitions/common/blockComponents/duration"
+            },
+            "mapStyle": {
+              "type": "string",
+              "enum": [
+                "normal",
+                "satellite"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "iframe": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "iframe"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "maxLength": 2048
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "image": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "image"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "bgColor": {
+              "$ref": "#/definitions/common/color"
+            },
+            "imageLinkNewWindow": {
+              "type": "boolean"
+            },
+            "imageLinkUrl": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "imageUrl": {
+              "$ref": "#/definitions/common/description"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "imageOverlay": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "image-overlay"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "imageUrl": {
+              "$ref": "#/definitions/common/description"
+            },
+            "backgroundColor": {
+              "$ref": "#/definitions/common/color"
+            },
+            "defaultZoom": {
+              "type": "number"
+            },
+            "segments": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "queryType": {
+                        "type": "string",
+                        "enum": [
+                          "gauge"
+                        ]
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "attribute": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "aggregation": {
+                        "$ref": "#/definitions/common/aggregation"
+                      },
+                      "deviceIds": {
+                        "$ref": "#/definitions/common/blockComponents/deviceIdsAllowCtx"
+                      },
+                      "deviceTags": {
+                        "$ref": "#/definitions/common/blockComponents/deviceTagsAllowCtx"
+                      },
+                      "duration": {
+                        "$ref": "#/definitions/common/blockComponents/duration"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            },
+            "overlays": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "indicator",
+                          "label",
+                          "image"
+                        ]
+                      },
+                      "size": {
+                        "$ref": "#/definitions/common/blockComponents/imageOverlaySizes"
+                      },
+                      "position": {
+                        "$ref": "#/definitions/common/blockComponents/stringXyCoordinate"
+                      },
+                      "popupTemplate": {
+                        "$ref": "#/definitions/common/description"
+                      },
+                      "conditions": {
+                        "$ref": "#/definitions/common/blockComponents/conditions"
+                      },
+                      "defaultCondition": {
+                        "$ref": "#/definitions/common/blockComponents/condition"
+                      }
+                    },
+                    "required": {
+                      "$ref": "#/definitions/common/blockComponents/imageOverlayRequiredOverlayProps"
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "value"
+                        ]
+                      },
+                      "size": {
+                        "$ref": "#/definitions/common/blockComponents/imageOverlaySizes"
+                      },
+                      "position": {
+                        "$ref": "#/definitions/common/blockComponents/stringXyCoordinate"
+                      },
+                      "popupTemplate": {
+                        "$ref": "#/definitions/common/description"
+                      },
+                      "conditions": {
+                        "$ref": "#/definitions/common/blockComponents/conditions"
+                      },
+                      "defaultCondition": {
+                        "$ref": "#/definitions/common/blockComponents/condition"
+                      },
+                      "valueTemplate": {
+                        "type": "string",
+                        "maxLength": 255
+                      }
+                    },
+                    "required": {
+                      "$ref": "#/definitions/common/blockComponents/imageOverlayRequiredOverlayProps"
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "bar"
+                        ]
+                      },
+                      "size": {
+                        "$ref": "#/definitions/common/blockComponents/imageOverlaySizes"
+                      },
+                      "position": {
+                        "$ref": "#/definitions/common/blockComponents/stringXyCoordinate"
+                      },
+                      "popupTemplate": {
+                        "$ref": "#/definitions/common/description"
+                      },
+                      "conditions": {
+                        "$ref": "#/definitions/common/blockComponents/conditions"
+                      },
+                      "defaultCondition": {
+                        "$ref": "#/definitions/common/blockComponents/condition"
+                      },
+                      "min": {
+                        "$ref": "#/definitions/common/blockComponents/shortStringOrNumber"
+                      },
+                      "max": {
+                        "$ref": "#/definitions/common/blockComponents/shortStringOrNumber"
+                      },
+                      "backgroundColor": {
+                        "$ref": "#/definitions/common/color"
+                      },
+                      "valueTemplate": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "length": {
+                        "type": "integer",
+                        "min": 1,
+                        "max": 10
+                      },
+                      "orientation": {
+                        "type": "string",
+                        "enum": [
+                          "horizontal",
+                          "vertical"
+                        ]
+                      }
+                    },
+                    "required": {
+                      "$ref": "#/definitions/common/blockComponents/imageOverlayRequiredOverlayProps"
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "indicator": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "indicator"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "realTime": {
+              "type": "boolean"
+            },
+            "duration": {
+              "$ref": "#/definitions/common/blockComponents/duration"
+            },
+            "segments": {
+              "$ref": "#/definitions/common/blockComponents/commonSegments"
+            },
+            "conditions": {
+              "$ref": "#/definitions/common/blockComponents/conditions"
+            },
+            "defaultCondition": {
+              "$ref": "#/definitions/common/blockComponents/condition"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "input": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "input"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "defaultMode": {
+              "type": "string",
+              "enum": [
+                "unlocked",
+                "locked"
+              ]
+            },
+            "controls": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "range"
+                        ]
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "templateId": {
+                        "type": "string",
+                        "maxLength": 64
+                      },
+                      "label": {
+                        "type": "string",
+                        "maxLength": 512
+                      },
+                      "color": {
+                        "$ref": "#/definitions/common/color"
+                      },
+                      "grid": {
+                        "$ref": "#/definitions/common/blockComponents/inputControlGrid"
+                      },
+                      "defaultQuery": {
+                        "$ref": "#/definitions/common/blockComponents/inputControlDefaultQuery"
+                      },
+                      "max": {
+                        "$ref": "#/definitions/common/blockComponents/shortStringOrNumber"
+                      },
+                      "min": {
+                        "$ref": "#/definitions/common/blockComponents/shortStringOrNumber"
+                      },
+                      "step": {
+                        "$ref": "#/definitions/common/blockComponents/shortStringOrNumber"
+                      },
+                      "defaultValue": {
+                        "$ref": "#/definitions/common/blockComponents/shortStringOrNumber"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "toggle"
+                        ]
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "templateId": {
+                        "type": "string",
+                        "maxLength": 64
+                      },
+                      "label": {
+                        "type": "string",
+                        "maxLength": 512
+                      },
+                      "color": {
+                        "$ref": "#/definitions/common/color"
+                      },
+                      "grid": {
+                        "$ref": "#/definitions/common/blockComponents/inputControlGrid"
+                      },
+                      "defaultQuery": {
+                        "$ref": "#/definitions/common/blockComponents/inputControlDefaultQuery"
+                      },
+                      "defaultValue": {
+                        "type": "boolean"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "text"
+                        ]
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "templateId": {
+                        "type": "string",
+                        "maxLength": 64
+                      },
+                      "label": {
+                        "type": "string",
+                        "maxLength": 512
+                      },
+                      "grid": {
+                        "$ref": "#/definitions/common/blockComponents/inputControlGrid"
+                      },
+                      "defaultQuery": {
+                        "$ref": "#/definitions/common/blockComponents/inputControlDefaultQuery"
+                      },
+                      "defaultValue": {
+                        "type": "string",
+                        "maxLength": 2048
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "select"
+                        ]
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "templateId": {
+                        "type": "string",
+                        "maxLength": 64
+                      },
+                      "label": {
+                        "type": "string",
+                        "maxLength": 512
+                      },
+                      "grid": {
+                        "$ref": "#/definitions/common/blockComponents/inputControlGrid"
+                      },
+                      "defaultQuery": {
+                        "$ref": "#/definitions/common/blockComponents/inputControlDefaultQuery"
+                      },
+                      "defaultValue": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "options": {
+                        "type": "array",
+                        "maxItems": 500,
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "value": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "label": {
+                              "type": "string",
+                              "maxLength": 255
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "help"
+                        ]
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "templateId": {
+                        "type": "string",
+                        "maxLength": 64
+                      },
+                      "grid": {
+                        "$ref": "#/definitions/common/blockComponents/inputControlGrid"
+                      },
+                      "help": {
+                        "$ref": "#/definitions/common/description"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "button"
+                        ]
+                      },
+                      "action": {
+                        "type": "string",
+                        "enum": [
+                          "workflow",
+                          "command"
+                        ]
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "templateId": {
+                        "type": "string",
+                        "maxLength": 64
+                      },
+                      "label": {
+                        "type": "string",
+                        "maxLength": 512
+                      },
+                      "grid": {
+                        "$ref": "#/definitions/common/blockComponents/inputControlGrid"
+                      },
+                      "color": {
+                        "$ref": "#/definitions/common/color"
+                      },
+                      "payload": {
+                        "$ref": "#/definitions/common/description"
+                      },
+                      "buttonId": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "workflowId": {
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "maxLength": 255
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "deviceIds": {
+                        "$ref": "#/definitions/common/blockComponents/deviceIdsAllowCtx"
+                      },
+                      "deviceTags": {
+                        "$ref": "#/definitions/common/blockComponents/deviceTagsAllowCtx"
+                      },
+                      "commandName": {
+                        "type": "string",
+                        "maxLength": 255
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "map": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "map"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "additionalAttributes": {
+              "$ref": "#/definitions/common/blockComponents/attributes"
+            },
+            "attribute": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "clusterPoints": {
+              "type": "boolean"
+            },
+            "compositeResult": {
+              "type": "boolean"
+            },
+            "defaultBearing": {
+              "type": "number"
+            },
+            "defaultCenter": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "defaultPitch": {
+              "type": "number"
+            },
+            "defaultZoom": {
+              "$ref": "#/definitions/common/blockComponents/shortStringOrNumber"
+            },
+            "deviceIds": {
+              "$ref": "#/definitions/common/blockComponents/deviceIdsAllowCtx"
+            },
+            "deviceTags": {
+              "$ref": "#/definitions/common/blockComponents/deviceTagsAllowCtx"
+            },
+            "duration": {
+              "$ref": "#/definitions/common/blockComponents/duration"
+            },
+            "endColor": {
+              "$ref": "#/definitions/common/color"
+            },
+            "iconTemplate": {
+              "$ref": "#/definitions/common/blockComponents/largeString"
+            },
+            "includeArrows": {
+              "type": "boolean"
+            },
+            "includeLines": {
+              "type": "boolean"
+            },
+            "mapStyle": {
+              "type": "string",
+              "enum": [
+                "normal",
+                "satellite"
+              ]
+            },
+            "pinMode": {
+              "type": "string",
+              "enum": [
+                "simple",
+                "advanced"
+              ]
+            },
+            "popupTemplate": {
+              "$ref": "#/definitions/common/description"
+            },
+            "resizedPins": {
+              "type": "boolean"
+            },
+            "resolution": {
+              "$ref": "#/definitions/common/blockComponents/resolution"
+            },
+            "startColor": {
+              "$ref": "#/definitions/common/color"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "openEventIndicator": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "open-event-indicator"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "allowUpdates": {
+              "type": "boolean"
+            },
+            "query": {
+              "$ref": "#/definitions/common/description"
+            },
+            "filter": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "pie": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "pie"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "realTime": {
+              "type": "boolean"
+            },
+            "duration": {
+              "$ref": "#/definitions/common/blockComponents/duration"
+            },
+            "percentFormat": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "valueFormat": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "segments": {
+              "$ref": "#/definitions/common/blockComponents/commonSegments"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "positionChart": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "position-chart"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "additionalAttributes": {
+              "$ref": "#/definitions/common/blockComponents/attributes"
+            },
+            "compositeResult": {
+              "type": "boolean"
+            },
+            "coordinateA": {
+              "$ref": "#/definitions/common/blockComponents/stringXyCoordinate"
+            },
+            "coordinateB": {
+              "$ref": "#/definitions/common/blockComponents/stringXyCoordinate"
+            },
+            "defaultCenter": {
+              "$ref": "#/definitions/common/blockComponents/stringXyCoordinate"
+            },
+            "defaultZoom": {
+              "$ref": "#/definitions/common/blockComponents/shortStringOrNumber"
+            },
+            "deviceIds": {
+              "$ref": "#/definitions/common/blockComponents/deviceIdsAllowCtx"
+            },
+            "deviceTags": {
+              "$ref": "#/definitions/common/blockComponents/deviceTagsAllowCtx"
+            },
+            "duration": {
+              "$ref": "#/definitions/common/blockComponents/duration"
+            },
+            "endColor": {
+              "$ref": "#/definitions/common/color"
+            },
+            "iconTemplate": {
+              "$ref": "#/definitions/common/blockComponents/largeString"
+            },
+            "imageUrl": {
+              "$ref": "#/definitions/common/description"
+            },
+            "includeArrows": {
+              "type": "boolean"
+            },
+            "includeLines": {
+              "type": "boolean"
+            },
+            "pinMode": {
+              "type": "string",
+              "enum": [
+                "simple",
+                "advanced"
+              ]
+            },
+            "pixelA": {
+              "$ref": "#/definitions/common/blockComponents/stringXyCoordinate"
+            },
+            "pixelB": {
+              "$ref": "#/definitions/common/blockComponents/stringXyCoordinate"
+            },
+            "popupTemplate": {
+              "$ref": "#/definitions/common/description"
+            },
+            "resizedPins": {
+              "type": "boolean"
+            },
+            "resolution": {
+              "$ref": "#/definitions/common/blockComponents/resolution"
+            },
+            "startColor": {
+              "$ref": "#/definitions/common/color"
+            },
+            "xAttribute": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "yAttribute": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "sectionHeader": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "section-header"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "content": {
+              "$ref": "#/definitions/common/description"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "workflowList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "$ref": "#/definitions/common/description"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/common/objectId"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "workflow-list"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "filter": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "includeCloud": {
+              "type": "boolean"
+            },
+            "includeEdge": {
+              "type": "boolean"
+            },
+            "includeExperience": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

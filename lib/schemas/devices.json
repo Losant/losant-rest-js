@@ -311,6 +311,9 @@
           "type": "null"
         }
       ]
+    },
+    "query": {
+      "type": "object"
     }
   }
 }

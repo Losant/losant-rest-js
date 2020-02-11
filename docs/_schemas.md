@@ -1,5 +1,6 @@
 # Schemas
 
+*   [Advanced Device Query](#advanced-device-query)
 *   [Advanced Event Query](#advanced-event-query)
 *   [Advanced Query](#advanced-query)
 *   [API Token](#api-token)
@@ -27,7 +28,11 @@
 *   [Application Keys](#application-keys)
 *   [Application Patch](#application-patch)
 *   [Application Post](#application-post)
+*   [Application Readme](#application-readme)
+*   [Application Readme Patch](#application-readme-patch)
 *   [Application Search Result](#application-search-result)
+*   [Application Template](#application-template)
+*   [Application Templates](#application-templates)
 *   [Applications](#applications)
 *   [Audit Log](#audit-log)
 *   [Audit Log Filter](#audit-log-filter)
@@ -182,6 +187,8 @@
 *   [Recent Item](#recent-item)
 *   [Recent Item List](#recent-item-list)
 *   [Resource Transfer](#resource-transfer)
+*   [SAML Response](#saml-response)
+*   [SSO Request](#sso-request)
 *   [Success](#success)
 *   [Time Series Data](#time-series-data)
 *   [Time Series Query](#time-series-query)
@@ -196,11 +203,11 @@
 *   [Webhook Post](#webhook-post)
 *   [Webhooks](#webhooks)
 
-## Advanced Event Query
+## Advanced Device Query
 
-Schema for advanced event queries
+Schema for advanced device queries
 
-### <a name="advanced-event-query-schema"></a> Schema
+### <a name="advanced-device-query-schema"></a> Schema
 
 ```json
 {
@@ -210,90 +217,75 @@ Schema for advanced event queries
     "$and": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/advancedEventQuery"
-      }
+        "$ref": "#/definitions/advancedDeviceQuery"
+      },
+      "maxItems": 100
     },
     "$or": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/advancedEventQuery"
-      }
+        "$ref": "#/definitions/advancedDeviceQuery"
+      },
+      "maxItems": 100
     },
     "id": {
       "oneOf": [
         {
-          "type": [
-            "string",
-            "number",
-            "boolean",
-            "null"
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
           ]
         },
         {
           "type": "object",
           "properties": {
             "$eq": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
               ]
             },
             "$ne": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
               ]
             },
-            "$gt": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
             },
-            "$lt": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            "$gte": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            "$lte": {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            "$startsWith": {
-              "type": "string",
-              "minLength": 1
-            },
-            "$endsWith": {
-              "type": "string",
-              "minLength": 1
-            },
-            "$contains": {
-              "type": "string",
-              "minLength": 1
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
             }
           },
-          "additionalProperties": false
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
         }
       ]
     },
@@ -369,6 +361,9 @@ Schema for advanced event queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -447,6 +442,957 @@ Schema for advanced event queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "name": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "deviceClass": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "gatewayId": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    },
+    "parentId": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    },
+    "ancestorId": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    },
+    "attributeName": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "experienceUserId": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    },
+    "experienceGroupId": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    },
+    "tags": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "$tagKey": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "$tagValue": {
+                  "type": "string",
+                  "maxLength": 255
+                }
+              },
+              "additionalProperties": false,
+              "minProperties": 1
+            },
+            {
+              "type": "object",
+              "patternProperties": {
+                "^[0-9a-zA-Z_-]{1,255}": {
+                  "type": "string",
+                  "maxLength": 255
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "$tagKey": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "$tagValue": {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false,
+                  "minProperties": 1
+                },
+                {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}": {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "$eq"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "$tagKey": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "$tagValue": {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false,
+                  "minProperties": 1
+                },
+                {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}": {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "$ne"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="advanced-device-query-example"></a> Example
+
+```json
+{
+  "$or": [
+    {
+      "name": {
+        "$ne": "myValue"
+      }
+    },
+    {
+      "parentId": "575ec8687ae143cd83dc4a97"
+    }
+  ]
+}
+```
+
+<br/>
+
+## Advanced Event Query
+
+Schema for advanced event queries
+
+### <a name="advanced-event-query-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "$and": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedEventQuery"
+      },
+      "maxItems": 100
+    },
+    "$or": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedEventQuery"
+      },
+      "maxItems": 100
+    },
+    "id": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "creationDate": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "lastUpdated": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -525,6 +1471,9 @@ Schema for advanced event queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -603,6 +1552,9 @@ Schema for advanced event queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -681,6 +1633,9 @@ Schema for advanced event queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -759,6 +1714,9 @@ Schema for advanced event queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -837,6 +1795,9 @@ Schema for advanced event queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -915,9 +1876,134 @@ Schema for advanced event queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
+        }
+      ]
+    },
+    "experienceUserId": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    },
+    "experienceGroupId": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
         }
       ]
     },
@@ -929,10 +2015,12 @@ Schema for advanced event queries
               "type": "object",
               "properties": {
                 "$tagKey": {
-                  "type": "string"
+                  "type": "string",
+                  "maxLength": 255
                 },
                 "$tagValue": {
-                  "type": "string"
+                  "type": "string",
+                  "maxLength": 255
                 }
               },
               "additionalProperties": false,
@@ -942,7 +2030,8 @@ Schema for advanced event queries
               "type": "object",
               "patternProperties": {
                 "^[0-9a-zA-Z_-]{1,255}": {
-                  "type": "string"
+                  "type": "string",
+                  "maxLength": 255
                 }
               },
               "additionalProperties": false
@@ -958,10 +2047,12 @@ Schema for advanced event queries
                   "type": "object",
                   "properties": {
                     "$tagKey": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     },
                     "$tagValue": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false,
@@ -971,7 +2062,8 @@ Schema for advanced event queries
                   "type": "object",
                   "patternProperties": {
                     "^[0-9a-zA-Z_-]{1,255}": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false
@@ -979,7 +2071,9 @@ Schema for advanced event queries
               ]
             }
           },
-          "minProperties": 1,
+          "required": [
+            "$eq"
+          ],
           "additionalProperties": false
         },
         {
@@ -991,10 +2085,12 @@ Schema for advanced event queries
                   "type": "object",
                   "properties": {
                     "$tagKey": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     },
                     "$tagValue": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false,
@@ -1004,7 +2100,8 @@ Schema for advanced event queries
                   "type": "object",
                   "patternProperties": {
                     "^[0-9a-zA-Z_-]{1,255}": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false
@@ -1012,7 +2109,9 @@ Schema for advanced event queries
               ]
             }
           },
-          "minProperties": 1,
+          "required": [
+            "$ne"
+          ],
           "additionalProperties": false
         }
       ]
@@ -1137,6 +2236,9 @@ Schema for advanced filters and queries
             "$contains": {
               "type": "string",
               "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false
@@ -1549,7 +2651,7 @@ Schema for a single Application
     },
     "description": {
       "type": "string",
-      "maxLength": 32767
+      "maxLength": 1024
     },
     "endpointSlug": {
       "type": "string",
@@ -1585,7 +2687,7 @@ Schema for a single Application
           },
           "description": {
             "type": "string",
-            "maxLength": 32767
+            "maxLength": 1024
           }
         },
         "additionalProperties": false,
@@ -3302,7 +4404,7 @@ Schema for creating an application by template result
         },
         "description": {
           "type": "string",
-          "maxLength": 32767
+          "maxLength": 1024
         },
         "endpointSlug": {
           "type": "string",
@@ -3338,7 +4440,7 @@ Schema for creating an application by template result
               },
               "description": {
                 "type": "string",
-                "maxLength": 32767
+                "maxLength": 1024
               }
             },
             "additionalProperties": false,
@@ -4372,7 +5474,7 @@ Schema for the body of an Application modification request
     },
     "description": {
       "type": "string",
-      "maxLength": 32767
+      "maxLength": 1024
     },
     "endpointSlug": {
       "type": "string",
@@ -4408,7 +5510,7 @@ Schema for the body of an Application modification request
           },
           "description": {
             "type": "string",
-            "maxLength": 32767
+            "maxLength": 1024
           }
         },
         "additionalProperties": false,
@@ -4630,6 +5732,10 @@ Schema for the body of an Application creation request
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
+    "applicationTemplateId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "name": {
       "type": "string",
       "minLength": 1,
@@ -4637,7 +5743,7 @@ Schema for the body of an Application creation request
     },
     "description": {
       "type": "string",
-      "maxLength": 32767
+      "maxLength": 1024
     },
     "endpointSlug": {
       "type": "string",
@@ -4673,7 +5779,7 @@ Schema for the body of an Application creation request
           },
           "description": {
             "type": "string",
-            "maxLength": 32767
+            "maxLength": 1024
           }
         },
         "additionalProperties": false,
@@ -4854,6 +5960,87 @@ Schema for the body of an Application creation request
 
 <br/>
 
+## Application Readme
+
+Schema for an Application Readme
+
+### <a name="application-readme-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdatedById": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "lastUpdatedByType": {
+      "type": "string",
+      "enum": [
+        "flow",
+        "user",
+        "apiToken"
+      ]
+    },
+    "content": {
+      "type": "string"
+    }
+  }
+}
+```
+### <a name="application-readme-example"></a> Example
+
+```json
+{
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "lastUpdatedById": "575ed70c7ae143cd83dc4aa9",
+  "lastUpdatedByType": "user",
+  "content": "The readme content"
+}
+```
+
+<br/>
+
+## Application Readme Patch
+
+Schema for the body of an Application Readme modification request
+
+### <a name="application-readme-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "content": {
+      "type": "string",
+      "maxLength": 131072
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="application-readme-patch-example"></a> Example
+
+```json
+{
+  "content": "The new readme content"
+}
+```
+
+<br/>
+
 ## Application Search Result
 
 Results of a search of an application&#x27;s resources
@@ -4931,6 +6118,313 @@ Results of a search of an application&#x27;s resources
 
 <br/>
 
+## Application Template
+
+Schema for a single Application Template
+
+### <a name="application-template-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "public": {
+      "type": "boolean"
+    },
+    "imageUrl": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "applicationCertificateAuthorityCount": {
+          "type": "number"
+        },
+        "dashboardCount": {
+          "type": "number"
+        },
+        "deviceCount": {
+          "type": "number"
+        },
+        "deviceRecipeCount": {
+          "type": "number"
+        },
+        "dataTableCount": {
+          "type": "number"
+        },
+        "experienceGroupCount": {
+          "type": "number"
+        },
+        "experienceUserCount": {
+          "type": "number"
+        },
+        "experienceVersionCount": {
+          "type": "number"
+        },
+        "experienceViewCount": {
+          "type": "number"
+        },
+        "experienceEndpointCount": {
+          "type": "number"
+        },
+        "fileCount": {
+          "type": "number"
+        },
+        "flowCount": {
+          "type": "number"
+        },
+        "integrationCount": {
+          "type": "number"
+        },
+        "notebookCount": {
+          "type": "number"
+        },
+        "dataTableCsvSize": {
+          "type": "number"
+        },
+        "webhookCount": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
+```
+### <a name="application-template-example"></a> Example
+
+```json
+{
+  "id": "586e9d5151265cb9d72f6ec6",
+  "creationDate": "2020-01-13T04:00:00.000Z",
+  "lastUpdated": "2020-01-13T04:00:00.000Z",
+  "name": "smart environment",
+  "description": "a smart env set up",
+  "public": true,
+  "summary": {
+    "applicationCertificateAuthorityCount": 0,
+    "dashboardCount": 0,
+    "deviceCount": 1,
+    "deviceRecipeCount": 0,
+    "dataTableCount": 2,
+    "fileCount": 0,
+    "experienceGroupCount": 1,
+    "experienceUserCount": 1,
+    "experienceVersionCount": 3,
+    "experienceViewCount": 6,
+    "experienceEndpointCount": 6,
+    "flowCount": 1,
+    "integrationCount": 0,
+    "notebookCount": 0,
+    "dataTableCsvSize": 4008,
+    "webhookCount": 0
+  }
+}
+```
+
+<br/>
+
+## Application Templates
+
+Schema for a collection of Application Templates
+
+### <a name="application-templates-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Application Template",
+        "description": "Schema for a single Application Template",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "public": {
+            "type": "boolean"
+          },
+          "imageUrl": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "summary": {
+            "type": "object",
+            "properties": {
+              "applicationCertificateAuthorityCount": {
+                "type": "number"
+              },
+              "dashboardCount": {
+                "type": "number"
+              },
+              "deviceCount": {
+                "type": "number"
+              },
+              "deviceRecipeCount": {
+                "type": "number"
+              },
+              "dataTableCount": {
+                "type": "number"
+              },
+              "experienceGroupCount": {
+                "type": "number"
+              },
+              "experienceUserCount": {
+                "type": "number"
+              },
+              "experienceVersionCount": {
+                "type": "number"
+              },
+              "experienceViewCount": {
+                "type": "number"
+              },
+              "experienceEndpointCount": {
+                "type": "number"
+              },
+              "fileCount": {
+                "type": "number"
+              },
+              "flowCount": {
+                "type": "number"
+              },
+              "integrationCount": {
+                "type": "number"
+              },
+              "notebookCount": {
+                "type": "number"
+              },
+              "dataTableCsvSize": {
+                "type": "number"
+              },
+              "webhookCount": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc",
+        "ASC",
+        "DESC",
+        ""
+      ]
+    }
+  }
+}
+```
+### <a name="application-templates-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "586e9d5151265cb9d72f6ec6",
+      "creationDate": "2020-01-13T04:00:00.000Z",
+      "lastUpdated": "2020-01-13T04:00:00.000Z",
+      "name": "smart environment",
+      "description": "a smart env set up",
+      "public": true,
+      "summary": {
+        "applicationCertificateAuthorityCount": 0,
+        "dashboardCount": 0,
+        "deviceCount": 1,
+        "deviceRecipeCount": 0,
+        "dataTableCount": 2,
+        "fileCount": 0,
+        "experienceGroupCount": 1,
+        "experienceUserCount": 1,
+        "experienceVersionCount": 3,
+        "experienceViewCount": 6,
+        "experienceEndpointCount": 6,
+        "flowCount": 1,
+        "integrationCount": 0,
+        "notebookCount": 0,
+        "dataTableCsvSize": 4008,
+        "webhookCount": 0
+      }
+    }
+  ],
+  "count": 1,
+  "totalCount": 8,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc"
+}
+```
+
+<br/>
+
 ## Applications
 
 Schema for a collection of Applications
@@ -4992,7 +6486,7 @@ Schema for a collection of Applications
           },
           "description": {
             "type": "string",
-            "maxLength": 32767
+            "maxLength": 1024
           },
           "endpointSlug": {
             "type": "string",
@@ -5028,7 +6522,7 @@ Schema for a collection of Applications
                 },
                 "description": {
                   "type": "string",
-                  "maxLength": 32767
+                  "maxLength": 1024
                 }
               },
               "additionalProperties": false,
@@ -7071,6 +8565,10 @@ Schema for a single Dashboard
                         "additionalProperties": false
                       }
                     ]
+                  },
+                  "query": {
+                    "type": "string",
+                    "maxLength": 32767
                   },
                   "columns": {
                     "type": "array",
@@ -11657,6 +13155,10 @@ Schema for the body of a Dashboard modification request
                       }
                     ]
                   },
+                  "query": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
                   "columns": {
                     "type": "array",
                     "maxItems": 100,
@@ -16170,6 +17672,10 @@ Schema for the body of a Dashboard creation request
                         "additionalProperties": false
                       }
                     ]
+                  },
+                  "query": {
+                    "type": "string",
+                    "maxLength": 32767
                   },
                   "columns": {
                     "type": "array",
@@ -20940,6 +22446,10 @@ Schema for a collection of Dashboards
                             }
                           ]
                         },
+                        "query": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
                         "columns": {
                           "type": "array",
                           "maxItems": 100,
@@ -25440,6 +26950,9 @@ Schema for a collection of Data Table Rows
     "applicationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "query": {
+      "type": "object"
     }
   }
 }
@@ -25604,6 +27117,9 @@ Schema for the body of a data table export
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -28826,6 +30342,9 @@ Schema for a collection of Devices
           "type": "null"
         }
       ]
+    },
+    "query": {
+      "type": "object"
     }
   }
 }
@@ -30373,822 +31892,7 @@ Schema for a collection of Events
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "query": {
-      "title": "Advanced Event Query",
-      "description": "Schema for advanced event queries",
-      "type": "object",
-      "properties": {
-        "$and": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/advancedEventQuery"
-          }
-        },
-        "$or": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/advancedEventQuery"
-          }
-        },
-        "id": {
-          "oneOf": [
-            {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$startsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$endsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$contains": {
-                  "type": "string",
-                  "minLength": 1
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        "creationDate": {
-          "oneOf": [
-            {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$startsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$endsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$contains": {
-                  "type": "string",
-                  "minLength": 1
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        "lastUpdated": {
-          "oneOf": [
-            {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$startsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$endsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$contains": {
-                  "type": "string",
-                  "minLength": 1
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        "sourceId": {
-          "oneOf": [
-            {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$startsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$endsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$contains": {
-                  "type": "string",
-                  "minLength": 1
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        "sourceType": {
-          "oneOf": [
-            {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$startsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$endsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$contains": {
-                  "type": "string",
-                  "minLength": 1
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        "level": {
-          "oneOf": [
-            {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$startsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$endsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$contains": {
-                  "type": "string",
-                  "minLength": 1
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        "state": {
-          "oneOf": [
-            {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$startsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$endsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$contains": {
-                  "type": "string",
-                  "minLength": 1
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        "subject": {
-          "oneOf": [
-            {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$startsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$endsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$contains": {
-                  "type": "string",
-                  "minLength": 1
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        "deviceId": {
-          "oneOf": [
-            {
-              "type": [
-                "string",
-                "number",
-                "boolean",
-                "null"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$ne": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lt": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$gte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$lte": {
-                  "type": [
-                    "string",
-                    "number",
-                    "boolean",
-                    "null"
-                  ]
-                },
-                "$startsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$endsWith": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "$contains": {
-                  "type": "string",
-                  "minLength": 1
-                }
-              },
-              "additionalProperties": false
-            }
-          ]
-        },
-        "eventTags": {
-          "oneOf": [
-            {
-              "oneOf": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "$tagKey": {
-                      "type": "string"
-                    },
-                    "$tagValue": {
-                      "type": "string"
-                    }
-                  },
-                  "additionalProperties": false,
-                  "minProperties": 1
-                },
-                {
-                  "type": "object",
-                  "patternProperties": {
-                    "^[0-9a-zA-Z_-]{1,255}": {
-                      "type": "string"
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$eq": {
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "$tagKey": {
-                          "type": "string"
-                        },
-                        "$tagValue": {
-                          "type": "string"
-                        }
-                      },
-                      "additionalProperties": false,
-                      "minProperties": 1
-                    },
-                    {
-                      "type": "object",
-                      "patternProperties": {
-                        "^[0-9a-zA-Z_-]{1,255}": {
-                          "type": "string"
-                        }
-                      },
-                      "additionalProperties": false
-                    }
-                  ]
-                }
-              },
-              "minProperties": 1,
-              "additionalProperties": false
-            },
-            {
-              "type": "object",
-              "properties": {
-                "$ne": {
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "$tagKey": {
-                          "type": "string"
-                        },
-                        "$tagValue": {
-                          "type": "string"
-                        }
-                      },
-                      "additionalProperties": false,
-                      "minProperties": 1
-                    },
-                    {
-                      "type": "object",
-                      "patternProperties": {
-                        "^[0-9a-zA-Z_-]{1,255}": {
-                          "type": "string"
-                        }
-                      },
-                      "additionalProperties": false
-                    }
-                  ]
-                }
-              },
-              "minProperties": 1,
-              "additionalProperties": false
-            }
-          ]
-        }
-      },
-      "additionalProperties": false
+      "type": "object"
     }
   }
 }
@@ -31284,13 +31988,15 @@ Export options for events
           "type": "array",
           "items": {
             "$ref": "#/definitions/advancedEventQuery"
-          }
+          },
+          "maxItems": 100
         },
         "$or": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/advancedEventQuery"
-          }
+          },
+          "maxItems": 100
         },
         "id": {
           "oneOf": [
@@ -31364,6 +32070,9 @@ Export options for events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -31442,6 +32151,9 @@ Export options for events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -31520,6 +32232,9 @@ Export options for events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -31598,6 +32313,9 @@ Export options for events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -31676,6 +32394,9 @@ Export options for events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -31754,6 +32475,9 @@ Export options for events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -31832,6 +32556,9 @@ Export options for events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -31910,6 +32637,9 @@ Export options for events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -31988,9 +32718,134 @@ Export options for events
                 "$contains": {
                   "type": "string",
                   "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
+            }
+          ]
+        },
+        "experienceUserId": {
+          "oneOf": [
+            {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "minProperties": 1,
+              "maxProperties": 1
+            }
+          ]
+        },
+        "experienceGroupId": {
+          "oneOf": [
+            {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "minProperties": 1,
+              "maxProperties": 1
             }
           ]
         },
@@ -32002,10 +32857,12 @@ Export options for events
                   "type": "object",
                   "properties": {
                     "$tagKey": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     },
                     "$tagValue": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false,
@@ -32015,7 +32872,8 @@ Export options for events
                   "type": "object",
                   "patternProperties": {
                     "^[0-9a-zA-Z_-]{1,255}": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 255
                     }
                   },
                   "additionalProperties": false
@@ -32031,10 +32889,12 @@ Export options for events
                       "type": "object",
                       "properties": {
                         "$tagKey": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 255
                         },
                         "$tagValue": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 255
                         }
                       },
                       "additionalProperties": false,
@@ -32044,7 +32904,8 @@ Export options for events
                       "type": "object",
                       "patternProperties": {
                         "^[0-9a-zA-Z_-]{1,255}": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 255
                         }
                       },
                       "additionalProperties": false
@@ -32052,7 +32913,9 @@ Export options for events
                   ]
                 }
               },
-              "minProperties": 1,
+              "required": [
+                "$eq"
+              ],
               "additionalProperties": false
             },
             {
@@ -32064,10 +32927,12 @@ Export options for events
                       "type": "object",
                       "properties": {
                         "$tagKey": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 255
                         },
                         "$tagValue": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 255
                         }
                       },
                       "additionalProperties": false,
@@ -32077,7 +32942,8 @@ Export options for events
                       "type": "object",
                       "patternProperties": {
                         "^[0-9a-zA-Z_-]{1,255}": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 255
                         }
                       },
                       "additionalProperties": false
@@ -32085,7 +32951,9 @@ Export options for events
                   ]
                 }
               },
-              "minProperties": 1,
+              "required": [
+                "$ne"
+              ],
               "additionalProperties": false
             }
           ]
@@ -71044,6 +71912,8 @@ Schema for the body of a Github login request
             "enum": [
               "all.User",
               "all.User.read",
+              "applicationTemplates.*",
+              "applicationTemplates.get",
               "me.*",
               "orgs.*",
               "me.get",
@@ -72698,6 +73568,9 @@ Schema for information about the currently authenticated user
     "currentPeriodEnd": {
       "type": "string",
       "format": "date-time"
+    },
+    "ssoLinked": {
+      "type": "boolean"
     }
   }
 }
@@ -72728,7 +73601,8 @@ Schema for information about the currently authenticated user
     "webhookCount": 0,
     "keyCount": 2,
     "deviceRecipeCount": 0
-  }
+  },
+  "ssoLinked": false
 }
 ```
 
@@ -73011,7 +73885,7 @@ Schema for a single Notebook
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -73104,7 +73978,7 @@ Schema for a single Notebook
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -73181,7 +74055,7 @@ Schema for a single Notebook
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -73230,7 +74104,7 @@ Schema for a single Notebook
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -73264,7 +74138,7 @@ Schema for a single Notebook
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -73308,7 +74182,7 @@ Schema for a single Notebook
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -73359,7 +74233,7 @@ Schema for a single Notebook
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -73400,7 +74274,7 @@ Schema for a single Notebook
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -73897,7 +74771,7 @@ Schema for the body of a Notebook modification request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -73990,7 +74864,7 @@ Schema for the body of a Notebook modification request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74067,7 +74941,7 @@ Schema for the body of a Notebook modification request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74116,7 +74990,7 @@ Schema for the body of a Notebook modification request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74150,7 +75024,7 @@ Schema for the body of a Notebook modification request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74194,7 +75068,7 @@ Schema for the body of a Notebook modification request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74245,7 +75119,7 @@ Schema for the body of a Notebook modification request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74286,7 +75160,7 @@ Schema for the body of a Notebook modification request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74400,7 +75274,7 @@ Schema for the body of an Notebook creation request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74493,7 +75367,7 @@ Schema for the body of an Notebook creation request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74570,7 +75444,7 @@ Schema for the body of an Notebook creation request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74619,7 +75493,7 @@ Schema for the body of an Notebook creation request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74653,7 +75527,7 @@ Schema for the body of an Notebook creation request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74697,7 +75571,7 @@ Schema for the body of an Notebook creation request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74748,7 +75622,7 @@ Schema for the body of an Notebook creation request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74789,7 +75663,7 @@ Schema for the body of an Notebook creation request
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                   },
                   {
                     "type": "string",
@@ -74941,7 +75815,7 @@ Schema for a collection of Notebooks
                       "oneOf": [
                         {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                          "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                         },
                         {
                           "type": "string",
@@ -75034,7 +75908,7 @@ Schema for a collection of Notebooks
                       "oneOf": [
                         {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                          "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                         },
                         {
                           "type": "string",
@@ -75111,7 +75985,7 @@ Schema for a collection of Notebooks
                       "oneOf": [
                         {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                          "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                         },
                         {
                           "type": "string",
@@ -75160,7 +76034,7 @@ Schema for a collection of Notebooks
                       "oneOf": [
                         {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                          "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                         },
                         {
                           "type": "string",
@@ -75194,7 +76068,7 @@ Schema for a collection of Notebooks
                       "oneOf": [
                         {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                          "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                         },
                         {
                           "type": "string",
@@ -75238,7 +76112,7 @@ Schema for a collection of Notebooks
                       "oneOf": [
                         {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                          "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                         },
                         {
                           "type": "string",
@@ -75289,7 +76163,7 @@ Schema for a collection of Notebooks
                       "oneOf": [
                         {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                          "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                         },
                         {
                           "type": "string",
@@ -75330,7 +76204,7 @@ Schema for a collection of Notebooks
                       "oneOf": [
                         {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_.-]{1,255}$"
+                          "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
                         },
                         {
                           "type": "string",
@@ -75996,6 +76870,14 @@ Schema for a single Organization
     "iconColor": {
       "type": "string",
       "maxLength": 64
+    },
+    "whitelistedEmailDomains": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 1024,
+        "minLength": 3
+      }
     }
   }
 }
@@ -76034,7 +76916,11 @@ Schema for a single Organization
     "webhookCount": 0,
     "keyCount": 2,
     "deviceRecipeCount": 0
-  }
+  },
+  "whitelistedEmailDomains": [
+    "email.com",
+    "losant.com"
+  ]
 }
 ```
 
@@ -76514,6 +77400,15 @@ Schema for the body of an Organization modification request
     "iconColor": {
       "type": "string",
       "maxLength": 64
+    },
+    "whitelistedEmailDomains": {
+      "type": "array",
+      "maxItems": 25,
+      "items": {
+        "type": "string",
+        "maxLength": 1024,
+        "minLength": 3
+      }
     }
   },
   "additionalProperties": false
@@ -76566,6 +77461,15 @@ Schema for the body of an Organization creation request
     "iconColor": {
       "type": "string",
       "maxLength": 64
+    },
+    "whitelistedEmailDomains": {
+      "type": "array",
+      "maxItems": 25,
+      "items": {
+        "type": "string",
+        "maxLength": 1024,
+        "minLength": 3
+      }
     }
   },
   "additionalProperties": false,
@@ -77018,6 +77922,14 @@ Schema for a collection of Organizations
           "iconColor": {
             "type": "string",
             "maxLength": 64
+          },
+          "whitelistedEmailDomains": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 1024,
+              "minLength": 3
+            }
           }
         }
       }
@@ -77092,7 +78004,11 @@ Schema for a collection of Organizations
         "webhookCount": 0,
         "keyCount": 2,
         "deviceRecipeCount": 0
-      }
+      },
+      "whitelistedEmailDomains": [
+        "email.com",
+        "losant.com"
+      ]
     }
   ],
   "count": 1,
@@ -77541,6 +78457,85 @@ Schema for the body of a resource transfer request
   "applicationIds": [
     "575ec8687ae143cd83dc4a97"
   ]
+}
+```
+
+<br/>
+
+## SAML Response
+
+SAML Response body for login
+
+### <a name="saml-response-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "SAMLResponse": {
+      "type": "string",
+      "minLength": 4,
+      "maxLength": 100000
+    },
+    "SAMLDomain": {
+      "type": "string",
+      "maxLength": 1024,
+      "minLength": 3
+    }
+  },
+  "required": [
+    "SAMLResponse",
+    "SAMLDomain"
+  ],
+  "additionalProperties": false
+}
+```
+### <a name="saml-response-example"></a> Example
+
+```json
+{
+  "SAMLResponse": "PHNhbWxwOlJlc3BvbnNlIHhtbG5zOnNhbWxwPSJ1cm46b2FzaXM6bmFtZXM6dGM6U0FNTDoy...",
+  "SAMLDomain": "losant.com"
+}
+```
+
+<br/>
+
+## SSO Request
+
+SSO Request built from the SP and IDP config
+
+### <a name="sso-request-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "ssoType": {
+      "type": "string",
+      "enum": [
+        "SAML"
+      ]
+    },
+    "ssoRequest": {
+      "type": "string",
+      "maxLength": 32767
+    }
+  },
+  "required": [
+    "ssoType",
+    "ssoRequest"
+  ]
+}
+```
+### <a name="sso-request-example"></a> Example
+
+```json
+{
+  "ssoType": "SAML",
+  "ssoRequest": "http://localhost:8080/simplesaml/saml2/idp/SSOService.php?SAMLRequest=fZJdT8MgFIb%2..."
 }
 ```
 
@@ -78149,6 +79144,8 @@ Schema for the body of a User authentication request
             "enum": [
               "all.User",
               "all.User.read",
+              "applicationTemplates.*",
+              "applicationTemplates.get",
               "me.*",
               "orgs.*",
               "me.get",
@@ -78567,6 +79564,8 @@ Schema for the body of a User creation request
             "enum": [
               "all.User",
               "all.User.read",
+              "applicationTemplates.*",
+              "applicationTemplates.get",
               "me.*",
               "orgs.*",
               "me.get",
