@@ -6153,7 +6153,19 @@ Schema for a single Application Template
     "public": {
       "type": "boolean"
     },
+    "authorName": {
+      "type": "string",
+      "maxLength": 255
+    },
     "imageUrl": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "authorUrl": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "templateUrl": {
       "type": "string",
       "maxLength": 1024
     },
@@ -6223,6 +6235,9 @@ Schema for a single Application Template
   "name": "smart environment",
   "description": "a smart env set up",
   "public": true,
+  "authorName": "Losant",
+  "authorUrl": "https://www.losant.com",
+  "templateUrl": "https://app.losant.com",
   "summary": {
     "applicationCertificateAuthorityCount": 0,
     "dashboardCount": 0,
@@ -6288,7 +6303,19 @@ Schema for a collection of Application Templates
           "public": {
             "type": "boolean"
           },
+          "authorName": {
+            "type": "string",
+            "maxLength": 255
+          },
           "imageUrl": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "authorUrl": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "templateUrl": {
             "type": "string",
             "maxLength": 1024
           },
@@ -6394,6 +6421,9 @@ Schema for a collection of Application Templates
       "name": "smart environment",
       "description": "a smart env set up",
       "public": true,
+      "authorName": "Losant",
+      "authorUrl": "https://www.losant.com",
+      "templateUrl": "https://app.losant.com",
       "summary": {
         "applicationCertificateAuthorityCount": 0,
         "dashboardCount": 0,
@@ -73942,6 +73972,10 @@ Schema for a single Notebook
                   ]
                 }
               },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 32767
+              },
               "attributes": {
                 "type": "array",
                 "maxItems": 100,
@@ -74034,6 +74068,10 @@ Schema for a single Notebook
                     }
                   ]
                 }
+              },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 32767
               }
             },
             "required": [
@@ -74828,6 +74866,10 @@ Schema for the body of a Notebook modification request
                   ]
                 }
               },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 32767
+              },
               "attributes": {
                 "type": "array",
                 "maxItems": 100,
@@ -74920,6 +74962,10 @@ Schema for the body of a Notebook modification request
                     }
                   ]
                 }
+              },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 32767
               }
             },
             "required": [
@@ -75331,6 +75377,10 @@ Schema for the body of an Notebook creation request
                   ]
                 }
               },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 32767
+              },
               "attributes": {
                 "type": "array",
                 "maxItems": 100,
@@ -75423,6 +75473,10 @@ Schema for the body of an Notebook creation request
                     }
                   ]
                 }
+              },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 32767
               }
             },
             "required": [
@@ -75872,6 +75926,10 @@ Schema for a collection of Notebooks
                         ]
                       }
                     },
+                    "queryJson": {
+                      "type": "string",
+                      "maxLength": 32767
+                    },
                     "attributes": {
                       "type": "array",
                       "maxItems": 100,
@@ -75964,6 +76022,10 @@ Schema for a collection of Notebooks
                           }
                         ]
                       }
+                    },
+                    "queryJson": {
+                      "type": "string",
+                      "maxLength": 32767
                     }
                   },
                   "required": [

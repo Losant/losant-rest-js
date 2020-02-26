@@ -121,6 +121,10 @@
                         ]
                       }
                     },
+                    "queryJson": {
+                      "type": "string",
+                      "maxLength": 32767
+                    },
                     "attributes": {
                       "type": "array",
                       "maxItems": 100,
@@ -213,6 +217,10 @@
                           }
                         ]
                       }
+                    },
+                    "queryJson": {
+                      "type": "string",
+                      "maxLength": 32767
                     }
                   },
                   "required": [
