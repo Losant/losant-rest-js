@@ -16,6 +16,13 @@
       },
       "maxItems": 100
     },
+    "$nor": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedEventQuery"
+      },
+      "maxItems": 100
+    },
     "id": {
       "oneOf": [
         {

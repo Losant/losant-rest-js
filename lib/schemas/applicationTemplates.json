@@ -33,7 +33,19 @@
           "public": {
             "type": "boolean"
           },
+          "authorName": {
+            "type": "string",
+            "maxLength": 255
+          },
           "imageUrl": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "authorUrl": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "templateUrl": {
             "type": "string",
             "maxLength": 1024
           },

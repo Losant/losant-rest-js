@@ -228,6 +228,13 @@ Schema for advanced device queries
       },
       "maxItems": 100
     },
+    "$nor": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedDeviceQuery"
+      },
+      "maxItems": 100
+    },
     "id": {
       "oneOf": [
         {
@@ -1150,6 +1157,13 @@ Schema for advanced event queries
       "maxItems": 100
     },
     "$or": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedEventQuery"
+      },
+      "maxItems": 100
+    },
+    "$nor": {
       "type": "array",
       "items": {
         "$ref": "#/definitions/advancedEventQuery"
@@ -2154,17 +2168,26 @@ Schema for advanced filters and queries
       "type": "array",
       "items": {
         "$ref": "#/definitions/advancedQuery"
-      }
+      },
+      "maxItems": 100
     },
     "$or": {
       "type": "array",
       "items": {
         "$ref": "#/definitions/advancedQuery"
-      }
+      },
+      "maxItems": 100
+    },
+    "$nor": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedQuery"
+      },
+      "maxItems": 100
     }
   },
   "patternProperties": {
-    "^[0-9a-zA-Z_-]{1,255}": {
+    "^[0-9a-zA-Z_-]{1,255}$": {
       "oneOf": [
         {
           "type": [
@@ -6153,7 +6176,19 @@ Schema for a single Application Template
     "public": {
       "type": "boolean"
     },
+    "authorName": {
+      "type": "string",
+      "maxLength": 255
+    },
     "imageUrl": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "authorUrl": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "templateUrl": {
       "type": "string",
       "maxLength": 1024
     },
@@ -6223,6 +6258,9 @@ Schema for a single Application Template
   "name": "smart environment",
   "description": "a smart env set up",
   "public": true,
+  "authorName": "Losant",
+  "authorUrl": "https://www.losant.com",
+  "templateUrl": "https://app.losant.com",
   "summary": {
     "applicationCertificateAuthorityCount": 0,
     "dashboardCount": 0,
@@ -6288,7 +6326,19 @@ Schema for a collection of Application Templates
           "public": {
             "type": "boolean"
           },
+          "authorName": {
+            "type": "string",
+            "maxLength": 255
+          },
           "imageUrl": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "authorUrl": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "templateUrl": {
             "type": "string",
             "maxLength": 1024
           },
@@ -6394,6 +6444,9 @@ Schema for a collection of Application Templates
       "name": "smart environment",
       "description": "a smart env set up",
       "public": true,
+      "authorName": "Losant",
+      "authorUrl": "https://www.losant.com",
+      "templateUrl": "https://app.losant.com",
       "summary": {
         "applicationCertificateAuthorityCount": 0,
         "dashboardCount": 0,
@@ -27035,17 +27088,26 @@ Schema for the body of a data table export
           "type": "array",
           "items": {
             "$ref": "#/definitions/advancedQuery"
-          }
+          },
+          "maxItems": 100
         },
         "$or": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/advancedQuery"
-          }
+          },
+          "maxItems": 100
+        },
+        "$nor": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/advancedQuery"
+          },
+          "maxItems": 100
         }
       },
       "patternProperties": {
-        "^[0-9a-zA-Z_-]{1,255}": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
           "oneOf": [
             {
               "type": [
@@ -31998,6 +32060,13 @@ Export options for events
           },
           "maxItems": 100
         },
+        "$nor": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/advancedEventQuery"
+          },
+          "maxItems": 100
+        },
         "id": {
           "oneOf": [
             {
@@ -34291,6 +34360,13 @@ Schema for a single Experience Group
       },
       "maxItems": 100
     },
+    "deviceQueryJson": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 8192
+    },
     "parentId": {
       "oneOf": [
         {
@@ -34401,6 +34477,13 @@ Schema for the body of an Experience Group modification request
         "additionalProperties": false
       },
       "maxItems": 100
+    },
+    "deviceQueryJson": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 8192
     },
     "parentId": {
       "oneOf": [
@@ -34518,6 +34601,13 @@ Schema for the body of an Experience Group creation request
         "additionalProperties": false
       },
       "maxItems": 100
+    },
+    "deviceQueryJson": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 8192
     },
     "parentId": {
       "oneOf": [
@@ -34665,6 +34755,13 @@ Schema for a collection of Experience Groups
               "additionalProperties": false
             },
             "maxItems": 100
+          },
+          "deviceQueryJson": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 8192
           },
           "parentId": {
             "oneOf": [
@@ -73942,6 +74039,10 @@ Schema for a single Notebook
                   ]
                 }
               },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 8192
+              },
               "attributes": {
                 "type": "array",
                 "maxItems": 100,
@@ -74034,6 +74135,10 @@ Schema for a single Notebook
                     }
                   ]
                 }
+              },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 8192
               }
             },
             "required": [
@@ -74081,7 +74186,7 @@ Schema for a single Notebook
               },
               "queryJson": {
                 "type": "string",
-                "maxLength": 32767
+                "maxLength": 8192
               }
             },
             "required": [
@@ -74116,7 +74221,7 @@ Schema for a single Notebook
               },
               "queryJson": {
                 "type": "string",
-                "maxLength": 32767
+                "maxLength": 8192
               }
             },
             "required": [
@@ -74828,6 +74933,10 @@ Schema for the body of a Notebook modification request
                   ]
                 }
               },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 8192
+              },
               "attributes": {
                 "type": "array",
                 "maxItems": 100,
@@ -74920,6 +75029,10 @@ Schema for the body of a Notebook modification request
                     }
                   ]
                 }
+              },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 8192
               }
             },
             "required": [
@@ -74967,7 +75080,7 @@ Schema for the body of a Notebook modification request
               },
               "queryJson": {
                 "type": "string",
-                "maxLength": 32767
+                "maxLength": 8192
               }
             },
             "required": [
@@ -75002,7 +75115,7 @@ Schema for the body of a Notebook modification request
               },
               "queryJson": {
                 "type": "string",
-                "maxLength": 32767
+                "maxLength": 8192
               }
             },
             "required": [
@@ -75331,6 +75444,10 @@ Schema for the body of an Notebook creation request
                   ]
                 }
               },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 8192
+              },
               "attributes": {
                 "type": "array",
                 "maxItems": 100,
@@ -75423,6 +75540,10 @@ Schema for the body of an Notebook creation request
                     }
                   ]
                 }
+              },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 8192
               }
             },
             "required": [
@@ -75470,7 +75591,7 @@ Schema for the body of an Notebook creation request
               },
               "queryJson": {
                 "type": "string",
-                "maxLength": 32767
+                "maxLength": 8192
               }
             },
             "required": [
@@ -75505,7 +75626,7 @@ Schema for the body of an Notebook creation request
               },
               "queryJson": {
                 "type": "string",
-                "maxLength": 32767
+                "maxLength": 8192
               }
             },
             "required": [
@@ -75872,6 +75993,10 @@ Schema for a collection of Notebooks
                         ]
                       }
                     },
+                    "queryJson": {
+                      "type": "string",
+                      "maxLength": 8192
+                    },
                     "attributes": {
                       "type": "array",
                       "maxItems": 100,
@@ -75964,6 +76089,10 @@ Schema for a collection of Notebooks
                           }
                         ]
                       }
+                    },
+                    "queryJson": {
+                      "type": "string",
+                      "maxLength": 8192
                     }
                   },
                   "required": [
@@ -76011,7 +76140,7 @@ Schema for a collection of Notebooks
                     },
                     "queryJson": {
                       "type": "string",
-                      "maxLength": 32767
+                      "maxLength": 8192
                     }
                   },
                   "required": [
@@ -76046,7 +76175,7 @@ Schema for a collection of Notebooks
                     },
                     "queryJson": {
                       "type": "string",
-                      "maxLength": 32767
+                      "maxLength": 8192
                     }
                   },
                   "required": [
@@ -76916,11 +77045,7 @@ Schema for a single Organization
     "webhookCount": 0,
     "keyCount": 2,
     "deviceRecipeCount": 0
-  },
-  "whitelistedEmailDomains": [
-    "email.com",
-    "losant.com"
-  ]
+  }
 }
 ```
 
@@ -77461,15 +77586,6 @@ Schema for the body of an Organization creation request
     "iconColor": {
       "type": "string",
       "maxLength": 64
-    },
-    "whitelistedEmailDomains": {
-      "type": "array",
-      "maxItems": 25,
-      "items": {
-        "type": "string",
-        "maxLength": 1024,
-        "minLength": 3
-      }
     }
   },
   "additionalProperties": false,
@@ -78004,11 +78120,7 @@ Schema for a collection of Organizations
         "webhookCount": 0,
         "keyCount": 2,
         "deviceRecipeCount": 0
-      },
-      "whitelistedEmailDomains": [
-        "email.com",
-        "losant.com"
-      ]
+      }
     }
   ],
   "count": 1,

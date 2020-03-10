@@ -16,17 +16,26 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/advancedQuery"
-          }
+          },
+          "maxItems": 100
         },
         "$or": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/advancedQuery"
-          }
+          },
+          "maxItems": 100
+        },
+        "$nor": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/advancedQuery"
+          },
+          "maxItems": 100
         }
       },
       "patternProperties": {
-        "^[0-9a-zA-Z_-]{1,255}": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
           "oneOf": [
             {
               "type": [

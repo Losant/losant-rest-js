@@ -85,6 +85,13 @@
       },
       "maxItems": 100
     },
+    "deviceQueryJson": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 8192
+    },
     "parentId": {
       "oneOf": [
         {
