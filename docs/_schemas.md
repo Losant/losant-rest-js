@@ -11296,6 +11296,20 @@ Schema for a single Dashboard
                   "includeLines": {
                     "type": "boolean"
                   },
+                  "locationTagKey": {
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      },
+                      {
+                        "type": "string",
+                        "minLength": 4,
+                        "maxLength": 255,
+                        "pattern": ".*{{.+}}.*"
+                      }
+                    ]
+                  },
                   "mapStyle": {
                     "type": "string",
                     "enum": [
@@ -15885,6 +15899,20 @@ Schema for the body of a Dashboard modification request
                   "includeLines": {
                     "type": "boolean"
                   },
+                  "locationTagKey": {
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      },
+                      {
+                        "type": "string",
+                        "minLength": 4,
+                        "maxLength": 255,
+                        "pattern": ".*{{.+}}.*"
+                      }
+                    ]
+                  },
                   "mapStyle": {
                     "type": "string",
                     "enum": [
@@ -20402,6 +20430,20 @@ Schema for the body of a Dashboard creation request
                   },
                   "includeLines": {
                     "type": "boolean"
+                  },
+                  "locationTagKey": {
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      },
+                      {
+                        "type": "string",
+                        "minLength": 4,
+                        "maxLength": 255,
+                        "pattern": ".*{{.+}}.*"
+                      }
+                    ]
                   },
                   "mapStyle": {
                     "type": "string",
@@ -25175,6 +25217,20 @@ Schema for a collection of Dashboards
                         },
                         "includeLines": {
                           "type": "boolean"
+                        },
+                        "locationTagKey": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                            },
+                            {
+                              "type": "string",
+                              "minLength": 4,
+                              "maxLength": 255,
+                              "pattern": ".*{{.+}}.*"
+                            }
+                          ]
                         },
                         "mapStyle": {
                           "type": "string",

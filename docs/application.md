@@ -14,6 +14,7 @@ parameters and the potential responses.
 *   [Full Data Tables Archive](#full-data-tables-archive)
 *   [Full Events Archive](#full-events-archive)
 *   [Get](#get)
+*   [Import](#import)
 *   [Mqtt Publish Message](#mqtt-publish-message)
 *   [Patch](#patch)
 *   [Payload Counts](#payload-counts)
@@ -415,6 +416,58 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if application was not found |
+
+<br/>
+
+## Import
+
+Add multiple resources to an application via a zip file
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  importBundle: myImportBundle
+};
+
+// with callbacks
+client.application.import(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.application.import(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, application.*, or applications.import.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
+| importBundle | file | Y | The zip file containing all of the resources to import into the application |  | undefined |
+| email | string | N | Email address to notify the user when the job to import the application resources has completed or errored, defaults to the email address of the user making the request |  | email@example.com |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Application](_schemas.md#application) | Updated application information |
+| 202 | [Job Enqueued API Result](_schemas.md#job-enqueued-api-result) | If a job was enqueued for the resources to be imported into the application |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application is not found |
 
 <br/>
 
