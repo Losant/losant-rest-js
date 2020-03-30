@@ -444,7 +444,7 @@ client.application.import(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, application.*, or applications.import.
+all.Application, all.Organization, all.User, application.*, or application.import.
 
 #### Available Parameters
 

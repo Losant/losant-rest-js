@@ -3096,6 +3096,7 @@ Schema for the body of an Application API Token creation request
           "application.backfillArchiveData",
           "application.clone",
           "application.export",
+          "application.import",
           "application.fullEventsArchive",
           "application.fullDataTablesArchive",
           "application.debug",
@@ -9582,6 +9583,20 @@ Schema for a single Dashboard
                     "type": "integer",
                     "minimum": 0
                   },
+                  "locationTagKey": {
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      },
+                      {
+                        "type": "string",
+                        "minLength": 4,
+                        "maxLength": 255,
+                        "pattern": ".*{{.+}}.*"
+                      }
+                    ]
+                  },
                   "mapStyle": {
                     "type": "string",
                     "enum": [
@@ -14185,6 +14200,20 @@ Schema for the body of a Dashboard modification request
                     "type": "integer",
                     "minimum": 0
                   },
+                  "locationTagKey": {
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      },
+                      {
+                        "type": "string",
+                        "minLength": 4,
+                        "maxLength": 255,
+                        "pattern": ".*{{.+}}.*"
+                      }
+                    ]
+                  },
                   "mapStyle": {
                     "type": "string",
                     "enum": [
@@ -18716,6 +18745,20 @@ Schema for the body of a Dashboard creation request
                   "duration": {
                     "type": "integer",
                     "minimum": 0
+                  },
+                  "locationTagKey": {
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      },
+                      {
+                        "type": "string",
+                        "minLength": 4,
+                        "maxLength": 255,
+                        "pattern": ".*{{.+}}.*"
+                      }
+                    ]
                   },
                   "mapStyle": {
                     "type": "string",
@@ -23503,6 +23546,20 @@ Schema for a collection of Dashboards
                         "duration": {
                           "type": "integer",
                           "minimum": 0
+                        },
+                        "locationTagKey": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                            },
+                            {
+                              "type": "string",
+                              "minLength": 4,
+                              "maxLength": 255,
+                              "pattern": ".*{{.+}}.*"
+                            }
+                          ]
                         },
                         "mapStyle": {
                           "type": "string",
@@ -71840,6 +71897,7 @@ Schema for the body of a Github login request
                   "application.backfillArchiveData",
                   "application.clone",
                   "application.export",
+                  "application.import",
                   "application.fullEventsArchive",
                   "application.fullDataTablesArchive",
                   "application.debug",
@@ -79087,6 +79145,7 @@ Schema for the body of a User authentication request
                   "application.backfillArchiveData",
                   "application.clone",
                   "application.export",
+                  "application.import",
                   "application.fullEventsArchive",
                   "application.fullDataTablesArchive",
                   "application.debug",
@@ -79507,6 +79566,7 @@ Schema for the body of a User creation request
                   "application.backfillArchiveData",
                   "application.clone",
                   "application.export",
+                  "application.import",
                   "application.fullEventsArchive",
                   "application.fullDataTablesArchive",
                   "application.debug",
