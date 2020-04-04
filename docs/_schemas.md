@@ -2720,6 +2720,11 @@ Schema for a single Application
         ]
       }
     },
+    "blobUrlTTL": {
+      "type": "number",
+      "minimum": 3600,
+      "maximum": 604800
+    },
     "summary": {
       "type": "object",
       "properties": {
@@ -4474,6 +4479,11 @@ Schema for creating an application by template result
             ]
           }
         },
+        "blobUrlTTL": {
+          "type": "number",
+          "minimum": 3600,
+          "maximum": 604800
+        },
         "summary": {
           "type": "object",
           "properties": {
@@ -5725,6 +5735,11 @@ Schema for the body of an Application modification request
         }
       },
       "additionalProperties": false
+    },
+    "blobUrlTTL": {
+      "type": "number",
+      "minimum": 3600,
+      "maximum": 604800
     }
   },
   "additionalProperties": false
@@ -5965,6 +5980,11 @@ Schema for the body of an Application creation request
         }
       },
       "additionalProperties": false
+    },
+    "blobUrlTTL": {
+      "type": "number",
+      "minimum": 3600,
+      "maximum": 604800
     }
   },
   "additionalProperties": false,
@@ -6585,6 +6605,11 @@ Schema for a collection of Applications
                 "json"
               ]
             }
+          },
+          "blobUrlTTL": {
+            "type": "number",
+            "minimum": 3600,
+            "maximum": 604800
           },
           "summary": {
             "type": "object",
@@ -7967,18 +7992,65 @@ Schema for a single Dashboard
                           "maxLength": 255
                         },
                         "aggregation": {
-                          "type": "string",
-                          "enum": [
-                            "FIRST",
-                            "LAST",
-                            "COUNT",
-                            "MAX",
-                            "MIN",
-                            "MEDIAN",
-                            "MEAN",
-                            "SUM",
-                            "STD_DEV",
-                            "NONE"
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "FIRST",
+                                "LAST",
+                                "COUNT",
+                                "MAX",
+                                "MIN",
+                                "MEDIAN",
+                                "MEAN",
+                                "SUM",
+                                "STD_DEV",
+                                "NONE"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "patternProperties": {
+                                    "^[0-9a-zA-Z_-]{1,255}$": {
+                                      "oneOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        },
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            }
                           ]
                         },
                         "color": {
@@ -8138,18 +8210,65 @@ Schema for a single Dashboard
                               "maxLength": 255
                             },
                             "aggregation": {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "patternProperties": {
+                                        "^[0-9a-zA-Z_-]{1,255}$": {
+                                          "oneOf": [
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "null"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                }
                               ]
                             },
                             "deviceIds": {
@@ -8222,18 +8341,65 @@ Schema for a single Dashboard
                               "maxLength": 255
                             },
                             "aggregation": {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "patternProperties": {
+                                        "^[0-9a-zA-Z_-]{1,255}$": {
+                                          "oneOf": [
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "null"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                }
                               ]
                             },
                             "deviceIds": {
@@ -9125,18 +9291,65 @@ Schema for a single Dashboard
                         "maxLength": 255
                       },
                       "aggregation": {
-                        "type": "string",
-                        "enum": [
-                          "FIRST",
-                          "LAST",
-                          "COUNT",
-                          "MAX",
-                          "MIN",
-                          "MEDIAN",
-                          "MEAN",
-                          "SUM",
-                          "STD_DEV",
-                          "NONE"
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "FIRST",
+                              "LAST",
+                              "COUNT",
+                              "MAX",
+                              "MIN",
+                              "MEDIAN",
+                              "MEAN",
+                              "SUM",
+                              "STD_DEV",
+                              "NONE"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "FIRST",
+                                  "LAST",
+                                  "COUNT",
+                                  "MAX",
+                                  "MIN",
+                                  "MEDIAN",
+                                  "MEAN",
+                                  "SUM",
+                                  "STD_DEV",
+                                  "NONE"
+                                ]
+                              },
+                              "options": {
+                                "type": "object",
+                                "patternProperties": {
+                                  "^[0-9a-zA-Z_-]{1,255}$": {
+                                    "oneOf": [
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "null"
+                                      },
+                                      {
+                                        "type": "string",
+                                        "maxLength": 255
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "type"
+                            ]
+                          }
                         ]
                       },
                       "color": {
@@ -9332,18 +9545,65 @@ Schema for a single Dashboard
                           "maxLength": 255
                         },
                         "aggregation": {
-                          "type": "string",
-                          "enum": [
-                            "FIRST",
-                            "LAST",
-                            "COUNT",
-                            "MAX",
-                            "MIN",
-                            "MEDIAN",
-                            "MEAN",
-                            "SUM",
-                            "STD_DEV",
-                            "NONE"
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "FIRST",
+                                "LAST",
+                                "COUNT",
+                                "MAX",
+                                "MIN",
+                                "MEDIAN",
+                                "MEAN",
+                                "SUM",
+                                "STD_DEV",
+                                "NONE"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "patternProperties": {
+                                    "^[0-9a-zA-Z_-]{1,255}$": {
+                                      "oneOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        },
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            }
                           ]
                         },
                         "color": {
@@ -9816,18 +10076,65 @@ Schema for a single Dashboard
                               "maxLength": 255
                             },
                             "aggregation": {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "patternProperties": {
+                                        "^[0-9a-zA-Z_-]{1,255}$": {
+                                          "oneOf": [
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "null"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                }
                               ]
                             },
                             "deviceIds": {
@@ -10331,18 +10638,65 @@ Schema for a single Dashboard
                           "maxLength": 255
                         },
                         "aggregation": {
-                          "type": "string",
-                          "enum": [
-                            "FIRST",
-                            "LAST",
-                            "COUNT",
-                            "MAX",
-                            "MIN",
-                            "MEDIAN",
-                            "MEAN",
-                            "SUM",
-                            "STD_DEV",
-                            "NONE"
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "FIRST",
+                                "LAST",
+                                "COUNT",
+                                "MAX",
+                                "MIN",
+                                "MEDIAN",
+                                "MEAN",
+                                "SUM",
+                                "STD_DEV",
+                                "NONE"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "patternProperties": {
+                                    "^[0-9a-zA-Z_-]{1,255}$": {
+                                      "oneOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        },
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            }
                           ]
                         },
                         "color": {
@@ -10595,18 +10949,65 @@ Schema for a single Dashboard
                                   "maxLength": 255
                                 },
                                 "aggregation": {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV",
+                                            "NONE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "patternProperties": {
+                                            "^[0-9a-zA-Z_-]{1,255}$": {
+                                              "oneOf": [
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "null"
+                                                },
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "deviceIds": {
@@ -10740,18 +11141,65 @@ Schema for a single Dashboard
                                   "maxLength": 255
                                 },
                                 "aggregation": {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV",
+                                            "NONE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "patternProperties": {
+                                            "^[0-9a-zA-Z_-]{1,255}$": {
+                                              "oneOf": [
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "null"
+                                                },
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "deviceIds": {
@@ -10840,18 +11288,65 @@ Schema for a single Dashboard
                                   "maxLength": 255
                                 },
                                 "aggregation": {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV",
+                                            "NONE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "patternProperties": {
+                                            "^[0-9a-zA-Z_-]{1,255}$": {
+                                              "oneOf": [
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "null"
+                                                },
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "deviceIds": {
@@ -10941,18 +11436,65 @@ Schema for a single Dashboard
                                   "maxLength": 255
                                 },
                                 "aggregation": {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV",
+                                            "NONE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "patternProperties": {
+                                            "^[0-9a-zA-Z_-]{1,255}$": {
+                                              "oneOf": [
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "null"
+                                                },
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "deviceIds": {
@@ -11508,18 +12050,65 @@ Schema for a single Dashboard
                           "maxLength": 255
                         },
                         "aggregation": {
-                          "type": "string",
-                          "enum": [
-                            "FIRST",
-                            "LAST",
-                            "COUNT",
-                            "MAX",
-                            "MIN",
-                            "MEDIAN",
-                            "MEAN",
-                            "SUM",
-                            "STD_DEV",
-                            "NONE"
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "FIRST",
+                                "LAST",
+                                "COUNT",
+                                "MAX",
+                                "MIN",
+                                "MEDIAN",
+                                "MEAN",
+                                "SUM",
+                                "STD_DEV",
+                                "NONE"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "patternProperties": {
+                                    "^[0-9a-zA-Z_-]{1,255}$": {
+                                      "oneOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        },
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            }
                           ]
                         },
                         "color": {
@@ -12584,18 +13173,65 @@ Schema for the body of a Dashboard modification request
                           "maxLength": 255
                         },
                         "aggregation": {
-                          "type": "string",
-                          "enum": [
-                            "FIRST",
-                            "LAST",
-                            "COUNT",
-                            "MAX",
-                            "MIN",
-                            "MEDIAN",
-                            "MEAN",
-                            "SUM",
-                            "STD_DEV",
-                            "NONE"
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "FIRST",
+                                "LAST",
+                                "COUNT",
+                                "MAX",
+                                "MIN",
+                                "MEDIAN",
+                                "MEAN",
+                                "SUM",
+                                "STD_DEV",
+                                "NONE"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "patternProperties": {
+                                    "^[0-9a-zA-Z_-]{1,255}$": {
+                                      "oneOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        },
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            }
                           ]
                         },
                         "color": {
@@ -12755,18 +13391,65 @@ Schema for the body of a Dashboard modification request
                               "maxLength": 255
                             },
                             "aggregation": {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "patternProperties": {
+                                        "^[0-9a-zA-Z_-]{1,255}$": {
+                                          "oneOf": [
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "null"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                }
                               ]
                             },
                             "deviceIds": {
@@ -12839,18 +13522,65 @@ Schema for the body of a Dashboard modification request
                               "maxLength": 255
                             },
                             "aggregation": {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "patternProperties": {
+                                        "^[0-9a-zA-Z_-]{1,255}$": {
+                                          "oneOf": [
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "null"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                }
                               ]
                             },
                             "deviceIds": {
@@ -13742,18 +14472,65 @@ Schema for the body of a Dashboard modification request
                         "maxLength": 255
                       },
                       "aggregation": {
-                        "type": "string",
-                        "enum": [
-                          "FIRST",
-                          "LAST",
-                          "COUNT",
-                          "MAX",
-                          "MIN",
-                          "MEDIAN",
-                          "MEAN",
-                          "SUM",
-                          "STD_DEV",
-                          "NONE"
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "FIRST",
+                              "LAST",
+                              "COUNT",
+                              "MAX",
+                              "MIN",
+                              "MEDIAN",
+                              "MEAN",
+                              "SUM",
+                              "STD_DEV",
+                              "NONE"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "FIRST",
+                                  "LAST",
+                                  "COUNT",
+                                  "MAX",
+                                  "MIN",
+                                  "MEDIAN",
+                                  "MEAN",
+                                  "SUM",
+                                  "STD_DEV",
+                                  "NONE"
+                                ]
+                              },
+                              "options": {
+                                "type": "object",
+                                "patternProperties": {
+                                  "^[0-9a-zA-Z_-]{1,255}$": {
+                                    "oneOf": [
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "null"
+                                      },
+                                      {
+                                        "type": "string",
+                                        "maxLength": 255
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "type"
+                            ]
+                          }
                         ]
                       },
                       "color": {
@@ -13949,18 +14726,65 @@ Schema for the body of a Dashboard modification request
                           "maxLength": 255
                         },
                         "aggregation": {
-                          "type": "string",
-                          "enum": [
-                            "FIRST",
-                            "LAST",
-                            "COUNT",
-                            "MAX",
-                            "MIN",
-                            "MEDIAN",
-                            "MEAN",
-                            "SUM",
-                            "STD_DEV",
-                            "NONE"
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "FIRST",
+                                "LAST",
+                                "COUNT",
+                                "MAX",
+                                "MIN",
+                                "MEDIAN",
+                                "MEAN",
+                                "SUM",
+                                "STD_DEV",
+                                "NONE"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "patternProperties": {
+                                    "^[0-9a-zA-Z_-]{1,255}$": {
+                                      "oneOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        },
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            }
                           ]
                         },
                         "color": {
@@ -14433,18 +15257,65 @@ Schema for the body of a Dashboard modification request
                               "maxLength": 255
                             },
                             "aggregation": {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "patternProperties": {
+                                        "^[0-9a-zA-Z_-]{1,255}$": {
+                                          "oneOf": [
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "null"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                }
                               ]
                             },
                             "deviceIds": {
@@ -14948,18 +15819,65 @@ Schema for the body of a Dashboard modification request
                           "maxLength": 255
                         },
                         "aggregation": {
-                          "type": "string",
-                          "enum": [
-                            "FIRST",
-                            "LAST",
-                            "COUNT",
-                            "MAX",
-                            "MIN",
-                            "MEDIAN",
-                            "MEAN",
-                            "SUM",
-                            "STD_DEV",
-                            "NONE"
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "FIRST",
+                                "LAST",
+                                "COUNT",
+                                "MAX",
+                                "MIN",
+                                "MEDIAN",
+                                "MEAN",
+                                "SUM",
+                                "STD_DEV",
+                                "NONE"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "patternProperties": {
+                                    "^[0-9a-zA-Z_-]{1,255}$": {
+                                      "oneOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        },
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            }
                           ]
                         },
                         "color": {
@@ -15212,18 +16130,65 @@ Schema for the body of a Dashboard modification request
                                   "maxLength": 255
                                 },
                                 "aggregation": {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV",
+                                            "NONE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "patternProperties": {
+                                            "^[0-9a-zA-Z_-]{1,255}$": {
+                                              "oneOf": [
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "null"
+                                                },
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "deviceIds": {
@@ -15357,18 +16322,65 @@ Schema for the body of a Dashboard modification request
                                   "maxLength": 255
                                 },
                                 "aggregation": {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV",
+                                            "NONE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "patternProperties": {
+                                            "^[0-9a-zA-Z_-]{1,255}$": {
+                                              "oneOf": [
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "null"
+                                                },
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "deviceIds": {
@@ -15457,18 +16469,65 @@ Schema for the body of a Dashboard modification request
                                   "maxLength": 255
                                 },
                                 "aggregation": {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV",
+                                            "NONE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "patternProperties": {
+                                            "^[0-9a-zA-Z_-]{1,255}$": {
+                                              "oneOf": [
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "null"
+                                                },
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "deviceIds": {
@@ -15558,18 +16617,65 @@ Schema for the body of a Dashboard modification request
                                   "maxLength": 255
                                 },
                                 "aggregation": {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV",
+                                            "NONE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "patternProperties": {
+                                            "^[0-9a-zA-Z_-]{1,255}$": {
+                                              "oneOf": [
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "null"
+                                                },
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "deviceIds": {
@@ -16125,18 +17231,65 @@ Schema for the body of a Dashboard modification request
                           "maxLength": 255
                         },
                         "aggregation": {
-                          "type": "string",
-                          "enum": [
-                            "FIRST",
-                            "LAST",
-                            "COUNT",
-                            "MAX",
-                            "MIN",
-                            "MEDIAN",
-                            "MEAN",
-                            "SUM",
-                            "STD_DEV",
-                            "NONE"
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "FIRST",
+                                "LAST",
+                                "COUNT",
+                                "MAX",
+                                "MIN",
+                                "MEDIAN",
+                                "MEAN",
+                                "SUM",
+                                "STD_DEV",
+                                "NONE"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "patternProperties": {
+                                    "^[0-9a-zA-Z_-]{1,255}$": {
+                                      "oneOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        },
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            }
                           ]
                         },
                         "color": {
@@ -17130,18 +18283,65 @@ Schema for the body of a Dashboard creation request
                           "maxLength": 255
                         },
                         "aggregation": {
-                          "type": "string",
-                          "enum": [
-                            "FIRST",
-                            "LAST",
-                            "COUNT",
-                            "MAX",
-                            "MIN",
-                            "MEDIAN",
-                            "MEAN",
-                            "SUM",
-                            "STD_DEV",
-                            "NONE"
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "FIRST",
+                                "LAST",
+                                "COUNT",
+                                "MAX",
+                                "MIN",
+                                "MEDIAN",
+                                "MEAN",
+                                "SUM",
+                                "STD_DEV",
+                                "NONE"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "patternProperties": {
+                                    "^[0-9a-zA-Z_-]{1,255}$": {
+                                      "oneOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        },
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            }
                           ]
                         },
                         "color": {
@@ -17301,18 +18501,65 @@ Schema for the body of a Dashboard creation request
                               "maxLength": 255
                             },
                             "aggregation": {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "patternProperties": {
+                                        "^[0-9a-zA-Z_-]{1,255}$": {
+                                          "oneOf": [
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "null"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                }
                               ]
                             },
                             "deviceIds": {
@@ -17385,18 +18632,65 @@ Schema for the body of a Dashboard creation request
                               "maxLength": 255
                             },
                             "aggregation": {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "patternProperties": {
+                                        "^[0-9a-zA-Z_-]{1,255}$": {
+                                          "oneOf": [
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "null"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                }
                               ]
                             },
                             "deviceIds": {
@@ -18288,18 +19582,65 @@ Schema for the body of a Dashboard creation request
                         "maxLength": 255
                       },
                       "aggregation": {
-                        "type": "string",
-                        "enum": [
-                          "FIRST",
-                          "LAST",
-                          "COUNT",
-                          "MAX",
-                          "MIN",
-                          "MEDIAN",
-                          "MEAN",
-                          "SUM",
-                          "STD_DEV",
-                          "NONE"
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "FIRST",
+                              "LAST",
+                              "COUNT",
+                              "MAX",
+                              "MIN",
+                              "MEDIAN",
+                              "MEAN",
+                              "SUM",
+                              "STD_DEV",
+                              "NONE"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "FIRST",
+                                  "LAST",
+                                  "COUNT",
+                                  "MAX",
+                                  "MIN",
+                                  "MEDIAN",
+                                  "MEAN",
+                                  "SUM",
+                                  "STD_DEV",
+                                  "NONE"
+                                ]
+                              },
+                              "options": {
+                                "type": "object",
+                                "patternProperties": {
+                                  "^[0-9a-zA-Z_-]{1,255}$": {
+                                    "oneOf": [
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "null"
+                                      },
+                                      {
+                                        "type": "string",
+                                        "maxLength": 255
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "type"
+                            ]
+                          }
                         ]
                       },
                       "color": {
@@ -18495,18 +19836,65 @@ Schema for the body of a Dashboard creation request
                           "maxLength": 255
                         },
                         "aggregation": {
-                          "type": "string",
-                          "enum": [
-                            "FIRST",
-                            "LAST",
-                            "COUNT",
-                            "MAX",
-                            "MIN",
-                            "MEDIAN",
-                            "MEAN",
-                            "SUM",
-                            "STD_DEV",
-                            "NONE"
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "FIRST",
+                                "LAST",
+                                "COUNT",
+                                "MAX",
+                                "MIN",
+                                "MEDIAN",
+                                "MEAN",
+                                "SUM",
+                                "STD_DEV",
+                                "NONE"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "patternProperties": {
+                                    "^[0-9a-zA-Z_-]{1,255}$": {
+                                      "oneOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        },
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            }
                           ]
                         },
                         "color": {
@@ -18979,18 +20367,65 @@ Schema for the body of a Dashboard creation request
                               "maxLength": 255
                             },
                             "aggregation": {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "patternProperties": {
+                                        "^[0-9a-zA-Z_-]{1,255}$": {
+                                          "oneOf": [
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "null"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                }
                               ]
                             },
                             "deviceIds": {
@@ -19494,18 +20929,65 @@ Schema for the body of a Dashboard creation request
                           "maxLength": 255
                         },
                         "aggregation": {
-                          "type": "string",
-                          "enum": [
-                            "FIRST",
-                            "LAST",
-                            "COUNT",
-                            "MAX",
-                            "MIN",
-                            "MEDIAN",
-                            "MEAN",
-                            "SUM",
-                            "STD_DEV",
-                            "NONE"
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "FIRST",
+                                "LAST",
+                                "COUNT",
+                                "MAX",
+                                "MIN",
+                                "MEDIAN",
+                                "MEAN",
+                                "SUM",
+                                "STD_DEV",
+                                "NONE"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "patternProperties": {
+                                    "^[0-9a-zA-Z_-]{1,255}$": {
+                                      "oneOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        },
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            }
                           ]
                         },
                         "color": {
@@ -19758,18 +21240,65 @@ Schema for the body of a Dashboard creation request
                                   "maxLength": 255
                                 },
                                 "aggregation": {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV",
+                                            "NONE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "patternProperties": {
+                                            "^[0-9a-zA-Z_-]{1,255}$": {
+                                              "oneOf": [
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "null"
+                                                },
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "deviceIds": {
@@ -19903,18 +21432,65 @@ Schema for the body of a Dashboard creation request
                                   "maxLength": 255
                                 },
                                 "aggregation": {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV",
+                                            "NONE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "patternProperties": {
+                                            "^[0-9a-zA-Z_-]{1,255}$": {
+                                              "oneOf": [
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "null"
+                                                },
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "deviceIds": {
@@ -20003,18 +21579,65 @@ Schema for the body of a Dashboard creation request
                                   "maxLength": 255
                                 },
                                 "aggregation": {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV",
+                                            "NONE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "patternProperties": {
+                                            "^[0-9a-zA-Z_-]{1,255}$": {
+                                              "oneOf": [
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "null"
+                                                },
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "deviceIds": {
@@ -20104,18 +21727,65 @@ Schema for the body of a Dashboard creation request
                                   "maxLength": 255
                                 },
                                 "aggregation": {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV",
+                                            "NONE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "patternProperties": {
+                                            "^[0-9a-zA-Z_-]{1,255}$": {
+                                              "oneOf": [
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "null"
+                                                },
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "deviceIds": {
@@ -20671,18 +22341,65 @@ Schema for the body of a Dashboard creation request
                           "maxLength": 255
                         },
                         "aggregation": {
-                          "type": "string",
-                          "enum": [
-                            "FIRST",
-                            "LAST",
-                            "COUNT",
-                            "MAX",
-                            "MIN",
-                            "MEDIAN",
-                            "MEAN",
-                            "SUM",
-                            "STD_DEV",
-                            "NONE"
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "FIRST",
+                                "LAST",
+                                "COUNT",
+                                "MAX",
+                                "MIN",
+                                "MEDIAN",
+                                "MEAN",
+                                "SUM",
+                                "STD_DEV",
+                                "NONE"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "patternProperties": {
+                                    "^[0-9a-zA-Z_-]{1,255}$": {
+                                      "oneOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        },
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            }
                           ]
                         },
                         "color": {
@@ -21931,18 +23648,65 @@ Schema for a collection of Dashboards
                                 "maxLength": 255
                               },
                               "aggregation": {
-                                "type": "string",
-                                "enum": [
-                                  "FIRST",
-                                  "LAST",
-                                  "COUNT",
-                                  "MAX",
-                                  "MIN",
-                                  "MEDIAN",
-                                  "MEAN",
-                                  "SUM",
-                                  "STD_DEV",
-                                  "NONE"
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "FIRST",
+                                      "LAST",
+                                      "COUNT",
+                                      "MAX",
+                                      "MIN",
+                                      "MEDIAN",
+                                      "MEAN",
+                                      "SUM",
+                                      "STD_DEV",
+                                      "NONE"
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "FIRST",
+                                          "LAST",
+                                          "COUNT",
+                                          "MAX",
+                                          "MIN",
+                                          "MEDIAN",
+                                          "MEAN",
+                                          "SUM",
+                                          "STD_DEV",
+                                          "NONE"
+                                        ]
+                                      },
+                                      "options": {
+                                        "type": "object",
+                                        "patternProperties": {
+                                          "^[0-9a-zA-Z_-]{1,255}$": {
+                                            "oneOf": [
+                                              {
+                                                "type": "number"
+                                              },
+                                              {
+                                                "type": "null"
+                                              },
+                                              {
+                                                "type": "string",
+                                                "maxLength": 255
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "required": [
+                                      "type"
+                                    ]
+                                  }
                                 ]
                               },
                               "color": {
@@ -22102,18 +23866,65 @@ Schema for a collection of Dashboards
                                     "maxLength": 255
                                   },
                                   "aggregation": {
-                                    "type": "string",
-                                    "enum": [
-                                      "FIRST",
-                                      "LAST",
-                                      "COUNT",
-                                      "MAX",
-                                      "MIN",
-                                      "MEDIAN",
-                                      "MEAN",
-                                      "SUM",
-                                      "STD_DEV",
-                                      "NONE"
+                                    "oneOf": [
+                                      {
+                                        "type": "string",
+                                        "enum": [
+                                          "FIRST",
+                                          "LAST",
+                                          "COUNT",
+                                          "MAX",
+                                          "MIN",
+                                          "MEDIAN",
+                                          "MEAN",
+                                          "SUM",
+                                          "STD_DEV",
+                                          "NONE"
+                                        ]
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "FIRST",
+                                              "LAST",
+                                              "COUNT",
+                                              "MAX",
+                                              "MIN",
+                                              "MEDIAN",
+                                              "MEAN",
+                                              "SUM",
+                                              "STD_DEV",
+                                              "NONE"
+                                            ]
+                                          },
+                                          "options": {
+                                            "type": "object",
+                                            "patternProperties": {
+                                              "^[0-9a-zA-Z_-]{1,255}$": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "number"
+                                                  },
+                                                  {
+                                                    "type": "null"
+                                                  },
+                                                  {
+                                                    "type": "string",
+                                                    "maxLength": 255
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "additionalProperties": false,
+                                        "required": [
+                                          "type"
+                                        ]
+                                      }
                                     ]
                                   },
                                   "deviceIds": {
@@ -22186,18 +23997,65 @@ Schema for a collection of Dashboards
                                     "maxLength": 255
                                   },
                                   "aggregation": {
-                                    "type": "string",
-                                    "enum": [
-                                      "FIRST",
-                                      "LAST",
-                                      "COUNT",
-                                      "MAX",
-                                      "MIN",
-                                      "MEDIAN",
-                                      "MEAN",
-                                      "SUM",
-                                      "STD_DEV",
-                                      "NONE"
+                                    "oneOf": [
+                                      {
+                                        "type": "string",
+                                        "enum": [
+                                          "FIRST",
+                                          "LAST",
+                                          "COUNT",
+                                          "MAX",
+                                          "MIN",
+                                          "MEDIAN",
+                                          "MEAN",
+                                          "SUM",
+                                          "STD_DEV",
+                                          "NONE"
+                                        ]
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "FIRST",
+                                              "LAST",
+                                              "COUNT",
+                                              "MAX",
+                                              "MIN",
+                                              "MEDIAN",
+                                              "MEAN",
+                                              "SUM",
+                                              "STD_DEV",
+                                              "NONE"
+                                            ]
+                                          },
+                                          "options": {
+                                            "type": "object",
+                                            "patternProperties": {
+                                              "^[0-9a-zA-Z_-]{1,255}$": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "number"
+                                                  },
+                                                  {
+                                                    "type": "null"
+                                                  },
+                                                  {
+                                                    "type": "string",
+                                                    "maxLength": 255
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "additionalProperties": false,
+                                        "required": [
+                                          "type"
+                                        ]
+                                      }
                                     ]
                                   },
                                   "deviceIds": {
@@ -23089,18 +24947,65 @@ Schema for a collection of Dashboards
                               "maxLength": 255
                             },
                             "aggregation": {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV",
+                                    "NONE"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV",
+                                        "NONE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "patternProperties": {
+                                        "^[0-9a-zA-Z_-]{1,255}$": {
+                                          "oneOf": [
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "null"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                }
                               ]
                             },
                             "color": {
@@ -23296,18 +25201,65 @@ Schema for a collection of Dashboards
                                 "maxLength": 255
                               },
                               "aggregation": {
-                                "type": "string",
-                                "enum": [
-                                  "FIRST",
-                                  "LAST",
-                                  "COUNT",
-                                  "MAX",
-                                  "MIN",
-                                  "MEDIAN",
-                                  "MEAN",
-                                  "SUM",
-                                  "STD_DEV",
-                                  "NONE"
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "FIRST",
+                                      "LAST",
+                                      "COUNT",
+                                      "MAX",
+                                      "MIN",
+                                      "MEDIAN",
+                                      "MEAN",
+                                      "SUM",
+                                      "STD_DEV",
+                                      "NONE"
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "FIRST",
+                                          "LAST",
+                                          "COUNT",
+                                          "MAX",
+                                          "MIN",
+                                          "MEDIAN",
+                                          "MEAN",
+                                          "SUM",
+                                          "STD_DEV",
+                                          "NONE"
+                                        ]
+                                      },
+                                      "options": {
+                                        "type": "object",
+                                        "patternProperties": {
+                                          "^[0-9a-zA-Z_-]{1,255}$": {
+                                            "oneOf": [
+                                              {
+                                                "type": "number"
+                                              },
+                                              {
+                                                "type": "null"
+                                              },
+                                              {
+                                                "type": "string",
+                                                "maxLength": 255
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "required": [
+                                      "type"
+                                    ]
+                                  }
                                 ]
                               },
                               "color": {
@@ -23780,18 +25732,65 @@ Schema for a collection of Dashboards
                                     "maxLength": 255
                                   },
                                   "aggregation": {
-                                    "type": "string",
-                                    "enum": [
-                                      "FIRST",
-                                      "LAST",
-                                      "COUNT",
-                                      "MAX",
-                                      "MIN",
-                                      "MEDIAN",
-                                      "MEAN",
-                                      "SUM",
-                                      "STD_DEV",
-                                      "NONE"
+                                    "oneOf": [
+                                      {
+                                        "type": "string",
+                                        "enum": [
+                                          "FIRST",
+                                          "LAST",
+                                          "COUNT",
+                                          "MAX",
+                                          "MIN",
+                                          "MEDIAN",
+                                          "MEAN",
+                                          "SUM",
+                                          "STD_DEV",
+                                          "NONE"
+                                        ]
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "FIRST",
+                                              "LAST",
+                                              "COUNT",
+                                              "MAX",
+                                              "MIN",
+                                              "MEDIAN",
+                                              "MEAN",
+                                              "SUM",
+                                              "STD_DEV",
+                                              "NONE"
+                                            ]
+                                          },
+                                          "options": {
+                                            "type": "object",
+                                            "patternProperties": {
+                                              "^[0-9a-zA-Z_-]{1,255}$": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "number"
+                                                  },
+                                                  {
+                                                    "type": "null"
+                                                  },
+                                                  {
+                                                    "type": "string",
+                                                    "maxLength": 255
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "additionalProperties": false,
+                                        "required": [
+                                          "type"
+                                        ]
+                                      }
                                     ]
                                   },
                                   "deviceIds": {
@@ -24295,18 +26294,65 @@ Schema for a collection of Dashboards
                                 "maxLength": 255
                               },
                               "aggregation": {
-                                "type": "string",
-                                "enum": [
-                                  "FIRST",
-                                  "LAST",
-                                  "COUNT",
-                                  "MAX",
-                                  "MIN",
-                                  "MEDIAN",
-                                  "MEAN",
-                                  "SUM",
-                                  "STD_DEV",
-                                  "NONE"
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "FIRST",
+                                      "LAST",
+                                      "COUNT",
+                                      "MAX",
+                                      "MIN",
+                                      "MEDIAN",
+                                      "MEAN",
+                                      "SUM",
+                                      "STD_DEV",
+                                      "NONE"
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "FIRST",
+                                          "LAST",
+                                          "COUNT",
+                                          "MAX",
+                                          "MIN",
+                                          "MEDIAN",
+                                          "MEAN",
+                                          "SUM",
+                                          "STD_DEV",
+                                          "NONE"
+                                        ]
+                                      },
+                                      "options": {
+                                        "type": "object",
+                                        "patternProperties": {
+                                          "^[0-9a-zA-Z_-]{1,255}$": {
+                                            "oneOf": [
+                                              {
+                                                "type": "number"
+                                              },
+                                              {
+                                                "type": "null"
+                                              },
+                                              {
+                                                "type": "string",
+                                                "maxLength": 255
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "required": [
+                                      "type"
+                                    ]
+                                  }
                                 ]
                               },
                               "color": {
@@ -24559,18 +26605,65 @@ Schema for a collection of Dashboards
                                         "maxLength": 255
                                       },
                                       "aggregation": {
-                                        "type": "string",
-                                        "enum": [
-                                          "FIRST",
-                                          "LAST",
-                                          "COUNT",
-                                          "MAX",
-                                          "MIN",
-                                          "MEDIAN",
-                                          "MEAN",
-                                          "SUM",
-                                          "STD_DEV",
-                                          "NONE"
+                                        "oneOf": [
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "FIRST",
+                                              "LAST",
+                                              "COUNT",
+                                              "MAX",
+                                              "MIN",
+                                              "MEDIAN",
+                                              "MEAN",
+                                              "SUM",
+                                              "STD_DEV",
+                                              "NONE"
+                                            ]
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "FIRST",
+                                                  "LAST",
+                                                  "COUNT",
+                                                  "MAX",
+                                                  "MIN",
+                                                  "MEDIAN",
+                                                  "MEAN",
+                                                  "SUM",
+                                                  "STD_DEV",
+                                                  "NONE"
+                                                ]
+                                              },
+                                              "options": {
+                                                "type": "object",
+                                                "patternProperties": {
+                                                  "^[0-9a-zA-Z_-]{1,255}$": {
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "number"
+                                                      },
+                                                      {
+                                                        "type": "null"
+                                                      },
+                                                      {
+                                                        "type": "string",
+                                                        "maxLength": 255
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            "additionalProperties": false,
+                                            "required": [
+                                              "type"
+                                            ]
+                                          }
                                         ]
                                       },
                                       "deviceIds": {
@@ -24704,18 +26797,65 @@ Schema for a collection of Dashboards
                                         "maxLength": 255
                                       },
                                       "aggregation": {
-                                        "type": "string",
-                                        "enum": [
-                                          "FIRST",
-                                          "LAST",
-                                          "COUNT",
-                                          "MAX",
-                                          "MIN",
-                                          "MEDIAN",
-                                          "MEAN",
-                                          "SUM",
-                                          "STD_DEV",
-                                          "NONE"
+                                        "oneOf": [
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "FIRST",
+                                              "LAST",
+                                              "COUNT",
+                                              "MAX",
+                                              "MIN",
+                                              "MEDIAN",
+                                              "MEAN",
+                                              "SUM",
+                                              "STD_DEV",
+                                              "NONE"
+                                            ]
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "FIRST",
+                                                  "LAST",
+                                                  "COUNT",
+                                                  "MAX",
+                                                  "MIN",
+                                                  "MEDIAN",
+                                                  "MEAN",
+                                                  "SUM",
+                                                  "STD_DEV",
+                                                  "NONE"
+                                                ]
+                                              },
+                                              "options": {
+                                                "type": "object",
+                                                "patternProperties": {
+                                                  "^[0-9a-zA-Z_-]{1,255}$": {
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "number"
+                                                      },
+                                                      {
+                                                        "type": "null"
+                                                      },
+                                                      {
+                                                        "type": "string",
+                                                        "maxLength": 255
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            "additionalProperties": false,
+                                            "required": [
+                                              "type"
+                                            ]
+                                          }
                                         ]
                                       },
                                       "deviceIds": {
@@ -24804,18 +26944,65 @@ Schema for a collection of Dashboards
                                         "maxLength": 255
                                       },
                                       "aggregation": {
-                                        "type": "string",
-                                        "enum": [
-                                          "FIRST",
-                                          "LAST",
-                                          "COUNT",
-                                          "MAX",
-                                          "MIN",
-                                          "MEDIAN",
-                                          "MEAN",
-                                          "SUM",
-                                          "STD_DEV",
-                                          "NONE"
+                                        "oneOf": [
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "FIRST",
+                                              "LAST",
+                                              "COUNT",
+                                              "MAX",
+                                              "MIN",
+                                              "MEDIAN",
+                                              "MEAN",
+                                              "SUM",
+                                              "STD_DEV",
+                                              "NONE"
+                                            ]
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "FIRST",
+                                                  "LAST",
+                                                  "COUNT",
+                                                  "MAX",
+                                                  "MIN",
+                                                  "MEDIAN",
+                                                  "MEAN",
+                                                  "SUM",
+                                                  "STD_DEV",
+                                                  "NONE"
+                                                ]
+                                              },
+                                              "options": {
+                                                "type": "object",
+                                                "patternProperties": {
+                                                  "^[0-9a-zA-Z_-]{1,255}$": {
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "number"
+                                                      },
+                                                      {
+                                                        "type": "null"
+                                                      },
+                                                      {
+                                                        "type": "string",
+                                                        "maxLength": 255
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            "additionalProperties": false,
+                                            "required": [
+                                              "type"
+                                            ]
+                                          }
                                         ]
                                       },
                                       "deviceIds": {
@@ -24905,18 +27092,65 @@ Schema for a collection of Dashboards
                                         "maxLength": 255
                                       },
                                       "aggregation": {
-                                        "type": "string",
-                                        "enum": [
-                                          "FIRST",
-                                          "LAST",
-                                          "COUNT",
-                                          "MAX",
-                                          "MIN",
-                                          "MEDIAN",
-                                          "MEAN",
-                                          "SUM",
-                                          "STD_DEV",
-                                          "NONE"
+                                        "oneOf": [
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "FIRST",
+                                              "LAST",
+                                              "COUNT",
+                                              "MAX",
+                                              "MIN",
+                                              "MEDIAN",
+                                              "MEAN",
+                                              "SUM",
+                                              "STD_DEV",
+                                              "NONE"
+                                            ]
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "FIRST",
+                                                  "LAST",
+                                                  "COUNT",
+                                                  "MAX",
+                                                  "MIN",
+                                                  "MEDIAN",
+                                                  "MEAN",
+                                                  "SUM",
+                                                  "STD_DEV",
+                                                  "NONE"
+                                                ]
+                                              },
+                                              "options": {
+                                                "type": "object",
+                                                "patternProperties": {
+                                                  "^[0-9a-zA-Z_-]{1,255}$": {
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "number"
+                                                      },
+                                                      {
+                                                        "type": "null"
+                                                      },
+                                                      {
+                                                        "type": "string",
+                                                        "maxLength": 255
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            "additionalProperties": false,
+                                            "required": [
+                                              "type"
+                                            ]
+                                          }
                                         ]
                                       },
                                       "deviceIds": {
@@ -25472,18 +27706,65 @@ Schema for a collection of Dashboards
                                 "maxLength": 255
                               },
                               "aggregation": {
-                                "type": "string",
-                                "enum": [
-                                  "FIRST",
-                                  "LAST",
-                                  "COUNT",
-                                  "MAX",
-                                  "MIN",
-                                  "MEDIAN",
-                                  "MEAN",
-                                  "SUM",
-                                  "STD_DEV",
-                                  "NONE"
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "FIRST",
+                                      "LAST",
+                                      "COUNT",
+                                      "MAX",
+                                      "MIN",
+                                      "MEDIAN",
+                                      "MEAN",
+                                      "SUM",
+                                      "STD_DEV",
+                                      "NONE"
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "FIRST",
+                                          "LAST",
+                                          "COUNT",
+                                          "MAX",
+                                          "MIN",
+                                          "MEDIAN",
+                                          "MEAN",
+                                          "SUM",
+                                          "STD_DEV",
+                                          "NONE"
+                                        ]
+                                      },
+                                      "options": {
+                                        "type": "object",
+                                        "patternProperties": {
+                                          "^[0-9a-zA-Z_-]{1,255}$": {
+                                            "oneOf": [
+                                              {
+                                                "type": "number"
+                                              },
+                                              {
+                                                "type": "null"
+                                              },
+                                              {
+                                                "type": "string",
+                                                "maxLength": 255
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "required": [
+                                      "type"
+                                    ]
+                                  }
                                 ]
                               },
                               "color": {
@@ -27605,8 +29886,13 @@ Schema for a single Device
               "string",
               "number",
               "gps",
-              "boolean"
+              "boolean",
+              "blob"
             ]
+          },
+          "contentType": {
+            "type": "string",
+            "maxLength": 64
           },
           "description": {
             "type": "string",
@@ -28330,8 +30616,13 @@ Schema for the body of a Device modification request
               "string",
               "number",
               "gps",
-              "boolean"
+              "boolean",
+              "blob"
             ]
+          },
+          "contentType": {
+            "type": "string",
+            "maxLength": 64
           },
           "description": {
             "type": "string",
@@ -28551,8 +30842,13 @@ Schema for the body of a Device creation request
               "string",
               "number",
               "gps",
-              "boolean"
+              "boolean",
+              "blob"
             ]
+          },
+          "contentType": {
+            "type": "string",
+            "maxLength": 64
           },
           "description": {
             "type": "string",
@@ -28804,8 +31100,13 @@ Schema for a single Device Recipe
               "string",
               "number",
               "gps",
-              "boolean"
+              "boolean",
+              "blob"
             ]
+          },
+          "contentType": {
+            "type": "string",
+            "maxLength": 64
           },
           "description": {
             "type": "string",
@@ -29149,8 +31450,13 @@ Schema for the body of a Device Recipe modification request
               "string",
               "number",
               "gps",
-              "boolean"
+              "boolean",
+              "blob"
             ]
+          },
+          "contentType": {
+            "type": "string",
+            "maxLength": 64
           },
           "description": {
             "type": "string",
@@ -29381,8 +31687,13 @@ Schema for the body of a Device Recipe creation request
               "string",
               "number",
               "gps",
-              "boolean"
+              "boolean",
+              "blob"
             ]
+          },
+          "contentType": {
+            "type": "string",
+            "maxLength": 64
           },
           "description": {
             "type": "string",
@@ -29643,8 +31954,13 @@ Schema for a collection of Device Recipes
                     "string",
                     "number",
                     "gps",
-                    "boolean"
+                    "boolean",
+                    "blob"
                   ]
+                },
+                "contentType": {
+                  "type": "string",
+                  "maxLength": 64
                 },
                 "description": {
                   "type": "string",
@@ -30282,8 +32598,13 @@ Schema for a collection of Devices
                     "string",
                     "number",
                     "gps",
-                    "boolean"
+                    "boolean",
+                    "blob"
                   ]
+                },
+                "contentType": {
+                  "type": "string",
+                  "maxLength": 64
                 },
                 "description": {
                   "type": "string",
@@ -30636,8 +32957,13 @@ Schema for the body of a Devices modification request
                   "string",
                   "number",
                   "gps",
-                  "boolean"
+                  "boolean",
+                  "blob"
                 ]
+              },
+              "contentType": {
+                "type": "string",
+                "maxLength": 64
               },
               "description": {
                 "type": "string",
@@ -78820,18 +81146,65 @@ Schema for the result of a time series query
       "type": "number"
     },
     "aggregation": {
-      "type": "string",
-      "enum": [
-        "FIRST",
-        "LAST",
-        "COUNT",
-        "MAX",
-        "MIN",
-        "MEDIAN",
-        "MEAN",
-        "SUM",
-        "STD_DEV",
-        "NONE"
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "FIRST",
+            "LAST",
+            "COUNT",
+            "MAX",
+            "MIN",
+            "MEDIAN",
+            "MEAN",
+            "SUM",
+            "STD_DEV",
+            "NONE"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "FIRST",
+                "LAST",
+                "COUNT",
+                "MAX",
+                "MIN",
+                "MEDIAN",
+                "MEAN",
+                "SUM",
+                "STD_DEV",
+                "NONE"
+              ]
+            },
+            "options": {
+              "type": "object",
+              "patternProperties": {
+                "^[0-9a-zA-Z_-]{1,255}$": {
+                  "oneOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "type"
+          ]
+        }
       ]
     },
     "devices": {
@@ -78969,18 +81342,65 @@ Schema for the body of a time series query request
       "type": "number"
     },
     "aggregation": {
-      "type": "string",
-      "enum": [
-        "FIRST",
-        "LAST",
-        "COUNT",
-        "MAX",
-        "MIN",
-        "MEDIAN",
-        "MEAN",
-        "SUM",
-        "STD_DEV",
-        "NONE"
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "FIRST",
+            "LAST",
+            "COUNT",
+            "MAX",
+            "MIN",
+            "MEDIAN",
+            "MEAN",
+            "SUM",
+            "STD_DEV",
+            "NONE"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "FIRST",
+                "LAST",
+                "COUNT",
+                "MAX",
+                "MIN",
+                "MEDIAN",
+                "MEAN",
+                "SUM",
+                "STD_DEV",
+                "NONE"
+              ]
+            },
+            "options": {
+              "type": "object",
+              "patternProperties": {
+                "^[0-9a-zA-Z_-]{1,255}$": {
+                  "oneOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "type"
+          ]
+        }
       ]
     },
     "attributes": {

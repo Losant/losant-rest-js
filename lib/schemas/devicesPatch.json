@@ -54,8 +54,13 @@
                   "string",
                   "number",
                   "gps",
-                  "boolean"
+                  "boolean",
+                  "blob"
                 ]
+              },
+              "contentType": {
+                "type": "string",
+                "maxLength": 64
               },
               "description": {
                 "type": "string",
