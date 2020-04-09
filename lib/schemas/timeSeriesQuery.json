@@ -51,22 +51,35 @@
             },
             "options": {
               "type": "object",
-              "patternProperties": {
-                "^[0-9a-zA-Z_-]{1,255}$": {
-                  "oneOf": [
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "null"
-                    },
-                    {
-                      "type": "string",
-                      "maxLength": 255
-                    }
-                  ]
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "type"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "TIMEATVALUE"
+              ]
+            },
+            "options": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "maxLength": 255
                 }
-              }
+              },
+              "additionalProperties": false,
+              "required": [
+                "value"
+              ]
             }
           },
           "additionalProperties": false,

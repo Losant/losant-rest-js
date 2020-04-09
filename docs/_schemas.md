@@ -8028,22 +8028,35 @@ Schema for a single Dashboard
                                 },
                                 "options": {
                                   "type": "object",
-                                  "patternProperties": {
-                                    "^[0-9a-zA-Z_-]{1,255}$": {
-                                      "oneOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        },
-                                        {
-                                          "type": "string",
-                                          "maxLength": 255
-                                        }
-                                      ]
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "TIMEATVALUE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string",
+                                      "maxLength": 255
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "value"
+                                  ]
                                 }
                               },
                               "additionalProperties": false,
@@ -8246,22 +8259,35 @@ Schema for a single Dashboard
                                     },
                                     "options": {
                                       "type": "object",
-                                      "patternProperties": {
-                                        "^[0-9a-zA-Z_-]{1,255}$": {
-                                          "oneOf": [
-                                            {
-                                              "type": "number"
-                                            },
-                                            {
-                                              "type": "null"
-                                            },
-                                            {
-                                              "type": "string",
-                                              "maxLength": 255
-                                            }
-                                          ]
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "TIMEATVALUE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "properties": {
+                                        "value": {
+                                          "type": "string",
+                                          "maxLength": 255
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "value"
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -8377,22 +8403,35 @@ Schema for a single Dashboard
                                     },
                                     "options": {
                                       "type": "object",
-                                      "patternProperties": {
-                                        "^[0-9a-zA-Z_-]{1,255}$": {
-                                          "oneOf": [
-                                            {
-                                              "type": "number"
-                                            },
-                                            {
-                                              "type": "null"
-                                            },
-                                            {
-                                              "type": "string",
-                                              "maxLength": 255
-                                            }
-                                          ]
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "TIMEATVALUE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "properties": {
+                                        "value": {
+                                          "type": "string",
+                                          "maxLength": 255
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "value"
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -9327,22 +9366,35 @@ Schema for a single Dashboard
                               },
                               "options": {
                                 "type": "object",
-                                "patternProperties": {
-                                  "^[0-9a-zA-Z_-]{1,255}$": {
-                                    "oneOf": [
-                                      {
-                                        "type": "number"
-                                      },
-                                      {
-                                        "type": "null"
-                                      },
-                                      {
-                                        "type": "string",
-                                        "maxLength": 255
-                                      }
-                                    ]
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "type"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "TIMEATVALUE"
+                                ]
+                              },
+                              "options": {
+                                "type": "object",
+                                "properties": {
+                                  "value": {
+                                    "type": "string",
+                                    "maxLength": 255
                                   }
-                                }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                  "value"
+                                ]
                               }
                             },
                             "additionalProperties": false,
@@ -9581,22 +9633,35 @@ Schema for a single Dashboard
                                 },
                                 "options": {
                                   "type": "object",
-                                  "patternProperties": {
-                                    "^[0-9a-zA-Z_-]{1,255}$": {
-                                      "oneOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        },
-                                        {
-                                          "type": "string",
-                                          "maxLength": 255
-                                        }
-                                      ]
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "TIMEATVALUE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string",
+                                      "maxLength": 255
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "value"
+                                  ]
                                 }
                               },
                               "additionalProperties": false,
@@ -9988,6 +10053,21 @@ Schema for a single Dashboard
                   "imageUrl": {
                     "type": "string",
                     "maxLength": 32767
+                  },
+                  "imageSource": {
+                    "type": "string",
+                    "enum": [
+                      "static",
+                      "attribute"
+                    ]
+                  },
+                  "deviceId": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "attribute": {
+                    "type": "string",
+                    "maxLength": 255
                   }
                 },
                 "additionalProperties": false
@@ -10112,22 +10192,35 @@ Schema for a single Dashboard
                                     },
                                     "options": {
                                       "type": "object",
-                                      "patternProperties": {
-                                        "^[0-9a-zA-Z_-]{1,255}$": {
-                                          "oneOf": [
-                                            {
-                                              "type": "number"
-                                            },
-                                            {
-                                              "type": "null"
-                                            },
-                                            {
-                                              "type": "string",
-                                              "maxLength": 255
-                                            }
-                                          ]
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "TIMEATVALUE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "properties": {
+                                        "value": {
+                                          "type": "string",
+                                          "maxLength": 255
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "value"
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -10674,22 +10767,35 @@ Schema for a single Dashboard
                                 },
                                 "options": {
                                   "type": "object",
-                                  "patternProperties": {
-                                    "^[0-9a-zA-Z_-]{1,255}$": {
-                                      "oneOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        },
-                                        {
-                                          "type": "string",
-                                          "maxLength": 255
-                                        }
-                                      ]
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "TIMEATVALUE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string",
+                                      "maxLength": 255
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "value"
+                                  ]
                                 }
                               },
                               "additionalProperties": false,
@@ -10985,22 +11091,35 @@ Schema for a single Dashboard
                                         },
                                         "options": {
                                           "type": "object",
-                                          "patternProperties": {
-                                            "^[0-9a-zA-Z_-]{1,255}$": {
-                                              "oneOf": [
-                                                {
-                                                  "type": "number"
-                                                },
-                                                {
-                                                  "type": "null"
-                                                },
-                                                {
-                                                  "type": "string",
-                                                  "maxLength": 255
-                                                }
-                                              ]
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "TIMEATVALUE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "properties": {
+                                            "value": {
+                                              "type": "string",
+                                              "maxLength": 255
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false,
+                                          "required": [
+                                            "value"
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -11177,22 +11296,35 @@ Schema for a single Dashboard
                                         },
                                         "options": {
                                           "type": "object",
-                                          "patternProperties": {
-                                            "^[0-9a-zA-Z_-]{1,255}$": {
-                                              "oneOf": [
-                                                {
-                                                  "type": "number"
-                                                },
-                                                {
-                                                  "type": "null"
-                                                },
-                                                {
-                                                  "type": "string",
-                                                  "maxLength": 255
-                                                }
-                                              ]
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "TIMEATVALUE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "properties": {
+                                            "value": {
+                                              "type": "string",
+                                              "maxLength": 255
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false,
+                                          "required": [
+                                            "value"
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -11324,22 +11456,35 @@ Schema for a single Dashboard
                                         },
                                         "options": {
                                           "type": "object",
-                                          "patternProperties": {
-                                            "^[0-9a-zA-Z_-]{1,255}$": {
-                                              "oneOf": [
-                                                {
-                                                  "type": "number"
-                                                },
-                                                {
-                                                  "type": "null"
-                                                },
-                                                {
-                                                  "type": "string",
-                                                  "maxLength": 255
-                                                }
-                                              ]
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "TIMEATVALUE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "properties": {
+                                            "value": {
+                                              "type": "string",
+                                              "maxLength": 255
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false,
+                                          "required": [
+                                            "value"
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -11472,22 +11617,35 @@ Schema for a single Dashboard
                                         },
                                         "options": {
                                           "type": "object",
-                                          "patternProperties": {
-                                            "^[0-9a-zA-Z_-]{1,255}$": {
-                                              "oneOf": [
-                                                {
-                                                  "type": "number"
-                                                },
-                                                {
-                                                  "type": "null"
-                                                },
-                                                {
-                                                  "type": "string",
-                                                  "maxLength": 255
-                                                }
-                                              ]
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "TIMEATVALUE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "properties": {
+                                            "value": {
+                                              "type": "string",
+                                              "maxLength": 255
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false,
+                                          "required": [
+                                            "value"
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -12086,22 +12244,35 @@ Schema for a single Dashboard
                                 },
                                 "options": {
                                   "type": "object",
-                                  "patternProperties": {
-                                    "^[0-9a-zA-Z_-]{1,255}$": {
-                                      "oneOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        },
-                                        {
-                                          "type": "string",
-                                          "maxLength": 255
-                                        }
-                                      ]
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "TIMEATVALUE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string",
+                                      "maxLength": 255
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "value"
+                                  ]
                                 }
                               },
                               "additionalProperties": false,
@@ -13209,22 +13380,35 @@ Schema for the body of a Dashboard modification request
                                 },
                                 "options": {
                                   "type": "object",
-                                  "patternProperties": {
-                                    "^[0-9a-zA-Z_-]{1,255}$": {
-                                      "oneOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        },
-                                        {
-                                          "type": "string",
-                                          "maxLength": 255
-                                        }
-                                      ]
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "TIMEATVALUE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string",
+                                      "maxLength": 255
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "value"
+                                  ]
                                 }
                               },
                               "additionalProperties": false,
@@ -13427,22 +13611,35 @@ Schema for the body of a Dashboard modification request
                                     },
                                     "options": {
                                       "type": "object",
-                                      "patternProperties": {
-                                        "^[0-9a-zA-Z_-]{1,255}$": {
-                                          "oneOf": [
-                                            {
-                                              "type": "number"
-                                            },
-                                            {
-                                              "type": "null"
-                                            },
-                                            {
-                                              "type": "string",
-                                              "maxLength": 255
-                                            }
-                                          ]
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "TIMEATVALUE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "properties": {
+                                        "value": {
+                                          "type": "string",
+                                          "maxLength": 255
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "value"
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -13558,22 +13755,35 @@ Schema for the body of a Dashboard modification request
                                     },
                                     "options": {
                                       "type": "object",
-                                      "patternProperties": {
-                                        "^[0-9a-zA-Z_-]{1,255}$": {
-                                          "oneOf": [
-                                            {
-                                              "type": "number"
-                                            },
-                                            {
-                                              "type": "null"
-                                            },
-                                            {
-                                              "type": "string",
-                                              "maxLength": 255
-                                            }
-                                          ]
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "TIMEATVALUE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "properties": {
+                                        "value": {
+                                          "type": "string",
+                                          "maxLength": 255
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "value"
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -14508,22 +14718,35 @@ Schema for the body of a Dashboard modification request
                               },
                               "options": {
                                 "type": "object",
-                                "patternProperties": {
-                                  "^[0-9a-zA-Z_-]{1,255}$": {
-                                    "oneOf": [
-                                      {
-                                        "type": "number"
-                                      },
-                                      {
-                                        "type": "null"
-                                      },
-                                      {
-                                        "type": "string",
-                                        "maxLength": 255
-                                      }
-                                    ]
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "type"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "TIMEATVALUE"
+                                ]
+                              },
+                              "options": {
+                                "type": "object",
+                                "properties": {
+                                  "value": {
+                                    "type": "string",
+                                    "maxLength": 255
                                   }
-                                }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                  "value"
+                                ]
                               }
                             },
                             "additionalProperties": false,
@@ -14762,22 +14985,35 @@ Schema for the body of a Dashboard modification request
                                 },
                                 "options": {
                                   "type": "object",
-                                  "patternProperties": {
-                                    "^[0-9a-zA-Z_-]{1,255}$": {
-                                      "oneOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        },
-                                        {
-                                          "type": "string",
-                                          "maxLength": 255
-                                        }
-                                      ]
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "TIMEATVALUE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string",
+                                      "maxLength": 255
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "value"
+                                  ]
                                 }
                               },
                               "additionalProperties": false,
@@ -15169,6 +15405,21 @@ Schema for the body of a Dashboard modification request
                   "imageUrl": {
                     "type": "string",
                     "maxLength": 32767
+                  },
+                  "imageSource": {
+                    "type": "string",
+                    "enum": [
+                      "static",
+                      "attribute"
+                    ]
+                  },
+                  "deviceId": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "attribute": {
+                    "type": "string",
+                    "maxLength": 255
                   }
                 },
                 "additionalProperties": false
@@ -15293,22 +15544,35 @@ Schema for the body of a Dashboard modification request
                                     },
                                     "options": {
                                       "type": "object",
-                                      "patternProperties": {
-                                        "^[0-9a-zA-Z_-]{1,255}$": {
-                                          "oneOf": [
-                                            {
-                                              "type": "number"
-                                            },
-                                            {
-                                              "type": "null"
-                                            },
-                                            {
-                                              "type": "string",
-                                              "maxLength": 255
-                                            }
-                                          ]
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "TIMEATVALUE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "properties": {
+                                        "value": {
+                                          "type": "string",
+                                          "maxLength": 255
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "value"
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -15855,22 +16119,35 @@ Schema for the body of a Dashboard modification request
                                 },
                                 "options": {
                                   "type": "object",
-                                  "patternProperties": {
-                                    "^[0-9a-zA-Z_-]{1,255}$": {
-                                      "oneOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        },
-                                        {
-                                          "type": "string",
-                                          "maxLength": 255
-                                        }
-                                      ]
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "TIMEATVALUE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string",
+                                      "maxLength": 255
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "value"
+                                  ]
                                 }
                               },
                               "additionalProperties": false,
@@ -16166,22 +16443,35 @@ Schema for the body of a Dashboard modification request
                                         },
                                         "options": {
                                           "type": "object",
-                                          "patternProperties": {
-                                            "^[0-9a-zA-Z_-]{1,255}$": {
-                                              "oneOf": [
-                                                {
-                                                  "type": "number"
-                                                },
-                                                {
-                                                  "type": "null"
-                                                },
-                                                {
-                                                  "type": "string",
-                                                  "maxLength": 255
-                                                }
-                                              ]
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "TIMEATVALUE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "properties": {
+                                            "value": {
+                                              "type": "string",
+                                              "maxLength": 255
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false,
+                                          "required": [
+                                            "value"
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -16358,22 +16648,35 @@ Schema for the body of a Dashboard modification request
                                         },
                                         "options": {
                                           "type": "object",
-                                          "patternProperties": {
-                                            "^[0-9a-zA-Z_-]{1,255}$": {
-                                              "oneOf": [
-                                                {
-                                                  "type": "number"
-                                                },
-                                                {
-                                                  "type": "null"
-                                                },
-                                                {
-                                                  "type": "string",
-                                                  "maxLength": 255
-                                                }
-                                              ]
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "TIMEATVALUE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "properties": {
+                                            "value": {
+                                              "type": "string",
+                                              "maxLength": 255
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false,
+                                          "required": [
+                                            "value"
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -16505,22 +16808,35 @@ Schema for the body of a Dashboard modification request
                                         },
                                         "options": {
                                           "type": "object",
-                                          "patternProperties": {
-                                            "^[0-9a-zA-Z_-]{1,255}$": {
-                                              "oneOf": [
-                                                {
-                                                  "type": "number"
-                                                },
-                                                {
-                                                  "type": "null"
-                                                },
-                                                {
-                                                  "type": "string",
-                                                  "maxLength": 255
-                                                }
-                                              ]
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "TIMEATVALUE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "properties": {
+                                            "value": {
+                                              "type": "string",
+                                              "maxLength": 255
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false,
+                                          "required": [
+                                            "value"
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -16653,22 +16969,35 @@ Schema for the body of a Dashboard modification request
                                         },
                                         "options": {
                                           "type": "object",
-                                          "patternProperties": {
-                                            "^[0-9a-zA-Z_-]{1,255}$": {
-                                              "oneOf": [
-                                                {
-                                                  "type": "number"
-                                                },
-                                                {
-                                                  "type": "null"
-                                                },
-                                                {
-                                                  "type": "string",
-                                                  "maxLength": 255
-                                                }
-                                              ]
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "TIMEATVALUE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "properties": {
+                                            "value": {
+                                              "type": "string",
+                                              "maxLength": 255
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false,
+                                          "required": [
+                                            "value"
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -17267,22 +17596,35 @@ Schema for the body of a Dashboard modification request
                                 },
                                 "options": {
                                   "type": "object",
-                                  "patternProperties": {
-                                    "^[0-9a-zA-Z_-]{1,255}$": {
-                                      "oneOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        },
-                                        {
-                                          "type": "string",
-                                          "maxLength": 255
-                                        }
-                                      ]
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "TIMEATVALUE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string",
+                                      "maxLength": 255
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "value"
+                                  ]
                                 }
                               },
                               "additionalProperties": false,
@@ -18319,22 +18661,35 @@ Schema for the body of a Dashboard creation request
                                 },
                                 "options": {
                                   "type": "object",
-                                  "patternProperties": {
-                                    "^[0-9a-zA-Z_-]{1,255}$": {
-                                      "oneOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        },
-                                        {
-                                          "type": "string",
-                                          "maxLength": 255
-                                        }
-                                      ]
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "TIMEATVALUE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string",
+                                      "maxLength": 255
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "value"
+                                  ]
                                 }
                               },
                               "additionalProperties": false,
@@ -18537,22 +18892,35 @@ Schema for the body of a Dashboard creation request
                                     },
                                     "options": {
                                       "type": "object",
-                                      "patternProperties": {
-                                        "^[0-9a-zA-Z_-]{1,255}$": {
-                                          "oneOf": [
-                                            {
-                                              "type": "number"
-                                            },
-                                            {
-                                              "type": "null"
-                                            },
-                                            {
-                                              "type": "string",
-                                              "maxLength": 255
-                                            }
-                                          ]
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "TIMEATVALUE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "properties": {
+                                        "value": {
+                                          "type": "string",
+                                          "maxLength": 255
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "value"
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -18668,22 +19036,35 @@ Schema for the body of a Dashboard creation request
                                     },
                                     "options": {
                                       "type": "object",
-                                      "patternProperties": {
-                                        "^[0-9a-zA-Z_-]{1,255}$": {
-                                          "oneOf": [
-                                            {
-                                              "type": "number"
-                                            },
-                                            {
-                                              "type": "null"
-                                            },
-                                            {
-                                              "type": "string",
-                                              "maxLength": 255
-                                            }
-                                          ]
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "TIMEATVALUE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "properties": {
+                                        "value": {
+                                          "type": "string",
+                                          "maxLength": 255
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "value"
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -19618,22 +19999,35 @@ Schema for the body of a Dashboard creation request
                               },
                               "options": {
                                 "type": "object",
-                                "patternProperties": {
-                                  "^[0-9a-zA-Z_-]{1,255}$": {
-                                    "oneOf": [
-                                      {
-                                        "type": "number"
-                                      },
-                                      {
-                                        "type": "null"
-                                      },
-                                      {
-                                        "type": "string",
-                                        "maxLength": 255
-                                      }
-                                    ]
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "type"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "TIMEATVALUE"
+                                ]
+                              },
+                              "options": {
+                                "type": "object",
+                                "properties": {
+                                  "value": {
+                                    "type": "string",
+                                    "maxLength": 255
                                   }
-                                }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                  "value"
+                                ]
                               }
                             },
                             "additionalProperties": false,
@@ -19872,22 +20266,35 @@ Schema for the body of a Dashboard creation request
                                 },
                                 "options": {
                                   "type": "object",
-                                  "patternProperties": {
-                                    "^[0-9a-zA-Z_-]{1,255}$": {
-                                      "oneOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        },
-                                        {
-                                          "type": "string",
-                                          "maxLength": 255
-                                        }
-                                      ]
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "TIMEATVALUE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string",
+                                      "maxLength": 255
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "value"
+                                  ]
                                 }
                               },
                               "additionalProperties": false,
@@ -20279,6 +20686,21 @@ Schema for the body of a Dashboard creation request
                   "imageUrl": {
                     "type": "string",
                     "maxLength": 32767
+                  },
+                  "imageSource": {
+                    "type": "string",
+                    "enum": [
+                      "static",
+                      "attribute"
+                    ]
+                  },
+                  "deviceId": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "attribute": {
+                    "type": "string",
+                    "maxLength": 255
                   }
                 },
                 "additionalProperties": false
@@ -20403,22 +20825,35 @@ Schema for the body of a Dashboard creation request
                                     },
                                     "options": {
                                       "type": "object",
-                                      "patternProperties": {
-                                        "^[0-9a-zA-Z_-]{1,255}$": {
-                                          "oneOf": [
-                                            {
-                                              "type": "number"
-                                            },
-                                            {
-                                              "type": "null"
-                                            },
-                                            {
-                                              "type": "string",
-                                              "maxLength": 255
-                                            }
-                                          ]
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "TIMEATVALUE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "properties": {
+                                        "value": {
+                                          "type": "string",
+                                          "maxLength": 255
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "value"
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -20965,22 +21400,35 @@ Schema for the body of a Dashboard creation request
                                 },
                                 "options": {
                                   "type": "object",
-                                  "patternProperties": {
-                                    "^[0-9a-zA-Z_-]{1,255}$": {
-                                      "oneOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        },
-                                        {
-                                          "type": "string",
-                                          "maxLength": 255
-                                        }
-                                      ]
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "TIMEATVALUE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string",
+                                      "maxLength": 255
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "value"
+                                  ]
                                 }
                               },
                               "additionalProperties": false,
@@ -21276,22 +21724,35 @@ Schema for the body of a Dashboard creation request
                                         },
                                         "options": {
                                           "type": "object",
-                                          "patternProperties": {
-                                            "^[0-9a-zA-Z_-]{1,255}$": {
-                                              "oneOf": [
-                                                {
-                                                  "type": "number"
-                                                },
-                                                {
-                                                  "type": "null"
-                                                },
-                                                {
-                                                  "type": "string",
-                                                  "maxLength": 255
-                                                }
-                                              ]
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "TIMEATVALUE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "properties": {
+                                            "value": {
+                                              "type": "string",
+                                              "maxLength": 255
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false,
+                                          "required": [
+                                            "value"
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -21468,22 +21929,35 @@ Schema for the body of a Dashboard creation request
                                         },
                                         "options": {
                                           "type": "object",
-                                          "patternProperties": {
-                                            "^[0-9a-zA-Z_-]{1,255}$": {
-                                              "oneOf": [
-                                                {
-                                                  "type": "number"
-                                                },
-                                                {
-                                                  "type": "null"
-                                                },
-                                                {
-                                                  "type": "string",
-                                                  "maxLength": 255
-                                                }
-                                              ]
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "TIMEATVALUE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "properties": {
+                                            "value": {
+                                              "type": "string",
+                                              "maxLength": 255
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false,
+                                          "required": [
+                                            "value"
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -21615,22 +22089,35 @@ Schema for the body of a Dashboard creation request
                                         },
                                         "options": {
                                           "type": "object",
-                                          "patternProperties": {
-                                            "^[0-9a-zA-Z_-]{1,255}$": {
-                                              "oneOf": [
-                                                {
-                                                  "type": "number"
-                                                },
-                                                {
-                                                  "type": "null"
-                                                },
-                                                {
-                                                  "type": "string",
-                                                  "maxLength": 255
-                                                }
-                                              ]
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "TIMEATVALUE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "properties": {
+                                            "value": {
+                                              "type": "string",
+                                              "maxLength": 255
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false,
+                                          "required": [
+                                            "value"
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -21763,22 +22250,35 @@ Schema for the body of a Dashboard creation request
                                         },
                                         "options": {
                                           "type": "object",
-                                          "patternProperties": {
-                                            "^[0-9a-zA-Z_-]{1,255}$": {
-                                              "oneOf": [
-                                                {
-                                                  "type": "number"
-                                                },
-                                                {
-                                                  "type": "null"
-                                                },
-                                                {
-                                                  "type": "string",
-                                                  "maxLength": 255
-                                                }
-                                              ]
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "TIMEATVALUE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "properties": {
+                                            "value": {
+                                              "type": "string",
+                                              "maxLength": 255
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false,
+                                          "required": [
+                                            "value"
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -22377,22 +22877,35 @@ Schema for the body of a Dashboard creation request
                                 },
                                 "options": {
                                   "type": "object",
-                                  "patternProperties": {
-                                    "^[0-9a-zA-Z_-]{1,255}$": {
-                                      "oneOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        },
-                                        {
-                                          "type": "string",
-                                          "maxLength": 255
-                                        }
-                                      ]
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "TIMEATVALUE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string",
+                                      "maxLength": 255
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "value"
+                                  ]
                                 }
                               },
                               "additionalProperties": false,
@@ -23684,22 +24197,35 @@ Schema for a collection of Dashboards
                                       },
                                       "options": {
                                         "type": "object",
-                                        "patternProperties": {
-                                          "^[0-9a-zA-Z_-]{1,255}$": {
-                                            "oneOf": [
-                                              {
-                                                "type": "number"
-                                              },
-                                              {
-                                                "type": "null"
-                                              },
-                                              {
-                                                "type": "string",
-                                                "maxLength": 255
-                                              }
-                                            ]
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "required": [
+                                      "type"
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "TIMEATVALUE"
+                                        ]
+                                      },
+                                      "options": {
+                                        "type": "object",
+                                        "properties": {
+                                          "value": {
+                                            "type": "string",
+                                            "maxLength": 255
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false,
+                                        "required": [
+                                          "value"
+                                        ]
                                       }
                                     },
                                     "additionalProperties": false,
@@ -23902,22 +24428,35 @@ Schema for a collection of Dashboards
                                           },
                                           "options": {
                                             "type": "object",
-                                            "patternProperties": {
-                                              "^[0-9a-zA-Z_-]{1,255}$": {
-                                                "oneOf": [
-                                                  {
-                                                    "type": "number"
-                                                  },
-                                                  {
-                                                    "type": "null"
-                                                  },
-                                                  {
-                                                    "type": "string",
-                                                    "maxLength": 255
-                                                  }
-                                                ]
+                                            "additionalProperties": false
+                                          }
+                                        },
+                                        "additionalProperties": false,
+                                        "required": [
+                                          "type"
+                                        ]
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "TIMEATVALUE"
+                                            ]
+                                          },
+                                          "options": {
+                                            "type": "object",
+                                            "properties": {
+                                              "value": {
+                                                "type": "string",
+                                                "maxLength": 255
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false,
+                                            "required": [
+                                              "value"
+                                            ]
                                           }
                                         },
                                         "additionalProperties": false,
@@ -24033,22 +24572,35 @@ Schema for a collection of Dashboards
                                           },
                                           "options": {
                                             "type": "object",
-                                            "patternProperties": {
-                                              "^[0-9a-zA-Z_-]{1,255}$": {
-                                                "oneOf": [
-                                                  {
-                                                    "type": "number"
-                                                  },
-                                                  {
-                                                    "type": "null"
-                                                  },
-                                                  {
-                                                    "type": "string",
-                                                    "maxLength": 255
-                                                  }
-                                                ]
+                                            "additionalProperties": false
+                                          }
+                                        },
+                                        "additionalProperties": false,
+                                        "required": [
+                                          "type"
+                                        ]
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "TIMEATVALUE"
+                                            ]
+                                          },
+                                          "options": {
+                                            "type": "object",
+                                            "properties": {
+                                              "value": {
+                                                "type": "string",
+                                                "maxLength": 255
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false,
+                                            "required": [
+                                              "value"
+                                            ]
                                           }
                                         },
                                         "additionalProperties": false,
@@ -24983,22 +25535,35 @@ Schema for a collection of Dashboards
                                     },
                                     "options": {
                                       "type": "object",
-                                      "patternProperties": {
-                                        "^[0-9a-zA-Z_-]{1,255}$": {
-                                          "oneOf": [
-                                            {
-                                              "type": "number"
-                                            },
-                                            {
-                                              "type": "null"
-                                            },
-                                            {
-                                              "type": "string",
-                                              "maxLength": 255
-                                            }
-                                          ]
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "TIMEATVALUE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "properties": {
+                                        "value": {
+                                          "type": "string",
+                                          "maxLength": 255
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "value"
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -25237,22 +25802,35 @@ Schema for a collection of Dashboards
                                       },
                                       "options": {
                                         "type": "object",
-                                        "patternProperties": {
-                                          "^[0-9a-zA-Z_-]{1,255}$": {
-                                            "oneOf": [
-                                              {
-                                                "type": "number"
-                                              },
-                                              {
-                                                "type": "null"
-                                              },
-                                              {
-                                                "type": "string",
-                                                "maxLength": 255
-                                              }
-                                            ]
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "required": [
+                                      "type"
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "TIMEATVALUE"
+                                        ]
+                                      },
+                                      "options": {
+                                        "type": "object",
+                                        "properties": {
+                                          "value": {
+                                            "type": "string",
+                                            "maxLength": 255
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false,
+                                        "required": [
+                                          "value"
+                                        ]
                                       }
                                     },
                                     "additionalProperties": false,
@@ -25644,6 +26222,21 @@ Schema for a collection of Dashboards
                         "imageUrl": {
                           "type": "string",
                           "maxLength": 32767
+                        },
+                        "imageSource": {
+                          "type": "string",
+                          "enum": [
+                            "static",
+                            "attribute"
+                          ]
+                        },
+                        "deviceId": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "attribute": {
+                          "type": "string",
+                          "maxLength": 255
                         }
                       },
                       "additionalProperties": false
@@ -25768,22 +26361,35 @@ Schema for a collection of Dashboards
                                           },
                                           "options": {
                                             "type": "object",
-                                            "patternProperties": {
-                                              "^[0-9a-zA-Z_-]{1,255}$": {
-                                                "oneOf": [
-                                                  {
-                                                    "type": "number"
-                                                  },
-                                                  {
-                                                    "type": "null"
-                                                  },
-                                                  {
-                                                    "type": "string",
-                                                    "maxLength": 255
-                                                  }
-                                                ]
+                                            "additionalProperties": false
+                                          }
+                                        },
+                                        "additionalProperties": false,
+                                        "required": [
+                                          "type"
+                                        ]
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "TIMEATVALUE"
+                                            ]
+                                          },
+                                          "options": {
+                                            "type": "object",
+                                            "properties": {
+                                              "value": {
+                                                "type": "string",
+                                                "maxLength": 255
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false,
+                                            "required": [
+                                              "value"
+                                            ]
                                           }
                                         },
                                         "additionalProperties": false,
@@ -26330,22 +26936,35 @@ Schema for a collection of Dashboards
                                       },
                                       "options": {
                                         "type": "object",
-                                        "patternProperties": {
-                                          "^[0-9a-zA-Z_-]{1,255}$": {
-                                            "oneOf": [
-                                              {
-                                                "type": "number"
-                                              },
-                                              {
-                                                "type": "null"
-                                              },
-                                              {
-                                                "type": "string",
-                                                "maxLength": 255
-                                              }
-                                            ]
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "required": [
+                                      "type"
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "TIMEATVALUE"
+                                        ]
+                                      },
+                                      "options": {
+                                        "type": "object",
+                                        "properties": {
+                                          "value": {
+                                            "type": "string",
+                                            "maxLength": 255
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false,
+                                        "required": [
+                                          "value"
+                                        ]
                                       }
                                     },
                                     "additionalProperties": false,
@@ -26641,22 +27260,35 @@ Schema for a collection of Dashboards
                                               },
                                               "options": {
                                                 "type": "object",
-                                                "patternProperties": {
-                                                  "^[0-9a-zA-Z_-]{1,255}$": {
-                                                    "oneOf": [
-                                                      {
-                                                        "type": "number"
-                                                      },
-                                                      {
-                                                        "type": "null"
-                                                      },
-                                                      {
-                                                        "type": "string",
-                                                        "maxLength": 255
-                                                      }
-                                                    ]
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "additionalProperties": false,
+                                            "required": [
+                                              "type"
+                                            ]
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "TIMEATVALUE"
+                                                ]
+                                              },
+                                              "options": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "value": {
+                                                    "type": "string",
+                                                    "maxLength": 255
                                                   }
-                                                }
+                                                },
+                                                "additionalProperties": false,
+                                                "required": [
+                                                  "value"
+                                                ]
                                               }
                                             },
                                             "additionalProperties": false,
@@ -26833,22 +27465,35 @@ Schema for a collection of Dashboards
                                               },
                                               "options": {
                                                 "type": "object",
-                                                "patternProperties": {
-                                                  "^[0-9a-zA-Z_-]{1,255}$": {
-                                                    "oneOf": [
-                                                      {
-                                                        "type": "number"
-                                                      },
-                                                      {
-                                                        "type": "null"
-                                                      },
-                                                      {
-                                                        "type": "string",
-                                                        "maxLength": 255
-                                                      }
-                                                    ]
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "additionalProperties": false,
+                                            "required": [
+                                              "type"
+                                            ]
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "TIMEATVALUE"
+                                                ]
+                                              },
+                                              "options": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "value": {
+                                                    "type": "string",
+                                                    "maxLength": 255
                                                   }
-                                                }
+                                                },
+                                                "additionalProperties": false,
+                                                "required": [
+                                                  "value"
+                                                ]
                                               }
                                             },
                                             "additionalProperties": false,
@@ -26980,22 +27625,35 @@ Schema for a collection of Dashboards
                                               },
                                               "options": {
                                                 "type": "object",
-                                                "patternProperties": {
-                                                  "^[0-9a-zA-Z_-]{1,255}$": {
-                                                    "oneOf": [
-                                                      {
-                                                        "type": "number"
-                                                      },
-                                                      {
-                                                        "type": "null"
-                                                      },
-                                                      {
-                                                        "type": "string",
-                                                        "maxLength": 255
-                                                      }
-                                                    ]
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "additionalProperties": false,
+                                            "required": [
+                                              "type"
+                                            ]
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "TIMEATVALUE"
+                                                ]
+                                              },
+                                              "options": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "value": {
+                                                    "type": "string",
+                                                    "maxLength": 255
                                                   }
-                                                }
+                                                },
+                                                "additionalProperties": false,
+                                                "required": [
+                                                  "value"
+                                                ]
                                               }
                                             },
                                             "additionalProperties": false,
@@ -27128,22 +27786,35 @@ Schema for a collection of Dashboards
                                               },
                                               "options": {
                                                 "type": "object",
-                                                "patternProperties": {
-                                                  "^[0-9a-zA-Z_-]{1,255}$": {
-                                                    "oneOf": [
-                                                      {
-                                                        "type": "number"
-                                                      },
-                                                      {
-                                                        "type": "null"
-                                                      },
-                                                      {
-                                                        "type": "string",
-                                                        "maxLength": 255
-                                                      }
-                                                    ]
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "additionalProperties": false,
+                                            "required": [
+                                              "type"
+                                            ]
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "TIMEATVALUE"
+                                                ]
+                                              },
+                                              "options": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "value": {
+                                                    "type": "string",
+                                                    "maxLength": 255
                                                   }
-                                                }
+                                                },
+                                                "additionalProperties": false,
+                                                "required": [
+                                                  "value"
+                                                ]
                                               }
                                             },
                                             "additionalProperties": false,
@@ -27742,22 +28413,35 @@ Schema for a collection of Dashboards
                                       },
                                       "options": {
                                         "type": "object",
-                                        "patternProperties": {
-                                          "^[0-9a-zA-Z_-]{1,255}$": {
-                                            "oneOf": [
-                                              {
-                                                "type": "number"
-                                              },
-                                              {
-                                                "type": "null"
-                                              },
-                                              {
-                                                "type": "string",
-                                                "maxLength": 255
-                                              }
-                                            ]
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "required": [
+                                      "type"
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "TIMEATVALUE"
+                                        ]
+                                      },
+                                      "options": {
+                                        "type": "object",
+                                        "properties": {
+                                          "value": {
+                                            "type": "string",
+                                            "maxLength": 255
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false,
+                                        "required": [
+                                          "value"
+                                        ]
                                       }
                                     },
                                     "additionalProperties": false,
@@ -81182,22 +81866,35 @@ Schema for the result of a time series query
             },
             "options": {
               "type": "object",
-              "patternProperties": {
-                "^[0-9a-zA-Z_-]{1,255}$": {
-                  "oneOf": [
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "null"
-                    },
-                    {
-                      "type": "string",
-                      "maxLength": 255
-                    }
-                  ]
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "type"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "TIMEATVALUE"
+              ]
+            },
+            "options": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "maxLength": 255
                 }
-              }
+              },
+              "additionalProperties": false,
+              "required": [
+                "value"
+              ]
             }
           },
           "additionalProperties": false,
@@ -81378,22 +82075,35 @@ Schema for the body of a time series query request
             },
             "options": {
               "type": "object",
-              "patternProperties": {
-                "^[0-9a-zA-Z_-]{1,255}$": {
-                  "oneOf": [
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "null"
-                    },
-                    {
-                      "type": "string",
-                      "maxLength": 255
-                    }
-                  ]
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "type"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "TIMEATVALUE"
+              ]
+            },
+            "options": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "maxLength": 255
                 }
-              }
+              },
+              "additionalProperties": false,
+              "required": [
+                "value"
+              ]
             }
           },
           "additionalProperties": false,
