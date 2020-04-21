@@ -119,6 +119,19 @@
                   "NONE"
                 ]
               },
+              "aggregationOptions": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "additionalProperties": false,
+                "maxItems": 10
+              },
               "childAttributes": {
                 "type": "array",
                 "items": {

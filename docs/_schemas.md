@@ -12666,6 +12666,11 @@ Schema for a single Dashboard
                   },
                   "includeExperience": {
                     "type": "boolean"
+                  },
+                  "experienceVersion": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
                   }
                 },
                 "additionalProperties": false
@@ -18018,6 +18023,11 @@ Schema for the body of a Dashboard modification request
                   },
                   "includeExperience": {
                     "type": "boolean"
+                  },
+                  "experienceVersion": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
                   }
                 },
                 "additionalProperties": false
@@ -23299,6 +23309,11 @@ Schema for the body of a Dashboard creation request
                   },
                   "includeExperience": {
                     "type": "boolean"
+                  },
+                  "experienceVersion": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
                   }
                 },
                 "additionalProperties": false
@@ -28835,6 +28850,11 @@ Schema for a collection of Dashboards
                         },
                         "includeExperience": {
                           "type": "boolean"
+                        },
+                        "experienceVersion": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
                         }
                       },
                       "additionalProperties": false
@@ -30611,6 +30631,19 @@ Schema for a single Device
                   "NONE"
                 ]
               },
+              "aggregationOptions": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "additionalProperties": false,
+                "maxItems": 10
+              },
               "childAttributes": {
                 "type": "array",
                 "items": {
@@ -31341,6 +31374,19 @@ Schema for the body of a Device modification request
                   "NONE"
                 ]
               },
+              "aggregationOptions": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "additionalProperties": false,
+                "maxItems": 10
+              },
               "childAttributes": {
                 "type": "array",
                 "items": {
@@ -31566,6 +31612,19 @@ Schema for the body of a Device creation request
                   "STD_DEV",
                   "NONE"
                 ]
+              },
+              "aggregationOptions": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "additionalProperties": false,
+                "maxItems": 10
               },
               "childAttributes": {
                 "type": "array",
@@ -31824,6 +31883,19 @@ Schema for a single Device Recipe
                   "STD_DEV",
                   "NONE"
                 ]
+              },
+              "aggregationOptions": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "additionalProperties": false,
+                "maxItems": 10
               },
               "childAttributes": {
                 "type": "array",
@@ -32175,6 +32247,19 @@ Schema for the body of a Device Recipe modification request
                   "NONE"
                 ]
               },
+              "aggregationOptions": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "additionalProperties": false,
+                "maxItems": 10
+              },
               "childAttributes": {
                 "type": "array",
                 "items": {
@@ -32411,6 +32496,19 @@ Schema for the body of a Device Recipe creation request
                   "STD_DEV",
                   "NONE"
                 ]
+              },
+              "aggregationOptions": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "additionalProperties": false,
+                "maxItems": 10
               },
               "childAttributes": {
                 "type": "array",
@@ -32678,6 +32776,19 @@ Schema for a collection of Device Recipes
                         "STD_DEV",
                         "NONE"
                       ]
+                    },
+                    "aggregationOptions": {
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "type": "object",
+                            "additionalProperties": false
+                          }
+                        ]
+                      },
+                      "additionalProperties": false,
+                      "maxItems": 10
                     },
                     "childAttributes": {
                       "type": "array",
@@ -33323,6 +33434,19 @@ Schema for a collection of Devices
                         "NONE"
                       ]
                     },
+                    "aggregationOptions": {
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "type": "object",
+                            "additionalProperties": false
+                          }
+                        ]
+                      },
+                      "additionalProperties": false,
+                      "maxItems": 10
+                    },
                     "childAttributes": {
                       "type": "array",
                       "items": {
@@ -33681,6 +33805,19 @@ Schema for the body of a Devices modification request
                       "STD_DEV",
                       "NONE"
                     ]
+                  },
+                  "aggregationOptions": {
+                    "type": "array",
+                    "items": {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "additionalProperties": false,
+                    "maxItems": 10
                   },
                   "childAttributes": {
                     "type": "array",
@@ -38441,7 +38578,6 @@ The body of an experience linked resources response
                             "deviceIdDisconnect",
                             "deviceTagDisconnect",
                             "integration",
-                            "mqttTopic",
                             "notebook",
                             "onBoot",
                             "onConnect",
@@ -39361,6 +39497,109 @@ The body of an experience linked resources response
                             },
                             "outputCount": {
                               "type": "number"
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "mqttTopic"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {
+                            "integrationId": {
+                              "type": "string",
+                              "enum": [
+                                "losant",
+                                "local"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "mqtt"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "triggerId": {
+                              "type": "string",
+                              "maxLength": 48
                             },
                             "id": {
                               "type": "string",
@@ -40555,7 +40794,6 @@ The body of an experience linked resources response
                                 "deviceIdDisconnect",
                                 "deviceTagDisconnect",
                                 "integration",
-                                "mqttTopic",
                                 "notebook",
                                 "onBoot",
                                 "onConnect",
@@ -41475,6 +41713,109 @@ The body of an experience linked resources response
                                 },
                                 "outputCount": {
                                   "type": "number"
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "outputIds": {
+                              "type": "array",
+                              "items": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "maxLength": 255
+                                },
+                                "maxItems": 100
+                              },
+                              "maxItems": 100
+                            }
+                          },
+                          "required": [
+                            "type"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "mqttTopic"
+                              ]
+                            },
+                            "config": {
+                              "type": "object",
+                              "properties": {
+                                "integrationId": {
+                                  "type": "string",
+                                  "enum": [
+                                    "losant",
+                                    "local"
+                                  ]
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "meta": {
+                              "type": "object",
+                              "properties": {
+                                "category": {
+                                  "type": "string",
+                                  "enum": [
+                                    "trigger"
+                                  ]
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "enum": [
+                                    "mqtt"
+                                  ]
+                                },
+                                "label": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 255
+                                },
+                                "x": {
+                                  "type": "number"
+                                },
+                                "y": {
+                                  "type": "number"
+                                },
+                                "uiId": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                },
+                                "icon": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "color": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "inputCount": {
+                                  "type": "number"
+                                },
+                                "outputCount": {
+                                  "type": "number"
+                                },
+                                "triggerId": {
+                                  "type": "string",
+                                  "maxLength": 48
                                 },
                                 "id": {
                                   "type": "string",
@@ -42619,7 +42960,6 @@ The body of an experience linked resources response
                                 "deviceIdDisconnect",
                                 "deviceTagDisconnect",
                                 "integration",
-                                "mqttTopic",
                                 "notebook",
                                 "onBoot",
                                 "onConnect",
@@ -43539,6 +43879,109 @@ The body of an experience linked resources response
                                 },
                                 "outputCount": {
                                   "type": "number"
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "outputIds": {
+                              "type": "array",
+                              "items": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "maxLength": 255
+                                },
+                                "maxItems": 100
+                              },
+                              "maxItems": 100
+                            }
+                          },
+                          "required": [
+                            "type"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "mqttTopic"
+                              ]
+                            },
+                            "config": {
+                              "type": "object",
+                              "properties": {
+                                "integrationId": {
+                                  "type": "string",
+                                  "enum": [
+                                    "losant",
+                                    "local"
+                                  ]
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "meta": {
+                              "type": "object",
+                              "properties": {
+                                "category": {
+                                  "type": "string",
+                                  "enum": [
+                                    "trigger"
+                                  ]
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "enum": [
+                                    "mqtt"
+                                  ]
+                                },
+                                "label": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 255
+                                },
+                                "x": {
+                                  "type": "number"
+                                },
+                                "y": {
+                                  "type": "number"
+                                },
+                                "uiId": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                },
+                                "icon": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "color": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "inputCount": {
+                                  "type": "number"
+                                },
+                                "outputCount": {
+                                  "type": "number"
+                                },
+                                "triggerId": {
+                                  "type": "string",
+                                  "maxLength": 48
                                 },
                                 "id": {
                                   "type": "string",
@@ -46565,7 +47008,6 @@ Schema for a single Workflow
                   "deviceIdDisconnect",
                   "deviceTagDisconnect",
                   "integration",
-                  "mqttTopic",
                   "notebook",
                   "onBoot",
                   "onConnect",
@@ -47485,6 +47927,109 @@ Schema for a single Workflow
                   },
                   "outputCount": {
                     "type": "number"
+                  },
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
+                  }
+                },
+                "additionalProperties": false
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "mqttTopic"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "integrationId": {
+                    "type": "string",
+                    "enum": [
+                      "losant",
+                      "local"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "trigger"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "mqtt"
+                    ]
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "uiId": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "icon": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "color": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "inputCount": {
+                    "type": "number"
+                  },
+                  "outputCount": {
+                    "type": "number"
+                  },
+                  "triggerId": {
+                    "type": "string",
+                    "maxLength": 48
                   },
                   "id": {
                     "type": "string",
@@ -48719,7 +49264,6 @@ Schema for the body of a Workflow modification request
                   "deviceIdDisconnect",
                   "deviceTagDisconnect",
                   "integration",
-                  "mqttTopic",
                   "notebook",
                   "onBoot",
                   "onConnect",
@@ -49639,6 +50183,109 @@ Schema for the body of a Workflow modification request
                   },
                   "outputCount": {
                     "type": "number"
+                  },
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
+                  }
+                },
+                "additionalProperties": false
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "mqttTopic"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "integrationId": {
+                    "type": "string",
+                    "enum": [
+                      "losant",
+                      "local"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "trigger"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "mqtt"
+                    ]
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "uiId": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "icon": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "color": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "inputCount": {
+                    "type": "number"
+                  },
+                  "outputCount": {
+                    "type": "number"
+                  },
+                  "triggerId": {
+                    "type": "string",
+                    "maxLength": 48
                   },
                   "id": {
                     "type": "string",
@@ -50746,7 +51393,6 @@ Schema for the body of a Workflow creation request
                   "deviceIdDisconnect",
                   "deviceTagDisconnect",
                   "integration",
-                  "mqttTopic",
                   "notebook",
                   "onBoot",
                   "onConnect",
@@ -51666,6 +52312,109 @@ Schema for the body of a Workflow creation request
                   },
                   "outputCount": {
                     "type": "number"
+                  },
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
+                  }
+                },
+                "additionalProperties": false
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "mqttTopic"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "integrationId": {
+                    "type": "string",
+                    "enum": [
+                      "losant",
+                      "local"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "trigger"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "mqtt"
+                    ]
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "uiId": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "icon": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "color": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "inputCount": {
+                    "type": "number"
+                  },
+                  "outputCount": {
+                    "type": "number"
+                  },
+                  "triggerId": {
+                    "type": "string",
+                    "maxLength": 48
                   },
                   "id": {
                     "type": "string",
@@ -52913,7 +53662,6 @@ Schema for a single Workflow Version
                       "deviceIdDisconnect",
                       "deviceTagDisconnect",
                       "integration",
-                      "mqttTopic",
                       "notebook",
                       "onBoot",
                       "onConnect",
@@ -53833,6 +54581,109 @@ Schema for a single Workflow Version
                       },
                       "outputCount": {
                         "type": "number"
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "outputIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "maxItems": 100
+                    },
+                    "maxItems": 100
+                  }
+                },
+                "required": [
+                  "type"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "mqttTopic"
+                    ]
+                  },
+                  "config": {
+                    "type": "object",
+                    "properties": {
+                      "integrationId": {
+                        "type": "string",
+                        "enum": [
+                          "losant",
+                          "local"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "meta": {
+                    "type": "object",
+                    "properties": {
+                      "category": {
+                        "type": "string",
+                        "enum": [
+                          "trigger"
+                        ]
+                      },
+                      "name": {
+                        "type": "string",
+                        "enum": [
+                          "mqtt"
+                        ]
+                      },
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      },
+                      "x": {
+                        "type": "number"
+                      },
+                      "y": {
+                        "type": "number"
+                      },
+                      "uiId": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "icon": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "color": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "inputCount": {
+                        "type": "number"
+                      },
+                      "outputCount": {
+                        "type": "number"
+                      },
+                      "triggerId": {
+                        "type": "string",
+                        "maxLength": 48
                       },
                       "id": {
                         "type": "string",
@@ -54977,7 +55828,6 @@ Schema for a single Workflow Version
                       "deviceIdDisconnect",
                       "deviceTagDisconnect",
                       "integration",
-                      "mqttTopic",
                       "notebook",
                       "onBoot",
                       "onConnect",
@@ -55933,6 +56783,109 @@ Schema for a single Workflow Version
                   "type": {
                     "type": "string",
                     "enum": [
+                      "mqttTopic"
+                    ]
+                  },
+                  "config": {
+                    "type": "object",
+                    "properties": {
+                      "integrationId": {
+                        "type": "string",
+                        "enum": [
+                          "losant",
+                          "local"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "meta": {
+                    "type": "object",
+                    "properties": {
+                      "category": {
+                        "type": "string",
+                        "enum": [
+                          "trigger"
+                        ]
+                      },
+                      "name": {
+                        "type": "string",
+                        "enum": [
+                          "mqtt"
+                        ]
+                      },
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      },
+                      "x": {
+                        "type": "number"
+                      },
+                      "y": {
+                        "type": "number"
+                      },
+                      "uiId": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "icon": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "color": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "inputCount": {
+                        "type": "number"
+                      },
+                      "outputCount": {
+                        "type": "number"
+                      },
+                      "triggerId": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "outputIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "maxItems": 100
+                    },
+                    "maxItems": 100
+                  }
+                },
+                "required": [
+                  "type"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
                       "opcua"
                     ]
                   },
@@ -56744,7 +57697,6 @@ Schema for the body of a Workflow Version creation request
                   "deviceIdDisconnect",
                   "deviceTagDisconnect",
                   "integration",
-                  "mqttTopic",
                   "notebook",
                   "onBoot",
                   "onConnect",
@@ -57664,6 +58616,109 @@ Schema for the body of a Workflow Version creation request
                   },
                   "outputCount": {
                     "type": "number"
+                  },
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
+                  }
+                },
+                "additionalProperties": false
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "mqttTopic"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "integrationId": {
+                    "type": "string",
+                    "enum": [
+                      "losant",
+                      "local"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "trigger"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "mqtt"
+                    ]
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "uiId": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "icon": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "color": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "inputCount": {
+                    "type": "number"
+                  },
+                  "outputCount": {
+                    "type": "number"
+                  },
+                  "triggerId": {
+                    "type": "string",
+                    "maxLength": 48
                   },
                   "id": {
                     "type": "string",
@@ -58796,7 +59851,6 @@ Schema for a collection of Workflow Versions
                             "deviceIdDisconnect",
                             "deviceTagDisconnect",
                             "integration",
-                            "mqttTopic",
                             "notebook",
                             "onBoot",
                             "onConnect",
@@ -59716,6 +60770,109 @@ Schema for a collection of Workflow Versions
                             },
                             "outputCount": {
                               "type": "number"
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "mqttTopic"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {
+                            "integrationId": {
+                              "type": "string",
+                              "enum": [
+                                "losant",
+                                "local"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "mqtt"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "triggerId": {
+                              "type": "string",
+                              "maxLength": 48
                             },
                             "id": {
                               "type": "string",
@@ -60860,7 +62017,6 @@ Schema for a collection of Workflow Versions
                             "deviceIdDisconnect",
                             "deviceTagDisconnect",
                             "integration",
-                            "mqttTopic",
                             "notebook",
                             "onBoot",
                             "onConnect",
@@ -61816,6 +62972,109 @@ Schema for a collection of Workflow Versions
                         "type": {
                           "type": "string",
                           "enum": [
+                            "mqttTopic"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {
+                            "integrationId": {
+                              "type": "string",
+                              "enum": [
+                                "losant",
+                                "local"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "mqtt"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "triggerId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
                             "opcua"
                           ]
                         },
@@ -62697,7 +63956,6 @@ Schema for a collection of Workflows
                         "deviceIdDisconnect",
                         "deviceTagDisconnect",
                         "integration",
-                        "mqttTopic",
                         "notebook",
                         "onBoot",
                         "onConnect",
@@ -63617,6 +64875,109 @@ Schema for a collection of Workflows
                         },
                         "outputCount": {
                           "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "mqttTopic"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "integrationId": {
+                          "type": "string",
+                          "enum": [
+                            "losant",
+                            "local"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "mqtt"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "triggerId": {
+                          "type": "string",
+                          "maxLength": 48
                         },
                         "id": {
                           "type": "string",
@@ -64838,7 +66199,6 @@ Schema for the body of a workflow import request
                         "deviceIdDisconnect",
                         "deviceTagDisconnect",
                         "integration",
-                        "mqttTopic",
                         "notebook",
                         "onBoot",
                         "onConnect",
@@ -65758,6 +67118,109 @@ Schema for the body of a workflow import request
                         },
                         "outputCount": {
                           "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "mqttTopic"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "integrationId": {
+                          "type": "string",
+                          "enum": [
+                            "losant",
+                            "local"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "mqtt"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "triggerId": {
+                          "type": "string",
+                          "maxLength": 48
                         },
                         "id": {
                           "type": "string",
@@ -66883,7 +68346,6 @@ Schema for the body of a workflow import request
                         "deviceIdDisconnect",
                         "deviceTagDisconnect",
                         "integration",
-                        "mqttTopic",
                         "notebook",
                         "onBoot",
                         "onConnect",
@@ -67803,6 +69265,109 @@ Schema for the body of a workflow import request
                         },
                         "outputCount": {
                           "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "mqttTopic"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "integrationId": {
+                          "type": "string",
+                          "enum": [
+                            "losant",
+                            "local"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "mqtt"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "triggerId": {
+                          "type": "string",
+                          "maxLength": 48
                         },
                         "id": {
                           "type": "string",
@@ -68975,7 +70540,6 @@ Schema for the result of a workflow import request
                         "deviceIdDisconnect",
                         "deviceTagDisconnect",
                         "integration",
-                        "mqttTopic",
                         "notebook",
                         "onBoot",
                         "onConnect",
@@ -69895,6 +71459,109 @@ Schema for the result of a workflow import request
                         },
                         "outputCount": {
                           "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "mqttTopic"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "integrationId": {
+                          "type": "string",
+                          "enum": [
+                            "losant",
+                            "local"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "mqtt"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "triggerId": {
+                          "type": "string",
+                          "maxLength": 48
                         },
                         "id": {
                           "type": "string",
@@ -71039,7 +72706,6 @@ Schema for the result of a workflow import request
                             "deviceIdDisconnect",
                             "deviceTagDisconnect",
                             "integration",
-                            "mqttTopic",
                             "notebook",
                             "onBoot",
                             "onConnect",
@@ -71959,6 +73625,109 @@ Schema for the result of a workflow import request
                             },
                             "outputCount": {
                               "type": "number"
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "mqttTopic"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {
+                            "integrationId": {
+                              "type": "string",
+                              "enum": [
+                                "losant",
+                                "local"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "mqtt"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "triggerId": {
+                              "type": "string",
+                              "maxLength": 48
                             },
                             "id": {
                               "type": "string",
@@ -73103,7 +74872,6 @@ Schema for the result of a workflow import request
                             "deviceIdDisconnect",
                             "deviceTagDisconnect",
                             "integration",
-                            "mqttTopic",
                             "notebook",
                             "onBoot",
                             "onConnect",
@@ -74023,6 +75791,109 @@ Schema for the result of a workflow import request
                             },
                             "outputCount": {
                               "type": "number"
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "mqttTopic"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {
+                            "integrationId": {
+                              "type": "string",
+                              "enum": [
+                                "losant",
+                                "local"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "mqtt"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "triggerId": {
+                              "type": "string",
+                              "maxLength": 48
                             },
                             "id": {
                               "type": "string",
