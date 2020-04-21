@@ -85,8 +85,13 @@
                     "string",
                     "number",
                     "gps",
-                    "boolean"
+                    "boolean",
+                    "blob"
                   ]
+                },
+                "contentType": {
+                  "type": "string",
+                  "maxLength": 64
                 },
                 "description": {
                   "type": "string",
@@ -120,6 +125,19 @@
                         "STD_DEV",
                         "NONE"
                       ]
+                    },
+                    "aggregationOptions": {
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "type": "object",
+                            "additionalProperties": false
+                          }
+                        ]
+                      },
+                      "additionalProperties": false,
+                      "maxItems": 10
                     },
                     "childAttributes": {
                       "type": "array",

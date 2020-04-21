@@ -98,6 +98,11 @@
               ]
             }
           },
+          "blobUrlTTL": {
+            "type": "number",
+            "minimum": 3600,
+            "maximum": 604800
+          },
           "summary": {
             "type": "object",
             "properties": {
