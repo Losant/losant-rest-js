@@ -283,24 +283,8 @@
                               "aggregation": {
                                 "oneOf": [
                                   {
-                                    "type": "string",
-                                    "enum": [
-                                      "FIRST",
-                                      "LAST",
-                                      "COUNT",
-                                      "MAX",
-                                      "MIN",
-                                      "MEDIAN",
-                                      "MEAN",
-                                      "SUM",
-                                      "STD_DEV",
-                                      "NONE"
-                                    ]
-                                  },
-                                  {
-                                    "type": "object",
-                                    "properties": {
-                                      "type": {
+                                    "oneOf": [
+                                      {
                                         "type": "string",
                                         "enum": [
                                           "FIRST",
@@ -311,8 +295,42 @@
                                           "MEDIAN",
                                           "MEAN",
                                           "SUM",
-                                          "STD_DEV",
+                                          "STD_DEV"
+                                        ]
+                                      },
+                                      {
+                                        "type": "string",
+                                        "enum": [
                                           "NONE"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "type": {
+                                        "oneOf": [
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "FIRST",
+                                              "LAST",
+                                              "COUNT",
+                                              "MAX",
+                                              "MIN",
+                                              "MEDIAN",
+                                              "MEAN",
+                                              "SUM",
+                                              "STD_DEV"
+                                            ]
+                                          },
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "NONE"
+                                            ]
+                                          }
                                         ]
                                       },
                                       "options": {
@@ -350,7 +368,8 @@
                                     },
                                     "additionalProperties": false,
                                     "required": [
-                                      "type"
+                                      "type",
+                                      "options"
                                     ]
                                   }
                                 ]
@@ -514,24 +533,8 @@
                                   "aggregation": {
                                     "oneOf": [
                                       {
-                                        "type": "string",
-                                        "enum": [
-                                          "FIRST",
-                                          "LAST",
-                                          "COUNT",
-                                          "MAX",
-                                          "MIN",
-                                          "MEDIAN",
-                                          "MEAN",
-                                          "SUM",
-                                          "STD_DEV",
-                                          "NONE"
-                                        ]
-                                      },
-                                      {
-                                        "type": "object",
-                                        "properties": {
-                                          "type": {
+                                        "oneOf": [
+                                          {
                                             "type": "string",
                                             "enum": [
                                               "FIRST",
@@ -542,8 +545,42 @@
                                               "MEDIAN",
                                               "MEAN",
                                               "SUM",
-                                              "STD_DEV",
+                                              "STD_DEV"
+                                            ]
+                                          },
+                                          {
+                                            "type": "string",
+                                            "enum": [
                                               "NONE"
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "type": {
+                                            "oneOf": [
+                                              {
+                                                "type": "string",
+                                                "enum": [
+                                                  "FIRST",
+                                                  "LAST",
+                                                  "COUNT",
+                                                  "MAX",
+                                                  "MIN",
+                                                  "MEDIAN",
+                                                  "MEAN",
+                                                  "SUM",
+                                                  "STD_DEV"
+                                                ]
+                                              },
+                                              {
+                                                "type": "string",
+                                                "enum": [
+                                                  "NONE"
+                                                ]
+                                              }
                                             ]
                                           },
                                           "options": {
@@ -581,7 +618,8 @@
                                         },
                                         "additionalProperties": false,
                                         "required": [
-                                          "type"
+                                          "type",
+                                          "options"
                                         ]
                                       }
                                     ]
@@ -658,24 +696,8 @@
                                   "aggregation": {
                                     "oneOf": [
                                       {
-                                        "type": "string",
-                                        "enum": [
-                                          "FIRST",
-                                          "LAST",
-                                          "COUNT",
-                                          "MAX",
-                                          "MIN",
-                                          "MEDIAN",
-                                          "MEAN",
-                                          "SUM",
-                                          "STD_DEV",
-                                          "NONE"
-                                        ]
-                                      },
-                                      {
-                                        "type": "object",
-                                        "properties": {
-                                          "type": {
+                                        "oneOf": [
+                                          {
                                             "type": "string",
                                             "enum": [
                                               "FIRST",
@@ -686,8 +708,42 @@
                                               "MEDIAN",
                                               "MEAN",
                                               "SUM",
-                                              "STD_DEV",
+                                              "STD_DEV"
+                                            ]
+                                          },
+                                          {
+                                            "type": "string",
+                                            "enum": [
                                               "NONE"
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "type": {
+                                            "oneOf": [
+                                              {
+                                                "type": "string",
+                                                "enum": [
+                                                  "FIRST",
+                                                  "LAST",
+                                                  "COUNT",
+                                                  "MAX",
+                                                  "MIN",
+                                                  "MEDIAN",
+                                                  "MEAN",
+                                                  "SUM",
+                                                  "STD_DEV"
+                                                ]
+                                              },
+                                              {
+                                                "type": "string",
+                                                "enum": [
+                                                  "NONE"
+                                                ]
+                                              }
                                             ]
                                           },
                                           "options": {
@@ -725,7 +781,8 @@
                                         },
                                         "additionalProperties": false,
                                         "required": [
-                                          "type"
+                                          "type",
+                                          "options"
                                         ]
                                       }
                                     ]
@@ -1621,24 +1678,8 @@
                             "aggregation": {
                               "oneOf": [
                                 {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
-                                  ]
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "type": {
+                                  "oneOf": [
+                                    {
                                       "type": "string",
                                       "enum": [
                                         "FIRST",
@@ -1649,8 +1690,42 @@
                                         "MEDIAN",
                                         "MEAN",
                                         "SUM",
-                                        "STD_DEV",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
                                         "NONE"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "NONE"
+                                          ]
+                                        }
                                       ]
                                     },
                                     "options": {
@@ -1688,7 +1763,8 @@
                                   },
                                   "additionalProperties": false,
                                   "required": [
-                                    "type"
+                                    "type",
+                                    "options"
                                   ]
                                 }
                               ]
@@ -1888,24 +1964,8 @@
                               "aggregation": {
                                 "oneOf": [
                                   {
-                                    "type": "string",
-                                    "enum": [
-                                      "FIRST",
-                                      "LAST",
-                                      "COUNT",
-                                      "MAX",
-                                      "MIN",
-                                      "MEDIAN",
-                                      "MEAN",
-                                      "SUM",
-                                      "STD_DEV",
-                                      "NONE"
-                                    ]
-                                  },
-                                  {
-                                    "type": "object",
-                                    "properties": {
-                                      "type": {
+                                    "oneOf": [
+                                      {
                                         "type": "string",
                                         "enum": [
                                           "FIRST",
@@ -1916,8 +1976,42 @@
                                           "MEDIAN",
                                           "MEAN",
                                           "SUM",
-                                          "STD_DEV",
+                                          "STD_DEV"
+                                        ]
+                                      },
+                                      {
+                                        "type": "string",
+                                        "enum": [
                                           "NONE"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "type": {
+                                        "oneOf": [
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "FIRST",
+                                              "LAST",
+                                              "COUNT",
+                                              "MAX",
+                                              "MIN",
+                                              "MEDIAN",
+                                              "MEAN",
+                                              "SUM",
+                                              "STD_DEV"
+                                            ]
+                                          },
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "NONE"
+                                            ]
+                                          }
                                         ]
                                       },
                                       "options": {
@@ -1955,7 +2049,8 @@
                                     },
                                     "additionalProperties": false,
                                     "required": [
-                                      "type"
+                                      "type",
+                                      "options"
                                     ]
                                   }
                                 ]
@@ -2447,24 +2542,8 @@
                                   "aggregation": {
                                     "oneOf": [
                                       {
-                                        "type": "string",
-                                        "enum": [
-                                          "FIRST",
-                                          "LAST",
-                                          "COUNT",
-                                          "MAX",
-                                          "MIN",
-                                          "MEDIAN",
-                                          "MEAN",
-                                          "SUM",
-                                          "STD_DEV",
-                                          "NONE"
-                                        ]
-                                      },
-                                      {
-                                        "type": "object",
-                                        "properties": {
-                                          "type": {
+                                        "oneOf": [
+                                          {
                                             "type": "string",
                                             "enum": [
                                               "FIRST",
@@ -2475,8 +2554,42 @@
                                               "MEDIAN",
                                               "MEAN",
                                               "SUM",
-                                              "STD_DEV",
+                                              "STD_DEV"
+                                            ]
+                                          },
+                                          {
+                                            "type": "string",
+                                            "enum": [
                                               "NONE"
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "type": {
+                                            "oneOf": [
+                                              {
+                                                "type": "string",
+                                                "enum": [
+                                                  "FIRST",
+                                                  "LAST",
+                                                  "COUNT",
+                                                  "MAX",
+                                                  "MIN",
+                                                  "MEDIAN",
+                                                  "MEAN",
+                                                  "SUM",
+                                                  "STD_DEV"
+                                                ]
+                                              },
+                                              {
+                                                "type": "string",
+                                                "enum": [
+                                                  "NONE"
+                                                ]
+                                              }
                                             ]
                                           },
                                           "options": {
@@ -2514,7 +2627,8 @@
                                         },
                                         "additionalProperties": false,
                                         "required": [
-                                          "type"
+                                          "type",
+                                          "options"
                                         ]
                                       }
                                     ]
@@ -3022,24 +3136,8 @@
                               "aggregation": {
                                 "oneOf": [
                                   {
-                                    "type": "string",
-                                    "enum": [
-                                      "FIRST",
-                                      "LAST",
-                                      "COUNT",
-                                      "MAX",
-                                      "MIN",
-                                      "MEDIAN",
-                                      "MEAN",
-                                      "SUM",
-                                      "STD_DEV",
-                                      "NONE"
-                                    ]
-                                  },
-                                  {
-                                    "type": "object",
-                                    "properties": {
-                                      "type": {
+                                    "oneOf": [
+                                      {
                                         "type": "string",
                                         "enum": [
                                           "FIRST",
@@ -3050,8 +3148,42 @@
                                           "MEDIAN",
                                           "MEAN",
                                           "SUM",
-                                          "STD_DEV",
+                                          "STD_DEV"
+                                        ]
+                                      },
+                                      {
+                                        "type": "string",
+                                        "enum": [
                                           "NONE"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "type": {
+                                        "oneOf": [
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "FIRST",
+                                              "LAST",
+                                              "COUNT",
+                                              "MAX",
+                                              "MIN",
+                                              "MEDIAN",
+                                              "MEAN",
+                                              "SUM",
+                                              "STD_DEV"
+                                            ]
+                                          },
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "NONE"
+                                            ]
+                                          }
                                         ]
                                       },
                                       "options": {
@@ -3089,7 +3221,8 @@
                                     },
                                     "additionalProperties": false,
                                     "required": [
-                                      "type"
+                                      "type",
+                                      "options"
                                     ]
                                   }
                                 ]
@@ -3346,24 +3479,8 @@
                                       "aggregation": {
                                         "oneOf": [
                                           {
-                                            "type": "string",
-                                            "enum": [
-                                              "FIRST",
-                                              "LAST",
-                                              "COUNT",
-                                              "MAX",
-                                              "MIN",
-                                              "MEDIAN",
-                                              "MEAN",
-                                              "SUM",
-                                              "STD_DEV",
-                                              "NONE"
-                                            ]
-                                          },
-                                          {
-                                            "type": "object",
-                                            "properties": {
-                                              "type": {
+                                            "oneOf": [
+                                              {
                                                 "type": "string",
                                                 "enum": [
                                                   "FIRST",
@@ -3374,8 +3491,42 @@
                                                   "MEDIAN",
                                                   "MEAN",
                                                   "SUM",
-                                                  "STD_DEV",
+                                                  "STD_DEV"
+                                                ]
+                                              },
+                                              {
+                                                "type": "string",
+                                                "enum": [
                                                   "NONE"
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "type": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "FIRST",
+                                                      "LAST",
+                                                      "COUNT",
+                                                      "MAX",
+                                                      "MIN",
+                                                      "MEDIAN",
+                                                      "MEAN",
+                                                      "SUM",
+                                                      "STD_DEV"
+                                                    ]
+                                                  },
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "NONE"
+                                                    ]
+                                                  }
                                                 ]
                                               },
                                               "options": {
@@ -3413,7 +3564,8 @@
                                             },
                                             "additionalProperties": false,
                                             "required": [
-                                              "type"
+                                              "type",
+                                              "options"
                                             ]
                                           }
                                         ]
@@ -3551,24 +3703,8 @@
                                       "aggregation": {
                                         "oneOf": [
                                           {
-                                            "type": "string",
-                                            "enum": [
-                                              "FIRST",
-                                              "LAST",
-                                              "COUNT",
-                                              "MAX",
-                                              "MIN",
-                                              "MEDIAN",
-                                              "MEAN",
-                                              "SUM",
-                                              "STD_DEV",
-                                              "NONE"
-                                            ]
-                                          },
-                                          {
-                                            "type": "object",
-                                            "properties": {
-                                              "type": {
+                                            "oneOf": [
+                                              {
                                                 "type": "string",
                                                 "enum": [
                                                   "FIRST",
@@ -3579,8 +3715,42 @@
                                                   "MEDIAN",
                                                   "MEAN",
                                                   "SUM",
-                                                  "STD_DEV",
+                                                  "STD_DEV"
+                                                ]
+                                              },
+                                              {
+                                                "type": "string",
+                                                "enum": [
                                                   "NONE"
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "type": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "FIRST",
+                                                      "LAST",
+                                                      "COUNT",
+                                                      "MAX",
+                                                      "MIN",
+                                                      "MEDIAN",
+                                                      "MEAN",
+                                                      "SUM",
+                                                      "STD_DEV"
+                                                    ]
+                                                  },
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "NONE"
+                                                    ]
+                                                  }
                                                 ]
                                               },
                                               "options": {
@@ -3618,7 +3788,8 @@
                                             },
                                             "additionalProperties": false,
                                             "required": [
-                                              "type"
+                                              "type",
+                                              "options"
                                             ]
                                           }
                                         ]
@@ -3711,24 +3882,8 @@
                                       "aggregation": {
                                         "oneOf": [
                                           {
-                                            "type": "string",
-                                            "enum": [
-                                              "FIRST",
-                                              "LAST",
-                                              "COUNT",
-                                              "MAX",
-                                              "MIN",
-                                              "MEDIAN",
-                                              "MEAN",
-                                              "SUM",
-                                              "STD_DEV",
-                                              "NONE"
-                                            ]
-                                          },
-                                          {
-                                            "type": "object",
-                                            "properties": {
-                                              "type": {
+                                            "oneOf": [
+                                              {
                                                 "type": "string",
                                                 "enum": [
                                                   "FIRST",
@@ -3739,8 +3894,42 @@
                                                   "MEDIAN",
                                                   "MEAN",
                                                   "SUM",
-                                                  "STD_DEV",
+                                                  "STD_DEV"
+                                                ]
+                                              },
+                                              {
+                                                "type": "string",
+                                                "enum": [
                                                   "NONE"
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "type": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "FIRST",
+                                                      "LAST",
+                                                      "COUNT",
+                                                      "MAX",
+                                                      "MIN",
+                                                      "MEDIAN",
+                                                      "MEAN",
+                                                      "SUM",
+                                                      "STD_DEV"
+                                                    ]
+                                                  },
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "NONE"
+                                                    ]
+                                                  }
                                                 ]
                                               },
                                               "options": {
@@ -3778,7 +3967,8 @@
                                             },
                                             "additionalProperties": false,
                                             "required": [
-                                              "type"
+                                              "type",
+                                              "options"
                                             ]
                                           }
                                         ]
@@ -3872,24 +4062,8 @@
                                       "aggregation": {
                                         "oneOf": [
                                           {
-                                            "type": "string",
-                                            "enum": [
-                                              "FIRST",
-                                              "LAST",
-                                              "COUNT",
-                                              "MAX",
-                                              "MIN",
-                                              "MEDIAN",
-                                              "MEAN",
-                                              "SUM",
-                                              "STD_DEV",
-                                              "NONE"
-                                            ]
-                                          },
-                                          {
-                                            "type": "object",
-                                            "properties": {
-                                              "type": {
+                                            "oneOf": [
+                                              {
                                                 "type": "string",
                                                 "enum": [
                                                   "FIRST",
@@ -3900,8 +4074,42 @@
                                                   "MEDIAN",
                                                   "MEAN",
                                                   "SUM",
-                                                  "STD_DEV",
+                                                  "STD_DEV"
+                                                ]
+                                              },
+                                              {
+                                                "type": "string",
+                                                "enum": [
                                                   "NONE"
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "type": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "FIRST",
+                                                      "LAST",
+                                                      "COUNT",
+                                                      "MAX",
+                                                      "MIN",
+                                                      "MEDIAN",
+                                                      "MEAN",
+                                                      "SUM",
+                                                      "STD_DEV"
+                                                    ]
+                                                  },
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "NONE"
+                                                    ]
+                                                  }
                                                 ]
                                               },
                                               "options": {
@@ -3939,7 +4147,8 @@
                                             },
                                             "additionalProperties": false,
                                             "required": [
-                                              "type"
+                                              "type",
+                                              "options"
                                             ]
                                           }
                                         ]
@@ -4499,24 +4708,8 @@
                               "aggregation": {
                                 "oneOf": [
                                   {
-                                    "type": "string",
-                                    "enum": [
-                                      "FIRST",
-                                      "LAST",
-                                      "COUNT",
-                                      "MAX",
-                                      "MIN",
-                                      "MEDIAN",
-                                      "MEAN",
-                                      "SUM",
-                                      "STD_DEV",
-                                      "NONE"
-                                    ]
-                                  },
-                                  {
-                                    "type": "object",
-                                    "properties": {
-                                      "type": {
+                                    "oneOf": [
+                                      {
                                         "type": "string",
                                         "enum": [
                                           "FIRST",
@@ -4527,8 +4720,42 @@
                                           "MEDIAN",
                                           "MEAN",
                                           "SUM",
-                                          "STD_DEV",
+                                          "STD_DEV"
+                                        ]
+                                      },
+                                      {
+                                        "type": "string",
+                                        "enum": [
                                           "NONE"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "type": {
+                                        "oneOf": [
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "FIRST",
+                                              "LAST",
+                                              "COUNT",
+                                              "MAX",
+                                              "MIN",
+                                              "MEDIAN",
+                                              "MEAN",
+                                              "SUM",
+                                              "STD_DEV"
+                                            ]
+                                          },
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "NONE"
+                                            ]
+                                          }
                                         ]
                                       },
                                       "options": {
@@ -4566,7 +4793,8 @@
                                     },
                                     "additionalProperties": false,
                                     "required": [
-                                      "type"
+                                      "type",
+                                      "options"
                                     ]
                                   }
                                 ]

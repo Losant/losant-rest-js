@@ -7994,24 +7994,8 @@ Schema for a single Dashboard
                         "aggregation": {
                           "oneOf": [
                             {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
-                              ]
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "type": {
+                              "oneOf": [
+                                {
                                   "type": "string",
                                   "enum": [
                                     "FIRST",
@@ -8022,8 +8006,42 @@ Schema for a single Dashboard
                                     "MEDIAN",
                                     "MEAN",
                                     "SUM",
-                                    "STD_DEV",
+                                    "STD_DEV"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
                                     "NONE"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "NONE"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "options": {
@@ -8061,7 +8079,8 @@ Schema for a single Dashboard
                               },
                               "additionalProperties": false,
                               "required": [
-                                "type"
+                                "type",
+                                "options"
                               ]
                             }
                           ]
@@ -8225,24 +8244,8 @@ Schema for a single Dashboard
                             "aggregation": {
                               "oneOf": [
                                 {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
-                                  ]
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "type": {
+                                  "oneOf": [
+                                    {
                                       "type": "string",
                                       "enum": [
                                         "FIRST",
@@ -8253,8 +8256,42 @@ Schema for a single Dashboard
                                         "MEDIAN",
                                         "MEAN",
                                         "SUM",
-                                        "STD_DEV",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
                                         "NONE"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "NONE"
+                                          ]
+                                        }
                                       ]
                                     },
                                     "options": {
@@ -8292,7 +8329,8 @@ Schema for a single Dashboard
                                   },
                                   "additionalProperties": false,
                                   "required": [
-                                    "type"
+                                    "type",
+                                    "options"
                                   ]
                                 }
                               ]
@@ -8369,24 +8407,8 @@ Schema for a single Dashboard
                             "aggregation": {
                               "oneOf": [
                                 {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
-                                  ]
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "type": {
+                                  "oneOf": [
+                                    {
                                       "type": "string",
                                       "enum": [
                                         "FIRST",
@@ -8397,8 +8419,42 @@ Schema for a single Dashboard
                                         "MEDIAN",
                                         "MEAN",
                                         "SUM",
-                                        "STD_DEV",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
                                         "NONE"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "NONE"
+                                          ]
+                                        }
                                       ]
                                     },
                                     "options": {
@@ -8436,7 +8492,8 @@ Schema for a single Dashboard
                                   },
                                   "additionalProperties": false,
                                   "required": [
-                                    "type"
+                                    "type",
+                                    "options"
                                   ]
                                 }
                               ]
@@ -9332,24 +9389,8 @@ Schema for a single Dashboard
                       "aggregation": {
                         "oneOf": [
                           {
-                            "type": "string",
-                            "enum": [
-                              "FIRST",
-                              "LAST",
-                              "COUNT",
-                              "MAX",
-                              "MIN",
-                              "MEDIAN",
-                              "MEAN",
-                              "SUM",
-                              "STD_DEV",
-                              "NONE"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
-                              "type": {
+                            "oneOf": [
+                              {
                                 "type": "string",
                                 "enum": [
                                   "FIRST",
@@ -9360,8 +9401,42 @@ Schema for a single Dashboard
                                   "MEDIAN",
                                   "MEAN",
                                   "SUM",
-                                  "STD_DEV",
+                                  "STD_DEV"
+                                ]
+                              },
+                              {
+                                "type": "string",
+                                "enum": [
                                   "NONE"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "FIRST",
+                                      "LAST",
+                                      "COUNT",
+                                      "MAX",
+                                      "MIN",
+                                      "MEDIAN",
+                                      "MEAN",
+                                      "SUM",
+                                      "STD_DEV"
+                                    ]
+                                  },
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "NONE"
+                                    ]
+                                  }
                                 ]
                               },
                               "options": {
@@ -9399,7 +9474,8 @@ Schema for a single Dashboard
                             },
                             "additionalProperties": false,
                             "required": [
-                              "type"
+                              "type",
+                              "options"
                             ]
                           }
                         ]
@@ -9599,24 +9675,8 @@ Schema for a single Dashboard
                         "aggregation": {
                           "oneOf": [
                             {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
-                              ]
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "type": {
+                              "oneOf": [
+                                {
                                   "type": "string",
                                   "enum": [
                                     "FIRST",
@@ -9627,8 +9687,42 @@ Schema for a single Dashboard
                                     "MEDIAN",
                                     "MEAN",
                                     "SUM",
-                                    "STD_DEV",
+                                    "STD_DEV"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
                                     "NONE"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "NONE"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "options": {
@@ -9666,7 +9760,8 @@ Schema for a single Dashboard
                               },
                               "additionalProperties": false,
                               "required": [
-                                "type"
+                                "type",
+                                "options"
                               ]
                             }
                           ]
@@ -10158,24 +10253,8 @@ Schema for a single Dashboard
                             "aggregation": {
                               "oneOf": [
                                 {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
-                                  ]
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "type": {
+                                  "oneOf": [
+                                    {
                                       "type": "string",
                                       "enum": [
                                         "FIRST",
@@ -10186,8 +10265,42 @@ Schema for a single Dashboard
                                         "MEDIAN",
                                         "MEAN",
                                         "SUM",
-                                        "STD_DEV",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
                                         "NONE"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "NONE"
+                                          ]
+                                        }
                                       ]
                                     },
                                     "options": {
@@ -10225,7 +10338,8 @@ Schema for a single Dashboard
                                   },
                                   "additionalProperties": false,
                                   "required": [
-                                    "type"
+                                    "type",
+                                    "options"
                                   ]
                                 }
                               ]
@@ -10733,24 +10847,8 @@ Schema for a single Dashboard
                         "aggregation": {
                           "oneOf": [
                             {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
-                              ]
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "type": {
+                              "oneOf": [
+                                {
                                   "type": "string",
                                   "enum": [
                                     "FIRST",
@@ -10761,8 +10859,42 @@ Schema for a single Dashboard
                                     "MEDIAN",
                                     "MEAN",
                                     "SUM",
-                                    "STD_DEV",
+                                    "STD_DEV"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
                                     "NONE"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "NONE"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "options": {
@@ -10800,7 +10932,8 @@ Schema for a single Dashboard
                               },
                               "additionalProperties": false,
                               "required": [
-                                "type"
+                                "type",
+                                "options"
                               ]
                             }
                           ]
@@ -11057,24 +11190,8 @@ Schema for a single Dashboard
                                 "aggregation": {
                                   "oneOf": [
                                     {
-                                      "type": "string",
-                                      "enum": [
-                                        "FIRST",
-                                        "LAST",
-                                        "COUNT",
-                                        "MAX",
-                                        "MIN",
-                                        "MEDIAN",
-                                        "MEAN",
-                                        "SUM",
-                                        "STD_DEV",
-                                        "NONE"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "type": {
+                                      "oneOf": [
+                                        {
                                           "type": "string",
                                           "enum": [
                                             "FIRST",
@@ -11085,8 +11202,42 @@ Schema for a single Dashboard
                                             "MEDIAN",
                                             "MEAN",
                                             "SUM",
-                                            "STD_DEV",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
                                             "NONE"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "FIRST",
+                                                "LAST",
+                                                "COUNT",
+                                                "MAX",
+                                                "MIN",
+                                                "MEDIAN",
+                                                "MEAN",
+                                                "SUM",
+                                                "STD_DEV"
+                                              ]
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "NONE"
+                                              ]
+                                            }
                                           ]
                                         },
                                         "options": {
@@ -11124,7 +11275,8 @@ Schema for a single Dashboard
                                       },
                                       "additionalProperties": false,
                                       "required": [
-                                        "type"
+                                        "type",
+                                        "options"
                                       ]
                                     }
                                   ]
@@ -11262,24 +11414,8 @@ Schema for a single Dashboard
                                 "aggregation": {
                                   "oneOf": [
                                     {
-                                      "type": "string",
-                                      "enum": [
-                                        "FIRST",
-                                        "LAST",
-                                        "COUNT",
-                                        "MAX",
-                                        "MIN",
-                                        "MEDIAN",
-                                        "MEAN",
-                                        "SUM",
-                                        "STD_DEV",
-                                        "NONE"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "type": {
+                                      "oneOf": [
+                                        {
                                           "type": "string",
                                           "enum": [
                                             "FIRST",
@@ -11290,8 +11426,42 @@ Schema for a single Dashboard
                                             "MEDIAN",
                                             "MEAN",
                                             "SUM",
-                                            "STD_DEV",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
                                             "NONE"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "FIRST",
+                                                "LAST",
+                                                "COUNT",
+                                                "MAX",
+                                                "MIN",
+                                                "MEDIAN",
+                                                "MEAN",
+                                                "SUM",
+                                                "STD_DEV"
+                                              ]
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "NONE"
+                                              ]
+                                            }
                                           ]
                                         },
                                         "options": {
@@ -11329,7 +11499,8 @@ Schema for a single Dashboard
                                       },
                                       "additionalProperties": false,
                                       "required": [
-                                        "type"
+                                        "type",
+                                        "options"
                                       ]
                                     }
                                   ]
@@ -11422,24 +11593,8 @@ Schema for a single Dashboard
                                 "aggregation": {
                                   "oneOf": [
                                     {
-                                      "type": "string",
-                                      "enum": [
-                                        "FIRST",
-                                        "LAST",
-                                        "COUNT",
-                                        "MAX",
-                                        "MIN",
-                                        "MEDIAN",
-                                        "MEAN",
-                                        "SUM",
-                                        "STD_DEV",
-                                        "NONE"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "type": {
+                                      "oneOf": [
+                                        {
                                           "type": "string",
                                           "enum": [
                                             "FIRST",
@@ -11450,8 +11605,42 @@ Schema for a single Dashboard
                                             "MEDIAN",
                                             "MEAN",
                                             "SUM",
-                                            "STD_DEV",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
                                             "NONE"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "FIRST",
+                                                "LAST",
+                                                "COUNT",
+                                                "MAX",
+                                                "MIN",
+                                                "MEDIAN",
+                                                "MEAN",
+                                                "SUM",
+                                                "STD_DEV"
+                                              ]
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "NONE"
+                                              ]
+                                            }
                                           ]
                                         },
                                         "options": {
@@ -11489,7 +11678,8 @@ Schema for a single Dashboard
                                       },
                                       "additionalProperties": false,
                                       "required": [
-                                        "type"
+                                        "type",
+                                        "options"
                                       ]
                                     }
                                   ]
@@ -11583,24 +11773,8 @@ Schema for a single Dashboard
                                 "aggregation": {
                                   "oneOf": [
                                     {
-                                      "type": "string",
-                                      "enum": [
-                                        "FIRST",
-                                        "LAST",
-                                        "COUNT",
-                                        "MAX",
-                                        "MIN",
-                                        "MEDIAN",
-                                        "MEAN",
-                                        "SUM",
-                                        "STD_DEV",
-                                        "NONE"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "type": {
+                                      "oneOf": [
+                                        {
                                           "type": "string",
                                           "enum": [
                                             "FIRST",
@@ -11611,8 +11785,42 @@ Schema for a single Dashboard
                                             "MEDIAN",
                                             "MEAN",
                                             "SUM",
-                                            "STD_DEV",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
                                             "NONE"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "FIRST",
+                                                "LAST",
+                                                "COUNT",
+                                                "MAX",
+                                                "MIN",
+                                                "MEDIAN",
+                                                "MEAN",
+                                                "SUM",
+                                                "STD_DEV"
+                                              ]
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "NONE"
+                                              ]
+                                            }
                                           ]
                                         },
                                         "options": {
@@ -11650,7 +11858,8 @@ Schema for a single Dashboard
                                       },
                                       "additionalProperties": false,
                                       "required": [
-                                        "type"
+                                        "type",
+                                        "options"
                                       ]
                                     }
                                   ]
@@ -12210,24 +12419,8 @@ Schema for a single Dashboard
                         "aggregation": {
                           "oneOf": [
                             {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
-                              ]
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "type": {
+                              "oneOf": [
+                                {
                                   "type": "string",
                                   "enum": [
                                     "FIRST",
@@ -12238,8 +12431,42 @@ Schema for a single Dashboard
                                     "MEDIAN",
                                     "MEAN",
                                     "SUM",
-                                    "STD_DEV",
+                                    "STD_DEV"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
                                     "NONE"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "NONE"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "options": {
@@ -12277,7 +12504,8 @@ Schema for a single Dashboard
                               },
                               "additionalProperties": false,
                               "required": [
-                                "type"
+                                "type",
+                                "options"
                               ]
                             }
                           ]
@@ -13351,24 +13579,8 @@ Schema for the body of a Dashboard modification request
                         "aggregation": {
                           "oneOf": [
                             {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
-                              ]
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "type": {
+                              "oneOf": [
+                                {
                                   "type": "string",
                                   "enum": [
                                     "FIRST",
@@ -13379,8 +13591,42 @@ Schema for the body of a Dashboard modification request
                                     "MEDIAN",
                                     "MEAN",
                                     "SUM",
-                                    "STD_DEV",
+                                    "STD_DEV"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
                                     "NONE"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "NONE"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "options": {
@@ -13418,7 +13664,8 @@ Schema for the body of a Dashboard modification request
                               },
                               "additionalProperties": false,
                               "required": [
-                                "type"
+                                "type",
+                                "options"
                               ]
                             }
                           ]
@@ -13582,24 +13829,8 @@ Schema for the body of a Dashboard modification request
                             "aggregation": {
                               "oneOf": [
                                 {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
-                                  ]
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "type": {
+                                  "oneOf": [
+                                    {
                                       "type": "string",
                                       "enum": [
                                         "FIRST",
@@ -13610,8 +13841,42 @@ Schema for the body of a Dashboard modification request
                                         "MEDIAN",
                                         "MEAN",
                                         "SUM",
-                                        "STD_DEV",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
                                         "NONE"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "NONE"
+                                          ]
+                                        }
                                       ]
                                     },
                                     "options": {
@@ -13649,7 +13914,8 @@ Schema for the body of a Dashboard modification request
                                   },
                                   "additionalProperties": false,
                                   "required": [
-                                    "type"
+                                    "type",
+                                    "options"
                                   ]
                                 }
                               ]
@@ -13726,24 +13992,8 @@ Schema for the body of a Dashboard modification request
                             "aggregation": {
                               "oneOf": [
                                 {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
-                                  ]
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "type": {
+                                  "oneOf": [
+                                    {
                                       "type": "string",
                                       "enum": [
                                         "FIRST",
@@ -13754,8 +14004,42 @@ Schema for the body of a Dashboard modification request
                                         "MEDIAN",
                                         "MEAN",
                                         "SUM",
-                                        "STD_DEV",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
                                         "NONE"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "NONE"
+                                          ]
+                                        }
                                       ]
                                     },
                                     "options": {
@@ -13793,7 +14077,8 @@ Schema for the body of a Dashboard modification request
                                   },
                                   "additionalProperties": false,
                                   "required": [
-                                    "type"
+                                    "type",
+                                    "options"
                                   ]
                                 }
                               ]
@@ -14689,24 +14974,8 @@ Schema for the body of a Dashboard modification request
                       "aggregation": {
                         "oneOf": [
                           {
-                            "type": "string",
-                            "enum": [
-                              "FIRST",
-                              "LAST",
-                              "COUNT",
-                              "MAX",
-                              "MIN",
-                              "MEDIAN",
-                              "MEAN",
-                              "SUM",
-                              "STD_DEV",
-                              "NONE"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
-                              "type": {
+                            "oneOf": [
+                              {
                                 "type": "string",
                                 "enum": [
                                   "FIRST",
@@ -14717,8 +14986,42 @@ Schema for the body of a Dashboard modification request
                                   "MEDIAN",
                                   "MEAN",
                                   "SUM",
-                                  "STD_DEV",
+                                  "STD_DEV"
+                                ]
+                              },
+                              {
+                                "type": "string",
+                                "enum": [
                                   "NONE"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "FIRST",
+                                      "LAST",
+                                      "COUNT",
+                                      "MAX",
+                                      "MIN",
+                                      "MEDIAN",
+                                      "MEAN",
+                                      "SUM",
+                                      "STD_DEV"
+                                    ]
+                                  },
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "NONE"
+                                    ]
+                                  }
                                 ]
                               },
                               "options": {
@@ -14756,7 +15059,8 @@ Schema for the body of a Dashboard modification request
                             },
                             "additionalProperties": false,
                             "required": [
-                              "type"
+                              "type",
+                              "options"
                             ]
                           }
                         ]
@@ -14956,24 +15260,8 @@ Schema for the body of a Dashboard modification request
                         "aggregation": {
                           "oneOf": [
                             {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
-                              ]
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "type": {
+                              "oneOf": [
+                                {
                                   "type": "string",
                                   "enum": [
                                     "FIRST",
@@ -14984,8 +15272,42 @@ Schema for the body of a Dashboard modification request
                                     "MEDIAN",
                                     "MEAN",
                                     "SUM",
-                                    "STD_DEV",
+                                    "STD_DEV"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
                                     "NONE"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "NONE"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "options": {
@@ -15023,7 +15345,8 @@ Schema for the body of a Dashboard modification request
                               },
                               "additionalProperties": false,
                               "required": [
-                                "type"
+                                "type",
+                                "options"
                               ]
                             }
                           ]
@@ -15515,24 +15838,8 @@ Schema for the body of a Dashboard modification request
                             "aggregation": {
                               "oneOf": [
                                 {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
-                                  ]
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "type": {
+                                  "oneOf": [
+                                    {
                                       "type": "string",
                                       "enum": [
                                         "FIRST",
@@ -15543,8 +15850,42 @@ Schema for the body of a Dashboard modification request
                                         "MEDIAN",
                                         "MEAN",
                                         "SUM",
-                                        "STD_DEV",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
                                         "NONE"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "NONE"
+                                          ]
+                                        }
                                       ]
                                     },
                                     "options": {
@@ -15582,7 +15923,8 @@ Schema for the body of a Dashboard modification request
                                   },
                                   "additionalProperties": false,
                                   "required": [
-                                    "type"
+                                    "type",
+                                    "options"
                                   ]
                                 }
                               ]
@@ -16090,24 +16432,8 @@ Schema for the body of a Dashboard modification request
                         "aggregation": {
                           "oneOf": [
                             {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
-                              ]
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "type": {
+                              "oneOf": [
+                                {
                                   "type": "string",
                                   "enum": [
                                     "FIRST",
@@ -16118,8 +16444,42 @@ Schema for the body of a Dashboard modification request
                                     "MEDIAN",
                                     "MEAN",
                                     "SUM",
-                                    "STD_DEV",
+                                    "STD_DEV"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
                                     "NONE"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "NONE"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "options": {
@@ -16157,7 +16517,8 @@ Schema for the body of a Dashboard modification request
                               },
                               "additionalProperties": false,
                               "required": [
-                                "type"
+                                "type",
+                                "options"
                               ]
                             }
                           ]
@@ -16414,24 +16775,8 @@ Schema for the body of a Dashboard modification request
                                 "aggregation": {
                                   "oneOf": [
                                     {
-                                      "type": "string",
-                                      "enum": [
-                                        "FIRST",
-                                        "LAST",
-                                        "COUNT",
-                                        "MAX",
-                                        "MIN",
-                                        "MEDIAN",
-                                        "MEAN",
-                                        "SUM",
-                                        "STD_DEV",
-                                        "NONE"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "type": {
+                                      "oneOf": [
+                                        {
                                           "type": "string",
                                           "enum": [
                                             "FIRST",
@@ -16442,8 +16787,42 @@ Schema for the body of a Dashboard modification request
                                             "MEDIAN",
                                             "MEAN",
                                             "SUM",
-                                            "STD_DEV",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
                                             "NONE"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "FIRST",
+                                                "LAST",
+                                                "COUNT",
+                                                "MAX",
+                                                "MIN",
+                                                "MEDIAN",
+                                                "MEAN",
+                                                "SUM",
+                                                "STD_DEV"
+                                              ]
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "NONE"
+                                              ]
+                                            }
                                           ]
                                         },
                                         "options": {
@@ -16481,7 +16860,8 @@ Schema for the body of a Dashboard modification request
                                       },
                                       "additionalProperties": false,
                                       "required": [
-                                        "type"
+                                        "type",
+                                        "options"
                                       ]
                                     }
                                   ]
@@ -16619,24 +16999,8 @@ Schema for the body of a Dashboard modification request
                                 "aggregation": {
                                   "oneOf": [
                                     {
-                                      "type": "string",
-                                      "enum": [
-                                        "FIRST",
-                                        "LAST",
-                                        "COUNT",
-                                        "MAX",
-                                        "MIN",
-                                        "MEDIAN",
-                                        "MEAN",
-                                        "SUM",
-                                        "STD_DEV",
-                                        "NONE"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "type": {
+                                      "oneOf": [
+                                        {
                                           "type": "string",
                                           "enum": [
                                             "FIRST",
@@ -16647,8 +17011,42 @@ Schema for the body of a Dashboard modification request
                                             "MEDIAN",
                                             "MEAN",
                                             "SUM",
-                                            "STD_DEV",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
                                             "NONE"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "FIRST",
+                                                "LAST",
+                                                "COUNT",
+                                                "MAX",
+                                                "MIN",
+                                                "MEDIAN",
+                                                "MEAN",
+                                                "SUM",
+                                                "STD_DEV"
+                                              ]
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "NONE"
+                                              ]
+                                            }
                                           ]
                                         },
                                         "options": {
@@ -16686,7 +17084,8 @@ Schema for the body of a Dashboard modification request
                                       },
                                       "additionalProperties": false,
                                       "required": [
-                                        "type"
+                                        "type",
+                                        "options"
                                       ]
                                     }
                                   ]
@@ -16779,24 +17178,8 @@ Schema for the body of a Dashboard modification request
                                 "aggregation": {
                                   "oneOf": [
                                     {
-                                      "type": "string",
-                                      "enum": [
-                                        "FIRST",
-                                        "LAST",
-                                        "COUNT",
-                                        "MAX",
-                                        "MIN",
-                                        "MEDIAN",
-                                        "MEAN",
-                                        "SUM",
-                                        "STD_DEV",
-                                        "NONE"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "type": {
+                                      "oneOf": [
+                                        {
                                           "type": "string",
                                           "enum": [
                                             "FIRST",
@@ -16807,8 +17190,42 @@ Schema for the body of a Dashboard modification request
                                             "MEDIAN",
                                             "MEAN",
                                             "SUM",
-                                            "STD_DEV",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
                                             "NONE"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "FIRST",
+                                                "LAST",
+                                                "COUNT",
+                                                "MAX",
+                                                "MIN",
+                                                "MEDIAN",
+                                                "MEAN",
+                                                "SUM",
+                                                "STD_DEV"
+                                              ]
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "NONE"
+                                              ]
+                                            }
                                           ]
                                         },
                                         "options": {
@@ -16846,7 +17263,8 @@ Schema for the body of a Dashboard modification request
                                       },
                                       "additionalProperties": false,
                                       "required": [
-                                        "type"
+                                        "type",
+                                        "options"
                                       ]
                                     }
                                   ]
@@ -16940,24 +17358,8 @@ Schema for the body of a Dashboard modification request
                                 "aggregation": {
                                   "oneOf": [
                                     {
-                                      "type": "string",
-                                      "enum": [
-                                        "FIRST",
-                                        "LAST",
-                                        "COUNT",
-                                        "MAX",
-                                        "MIN",
-                                        "MEDIAN",
-                                        "MEAN",
-                                        "SUM",
-                                        "STD_DEV",
-                                        "NONE"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "type": {
+                                      "oneOf": [
+                                        {
                                           "type": "string",
                                           "enum": [
                                             "FIRST",
@@ -16968,8 +17370,42 @@ Schema for the body of a Dashboard modification request
                                             "MEDIAN",
                                             "MEAN",
                                             "SUM",
-                                            "STD_DEV",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
                                             "NONE"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "FIRST",
+                                                "LAST",
+                                                "COUNT",
+                                                "MAX",
+                                                "MIN",
+                                                "MEDIAN",
+                                                "MEAN",
+                                                "SUM",
+                                                "STD_DEV"
+                                              ]
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "NONE"
+                                              ]
+                                            }
                                           ]
                                         },
                                         "options": {
@@ -17007,7 +17443,8 @@ Schema for the body of a Dashboard modification request
                                       },
                                       "additionalProperties": false,
                                       "required": [
-                                        "type"
+                                        "type",
+                                        "options"
                                       ]
                                     }
                                   ]
@@ -17567,24 +18004,8 @@ Schema for the body of a Dashboard modification request
                         "aggregation": {
                           "oneOf": [
                             {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
-                              ]
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "type": {
+                              "oneOf": [
+                                {
                                   "type": "string",
                                   "enum": [
                                     "FIRST",
@@ -17595,8 +18016,42 @@ Schema for the body of a Dashboard modification request
                                     "MEDIAN",
                                     "MEAN",
                                     "SUM",
-                                    "STD_DEV",
+                                    "STD_DEV"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
                                     "NONE"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "NONE"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "options": {
@@ -17634,7 +18089,8 @@ Schema for the body of a Dashboard modification request
                               },
                               "additionalProperties": false,
                               "required": [
-                                "type"
+                                "type",
+                                "options"
                               ]
                             }
                           ]
@@ -18637,24 +19093,8 @@ Schema for the body of a Dashboard creation request
                         "aggregation": {
                           "oneOf": [
                             {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
-                              ]
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "type": {
+                              "oneOf": [
+                                {
                                   "type": "string",
                                   "enum": [
                                     "FIRST",
@@ -18665,8 +19105,42 @@ Schema for the body of a Dashboard creation request
                                     "MEDIAN",
                                     "MEAN",
                                     "SUM",
-                                    "STD_DEV",
+                                    "STD_DEV"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
                                     "NONE"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "NONE"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "options": {
@@ -18704,7 +19178,8 @@ Schema for the body of a Dashboard creation request
                               },
                               "additionalProperties": false,
                               "required": [
-                                "type"
+                                "type",
+                                "options"
                               ]
                             }
                           ]
@@ -18868,24 +19343,8 @@ Schema for the body of a Dashboard creation request
                             "aggregation": {
                               "oneOf": [
                                 {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
-                                  ]
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "type": {
+                                  "oneOf": [
+                                    {
                                       "type": "string",
                                       "enum": [
                                         "FIRST",
@@ -18896,8 +19355,42 @@ Schema for the body of a Dashboard creation request
                                         "MEDIAN",
                                         "MEAN",
                                         "SUM",
-                                        "STD_DEV",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
                                         "NONE"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "NONE"
+                                          ]
+                                        }
                                       ]
                                     },
                                     "options": {
@@ -18935,7 +19428,8 @@ Schema for the body of a Dashboard creation request
                                   },
                                   "additionalProperties": false,
                                   "required": [
-                                    "type"
+                                    "type",
+                                    "options"
                                   ]
                                 }
                               ]
@@ -19012,24 +19506,8 @@ Schema for the body of a Dashboard creation request
                             "aggregation": {
                               "oneOf": [
                                 {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
-                                  ]
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "type": {
+                                  "oneOf": [
+                                    {
                                       "type": "string",
                                       "enum": [
                                         "FIRST",
@@ -19040,8 +19518,42 @@ Schema for the body of a Dashboard creation request
                                         "MEDIAN",
                                         "MEAN",
                                         "SUM",
-                                        "STD_DEV",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
                                         "NONE"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "NONE"
+                                          ]
+                                        }
                                       ]
                                     },
                                     "options": {
@@ -19079,7 +19591,8 @@ Schema for the body of a Dashboard creation request
                                   },
                                   "additionalProperties": false,
                                   "required": [
-                                    "type"
+                                    "type",
+                                    "options"
                                   ]
                                 }
                               ]
@@ -19975,24 +20488,8 @@ Schema for the body of a Dashboard creation request
                       "aggregation": {
                         "oneOf": [
                           {
-                            "type": "string",
-                            "enum": [
-                              "FIRST",
-                              "LAST",
-                              "COUNT",
-                              "MAX",
-                              "MIN",
-                              "MEDIAN",
-                              "MEAN",
-                              "SUM",
-                              "STD_DEV",
-                              "NONE"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
-                              "type": {
+                            "oneOf": [
+                              {
                                 "type": "string",
                                 "enum": [
                                   "FIRST",
@@ -20003,8 +20500,42 @@ Schema for the body of a Dashboard creation request
                                   "MEDIAN",
                                   "MEAN",
                                   "SUM",
-                                  "STD_DEV",
+                                  "STD_DEV"
+                                ]
+                              },
+                              {
+                                "type": "string",
+                                "enum": [
                                   "NONE"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "FIRST",
+                                      "LAST",
+                                      "COUNT",
+                                      "MAX",
+                                      "MIN",
+                                      "MEDIAN",
+                                      "MEAN",
+                                      "SUM",
+                                      "STD_DEV"
+                                    ]
+                                  },
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "NONE"
+                                    ]
+                                  }
                                 ]
                               },
                               "options": {
@@ -20042,7 +20573,8 @@ Schema for the body of a Dashboard creation request
                             },
                             "additionalProperties": false,
                             "required": [
-                              "type"
+                              "type",
+                              "options"
                             ]
                           }
                         ]
@@ -20242,24 +20774,8 @@ Schema for the body of a Dashboard creation request
                         "aggregation": {
                           "oneOf": [
                             {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
-                              ]
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "type": {
+                              "oneOf": [
+                                {
                                   "type": "string",
                                   "enum": [
                                     "FIRST",
@@ -20270,8 +20786,42 @@ Schema for the body of a Dashboard creation request
                                     "MEDIAN",
                                     "MEAN",
                                     "SUM",
-                                    "STD_DEV",
+                                    "STD_DEV"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
                                     "NONE"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "NONE"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "options": {
@@ -20309,7 +20859,8 @@ Schema for the body of a Dashboard creation request
                               },
                               "additionalProperties": false,
                               "required": [
-                                "type"
+                                "type",
+                                "options"
                               ]
                             }
                           ]
@@ -20801,24 +21352,8 @@ Schema for the body of a Dashboard creation request
                             "aggregation": {
                               "oneOf": [
                                 {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
-                                  ]
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "type": {
+                                  "oneOf": [
+                                    {
                                       "type": "string",
                                       "enum": [
                                         "FIRST",
@@ -20829,8 +21364,42 @@ Schema for the body of a Dashboard creation request
                                         "MEDIAN",
                                         "MEAN",
                                         "SUM",
-                                        "STD_DEV",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
                                         "NONE"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "NONE"
+                                          ]
+                                        }
                                       ]
                                     },
                                     "options": {
@@ -20868,7 +21437,8 @@ Schema for the body of a Dashboard creation request
                                   },
                                   "additionalProperties": false,
                                   "required": [
-                                    "type"
+                                    "type",
+                                    "options"
                                   ]
                                 }
                               ]
@@ -21376,24 +21946,8 @@ Schema for the body of a Dashboard creation request
                         "aggregation": {
                           "oneOf": [
                             {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
-                              ]
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "type": {
+                              "oneOf": [
+                                {
                                   "type": "string",
                                   "enum": [
                                     "FIRST",
@@ -21404,8 +21958,42 @@ Schema for the body of a Dashboard creation request
                                     "MEDIAN",
                                     "MEAN",
                                     "SUM",
-                                    "STD_DEV",
+                                    "STD_DEV"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
                                     "NONE"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "NONE"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "options": {
@@ -21443,7 +22031,8 @@ Schema for the body of a Dashboard creation request
                               },
                               "additionalProperties": false,
                               "required": [
-                                "type"
+                                "type",
+                                "options"
                               ]
                             }
                           ]
@@ -21700,24 +22289,8 @@ Schema for the body of a Dashboard creation request
                                 "aggregation": {
                                   "oneOf": [
                                     {
-                                      "type": "string",
-                                      "enum": [
-                                        "FIRST",
-                                        "LAST",
-                                        "COUNT",
-                                        "MAX",
-                                        "MIN",
-                                        "MEDIAN",
-                                        "MEAN",
-                                        "SUM",
-                                        "STD_DEV",
-                                        "NONE"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "type": {
+                                      "oneOf": [
+                                        {
                                           "type": "string",
                                           "enum": [
                                             "FIRST",
@@ -21728,8 +22301,42 @@ Schema for the body of a Dashboard creation request
                                             "MEDIAN",
                                             "MEAN",
                                             "SUM",
-                                            "STD_DEV",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
                                             "NONE"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "FIRST",
+                                                "LAST",
+                                                "COUNT",
+                                                "MAX",
+                                                "MIN",
+                                                "MEDIAN",
+                                                "MEAN",
+                                                "SUM",
+                                                "STD_DEV"
+                                              ]
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "NONE"
+                                              ]
+                                            }
                                           ]
                                         },
                                         "options": {
@@ -21767,7 +22374,8 @@ Schema for the body of a Dashboard creation request
                                       },
                                       "additionalProperties": false,
                                       "required": [
-                                        "type"
+                                        "type",
+                                        "options"
                                       ]
                                     }
                                   ]
@@ -21905,24 +22513,8 @@ Schema for the body of a Dashboard creation request
                                 "aggregation": {
                                   "oneOf": [
                                     {
-                                      "type": "string",
-                                      "enum": [
-                                        "FIRST",
-                                        "LAST",
-                                        "COUNT",
-                                        "MAX",
-                                        "MIN",
-                                        "MEDIAN",
-                                        "MEAN",
-                                        "SUM",
-                                        "STD_DEV",
-                                        "NONE"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "type": {
+                                      "oneOf": [
+                                        {
                                           "type": "string",
                                           "enum": [
                                             "FIRST",
@@ -21933,8 +22525,42 @@ Schema for the body of a Dashboard creation request
                                             "MEDIAN",
                                             "MEAN",
                                             "SUM",
-                                            "STD_DEV",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
                                             "NONE"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "FIRST",
+                                                "LAST",
+                                                "COUNT",
+                                                "MAX",
+                                                "MIN",
+                                                "MEDIAN",
+                                                "MEAN",
+                                                "SUM",
+                                                "STD_DEV"
+                                              ]
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "NONE"
+                                              ]
+                                            }
                                           ]
                                         },
                                         "options": {
@@ -21972,7 +22598,8 @@ Schema for the body of a Dashboard creation request
                                       },
                                       "additionalProperties": false,
                                       "required": [
-                                        "type"
+                                        "type",
+                                        "options"
                                       ]
                                     }
                                   ]
@@ -22065,24 +22692,8 @@ Schema for the body of a Dashboard creation request
                                 "aggregation": {
                                   "oneOf": [
                                     {
-                                      "type": "string",
-                                      "enum": [
-                                        "FIRST",
-                                        "LAST",
-                                        "COUNT",
-                                        "MAX",
-                                        "MIN",
-                                        "MEDIAN",
-                                        "MEAN",
-                                        "SUM",
-                                        "STD_DEV",
-                                        "NONE"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "type": {
+                                      "oneOf": [
+                                        {
                                           "type": "string",
                                           "enum": [
                                             "FIRST",
@@ -22093,8 +22704,42 @@ Schema for the body of a Dashboard creation request
                                             "MEDIAN",
                                             "MEAN",
                                             "SUM",
-                                            "STD_DEV",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
                                             "NONE"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "FIRST",
+                                                "LAST",
+                                                "COUNT",
+                                                "MAX",
+                                                "MIN",
+                                                "MEDIAN",
+                                                "MEAN",
+                                                "SUM",
+                                                "STD_DEV"
+                                              ]
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "NONE"
+                                              ]
+                                            }
                                           ]
                                         },
                                         "options": {
@@ -22132,7 +22777,8 @@ Schema for the body of a Dashboard creation request
                                       },
                                       "additionalProperties": false,
                                       "required": [
-                                        "type"
+                                        "type",
+                                        "options"
                                       ]
                                     }
                                   ]
@@ -22226,24 +22872,8 @@ Schema for the body of a Dashboard creation request
                                 "aggregation": {
                                   "oneOf": [
                                     {
-                                      "type": "string",
-                                      "enum": [
-                                        "FIRST",
-                                        "LAST",
-                                        "COUNT",
-                                        "MAX",
-                                        "MIN",
-                                        "MEDIAN",
-                                        "MEAN",
-                                        "SUM",
-                                        "STD_DEV",
-                                        "NONE"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "type": {
+                                      "oneOf": [
+                                        {
                                           "type": "string",
                                           "enum": [
                                             "FIRST",
@@ -22254,8 +22884,42 @@ Schema for the body of a Dashboard creation request
                                             "MEDIAN",
                                             "MEAN",
                                             "SUM",
-                                            "STD_DEV",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
                                             "NONE"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "FIRST",
+                                                "LAST",
+                                                "COUNT",
+                                                "MAX",
+                                                "MIN",
+                                                "MEDIAN",
+                                                "MEAN",
+                                                "SUM",
+                                                "STD_DEV"
+                                              ]
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "NONE"
+                                              ]
+                                            }
                                           ]
                                         },
                                         "options": {
@@ -22293,7 +22957,8 @@ Schema for the body of a Dashboard creation request
                                       },
                                       "additionalProperties": false,
                                       "required": [
-                                        "type"
+                                        "type",
+                                        "options"
                                       ]
                                     }
                                   ]
@@ -22853,24 +23518,8 @@ Schema for the body of a Dashboard creation request
                         "aggregation": {
                           "oneOf": [
                             {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
-                              ]
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "type": {
+                              "oneOf": [
+                                {
                                   "type": "string",
                                   "enum": [
                                     "FIRST",
@@ -22881,8 +23530,42 @@ Schema for the body of a Dashboard creation request
                                     "MEDIAN",
                                     "MEAN",
                                     "SUM",
-                                    "STD_DEV",
+                                    "STD_DEV"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
                                     "NONE"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "NONE"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "options": {
@@ -22920,7 +23603,8 @@ Schema for the body of a Dashboard creation request
                               },
                               "additionalProperties": false,
                               "required": [
-                                "type"
+                                "type",
+                                "options"
                               ]
                             }
                           ]
@@ -24178,24 +24862,8 @@ Schema for a collection of Dashboards
                               "aggregation": {
                                 "oneOf": [
                                   {
-                                    "type": "string",
-                                    "enum": [
-                                      "FIRST",
-                                      "LAST",
-                                      "COUNT",
-                                      "MAX",
-                                      "MIN",
-                                      "MEDIAN",
-                                      "MEAN",
-                                      "SUM",
-                                      "STD_DEV",
-                                      "NONE"
-                                    ]
-                                  },
-                                  {
-                                    "type": "object",
-                                    "properties": {
-                                      "type": {
+                                    "oneOf": [
+                                      {
                                         "type": "string",
                                         "enum": [
                                           "FIRST",
@@ -24206,8 +24874,42 @@ Schema for a collection of Dashboards
                                           "MEDIAN",
                                           "MEAN",
                                           "SUM",
-                                          "STD_DEV",
+                                          "STD_DEV"
+                                        ]
+                                      },
+                                      {
+                                        "type": "string",
+                                        "enum": [
                                           "NONE"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "type": {
+                                        "oneOf": [
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "FIRST",
+                                              "LAST",
+                                              "COUNT",
+                                              "MAX",
+                                              "MIN",
+                                              "MEDIAN",
+                                              "MEAN",
+                                              "SUM",
+                                              "STD_DEV"
+                                            ]
+                                          },
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "NONE"
+                                            ]
+                                          }
                                         ]
                                       },
                                       "options": {
@@ -24245,7 +24947,8 @@ Schema for a collection of Dashboards
                                     },
                                     "additionalProperties": false,
                                     "required": [
-                                      "type"
+                                      "type",
+                                      "options"
                                     ]
                                   }
                                 ]
@@ -24409,24 +25112,8 @@ Schema for a collection of Dashboards
                                   "aggregation": {
                                     "oneOf": [
                                       {
-                                        "type": "string",
-                                        "enum": [
-                                          "FIRST",
-                                          "LAST",
-                                          "COUNT",
-                                          "MAX",
-                                          "MIN",
-                                          "MEDIAN",
-                                          "MEAN",
-                                          "SUM",
-                                          "STD_DEV",
-                                          "NONE"
-                                        ]
-                                      },
-                                      {
-                                        "type": "object",
-                                        "properties": {
-                                          "type": {
+                                        "oneOf": [
+                                          {
                                             "type": "string",
                                             "enum": [
                                               "FIRST",
@@ -24437,8 +25124,42 @@ Schema for a collection of Dashboards
                                               "MEDIAN",
                                               "MEAN",
                                               "SUM",
-                                              "STD_DEV",
+                                              "STD_DEV"
+                                            ]
+                                          },
+                                          {
+                                            "type": "string",
+                                            "enum": [
                                               "NONE"
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "type": {
+                                            "oneOf": [
+                                              {
+                                                "type": "string",
+                                                "enum": [
+                                                  "FIRST",
+                                                  "LAST",
+                                                  "COUNT",
+                                                  "MAX",
+                                                  "MIN",
+                                                  "MEDIAN",
+                                                  "MEAN",
+                                                  "SUM",
+                                                  "STD_DEV"
+                                                ]
+                                              },
+                                              {
+                                                "type": "string",
+                                                "enum": [
+                                                  "NONE"
+                                                ]
+                                              }
                                             ]
                                           },
                                           "options": {
@@ -24476,7 +25197,8 @@ Schema for a collection of Dashboards
                                         },
                                         "additionalProperties": false,
                                         "required": [
-                                          "type"
+                                          "type",
+                                          "options"
                                         ]
                                       }
                                     ]
@@ -24553,24 +25275,8 @@ Schema for a collection of Dashboards
                                   "aggregation": {
                                     "oneOf": [
                                       {
-                                        "type": "string",
-                                        "enum": [
-                                          "FIRST",
-                                          "LAST",
-                                          "COUNT",
-                                          "MAX",
-                                          "MIN",
-                                          "MEDIAN",
-                                          "MEAN",
-                                          "SUM",
-                                          "STD_DEV",
-                                          "NONE"
-                                        ]
-                                      },
-                                      {
-                                        "type": "object",
-                                        "properties": {
-                                          "type": {
+                                        "oneOf": [
+                                          {
                                             "type": "string",
                                             "enum": [
                                               "FIRST",
@@ -24581,8 +25287,42 @@ Schema for a collection of Dashboards
                                               "MEDIAN",
                                               "MEAN",
                                               "SUM",
-                                              "STD_DEV",
+                                              "STD_DEV"
+                                            ]
+                                          },
+                                          {
+                                            "type": "string",
+                                            "enum": [
                                               "NONE"
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "type": {
+                                            "oneOf": [
+                                              {
+                                                "type": "string",
+                                                "enum": [
+                                                  "FIRST",
+                                                  "LAST",
+                                                  "COUNT",
+                                                  "MAX",
+                                                  "MIN",
+                                                  "MEDIAN",
+                                                  "MEAN",
+                                                  "SUM",
+                                                  "STD_DEV"
+                                                ]
+                                              },
+                                              {
+                                                "type": "string",
+                                                "enum": [
+                                                  "NONE"
+                                                ]
+                                              }
                                             ]
                                           },
                                           "options": {
@@ -24620,7 +25360,8 @@ Schema for a collection of Dashboards
                                         },
                                         "additionalProperties": false,
                                         "required": [
-                                          "type"
+                                          "type",
+                                          "options"
                                         ]
                                       }
                                     ]
@@ -25516,24 +26257,8 @@ Schema for a collection of Dashboards
                             "aggregation": {
                               "oneOf": [
                                 {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
-                                  ]
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "type": {
+                                  "oneOf": [
+                                    {
                                       "type": "string",
                                       "enum": [
                                         "FIRST",
@@ -25544,8 +26269,42 @@ Schema for a collection of Dashboards
                                         "MEDIAN",
                                         "MEAN",
                                         "SUM",
-                                        "STD_DEV",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
                                         "NONE"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "NONE"
+                                          ]
+                                        }
                                       ]
                                     },
                                     "options": {
@@ -25583,7 +26342,8 @@ Schema for a collection of Dashboards
                                   },
                                   "additionalProperties": false,
                                   "required": [
-                                    "type"
+                                    "type",
+                                    "options"
                                   ]
                                 }
                               ]
@@ -25783,24 +26543,8 @@ Schema for a collection of Dashboards
                               "aggregation": {
                                 "oneOf": [
                                   {
-                                    "type": "string",
-                                    "enum": [
-                                      "FIRST",
-                                      "LAST",
-                                      "COUNT",
-                                      "MAX",
-                                      "MIN",
-                                      "MEDIAN",
-                                      "MEAN",
-                                      "SUM",
-                                      "STD_DEV",
-                                      "NONE"
-                                    ]
-                                  },
-                                  {
-                                    "type": "object",
-                                    "properties": {
-                                      "type": {
+                                    "oneOf": [
+                                      {
                                         "type": "string",
                                         "enum": [
                                           "FIRST",
@@ -25811,8 +26555,42 @@ Schema for a collection of Dashboards
                                           "MEDIAN",
                                           "MEAN",
                                           "SUM",
-                                          "STD_DEV",
+                                          "STD_DEV"
+                                        ]
+                                      },
+                                      {
+                                        "type": "string",
+                                        "enum": [
                                           "NONE"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "type": {
+                                        "oneOf": [
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "FIRST",
+                                              "LAST",
+                                              "COUNT",
+                                              "MAX",
+                                              "MIN",
+                                              "MEDIAN",
+                                              "MEAN",
+                                              "SUM",
+                                              "STD_DEV"
+                                            ]
+                                          },
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "NONE"
+                                            ]
+                                          }
                                         ]
                                       },
                                       "options": {
@@ -25850,7 +26628,8 @@ Schema for a collection of Dashboards
                                     },
                                     "additionalProperties": false,
                                     "required": [
-                                      "type"
+                                      "type",
+                                      "options"
                                     ]
                                   }
                                 ]
@@ -26342,24 +27121,8 @@ Schema for a collection of Dashboards
                                   "aggregation": {
                                     "oneOf": [
                                       {
-                                        "type": "string",
-                                        "enum": [
-                                          "FIRST",
-                                          "LAST",
-                                          "COUNT",
-                                          "MAX",
-                                          "MIN",
-                                          "MEDIAN",
-                                          "MEAN",
-                                          "SUM",
-                                          "STD_DEV",
-                                          "NONE"
-                                        ]
-                                      },
-                                      {
-                                        "type": "object",
-                                        "properties": {
-                                          "type": {
+                                        "oneOf": [
+                                          {
                                             "type": "string",
                                             "enum": [
                                               "FIRST",
@@ -26370,8 +27133,42 @@ Schema for a collection of Dashboards
                                               "MEDIAN",
                                               "MEAN",
                                               "SUM",
-                                              "STD_DEV",
+                                              "STD_DEV"
+                                            ]
+                                          },
+                                          {
+                                            "type": "string",
+                                            "enum": [
                                               "NONE"
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "type": {
+                                            "oneOf": [
+                                              {
+                                                "type": "string",
+                                                "enum": [
+                                                  "FIRST",
+                                                  "LAST",
+                                                  "COUNT",
+                                                  "MAX",
+                                                  "MIN",
+                                                  "MEDIAN",
+                                                  "MEAN",
+                                                  "SUM",
+                                                  "STD_DEV"
+                                                ]
+                                              },
+                                              {
+                                                "type": "string",
+                                                "enum": [
+                                                  "NONE"
+                                                ]
+                                              }
                                             ]
                                           },
                                           "options": {
@@ -26409,7 +27206,8 @@ Schema for a collection of Dashboards
                                         },
                                         "additionalProperties": false,
                                         "required": [
-                                          "type"
+                                          "type",
+                                          "options"
                                         ]
                                       }
                                     ]
@@ -26917,24 +27715,8 @@ Schema for a collection of Dashboards
                               "aggregation": {
                                 "oneOf": [
                                   {
-                                    "type": "string",
-                                    "enum": [
-                                      "FIRST",
-                                      "LAST",
-                                      "COUNT",
-                                      "MAX",
-                                      "MIN",
-                                      "MEDIAN",
-                                      "MEAN",
-                                      "SUM",
-                                      "STD_DEV",
-                                      "NONE"
-                                    ]
-                                  },
-                                  {
-                                    "type": "object",
-                                    "properties": {
-                                      "type": {
+                                    "oneOf": [
+                                      {
                                         "type": "string",
                                         "enum": [
                                           "FIRST",
@@ -26945,8 +27727,42 @@ Schema for a collection of Dashboards
                                           "MEDIAN",
                                           "MEAN",
                                           "SUM",
-                                          "STD_DEV",
+                                          "STD_DEV"
+                                        ]
+                                      },
+                                      {
+                                        "type": "string",
+                                        "enum": [
                                           "NONE"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "type": {
+                                        "oneOf": [
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "FIRST",
+                                              "LAST",
+                                              "COUNT",
+                                              "MAX",
+                                              "MIN",
+                                              "MEDIAN",
+                                              "MEAN",
+                                              "SUM",
+                                              "STD_DEV"
+                                            ]
+                                          },
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "NONE"
+                                            ]
+                                          }
                                         ]
                                       },
                                       "options": {
@@ -26984,7 +27800,8 @@ Schema for a collection of Dashboards
                                     },
                                     "additionalProperties": false,
                                     "required": [
-                                      "type"
+                                      "type",
+                                      "options"
                                     ]
                                   }
                                 ]
@@ -27241,24 +28058,8 @@ Schema for a collection of Dashboards
                                       "aggregation": {
                                         "oneOf": [
                                           {
-                                            "type": "string",
-                                            "enum": [
-                                              "FIRST",
-                                              "LAST",
-                                              "COUNT",
-                                              "MAX",
-                                              "MIN",
-                                              "MEDIAN",
-                                              "MEAN",
-                                              "SUM",
-                                              "STD_DEV",
-                                              "NONE"
-                                            ]
-                                          },
-                                          {
-                                            "type": "object",
-                                            "properties": {
-                                              "type": {
+                                            "oneOf": [
+                                              {
                                                 "type": "string",
                                                 "enum": [
                                                   "FIRST",
@@ -27269,8 +28070,42 @@ Schema for a collection of Dashboards
                                                   "MEDIAN",
                                                   "MEAN",
                                                   "SUM",
-                                                  "STD_DEV",
+                                                  "STD_DEV"
+                                                ]
+                                              },
+                                              {
+                                                "type": "string",
+                                                "enum": [
                                                   "NONE"
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "type": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "FIRST",
+                                                      "LAST",
+                                                      "COUNT",
+                                                      "MAX",
+                                                      "MIN",
+                                                      "MEDIAN",
+                                                      "MEAN",
+                                                      "SUM",
+                                                      "STD_DEV"
+                                                    ]
+                                                  },
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "NONE"
+                                                    ]
+                                                  }
                                                 ]
                                               },
                                               "options": {
@@ -27308,7 +28143,8 @@ Schema for a collection of Dashboards
                                             },
                                             "additionalProperties": false,
                                             "required": [
-                                              "type"
+                                              "type",
+                                              "options"
                                             ]
                                           }
                                         ]
@@ -27446,24 +28282,8 @@ Schema for a collection of Dashboards
                                       "aggregation": {
                                         "oneOf": [
                                           {
-                                            "type": "string",
-                                            "enum": [
-                                              "FIRST",
-                                              "LAST",
-                                              "COUNT",
-                                              "MAX",
-                                              "MIN",
-                                              "MEDIAN",
-                                              "MEAN",
-                                              "SUM",
-                                              "STD_DEV",
-                                              "NONE"
-                                            ]
-                                          },
-                                          {
-                                            "type": "object",
-                                            "properties": {
-                                              "type": {
+                                            "oneOf": [
+                                              {
                                                 "type": "string",
                                                 "enum": [
                                                   "FIRST",
@@ -27474,8 +28294,42 @@ Schema for a collection of Dashboards
                                                   "MEDIAN",
                                                   "MEAN",
                                                   "SUM",
-                                                  "STD_DEV",
+                                                  "STD_DEV"
+                                                ]
+                                              },
+                                              {
+                                                "type": "string",
+                                                "enum": [
                                                   "NONE"
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "type": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "FIRST",
+                                                      "LAST",
+                                                      "COUNT",
+                                                      "MAX",
+                                                      "MIN",
+                                                      "MEDIAN",
+                                                      "MEAN",
+                                                      "SUM",
+                                                      "STD_DEV"
+                                                    ]
+                                                  },
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "NONE"
+                                                    ]
+                                                  }
                                                 ]
                                               },
                                               "options": {
@@ -27513,7 +28367,8 @@ Schema for a collection of Dashboards
                                             },
                                             "additionalProperties": false,
                                             "required": [
-                                              "type"
+                                              "type",
+                                              "options"
                                             ]
                                           }
                                         ]
@@ -27606,24 +28461,8 @@ Schema for a collection of Dashboards
                                       "aggregation": {
                                         "oneOf": [
                                           {
-                                            "type": "string",
-                                            "enum": [
-                                              "FIRST",
-                                              "LAST",
-                                              "COUNT",
-                                              "MAX",
-                                              "MIN",
-                                              "MEDIAN",
-                                              "MEAN",
-                                              "SUM",
-                                              "STD_DEV",
-                                              "NONE"
-                                            ]
-                                          },
-                                          {
-                                            "type": "object",
-                                            "properties": {
-                                              "type": {
+                                            "oneOf": [
+                                              {
                                                 "type": "string",
                                                 "enum": [
                                                   "FIRST",
@@ -27634,8 +28473,42 @@ Schema for a collection of Dashboards
                                                   "MEDIAN",
                                                   "MEAN",
                                                   "SUM",
-                                                  "STD_DEV",
+                                                  "STD_DEV"
+                                                ]
+                                              },
+                                              {
+                                                "type": "string",
+                                                "enum": [
                                                   "NONE"
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "type": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "FIRST",
+                                                      "LAST",
+                                                      "COUNT",
+                                                      "MAX",
+                                                      "MIN",
+                                                      "MEDIAN",
+                                                      "MEAN",
+                                                      "SUM",
+                                                      "STD_DEV"
+                                                    ]
+                                                  },
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "NONE"
+                                                    ]
+                                                  }
                                                 ]
                                               },
                                               "options": {
@@ -27673,7 +28546,8 @@ Schema for a collection of Dashboards
                                             },
                                             "additionalProperties": false,
                                             "required": [
-                                              "type"
+                                              "type",
+                                              "options"
                                             ]
                                           }
                                         ]
@@ -27767,24 +28641,8 @@ Schema for a collection of Dashboards
                                       "aggregation": {
                                         "oneOf": [
                                           {
-                                            "type": "string",
-                                            "enum": [
-                                              "FIRST",
-                                              "LAST",
-                                              "COUNT",
-                                              "MAX",
-                                              "MIN",
-                                              "MEDIAN",
-                                              "MEAN",
-                                              "SUM",
-                                              "STD_DEV",
-                                              "NONE"
-                                            ]
-                                          },
-                                          {
-                                            "type": "object",
-                                            "properties": {
-                                              "type": {
+                                            "oneOf": [
+                                              {
                                                 "type": "string",
                                                 "enum": [
                                                   "FIRST",
@@ -27795,8 +28653,42 @@ Schema for a collection of Dashboards
                                                   "MEDIAN",
                                                   "MEAN",
                                                   "SUM",
-                                                  "STD_DEV",
+                                                  "STD_DEV"
+                                                ]
+                                              },
+                                              {
+                                                "type": "string",
+                                                "enum": [
                                                   "NONE"
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "type": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "FIRST",
+                                                      "LAST",
+                                                      "COUNT",
+                                                      "MAX",
+                                                      "MIN",
+                                                      "MEDIAN",
+                                                      "MEAN",
+                                                      "SUM",
+                                                      "STD_DEV"
+                                                    ]
+                                                  },
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "NONE"
+                                                    ]
+                                                  }
                                                 ]
                                               },
                                               "options": {
@@ -27834,7 +28726,8 @@ Schema for a collection of Dashboards
                                             },
                                             "additionalProperties": false,
                                             "required": [
-                                              "type"
+                                              "type",
+                                              "options"
                                             ]
                                           }
                                         ]
@@ -28394,24 +29287,8 @@ Schema for a collection of Dashboards
                               "aggregation": {
                                 "oneOf": [
                                   {
-                                    "type": "string",
-                                    "enum": [
-                                      "FIRST",
-                                      "LAST",
-                                      "COUNT",
-                                      "MAX",
-                                      "MIN",
-                                      "MEDIAN",
-                                      "MEAN",
-                                      "SUM",
-                                      "STD_DEV",
-                                      "NONE"
-                                    ]
-                                  },
-                                  {
-                                    "type": "object",
-                                    "properties": {
-                                      "type": {
+                                    "oneOf": [
+                                      {
                                         "type": "string",
                                         "enum": [
                                           "FIRST",
@@ -28422,8 +29299,42 @@ Schema for a collection of Dashboards
                                           "MEDIAN",
                                           "MEAN",
                                           "SUM",
-                                          "STD_DEV",
+                                          "STD_DEV"
+                                        ]
+                                      },
+                                      {
+                                        "type": "string",
+                                        "enum": [
                                           "NONE"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "type": {
+                                        "oneOf": [
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "FIRST",
+                                              "LAST",
+                                              "COUNT",
+                                              "MAX",
+                                              "MIN",
+                                              "MEDIAN",
+                                              "MEAN",
+                                              "SUM",
+                                              "STD_DEV"
+                                            ]
+                                          },
+                                          {
+                                            "type": "string",
+                                            "enum": [
+                                              "NONE"
+                                            ]
+                                          }
                                         ]
                                       },
                                       "options": {
@@ -28461,7 +29372,8 @@ Schema for a collection of Dashboards
                                     },
                                     "additionalProperties": false,
                                     "required": [
-                                      "type"
+                                      "type",
+                                      "options"
                                     ]
                                   }
                                 ]
@@ -30627,22 +31539,17 @@ Schema for a single Device
                   "MEDIAN",
                   "MEAN",
                   "SUM",
-                  "STD_DEV",
-                  "NONE"
+                  "STD_DEV"
                 ]
               },
               "aggregationOptions": {
                 "type": "array",
                 "items": {
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "additionalProperties": false
-                    }
-                  ]
+                  "type": "object",
+                  "additionalProperties": false
                 },
                 "additionalProperties": false,
-                "maxItems": 10
+                "maxItems": 0
               },
               "childAttributes": {
                 "type": "array",
@@ -31370,22 +32277,17 @@ Schema for the body of a Device modification request
                   "MEDIAN",
                   "MEAN",
                   "SUM",
-                  "STD_DEV",
-                  "NONE"
+                  "STD_DEV"
                 ]
               },
               "aggregationOptions": {
                 "type": "array",
                 "items": {
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "additionalProperties": false
-                    }
-                  ]
+                  "type": "object",
+                  "additionalProperties": false
                 },
                 "additionalProperties": false,
-                "maxItems": 10
+                "maxItems": 0
               },
               "childAttributes": {
                 "type": "array",
@@ -31609,22 +32511,17 @@ Schema for the body of a Device creation request
                   "MEDIAN",
                   "MEAN",
                   "SUM",
-                  "STD_DEV",
-                  "NONE"
+                  "STD_DEV"
                 ]
               },
               "aggregationOptions": {
                 "type": "array",
                 "items": {
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "additionalProperties": false
-                    }
-                  ]
+                  "type": "object",
+                  "additionalProperties": false
                 },
                 "additionalProperties": false,
-                "maxItems": 10
+                "maxItems": 0
               },
               "childAttributes": {
                 "type": "array",
@@ -31880,22 +32777,17 @@ Schema for a single Device Recipe
                   "MEDIAN",
                   "MEAN",
                   "SUM",
-                  "STD_DEV",
-                  "NONE"
+                  "STD_DEV"
                 ]
               },
               "aggregationOptions": {
                 "type": "array",
                 "items": {
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "additionalProperties": false
-                    }
-                  ]
+                  "type": "object",
+                  "additionalProperties": false
                 },
                 "additionalProperties": false,
-                "maxItems": 10
+                "maxItems": 0
               },
               "childAttributes": {
                 "type": "array",
@@ -32243,22 +33135,17 @@ Schema for the body of a Device Recipe modification request
                   "MEDIAN",
                   "MEAN",
                   "SUM",
-                  "STD_DEV",
-                  "NONE"
+                  "STD_DEV"
                 ]
               },
               "aggregationOptions": {
                 "type": "array",
                 "items": {
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "additionalProperties": false
-                    }
-                  ]
+                  "type": "object",
+                  "additionalProperties": false
                 },
                 "additionalProperties": false,
-                "maxItems": 10
+                "maxItems": 0
               },
               "childAttributes": {
                 "type": "array",
@@ -32493,22 +33380,17 @@ Schema for the body of a Device Recipe creation request
                   "MEDIAN",
                   "MEAN",
                   "SUM",
-                  "STD_DEV",
-                  "NONE"
+                  "STD_DEV"
                 ]
               },
               "aggregationOptions": {
                 "type": "array",
                 "items": {
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "additionalProperties": false
-                    }
-                  ]
+                  "type": "object",
+                  "additionalProperties": false
                 },
                 "additionalProperties": false,
-                "maxItems": 10
+                "maxItems": 0
               },
               "childAttributes": {
                 "type": "array",
@@ -32773,22 +33655,17 @@ Schema for a collection of Device Recipes
                         "MEDIAN",
                         "MEAN",
                         "SUM",
-                        "STD_DEV",
-                        "NONE"
+                        "STD_DEV"
                       ]
                     },
                     "aggregationOptions": {
                       "type": "array",
                       "items": {
-                        "oneOf": [
-                          {
-                            "type": "object",
-                            "additionalProperties": false
-                          }
-                        ]
+                        "type": "object",
+                        "additionalProperties": false
                       },
                       "additionalProperties": false,
-                      "maxItems": 10
+                      "maxItems": 0
                     },
                     "childAttributes": {
                       "type": "array",
@@ -33430,22 +34307,17 @@ Schema for a collection of Devices
                         "MEDIAN",
                         "MEAN",
                         "SUM",
-                        "STD_DEV",
-                        "NONE"
+                        "STD_DEV"
                       ]
                     },
                     "aggregationOptions": {
                       "type": "array",
                       "items": {
-                        "oneOf": [
-                          {
-                            "type": "object",
-                            "additionalProperties": false
-                          }
-                        ]
+                        "type": "object",
+                        "additionalProperties": false
                       },
                       "additionalProperties": false,
-                      "maxItems": 10
+                      "maxItems": 0
                     },
                     "childAttributes": {
                       "type": "array",
@@ -33802,22 +34674,17 @@ Schema for the body of a Devices modification request
                       "MEDIAN",
                       "MEAN",
                       "SUM",
-                      "STD_DEV",
-                      "NONE"
+                      "STD_DEV"
                     ]
                   },
                   "aggregationOptions": {
                     "type": "array",
                     "items": {
-                      "oneOf": [
-                        {
-                          "type": "object",
-                          "additionalProperties": false
-                        }
-                      ]
+                      "type": "object",
+                      "additionalProperties": false
                     },
                     "additionalProperties": false,
-                    "maxItems": 10
+                    "maxItems": 0
                   },
                   "childAttributes": {
                     "type": "array",
@@ -83703,24 +84570,8 @@ Schema for the result of a time series query
     "aggregation": {
       "oneOf": [
         {
-          "type": "string",
-          "enum": [
-            "FIRST",
-            "LAST",
-            "COUNT",
-            "MAX",
-            "MIN",
-            "MEDIAN",
-            "MEAN",
-            "SUM",
-            "STD_DEV",
-            "NONE"
-          ]
-        },
-        {
-          "type": "object",
-          "properties": {
-            "type": {
+          "oneOf": [
+            {
               "type": "string",
               "enum": [
                 "FIRST",
@@ -83731,8 +84582,42 @@ Schema for the result of a time series query
                 "MEDIAN",
                 "MEAN",
                 "SUM",
-                "STD_DEV",
+                "STD_DEV"
+              ]
+            },
+            {
+              "type": "string",
+              "enum": [
                 "NONE"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "FIRST",
+                    "LAST",
+                    "COUNT",
+                    "MAX",
+                    "MIN",
+                    "MEDIAN",
+                    "MEAN",
+                    "SUM",
+                    "STD_DEV"
+                  ]
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "NONE"
+                  ]
+                }
               ]
             },
             "options": {
@@ -83770,7 +84655,8 @@ Schema for the result of a time series query
           },
           "additionalProperties": false,
           "required": [
-            "type"
+            "type",
+            "options"
           ]
         }
       ]
@@ -83922,64 +84808,13 @@ Schema for the body of a time series query request
             "MEDIAN",
             "MEAN",
             "SUM",
-            "STD_DEV",
+            "STD_DEV"
+          ]
+        },
+        {
+          "type": "string",
+          "enum": [
             "NONE"
-          ]
-        },
-        {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string",
-              "enum": [
-                "FIRST",
-                "LAST",
-                "COUNT",
-                "MAX",
-                "MIN",
-                "MEDIAN",
-                "MEAN",
-                "SUM",
-                "STD_DEV",
-                "NONE"
-              ]
-            },
-            "options": {
-              "type": "object",
-              "additionalProperties": false
-            }
-          },
-          "additionalProperties": false,
-          "required": [
-            "type"
-          ]
-        },
-        {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string",
-              "enum": [
-                "TIMEATVALUE"
-              ]
-            },
-            "options": {
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "string",
-                  "maxLength": 255
-                }
-              },
-              "additionalProperties": false,
-              "required": [
-                "value"
-              ]
-            }
-          },
-          "additionalProperties": false,
-          "required": [
-            "type"
           ]
         }
       ]

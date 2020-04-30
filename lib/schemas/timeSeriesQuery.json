@@ -27,64 +27,13 @@
             "MEDIAN",
             "MEAN",
             "SUM",
-            "STD_DEV",
+            "STD_DEV"
+          ]
+        },
+        {
+          "type": "string",
+          "enum": [
             "NONE"
-          ]
-        },
-        {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string",
-              "enum": [
-                "FIRST",
-                "LAST",
-                "COUNT",
-                "MAX",
-                "MIN",
-                "MEDIAN",
-                "MEAN",
-                "SUM",
-                "STD_DEV",
-                "NONE"
-              ]
-            },
-            "options": {
-              "type": "object",
-              "additionalProperties": false
-            }
-          },
-          "additionalProperties": false,
-          "required": [
-            "type"
-          ]
-        },
-        {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string",
-              "enum": [
-                "TIMEATVALUE"
-              ]
-            },
-            "options": {
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "string",
-                  "maxLength": 255
-                }
-              },
-              "additionalProperties": false,
-              "required": [
-                "value"
-              ]
-            }
-          },
-          "additionalProperties": false,
-          "required": [
-            "type"
           ]
         }
       ]

@@ -91,22 +91,17 @@
                       "MEDIAN",
                       "MEAN",
                       "SUM",
-                      "STD_DEV",
-                      "NONE"
+                      "STD_DEV"
                     ]
                   },
                   "aggregationOptions": {
                     "type": "array",
                     "items": {
-                      "oneOf": [
-                        {
-                          "type": "object",
-                          "additionalProperties": false
-                        }
-                      ]
+                      "type": "object",
+                      "additionalProperties": false
                     },
                     "additionalProperties": false,
-                    "maxItems": 10
+                    "maxItems": 0
                   },
                   "childAttributes": {
                     "type": "array",
