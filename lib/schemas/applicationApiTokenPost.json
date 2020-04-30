@@ -77,6 +77,7 @@
           "application.backfillArchiveData",
           "application.clone",
           "application.export",
+          "application.import",
           "application.fullEventsArchive",
           "application.fullDataTablesArchive",
           "application.debug",

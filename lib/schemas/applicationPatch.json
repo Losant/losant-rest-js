@@ -236,6 +236,11 @@
         }
       },
       "additionalProperties": false
+    },
+    "blobUrlTTL": {
+      "type": "number",
+      "minimum": 3600,
+      "maximum": 604800
     }
   },
   "additionalProperties": false

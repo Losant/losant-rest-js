@@ -156,18 +156,97 @@
                           "maxLength": 255
                         },
                         "aggregation": {
-                          "type": "string",
-                          "enum": [
-                            "FIRST",
-                            "LAST",
-                            "COUNT",
-                            "MAX",
-                            "MIN",
-                            "MEDIAN",
-                            "MEAN",
-                            "SUM",
-                            "STD_DEV",
-                            "NONE"
+                          "oneOf": [
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "NONE"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "NONE"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "TIMEATVALUE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string",
+                                      "maxLength": 255
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "value"
+                                  ]
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type",
+                                "options"
+                              ]
+                            }
                           ]
                         },
                         "color": {
@@ -327,18 +406,97 @@
                               "maxLength": 255
                             },
                             "aggregation": {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
+                              "oneOf": [
+                                {
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "NONE"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "NONE"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "TIMEATVALUE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "properties": {
+                                        "value": {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "value"
+                                      ]
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type",
+                                    "options"
+                                  ]
+                                }
                               ]
                             },
                             "deviceIds": {
@@ -411,18 +569,97 @@
                               "maxLength": 255
                             },
                             "aggregation": {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
+                              "oneOf": [
+                                {
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "NONE"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "NONE"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "TIMEATVALUE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "properties": {
+                                        "value": {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "value"
+                                      ]
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type",
+                                    "options"
+                                  ]
+                                }
                               ]
                             },
                             "deviceIds": {
@@ -1314,18 +1551,97 @@
                         "maxLength": 255
                       },
                       "aggregation": {
-                        "type": "string",
-                        "enum": [
-                          "FIRST",
-                          "LAST",
-                          "COUNT",
-                          "MAX",
-                          "MIN",
-                          "MEDIAN",
-                          "MEAN",
-                          "SUM",
-                          "STD_DEV",
-                          "NONE"
+                        "oneOf": [
+                          {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "enum": [
+                                  "FIRST",
+                                  "LAST",
+                                  "COUNT",
+                                  "MAX",
+                                  "MIN",
+                                  "MEDIAN",
+                                  "MEAN",
+                                  "SUM",
+                                  "STD_DEV"
+                                ]
+                              },
+                              {
+                                "type": "string",
+                                "enum": [
+                                  "NONE"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "FIRST",
+                                      "LAST",
+                                      "COUNT",
+                                      "MAX",
+                                      "MIN",
+                                      "MEDIAN",
+                                      "MEAN",
+                                      "SUM",
+                                      "STD_DEV"
+                                    ]
+                                  },
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "NONE"
+                                    ]
+                                  }
+                                ]
+                              },
+                              "options": {
+                                "type": "object",
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "type"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "TIMEATVALUE"
+                                ]
+                              },
+                              "options": {
+                                "type": "object",
+                                "properties": {
+                                  "value": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                  "value"
+                                ]
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "type",
+                              "options"
+                            ]
+                          }
                         ]
                       },
                       "color": {
@@ -1521,18 +1837,97 @@
                           "maxLength": 255
                         },
                         "aggregation": {
-                          "type": "string",
-                          "enum": [
-                            "FIRST",
-                            "LAST",
-                            "COUNT",
-                            "MAX",
-                            "MIN",
-                            "MEDIAN",
-                            "MEAN",
-                            "SUM",
-                            "STD_DEV",
-                            "NONE"
+                          "oneOf": [
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "NONE"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "NONE"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "TIMEATVALUE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string",
+                                      "maxLength": 255
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "value"
+                                  ]
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type",
+                                "options"
+                              ]
+                            }
                           ]
                         },
                         "color": {
@@ -1772,6 +2167,20 @@
                     "type": "integer",
                     "minimum": 0
                   },
+                  "locationTagKey": {
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      },
+                      {
+                        "type": "string",
+                        "minLength": 4,
+                        "maxLength": 255,
+                        "pattern": ".*{{.+}}.*"
+                      }
+                    ]
+                  },
                   "mapStyle": {
                     "type": "string",
                     "enum": [
@@ -1903,6 +2312,21 @@
                   "imageUrl": {
                     "type": "string",
                     "maxLength": 32767
+                  },
+                  "imageSource": {
+                    "type": "string",
+                    "enum": [
+                      "static",
+                      "attribute"
+                    ]
+                  },
+                  "deviceId": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "attribute": {
+                    "type": "string",
+                    "maxLength": 255
                   }
                 },
                 "additionalProperties": false
@@ -1991,18 +2415,97 @@
                               "maxLength": 255
                             },
                             "aggregation": {
-                              "type": "string",
-                              "enum": [
-                                "FIRST",
-                                "LAST",
-                                "COUNT",
-                                "MAX",
-                                "MIN",
-                                "MEDIAN",
-                                "MEAN",
-                                "SUM",
-                                "STD_DEV",
-                                "NONE"
+                              "oneOf": [
+                                {
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "NONE"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "NONE"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "TIMEATVALUE"
+                                      ]
+                                    },
+                                    "options": {
+                                      "type": "object",
+                                      "properties": {
+                                        "value": {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "value"
+                                      ]
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "type",
+                                    "options"
+                                  ]
+                                }
                               ]
                             },
                             "deviceIds": {
@@ -2506,18 +3009,97 @@
                           "maxLength": 255
                         },
                         "aggregation": {
-                          "type": "string",
-                          "enum": [
-                            "FIRST",
-                            "LAST",
-                            "COUNT",
-                            "MAX",
-                            "MIN",
-                            "MEDIAN",
-                            "MEAN",
-                            "SUM",
-                            "STD_DEV",
-                            "NONE"
+                          "oneOf": [
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "NONE"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "NONE"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "TIMEATVALUE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string",
+                                      "maxLength": 255
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "value"
+                                  ]
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type",
+                                "options"
+                              ]
+                            }
                           ]
                         },
                         "color": {
@@ -2770,18 +3352,97 @@
                                   "maxLength": 255
                                 },
                                 "aggregation": {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
+                                  "oneOf": [
+                                    {
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "NONE"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "FIRST",
+                                                "LAST",
+                                                "COUNT",
+                                                "MAX",
+                                                "MIN",
+                                                "MEDIAN",
+                                                "MEAN",
+                                                "SUM",
+                                                "STD_DEV"
+                                              ]
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "NONE"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "TIMEATVALUE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "properties": {
+                                            "value": {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "required": [
+                                            "value"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type",
+                                        "options"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "deviceIds": {
@@ -2915,18 +3576,97 @@
                                   "maxLength": 255
                                 },
                                 "aggregation": {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
+                                  "oneOf": [
+                                    {
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "NONE"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "FIRST",
+                                                "LAST",
+                                                "COUNT",
+                                                "MAX",
+                                                "MIN",
+                                                "MEDIAN",
+                                                "MEAN",
+                                                "SUM",
+                                                "STD_DEV"
+                                              ]
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "NONE"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "TIMEATVALUE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "properties": {
+                                            "value": {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "required": [
+                                            "value"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type",
+                                        "options"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "deviceIds": {
@@ -3015,18 +3755,97 @@
                                   "maxLength": 255
                                 },
                                 "aggregation": {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
+                                  "oneOf": [
+                                    {
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "NONE"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "FIRST",
+                                                "LAST",
+                                                "COUNT",
+                                                "MAX",
+                                                "MIN",
+                                                "MEDIAN",
+                                                "MEAN",
+                                                "SUM",
+                                                "STD_DEV"
+                                              ]
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "NONE"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "TIMEATVALUE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "properties": {
+                                            "value": {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "required": [
+                                            "value"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type",
+                                        "options"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "deviceIds": {
@@ -3116,18 +3935,97 @@
                                   "maxLength": 255
                                 },
                                 "aggregation": {
-                                  "type": "string",
-                                  "enum": [
-                                    "FIRST",
-                                    "LAST",
-                                    "COUNT",
-                                    "MAX",
-                                    "MIN",
-                                    "MEDIAN",
-                                    "MEAN",
-                                    "SUM",
-                                    "STD_DEV",
-                                    "NONE"
+                                  "oneOf": [
+                                    {
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "FIRST",
+                                            "LAST",
+                                            "COUNT",
+                                            "MAX",
+                                            "MIN",
+                                            "MEDIAN",
+                                            "MEAN",
+                                            "SUM",
+                                            "STD_DEV"
+                                          ]
+                                        },
+                                        {
+                                          "type": "string",
+                                          "enum": [
+                                            "NONE"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "FIRST",
+                                                "LAST",
+                                                "COUNT",
+                                                "MAX",
+                                                "MIN",
+                                                "MEDIAN",
+                                                "MEAN",
+                                                "SUM",
+                                                "STD_DEV"
+                                              ]
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "NONE"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type"
+                                      ]
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "TIMEATVALUE"
+                                          ]
+                                        },
+                                        "options": {
+                                          "type": "object",
+                                          "properties": {
+                                            "value": {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "required": [
+                                            "value"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type",
+                                        "options"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "deviceIds": {
@@ -3486,6 +4384,20 @@
                   "includeLines": {
                     "type": "boolean"
                   },
+                  "locationTagKey": {
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      },
+                      {
+                        "type": "string",
+                        "minLength": 4,
+                        "maxLength": 255,
+                        "pattern": ".*{{.+}}.*"
+                      }
+                    ]
+                  },
                   "mapStyle": {
                     "type": "string",
                     "enum": [
@@ -3669,18 +4581,97 @@
                           "maxLength": 255
                         },
                         "aggregation": {
-                          "type": "string",
-                          "enum": [
-                            "FIRST",
-                            "LAST",
-                            "COUNT",
-                            "MAX",
-                            "MIN",
-                            "MEDIAN",
-                            "MEAN",
-                            "SUM",
-                            "STD_DEV",
-                            "NONE"
+                          "oneOf": [
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "FIRST",
+                                    "LAST",
+                                    "COUNT",
+                                    "MAX",
+                                    "MIN",
+                                    "MEDIAN",
+                                    "MEAN",
+                                    "SUM",
+                                    "STD_DEV"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "NONE"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "FIRST",
+                                        "LAST",
+                                        "COUNT",
+                                        "MAX",
+                                        "MIN",
+                                        "MEDIAN",
+                                        "MEAN",
+                                        "SUM",
+                                        "STD_DEV"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "NONE"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "TIMEATVALUE"
+                                  ]
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string",
+                                      "maxLength": 255
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "value"
+                                  ]
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "type",
+                                "options"
+                              ]
+                            }
                           ]
                         },
                         "color": {
@@ -4067,6 +5058,11 @@
                   },
                   "includeExperience": {
                     "type": "boolean"
+                  },
+                  "experienceVersion": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
                   }
                 },
                 "additionalProperties": false

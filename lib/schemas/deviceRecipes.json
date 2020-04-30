@@ -85,8 +85,13 @@
                     "string",
                     "number",
                     "gps",
-                    "boolean"
+                    "boolean",
+                    "blob"
                   ]
+                },
+                "contentType": {
+                  "type": "string",
+                  "maxLength": 64
                 },
                 "description": {
                   "type": "string",
@@ -117,9 +122,17 @@
                         "MEDIAN",
                         "MEAN",
                         "SUM",
-                        "STD_DEV",
-                        "NONE"
+                        "STD_DEV"
                       ]
+                    },
+                    "aggregationOptions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false
+                      },
+                      "additionalProperties": false,
+                      "maxItems": 0
                     },
                     "childAttributes": {
                       "type": "array",

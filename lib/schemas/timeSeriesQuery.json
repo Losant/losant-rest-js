@@ -15,18 +15,27 @@
       "type": "number"
     },
     "aggregation": {
-      "type": "string",
-      "enum": [
-        "FIRST",
-        "LAST",
-        "COUNT",
-        "MAX",
-        "MIN",
-        "MEDIAN",
-        "MEAN",
-        "SUM",
-        "STD_DEV",
-        "NONE"
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "FIRST",
+            "LAST",
+            "COUNT",
+            "MAX",
+            "MIN",
+            "MEDIAN",
+            "MEAN",
+            "SUM",
+            "STD_DEV"
+          ]
+        },
+        {
+          "type": "string",
+          "enum": [
+            "NONE"
+          ]
+        }
       ]
     },
     "attributes": {
