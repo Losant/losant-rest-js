@@ -89,6 +89,7 @@
 *   [Devices Metadata Export Post](#devices-metadata-export-post)
 *   [Devices Patch](#devices-patch)
 *   [Devices Remove Data Post](#devices-remove-data-post)
+*   [Devices Updated](#devices-updated)
 *   [Disable Two Factor Auth](#disable-two-factor-auth)
 *   [Edge Deployment](#edge-deployment)
 *   [Edge Deployment Release](#edge-deployment-release)
@@ -36790,13 +36791,1656 @@ Schema for the body of a Devices modification request
         "pattern": "^[A-Fa-f\\d]{24}$"
       },
       "maxItems": 1000
+    },
+    "query": {
+      "title": "Advanced Device Query",
+      "description": "Schema for advanced device queries",
+      "type": "object",
+      "properties": {
+        "$and": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/advancedDeviceQuery"
+          },
+          "maxItems": 100
+        },
+        "$or": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/advancedDeviceQuery"
+          },
+          "maxItems": 100
+        },
+        "$nor": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/advancedDeviceQuery"
+          },
+          "maxItems": 100
+        },
+        "id": {
+          "oneOf": [
+            {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "minProperties": 1,
+              "maxProperties": 1
+            }
+          ]
+        },
+        "creationDate": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "lastUpdated": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "deviceClass": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "gatewayId": {
+          "oneOf": [
+            {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "minProperties": 1,
+              "maxProperties": 1
+            }
+          ]
+        },
+        "parentId": {
+          "oneOf": [
+            {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "minProperties": 1,
+              "maxProperties": 1
+            }
+          ]
+        },
+        "ancestorId": {
+          "oneOf": [
+            {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "minProperties": 1,
+              "maxProperties": 1
+            }
+          ]
+        },
+        "attributeName": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "experienceUserId": {
+          "oneOf": [
+            {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "minProperties": 1,
+              "maxProperties": 1
+            }
+          ]
+        },
+        "experienceGroupId": {
+          "oneOf": [
+            {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "minProperties": 1,
+              "maxProperties": 1
+            }
+          ]
+        },
+        "tags": {
+          "oneOf": [
+            {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "$tagKey": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "$tagValue": {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false,
+                  "minProperties": 1
+                },
+                {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}": {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "$tagKey": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "$tagValue": {
+                          "type": "string",
+                          "maxLength": 255
+                        }
+                      },
+                      "additionalProperties": false,
+                      "minProperties": 1
+                    },
+                    {
+                      "type": "object",
+                      "patternProperties": {
+                        "^[0-9a-zA-Z_-]{1,255}": {
+                          "type": "string",
+                          "maxLength": 255
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "$eq"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "$tagKey": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "$tagValue": {
+                          "type": "string",
+                          "maxLength": 255
+                        }
+                      },
+                      "additionalProperties": false,
+                      "minProperties": 1
+                    },
+                    {
+                      "type": "object",
+                      "patternProperties": {
+                        "^[0-9a-zA-Z_-]{1,255}": {
+                          "type": "string",
+                          "maxLength": 255
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "$ne"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "updateOperations": {
+      "type": "array",
+      "maxItems": 25,
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "operation": {
+                "type": "string",
+                "enum": [
+                  "set"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "enum": [
+                  "name"
+                ]
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "required": [
+              "operation",
+              "target",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "operation": {
+                "type": "string",
+                "enum": [
+                  "set"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "enum": [
+                  "deviceClass"
+                ]
+              },
+              "value": {
+                "type": "string",
+                "enum": [
+                  "standalone",
+                  "gateway",
+                  "peripheral",
+                  "floating",
+                  "edgeCompute",
+                  "system"
+                ]
+              }
+            },
+            "required": [
+              "operation",
+              "target",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "operation": {
+                "type": "string",
+                "enum": [
+                  "set"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "enum": [
+                  "description"
+                ]
+              },
+              "value": {
+                "type": "string",
+                "maxLength": 32767
+              }
+            },
+            "required": [
+              "operation",
+              "target",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "operation": {
+                "type": "string",
+                "enum": [
+                  "set"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "enum": [
+                  "gatewayId",
+                  "parentId"
+                ]
+              },
+              "value": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "required": [
+              "operation",
+              "target",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "operation": {
+                "type": "string",
+                "enum": [
+                  "set"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "enum": [
+                  "systemInterval"
+                ]
+              },
+              "value": {
+                "type": "integer",
+                "minimum": 5,
+                "maximum": 3600
+              }
+            },
+            "required": [
+              "operation",
+              "target",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "operation": {
+                "type": "string",
+                "enum": [
+                  "set"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "enum": [
+                  "keepDuplicates"
+                ]
+              },
+              "value": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "operation",
+              "target",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "operation": {
+                "type": "string",
+                "enum": [
+                  "set"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "enum": [
+                  "tag"
+                ]
+              },
+              "value": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  }
+                },
+                "required": [
+                  "key",
+                  "value"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "operation",
+              "target",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "operation": {
+                "type": "string",
+                "enum": [
+                  "set"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "enum": [
+                  "attributeTag"
+                ]
+              },
+              "attributeName": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "value": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  }
+                },
+                "required": [
+                  "key",
+                  "value"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "operation",
+              "target",
+              "attributeName",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "operation": {
+                "type": "string",
+                "enum": [
+                  "set"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "enum": [
+                  "attributeDescription"
+                ]
+              },
+              "attributeName": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "value": {
+                "type": "string",
+                "maxLength": 32767
+              }
+            },
+            "required": [
+              "operation",
+              "target",
+              "attributeName",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "operation": {
+                "type": "string",
+                "enum": [
+                  "remove"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "enum": [
+                  "description",
+                  "parentId"
+                ]
+              }
+            },
+            "required": [
+              "operation",
+              "target"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "operation": {
+                "type": "string",
+                "enum": [
+                  "remove"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "enum": [
+                  "tag"
+                ]
+              },
+              "tagKey": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              }
+            },
+            "required": [
+              "operation",
+              "target",
+              "tagKey"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "operation": {
+                "type": "string",
+                "enum": [
+                  "remove"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "enum": [
+                  "attribute"
+                ]
+              },
+              "attributeName": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              }
+            },
+            "required": [
+              "operation",
+              "target",
+              "attributeName"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "operation": {
+                "type": "string",
+                "enum": [
+                  "remove"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "enum": [
+                  "attributeTag"
+                ]
+              },
+              "attributeName": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "tagKey": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              }
+            },
+            "required": [
+              "operation",
+              "target",
+              "attributeName",
+              "tagKey"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "operation": {
+                "type": "string",
+                "enum": [
+                  "remove"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "enum": [
+                  "attributeDescription"
+                ]
+              },
+              "attributeName": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              }
+            },
+            "required": [
+              "operation",
+              "target",
+              "attributeName"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "operation": {
+                "type": "string",
+                "enum": [
+                  "add"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "enum": [
+                  "attribute"
+                ]
+              },
+              "value": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                  },
+                  "dataType": {
+                    "type": "string",
+                    "enum": [
+                      "string",
+                      "number",
+                      "gps",
+                      "boolean",
+                      "blob"
+                    ]
+                  },
+                  "contentType": {
+                    "type": "string",
+                    "maxLength": 64
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "attributeTags": {
+                    "type": "object",
+                    "patternProperties": {
+                      "^[0-9a-zA-Z_-]{1,255}$": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "system": {
+                    "type": "object",
+                    "properties": {
+                      "aggregation": {
+                        "type": "string",
+                        "enum": [
+                          "FIRST",
+                          "LAST",
+                          "COUNT",
+                          "MAX",
+                          "MIN",
+                          "MEDIAN",
+                          "MEAN",
+                          "SUM",
+                          "STD_DEV"
+                        ]
+                      },
+                      "aggregationOptions": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false
+                        },
+                        "additionalProperties": false,
+                        "maxItems": 0
+                      },
+                      "childAttributes": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                            },
+                            "mode": {
+                              "type": "string",
+                              "enum": [
+                                "all",
+                                "whitelist",
+                                "blacklist"
+                              ]
+                            },
+                            "deviceIds": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "pattern": "^[A-Fa-f\\d]{24}$"
+                              },
+                              "maxItems": 1000
+                            },
+                            "deviceTags": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "key": {
+                                    "type": "string",
+                                    "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 255
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "maxItems": 100
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "mode"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "maxItems": 256
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "name",
+                  "dataType"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "operation",
+              "target",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "operation": {
+                "type": "string",
+                "enum": [
+                  "add"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "enum": [
+                  "attributeSystem"
+                ]
+              },
+              "value": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                  },
+                  "dataType": {
+                    "type": "string",
+                    "enum": [
+                      "string",
+                      "number",
+                      "gps",
+                      "boolean",
+                      "blob"
+                    ]
+                  },
+                  "contentType": {
+                    "type": "string",
+                    "maxLength": 64
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "attributeTags": {
+                    "type": "object",
+                    "patternProperties": {
+                      "^[0-9a-zA-Z_-]{1,255}$": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "system": {
+                    "type": "object",
+                    "properties": {
+                      "aggregation": {
+                        "type": "string",
+                        "enum": [
+                          "FIRST",
+                          "LAST",
+                          "COUNT",
+                          "MAX",
+                          "MIN",
+                          "MEDIAN",
+                          "MEAN",
+                          "SUM",
+                          "STD_DEV"
+                        ]
+                      },
+                      "aggregationOptions": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false
+                        },
+                        "additionalProperties": false,
+                        "maxItems": 0
+                      },
+                      "childAttributes": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                            },
+                            "mode": {
+                              "type": "string",
+                              "enum": [
+                                "all",
+                                "whitelist",
+                                "blacklist"
+                              ]
+                            },
+                            "deviceIds": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "pattern": "^[A-Fa-f\\d]{24}$"
+                              },
+                              "maxItems": 1000
+                            },
+                            "deviceTags": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "key": {
+                                    "type": "string",
+                                    "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 255
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "maxItems": 100
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "mode"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "maxItems": 256
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "name",
+                  "dataType"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "operation",
+              "target",
+              "value"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      }
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false,
-  "required": [
-    "updateFields",
-    "deviceIds"
-  ]
+  "required": []
 }
 ```
 ### <a name="devices-patch-example"></a> Example
@@ -37799,6 +39443,45 @@ Schema for the body of a bulk data removal request
     "deleteMyData",
     "mineToo"
   ]
+}
+```
+
+<br/>
+
+## Devices Updated
+
+Schema for response of devices updated if under 100 devices queried
+
+### <a name="devices-updated-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "updated": {
+      "type": "number"
+    },
+    "failed": {
+      "type": "number"
+    },
+    "skipped": {
+      "type": "number"
+    },
+    "logLink": {
+      "type": "string"
+    }
+  }
+}
+```
+### <a name="devices-updated-example"></a> Example
+
+```json
+{
+  "updated": 3,
+  "failed": 0,
+  "skipped": 2,
+  "logLink": "https://s3.us-west-1.amazonaws.com/a-bucket-on-amazon"
 }
 ```
 

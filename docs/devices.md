@@ -208,14 +208,15 @@ all.Application, all.Organization, all.User, devices.*, or devices.patch.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| patchInfo | [Devices Patch](_schemas.md#devices-patch) | N | Object containing device filter fields and updated properties |  | [Devices Patch Example](_schemas.md#devices-patch-example) |
+| patchInfo | [Devices Patch](_schemas.md#devices-patch) | N | Object containing device query or IDs and update operations |  | [Devices Patch Example](_schemas.md#devices-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Success](_schemas.md#success) | Successfully queued bulk update job |
+| 200 | [Devices Updated](_schemas.md#devices-updated) | Object including an update log link and the number of devices updated, failed, and skipped |
+| 202 | [Success](_schemas.md#success) | Successfully queued bulk update job |
 
 #### Error Responses
 
