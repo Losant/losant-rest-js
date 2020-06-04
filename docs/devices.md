@@ -216,7 +216,7 @@ all.Application, all.Organization, all.User, devices.*, or devices.patch.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Devices Updated](_schemas.md#devices-updated) | Object including an update log link and the number of devices updated, failed, and skipped |
-| 202 | [Success](_schemas.md#success) | Successfully queued bulk update job |
+| 202 | [Job Enqueued API Result](_schemas.md#job-enqueued-api-result) | Successfully queued bulk update job |
 
 #### Error Responses
 

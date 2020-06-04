@@ -30666,6 +30666,10 @@ Schema for exporting data devices query
       "format": "email",
       "maxLength": 1024
     },
+    "callbackUrl": {
+      "type": "string",
+      "maxLength": 1024
+    },
     "deviceIds": {
       "type": "array",
       "items": {
@@ -30693,6 +30697,9 @@ Schema for exporting data devices query
       },
       "maxItems": 100
     },
+    "deviceQuery": {
+      "ref": "#/definitions/advancedQuery"
+    },
     "attributes": {
       "type": "array",
       "items": {
@@ -30716,6 +30723,10 @@ Schema for exporting data devices query
         "includeID": {
           "type": "boolean",
           "default": true
+        },
+        "includeBlobData": {
+          "type": "boolean",
+          "default": false
         }
       }
     }
@@ -34980,7 +34991,7 @@ Schema for response to bulk device data removal
     "completed": {
       "type": "number"
     },
-    "skipped": {
+    "notApplicable": {
       "type": "number"
     }
   }
