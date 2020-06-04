@@ -2312,6 +2312,10 @@
                             "normal",
                             "satellite"
                           ]
+                        },
+                        "query": {
+                          "type": "string",
+                          "maxLength": 32767
                         }
                       },
                       "additionalProperties": false
@@ -4538,6 +4542,10 @@
                           ]
                         },
                         "popupTemplate": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "query": {
                           "type": "string",
                           "maxLength": 32767
                         },

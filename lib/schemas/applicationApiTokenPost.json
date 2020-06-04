@@ -149,6 +149,8 @@
           "deviceRecipes.get",
           "deviceRecipes.post",
           "devices.patch",
+          "devices.delete",
+          "devices.removeData",
           "devices.detailedSummary",
           "devices.export",
           "devices.get",

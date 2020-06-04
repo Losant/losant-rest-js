@@ -6,11 +6,64 @@ parameters and the potential responses.
 
 ##### Contents
 
+*   [Delete](#delete)
 *   [Export](#export)
 *   [Get](#get)
 *   [Patch](#patch)
 *   [Post](#post)
+*   [Remove Data](#remove-data)
 *   [Send Command](#send-command)
+
+<br/>
+
+## Delete
+
+Delete devices
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  options: myOptions
+};
+
+// with callbacks
+client.devices.delete(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.devices.delete(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, devices.*, or devices.delete.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| options | [Devices Delete Post](_schemas.md#devices-delete-post) | Y | Object containing device query and email |  | [Devices Delete Post Example](_schemas.md#devices-delete-post-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Devices Deleted](_schemas.md#devices-deleted) | Object indicating number of devices deleted or failed |
+| 202 | [Job Enqueued API Result](_schemas.md#job-enqueued-api-result) | If a job was enqueued for the devices to be deleted |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
 
 <br/>
 
@@ -47,6 +100,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | email | string | N | Email address to send export to. Defaults to current user&#x27;s email. |  | email@example.com |
 | callbackUrl | string | N | Callback URL to call with export result |  | https://example.com/cburl |
+| options | [Devices Metadata Export Post](_schemas.md#devices-metadata-export-post) | N | Object containing device query and optionally email or callback |  | [Devices Metadata Export Post Example](_schemas.md#devices-metadata-export-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -105,7 +159,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | tagFilter | [Device Tag Filter](_schemas.md#device-tag-filter) | N | Array of tag pairs to filter by |  | [Device Tag Filter Example](_schemas.md#device-tag-filter-example) |
 | excludeConnectionInfo | string | N | If set, do not return connection info |  | true |
 | parentId | string | N | Filter devices as children of a given system id |  | 575ecf887ae143cd83dc4aa2 |
-| query | [Advanced Device Query](_schemas.md#advanced-device-query) | N | Device filter JSON object which overides the filterField, filter, deviceClass, tagFilter, and parentId parameters. |  | [Advanced Device Query Example](_schemas.md#advanced-device-query-example) |
+| query | [Advanced Device Query](_schemas.md#advanced-device-query) | N | Device filter JSON object which overrides the filterField, filter, deviceClass, tagFilter, and parentId parameters. |  | [Advanced Device Query Example](_schemas.md#advanced-device-query-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -154,14 +208,15 @@ all.Application, all.Organization, all.User, devices.*, or devices.patch.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| patchInfo | [Devices Patch](_schemas.md#devices-patch) | N | Object containing device filter fields and updated properties |  | [Devices Patch Example](_schemas.md#devices-patch-example) |
+| patchInfo | [Devices Patch](_schemas.md#devices-patch) | N | Object containing device query or IDs and update operations |  | [Devices Patch Example](_schemas.md#devices-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Success](_schemas.md#success) | Successfully queued bulk update job |
+| 200 | [Devices Updated](_schemas.md#devices-updated) | Object including an update log link and the number of devices updated, failed, and skipped |
+| 202 | [Job Enqueued API Result](_schemas.md#job-enqueued-api-result) | Successfully queued bulk update job |
 
 #### Error Responses
 
@@ -219,6 +274,57 @@ all.Application, all.Organization, all.User, devices.*, or devices.post.
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if application was not found |
+
+<br/>
+
+## Remove Data
+
+Removes all device data for the specified time range. Defaults to all data.
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  options: myOptions
+};
+
+// with callbacks
+client.devices.removeData(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.devices.removeData(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, devices.*, or devices.removeData.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| options | [Devices Remove Data Post](_schemas.md#devices-remove-data-post) | Y | Object defining the device data to delete and devices to delete from |  | [Devices Remove Data Post Example](_schemas.md#devices-remove-data-post-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Devices Data Removed](_schemas.md#devices-data-removed) | Object indicating number of devices completed or skipped |
+| 202 | [Job Enqueued API Result](_schemas.md#job-enqueued-api-result) | If a job was enqueued for device data to be removed |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if device was not found |
 
 <br/>
 

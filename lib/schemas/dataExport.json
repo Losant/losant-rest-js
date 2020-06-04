@@ -7,6 +7,10 @@
       "format": "email",
       "maxLength": 1024
     },
+    "callbackUrl": {
+      "type": "string",
+      "maxLength": 1024
+    },
     "deviceIds": {
       "type": "array",
       "items": {
@@ -34,6 +38,9 @@
       },
       "maxItems": 100
     },
+    "deviceQuery": {
+      "ref": "#/definitions/advancedQuery"
+    },
     "attributes": {
       "type": "array",
       "items": {
@@ -57,6 +64,10 @@
         "includeID": {
           "type": "boolean",
           "default": true
+        },
+        "includeBlobData": {
+          "type": "boolean",
+          "default": false
         }
       }
     }
