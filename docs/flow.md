@@ -8,6 +8,7 @@ parameters and the potential responses.
 
 *   [Clear Storage Entries](#clear-storage-entries)
 *   [Delete](#delete)
+*   [Errors](#errors)
 *   [Get](#get)
 *   [Get Log Entries](#get-log-entries)
 *   [Get Storage Entries](#get-storage-entries)
@@ -115,6 +116,62 @@ all.Application, all.Organization, all.User, flow.*, or flow.delete.
 | ---- | ---- | ----------- |
 | 400 | [Error](_schemas.md#error) | Error if malformed request |
 | 404 | [Error](_schemas.md#error) | Error if flow was not found |
+
+<br/>
+
+## Errors
+
+Get information about errors that occurred during runs of this workflow
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  flowId: myFlowId
+};
+
+// with callbacks
+client.flow.errors(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.flow.errors(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, flow.*, or flow.errors.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| flowId | string | Y | ID associated with the flow |  | 575ed18f7ae143cd83dc4aa6 |
+| start | string | N | Start of time range in milliseconds since epoch | -86400000 | 0 |
+| end | string | N | End of time range in milliseconds since epoch | 0 | 0 |
+| limit | string | N | Maximum number of errors to return | 25 | 25 |
+| sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | desc | undefined |
+| flowVersion | string | N | Flow version name or ID. When not included, will be errors for all versions. Pass develop for just the develop version. |  | develop |
+| deviceId | string | N | For edge workflows, the Device ID to return workflow errors for. When not included, will be errors for all device IDs. |  | 575ed18f7ae143cd83dc4bb6 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Workflow Errors](_schemas.md#workflow-errors) | Workflow error information |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if device was not found |
 
 <br/>
 

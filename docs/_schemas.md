@@ -144,6 +144,7 @@
 *   [File Upload Post Response](#file-upload-post-response)
 *   [Files Schema](#files-schema)
 *   [Workflow](#workflow)
+*   [Workflow Errors](#workflow-errors)
 *   [Workflow Log](#workflow-log)
 *   [Workflow Patch](#workflow-patch)
 *   [Workflow Post](#workflow-post)
@@ -3582,9 +3583,10 @@ Schema for the body of an Application API Token creation request
           "file.upload",
           "files.get",
           "files.post",
+          "flow.clearStorageEntries",
           "flow.debug",
           "flow.delete",
-          "flow.clearStorageEntries",
+          "flow.errors",
           "flow.get",
           "flow.getStorageEntries",
           "flow.log",
@@ -3597,6 +3599,7 @@ Schema for the body of an Application API Token creation request
           "flows.import",
           "flows.post",
           "flowVersion.delete",
+          "flowVersion.errors",
           "flowVersion.get",
           "flowVersion.log",
           "flowVersion.patch",
@@ -55717,6 +55720,116 @@ Schema for a single Workflow
 
 <br/>
 
+## Workflow Errors
+
+Workflow run error information
+
+### <a name="workflow-errors-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "flowVersion": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "flowVersionId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "end": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "limit": {
+      "type": "number"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc",
+        "ASC",
+        "DESC",
+        ""
+      ]
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deviceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "flowVersion": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "flowVersionId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "nodeId": {
+            "type": "string"
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+### <a name="workflow-errors-example"></a> Example
+
+```json
+{
+  "start": "2016-06-03T00:00:00.000Z",
+  "end": "2016-06-04T00:00:00.000Z",
+  "limit": 25,
+  "sortDirection": "desc",
+  "errors": [
+    {
+      "time": "2016-06-03T00:00:00.000Z",
+      "nodeId": "dji4r",
+      "error": {
+        "name": "Validation",
+        "message": "Result path is required"
+      }
+    }
+  ]
+}
+```
+
+<br/>
+
 ## Workflow Log
 
 Log of aggregated workflow run information
@@ -83592,9 +83705,10 @@ Schema for the body of a Github login request
                   "file.upload",
                   "files.get",
                   "files.post",
+                  "flow.clearStorageEntries",
                   "flow.debug",
                   "flow.delete",
-                  "flow.clearStorageEntries",
+                  "flow.errors",
                   "flow.get",
                   "flow.getStorageEntries",
                   "flow.log",
@@ -83607,6 +83721,7 @@ Schema for the body of a Github login request
                   "flows.import",
                   "flows.post",
                   "flowVersion.delete",
+                  "flowVersion.errors",
                   "flowVersion.get",
                   "flowVersion.log",
                   "flowVersion.patch",
@@ -91951,9 +92066,10 @@ Schema for the body of a User authentication request
                   "file.upload",
                   "files.get",
                   "files.post",
+                  "flow.clearStorageEntries",
                   "flow.debug",
                   "flow.delete",
-                  "flow.clearStorageEntries",
+                  "flow.errors",
                   "flow.get",
                   "flow.getStorageEntries",
                   "flow.log",
@@ -91966,6 +92082,7 @@ Schema for the body of a User authentication request
                   "flows.import",
                   "flows.post",
                   "flowVersion.delete",
+                  "flowVersion.errors",
                   "flowVersion.get",
                   "flowVersion.log",
                   "flowVersion.patch",
@@ -92376,9 +92493,10 @@ Schema for the body of a User creation request
                   "file.upload",
                   "files.get",
                   "files.post",
+                  "flow.clearStorageEntries",
                   "flow.debug",
                   "flow.delete",
-                  "flow.clearStorageEntries",
+                  "flow.errors",
                   "flow.get",
                   "flow.getStorageEntries",
                   "flow.log",
@@ -92391,6 +92509,7 @@ Schema for the body of a User creation request
                   "flows.import",
                   "flows.post",
                   "flowVersion.delete",
+                  "flowVersion.errors",
                   "flowVersion.get",
                   "flowVersion.log",
                   "flowVersion.patch",
