@@ -147,6 +147,7 @@
 *   [Workflow Log](#workflow-log)
 *   [Workflow Patch](#workflow-patch)
 *   [Workflow Post](#workflow-post)
+*   [Workflow Statistics](#workflow-statistics)
 *   [Workflow Storage Entries](#workflow-storage-entries)
 *   [Workflow Storage Entry](#workflow-storage-entry)
 *   [Workflow Trigger Filter](#workflow-trigger-filter)
@@ -3590,6 +3591,7 @@ Schema for the body of an Application API Token creation request
           "flow.patch",
           "flow.pressVirtualButton",
           "flow.setStorageEntry",
+          "flow.stats",
           "flows.get",
           "flows.getByVersion",
           "flows.import",
@@ -3598,6 +3600,7 @@ Schema for the body of an Application API Token creation request
           "flowVersion.get",
           "flowVersion.log",
           "flowVersion.patch",
+          "flowVersion.stats",
           "flowVersions.get",
           "flowVersions.post",
           "integration.delete",
@@ -8461,6 +8464,10 @@ Schema for a single Dashboard
                           "type": "string",
                           "maxLength": 255
                         },
+                        "expression": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
                         "yAxisLabel": {
                           "type": "string",
                           "maxLength": 255
@@ -9853,6 +9860,10 @@ Schema for a single Dashboard
                         }
                       },
                       "label": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "expression": {
                         "type": "string",
                         "maxLength": 255
                       },
@@ -11315,6 +11326,10 @@ Schema for a single Dashboard
                           }
                         },
                         "label": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "expression": {
                           "type": "string",
                           "maxLength": 255
                         },
@@ -12891,6 +12906,10 @@ Schema for a single Dashboard
                           }
                         },
                         "label": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "expression": {
                           "type": "string",
                           "maxLength": 255
                         },
@@ -14054,6 +14073,10 @@ Schema for the body of a Dashboard modification request
                           "type": "string",
                           "maxLength": 255
                         },
+                        "expression": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
                         "yAxisLabel": {
                           "type": "string",
                           "maxLength": 255
@@ -15446,6 +15469,10 @@ Schema for the body of a Dashboard modification request
                         }
                       },
                       "label": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "expression": {
                         "type": "string",
                         "maxLength": 255
                       },
@@ -16908,6 +16935,10 @@ Schema for the body of a Dashboard modification request
                           }
                         },
                         "label": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "expression": {
                           "type": "string",
                           "maxLength": 255
                         },
@@ -18484,6 +18515,10 @@ Schema for the body of a Dashboard modification request
                           }
                         },
                         "label": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "expression": {
                           "type": "string",
                           "maxLength": 255
                         },
@@ -19576,6 +19611,10 @@ Schema for the body of a Dashboard creation request
                           "type": "string",
                           "maxLength": 255
                         },
+                        "expression": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
                         "yAxisLabel": {
                           "type": "string",
                           "maxLength": 255
@@ -20968,6 +21007,10 @@ Schema for the body of a Dashboard creation request
                         }
                       },
                       "label": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "expression": {
                         "type": "string",
                         "maxLength": 255
                       },
@@ -22430,6 +22473,10 @@ Schema for the body of a Dashboard creation request
                           }
                         },
                         "label": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "expression": {
                           "type": "string",
                           "maxLength": 255
                         },
@@ -24006,6 +24053,10 @@ Schema for the body of a Dashboard creation request
                           }
                         },
                         "label": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "expression": {
                           "type": "string",
                           "maxLength": 255
                         },
@@ -25350,6 +25401,10 @@ Schema for a collection of Dashboards
                                 }
                               },
                               "label": {
+                                "type": "string",
+                                "maxLength": 255
+                              },
+                              "expression": {
                                 "type": "string",
                                 "maxLength": 255
                               },
@@ -26745,6 +26800,10 @@ Schema for a collection of Dashboards
                               }
                             },
                             "label": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "expression": {
                               "type": "string",
                               "maxLength": 255
                             },
@@ -28207,6 +28266,10 @@ Schema for a collection of Dashboards
                                 }
                               },
                               "label": {
+                                "type": "string",
+                                "maxLength": 255
+                              },
+                              "expression": {
                                 "type": "string",
                                 "maxLength": 255
                               },
@@ -29783,6 +29846,10 @@ Schema for a collection of Dashboards
                                 }
                               },
                               "label": {
+                                "type": "string",
+                                "maxLength": 255
+                              },
+                              "expression": {
                                 "type": "string",
                                 "maxLength": 255
                               },
@@ -42958,7 +43025,7 @@ Schema for a single Experience Domain
     },
     "domainName": {
       "type": "string",
-      "maxLength": 1024,
+      "maxLength": 45,
       "minLength": 3
     },
     "version": {
@@ -43046,7 +43113,7 @@ Schema for the body of an Experience Domain modification request
     },
     "domainName": {
       "type": "string",
-      "maxLength": 1024,
+      "maxLength": 45,
       "minLength": 3
     }
   },
@@ -43094,7 +43161,7 @@ Schema for the body of an Experience Domain creation request
     },
     "domainName": {
       "type": "string",
-      "maxLength": 1024,
+      "maxLength": 45,
       "minLength": 3
     },
     "version": {
@@ -43179,7 +43246,7 @@ Schema for a collection of Experience Domains
           },
           "domainName": {
             "type": "string",
-            "maxLength": 1024,
+            "maxLength": 45,
             "minLength": 3
           },
           "version": {
@@ -52147,7 +52214,7 @@ Schema for a single Experience Version
         "properties": {
           "domainName": {
             "type": "string",
-            "maxLength": 1024,
+            "maxLength": 45,
             "minLength": 3
           },
           "id": {
@@ -52369,7 +52436,7 @@ Schema for a collection of Experience Versions
               "properties": {
                 "domainName": {
                   "type": "string",
-                  "maxLength": 1024,
+                  "maxLength": 45,
                   "minLength": 3
                 },
                 "id": {
@@ -60001,6 +60068,89 @@ Schema for the body of a Workflow creation request
 {
   "name": "My New Workflow",
   "description": "Description of my new workflow"
+}
+```
+
+<br/>
+
+## Workflow Statistics
+
+Statistics about the runs for a given workflow
+
+### <a name="workflow-statistics-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "flowVersion": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "flowVersionId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "end": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "resolution": {
+      "type": "number"
+    },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "pathsFailed": {
+            "type": "number"
+          },
+          "pathsCompleted": {
+            "type": "number"
+          },
+          "runCount": {
+            "type": "number"
+          },
+          "wallTime": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}
+```
+### <a name="workflow-statistics-example"></a> Example
+
+```json
+{
+  "start": "2016-06-03T00:00:00.000Z",
+  "end": "2016-06-04T00:00:00.000Z",
+  "resolution": 86400000,
+  "metrics": [
+    {
+      "time": "2016-06-03T00:00:00.000Z",
+      "pathsFailed": 0,
+      "pathsCompleted": 1,
+      "runCount": 1,
+      "wallTime": 450
+    }
+  ]
 }
 ```
 
@@ -83451,6 +83601,7 @@ Schema for the body of a Github login request
                   "flow.patch",
                   "flow.pressVirtualButton",
                   "flow.setStorageEntry",
+                  "flow.stats",
                   "flows.get",
                   "flows.getByVersion",
                   "flows.import",
@@ -83459,6 +83610,7 @@ Schema for the body of a Github login request
                   "flowVersion.get",
                   "flowVersion.log",
                   "flowVersion.patch",
+                  "flowVersion.stats",
                   "flowVersions.get",
                   "flowVersions.post",
                   "integration.delete",
@@ -89540,7 +89692,7 @@ Schema for a single Organization
       "type": "array",
       "items": {
         "type": "string",
-        "maxLength": 1024,
+        "maxLength": 45,
         "minLength": 3
       }
     }
@@ -90067,7 +90219,7 @@ Schema for the body of an Organization modification request
       "maxItems": 25,
       "items": {
         "type": "string",
-        "maxLength": 1024,
+        "maxLength": 45,
         "minLength": 3
       }
     }
@@ -90579,7 +90731,7 @@ Schema for a collection of Organizations
             "type": "array",
             "items": {
               "type": "string",
-              "maxLength": 1024,
+              "maxLength": 45,
               "minLength": 3
             }
           }
@@ -91128,7 +91280,7 @@ SAML Response body for login
     },
     "SAMLDomain": {
       "type": "string",
-      "maxLength": 1024,
+      "maxLength": 45,
       "minLength": 3
     }
   },
@@ -91808,6 +91960,7 @@ Schema for the body of a User authentication request
                   "flow.patch",
                   "flow.pressVirtualButton",
                   "flow.setStorageEntry",
+                  "flow.stats",
                   "flows.get",
                   "flows.getByVersion",
                   "flows.import",
@@ -91816,6 +91969,7 @@ Schema for the body of a User authentication request
                   "flowVersion.get",
                   "flowVersion.log",
                   "flowVersion.patch",
+                  "flowVersion.stats",
                   "flowVersions.get",
                   "flowVersions.post",
                   "integration.delete",
@@ -92231,6 +92385,7 @@ Schema for the body of a User creation request
                   "flow.patch",
                   "flow.pressVirtualButton",
                   "flow.setStorageEntry",
+                  "flow.stats",
                   "flows.get",
                   "flows.getByVersion",
                   "flows.import",
@@ -92239,6 +92394,7 @@ Schema for the body of a User creation request
                   "flowVersion.get",
                   "flowVersion.log",
                   "flowVersion.patch",
+                  "flowVersion.stats",
                   "flowVersions.get",
                   "flowVersions.post",
                   "integration.delete",
