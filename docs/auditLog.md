@@ -49,11 +49,11 @@ all.Organization, all.Organization.read, all.User, all.User.read, auditLog.*, or
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Audit Log](_schemas.md#audit-log) | Audit log information |
+| 200 | [Audit Log](../lib/schemas/auditLog.json) | Audit log information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if audit log was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if audit log was not found |

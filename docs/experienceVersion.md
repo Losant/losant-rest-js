@@ -51,14 +51,14 @@ all.Application, all.Organization, all.User, experienceVersion.*, or experienceV
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If experience version was successfully deleted |
+| 200 | [Success](../lib/schemas/success.json) | If experience version was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if experience version was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if experience version was not found |
 
 <br/>
 
@@ -101,14 +101,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience Version](_schemas.md#experience-version) | Experience version information |
+| 200 | [Experience Version](../lib/schemas/experienceVersion.json) | Experience version information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if experience version was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if experience version was not found |
 
 <br/>
 
@@ -146,18 +146,18 @@ all.Application, all.Organization, all.User, experienceVersion.*, or experienceV
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | experienceVersionIdOrName | string | Y | Version ID or version name associated with the experience version |  | 575ed78e7ae143cd83dc4aab |
-| experienceVersion | [Experience Version Patch](_schemas.md#experience-version-patch) | Y | Object containing new properties of the experience version |  | [Experience Version Patch Example](_schemas.md#experience-version-patch-example) |
+| experienceVersion | [Experience Version Patch](../lib/schemas/experienceVersionPatch.json) | Y | Object containing new properties of the experience version |  | [Experience Version Patch Example](_schemas.md#experience-version-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience Version](_schemas.md#experience-version) | Updated experience version information |
+| 200 | [Experience Version](../lib/schemas/experienceVersion.json) | Updated experience version information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if experience version was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if experience version was not found |
