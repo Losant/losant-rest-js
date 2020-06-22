@@ -183,7 +183,8 @@ Update the fields of one or more devices
 
 ```javascript
 var params = {
-  applicationId: myApplicationId
+  applicationId: myApplicationId,
+  patchInfo: myPatchInfo
 };
 
 // with callbacks
@@ -208,7 +209,7 @@ all.Application, all.Organization, all.User, devices.*, or devices.patch.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| patchInfo | [Devices Patch](../lib/schemas/devicesPatch.json) | N | Object containing device query or IDs and update operations |  | [Devices Patch Example](_schemas.md#devices-patch-example) |
+| patchInfo | [Devices Patch](../lib/schemas/devicesPatch.json) | Y | Object containing device query or IDs and update operations |  | [Devices Patch Example](_schemas.md#devices-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -324,7 +325,7 @@ all.Application, all.Organization, all.User, devices.*, or devices.removeData.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if device was not found |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
 
 <br/>
 

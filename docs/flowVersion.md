@@ -102,7 +102,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | flowId | string | Y | ID associated with the flow |  | 575ed18f7ae143cd83dc4aa6 |
 | flowVersionId | string | Y | Version ID or version name associated with the flow version |  | 675ed18f7ae143cd83dc4bb7 |
-| start | string | N | Start of time range in milliseconds since epoch | -86400000 | 0 |
+| duration | string | N | Duration of time range in milliseconds | 86400000 | 86400000 |
 | end | string | N | End of time range in milliseconds since epoch | 0 | 0 |
 | limit | string | N | Maximum number of errors to return | 25 | 25 |
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | desc | undefined |
@@ -120,7 +120,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if device was not found |
+| 404 | [Error](../lib/schemas/error.json) | Error if flow version was not found |
 
 <br/>
 
@@ -227,7 +227,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if device was not found |
+| 404 | [Error](../lib/schemas/error.json) | Error if flow version was not found |
 
 <br/>
 
@@ -321,7 +321,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | flowId | string | Y | ID associated with the flow |  | 575ed18f7ae143cd83dc4aa6 |
 | flowVersionId | string | Y | Version ID or version name associated with the flow version |  | 675ed18f7ae143cd83dc4bb7 |
-| start | string | N | Start of time range in milliseconds since epoch | -86400000 | 0 |
+| duration | string | N | Duration of time range in milliseconds | 86400000 | 86400000 |
 | end | string | N | End of time range in milliseconds since epoch | 0 | 0 |
 | resolution | string | N | Resolution in milliseconds | 3600000 | 3600000 |
 | deviceId | string | N | For edge workflows, the device ID to return workflow stats for. When not included, will be aggregate for all device IDs. |  | 575ed18f7ae143cd83dc4bb6 |
@@ -338,4 +338,4 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if device was not found |
+| 404 | [Error](../lib/schemas/error.json) | Error if flow version was not found |
