@@ -150,6 +150,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | statGrouping | string | N | Field to group the statistics by. Accepted values are: statusCode, endpointId, version, domain | statusCode | statusCode |
 | duration | string | N | Duration in milliseconds | 86400000 | 86400000 |
+| end | string | N | End of time range in milliseconds since epoch | 0 | 0 |
 | resolution | string | N | Resolution in milliseconds | 3600000 | 3600000 |
 | versionFilter | string | N | Filters the stats to a particular experience version |  | myVersion |
 | domainFilter | string | N | Filters the stats to a particular experience domain or slug |  | mycustomdomain.com |
