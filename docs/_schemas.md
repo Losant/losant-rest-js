@@ -41318,6 +41318,28 @@ Schema for the body of an Event creation request
         }
       },
       "additionalProperties": false
+    },
+    "creationDate": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$date": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "$date"
+          ]
+        }
+      ]
     }
   },
   "required": [
@@ -86875,6 +86897,95 @@ Schema for a single Notebook
               "inputType": {
                 "type": "string",
                 "enum": [
+                  "deviceConnectionHistory"
+                ]
+              },
+              "fileName": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 4,
+                    "maxLength": 255,
+                    "pattern": ".*{{.+}}.*"
+                  }
+                ]
+              },
+              "deviceTags": {
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        },
+                        {
+                          "type": "string",
+                          "minLength": 4,
+                          "maxLength": 255,
+                          "pattern": ".*{{.+}}.*"
+                        }
+                      ]
+                    },
+                    "value": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "deviceIds": {
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "string",
+                      "minLength": 4,
+                      "maxLength": 255,
+                      "pattern": ".*{{.+}}.*"
+                    }
+                  ]
+                }
+              },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 8192
+              },
+              "start": {
+                "type": "number"
+              },
+              "end": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "inputType",
+              "fileName",
+              "start",
+              "end"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inputType": {
+                "type": "string",
+                "enum": [
                   "deviceMetadata"
                 ]
               },
@@ -87769,6 +87880,95 @@ Schema for the body of a Notebook modification request
               "inputType": {
                 "type": "string",
                 "enum": [
+                  "deviceConnectionHistory"
+                ]
+              },
+              "fileName": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 4,
+                    "maxLength": 255,
+                    "pattern": ".*{{.+}}.*"
+                  }
+                ]
+              },
+              "deviceTags": {
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        },
+                        {
+                          "type": "string",
+                          "minLength": 4,
+                          "maxLength": 255,
+                          "pattern": ".*{{.+}}.*"
+                        }
+                      ]
+                    },
+                    "value": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "deviceIds": {
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "string",
+                      "minLength": 4,
+                      "maxLength": 255,
+                      "pattern": ".*{{.+}}.*"
+                    }
+                  ]
+                }
+              },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 8192
+              },
+              "start": {
+                "type": "number"
+              },
+              "end": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "inputType",
+              "fileName",
+              "start",
+              "end"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inputType": {
+                "type": "string",
+                "enum": [
                   "deviceMetadata"
                 ]
               },
@@ -88258,6 +88458,95 @@ Schema for the body of an Notebook creation request
                   "type": "string",
                   "pattern": "^[0-9a-zA-Z_-]{1,255}$"
                 }
+              },
+              "start": {
+                "type": "number"
+              },
+              "end": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "inputType",
+              "fileName",
+              "start",
+              "end"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inputType": {
+                "type": "string",
+                "enum": [
+                  "deviceConnectionHistory"
+                ]
+              },
+              "fileName": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 4,
+                    "maxLength": 255,
+                    "pattern": ".*{{.+}}.*"
+                  }
+                ]
+              },
+              "deviceTags": {
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        },
+                        {
+                          "type": "string",
+                          "minLength": 4,
+                          "maxLength": 255,
+                          "pattern": ".*{{.+}}.*"
+                        }
+                      ]
+                    },
+                    "value": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "deviceIds": {
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "string",
+                      "minLength": 4,
+                      "maxLength": 255,
+                      "pattern": ".*{{.+}}.*"
+                    }
+                  ]
+                }
+              },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 8192
               },
               "start": {
                 "type": "number"
@@ -88807,6 +89096,95 @@ Schema for a collection of Notebooks
                         "type": "string",
                         "pattern": "^[0-9a-zA-Z_-]{1,255}$"
                       }
+                    },
+                    "start": {
+                      "type": "number"
+                    },
+                    "end": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "inputType",
+                    "fileName",
+                    "start",
+                    "end"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "inputType": {
+                      "type": "string",
+                      "enum": [
+                        "deviceConnectionHistory"
+                      ]
+                    },
+                    "fileName": {
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
+                        },
+                        {
+                          "type": "string",
+                          "minLength": 4,
+                          "maxLength": 255,
+                          "pattern": ".*{{.+}}.*"
+                        }
+                      ]
+                    },
+                    "deviceTags": {
+                      "type": "array",
+                      "maxItems": 100,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                              },
+                              {
+                                "type": "string",
+                                "minLength": 4,
+                                "maxLength": 255,
+                                "pattern": ".*{{.+}}.*"
+                              }
+                            ]
+                          },
+                          "value": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 255
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "deviceIds": {
+                      "type": "array",
+                      "maxItems": 100,
+                      "items": {
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^[A-Fa-f\\d]{24}$"
+                          },
+                          {
+                            "type": "string",
+                            "minLength": 4,
+                            "maxLength": 255,
+                            "pattern": ".*{{.+}}.*"
+                          }
+                        ]
+                      }
+                    },
+                    "queryJson": {
+                      "type": "string",
+                      "maxLength": 8192
                     },
                     "start": {
                       "type": "number"
