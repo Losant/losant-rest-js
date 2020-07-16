@@ -405,6 +405,10 @@
                           "type": "string",
                           "maxLength": 255
                         },
+                        "expression": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
                         "yAxisLabel": {
                           "type": "string",
                           "maxLength": 255
@@ -1797,6 +1801,10 @@
                         }
                       },
                       "label": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "expression": {
                         "type": "string",
                         "maxLength": 255
                       },
@@ -3259,6 +3267,10 @@
                           }
                         },
                         "label": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "expression": {
                           "type": "string",
                           "maxLength": 255
                         },
@@ -4835,6 +4847,10 @@
                           }
                         },
                         "label": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "expression": {
                           "type": "string",
                           "maxLength": 255
                         },

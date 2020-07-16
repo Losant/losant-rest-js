@@ -51,14 +51,14 @@ all.Application, all.Organization, all.User, applicationCertificateAuthority.*, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If application certificate authority was successfully deleted |
+| 200 | [Success](../lib/schemas/success.json) | If application certificate authority was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application certificate authority was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application certificate authority was not found |
 
 <br/>
 
@@ -101,14 +101,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Application Certificate Authority](_schemas.md#application-certificate-authority) | Application certificate authority information |
+| 200 | [Application Certificate Authority](../lib/schemas/applicationCertificateAuthority.json) | Application certificate authority information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application certificate authority was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application certificate authority was not found |
 
 <br/>
 
@@ -146,18 +146,18 @@ all.Application, all.Organization, all.User, applicationCertificateAuthority.*, 
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | applicationCertificateAuthorityId | string | Y | ID associated with the application certificate authority |  | 575ec76c7ae143cd83dc4a96 |
-| applicationCertificateAuthority | [Application Certificate Authority Patch](_schemas.md#application-certificate-authority-patch) | Y | Object containing new properties of the application certificate authority |  | [Application Certificate Authority Patch Example](_schemas.md#application-certificate-authority-patch-example) |
+| applicationCertificateAuthority | [Application Certificate Authority Patch](../lib/schemas/applicationCertificateAuthorityPatch.json) | Y | Object containing new properties of the application certificate authority |  | [Application Certificate Authority Patch Example](_schemas.md#application-certificate-authority-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Application Certificate Authority](_schemas.md#application-certificate-authority) | Updated application certificate authority information |
+| 200 | [Application Certificate Authority](../lib/schemas/applicationCertificateAuthority.json) | Updated application certificate authority information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application certificate authority was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application certificate authority was not found |

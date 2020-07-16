@@ -52,14 +52,14 @@ all.Application, all.Organization, all.User, experienceEndpoint.*, or experience
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If experience endpoint was successfully deleted |
+| 200 | [Success](../lib/schemas/success.json) | If experience endpoint was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if experience endpoint was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if experience endpoint was not found |
 
 <br/>
 
@@ -103,14 +103,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience Endpoint](_schemas.md#experience-endpoint) | Experience endpoint information |
+| 200 | [Experience Endpoint](../lib/schemas/experienceEndpoint.json) | Experience endpoint information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if experience endpoint was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if experience endpoint was not found |
 
 <br/>
 
@@ -155,14 +155,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience Linked Resources](_schemas.md#experience-linked-resources) | Linked resource information |
+| 200 | [Experience Linked Resources](../lib/schemas/experienceLinkedResources.json) | Linked resource information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if experience endpoint was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if experience endpoint was not found |
 
 <br/>
 
@@ -200,18 +200,18 @@ all.Application, all.Organization, all.User, experienceEndpoint.*, or experience
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | experienceEndpointId | string | Y | ID associated with the experience endpoint |  | 575ed78e7ae143cd83dc4aab |
-| experienceEndpoint | [Experience Endpoint Patch](_schemas.md#experience-endpoint-patch) | Y | Object containing new properties of the experience endpoint |  | [Experience Endpoint Patch Example](_schemas.md#experience-endpoint-patch-example) |
+| experienceEndpoint | [Experience Endpoint Patch](../lib/schemas/experienceEndpointPatch.json) | Y | Object containing new properties of the experience endpoint |  | [Experience Endpoint Patch Example](_schemas.md#experience-endpoint-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience Endpoint](_schemas.md#experience-endpoint) | Updated experience endpoint information |
+| 200 | [Experience Endpoint](../lib/schemas/experienceEndpoint.json) | Updated experience endpoint information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if experience endpoint was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if experience endpoint was not found |

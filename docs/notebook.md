@@ -55,14 +55,14 @@ all.Application, all.Organization, all.User, notebook.*, or notebook.delete.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If notebook was successfully deleted |
+| 200 | [Success](../lib/schemas/success.json) | If notebook was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if notebook was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if notebook was not found |
 
 <br/>
 
@@ -100,21 +100,21 @@ all.Application, all.Organization, all.User, notebook.*, or notebook.execute.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | notebookId | string | Y | ID associated with the notebook |  | 575ed78e7ae143cd83dc4aab |
-| executionOptions | [Notebook Execution Options](_schemas.md#notebook-execution-options) | Y | The options for the execution |  | [Notebook Execution Options Example](_schemas.md#notebook-execution-options-example) |
+| executionOptions | [Notebook Execution Options](../lib/schemas/notebookExecutionOptions.json) | Y | The options for the execution |  | [Notebook Execution Options Example](_schemas.md#notebook-execution-options-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If execution request was accepted and successfully queued |
+| 200 | [Success](../lib/schemas/success.json) | If execution request was accepted and successfully queued |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if notebook was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if notebook was not found |
 
 <br/>
 
@@ -157,14 +157,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Notebook](_schemas.md#notebook) | notebook information |
+| 200 | [Notebook](../lib/schemas/notebook.json) | notebook information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if notebook was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if notebook was not found |
 
 <br/>
 
@@ -209,14 +209,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Notebook Execution Logs](_schemas.md#notebook-execution-logs) | notebook execution information |
+| 200 | [Notebook Execution Logs](../lib/schemas/notebookExecutionLogs.json) | notebook execution information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if notebook was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if notebook was not found |
 
 <br/>
 
@@ -254,21 +254,21 @@ all.Application, all.Organization, all.User, notebook.*, or notebook.patch.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | notebookId | string | Y | ID associated with the notebook |  | 575ed78e7ae143cd83dc4aab |
-| notebook | [Notebook Patch](_schemas.md#notebook-patch) | Y | Object containing new properties of the notebook |  | [Notebook Patch Example](_schemas.md#notebook-patch-example) |
+| notebook | [Notebook Patch](../lib/schemas/notebookPatch.json) | Y | Object containing new properties of the notebook |  | [Notebook Patch Example](_schemas.md#notebook-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Notebook](_schemas.md#notebook) | Updated notebook information |
+| 200 | [Notebook](../lib/schemas/notebook.json) | Updated notebook information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if notebook was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if notebook was not found |
 
 <br/>
 
@@ -306,21 +306,21 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | notebookId | string | Y | ID associated with the notebook |  | 575ed78e7ae143cd83dc4aab |
-| exportOptions | [Notebook Data Export Options](_schemas.md#notebook-data-export-options) | Y | The options for the export |  | [Notebook Data Export Options Example](_schemas.md#notebook-data-export-options-example) |
+| exportOptions | [Notebook Data Export Options](../lib/schemas/notebookDataExportOptions.json) | Y | The options for the export |  | [Notebook Data Export Options Example](_schemas.md#notebook-data-export-options-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If export request was accepted and successfully queued |
+| 200 | [Success](../lib/schemas/success.json) | If export request was accepted and successfully queued |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if notebook was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if notebook was not found |
 
 <br/>
 
@@ -365,11 +365,11 @@ all.Application, all.Organization, all.User, notebook.*, or notebook.upload.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Notebook](_schemas.md#notebook) | Updated notebook information |
+| 200 | [Notebook](../lib/schemas/notebook.json) | Updated notebook information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if notebook was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if notebook was not found |

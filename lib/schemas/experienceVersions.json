@@ -60,7 +60,7 @@
               "properties": {
                 "domainName": {
                   "type": "string",
-                  "maxLength": 1024,
+                  "maxLength": 45,
                   "minLength": 3
                 },
                 "id": {

@@ -48,14 +48,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience Slugs](_schemas.md#experience-slugs) | Collection of experience slugs |
+| 200 | [Experience Slugs](../lib/schemas/experienceSlugs.json) | Collection of experience slugs |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
 
 <br/>
 
@@ -91,18 +91,18 @@ all.Application, all.Organization, all.User, experienceSlugs.*, or experienceSlu
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| experienceSlug | [Experience Slug Post](_schemas.md#experience-slug-post) | Y | New experience slug information |  | [Experience Slug Post Example](_schemas.md#experience-slug-post-example) |
+| experienceSlug | [Experience Slug Post](../lib/schemas/experienceSlugPost.json) | Y | New experience slug information |  | [Experience Slug Post Example](_schemas.md#experience-slug-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Experience Slug](_schemas.md#experience-slug) | Successfully created experience slug |
+| 201 | [Experience Slug](../lib/schemas/experienceSlug.json) | Successfully created experience slug |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |

@@ -48,15 +48,15 @@ No api access token is required to call this action.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Organization Invitation Information](_schemas.md#organization-invitation-information) | Information about invite |
+| 200 | [Organization Invitation Information](../lib/schemas/orgInviteInfo.json) | Information about invite |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if invite not found |
-| 410 | [Error](_schemas.md#error) | Error if invite has expired |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if invite not found |
+| 410 | [Error](../lib/schemas/error.json) | Error if invite has expired |
 
 <br/>
 
@@ -88,19 +88,19 @@ No api access token is required to call this action.
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| invite | [Organization Invitation Action](_schemas.md#organization-invitation-action) | Y | Invite info and acceptance |  | [Organization Invitation Action Example](_schemas.md#organization-invitation-action-example) |
+| invite | [Organization Invitation Action](../lib/schemas/orgInviteAction.json) | Y | Invite info and acceptance |  | [Organization Invitation Action Example](_schemas.md#organization-invitation-action-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Organization Invitation Result](_schemas.md#organization-invitation-result) | Acceptance/Rejection of invite |
+| 200 | [Organization Invitation Result](../lib/schemas/orgInviteResult.json) | Acceptance/Rejection of invite |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if invite not found |
-| 410 | [Error](_schemas.md#error) | Error if invite has expired |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if invite not found |
+| 410 | [Error](../lib/schemas/error.json) | Error if invite has expired |

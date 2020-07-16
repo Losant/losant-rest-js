@@ -144,9 +144,11 @@
 *   [File Upload Post Response](#file-upload-post-response)
 *   [Files Schema](#files-schema)
 *   [Workflow](#workflow)
+*   [Workflow Errors](#workflow-errors)
 *   [Workflow Log](#workflow-log)
 *   [Workflow Patch](#workflow-patch)
 *   [Workflow Post](#workflow-post)
+*   [Workflow Statistics](#workflow-statistics)
 *   [Workflow Storage Entries](#workflow-storage-entries)
 *   [Workflow Storage Entry](#workflow-storage-entry)
 *   [Workflow Trigger Filter](#workflow-trigger-filter)
@@ -3581,23 +3583,27 @@ Schema for the body of an Application API Token creation request
           "file.upload",
           "files.get",
           "files.post",
+          "flow.clearStorageEntries",
           "flow.debug",
           "flow.delete",
-          "flow.clearStorageEntries",
+          "flow.errors",
           "flow.get",
           "flow.getStorageEntries",
           "flow.log",
           "flow.patch",
           "flow.pressVirtualButton",
           "flow.setStorageEntry",
+          "flow.stats",
           "flows.get",
           "flows.getByVersion",
           "flows.import",
           "flows.post",
           "flowVersion.delete",
+          "flowVersion.errors",
           "flowVersion.get",
           "flowVersion.log",
           "flowVersion.patch",
+          "flowVersion.stats",
           "flowVersions.get",
           "flowVersions.post",
           "integration.delete",
@@ -8461,6 +8467,10 @@ Schema for a single Dashboard
                           "type": "string",
                           "maxLength": 255
                         },
+                        "expression": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
                         "yAxisLabel": {
                           "type": "string",
                           "maxLength": 255
@@ -9853,6 +9863,10 @@ Schema for a single Dashboard
                         }
                       },
                       "label": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "expression": {
                         "type": "string",
                         "maxLength": 255
                       },
@@ -11315,6 +11329,10 @@ Schema for a single Dashboard
                           }
                         },
                         "label": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "expression": {
                           "type": "string",
                           "maxLength": 255
                         },
@@ -12891,6 +12909,10 @@ Schema for a single Dashboard
                           }
                         },
                         "label": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "expression": {
                           "type": "string",
                           "maxLength": 255
                         },
@@ -14054,6 +14076,10 @@ Schema for the body of a Dashboard modification request
                           "type": "string",
                           "maxLength": 255
                         },
+                        "expression": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
                         "yAxisLabel": {
                           "type": "string",
                           "maxLength": 255
@@ -15446,6 +15472,10 @@ Schema for the body of a Dashboard modification request
                         }
                       },
                       "label": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "expression": {
                         "type": "string",
                         "maxLength": 255
                       },
@@ -16908,6 +16938,10 @@ Schema for the body of a Dashboard modification request
                           }
                         },
                         "label": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "expression": {
                           "type": "string",
                           "maxLength": 255
                         },
@@ -18484,6 +18518,10 @@ Schema for the body of a Dashboard modification request
                           }
                         },
                         "label": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "expression": {
                           "type": "string",
                           "maxLength": 255
                         },
@@ -19576,6 +19614,10 @@ Schema for the body of a Dashboard creation request
                           "type": "string",
                           "maxLength": 255
                         },
+                        "expression": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
                         "yAxisLabel": {
                           "type": "string",
                           "maxLength": 255
@@ -20968,6 +21010,10 @@ Schema for the body of a Dashboard creation request
                         }
                       },
                       "label": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "expression": {
                         "type": "string",
                         "maxLength": 255
                       },
@@ -22430,6 +22476,10 @@ Schema for the body of a Dashboard creation request
                           }
                         },
                         "label": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "expression": {
                           "type": "string",
                           "maxLength": 255
                         },
@@ -24006,6 +24056,10 @@ Schema for the body of a Dashboard creation request
                           }
                         },
                         "label": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "expression": {
                           "type": "string",
                           "maxLength": 255
                         },
@@ -25350,6 +25404,10 @@ Schema for a collection of Dashboards
                                 }
                               },
                               "label": {
+                                "type": "string",
+                                "maxLength": 255
+                              },
+                              "expression": {
                                 "type": "string",
                                 "maxLength": 255
                               },
@@ -26745,6 +26803,10 @@ Schema for a collection of Dashboards
                               }
                             },
                             "label": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "expression": {
                               "type": "string",
                               "maxLength": 255
                             },
@@ -28207,6 +28269,10 @@ Schema for a collection of Dashboards
                                 }
                               },
                               "label": {
+                                "type": "string",
+                                "maxLength": 255
+                              },
+                              "expression": {
                                 "type": "string",
                                 "maxLength": 255
                               },
@@ -29783,6 +29849,10 @@ Schema for a collection of Dashboards
                                 }
                               },
                               "label": {
+                                "type": "string",
+                                "maxLength": 255
+                              },
+                              "expression": {
                                 "type": "string",
                                 "maxLength": 255
                               },
@@ -41248,6 +41318,28 @@ Schema for the body of an Event creation request
         }
       },
       "additionalProperties": false
+    },
+    "creationDate": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$date": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "$date"
+          ]
+        }
+      ]
     }
   },
   "required": [
@@ -42958,7 +43050,7 @@ Schema for a single Experience Domain
     },
     "domainName": {
       "type": "string",
-      "maxLength": 1024,
+      "maxLength": 45,
       "minLength": 3
     },
     "version": {
@@ -43046,7 +43138,7 @@ Schema for the body of an Experience Domain modification request
     },
     "domainName": {
       "type": "string",
-      "maxLength": 1024,
+      "maxLength": 45,
       "minLength": 3
     }
   },
@@ -43094,7 +43186,7 @@ Schema for the body of an Experience Domain creation request
     },
     "domainName": {
       "type": "string",
-      "maxLength": 1024,
+      "maxLength": 45,
       "minLength": 3
     },
     "version": {
@@ -43179,7 +43271,7 @@ Schema for a collection of Experience Domains
           },
           "domainName": {
             "type": "string",
-            "maxLength": 1024,
+            "maxLength": 45,
             "minLength": 3
           },
           "version": {
@@ -52147,7 +52239,7 @@ Schema for a single Experience Version
         "properties": {
           "domainName": {
             "type": "string",
-            "maxLength": 1024,
+            "maxLength": 45,
             "minLength": 3
           },
           "id": {
@@ -52369,7 +52461,7 @@ Schema for a collection of Experience Versions
               "properties": {
                 "domainName": {
                   "type": "string",
-                  "maxLength": 1024,
+                  "maxLength": 45,
                   "minLength": 3
                 },
                 "id": {
@@ -55645,6 +55737,124 @@ Schema for a single Workflow
     "runCount": 0,
     "errorCount": 0
   }
+}
+```
+
+<br/>
+
+## Workflow Errors
+
+Workflow run error information
+
+### <a name="workflow-errors-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "flowVersion": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "flowVersionId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "end": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "limit": {
+      "type": "number"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc",
+        "ASC",
+        "DESC",
+        ""
+      ]
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deviceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "deviceName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "flowVersion": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "flowVersionId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "nodeId": {
+            "type": "string"
+          },
+          "nodeLabel": {
+            "type": "string"
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+### <a name="workflow-errors-example"></a> Example
+
+```json
+{
+  "start": "2016-06-03T00:00:00.000Z",
+  "end": "2016-06-04T00:00:00.000Z",
+  "limit": 25,
+  "sortDirection": "desc",
+  "errors": [
+    {
+      "time": "2016-06-03T00:00:00.000Z",
+      "nodeId": "dji4r",
+      "error": {
+        "name": "Validation",
+        "message": "Result path is required"
+      }
+    }
+  ]
 }
 ```
 
@@ -60001,6 +60211,89 @@ Schema for the body of a Workflow creation request
 {
   "name": "My New Workflow",
   "description": "Description of my new workflow"
+}
+```
+
+<br/>
+
+## Workflow Statistics
+
+Statistics about the runs for a given workflow
+
+### <a name="workflow-statistics-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "flowVersion": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "flowVersionId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "end": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "resolution": {
+      "type": "number"
+    },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "pathsFailed": {
+            "type": "number"
+          },
+          "pathsCompleted": {
+            "type": "number"
+          },
+          "runCount": {
+            "type": "number"
+          },
+          "wallTime": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}
+```
+### <a name="workflow-statistics-example"></a> Example
+
+```json
+{
+  "start": "2016-06-03T00:00:00.000Z",
+  "end": "2016-06-04T00:00:00.000Z",
+  "resolution": 86400000,
+  "metrics": [
+    {
+      "time": "2016-06-03T00:00:00.000Z",
+      "pathsFailed": 0,
+      "pathsCompleted": 1,
+      "runCount": 1,
+      "wallTime": 450
+    }
+  ]
 }
 ```
 
@@ -83442,23 +83735,27 @@ Schema for the body of a Github login request
                   "file.upload",
                   "files.get",
                   "files.post",
+                  "flow.clearStorageEntries",
                   "flow.debug",
                   "flow.delete",
-                  "flow.clearStorageEntries",
+                  "flow.errors",
                   "flow.get",
                   "flow.getStorageEntries",
                   "flow.log",
                   "flow.patch",
                   "flow.pressVirtualButton",
                   "flow.setStorageEntry",
+                  "flow.stats",
                   "flows.get",
                   "flows.getByVersion",
                   "flows.import",
                   "flows.post",
                   "flowVersion.delete",
+                  "flowVersion.errors",
                   "flowVersion.get",
                   "flowVersion.log",
                   "flowVersion.patch",
+                  "flowVersion.stats",
                   "flowVersions.get",
                   "flowVersions.post",
                   "integration.delete",
@@ -86608,6 +86905,95 @@ Schema for a single Notebook
               "inputType": {
                 "type": "string",
                 "enum": [
+                  "deviceConnectionHistory"
+                ]
+              },
+              "fileName": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 4,
+                    "maxLength": 255,
+                    "pattern": ".*{{.+}}.*"
+                  }
+                ]
+              },
+              "deviceTags": {
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        },
+                        {
+                          "type": "string",
+                          "minLength": 4,
+                          "maxLength": 255,
+                          "pattern": ".*{{.+}}.*"
+                        }
+                      ]
+                    },
+                    "value": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "deviceIds": {
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "string",
+                      "minLength": 4,
+                      "maxLength": 255,
+                      "pattern": ".*{{.+}}.*"
+                    }
+                  ]
+                }
+              },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 8192
+              },
+              "start": {
+                "type": "number"
+              },
+              "end": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "inputType",
+              "fileName",
+              "start",
+              "end"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inputType": {
+                "type": "string",
+                "enum": [
                   "deviceMetadata"
                 ]
               },
@@ -87502,6 +87888,95 @@ Schema for the body of a Notebook modification request
               "inputType": {
                 "type": "string",
                 "enum": [
+                  "deviceConnectionHistory"
+                ]
+              },
+              "fileName": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 4,
+                    "maxLength": 255,
+                    "pattern": ".*{{.+}}.*"
+                  }
+                ]
+              },
+              "deviceTags": {
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        },
+                        {
+                          "type": "string",
+                          "minLength": 4,
+                          "maxLength": 255,
+                          "pattern": ".*{{.+}}.*"
+                        }
+                      ]
+                    },
+                    "value": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "deviceIds": {
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "string",
+                      "minLength": 4,
+                      "maxLength": 255,
+                      "pattern": ".*{{.+}}.*"
+                    }
+                  ]
+                }
+              },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 8192
+              },
+              "start": {
+                "type": "number"
+              },
+              "end": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "inputType",
+              "fileName",
+              "start",
+              "end"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inputType": {
+                "type": "string",
+                "enum": [
                   "deviceMetadata"
                 ]
               },
@@ -87991,6 +88466,95 @@ Schema for the body of an Notebook creation request
                   "type": "string",
                   "pattern": "^[0-9a-zA-Z_-]{1,255}$"
                 }
+              },
+              "start": {
+                "type": "number"
+              },
+              "end": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "inputType",
+              "fileName",
+              "start",
+              "end"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inputType": {
+                "type": "string",
+                "enum": [
+                  "deviceConnectionHistory"
+                ]
+              },
+              "fileName": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 4,
+                    "maxLength": 255,
+                    "pattern": ".*{{.+}}.*"
+                  }
+                ]
+              },
+              "deviceTags": {
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        },
+                        {
+                          "type": "string",
+                          "minLength": 4,
+                          "maxLength": 255,
+                          "pattern": ".*{{.+}}.*"
+                        }
+                      ]
+                    },
+                    "value": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "deviceIds": {
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "string",
+                      "minLength": 4,
+                      "maxLength": 255,
+                      "pattern": ".*{{.+}}.*"
+                    }
+                  ]
+                }
+              },
+              "queryJson": {
+                "type": "string",
+                "maxLength": 8192
               },
               "start": {
                 "type": "number"
@@ -88540,6 +89104,95 @@ Schema for a collection of Notebooks
                         "type": "string",
                         "pattern": "^[0-9a-zA-Z_-]{1,255}$"
                       }
+                    },
+                    "start": {
+                      "type": "number"
+                    },
+                    "end": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "inputType",
+                    "fileName",
+                    "start",
+                    "end"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "inputType": {
+                      "type": "string",
+                      "enum": [
+                        "deviceConnectionHistory"
+                      ]
+                    },
+                    "fileName": {
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
+                        },
+                        {
+                          "type": "string",
+                          "minLength": 4,
+                          "maxLength": 255,
+                          "pattern": ".*{{.+}}.*"
+                        }
+                      ]
+                    },
+                    "deviceTags": {
+                      "type": "array",
+                      "maxItems": 100,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                              },
+                              {
+                                "type": "string",
+                                "minLength": 4,
+                                "maxLength": 255,
+                                "pattern": ".*{{.+}}.*"
+                              }
+                            ]
+                          },
+                          "value": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 255
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "deviceIds": {
+                      "type": "array",
+                      "maxItems": 100,
+                      "items": {
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^[A-Fa-f\\d]{24}$"
+                          },
+                          {
+                            "type": "string",
+                            "minLength": 4,
+                            "maxLength": 255,
+                            "pattern": ".*{{.+}}.*"
+                          }
+                        ]
+                      }
+                    },
+                    "queryJson": {
+                      "type": "string",
+                      "maxLength": 8192
                     },
                     "start": {
                       "type": "number"
@@ -89540,7 +90193,7 @@ Schema for a single Organization
       "type": "array",
       "items": {
         "type": "string",
-        "maxLength": 1024,
+        "maxLength": 45,
         "minLength": 3
       }
     }
@@ -90067,7 +90720,7 @@ Schema for the body of an Organization modification request
       "maxItems": 25,
       "items": {
         "type": "string",
-        "maxLength": 1024,
+        "maxLength": 45,
         "minLength": 3
       }
     }
@@ -90579,7 +91232,7 @@ Schema for a collection of Organizations
             "type": "array",
             "items": {
               "type": "string",
-              "maxLength": 1024,
+              "maxLength": 45,
               "minLength": 3
             }
           }
@@ -91128,7 +91781,7 @@ SAML Response body for login
     },
     "SAMLDomain": {
       "type": "string",
-      "maxLength": 1024,
+      "maxLength": 45,
       "minLength": 3
     }
   },
@@ -91799,23 +92452,27 @@ Schema for the body of a User authentication request
                   "file.upload",
                   "files.get",
                   "files.post",
+                  "flow.clearStorageEntries",
                   "flow.debug",
                   "flow.delete",
-                  "flow.clearStorageEntries",
+                  "flow.errors",
                   "flow.get",
                   "flow.getStorageEntries",
                   "flow.log",
                   "flow.patch",
                   "flow.pressVirtualButton",
                   "flow.setStorageEntry",
+                  "flow.stats",
                   "flows.get",
                   "flows.getByVersion",
                   "flows.import",
                   "flows.post",
                   "flowVersion.delete",
+                  "flowVersion.errors",
                   "flowVersion.get",
                   "flowVersion.log",
                   "flowVersion.patch",
+                  "flowVersion.stats",
                   "flowVersions.get",
                   "flowVersions.post",
                   "integration.delete",
@@ -92222,23 +92879,27 @@ Schema for the body of a User creation request
                   "file.upload",
                   "files.get",
                   "files.post",
+                  "flow.clearStorageEntries",
                   "flow.debug",
                   "flow.delete",
-                  "flow.clearStorageEntries",
+                  "flow.errors",
                   "flow.get",
                   "flow.getStorageEntries",
                   "flow.log",
                   "flow.patch",
                   "flow.pressVirtualButton",
                   "flow.setStorageEntry",
+                  "flow.stats",
                   "flows.get",
                   "flows.getByVersion",
                   "flows.import",
                   "flows.post",
                   "flowVersion.delete",
+                  "flowVersion.errors",
                   "flowVersion.get",
                   "flowVersion.log",
                   "flowVersion.patch",
+                  "flowVersion.stats",
                   "flowVersions.get",
                   "flowVersions.post",
                   "integration.delete",

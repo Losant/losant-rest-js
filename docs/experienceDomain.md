@@ -51,14 +51,14 @@ all.Application, all.Organization, all.User, experienceDomain.*, or experienceDo
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If experience domain was successfully deleted |
+| 200 | [Success](../lib/schemas/success.json) | If experience domain was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if experience domain was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if experience domain was not found |
 
 <br/>
 
@@ -101,14 +101,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience Domain](_schemas.md#experience-domain) | Experience domain information |
+| 200 | [Experience Domain](../lib/schemas/experienceDomain.json) | Experience domain information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if experience domain was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if experience domain was not found |
 
 <br/>
 
@@ -146,18 +146,18 @@ all.Application, all.Organization, all.User, experienceDomain.*, or experienceDo
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | experienceDomainId | string | Y | ID associated with the experience domain |  | 575ed78e7ae143cd83dc4aab |
-| experienceDomain | [Experience Domain Patch](_schemas.md#experience-domain-patch) | Y | Object containing new properties of the experience domain |  | [Experience Domain Patch Example](_schemas.md#experience-domain-patch-example) |
+| experienceDomain | [Experience Domain Patch](../lib/schemas/experienceDomainPatch.json) | Y | Object containing new properties of the experience domain |  | [Experience Domain Patch Example](_schemas.md#experience-domain-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience Domain](_schemas.md#experience-domain) | Updated experience domain information |
+| 200 | [Experience Domain](../lib/schemas/experienceDomain.json) | Updated experience domain information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if experience domain was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if experience domain was not found |

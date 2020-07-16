@@ -7,9 +7,11 @@ parameters and the potential responses.
 ##### Contents
 
 *   [Delete](#delete)
+*   [Errors](#errors)
 *   [Get](#get)
 *   [Get Log Entries](#get-log-entries)
 *   [Patch](#patch)
+*   [Stats](#stats)
 
 <br/>
 
@@ -54,14 +56,71 @@ all.Application, all.Organization, all.User, flowVersion.*, or flowVersion.delet
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If flow version was successfully deleted |
+| 200 | [Success](../lib/schemas/success.json) | If flow version was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if flow version was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if flow version was not found |
+
+<br/>
+
+## Errors
+
+Get information about errors that occurred during runs of this workflow version
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  flowId: myFlowId,
+  flowVersionId: myFlowVersionId
+};
+
+// with callbacks
+client.flowVersion.errors(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.flowVersion.errors(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, flowVersion.*, or flowVersion.errors.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| flowId | string | Y | ID associated with the flow |  | 575ed18f7ae143cd83dc4aa6 |
+| flowVersionId | string | Y | Version ID or version name associated with the flow version |  | 675ed18f7ae143cd83dc4bb7 |
+| duration | string | N | Duration of time range in milliseconds | 86400000 | 86400000 |
+| end | string | N | End of time range in milliseconds since epoch | 0 | 0 |
+| limit | string | N | Maximum number of errors to return | 25 | 25 |
+| sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | desc | undefined |
+| deviceId | string | N | For edge workflows, the Device ID to return workflow errors for. When not included, will be errors for all device IDs. |  | 575ed18f7ae143cd83dc4bb6 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Workflow Errors](../lib/schemas/flowErrors.json) | Workflow error information |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if flow version was not found |
 
 <br/>
 
@@ -107,14 +166,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Workflow Version](_schemas.md#workflow-version) | Flow version information |
+| 200 | [Workflow Version](../lib/schemas/flowVersion.json) | Flow version information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if flow version was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if flow version was not found |
 
 <br/>
 
@@ -161,14 +220,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Workflow Log](_schemas.md#workflow-log) | Recent log entries |
+| 200 | [Workflow Log](../lib/schemas/flowLog.json) | Recent log entries |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if device was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if flow version was not found |
 
 <br/>
 
@@ -209,18 +268,74 @@ all.Application, all.Organization, all.User, flowVersion.*, or flowVersion.patch
 | flowId | string | Y | ID associated with the flow |  | 575ed18f7ae143cd83dc4aa6 |
 | flowVersionId | string | Y | Version ID or version name associated with the flow version |  | 675ed18f7ae143cd83dc4bb7 |
 | includeCustomNodes | string | N | If the result of the request should also include the details of any custom nodes referenced by the returned workflows | false | true |
-| flowVersion | [Workflow Version Patch](_schemas.md#workflow-version-patch) | Y | Object containing new properties of the flow version |  | [Workflow Version Patch Example](_schemas.md#workflow-version-patch-example) |
+| flowVersion | [Workflow Version Patch](../lib/schemas/flowVersionPatch.json) | Y | Object containing new properties of the flow version |  | [Workflow Version Patch Example](_schemas.md#workflow-version-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Workflow Version](_schemas.md#workflow-version) | Updated flow version information |
+| 200 | [Workflow Version](../lib/schemas/flowVersion.json) | Updated flow version information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if flow version was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if flow version was not found |
+
+<br/>
+
+## Stats
+
+Get statistics about workflow runs for this workflow version
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  flowId: myFlowId,
+  flowVersionId: myFlowVersionId
+};
+
+// with callbacks
+client.flowVersion.stats(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.flowVersion.stats(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, flowVersion.*, or flowVersion.stats.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| flowId | string | Y | ID associated with the flow |  | 575ed18f7ae143cd83dc4aa6 |
+| flowVersionId | string | Y | Version ID or version name associated with the flow version |  | 675ed18f7ae143cd83dc4bb7 |
+| duration | string | N | Duration of time range in milliseconds | 86400000 | 86400000 |
+| end | string | N | End of time range in milliseconds since epoch | 0 | 0 |
+| resolution | string | N | Resolution in milliseconds | 3600000 | 3600000 |
+| deviceId | string | N | For edge workflows, the device ID to return workflow stats for. When not included, will be aggregate for all device IDs. |  | 575ed18f7ae143cd83dc4bb6 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Workflow Statistics](../lib/schemas/flowStats.json) | Statistics for workflow runs |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if flow version was not found |

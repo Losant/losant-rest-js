@@ -56,14 +56,14 @@ all.Organization, all.User, org.*, or org.delete.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If organization was successfully deleted |
+| 200 | [Success](../lib/schemas/success.json) | If organization was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if organization was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if organization was not found |
 
 <br/>
 
@@ -106,14 +106,14 @@ all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Organization](_schemas.md#organization) | Organization information |
+| 200 | [Organization](../lib/schemas/org.json) | Organization information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if organization not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if organization not found |
 
 <br/>
 
@@ -149,21 +149,21 @@ all.Organization, all.User, org.*, or org.inviteMember.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
-| invite | [Organization Invitation Post](_schemas.md#organization-invitation-post) | Y | Object containing new invite info |  | [Organization Invitation Post Example](_schemas.md#organization-invitation-post-example) |
+| invite | [Organization Invitation Post](../lib/schemas/orgInvitePost.json) | Y | Object containing new invite info |  | [Organization Invitation Post Example](_schemas.md#organization-invitation-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Organization Invitations](_schemas.md#organization-invitations) | Invitation information |
+| 200 | [Organization Invitations](../lib/schemas/orgInvites.json) | Invitation information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if organization not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if organization not found |
 
 <br/>
 
@@ -199,7 +199,7 @@ all.Organization, all.User, org.*, or org.modifyMember.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
-| member | [Organization Member Patch](_schemas.md#organization-member-patch) | Y | Object containing new member pair |  | [Organization Member Patch Example](_schemas.md#organization-member-patch-example) |
+| member | [Organization Member Patch](../lib/schemas/orgMemberPatch.json) | Y | Object containing new member pair |  | [Organization Member Patch Example](_schemas.md#organization-member-patch-example) |
 | summaryExclude | string | N | Comma-separated list of summary fields to exclude from org summary |  | payloadCount |
 | summaryInclude | string | N | Comma-separated list of summary fields to include in org summary |  | payloadCount |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
@@ -208,14 +208,14 @@ all.Organization, all.User, org.*, or org.modifyMember.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Organization](_schemas.md#organization) | Updated organization information |
+| 200 | [Organization](../lib/schemas/org.json) | Updated organization information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if organization not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if organization not found |
 
 <br/>
 
@@ -251,7 +251,7 @@ all.Organization, all.User, org.*, or org.patch.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
-| organization | [Organization Patch](_schemas.md#organization-patch) | Y | Object containing new organization properties |  | [Organization Patch Example](_schemas.md#organization-patch-example) |
+| organization | [Organization Patch](../lib/schemas/orgPatch.json) | Y | Object containing new organization properties |  | [Organization Patch Example](_schemas.md#organization-patch-example) |
 | summaryExclude | string | N | Comma-separated list of summary fields to exclude from org summary |  | payloadCount |
 | summaryInclude | string | N | Comma-separated list of summary fields to include in org summary |  | payloadCount |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
@@ -260,14 +260,14 @@ all.Organization, all.User, org.*, or org.patch.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Organization](_schemas.md#organization) | Updated organization information |
+| 200 | [Organization](../lib/schemas/org.json) | Updated organization information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if organization was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if organization was not found |
 
 <br/>
 
@@ -310,14 +310,14 @@ all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Payload Counts](_schemas.md#payload-counts) | Payload counts, by type and source |
+| 200 | [Payload Counts](../lib/schemas/payloadCounts.json) | Payload counts, by type and source |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if organization was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if organization was not found |
 
 <br/>
 
@@ -358,14 +358,14 @@ all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Organization Invitations](_schemas.md#organization-invitations) | Invitation information |
+| 200 | [Organization Invitations](../lib/schemas/orgInvites.json) | Invitation information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if organization not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if organization not found |
 
 <br/>
 
@@ -410,14 +410,14 @@ all.Organization, all.User, org.*, or org.removeMember.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Organization](_schemas.md#organization) | Updated organization information |
+| 200 | [Organization](../lib/schemas/org.json) | Updated organization information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if organization not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if organization not found |
 
 <br/>
 
@@ -460,14 +460,14 @@ all.Organization, all.User, org.*, or org.revokeInvite.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Organization Invitations](_schemas.md#organization-invitations) | Invitation information |
+| 200 | [Organization Invitations](../lib/schemas/orgInvites.json) | Invitation information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if organization not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if organization not found |
 
 <br/>
 
@@ -503,18 +503,18 @@ all.Organization, all.User, org.*, or org.transferResources.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
-| transfer | [Resource Transfer](_schemas.md#resource-transfer) | Y | Object containing properties of the transfer |  | [Resource Transfer Example](_schemas.md#resource-transfer-example) |
+| transfer | [Resource Transfer](../lib/schemas/resourceTransfer.json) | Y | Object containing properties of the transfer |  | [Resource Transfer Example](_schemas.md#resource-transfer-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If resource transfer was successful |
+| 200 | [Success](../lib/schemas/success.json) | If resource transfer was successful |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if organization was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if organization was not found |
