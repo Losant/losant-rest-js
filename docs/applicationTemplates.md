@@ -50,10 +50,10 @@ all.User, all.User.read, applicationTemplates.*, or applicationTemplates.get.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Application Templates](../lib/schemas/applicationTemplates.json) | Collection of application templates |
+| 200 | [Application Templates](_schemas.md#application-templates) | Collection of application templates |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |

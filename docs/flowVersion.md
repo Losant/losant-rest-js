@@ -56,14 +56,14 @@ all.Application, all.Organization, all.User, flowVersion.*, or flowVersion.delet
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If flow version was successfully deleted |
+| 200 | [Success](_schemas.md#success) | If flow version was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if flow version was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if flow version was not found |
 
 <br/>
 
@@ -113,14 +113,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Workflow Errors](../lib/schemas/flowErrors.json) | Workflow error information |
+| 200 | [Workflow Errors](_schemas.md#workflow-errors) | Workflow error information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if flow version was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if flow version was not found |
 
 <br/>
 
@@ -166,14 +166,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Workflow Version](../lib/schemas/flowVersion.json) | Flow version information |
+| 200 | [Workflow Version](_schemas.md#workflow-version) | Flow version information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if flow version was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if flow version was not found |
 
 <br/>
 
@@ -220,14 +220,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Workflow Log](../lib/schemas/flowLog.json) | Recent log entries |
+| 200 | [Workflow Log](_schemas.md#workflow-log) | Recent log entries |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if flow version was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if flow version was not found |
 
 <br/>
 
@@ -268,21 +268,21 @@ all.Application, all.Organization, all.User, flowVersion.*, or flowVersion.patch
 | flowId | string | Y | ID associated with the flow |  | 575ed18f7ae143cd83dc4aa6 |
 | flowVersionId | string | Y | Version ID or version name associated with the flow version |  | 675ed18f7ae143cd83dc4bb7 |
 | includeCustomNodes | string | N | If the result of the request should also include the details of any custom nodes referenced by the returned workflows | false | true |
-| flowVersion | [Workflow Version Patch](../lib/schemas/flowVersionPatch.json) | Y | Object containing new properties of the flow version |  | [Workflow Version Patch Example](_schemas.md#workflow-version-patch-example) |
+| flowVersion | [Workflow Version Patch](_schemas.md#workflow-version-patch) | Y | Object containing new properties of the flow version |  | [Workflow Version Patch Example](_schemas.md#workflow-version-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Workflow Version](../lib/schemas/flowVersion.json) | Updated flow version information |
+| 200 | [Workflow Version](_schemas.md#workflow-version) | Updated flow version information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if flow version was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if flow version was not found |
 
 <br/>
 
@@ -331,11 +331,11 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Workflow Statistics](../lib/schemas/flowStats.json) | Statistics for workflow runs |
+| 200 | [Workflow Statistics](_schemas.md#workflow-statistics) | Statistics for workflow runs |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if flow version was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if flow version was not found |

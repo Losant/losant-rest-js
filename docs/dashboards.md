@@ -53,13 +53,13 @@ all.Organization, all.Organization.read, all.User, all.User.read, dashboards.*, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Dashboards](../lib/schemas/dashboards.json) | Collection of dashboards |
+| 200 | [Dashboards](_schemas.md#dashboards) | Collection of dashboards |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 
 <br/>
 
@@ -93,17 +93,17 @@ all.Organization, all.User, dashboards.*, or dashboards.post.
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| dashboard | [Dashboard Post](../lib/schemas/dashboardPost.json) | Y | New dashboard information |  | [Dashboard Post Example](_schemas.md#dashboard-post-example) |
+| dashboard | [Dashboard Post](_schemas.md#dashboard-post) | Y | New dashboard information |  | [Dashboard Post Example](_schemas.md#dashboard-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Dashboard](../lib/schemas/dashboard.json) | Successfully created dashboard |
+| 201 | [Dashboard](_schemas.md#dashboard) | Successfully created dashboard |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |

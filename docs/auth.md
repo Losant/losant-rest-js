@@ -42,21 +42,21 @@ No api access token is required to call this action.
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| credentials | [Device Credentials](../lib/schemas/deviceCredentials.json) | Y | Device authentication credentials |  | [Device Credentials Example](_schemas.md#device-credentials-example) |
+| credentials | [Device Credentials](_schemas.md#device-credentials) | Y | Device authentication credentials |  | [Device Credentials Example](_schemas.md#device-credentials-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Authenticated Device](../lib/schemas/authedDevice.json) | Successful authentication. The included api access token by default has the scope &#x27;all.Device&#x27;. |
+| 200 | [Authenticated Device](_schemas.md#authenticated-device) | Successful authentication. The included api access token by default has the scope &#x27;all.Device&#x27;. |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 401 | [Error](../lib/schemas/error.json) | Unauthorized error if authentication fails |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 401 | [Error](_schemas.md#error) | Unauthorized error if authentication fails |
 
 <br/>
 
@@ -88,21 +88,21 @@ No api access token is required to call this action.
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| credentials | [User Credentials](../lib/schemas/userCredentials.json) | Y | User authentication credentials |  | [User Credentials Example](_schemas.md#user-credentials-example) |
+| credentials | [User Credentials](_schemas.md#user-credentials) | Y | User authentication credentials |  | [User Credentials Example](_schemas.md#user-credentials-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Authenticated User](../lib/schemas/authedUser.json) | Successful authentication. The included api access token has the scope &#x27;all.User&#x27;. |
+| 200 | [Authenticated User](_schemas.md#authenticated-user) | Successful authentication. The included api access token has the scope &#x27;all.User&#x27;. |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 401 | [Error](../lib/schemas/error.json) | Unauthorized error if authentication fails |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 401 | [Error](_schemas.md#error) | Unauthorized error if authentication fails |
 
 <br/>
 
@@ -134,21 +134,21 @@ No api access token is required to call this action.
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| oauth | [Github Login](../lib/schemas/githubLogin.json) | Y | User authentication credentials (access token) |  | [Github Login Example](_schemas.md#github-login-example) |
+| oauth | [Github Login](_schemas.md#github-login) | Y | User authentication credentials (access token) |  | [Github Login Example](_schemas.md#github-login-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Authenticated User](../lib/schemas/authedUser.json) | Successful authentication. The included api access token has the scope &#x27;all.User&#x27;. |
+| 200 | [Authenticated User](_schemas.md#authenticated-user) | Successful authentication. The included api access token has the scope &#x27;all.User&#x27;. |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 401 | [Error](../lib/schemas/error.json) | Unauthorized error if authentication fails |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 401 | [Error](_schemas.md#error) | Unauthorized error if authentication fails |
 
 <br/>
 
@@ -180,21 +180,21 @@ No api access token is required to call this action.
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| saml | [SAML Response](../lib/schemas/samlResponse.json) | Y | Encoded SAML response from an IDP for a user. |  | [SAML Response Example](_schemas.md#saml-response-example) |
+| saml | [SAML Response](_schemas.md#saml-response) | Y | Encoded SAML response from an IDP for a user. |  | [SAML Response Example](_schemas.md#saml-response-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Authenticated User](../lib/schemas/authedUser.json) | Successful authentication. The included api access token has the scope &#x27;all.User&#x27;. |
+| 200 | [Authenticated User](_schemas.md#authenticated-user) | Successful authentication. The included api access token has the scope &#x27;all.User&#x27;. |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 401 | [Error](../lib/schemas/error.json) | Unauthorized error if authentication fails |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 401 | [Error](_schemas.md#error) | Unauthorized error if authentication fails |
 
 <br/>
 
@@ -233,11 +233,11 @@ No api access token is required to call this action.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [SSO Request](../lib/schemas/ssoRequest.json) | Successful finding SSO for domain. Returns SSO request URL and type. |
+| 200 | [SSO Request](_schemas.md#sso-request) | Successful finding SSO for domain. Returns SSO request URL and type. |
 | 204 | undefined | No domain associated with an SSO configuration |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |

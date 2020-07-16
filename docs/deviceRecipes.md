@@ -54,14 +54,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Device Recipes](../lib/schemas/deviceRecipes.json) | Collection of device recipes |
+| 200 | [Device Recipes](_schemas.md#device-recipes) | Collection of device recipes |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
 
 <br/>
 
@@ -97,18 +97,18 @@ all.Application, all.Organization, all.User, deviceRecipes.*, or deviceRecipes.p
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| deviceRecipe | [Device Recipe Post](../lib/schemas/deviceRecipePost.json) | Y | New device recipe information |  | [Device Recipe Post Example](_schemas.md#device-recipe-post-example) |
+| deviceRecipe | [Device Recipe Post](_schemas.md#device-recipe-post) | Y | New device recipe information |  | [Device Recipe Post Example](_schemas.md#device-recipe-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Device Recipe](../lib/schemas/deviceRecipe.json) | Successfully created device recipe |
+| 201 | [Device Recipe](_schemas.md#device-recipe) | Successfully created device recipe |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |

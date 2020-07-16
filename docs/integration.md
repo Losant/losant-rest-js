@@ -51,14 +51,14 @@ all.Application, all.Organization, all.User, integration.*, or integration.delet
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If integration was successfully deleted |
+| 200 | [Success](_schemas.md#success) | If integration was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if integration was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if integration was not found |
 
 <br/>
 
@@ -101,14 +101,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Integration](../lib/schemas/integration.json) | integration information |
+| 200 | [Integration](_schemas.md#integration) | integration information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if integration was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if integration was not found |
 
 <br/>
 
@@ -146,18 +146,18 @@ all.Application, all.Organization, all.User, integration.*, or integration.patch
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | integrationId | string | Y | ID associated with the integration |  | 575ed78e7ae143cd83dc4aab |
-| integration | [Integration Patch](../lib/schemas/integrationPatch.json) | Y | Object containing new properties of the integration |  | [Integration Patch Example](_schemas.md#integration-patch-example) |
+| integration | [Integration Patch](_schemas.md#integration-patch) | Y | Object containing new properties of the integration |  | [Integration Patch Example](_schemas.md#integration-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Integration](../lib/schemas/integration.json) | Updated integration information |
+| 200 | [Integration](_schemas.md#integration) | Updated integration information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if integration was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if integration was not found |

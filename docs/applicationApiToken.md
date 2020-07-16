@@ -51,14 +51,14 @@ all.Application, all.Organization, all.User, applicationApiToken.*, or applicati
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If API token was successfully deleted |
+| 200 | [Success](_schemas.md#success) | If API token was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if API token was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if API token was not found |
 
 <br/>
 
@@ -101,14 +101,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [API Token](../lib/schemas/apiToken.json) | API token information |
+| 200 | [API Token](_schemas.md#api-token) | API token information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if API token was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if API token was not found |
 
 <br/>
 
@@ -146,18 +146,18 @@ all.Application, all.Organization, all.User, applicationApiToken.*, or applicati
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | apiTokenId | string | Y | ID associated with the API token |  | 575ec7417ae143cd83dc4a95 |
-| apiToken | [API Token Patch](../lib/schemas/apiTokenPatch.json) | Y | Object containing new properties of the API token |  | [API Token Patch Example](_schemas.md#api-token-patch-example) |
+| apiToken | [API Token Patch](_schemas.md#api-token-patch) | Y | Object containing new properties of the API token |  | [API Token Patch Example](_schemas.md#api-token-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [API Token](../lib/schemas/apiToken.json) | Updated API token information |
+| 200 | [API Token](_schemas.md#api-token) | Updated API token information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if API token was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if API token was not found |

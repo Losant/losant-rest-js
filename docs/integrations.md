@@ -54,14 +54,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Integrations](../lib/schemas/integrations.json) | Collection of integrations |
+| 200 | [Integrations](_schemas.md#integrations) | Collection of integrations |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
 
 <br/>
 
@@ -97,18 +97,18 @@ all.Application, all.Organization, all.User, integrations.*, or integrations.pos
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| integration | [Integration Post](../lib/schemas/integrationPost.json) | Y | New integration information |  | [Integration Post Example](_schemas.md#integration-post-example) |
+| integration | [Integration Post](_schemas.md#integration-post) | Y | New integration information |  | [Integration Post Example](_schemas.md#integration-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Integration](../lib/schemas/integration.json) | Successfully created integration |
+| 201 | [Integration](_schemas.md#integration) | Successfully created integration |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |

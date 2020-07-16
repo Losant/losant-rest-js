@@ -53,20 +53,20 @@ all.User, me.*, or me.addRecentItem.
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| data | [Recent Item](../lib/schemas/recentItem.json) | Y | Object containing recent item info |  | [Recent Item Example](_schemas.md#recent-item-example) |
+| data | [Recent Item](_schemas.md#recent-item) | Y | Object containing recent item info |  | [Recent Item Example](_schemas.md#recent-item-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Recent Item List](../lib/schemas/recentItemList.json) | Updated recent item list |
+| 200 | [Recent Item List](_schemas.md#recent-item-list) | Updated recent item list |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 
 <br/>
 
@@ -100,20 +100,20 @@ all.User, me.*, or me.changePassword.
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| data | [Change Password](../lib/schemas/changePassword.json) | Y | Object containing the password change info |  | [Change Password Example](_schemas.md#change-password-example) |
+| data | [Change Password](_schemas.md#change-password) | Y | Object containing the password change info |  | [Change Password Example](_schemas.md#change-password-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Authenticated User](../lib/schemas/authedUser.json) | A new, valid, auth token (potentially all previous tokens are now invalid) |
+| 200 | [Authenticated User](_schemas.md#authenticated-user) | A new, valid, auth token (potentially all previous tokens are now invalid) |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 
 <br/>
 
@@ -147,20 +147,20 @@ all.User, me.*, or me.delete.
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| credentials | [User Credentials](../lib/schemas/userCredentials.json) | Y | User authentication credentials |  | [User Credentials Example](_schemas.md#user-credentials-example) |
+| credentials | [User Credentials](_schemas.md#user-credentials) | Y | User authentication credentials |  | [User Credentials Example](_schemas.md#user-credentials-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If the user was successfully deleted |
+| 200 | [Success](_schemas.md#success) | If the user was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 
 <br/>
 
@@ -194,20 +194,20 @@ all.User, me.*, or me.disableTwoFactorAuth.
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| data | [Disable Two Factor Auth](../lib/schemas/disableTwoFactorAuth.json) | Y | Object containing two factor auth properties |  | [Disable Two Factor Auth Example](_schemas.md#disable-two-factor-auth-example) |
+| data | [Disable Two Factor Auth](_schemas.md#disable-two-factor-auth) | Y | Object containing two factor auth properties |  | [Disable Two Factor Auth Example](_schemas.md#disable-two-factor-auth-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Me](../lib/schemas/me.json) | Updated user information |
+| 200 | [Me](_schemas.md#me) | Updated user information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 
 <br/>
 
@@ -245,13 +245,13 @@ all.User, me.*, or me.disconnectGithub.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Me](../lib/schemas/me.json) | Updated user information |
+| 200 | [Me](_schemas.md#me) | Updated user information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 
 <br/>
 
@@ -289,13 +289,13 @@ all.User, me.*, or me.disconnectTwitter.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Me](../lib/schemas/me.json) | Updated user information |
+| 200 | [Me](_schemas.md#me) | Updated user information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 
 <br/>
 
@@ -329,20 +329,20 @@ all.User, me.*, or me.enableTwoFactorAuth.
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| data | [Enable Two Factor Auth](../lib/schemas/enableTwoFactorAuth.json) | Y | Object containing two factor auth properties |  | [Enable Two Factor Auth Example](_schemas.md#enable-two-factor-auth-example) |
+| data | [Enable Two Factor Auth](_schemas.md#enable-two-factor-auth) | Y | Object containing two factor auth properties |  | [Enable Two Factor Auth Example](_schemas.md#enable-two-factor-auth-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Me](../lib/schemas/me.json) | Updated user information |
+| 200 | [Me](_schemas.md#me) | Updated user information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 
 <br/>
 
@@ -384,13 +384,13 @@ all.User, all.User.read, me.*, or me.fetchRecentItems.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Recent Item List](../lib/schemas/recentItemList.json) | Recent item list |
+| 200 | [Recent Item List](_schemas.md#recent-item-list) | Recent item list |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 
 <br/>
 
@@ -431,7 +431,7 @@ all.User, all.User.read, me.*, or me.get.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Me](../lib/schemas/me.json) | Current user information |
+| 200 | [Me](_schemas.md#me) | Current user information |
 
 #### Error Responses
 
@@ -470,7 +470,7 @@ all.User, me.*, or me.patch.
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| user | [Me Patch](../lib/schemas/mePatch.json) | Y | Object containing new user properties |  | [Me Patch Example](_schemas.md#me-patch-example) |
+| user | [Me Patch](_schemas.md#me-patch) | Y | Object containing new user properties |  | [Me Patch Example](_schemas.md#me-patch-example) |
 | summaryExclude | string | N | Comma-separated list of summary fields to exclude from user summary |  | payloadCount |
 | summaryInclude | string | N | Comma-separated list of summary fields to include in user summary |  | payloadCount |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
@@ -479,13 +479,13 @@ all.User, me.*, or me.patch.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Me](../lib/schemas/me.json) | Updated user information |
+| 200 | [Me](_schemas.md#me) | Updated user information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 
 <br/>
 
@@ -525,13 +525,13 @@ all.User, all.User.read, me.*, or me.payloadCounts.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Payload Counts](../lib/schemas/payloadCounts.json) | Payload counts, by type and source |
+| 200 | [Payload Counts](_schemas.md#payload-counts) | Payload counts, by type and source |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 
 <br/>
 
@@ -569,14 +569,14 @@ all.User, or me.*.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Authenticated User](../lib/schemas/authedUser.json) | Successful token regeneration |
+| 200 | [Authenticated User](_schemas.md#authenticated-user) | Successful token regeneration |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 401 | [Error](../lib/schemas/error.json) | Unauthorized error if authentication fails |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 401 | [Error](_schemas.md#error) | Unauthorized error if authentication fails |
 
 <br/>
 
@@ -610,20 +610,20 @@ all.User, me.*, or me.transferResources.
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| transfer | [Resource Transfer](../lib/schemas/resourceTransfer.json) | Y | Object containing properties of the transfer |  | [Resource Transfer Example](_schemas.md#resource-transfer-example) |
+| transfer | [Resource Transfer](_schemas.md#resource-transfer) | Y | Object containing properties of the transfer |  | [Resource Transfer Example](_schemas.md#resource-transfer-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If resource transfer was successful |
+| 200 | [Success](_schemas.md#success) | If resource transfer was successful |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 
 <br/>
 
@@ -661,10 +661,10 @@ all.User, me.*, or me.verifyEmail.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If email verification was successfully sent |
+| 200 | [Success](_schemas.md#success) | If email verification was successfully sent |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |

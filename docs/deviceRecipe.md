@@ -47,22 +47,22 @@ all.Application, all.Organization, all.User, deviceRecipe.*, or deviceRecipe.bul
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceRecipeId | string | Y | ID associated with the device recipe |  | 575ecec57ae143cd83dc4a9f |
-| bulkInfo | [Device Recipe Bulk Create Post](../lib/schemas/deviceRecipeBulkCreatePost.json) | Y | Object containing bulk creation info |  | [Device Recipe Bulk Create Post Example](_schemas.md#device-recipe-bulk-create-post-example) |
+| bulkInfo | [Device Recipe Bulk Create Post](_schemas.md#device-recipe-bulk-create-post) | Y | Object containing bulk creation info |  | [Device Recipe Bulk Create Post Example](_schemas.md#device-recipe-bulk-create-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Device Recipe Bulk Create](../lib/schemas/deviceRecipeBulkCreate.json) | If devices were successfully created |
-| 202 | [Device Recipe Bulk Create Enqueue](../lib/schemas/deviceRecipeBulkCreateEnqueued.json) | If devices were enqueued to be created |
+| 201 | [Device Recipe Bulk Create](_schemas.md#device-recipe-bulk-create) | If devices were successfully created |
+| 202 | [Device Recipe Bulk Create Enqueue](_schemas.md#device-recipe-bulk-create-enqueue) | If devices were enqueued to be created |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if device recipe was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if device recipe was not found |
 
 <br/>
 
@@ -105,14 +105,14 @@ all.Application, all.Organization, all.User, deviceRecipe.*, or deviceRecipe.del
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If device recipe was successfully deleted |
+| 200 | [Success](_schemas.md#success) | If device recipe was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if device recipe was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if device recipe was not found |
 
 <br/>
 
@@ -155,14 +155,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Device Recipe](../lib/schemas/deviceRecipe.json) | Device recipe information |
+| 200 | [Device Recipe](_schemas.md#device-recipe) | Device recipe information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if device recipe was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if device recipe was not found |
 
 <br/>
 
@@ -200,18 +200,18 @@ all.Application, all.Organization, all.User, deviceRecipe.*, or deviceRecipe.pat
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceRecipeId | string | Y | ID associated with the device recipe |  | 575ecec57ae143cd83dc4a9f |
-| deviceRecipe | [Device Recipe Patch](../lib/schemas/deviceRecipePatch.json) | Y | Object containing new properties of the device recipe |  | [Device Recipe Patch Example](_schemas.md#device-recipe-patch-example) |
+| deviceRecipe | [Device Recipe Patch](_schemas.md#device-recipe-patch) | Y | Object containing new properties of the device recipe |  | [Device Recipe Patch Example](_schemas.md#device-recipe-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Device Recipe](../lib/schemas/deviceRecipe.json) | Updated device recipe information |
+| 200 | [Device Recipe](_schemas.md#device-recipe) | Updated device recipe information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if device recipe was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if device recipe was not found |

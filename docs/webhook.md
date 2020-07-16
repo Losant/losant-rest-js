@@ -51,14 +51,14 @@ all.Application, all.Organization, all.User, webhook.*, or webhook.delete.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If webhook was successfully deleted |
+| 200 | [Success](_schemas.md#success) | If webhook was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if webhook was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if webhook was not found |
 
 <br/>
 
@@ -101,14 +101,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Webhook](../lib/schemas/webhook.json) | Webhook information |
+| 200 | [Webhook](_schemas.md#webhook) | Webhook information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if webhook was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if webhook was not found |
 
 <br/>
 
@@ -146,18 +146,18 @@ all.Application, all.Organization, all.User, webhook.*, or webhook.patch.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | webhookId | string | Y | ID associated with the webhook |  | 575ed78e7ae143cd83dc4aab |
-| webhook | [Webhook Patch](../lib/schemas/webhookPatch.json) | Y | Object containing new properties of the webhook |  | [Webhook Patch Example](_schemas.md#webhook-patch-example) |
+| webhook | [Webhook Patch](_schemas.md#webhook-patch) | Y | Object containing new properties of the webhook |  | [Webhook Patch Example](_schemas.md#webhook-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Webhook](../lib/schemas/webhook.json) | Updated webhook information |
+| 200 | [Webhook](_schemas.md#webhook) | Updated webhook information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if webhook was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if webhook was not found |

@@ -51,14 +51,14 @@ all.Application, all.Organization, all.User, experienceSlug.*, or experienceSlug
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If experience slug was successfully deleted |
+| 200 | [Success](_schemas.md#success) | If experience slug was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if experience slug was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if experience slug was not found |
 
 <br/>
 
@@ -101,14 +101,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience Slug](../lib/schemas/experienceSlug.json) | Experience slug information |
+| 200 | [Experience Slug](_schemas.md#experience-slug) | Experience slug information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if experience slug was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if experience slug was not found |
 
 <br/>
 
@@ -146,18 +146,18 @@ all.Application, all.Organization, all.User, experienceSlug.*, or experienceSlug
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | experienceSlugId | string | Y | ID associated with the experience slug |  | 575ed78e7ae143cd83dc4aab |
-| experienceSlug | [Experience Slug Patch](../lib/schemas/experienceSlugPatch.json) | Y | Object containing new properties of the experience slug |  | [Experience Slug Patch Example](_schemas.md#experience-slug-patch-example) |
+| experienceSlug | [Experience Slug Patch](_schemas.md#experience-slug-patch) | Y | Object containing new properties of the experience slug |  | [Experience Slug Patch Example](_schemas.md#experience-slug-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience Slug](../lib/schemas/experienceSlug.json) | Updated experience slug information |
+| 200 | [Experience Slug](_schemas.md#experience-slug) | Updated experience slug information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if experience slug was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if experience slug was not found |

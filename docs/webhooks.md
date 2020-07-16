@@ -54,14 +54,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Webhooks](../lib/schemas/webhooks.json) | Collection of webhooks |
+| 200 | [Webhooks](_schemas.md#webhooks) | Collection of webhooks |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
 
 <br/>
 
@@ -97,18 +97,18 @@ all.Application, all.Organization, all.User, webhooks.*, or webhooks.post.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| webhook | [Webhook Post](../lib/schemas/webhookPost.json) | Y | New webhook information |  | [Webhook Post Example](_schemas.md#webhook-post-example) |
+| webhook | [Webhook Post](_schemas.md#webhook-post) | Y | New webhook information |  | [Webhook Post Example](_schemas.md#webhook-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Webhook](../lib/schemas/webhook.json) | Successfully created webhook |
+| 201 | [Webhook](_schemas.md#webhook) | Successfully created webhook |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |

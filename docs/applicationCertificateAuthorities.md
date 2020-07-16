@@ -54,14 +54,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Application Certificate Authorities](../lib/schemas/applicationCertificateAuthorities.json) | Collection of application certificate authorities |
+| 200 | [Application Certificate Authorities](_schemas.md#application-certificate-authorities) | Collection of application certificate authorities |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
 
 <br/>
 
@@ -97,18 +97,18 @@ all.Application, all.Organization, all.User, applicationCertificateAuthorities.*
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| applicationCertificateAuthority | [Application Certificate Authority Post](../lib/schemas/applicationCertificateAuthorityPost.json) | Y | Application certificate authority information |  | [Application Certificate Authority Post Example](_schemas.md#application-certificate-authority-post-example) |
+| applicationCertificateAuthority | [Application Certificate Authority Post](_schemas.md#application-certificate-authority-post) | Y | Application certificate authority information |  | [Application Certificate Authority Post Example](_schemas.md#application-certificate-authority-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Application Certificate Authority](../lib/schemas/applicationCertificateAuthority.json) | Successfully created application certificate authority |
+| 201 | [Application Certificate Authority](_schemas.md#application-certificate-authority) | Successfully created application certificate authority |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |

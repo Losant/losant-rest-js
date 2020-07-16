@@ -58,14 +58,14 @@ all.Application, all.Organization, all.User, flow.*, or flow.clearStorageEntries
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Workflow Storage Entries](../lib/schemas/flowStorageEntries.json) | The current storage entries |
+| 200 | [Workflow Storage Entries](_schemas.md#workflow-storage-entries) | The current storage entries |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if flow was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if flow was not found |
 
 <br/>
 
@@ -108,14 +108,14 @@ all.Application, all.Organization, all.User, flow.*, or flow.delete.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If flow was successfully deleted |
+| 200 | [Success](_schemas.md#success) | If flow was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if flow was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if flow was not found |
 
 <br/>
 
@@ -164,14 +164,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Workflow Errors](../lib/schemas/flowErrors.json) | Workflow error information |
+| 200 | [Workflow Errors](_schemas.md#workflow-errors) | Workflow error information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if flow was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if flow was not found |
 
 <br/>
 
@@ -215,14 +215,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Workflow](../lib/schemas/flow.json) | Flow information |
+| 200 | [Workflow](_schemas.md#workflow) | Flow information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if flow was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if flow was not found |
 
 <br/>
 
@@ -267,14 +267,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Workflow Log](../lib/schemas/flowLog.json) | Recent log entries |
+| 200 | [Workflow Log](_schemas.md#workflow-log) | Recent log entries |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if flow was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if flow was not found |
 
 <br/>
 
@@ -317,14 +317,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Workflow Storage Entries](../lib/schemas/flowStorageEntries.json) | The current storage entries |
+| 200 | [Workflow Storage Entries](_schemas.md#workflow-storage-entries) | The current storage entries |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if flow was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if flow was not found |
 
 <br/>
 
@@ -363,21 +363,21 @@ all.Application, all.Organization, all.User, flow.*, or flow.patch.
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | flowId | string | Y | ID associated with the flow |  | 575ed18f7ae143cd83dc4aa6 |
 | includeCustomNodes | string | N | If the result of the request should also include the details of any custom nodes referenced by the returned workflows | false | true |
-| flow | [Workflow Patch](../lib/schemas/flowPatch.json) | Y | Object containing new properties of the flow |  | [Workflow Patch Example](_schemas.md#workflow-patch-example) |
+| flow | [Workflow Patch](_schemas.md#workflow-patch) | Y | Object containing new properties of the flow |  | [Workflow Patch Example](_schemas.md#workflow-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Workflow](../lib/schemas/flow.json) | Updated flow information |
+| 200 | [Workflow](_schemas.md#workflow) | Updated flow information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if flow is not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if flow is not found |
 
 <br/>
 
@@ -415,21 +415,21 @@ all.Application, all.Organization, all.User, flow.*, or flow.pressVirtualButton.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | flowId | string | Y | ID associated with the flow |  | 575ed18f7ae143cd83dc4aa6 |
-| button | [Virtual Button Press](../lib/schemas/virtualButtonPress.json) | Y | Object containing button key and payload |  | [Virtual Button Press Example](_schemas.md#virtual-button-press-example) |
+| button | [Virtual Button Press](_schemas.md#virtual-button-press) | Y | Object containing button key and payload |  | [Virtual Button Press Example](_schemas.md#virtual-button-press-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | Virtual button was pressed |
+| 200 | [Success](_schemas.md#success) | Virtual button was pressed |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if flow was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if flow was not found |
 
 <br/>
 
@@ -467,21 +467,21 @@ all.Application, all.Organization, all.User, flow.*, or flow.setStorageEntry.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | flowId | string | Y | ID associated with the flow |  | 575ed18f7ae143cd83dc4aa6 |
-| entry | [Workflow Storage Entry](../lib/schemas/flowStorageEntry.json) | Y | Object containing storage entry |  | [Workflow Storage Entry Example](_schemas.md#workflow-storage-entry-example) |
+| entry | [Workflow Storage Entry](_schemas.md#workflow-storage-entry) | Y | Object containing storage entry |  | [Workflow Storage Entry Example](_schemas.md#workflow-storage-entry-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | Value was successfully stored |
+| 200 | [Success](_schemas.md#success) | Value was successfully stored |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if flow was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if flow was not found |
 
 <br/>
 
@@ -529,11 +529,11 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Workflow Statistics](../lib/schemas/flowStats.json) | Statistics for workflow runs |
+| 200 | [Workflow Statistics](_schemas.md#workflow-statistics) | Statistics for workflow runs |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if flow was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if flow was not found |

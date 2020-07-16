@@ -44,21 +44,21 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| query | [Data Export](../lib/schemas/dataExport.json) | Y | The query parameters |  | [Data Export Example](_schemas.md#data-export-example) |
+| query | [Data Export](_schemas.md#data-export) | Y | The query parameters |  | [Data Export Example](_schemas.md#data-export-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If command was successfully sent |
+| 200 | [Success](_schemas.md#success) | If command was successfully sent |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
 
 <br/>
 
@@ -94,21 +94,21 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| query | [Last Value Query](../lib/schemas/lastValueQuery.json) | Y | The query parameters |  | [Last Value Query Example](_schemas.md#last-value-query-example) |
+| query | [Last Value Query](_schemas.md#last-value-query) | Y | The query parameters |  | [Last Value Query Example](_schemas.md#last-value-query-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Last Value Data](../lib/schemas/lastValueData.json) | Last known data for the requested attribute |
+| 200 | [Last Value Data](_schemas.md#last-value-data) | Last known data for the requested attribute |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
 
 <br/>
 
@@ -144,18 +144,18 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| query | [Time Series Query](../lib/schemas/timeSeriesQuery.json) | Y | The query parameters |  | [Time Series Query Example](_schemas.md#time-series-query-example) |
+| query | [Time Series Query](_schemas.md#time-series-query) | Y | The query parameters |  | [Time Series Query Example](_schemas.md#time-series-query-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Time Series Data](../lib/schemas/timeSeriesData.json) | Data for requested time range |
+| 200 | [Time Series Data](_schemas.md#time-series-data) | Data for requested time range |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |

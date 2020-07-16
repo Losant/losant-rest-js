@@ -53,14 +53,14 @@ all.Application, all.Organization, all.User, dataTableRow.*, or dataTableRow.del
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If data table row was successfully deleted |
+| 200 | [Success](_schemas.md#success) | If data table row was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if data table row was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if data table row was not found |
 
 <br/>
 
@@ -105,14 +105,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Data Table Row](../lib/schemas/dataTableRow.json) | Data table row information |
+| 200 | [Data Table Row](_schemas.md#data-table-row) | Data table row information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if data table row was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if data table row was not found |
 
 <br/>
 
@@ -152,18 +152,18 @@ all.Application, all.Organization, all.User, dataTableRow.*, or dataTableRow.pat
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | dataTableId | string | Y | ID associated with the data table |  | 575ed78e7ae143cd83dc4aab |
 | rowId | string | Y | ID associated with the data table row |  | 596f832b128eda5cfe765443 |
-| dataTableRow | [Data Table Row Insert Update](../lib/schemas/dataTableRowInsertUpdate.json) | Y | Object containing updated properties for the data table row |  | [Data Table Row Insert Update Example](_schemas.md#data-table-row-insert-update-example) |
+| dataTableRow | [Data Table Row Insert Update](_schemas.md#data-table-row-insert-update) | Y | Object containing updated properties for the data table row |  | [Data Table Row Insert Update Example](_schemas.md#data-table-row-insert-update-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Data Table Row](../lib/schemas/dataTableRow.json) | Updated data table row information |
+| 200 | [Data Table Row](_schemas.md#data-table-row) | Updated data table row information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if data table row was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if data table row was not found |

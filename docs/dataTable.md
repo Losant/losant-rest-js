@@ -48,21 +48,21 @@ all.Application, all.Organization, all.User, dataTable.*, or dataTable.addColumn
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | dataTableId | string | Y | ID associated with the data table |  | 575ed78e7ae143cd83dc4aab |
-| dataTableColumn | [Data Table Column](../lib/schemas/dataTableColumn.json) | Y | Object containing the new column properties |  | [Data Table Column Example](_schemas.md#data-table-column-example) |
+| dataTableColumn | [Data Table Column](_schemas.md#data-table-column) | Y | Object containing the new column properties |  | [Data Table Column Example](_schemas.md#data-table-column-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Data Table](../lib/schemas/dataTable.json) | Updated data table information |
+| 200 | [Data Table](_schemas.md#data-table) | Updated data table information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if data table was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if data table was not found |
 
 <br/>
 
@@ -105,14 +105,14 @@ all.Application, all.Organization, all.User, dataTable.*, or dataTable.delete.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If data table was successfully deleted |
+| 200 | [Success](_schemas.md#success) | If data table was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if data table was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if data table was not found |
 
 <br/>
 
@@ -155,14 +155,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Data Table](../lib/schemas/dataTable.json) | Data table information |
+| 200 | [Data Table](_schemas.md#data-table) | Data table information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if data table was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if data table was not found |
 
 <br/>
 
@@ -200,21 +200,21 @@ all.Application, all.Organization, all.User, dataTable.*, or dataTable.patch.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | dataTableId | string | Y | ID associated with the data table |  | 575ed78e7ae143cd83dc4aab |
-| dataTable | [Data Table Patch](../lib/schemas/dataTablePatch.json) | Y | Object containing updated properties of the data table |  | [Data Table Patch Example](_schemas.md#data-table-patch-example) |
+| dataTable | [Data Table Patch](_schemas.md#data-table-patch) | Y | Object containing updated properties of the data table |  | [Data Table Patch Example](_schemas.md#data-table-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Data Table](../lib/schemas/dataTable.json) | Updated data table information |
+| 200 | [Data Table](_schemas.md#data-table) | Updated data table information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if data table was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if data table was not found |
 
 <br/>
 
@@ -259,11 +259,11 @@ all.Application, all.Organization, all.User, dataTable.*, or dataTable.removeCol
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Data Table](../lib/schemas/dataTable.json) | Updated data table information |
+| 200 | [Data Table](_schemas.md#data-table) | Updated data table information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if data table was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if data table was not found |
