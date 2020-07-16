@@ -55800,6 +55800,11 @@ Workflow run error information
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
+          "deviceName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
           "flowVersion": {
             "type": "string",
             "minLength": 1,
@@ -55810,6 +55815,9 @@ Workflow run error information
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "nodeId": {
+            "type": "string"
+          },
+          "nodeLabel": {
             "type": "string"
           },
           "error": {
