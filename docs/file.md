@@ -53,14 +53,14 @@ all.Application, all.Organization, all.User, file.*, or file.delete.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If file was successfully deleted |
+| 200 | [Success](../lib/schemas/success.json) | If file was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if file was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if file was not found |
 
 <br/>
 
@@ -103,14 +103,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [File Schema](_schemas.md#file-schema) | file information |
+| 200 | [File Schema](../lib/schemas/file.json) | file information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if file was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if file was not found |
 
 <br/>
 
@@ -155,14 +155,14 @@ all.Application, all.Organization, all.User, file.*, or file.move.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [File Schema](_schemas.md#file-schema) | Returns a new file or directory that was created by the move, if a directory a job will kick off to move all the directories children. |
+| 201 | [File Schema](../lib/schemas/file.json) | Returns a new file or directory that was created by the move, if a directory a job will kick off to move all the directories children. |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if file was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if file was not found |
 
 <br/>
 
@@ -200,21 +200,21 @@ all.Application, all.Organization, all.User, file.*, or file.patch.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | fileId | string | Y | ID associated with the file |  | 575ec76c7ae143cd83dc4a96 |
-| updates | [File Patch](_schemas.md#file-patch) | Y | Reupload a file |  | [File Patch Example](_schemas.md#file-patch-example) |
+| updates | [File Patch](../lib/schemas/filePatch.json) | Y | Reupload a file |  | [File Patch Example](_schemas.md#file-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [File Upload Post Response](_schemas.md#file-upload-post-response) | Successfully updated file and returned a post url to respond with |
+| 201 | [File Upload Post Response](../lib/schemas/fileUploadPostResponse.json) | Successfully updated file and returned a post url to respond with |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if file was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if file was not found |
 
 <br/>
 
@@ -259,11 +259,11 @@ all.Application, all.Organization, all.User, file.*, or file.upload.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [File Schema](_schemas.md#file-schema) | Updated file content |
+| 200 | [File Schema](../lib/schemas/file.json) | Updated file content |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if file was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if file was not found |

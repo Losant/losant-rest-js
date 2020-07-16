@@ -56,14 +56,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience Endpoints](_schemas.md#experience-endpoints) | Collection of experience endpoints |
+| 200 | [Experience Endpoints](../lib/schemas/experienceEndpoints.json) | Collection of experience endpoints |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
 
 <br/>
 
@@ -99,21 +99,21 @@ all.Application, all.Organization, all.User, experienceEndpoints.*, or experienc
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| experienceEndpoint | [Experience Endpoint Post](_schemas.md#experience-endpoint-post) | Y | New experience endpoint information |  | [Experience Endpoint Post Example](_schemas.md#experience-endpoint-post-example) |
+| experienceEndpoint | [Experience Endpoint Post](../lib/schemas/experienceEndpointPost.json) | Y | New experience endpoint information |  | [Experience Endpoint Post Example](_schemas.md#experience-endpoint-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Experience Endpoint](_schemas.md#experience-endpoint) | Successfully created experience endpoint |
+| 201 | [Experience Endpoint](../lib/schemas/experienceEndpoint.json) | Successfully created experience endpoint |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
 
 <br/>
 
@@ -162,11 +162,11 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience Endpoint Stats](_schemas.md#experience-endpoint-stats) | Statistics for endpoint requests |
+| 200 | [Experience Endpoint Stats](../lib/schemas/experienceEndpointStats.json) | Statistics for endpoint requests |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |

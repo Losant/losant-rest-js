@@ -56,14 +56,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience Users](_schemas.md#experience-users) | Collection of experience users |
+| 200 | [Experience Users](../lib/schemas/experienceUsers.json) | Collection of experience users |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
 
 <br/>
 
@@ -99,18 +99,18 @@ all.Application, all.Organization, all.User, experienceUsers.*, or experienceUse
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| experienceUser | [Experience User Post](_schemas.md#experience-user-post) | Y | New experience user information |  | [Experience User Post Example](_schemas.md#experience-user-post-example) |
+| experienceUser | [Experience User Post](../lib/schemas/experienceUserPost.json) | Y | New experience user information |  | [Experience User Post Example](_schemas.md#experience-user-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Experience User](_schemas.md#experience-user) | Successfully created experience user |
+| 201 | [Experience User](../lib/schemas/experienceUser.json) | Successfully created experience user |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |

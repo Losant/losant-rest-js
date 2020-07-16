@@ -51,14 +51,14 @@ all.Organization, all.User, dashboard.*, or dashboard.delete.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If dashboard was successfully deleted |
+| 200 | [Success](../lib/schemas/success.json) | If dashboard was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if dashboard was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if dashboard was not found |
 
 <br/>
 
@@ -98,14 +98,14 @@ No api access token is required to call this action.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Dashboard](_schemas.md#dashboard) | Dashboard information |
+| 200 | [Dashboard](../lib/schemas/dashboard.json) | Dashboard information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if dashboard was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if dashboard was not found |
 
 <br/>
 
@@ -141,21 +141,21 @@ all.Organization, all.User, dashboard.*, or dashboard.patch.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | dashboardId | string | Y | ID of the associated dashboard |  | 575ece2b7ae143cd83dc4a9b |
-| dashboard | [Dashboard Patch](_schemas.md#dashboard-patch) | Y | Object containing new dashboard properties |  | [Dashboard Patch Example](_schemas.md#dashboard-patch-example) |
+| dashboard | [Dashboard Patch](../lib/schemas/dashboardPatch.json) | Y | Object containing new dashboard properties |  | [Dashboard Patch Example](_schemas.md#dashboard-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Dashboard](_schemas.md#dashboard) | Update dashboard information |
+| 200 | [Dashboard](../lib/schemas/dashboard.json) | Update dashboard information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if dashboard was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if dashboard was not found |
 
 <br/>
 
@@ -191,21 +191,21 @@ all.Organization, all.User, dashboard.*, or dashboard.sendReport.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | dashboardId | string | Y | ID of the associated dashboard |  | 575ece2b7ae143cd83dc4a9b |
-| reportConfig | [Dashboard Send Report](_schemas.md#dashboard-send-report) | Y | Object containing report options |  | [Dashboard Send Report Example](_schemas.md#dashboard-send-report-example) |
+| reportConfig | [Dashboard Send Report](../lib/schemas/dashboardSendReport.json) | Y | Object containing report options |  | [Dashboard Send Report Example](_schemas.md#dashboard-send-report-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | Send dashboard report |
+| 200 | [Success](../lib/schemas/success.json) | Send dashboard report |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if dashboard was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if dashboard was not found |
 
 <br/>
 
@@ -239,7 +239,7 @@ No api access token is required to call this action.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | dashboardId | string | Y | ID of the associated dashboard |  | 575ece2b7ae143cd83dc4a9b |
-| ctx | [Dashboard Context Instance](_schemas.md#dashboard-context-instance) | Y | The context object to validate |  | [Dashboard Context Instance Example](_schemas.md#dashboard-context-instance-example) |
+| ctx | [Dashboard Context Instance](../lib/schemas/dashboardContextInstance.json) | Y | The context object to validate |  | [Dashboard Context Instance Example](_schemas.md#dashboard-context-instance-example) |
 | password | string | N | Password for password-protected dashboards |  | myPassword |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
@@ -247,11 +247,11 @@ No api access token is required to call this action.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Validate Context Success](_schemas.md#validate-context-success) | If context is valid |
+| 200 | [Validate Context Success](../lib/schemas/validateContextSuccess.json) | If context is valid |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Validate Context Error](_schemas.md#validate-context-error) | Error if context is invalid |
-| 404 | [Error](_schemas.md#error) | Error if dashboard or application was not found |
+| 400 | [Validate Context Error](../lib/schemas/validateContextError.json) | Error if context is invalid |
+| 404 | [Error](../lib/schemas/error.json) | Error if dashboard or application was not found |

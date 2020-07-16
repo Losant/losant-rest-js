@@ -57,14 +57,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Files Schema](_schemas.md#files-schema) | Collection of files |
+| 200 | [Files Schema](../lib/schemas/files.json) | Collection of files |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
 
 <br/>
 
@@ -100,18 +100,18 @@ all.Application, all.Organization, all.User, files.*, or files.post.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| file | [File Post](_schemas.md#file-post) | Y | New file information |  | [File Post Example](_schemas.md#file-post-example) |
+| file | [File Post](../lib/schemas/filePost.json) | Y | New file information |  | [File Post Example](_schemas.md#file-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [File Upload Post Response](_schemas.md#file-upload-post-response) | Successfully created file and returned a post url to respond with |
+| 201 | [File Upload Post Response](../lib/schemas/fileUploadPostResponse.json) | Successfully created file and returned a post url to respond with |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |

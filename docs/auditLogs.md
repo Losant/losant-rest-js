@@ -47,18 +47,18 @@ all.Organization, all.Organization.read, all.User, all.User.read, auditLogs.*, o
 | perPage | string | N | How many items to return per page | 1000 | 10 |
 | start | string | N | Start of time range for audit log query |  | 1465790400000 |
 | end | string | N | End of time range for audit log query |  | 1465790400000 |
-| auditLogFilter | [Audit Log Filter](_schemas.md#audit-log-filter) | N | Filters for the audit log query |  | [Audit Log Filter Example](_schemas.md#audit-log-filter-example) |
+| auditLogFilter | [Audit Log Filter](../lib/schemas/auditLogFilter.json) | N | Filters for the audit log query |  | [Audit Log Filter Example](_schemas.md#audit-log-filter-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Audit Logs](_schemas.md#audit-logs) | Collection of audit logs |
+| 200 | [Audit Logs](../lib/schemas/auditLogs.json) | Collection of audit logs |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if organization was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if organization was not found |

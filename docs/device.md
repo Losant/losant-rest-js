@@ -60,14 +60,14 @@ all.Application, all.Organization, all.User, device.*, or device.delete.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If device was successfully deleted |
+| 200 | [Success](../lib/schemas/success.json) | If device was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if device was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if device was not found |
 
 <br/>
 
@@ -115,14 +115,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If generation of export was successfully started |
+| 200 | [Success](../lib/schemas/success.json) | If generation of export was successfully started |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if device was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if device was not found |
 
 <br/>
 
@@ -166,14 +166,14 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Device](_schemas.md#device) | Device information |
+| 200 | [Device](../lib/schemas/device.json) | Device information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if device was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if device was not found |
 
 <br/>
 
@@ -218,14 +218,14 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Device Commands](_schemas.md#device-commands) | Recent device commands |
+| 200 | [Device Commands](../lib/schemas/deviceCommands.json) | Recent device commands |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if device was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if device was not found |
 
 <br/>
 
@@ -271,14 +271,14 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Composite Device State](_schemas.md#composite-device-state) | Composite last state of the device |
+| 200 | [Composite Device State](../lib/schemas/compositeDeviceState.json) | Composite last state of the device |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if device was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if device was not found |
 
 <br/>
 
@@ -323,14 +323,14 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Device Log](_schemas.md#device-log) | Recent log entries |
+| 200 | [Device Log](../lib/schemas/deviceLog.json) | Recent log entries |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if device was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if device was not found |
 
 <br/>
 
@@ -375,14 +375,14 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Device States](_schemas.md#device-states) | Recent device states |
+| 200 | [Device States](../lib/schemas/deviceStates.json) | Recent device states |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if device was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if device was not found |
 
 <br/>
 
@@ -420,21 +420,21 @@ all.Application, all.Organization, all.User, device.*, or device.patch.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
-| device | [Device Patch](_schemas.md#device-patch) | Y | Object containing new properties of the device |  | [Device Patch Example](_schemas.md#device-patch-example) |
+| device | [Device Patch](../lib/schemas/devicePatch.json) | Y | Object containing new properties of the device |  | [Device Patch Example](_schemas.md#device-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Device](_schemas.md#device) | Updated device information |
+| 200 | [Device](../lib/schemas/device.json) | Updated device information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if device was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if device was not found |
 
 <br/>
 
@@ -479,14 +479,14 @@ all.Application, all.Organization, all.User, device.*, or device.removeData.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If data removal was successfully started |
+| 200 | [Success](../lib/schemas/success.json) | If data removal was successfully started |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if device was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if device was not found |
 
 <br/>
 
@@ -524,21 +524,21 @@ all.Application, all.Device, all.Organization, all.User, device.*, or device.sen
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
-| deviceCommand | [Device Command](_schemas.md#device-command) | Y | Command to send to the device |  | [Device Command Example](_schemas.md#device-command-example) |
+| deviceCommand | [Device Command](../lib/schemas/deviceCommand.json) | Y | Command to send to the device |  | [Device Command Example](_schemas.md#device-command-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If command was successfully sent |
+| 200 | [Success](../lib/schemas/success.json) | If command was successfully sent |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if device was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if device was not found |
 
 <br/>
 
@@ -576,21 +576,21 @@ all.Application, all.Device, all.Organization, all.User, device.*, or device.sen
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
-| deviceState | [Device State or States](_schemas.md#device-state-or-states) | Y | A single device state object, or an array of device state objects |  | [Device State or States Example](_schemas.md#device-state-or-states-example) |
+| deviceState | [Device State or States](../lib/schemas/deviceStateOrStates.json) | Y | A single device state object, or an array of device state objects |  | [Device State or States Example](_schemas.md#device-state-or-states-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If state was successfully received |
+| 200 | [Success](../lib/schemas/success.json) | If state was successfully received |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if device was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if device was not found |
 
 <br/>
 
@@ -628,18 +628,18 @@ all.Application, all.Device, all.Organization, all.User, device.*, or device.set
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
-| connectionStatus | [Device Connection Status](_schemas.md#device-connection-status) | Y | The current connection status of the device |  | [Device Connection Status Example](_schemas.md#device-connection-status-example) |
+| connectionStatus | [Device Connection Status](../lib/schemas/deviceConnectionStatus.json) | Y | The current connection status of the device |  | [Device Connection Status Example](_schemas.md#device-connection-status-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If connection status was successfully applied |
+| 200 | [Success](../lib/schemas/success.json) | If connection status was successfully applied |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if device was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if device was not found |
