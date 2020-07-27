@@ -7956,9 +7956,9 @@ Schema for the body of a request to change the current user&#x27;s password
     },
     "newPassword": {
       "type": "string",
-      "minLength": 8,
+      "minLength": 12,
       "maxLength": 2048,
-      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{8,}$"
+      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{12,}$"
     },
     "invalidateExistingTokens": {
       "type": "boolean"
@@ -85567,9 +85567,9 @@ Schema for the body of request to modify the current user
     },
     "password": {
       "type": "string",
-      "minLength": 8,
+      "minLength": 12,
       "maxLength": 2048,
-      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{8,}$"
+      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{12,}$"
     },
     "tokenCutoff": {
       "type": "string",
@@ -90321,6 +90321,9 @@ Schema for information about an invitation
     },
     "ttl": {
       "type": "number"
+    },
+    "disallowTransfer": {
+      "type": "boolean"
     }
   }
 }
@@ -90333,7 +90336,8 @@ Schema for information about an invitation
   "email": "invitedUser@losant.com",
   "role": "edit",
   "inviteDate": "2016-05-13T04:00:00.000Z",
-  "ttl": 4233600000
+  "ttl": 4233600000,
+  "disallowTransfer": true
 }
 ```
 
@@ -90416,6 +90420,9 @@ Schema for the body of a request to send an invitation
         "additionalProperties": false
       },
       "maxItems": 1000
+    },
+    "disallowTransfer": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false,
@@ -90561,6 +90568,9 @@ Schema for an array of pending invitations to an Organization
       },
       "hasExpired": {
         "type": "boolean"
+      },
+      "disallowTransfer": {
+        "type": "boolean"
       }
     }
   }
@@ -90574,9 +90584,22 @@ Schema for an array of pending invitations to an Organization
     "id": "575ed71e7ae143cd83dc4aaa",
     "email": "invitedUser@losant.com",
     "role": "edit",
+    "applicationRoles": [
+      {
+        "resourceId": "575ec8687ae143cd83dc4a97",
+        "role": "view"
+      }
+    ],
+    "dashboardRoles": [
+      {
+        "resourceId": "575ece2b7ae143cd83dc4a9b",
+        "role": "none"
+      }
+    ],
     "inviteDate": "2016-05-13T04:00:00.000Z",
     "ttl": 4233600000,
-    "hasExpired": true
+    "hasExpired": true,
+    "disallowTransfer": false
   }
 ]
 ```
@@ -91345,9 +91368,9 @@ Schema for the body of a request to complete the reset password flow
     },
     "password": {
       "type": "string",
-      "minLength": 8,
+      "minLength": 12,
       "maxLength": 2048,
-      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{8,}$"
+      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{12,}$"
     }
   },
   "required": [
@@ -92652,9 +92675,9 @@ Schema for the body of a User creation request
     },
     "password": {
       "type": "string",
-      "minLength": 8,
+      "minLength": 12,
       "maxLength": 2048,
-      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{8,}$"
+      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{12,}$"
     },
     "acceptTerms": {
       "enum": [

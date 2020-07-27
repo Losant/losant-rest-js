@@ -84,6 +84,9 @@
       },
       "hasExpired": {
         "type": "boolean"
+      },
+      "disallowTransfer": {
+        "type": "boolean"
       }
     }
   }
