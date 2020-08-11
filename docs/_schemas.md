@@ -8,6 +8,7 @@
 *   [API Tokens](#api-tokens)
 *   [Application](#application)
 *   [Application API Token Post](#application-api-token-post)
+*   [Application Apply Template Patch Schema](#application-apply-template-patch-schema)
 *   [Application Certificate](#application-certificate)
 *   [Application Certificate Authorities](#application-certificate-authorities)
 *   [Application Certificate Authority](#application-certificate-authority)
@@ -32,6 +33,8 @@
 *   [Application Readme Patch](#application-readme-patch)
 *   [Application Search Result](#application-search-result)
 *   [Application Template](#application-template)
+*   [Application Template Categories](#application-template-categories)
+*   [Application Template Category](#application-template-category)
 *   [Application Templates](#application-templates)
 *   [Applications](#applications)
 *   [Audit Log](#audit-log)
@@ -2985,6 +2988,14 @@ Schema for a single Application
       "type": "string",
       "format": "date-time"
     },
+    "appliedTemplateIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    },
     "ownerId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
@@ -3435,6 +3446,7 @@ Schema for the body of an Application API Token creation request
           "notebooks.*",
           "webhook.*",
           "webhooks.*",
+          "application.applyTemplate",
           "application.archiveData",
           "application.backfillArchiveData",
           "application.clone",
@@ -3652,6 +3664,44 @@ Schema for the body of an Application API Token creation request
     "all.Application"
   ],
   "status": "active"
+}
+```
+
+<br/>
+
+## Application Apply Template Patch Schema
+
+Schema for the body of an application template import request
+
+### <a name="application-apply-template-patch-schema-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "templateId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    }
+  },
+  "required": [
+    "templateId"
+  ],
+  "additionalProperties": false
+}
+```
+### <a name="application-apply-template-patch-schema-example"></a> Example
+
+```json
+{
+  "templateId": "575ec8687ae143cd83dc4a97",
+  "email": "email.example.com"
 }
 ```
 
@@ -4749,6 +4799,14 @@ Schema for creating an application by template result
         "lastUpdated": {
           "type": "string",
           "format": "date-time"
+        },
+        "appliedTemplateIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "maxItems": 1000
         },
         "ownerId": {
           "type": "string",
@@ -6128,6 +6186,14 @@ Schema for the body of an Application creation request
       "type": "string",
       "maxLength": 1024
     },
+    "appliedTemplateIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    },
     "endpointSlug": {
       "type": "string",
       "minLength": 4,
@@ -6534,6 +6600,26 @@ Schema for a single Application Template
       "minLength": 1,
       "maxLength": 255
     },
+    "readme": {
+      "type": "string",
+      "maxLength": 131072
+    },
+    "categoryIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+      },
+      "maxItems": 100
+    },
     "description": {
       "type": "string",
       "maxLength": 1024
@@ -6649,6 +6735,124 @@ Schema for a single Application Template
 
 <br/>
 
+## Application Template Categories
+
+Schema for a collection of Application Template Categories
+
+### <a name="application-template-categories-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Application Template Category",
+        "description": "Schema for a single Application Template Category",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "parentId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          }
+        }
+      }
+    },
+    "baseId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    }
+  }
+}
+```
+### <a name="application-template-categories-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "586e9d5151265cb9d72f6ec6",
+      "name": "Workflows",
+      "description": "Pre-built workflows for quick solution development"
+    },
+    {
+      "id": "586e9d5151265cb9d72f6ec7",
+      "name": "Device Recipes",
+      "description": "Pre-configured device recipes"
+    }
+  ],
+  "baseId": "586e9d5151265cb9d72f6ec6",
+  "count": 2,
+  "totalCount": 2
+}
+```
+
+<br/>
+
+## Application Template Category
+
+Schema for a single Application Template Category
+
+### <a name="application-template-category-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "parentId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    }
+  }
+}
+```
+### <a name="application-template-category-example"></a> Example
+
+```json
+{
+  "id": "586e9d5151265cb9d72f6ec6",
+  "name": "Workflows",
+  "description": "Pre-built workflows for quick solution development"
+}
+```
+
+<br/>
+
 ## Application Templates
 
 Schema for a collection of Application Templates
@@ -6683,6 +6887,26 @@ Schema for a collection of Application Templates
             "type": "string",
             "minLength": 1,
             "maxLength": 255
+          },
+          "readme": {
+            "type": "string",
+            "maxLength": 131072
+          },
+          "categoryIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "maxItems": 1000
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+            },
+            "maxItems": 100
           },
           "description": {
             "type": "string",
@@ -6781,6 +7005,18 @@ Schema for a collection of Application Templates
     "filterField": {
       "type": "string"
     },
+    "categoryId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+      },
+      "maxItems": 100
+    },
     "sortField": {
       "type": "string"
     },
@@ -6876,6 +7112,14 @@ Schema for a collection of Applications
           "lastUpdated": {
             "type": "string",
             "format": "date-time"
+          },
+          "appliedTemplateIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "maxItems": 1000
           },
           "ownerId": {
             "type": "string",
@@ -8411,8 +8655,18 @@ Schema for a single Dashboard
                                   "type": "object",
                                   "properties": {
                                     "value": {
-                                      "type": "string",
-                                      "maxLength": 255
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "boolean"
+                                        }
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -8665,8 +8919,18 @@ Schema for a single Dashboard
                                       "type": "object",
                                       "properties": {
                                         "value": {
-                                          "type": "string",
-                                          "maxLength": 255
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            },
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "boolean"
+                                            }
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -8828,8 +9092,18 @@ Schema for a single Dashboard
                                       "type": "object",
                                       "properties": {
                                         "value": {
-                                          "type": "string",
-                                          "maxLength": 255
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            },
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "boolean"
+                                            }
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -9810,8 +10084,18 @@ Schema for a single Dashboard
                                 "type": "object",
                                 "properties": {
                                   "value": {
-                                    "type": "string",
-                                    "maxLength": 255
+                                    "oneOf": [
+                                      {
+                                        "type": "string",
+                                        "maxLength": 255
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
                                   }
                                 },
                                 "additionalProperties": false,
@@ -10100,8 +10384,18 @@ Schema for a single Dashboard
                                   "type": "object",
                                   "properties": {
                                     "value": {
-                                      "type": "string",
-                                      "maxLength": 255
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "boolean"
+                                        }
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -10682,8 +10976,18 @@ Schema for a single Dashboard
                                       "type": "object",
                                       "properties": {
                                         "value": {
-                                          "type": "string",
-                                          "maxLength": 255
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            },
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "boolean"
+                                            }
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -11276,8 +11580,18 @@ Schema for a single Dashboard
                                   "type": "object",
                                   "properties": {
                                     "value": {
-                                      "type": "string",
-                                      "maxLength": 255
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "boolean"
+                                        }
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -11623,8 +11937,18 @@ Schema for a single Dashboard
                                           "type": "object",
                                           "properties": {
                                             "value": {
-                                              "type": "string",
-                                              "maxLength": 255
+                                              "oneOf": [
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                },
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "boolean"
+                                                }
+                                              ]
                                             }
                                           },
                                           "additionalProperties": false,
@@ -11847,8 +12171,18 @@ Schema for a single Dashboard
                                           "type": "object",
                                           "properties": {
                                             "value": {
-                                              "type": "string",
-                                              "maxLength": 255
+                                              "oneOf": [
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                },
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "boolean"
+                                                }
+                                              ]
                                             }
                                           },
                                           "additionalProperties": false,
@@ -12026,8 +12360,18 @@ Schema for a single Dashboard
                                           "type": "object",
                                           "properties": {
                                             "value": {
-                                              "type": "string",
-                                              "maxLength": 255
+                                              "oneOf": [
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                },
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "boolean"
+                                                }
+                                              ]
                                             }
                                           },
                                           "additionalProperties": false,
@@ -12206,8 +12550,18 @@ Schema for a single Dashboard
                                           "type": "object",
                                           "properties": {
                                             "value": {
-                                              "type": "string",
-                                              "maxLength": 255
+                                              "oneOf": [
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                },
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "boolean"
+                                                }
+                                              ]
                                             }
                                           },
                                           "additionalProperties": false,
@@ -12856,8 +13210,18 @@ Schema for a single Dashboard
                                   "type": "object",
                                   "properties": {
                                     "value": {
-                                      "type": "string",
-                                      "maxLength": 255
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "boolean"
+                                        }
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -14020,8 +14384,18 @@ Schema for the body of a Dashboard modification request
                                   "type": "object",
                                   "properties": {
                                     "value": {
-                                      "type": "string",
-                                      "maxLength": 255
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "boolean"
+                                        }
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -14274,8 +14648,18 @@ Schema for the body of a Dashboard modification request
                                       "type": "object",
                                       "properties": {
                                         "value": {
-                                          "type": "string",
-                                          "maxLength": 255
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            },
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "boolean"
+                                            }
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -14437,8 +14821,18 @@ Schema for the body of a Dashboard modification request
                                       "type": "object",
                                       "properties": {
                                         "value": {
-                                          "type": "string",
-                                          "maxLength": 255
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            },
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "boolean"
+                                            }
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -15419,8 +15813,18 @@ Schema for the body of a Dashboard modification request
                                 "type": "object",
                                 "properties": {
                                   "value": {
-                                    "type": "string",
-                                    "maxLength": 255
+                                    "oneOf": [
+                                      {
+                                        "type": "string",
+                                        "maxLength": 255
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
                                   }
                                 },
                                 "additionalProperties": false,
@@ -15709,8 +16113,18 @@ Schema for the body of a Dashboard modification request
                                   "type": "object",
                                   "properties": {
                                     "value": {
-                                      "type": "string",
-                                      "maxLength": 255
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "boolean"
+                                        }
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -16291,8 +16705,18 @@ Schema for the body of a Dashboard modification request
                                       "type": "object",
                                       "properties": {
                                         "value": {
-                                          "type": "string",
-                                          "maxLength": 255
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            },
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "boolean"
+                                            }
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -16885,8 +17309,18 @@ Schema for the body of a Dashboard modification request
                                   "type": "object",
                                   "properties": {
                                     "value": {
-                                      "type": "string",
-                                      "maxLength": 255
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "boolean"
+                                        }
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -17232,8 +17666,18 @@ Schema for the body of a Dashboard modification request
                                           "type": "object",
                                           "properties": {
                                             "value": {
-                                              "type": "string",
-                                              "maxLength": 255
+                                              "oneOf": [
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                },
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "boolean"
+                                                }
+                                              ]
                                             }
                                           },
                                           "additionalProperties": false,
@@ -17456,8 +17900,18 @@ Schema for the body of a Dashboard modification request
                                           "type": "object",
                                           "properties": {
                                             "value": {
-                                              "type": "string",
-                                              "maxLength": 255
+                                              "oneOf": [
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                },
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "boolean"
+                                                }
+                                              ]
                                             }
                                           },
                                           "additionalProperties": false,
@@ -17635,8 +18089,18 @@ Schema for the body of a Dashboard modification request
                                           "type": "object",
                                           "properties": {
                                             "value": {
-                                              "type": "string",
-                                              "maxLength": 255
+                                              "oneOf": [
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                },
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "boolean"
+                                                }
+                                              ]
                                             }
                                           },
                                           "additionalProperties": false,
@@ -17815,8 +18279,18 @@ Schema for the body of a Dashboard modification request
                                           "type": "object",
                                           "properties": {
                                             "value": {
-                                              "type": "string",
-                                              "maxLength": 255
+                                              "oneOf": [
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                },
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "boolean"
+                                                }
+                                              ]
                                             }
                                           },
                                           "additionalProperties": false,
@@ -18465,8 +18939,18 @@ Schema for the body of a Dashboard modification request
                                   "type": "object",
                                   "properties": {
                                     "value": {
-                                      "type": "string",
-                                      "maxLength": 255
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "boolean"
+                                        }
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -19558,8 +20042,18 @@ Schema for the body of a Dashboard creation request
                                   "type": "object",
                                   "properties": {
                                     "value": {
-                                      "type": "string",
-                                      "maxLength": 255
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "boolean"
+                                        }
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -19812,8 +20306,18 @@ Schema for the body of a Dashboard creation request
                                       "type": "object",
                                       "properties": {
                                         "value": {
-                                          "type": "string",
-                                          "maxLength": 255
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            },
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "boolean"
+                                            }
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -19975,8 +20479,18 @@ Schema for the body of a Dashboard creation request
                                       "type": "object",
                                       "properties": {
                                         "value": {
-                                          "type": "string",
-                                          "maxLength": 255
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            },
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "boolean"
+                                            }
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -20957,8 +21471,18 @@ Schema for the body of a Dashboard creation request
                                 "type": "object",
                                 "properties": {
                                   "value": {
-                                    "type": "string",
-                                    "maxLength": 255
+                                    "oneOf": [
+                                      {
+                                        "type": "string",
+                                        "maxLength": 255
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
                                   }
                                 },
                                 "additionalProperties": false,
@@ -21247,8 +21771,18 @@ Schema for the body of a Dashboard creation request
                                   "type": "object",
                                   "properties": {
                                     "value": {
-                                      "type": "string",
-                                      "maxLength": 255
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "boolean"
+                                        }
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -21829,8 +22363,18 @@ Schema for the body of a Dashboard creation request
                                       "type": "object",
                                       "properties": {
                                         "value": {
-                                          "type": "string",
-                                          "maxLength": 255
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            },
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "boolean"
+                                            }
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -22423,8 +22967,18 @@ Schema for the body of a Dashboard creation request
                                   "type": "object",
                                   "properties": {
                                     "value": {
-                                      "type": "string",
-                                      "maxLength": 255
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "boolean"
+                                        }
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -22770,8 +23324,18 @@ Schema for the body of a Dashboard creation request
                                           "type": "object",
                                           "properties": {
                                             "value": {
-                                              "type": "string",
-                                              "maxLength": 255
+                                              "oneOf": [
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                },
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "boolean"
+                                                }
+                                              ]
                                             }
                                           },
                                           "additionalProperties": false,
@@ -22994,8 +23558,18 @@ Schema for the body of a Dashboard creation request
                                           "type": "object",
                                           "properties": {
                                             "value": {
-                                              "type": "string",
-                                              "maxLength": 255
+                                              "oneOf": [
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                },
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "boolean"
+                                                }
+                                              ]
                                             }
                                           },
                                           "additionalProperties": false,
@@ -23173,8 +23747,18 @@ Schema for the body of a Dashboard creation request
                                           "type": "object",
                                           "properties": {
                                             "value": {
-                                              "type": "string",
-                                              "maxLength": 255
+                                              "oneOf": [
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                },
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "boolean"
+                                                }
+                                              ]
                                             }
                                           },
                                           "additionalProperties": false,
@@ -23353,8 +23937,18 @@ Schema for the body of a Dashboard creation request
                                           "type": "object",
                                           "properties": {
                                             "value": {
-                                              "type": "string",
-                                              "maxLength": 255
+                                              "oneOf": [
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                },
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "boolean"
+                                                }
+                                              ]
                                             }
                                           },
                                           "additionalProperties": false,
@@ -24003,8 +24597,18 @@ Schema for the body of a Dashboard creation request
                                   "type": "object",
                                   "properties": {
                                     "value": {
-                                      "type": "string",
-                                      "maxLength": 255
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "boolean"
+                                        }
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -25351,8 +25955,18 @@ Schema for a collection of Dashboards
                                         "type": "object",
                                         "properties": {
                                           "value": {
-                                            "type": "string",
-                                            "maxLength": 255
+                                            "oneOf": [
+                                              {
+                                                "type": "string",
+                                                "maxLength": 255
+                                              },
+                                              {
+                                                "type": "number"
+                                              },
+                                              {
+                                                "type": "boolean"
+                                              }
+                                            ]
                                           }
                                         },
                                         "additionalProperties": false,
@@ -25605,8 +26219,18 @@ Schema for a collection of Dashboards
                                             "type": "object",
                                             "properties": {
                                               "value": {
-                                                "type": "string",
-                                                "maxLength": 255
+                                                "oneOf": [
+                                                  {
+                                                    "type": "string",
+                                                    "maxLength": 255
+                                                  },
+                                                  {
+                                                    "type": "number"
+                                                  },
+                                                  {
+                                                    "type": "boolean"
+                                                  }
+                                                ]
                                               }
                                             },
                                             "additionalProperties": false,
@@ -25768,8 +26392,18 @@ Schema for a collection of Dashboards
                                             "type": "object",
                                             "properties": {
                                               "value": {
-                                                "type": "string",
-                                                "maxLength": 255
+                                                "oneOf": [
+                                                  {
+                                                    "type": "string",
+                                                    "maxLength": 255
+                                                  },
+                                                  {
+                                                    "type": "number"
+                                                  },
+                                                  {
+                                                    "type": "boolean"
+                                                  }
+                                                ]
                                               }
                                             },
                                             "additionalProperties": false,
@@ -26750,8 +27384,18 @@ Schema for a collection of Dashboards
                                       "type": "object",
                                       "properties": {
                                         "value": {
-                                          "type": "string",
-                                          "maxLength": 255
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            },
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "boolean"
+                                            }
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -27040,8 +27684,18 @@ Schema for a collection of Dashboards
                                         "type": "object",
                                         "properties": {
                                           "value": {
-                                            "type": "string",
-                                            "maxLength": 255
+                                            "oneOf": [
+                                              {
+                                                "type": "string",
+                                                "maxLength": 255
+                                              },
+                                              {
+                                                "type": "number"
+                                              },
+                                              {
+                                                "type": "boolean"
+                                              }
+                                            ]
                                           }
                                         },
                                         "additionalProperties": false,
@@ -27622,8 +28276,18 @@ Schema for a collection of Dashboards
                                             "type": "object",
                                             "properties": {
                                               "value": {
-                                                "type": "string",
-                                                "maxLength": 255
+                                                "oneOf": [
+                                                  {
+                                                    "type": "string",
+                                                    "maxLength": 255
+                                                  },
+                                                  {
+                                                    "type": "number"
+                                                  },
+                                                  {
+                                                    "type": "boolean"
+                                                  }
+                                                ]
                                               }
                                             },
                                             "additionalProperties": false,
@@ -28216,8 +28880,18 @@ Schema for a collection of Dashboards
                                         "type": "object",
                                         "properties": {
                                           "value": {
-                                            "type": "string",
-                                            "maxLength": 255
+                                            "oneOf": [
+                                              {
+                                                "type": "string",
+                                                "maxLength": 255
+                                              },
+                                              {
+                                                "type": "number"
+                                              },
+                                              {
+                                                "type": "boolean"
+                                              }
+                                            ]
                                           }
                                         },
                                         "additionalProperties": false,
@@ -28563,8 +29237,18 @@ Schema for a collection of Dashboards
                                                 "type": "object",
                                                 "properties": {
                                                   "value": {
-                                                    "type": "string",
-                                                    "maxLength": 255
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "string",
+                                                        "maxLength": 255
+                                                      },
+                                                      {
+                                                        "type": "number"
+                                                      },
+                                                      {
+                                                        "type": "boolean"
+                                                      }
+                                                    ]
                                                   }
                                                 },
                                                 "additionalProperties": false,
@@ -28787,8 +29471,18 @@ Schema for a collection of Dashboards
                                                 "type": "object",
                                                 "properties": {
                                                   "value": {
-                                                    "type": "string",
-                                                    "maxLength": 255
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "string",
+                                                        "maxLength": 255
+                                                      },
+                                                      {
+                                                        "type": "number"
+                                                      },
+                                                      {
+                                                        "type": "boolean"
+                                                      }
+                                                    ]
                                                   }
                                                 },
                                                 "additionalProperties": false,
@@ -28966,8 +29660,18 @@ Schema for a collection of Dashboards
                                                 "type": "object",
                                                 "properties": {
                                                   "value": {
-                                                    "type": "string",
-                                                    "maxLength": 255
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "string",
+                                                        "maxLength": 255
+                                                      },
+                                                      {
+                                                        "type": "number"
+                                                      },
+                                                      {
+                                                        "type": "boolean"
+                                                      }
+                                                    ]
                                                   }
                                                 },
                                                 "additionalProperties": false,
@@ -29146,8 +29850,18 @@ Schema for a collection of Dashboards
                                                 "type": "object",
                                                 "properties": {
                                                   "value": {
-                                                    "type": "string",
-                                                    "maxLength": 255
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "string",
+                                                        "maxLength": 255
+                                                      },
+                                                      {
+                                                        "type": "number"
+                                                      },
+                                                      {
+                                                        "type": "boolean"
+                                                      }
+                                                    ]
                                                   }
                                                 },
                                                 "additionalProperties": false,
@@ -29796,8 +30510,18 @@ Schema for a collection of Dashboards
                                         "type": "object",
                                         "properties": {
                                           "value": {
-                                            "type": "string",
-                                            "maxLength": 255
+                                            "oneOf": [
+                                              {
+                                                "type": "string",
+                                                "maxLength": 255
+                                              },
+                                              {
+                                                "type": "number"
+                                              },
+                                              {
+                                                "type": "boolean"
+                                              }
+                                            ]
                                           }
                                         },
                                         "additionalProperties": false,
@@ -83587,6 +84311,7 @@ Schema for the body of a Github login request
                   "notebooks.*",
                   "webhook.*",
                   "webhooks.*",
+                  "application.applyTemplate",
                   "application.archiveData",
                   "application.backfillArchiveData",
                   "application.clone",
@@ -83825,6 +84550,7 @@ Schema for the body of a Github login request
               "all.User.read",
               "applicationTemplates.*",
               "applicationTemplates.get",
+              "applicationTemplates.getCategories",
               "me.*",
               "orgs.*",
               "me.get",
@@ -91993,8 +92719,18 @@ Schema for the result of a time series query
               "type": "object",
               "properties": {
                 "value": {
-                  "type": "string",
-                  "maxLength": 255
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "boolean"
+                    }
+                  ]
                 }
               },
               "additionalProperties": false,
@@ -92148,23 +92884,103 @@ Schema for the body of a time series query request
     "aggregation": {
       "oneOf": [
         {
-          "type": "string",
-          "enum": [
-            "FIRST",
-            "LAST",
-            "COUNT",
-            "MAX",
-            "MIN",
-            "MEDIAN",
-            "MEAN",
-            "SUM",
-            "STD_DEV"
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "FIRST",
+                "LAST",
+                "COUNT",
+                "MAX",
+                "MIN",
+                "MEDIAN",
+                "MEAN",
+                "SUM",
+                "STD_DEV"
+              ]
+            },
+            {
+              "type": "string",
+              "enum": [
+                "NONE"
+              ]
+            }
           ]
         },
         {
-          "type": "string",
-          "enum": [
-            "NONE"
+          "type": "object",
+          "properties": {
+            "type": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "FIRST",
+                    "LAST",
+                    "COUNT",
+                    "MAX",
+                    "MIN",
+                    "MEDIAN",
+                    "MEAN",
+                    "SUM",
+                    "STD_DEV"
+                  ]
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "NONE"
+                  ]
+                }
+              ]
+            },
+            "options": {
+              "type": "object",
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "type"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "TIMEATVALUE"
+              ]
+            },
+            "options": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "boolean"
+                    }
+                  ]
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "value"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "options"
           ]
         }
       ]
@@ -92327,6 +93143,7 @@ Schema for the body of a User authentication request
                   "notebooks.*",
                   "webhook.*",
                   "webhooks.*",
+                  "application.applyTemplate",
                   "application.archiveData",
                   "application.backfillArchiveData",
                   "application.clone",
@@ -92565,6 +93382,7 @@ Schema for the body of a User authentication request
               "all.User.read",
               "applicationTemplates.*",
               "applicationTemplates.get",
+              "applicationTemplates.getCategories",
               "me.*",
               "orgs.*",
               "me.get",
@@ -92754,6 +93572,7 @@ Schema for the body of a User creation request
                   "notebooks.*",
                   "webhook.*",
                   "webhooks.*",
+                  "application.applyTemplate",
                   "application.archiveData",
                   "application.backfillArchiveData",
                   "application.clone",
@@ -92992,6 +93811,7 @@ Schema for the body of a User creation request
               "all.User.read",
               "applicationTemplates.*",
               "applicationTemplates.get",
+              "applicationTemplates.getCategories",
               "me.*",
               "orgs.*",
               "me.get",

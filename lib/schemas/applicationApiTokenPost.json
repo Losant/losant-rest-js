@@ -73,6 +73,7 @@
           "notebooks.*",
           "webhook.*",
           "webhooks.*",
+          "application.applyTemplate",
           "application.archiveData",
           "application.backfillArchiveData",
           "application.clone",

@@ -239,8 +239,18 @@
                                   "type": "object",
                                   "properties": {
                                     "value": {
-                                      "type": "string",
-                                      "maxLength": 255
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "boolean"
+                                        }
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -493,8 +503,18 @@
                                       "type": "object",
                                       "properties": {
                                         "value": {
-                                          "type": "string",
-                                          "maxLength": 255
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            },
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "boolean"
+                                            }
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -656,8 +676,18 @@
                                       "type": "object",
                                       "properties": {
                                         "value": {
-                                          "type": "string",
-                                          "maxLength": 255
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            },
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "boolean"
+                                            }
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -1638,8 +1668,18 @@
                                 "type": "object",
                                 "properties": {
                                   "value": {
-                                    "type": "string",
-                                    "maxLength": 255
+                                    "oneOf": [
+                                      {
+                                        "type": "string",
+                                        "maxLength": 255
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
                                   }
                                 },
                                 "additionalProperties": false,
@@ -1928,8 +1968,18 @@
                                   "type": "object",
                                   "properties": {
                                     "value": {
-                                      "type": "string",
-                                      "maxLength": 255
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "boolean"
+                                        }
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -2510,8 +2560,18 @@
                                       "type": "object",
                                       "properties": {
                                         "value": {
-                                          "type": "string",
-                                          "maxLength": 255
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "maxLength": 255
+                                            },
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "boolean"
+                                            }
+                                          ]
                                         }
                                       },
                                       "additionalProperties": false,
@@ -3104,8 +3164,18 @@
                                   "type": "object",
                                   "properties": {
                                     "value": {
-                                      "type": "string",
-                                      "maxLength": 255
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "boolean"
+                                        }
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
@@ -3451,8 +3521,18 @@
                                           "type": "object",
                                           "properties": {
                                             "value": {
-                                              "type": "string",
-                                              "maxLength": 255
+                                              "oneOf": [
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                },
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "boolean"
+                                                }
+                                              ]
                                             }
                                           },
                                           "additionalProperties": false,
@@ -3675,8 +3755,18 @@
                                           "type": "object",
                                           "properties": {
                                             "value": {
-                                              "type": "string",
-                                              "maxLength": 255
+                                              "oneOf": [
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                },
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "boolean"
+                                                }
+                                              ]
                                             }
                                           },
                                           "additionalProperties": false,
@@ -3854,8 +3944,18 @@
                                           "type": "object",
                                           "properties": {
                                             "value": {
-                                              "type": "string",
-                                              "maxLength": 255
+                                              "oneOf": [
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                },
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "boolean"
+                                                }
+                                              ]
                                             }
                                           },
                                           "additionalProperties": false,
@@ -4034,8 +4134,18 @@
                                           "type": "object",
                                           "properties": {
                                             "value": {
-                                              "type": "string",
-                                              "maxLength": 255
+                                              "oneOf": [
+                                                {
+                                                  "type": "string",
+                                                  "maxLength": 255
+                                                },
+                                                {
+                                                  "type": "number"
+                                                },
+                                                {
+                                                  "type": "boolean"
+                                                }
+                                              ]
                                             }
                                           },
                                           "additionalProperties": false,
@@ -4684,8 +4794,18 @@
                                   "type": "object",
                                   "properties": {
                                     "value": {
-                                      "type": "string",
-                                      "maxLength": 255
+                                      "oneOf": [
+                                        {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "boolean"
+                                        }
+                                      ]
                                     }
                                   },
                                   "additionalProperties": false,
