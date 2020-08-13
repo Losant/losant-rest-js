@@ -373,6 +373,7 @@
               "applicationTemplates.*",
               "applicationTemplates.get",
               "applicationTemplates.getCategories",
+              "applicationTemplates.getUniqueKeywords",
               "me.*",
               "orgs.*",
               "me.get",

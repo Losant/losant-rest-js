@@ -201,6 +201,7 @@
 *   [SAML Response](#saml-response)
 *   [SSO Request](#sso-request)
 *   [Success](#success)
+*   [Template Keywords](#template-keywords)
 *   [Time Series Data](#time-series-data)
 *   [Time Series Query](#time-series-query)
 *   [User Credentials](#user-credentials)
@@ -31492,7 +31493,138 @@ Schema for exporting data devices query
       "maxItems": 100
     },
     "deviceQuery": {
-      "ref": "#/definitions/advancedQuery"
+      "title": "Advanced Query",
+      "description": "Schema for advanced filters and queries",
+      "type": "object",
+      "properties": {
+        "$and": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/advancedQuery"
+          },
+          "maxItems": 100
+        },
+        "$or": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/advancedQuery"
+          },
+          "maxItems": 100
+        },
+        "$nor": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/advancedQuery"
+          },
+          "maxItems": 100
+        }
+      },
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
     },
     "attributes": {
       "type": "array",
@@ -84551,6 +84683,7 @@ Schema for the body of a Github login request
               "applicationTemplates.*",
               "applicationTemplates.get",
               "applicationTemplates.getCategories",
+              "applicationTemplates.getUniqueKeywords",
               "me.*",
               "orgs.*",
               "me.get",
@@ -92621,6 +92754,41 @@ Schema for reporting a successful operation
 
 <br/>
 
+## Template Keywords
+
+Schema for a collection of template keywords
+
+### <a name="template-keywords-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+      },
+      "maxItems": 100
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="template-keywords-example"></a> Example
+
+```json
+{
+  "keywords": [
+    "gps",
+    "featured"
+  ]
+}
+```
+
+<br/>
+
 ## Time Series Data
 
 Schema for the result of a time series query
@@ -93383,6 +93551,7 @@ Schema for the body of a User authentication request
               "applicationTemplates.*",
               "applicationTemplates.get",
               "applicationTemplates.getCategories",
+              "applicationTemplates.getUniqueKeywords",
               "me.*",
               "orgs.*",
               "me.get",
@@ -93812,6 +93981,7 @@ Schema for the body of a User creation request
               "applicationTemplates.*",
               "applicationTemplates.get",
               "applicationTemplates.getCategories",
+              "applicationTemplates.getUniqueKeywords",
               "me.*",
               "orgs.*",
               "me.get",

@@ -8,6 +8,7 @@ parameters and the potential responses.
 
 *   [Get](#get)
 *   [Get Categories](#get-categories)
+*   [Get Unique Keywords](#get-unique-keywords)
 
 <br/>
 
@@ -99,6 +100,50 @@ all.User, all.User.read, applicationTemplates.*, or applicationTemplates.getCate
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Application Template Categories](../lib/schemas/applicationTemplateCategories.json) | Collection of application categories |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+
+<br/>
+
+## Get Unique Keywords
+
+Returns an array of all unique keywords currently in use by templates
+
+```javascript
+var params = {}; // all params are optional
+
+// with callbacks
+client.applicationTemplates.getUniqueKeywords(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.applicationTemplates.getUniqueKeywords(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.User, all.User.read, applicationTemplates.*, or applicationTemplates.getUniqueKeywords.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Template Keywords](../lib/schemas/templateKeywords.json) | Array of all unique template keywords |
 
 #### Error Responses
 
