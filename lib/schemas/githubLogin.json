@@ -4,7 +4,8 @@
   "properties": {
     "accessToken": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "maxLength": 1024
     },
     "requestedScopes": {
       "type": "array",
@@ -305,6 +306,8 @@
             "enum": [
               "all.User",
               "all.User.read",
+              "applicationTemplate.*",
+              "applicationTemplate.get",
               "applicationTemplates.*",
               "applicationTemplates.get",
               "applicationTemplates.getCategories",

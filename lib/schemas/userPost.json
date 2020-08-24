@@ -41,10 +41,14 @@
       "type": "object",
       "properties": {
         "service": {
-          "type": "string"
+          "enum": [
+            "github"
+          ]
         },
         "accessToken": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
         }
       },
       "required": [
@@ -370,6 +374,8 @@
             "enum": [
               "all.User",
               "all.User.read",
+              "applicationTemplate.*",
+              "applicationTemplate.get",
               "applicationTemplates.*",
               "applicationTemplates.get",
               "applicationTemplates.getCategories",

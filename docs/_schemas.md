@@ -84379,7 +84379,8 @@ Schema for the body of a Github login request
   "properties": {
     "accessToken": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "maxLength": 1024
     },
     "requestedScopes": {
       "type": "array",
@@ -84680,6 +84681,8 @@ Schema for the body of a Github login request
             "enum": [
               "all.User",
               "all.User.read",
+              "applicationTemplate.*",
+              "applicationTemplate.get",
               "applicationTemplates.*",
               "applicationTemplates.get",
               "applicationTemplates.getCategories",
@@ -93548,6 +93551,8 @@ Schema for the body of a User authentication request
             "enum": [
               "all.User",
               "all.User.read",
+              "applicationTemplate.*",
+              "applicationTemplate.get",
               "applicationTemplates.*",
               "applicationTemplates.get",
               "applicationTemplates.getCategories",
@@ -93649,10 +93654,14 @@ Schema for the body of a User creation request
       "type": "object",
       "properties": {
         "service": {
-          "type": "string"
+          "enum": [
+            "github"
+          ]
         },
         "accessToken": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
         }
       },
       "required": [
@@ -93978,6 +93987,8 @@ Schema for the body of a User creation request
             "enum": [
               "all.User",
               "all.User.read",
+              "applicationTemplate.*",
+              "applicationTemplate.get",
               "applicationTemplates.*",
               "applicationTemplates.get",
               "applicationTemplates.getCategories",
