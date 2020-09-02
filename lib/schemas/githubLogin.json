@@ -323,8 +323,6 @@
               "me.disableTwoFactorAuth",
               "me.disconnectGithub",
               "me.connectGithub",
-              "me.disconnectTwitter",
-              "me.connectTwitter",
               "me.addRecentItem",
               "me.fetchRecentItems",
               "me.payloadCounts",

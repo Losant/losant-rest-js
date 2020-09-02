@@ -2574,7 +2574,7 @@
                   },
                   "segments": {
                     "type": "array",
-                    "maxItems": 100,
+                    "maxItems": 300,
                     "items": {
                       "oneOf": [
                         {

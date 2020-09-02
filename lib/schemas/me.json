@@ -73,9 +73,6 @@
     "githubName": {
       "type": "string"
     },
-    "twitterName": {
-      "type": "string"
-    },
     "avatarUrl": {
       "type": "string",
       "format": "url"

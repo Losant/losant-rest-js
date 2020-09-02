@@ -10881,7 +10881,7 @@ Schema for a single Dashboard
                   },
                   "segments": {
                     "type": "array",
-                    "maxItems": 100,
+                    "maxItems": 300,
                     "items": {
                       "oneOf": [
                         {
@@ -16610,7 +16610,7 @@ Schema for the body of a Dashboard modification request
                   },
                   "segments": {
                     "type": "array",
-                    "maxItems": 100,
+                    "maxItems": 300,
                     "items": {
                       "oneOf": [
                         {
@@ -22268,7 +22268,7 @@ Schema for the body of a Dashboard creation request
                   },
                   "segments": {
                     "type": "array",
-                    "maxItems": 100,
+                    "maxItems": 300,
                     "items": {
                       "oneOf": [
                         {
@@ -28181,7 +28181,7 @@ Schema for a collection of Dashboards
                         },
                         "segments": {
                           "type": "array",
-                          "maxItems": 100,
+                          "maxItems": 300,
                           "items": {
                             "oneOf": [
                               {
@@ -47380,6 +47380,19 @@ The body of an experience linked resources response
                             "baudRate": {
                               "type": "number"
                             },
+                            "dataBits": {
+                              "type": "number"
+                            },
+                            "stopBits": {
+                              "type": "number"
+                            },
+                            "parity": {
+                              "type": "string",
+                              "maxLength": 8
+                            },
+                            "rtscts": {
+                              "type": "boolean"
+                            },
                             "encoding": {
                               "type": "string",
                               "maxLength": 48
@@ -49596,6 +49609,19 @@ The body of an experience linked resources response
                                 "baudRate": {
                                   "type": "number"
                                 },
+                                "dataBits": {
+                                  "type": "number"
+                                },
+                                "stopBits": {
+                                  "type": "number"
+                                },
+                                "parity": {
+                                  "type": "string",
+                                  "maxLength": 8
+                                },
+                                "rtscts": {
+                                  "type": "boolean"
+                                },
                                 "encoding": {
                                   "type": "string",
                                   "maxLength": 48
@@ -51761,6 +51787,19 @@ The body of an experience linked resources response
                                 },
                                 "baudRate": {
                                   "type": "number"
+                                },
+                                "dataBits": {
+                                  "type": "number"
+                                },
+                                "stopBits": {
+                                  "type": "number"
+                                },
+                                "parity": {
+                                  "type": "string",
+                                  "maxLength": 8
+                                },
+                                "rtscts": {
+                                  "type": "boolean"
                                 },
                                 "encoding": {
                                   "type": "string",
@@ -55810,6 +55849,19 @@ Schema for a single Workflow
                   "baudRate": {
                     "type": "number"
                   },
+                  "dataBits": {
+                    "type": "number"
+                  },
+                  "stopBits": {
+                    "type": "number"
+                  },
+                  "parity": {
+                    "type": "string",
+                    "maxLength": 8
+                  },
+                  "rtscts": {
+                    "type": "boolean"
+                  },
                   "encoding": {
                     "type": "string",
                     "maxLength": 48
@@ -58184,6 +58236,19 @@ Schema for the body of a Workflow modification request
                   "baudRate": {
                     "type": "number"
                   },
+                  "dataBits": {
+                    "type": "number"
+                  },
+                  "stopBits": {
+                    "type": "number"
+                  },
+                  "parity": {
+                    "type": "string",
+                    "maxLength": 8
+                  },
+                  "rtscts": {
+                    "type": "boolean"
+                  },
                   "encoding": {
                     "type": "string",
                     "maxLength": 48
@@ -60312,6 +60377,19 @@ Schema for the body of a Workflow creation request
                   },
                   "baudRate": {
                     "type": "number"
+                  },
+                  "dataBits": {
+                    "type": "number"
+                  },
+                  "stopBits": {
+                    "type": "number"
+                  },
+                  "parity": {
+                    "type": "string",
+                    "maxLength": 8
+                  },
+                  "rtscts": {
+                    "type": "boolean"
                   },
                   "encoding": {
                     "type": "string",
@@ -62665,6 +62743,19 @@ Schema for a single Workflow Version
                       "baudRate": {
                         "type": "number"
                       },
+                      "dataBits": {
+                        "type": "number"
+                      },
+                      "stopBits": {
+                        "type": "number"
+                      },
+                      "parity": {
+                        "type": "string",
+                        "maxLength": 8
+                      },
+                      "rtscts": {
+                        "type": "boolean"
+                      },
                       "encoding": {
                         "type": "string",
                         "maxLength": 48
@@ -64831,6 +64922,19 @@ Schema for a single Workflow Version
                       "baudRate": {
                         "type": "number"
                       },
+                      "dataBits": {
+                        "type": "number"
+                      },
+                      "stopBits": {
+                        "type": "number"
+                      },
+                      "parity": {
+                        "type": "string",
+                        "maxLength": 8
+                      },
+                      "rtscts": {
+                        "type": "boolean"
+                      },
                       "encoding": {
                         "type": "string",
                         "maxLength": 48
@@ -66699,6 +66803,19 @@ Schema for the body of a Workflow Version creation request
                   },
                   "baudRate": {
                     "type": "number"
+                  },
+                  "dataBits": {
+                    "type": "number"
+                  },
+                  "stopBits": {
+                    "type": "number"
+                  },
+                  "parity": {
+                    "type": "string",
+                    "maxLength": 8
+                  },
+                  "rtscts": {
+                    "type": "boolean"
                   },
                   "encoding": {
                     "type": "string",
@@ -68853,6 +68970,19 @@ Schema for a collection of Workflow Versions
                             },
                             "baudRate": {
                               "type": "number"
+                            },
+                            "dataBits": {
+                              "type": "number"
+                            },
+                            "stopBits": {
+                              "type": "number"
+                            },
+                            "parity": {
+                              "type": "string",
+                              "maxLength": 8
+                            },
+                            "rtscts": {
+                              "type": "boolean"
                             },
                             "encoding": {
                               "type": "string",
@@ -71020,6 +71150,19 @@ Schema for a collection of Workflow Versions
                             "baudRate": {
                               "type": "number"
                             },
+                            "dataBits": {
+                              "type": "number"
+                            },
+                            "stopBits": {
+                              "type": "number"
+                            },
+                            "parity": {
+                              "type": "string",
+                              "maxLength": 8
+                            },
+                            "rtscts": {
+                              "type": "boolean"
+                            },
                             "encoding": {
                               "type": "string",
                               "maxLength": 48
@@ -72958,6 +73101,19 @@ Schema for a collection of Workflows
                         },
                         "baudRate": {
                           "type": "number"
+                        },
+                        "dataBits": {
+                          "type": "number"
+                        },
+                        "stopBits": {
+                          "type": "number"
+                        },
+                        "parity": {
+                          "type": "string",
+                          "maxLength": 8
+                        },
+                        "rtscts": {
+                          "type": "boolean"
                         },
                         "encoding": {
                           "type": "string",
@@ -75202,6 +75358,19 @@ Schema for the body of a workflow import request
                         "baudRate": {
                           "type": "number"
                         },
+                        "dataBits": {
+                          "type": "number"
+                        },
+                        "stopBits": {
+                          "type": "number"
+                        },
+                        "parity": {
+                          "type": "string",
+                          "maxLength": 8
+                        },
+                        "rtscts": {
+                          "type": "boolean"
+                        },
                         "encoding": {
                           "type": "string",
                           "maxLength": 48
@@ -77348,6 +77517,19 @@ Schema for the body of a workflow import request
                         },
                         "baudRate": {
                           "type": "number"
+                        },
+                        "dataBits": {
+                          "type": "number"
+                        },
+                        "stopBits": {
+                          "type": "number"
+                        },
+                        "parity": {
+                          "type": "string",
+                          "maxLength": 8
+                        },
+                        "rtscts": {
+                          "type": "boolean"
                         },
                         "encoding": {
                           "type": "string",
@@ -79543,6 +79725,19 @@ Schema for the result of a workflow import request
                         "baudRate": {
                           "type": "number"
                         },
+                        "dataBits": {
+                          "type": "number"
+                        },
+                        "stopBits": {
+                          "type": "number"
+                        },
+                        "parity": {
+                          "type": "string",
+                          "maxLength": 8
+                        },
+                        "rtscts": {
+                          "type": "boolean"
+                        },
                         "encoding": {
                           "type": "string",
                           "maxLength": 48
@@ -81708,6 +81903,19 @@ Schema for the result of a workflow import request
                             },
                             "baudRate": {
                               "type": "number"
+                            },
+                            "dataBits": {
+                              "type": "number"
+                            },
+                            "stopBits": {
+                              "type": "number"
+                            },
+                            "parity": {
+                              "type": "string",
+                              "maxLength": 8
+                            },
+                            "rtscts": {
+                              "type": "boolean"
                             },
                             "encoding": {
                               "type": "string",
@@ -83875,6 +84083,19 @@ Schema for the result of a workflow import request
                             "baudRate": {
                               "type": "number"
                             },
+                            "dataBits": {
+                              "type": "number"
+                            },
+                            "stopBits": {
+                              "type": "number"
+                            },
+                            "parity": {
+                              "type": "string",
+                              "maxLength": 8
+                            },
+                            "rtscts": {
+                              "type": "boolean"
+                            },
                             "encoding": {
                               "type": "string",
                               "maxLength": 48
@@ -84698,8 +84919,6 @@ Schema for the body of a Github login request
               "me.disableTwoFactorAuth",
               "me.disconnectGithub",
               "me.connectGithub",
-              "me.disconnectTwitter",
-              "me.connectTwitter",
               "me.addRecentItem",
               "me.fetchRecentItems",
               "me.payloadCounts",
@@ -85956,9 +86175,6 @@ Schema for information about the currently authenticated user
       "type": "string"
     },
     "githubName": {
-      "type": "string"
-    },
-    "twitterName": {
       "type": "string"
     },
     "avatarUrl": {
@@ -93568,8 +93784,6 @@ Schema for the body of a User authentication request
               "me.disableTwoFactorAuth",
               "me.disconnectGithub",
               "me.connectGithub",
-              "me.disconnectTwitter",
-              "me.connectTwitter",
               "me.addRecentItem",
               "me.fetchRecentItems",
               "me.payloadCounts",
@@ -94004,8 +94218,6 @@ Schema for the body of a User creation request
               "me.disableTwoFactorAuth",
               "me.disconnectGithub",
               "me.connectGithub",
-              "me.disconnectTwitter",
-              "me.connectTwitter",
               "me.addRecentItem",
               "me.fetchRecentItems",
               "me.payloadCounts",

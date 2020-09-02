@@ -1794,6 +1794,19 @@
                             "baudRate": {
                               "type": "number"
                             },
+                            "dataBits": {
+                              "type": "number"
+                            },
+                            "stopBits": {
+                              "type": "number"
+                            },
+                            "parity": {
+                              "type": "string",
+                              "maxLength": 8
+                            },
+                            "rtscts": {
+                              "type": "boolean"
+                            },
                             "encoding": {
                               "type": "string",
                               "maxLength": 48
@@ -4010,6 +4023,19 @@
                                 "baudRate": {
                                   "type": "number"
                                 },
+                                "dataBits": {
+                                  "type": "number"
+                                },
+                                "stopBits": {
+                                  "type": "number"
+                                },
+                                "parity": {
+                                  "type": "string",
+                                  "maxLength": 8
+                                },
+                                "rtscts": {
+                                  "type": "boolean"
+                                },
                                 "encoding": {
                                   "type": "string",
                                   "maxLength": 48
@@ -6175,6 +6201,19 @@
                                 },
                                 "baudRate": {
                                   "type": "number"
+                                },
+                                "dataBits": {
+                                  "type": "number"
+                                },
+                                "stopBits": {
+                                  "type": "number"
+                                },
+                                "parity": {
+                                  "type": "string",
+                                  "maxLength": 8
+                                },
+                                "rtscts": {
+                                  "type": "boolean"
                                 },
                                 "encoding": {
                                   "type": "string",
