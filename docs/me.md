@@ -11,7 +11,6 @@ parameters and the potential responses.
 *   [Delete](#delete)
 *   [Disable Two Factor Auth](#disable-two-factor-auth)
 *   [Disconnect Github](#disconnect-github)
-*   [Disconnect Twitter](#disconnect-twitter)
 *   [Enable Two Factor Auth](#enable-two-factor-auth)
 *   [Fetch Recent Items](#fetch-recent-items)
 *   [Get](#get)
@@ -234,50 +233,6 @@ client.me.disconnectGithub(params)
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
 all.User, me.*, or me.disconnectGithub.
-
-#### Available Parameters
-
-| Name | Type | Required | Description | Default | Example |
-| ---- | ---- | -------- | ----------- | ------- | ------- |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
-
-#### Successful Responses
-
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 200 | [Me](../lib/schemas/me.json) | Updated user information |
-
-#### Error Responses
-
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-
-<br/>
-
-## Disconnect Twitter
-
-Disconnects the user from Twitter
-
-```javascript
-var params = {}; // all params are optional
-
-// with callbacks
-client.me.disconnectTwitter(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.disconnectTwitter(params)
-  .then(console.log)
-  .catch(console.error);
-```
-
-#### Authentication
-The client must be configured with a valid api access token to call this
-action. The token must include at least one of the following scopes:
-all.User, me.*, or me.disconnectTwitter.
 
 #### Available Parameters
 

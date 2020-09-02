@@ -4,7 +4,8 @@
   "properties": {
     "accessToken": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "maxLength": 1024
     },
     "requestedScopes": {
       "type": "array",
@@ -68,6 +69,7 @@
                   "notebooks.*",
                   "webhook.*",
                   "webhooks.*",
+                  "application.applyTemplate",
                   "application.archiveData",
                   "application.backfillArchiveData",
                   "application.clone",
@@ -304,8 +306,12 @@
             "enum": [
               "all.User",
               "all.User.read",
+              "applicationTemplate.*",
+              "applicationTemplate.get",
               "applicationTemplates.*",
               "applicationTemplates.get",
+              "applicationTemplates.getCategories",
+              "applicationTemplates.getUniqueKeywords",
               "me.*",
               "orgs.*",
               "me.get",
@@ -317,8 +323,6 @@
               "me.disableTwoFactorAuth",
               "me.disconnectGithub",
               "me.connectGithub",
-              "me.disconnectTwitter",
-              "me.connectTwitter",
               "me.addRecentItem",
               "me.fetchRecentItems",
               "me.payloadCounts",

@@ -26,6 +26,26 @@
             "minLength": 1,
             "maxLength": 255
           },
+          "readme": {
+            "type": "string",
+            "maxLength": 131072
+          },
+          "categoryIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "maxItems": 1000
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+            },
+            "maxItems": 100
+          },
           "description": {
             "type": "string",
             "maxLength": 1024
@@ -122,6 +142,18 @@
     },
     "filterField": {
       "type": "string"
+    },
+    "categoryId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+      },
+      "maxItems": 100
     },
     "sortField": {
       "type": "string"

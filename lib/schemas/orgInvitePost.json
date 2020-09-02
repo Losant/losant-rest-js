@@ -68,6 +68,9 @@
         "additionalProperties": false
       },
       "maxItems": 1000
+    },
+    "disallowTransfer": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false,

@@ -41,10 +41,14 @@
       "type": "object",
       "properties": {
         "service": {
-          "type": "string"
+          "enum": [
+            "github"
+          ]
         },
         "accessToken": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
         }
       },
       "required": [
@@ -54,9 +58,9 @@
     },
     "password": {
       "type": "string",
-      "minLength": 8,
+      "minLength": 12,
       "maxLength": 2048,
-      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{8,}$"
+      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{12,}$"
     },
     "acceptTerms": {
       "enum": [
@@ -133,6 +137,7 @@
                   "notebooks.*",
                   "webhook.*",
                   "webhooks.*",
+                  "application.applyTemplate",
                   "application.archiveData",
                   "application.backfillArchiveData",
                   "application.clone",
@@ -369,8 +374,12 @@
             "enum": [
               "all.User",
               "all.User.read",
+              "applicationTemplate.*",
+              "applicationTemplate.get",
               "applicationTemplates.*",
               "applicationTemplates.get",
+              "applicationTemplates.getCategories",
+              "applicationTemplates.getUniqueKeywords",
               "me.*",
               "orgs.*",
               "me.get",
@@ -382,8 +391,6 @@
               "me.disableTwoFactorAuth",
               "me.disconnectGithub",
               "me.connectGithub",
-              "me.disconnectTwitter",
-              "me.connectTwitter",
               "me.addRecentItem",
               "me.fetchRecentItems",
               "me.payloadCounts",

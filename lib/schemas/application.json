@@ -18,6 +18,14 @@
       "type": "string",
       "format": "date-time"
     },
+    "appliedTemplateIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    },
     "ownerId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"

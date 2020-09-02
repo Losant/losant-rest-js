@@ -28,6 +28,9 @@
     },
     "ttl": {
       "type": "number"
+    },
+    "disallowTransfer": {
+      "type": "boolean"
     }
   }
 }
