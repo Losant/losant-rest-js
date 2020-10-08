@@ -1811,6 +1811,7 @@
             "enum": [
               "cloud",
               "edge",
+              "embedded",
               "experience",
               "customNode"
             ]

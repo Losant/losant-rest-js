@@ -100,6 +100,11 @@
 *   [Edge Deployment Replace](#edge-deployment-replace)
 *   [Edge Deployments](#edge-deployments)
 *   [Email Verification Verify](#email-verification-verify)
+*   [Embedded Deployment](#embedded-deployment)
+*   [Embedded Deployment Release](#embedded-deployment-release)
+*   [Embedded Deployment Remove](#embedded-deployment-remove)
+*   [Embedded Deployment Replace](#embedded-deployment-replace)
+*   [Embedded Deployments](#embedded-deployments)
 *   [Enable Two Factor Auth](#enable-two-factor-auth)
 *   [Error](#error)
 *   [Event](#event)
@@ -3418,6 +3423,7 @@ Schema for the body of an Application API Token creation request
           "deviceRecipes.*",
           "devices.*",
           "edgeDeployments.*",
+          "embeddedDeployments.*",
           "event.*",
           "events.*",
           "experience.*",
@@ -3535,6 +3541,10 @@ Schema for the body of an Application API Token creation request
           "edgeDeployments.release",
           "edgeDeployments.remove",
           "edgeDeployments.replace",
+          "embeddedDeployments.get",
+          "embeddedDeployments.release",
+          "embeddedDeployments.remove",
+          "embeddedDeployments.replace",
           "event.delete",
           "event.get",
           "event.patch",
@@ -8064,7 +8074,8 @@ Schema for the successful response when authenticating a Device
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     "token": {
@@ -13623,6 +13634,9 @@ Schema for a single Dashboard
                     "type": "boolean"
                   },
                   "includeEdge": {
+                    "type": "boolean"
+                  },
+                  "includeEmbedded": {
                     "type": "boolean"
                   },
                   "includeExperience": {
@@ -19354,6 +19368,9 @@ Schema for the body of a Dashboard modification request
                   "includeEdge": {
                     "type": "boolean"
                   },
+                  "includeEmbedded": {
+                    "type": "boolean"
+                  },
                   "includeExperience": {
                     "type": "boolean"
                   },
@@ -25010,6 +25027,9 @@ Schema for the body of a Dashboard creation request
                     "type": "boolean"
                   },
                   "includeEdge": {
+                    "type": "boolean"
+                  },
+                  "includeEmbedded": {
                     "type": "boolean"
                   },
                   "includeExperience": {
@@ -30925,6 +30945,9 @@ Schema for a collection of Dashboards
                         "includeEdge": {
                           "type": "boolean"
                         },
+                        "includeEmbedded": {
+                          "type": "boolean"
+                        },
                         "includeExperience": {
                           "type": "boolean"
                         },
@@ -32953,7 +32976,8 @@ Schema for a single Device
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     "gatewayId": {
@@ -33058,7 +33082,8 @@ Select one or multiple device classes
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     {
@@ -33071,7 +33096,8 @@ Select one or multiple device classes
           "peripheral",
           "floating",
           "edgeCompute",
-          "system"
+          "system",
+          "embedded"
         ]
       },
       "additionalProperties": false
@@ -33691,7 +33717,8 @@ Schema for the body of a Device modification request
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     "gatewayId": {
@@ -33925,7 +33952,8 @@ Schema for the body of a Device creation request
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     "gatewayId": {
@@ -34191,7 +34219,8 @@ Schema for a single Device Recipe
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     "gatewayId": {
@@ -34549,7 +34578,8 @@ Schema for the body of a Device Recipe modification request
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     "gatewayId": {
@@ -34794,7 +34824,8 @@ Schema for the body of a Device Recipe creation request
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     "gatewayId": {
@@ -35069,7 +35100,8 @@ Schema for a collection of Device Recipes
               "peripheral",
               "floating",
               "edgeCompute",
-              "system"
+              "system",
+              "embedded"
             ]
           },
           "gatewayId": {
@@ -35721,7 +35753,8 @@ Schema for a collection of Devices
               "peripheral",
               "floating",
               "edgeCompute",
-              "system"
+              "system",
+              "embedded"
             ]
           },
           "gatewayId": {
@@ -35813,7 +35846,8 @@ Schema for a collection of Devices
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     "tagFilter": {
@@ -38264,7 +38298,8 @@ Schema for the body of a Devices modification request
             "peripheral",
             "floating",
             "edgeCompute",
-            "system"
+            "system",
+            "embedded"
           ]
         },
         "gatewayId": {
@@ -39376,7 +39411,8 @@ Schema for the body of a Devices modification request
                   "peripheral",
                   "floating",
                   "edgeCompute",
-                  "system"
+                  "system",
+                  "embedded"
                 ]
               }
             },
@@ -41810,6 +41846,645 @@ Schema for the body of a request verifying an email
 {
   "email": "example@losant.com",
   "token": "the email verification token"
+}
+```
+
+<br/>
+
+## Embedded Deployment
+
+Schema for a single deployment of embedded workflows to embedded devices
+
+### <a name="embedded-deployment-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "embeddedDeploymentId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    },
+    "flowIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "currentVersion": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "desiredVersion": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "releaseTag": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "compatible": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 255
+      }
+    },
+    "mountpoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "device": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "encoding": {
+            "type": "string",
+            "enum": [
+              "CBOR",
+              "JSON"
+            ]
+          },
+          "prefix": {
+            "type": "string",
+            "maxLength": 255
+          }
+        }
+      }
+    },
+    "logs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sourceType": {
+            "type": "string",
+            "enum": [
+              "flow",
+              "user",
+              "device",
+              "apiToken",
+              "notebook"
+            ]
+          },
+          "sourceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "changeType": {
+            "type": "string",
+            "enum": [
+              "current",
+              "desired"
+            ]
+          },
+          "newValue": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "previousValue": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "attemptedValue": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
+```
+### <a name="embedded-deployment-example"></a> Example
+
+```json
+{
+  "id": "5a591be186b70d7b9f9b0954",
+  "embeddedDeploymentId": "5a591be186b70d7b9f9b0954",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "deviceIds": [
+    "575ecf887ae143cd83dc4aa2"
+  ],
+  "flowIds": [
+    "575ed18f7ae143cd83dc4aa6"
+  ],
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "desiredVersion": "v1.4.0",
+  "currentVersion": null,
+  "releaseTag": "EEA v1",
+  "compatible": [
+    "B-L475E-IOT01A"
+  ],
+  "mountpoints": [
+    {
+      "name": "standardStore",
+      "device": "mem",
+      "prefix": "",
+      "encoding": "JSON"
+    }
+  ],
+  "logs": [
+    {
+      "sourceType": "user",
+      "sourceId": "575ed70c7ae143cd83dc4aa9",
+      "date": "2016-06-13T04:00:00.000Z",
+      "changeType": "desired",
+      "newValue": "v1.4.0",
+      "previousValue": null
+    }
+  ]
+}
+```
+
+<br/>
+
+## Embedded Deployment Release
+
+Schema for deploying an embedded workflow to one or more edge devices
+
+### <a name="embedded-deployment-release-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "flowId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "version": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "deviceIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    },
+    "deviceTags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        },
+        "additionalProperties": false
+      },
+      "maxItems": 100
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "flowId",
+    "version"
+  ]
+}
+```
+### <a name="embedded-deployment-release-example"></a> Example
+
+```json
+{
+  "flowId": "575ed18f7ae143cd83dc4aa6",
+  "version": "v1.2.3",
+  "deviceIds": [
+    "575ecf887ae143cd83dc4aa2"
+  ]
+}
+```
+
+<br/>
+
+## Embedded Deployment Remove
+
+Schema for removing embedded deployments. Can remove a specific workflow from a specific device, can remove all workflows from a specific device, or can remove a specific workflow from all devices.
+
+### <a name="embedded-deployment-remove-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "flowId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "flowId",
+    "deviceId"
+  ]
+}
+```
+### <a name="embedded-deployment-remove-example"></a> Example
+
+```json
+{
+  "flowId": "575ed18f7ae143cd83dc4aa6",
+  "deviceId": null
+}
+```
+
+<br/>
+
+## Embedded Deployment Replace
+
+Schema for replacing a deployment of a workflow version with a different workflow version
+
+### <a name="embedded-deployment-replace-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "flowId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "oldVersion": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "newVersion": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 255
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "flowId",
+    "oldVersion",
+    "newVersion"
+  ]
+}
+```
+### <a name="embedded-deployment-replace-example"></a> Example
+
+```json
+{
+  "flowId": "575ed18f7ae143cd83dc4aa6",
+  "oldVersion": "v1.2.3",
+  "newVersion": "v1.2.4"
+}
+```
+
+<br/>
+
+## Embedded Deployments
+
+Schema for a collection of Embedded Deployments
+
+### <a name="embedded-deployments-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Embedded Deployment",
+        "description": "Schema for a single deployment of embedded workflows to embedded devices",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "embeddedDeploymentId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "deviceIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "maxItems": 1000
+          },
+          "flowIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "maxItems": 1000
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "currentVersion": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "desiredVersion": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "releaseTag": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "compatible": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 255
+            }
+          },
+          "mountpoints": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "device": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "encoding": {
+                  "type": "string",
+                  "enum": [
+                    "CBOR",
+                    "JSON"
+                  ]
+                },
+                "prefix": {
+                  "type": "string",
+                  "maxLength": 255
+                }
+              }
+            }
+          },
+          "logs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sourceType": {
+                  "type": "string",
+                  "enum": [
+                    "flow",
+                    "user",
+                    "device",
+                    "apiToken",
+                    "notebook"
+                  ]
+                },
+                "sourceId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "changeType": {
+                  "type": "string",
+                  "enum": [
+                    "current",
+                    "desired"
+                  ]
+                },
+                "newValue": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "previousValue": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "attemptedValue": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "error": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "flowId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    }
+  }
+}
+```
+### <a name="embedded-deployments-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "5a591be186b70d7b9f9b0954",
+      "embeddedDeploymentId": "5a591be186b70d7b9f9b0954",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "deviceIds": [
+        "575ecf887ae143cd83dc4aa2"
+      ],
+      "flowIds": [
+        "575ed18f7ae143cd83dc4aa6"
+      ],
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "desiredVersion": "v1.4.0",
+      "currentVersion": null,
+      "releaseTag": "EEA v1",
+      "compatible": [
+        "B-L475E-IOT01A"
+      ],
+      "mountpoints": [
+        {
+          "name": "standardStore",
+          "device": "mem",
+          "prefix": "",
+          "encoding": "JSON"
+        }
+      ],
+      "logs": [
+        {
+          "sourceType": "user",
+          "sourceId": "575ed70c7ae143cd83dc4aa9",
+          "date": "2016-06-13T04:00:00.000Z",
+          "changeType": "desired",
+          "newValue": "v1.4.0",
+          "previousValue": null
+        }
+      ]
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "id",
+  "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97"
 }
 ```
 
@@ -46021,6 +46696,7 @@ The body of an experience linked resources response
                 "enum": [
                   "cloud",
                   "edge",
+                  "embedded",
                   "experience",
                   "customNode"
                 ]
@@ -48197,6 +48873,7 @@ The body of an experience linked resources response
           "enum": [
             "cloud",
             "edge",
+            "embedded",
             "experience",
             "customNode"
           ]
@@ -48215,7 +48892,7 @@ The body of an experience linked resources response
             "description": "Schema for a single Workflow Version",
             "oneOf": [
               {
-                "description": "Schema for a single Cloud/Edge/Custom Node Workflow Version",
+                "description": "Schema for a single Cloud/Edge/Embedded/Custom Node Workflow Version",
                 "type": "object",
                 "properties": {
                   "id": {
@@ -54490,6 +55167,7 @@ Schema for a single Workflow
       "enum": [
         "cloud",
         "edge",
+        "embedded",
         "experience",
         "customNode"
       ]
@@ -60801,6 +61479,7 @@ Schema for the body of a Workflow creation request
       "enum": [
         "cloud",
         "edge",
+        "embedded",
         "experience",
         "customNode"
       ]
@@ -61349,7 +62028,7 @@ Schema for a single Workflow Version
   "$schema": "http://json-schema.org/draft-04/schema#",
   "oneOf": [
     {
-      "description": "Schema for a single Cloud/Edge/Custom Node Workflow Version",
+      "description": "Schema for a single Cloud/Edge/Embedded/Custom Node Workflow Version",
       "type": "object",
       "properties": {
         "id": {
@@ -67577,7 +68256,7 @@ Schema for a collection of Workflow Versions
         "description": "Schema for a single Workflow Version",
         "oneOf": [
           {
-            "description": "Schema for a single Cloud/Edge/Custom Node Workflow Version",
+            "description": "Schema for a single Cloud/Edge/Embedded/Custom Node Workflow Version",
             "type": "object",
             "properties": {
               "id": {
@@ -71743,6 +72422,7 @@ Schema for a collection of Workflows
             "enum": [
               "cloud",
               "edge",
+              "embedded",
               "experience",
               "customNode"
             ]
@@ -73919,6 +74599,7 @@ Schema for a collection of Workflows
       "enum": [
         "cloud",
         "edge",
+        "embedded",
         "experience",
         "customNode"
       ]
@@ -75781,6 +76462,7 @@ Schema for the body of a workflow import request
             "enum": [
               "cloud",
               "edge",
+              "embedded",
               "experience",
               "customNode"
             ]
@@ -78366,6 +79048,7 @@ Schema for the result of a workflow import request
             "enum": [
               "cloud",
               "edge",
+              "embedded",
               "experience",
               "customNode"
             ]
@@ -80510,7 +81193,7 @@ Schema for the result of a workflow import request
         "description": "Schema for a single Workflow Version",
         "oneOf": [
           {
-            "description": "Schema for a single Cloud/Edge/Custom Node Workflow Version",
+            "description": "Schema for a single Cloud/Edge/Embedded/Custom Node Workflow Version",
             "type": "object",
             "properties": {
               "id": {
@@ -84636,6 +85319,7 @@ Schema for the body of a Github login request
                   "deviceRecipes.*",
                   "devices.*",
                   "edgeDeployments.*",
+                  "embeddedDeployments.*",
                   "event.*",
                   "events.*",
                   "experience.*",
@@ -84753,6 +85437,10 @@ Schema for the body of a Github login request
                   "edgeDeployments.release",
                   "edgeDeployments.remove",
                   "edgeDeployments.replace",
+                  "embeddedDeployments.get",
+                  "embeddedDeployments.release",
+                  "embeddedDeployments.remove",
+                  "embeddedDeployments.replace",
                   "event.delete",
                   "event.get",
                   "event.patch",
@@ -93501,6 +94189,7 @@ Schema for the body of a User authentication request
                   "deviceRecipes.*",
                   "devices.*",
                   "edgeDeployments.*",
+                  "embeddedDeployments.*",
                   "event.*",
                   "events.*",
                   "experience.*",
@@ -93618,6 +94307,10 @@ Schema for the body of a User authentication request
                   "edgeDeployments.release",
                   "edgeDeployments.remove",
                   "edgeDeployments.replace",
+                  "embeddedDeployments.get",
+                  "embeddedDeployments.release",
+                  "embeddedDeployments.remove",
+                  "embeddedDeployments.replace",
                   "event.delete",
                   "event.get",
                   "event.patch",
@@ -93935,6 +94628,7 @@ Schema for the body of a User creation request
                   "deviceRecipes.*",
                   "devices.*",
                   "edgeDeployments.*",
+                  "embeddedDeployments.*",
                   "event.*",
                   "events.*",
                   "experience.*",
@@ -94052,6 +94746,10 @@ Schema for the body of a User creation request
                   "edgeDeployments.release",
                   "edgeDeployments.remove",
                   "edgeDeployments.replace",
+                  "embeddedDeployments.get",
+                  "embeddedDeployments.release",
+                  "embeddedDeployments.remove",
+                  "embeddedDeployments.replace",
                   "event.delete",
                   "event.get",
                   "event.patch",

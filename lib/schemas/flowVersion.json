@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "oneOf": [
     {
-      "description": "Schema for a single Cloud/Edge/Custom Node Workflow Version",
+      "description": "Schema for a single Cloud/Edge/Embedded/Custom Node Workflow Version",
       "type": "object",
       "properties": {
         "id": {

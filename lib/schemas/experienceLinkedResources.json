@@ -435,6 +435,7 @@
                 "enum": [
                   "cloud",
                   "edge",
+                  "embedded",
                   "experience",
                   "customNode"
                 ]
@@ -2611,6 +2612,7 @@
           "enum": [
             "cloud",
             "edge",
+            "embedded",
             "experience",
             "customNode"
           ]
@@ -2629,7 +2631,7 @@
             "description": "Schema for a single Workflow Version",
             "oneOf": [
               {
-                "description": "Schema for a single Cloud/Edge/Custom Node Workflow Version",
+                "description": "Schema for a single Cloud/Edge/Embedded/Custom Node Workflow Version",
                 "type": "object",
                 "properties": {
                   "id": {

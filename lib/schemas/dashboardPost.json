@@ -5208,6 +5208,9 @@
                   "includeEdge": {
                     "type": "boolean"
                   },
+                  "includeEmbedded": {
+                    "type": "boolean"
+                  },
                   "includeExperience": {
                     "type": "boolean"
                   },

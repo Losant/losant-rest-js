@@ -191,7 +191,8 @@
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     "gatewayId": {

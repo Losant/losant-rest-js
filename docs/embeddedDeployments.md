@@ -1,7 +1,7 @@
-# Edge Deployments Actions
+# Embedded Deployments Actions
 
 Details on the various actions that can be performed on the
-Edge Deployments resource, including the expected
+Embedded Deployments resource, including the expected
 parameters and the potential responses.
 
 ##### Contents
@@ -15,7 +15,7 @@ parameters and the potential responses.
 
 ## Get
 
-Returns the edge deployments for an application
+Returns the embedded deployments for an application
 
 ```javascript
 var params = {
@@ -23,13 +23,13 @@ var params = {
 };
 
 // with callbacks
-client.edgeDeployments.get(params, function (err, result) {
+client.embeddedDeployments.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.edgeDeployments.get(params)
+client.embeddedDeployments.get(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -37,17 +37,17 @@ client.edgeDeployments.get(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, edgeDeployments.*, or edgeDeployments.get.
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, embeddedDeployments.*, or embeddedDeployments.get.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| sortField | string | N | Field to sort the results by. Accepted values are: id, deviceId, flowId, desiredVersion, currentVersion, creationDate, lastUpdated | lastUpdated | creationDate |
+| sortField | string | N | Field to sort the results by. Accepted values are: id, desiredVersion, currentVersion, creationDate, lastUpdated | lastUpdated | creationDate |
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
 | page | string | N | Which page of results to return | 0 | 0 |
-| perPage | string | N | How many items to return per page | 100 | 10 |
+| perPage | string | N | How many items to return per page | 1000 | 10 |
 | deviceId | string | N | Filter deployments to the given Device ID |  | 575ecf887ae143cd83dc4aa2 |
 | version | string | N | Filter deployments to the given Workflow Version (matches against both current and desired) |  | myFlowVersion |
 | filterEmpty | undefined | N | Filter out deployments where both the current and desired version are null. |  | true |
@@ -58,7 +58,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Edge Deployments](../lib/schemas/edgeDeployments.json) | Collection of edge deployments |
+| 200 | [Embedded Deployments](../lib/schemas/embeddedDeployments.json) | Collection of embedded deployments |
 
 #### Error Responses
 
@@ -71,7 +71,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 ## Release
 
-Deploy an edge workflow version to one or more edge devices. Version can be blank, if removal is desired.
+Deploy an embedded workflow version to one or more embedded devices. Version can be blank, if removal is desired.
 
 ```javascript
 var params = {
@@ -80,13 +80,13 @@ var params = {
 };
 
 // with callbacks
-client.edgeDeployments.release(params, function (err, result) {
+client.embeddedDeployments.release(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.edgeDeployments.release(params)
+client.embeddedDeployments.release(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -94,14 +94,14 @@ client.edgeDeployments.release(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, edgeDeployments.*, or edgeDeployments.release.
+all.Application, all.Organization, all.User, embeddedDeployments.*, or embeddedDeployments.release.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| deployment | [Edge Deployment Release](../lib/schemas/edgeDeploymentRelease.json) | Y | Deployment release information |  | [Edge Deployment Release Example](_schemas.md#edge-deployment-release-example) |
+| deployment | [Embedded Deployment Release](../lib/schemas/embeddedDeploymentRelease.json) | Y | Deployment release information |  | [Embedded Deployment Release Example](_schemas.md#embedded-deployment-release-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -121,7 +121,7 @@ all.Application, all.Organization, all.User, edgeDeployments.*, or edgeDeploymen
 
 ## Remove
 
-Remove all edge deployments from a device, remove all edge deployments of a workflow, or remove a specific workflow from a specific device
+Remove all embedded deployments from a device, remove all embedded deployments of a workflow, or remove a specific workflow from a specific device
 
 ```javascript
 var params = {
@@ -130,13 +130,13 @@ var params = {
 };
 
 // with callbacks
-client.edgeDeployments.remove(params, function (err, result) {
+client.embeddedDeployments.remove(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.edgeDeployments.remove(params)
+client.embeddedDeployments.remove(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -144,14 +144,14 @@ client.edgeDeployments.remove(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, edgeDeployments.*, or edgeDeployments.remove.
+all.Application, all.Organization, all.User, embeddedDeployments.*, or embeddedDeployments.remove.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| deployment | [Edge Deployment Remove](../lib/schemas/edgeDeploymentRemove.json) | Y | Deployment removal information |  | [Edge Deployment Remove Example](_schemas.md#edge-deployment-remove-example) |
+| deployment | [Embedded Deployment Remove](../lib/schemas/embeddedDeploymentRemove.json) | Y | Deployment removal information |  | [Embedded Deployment Remove Example](_schemas.md#embedded-deployment-remove-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -171,7 +171,7 @@ all.Application, all.Organization, all.User, edgeDeployments.*, or edgeDeploymen
 
 ## Replace
 
-Replace deployments of an edge workflow version with a new version. New version can be blank, if removal is desired.
+Replace deployments of an embedded workflow version with a new version. New version can be blank, if removal is desired.
 
 ```javascript
 var params = {
@@ -180,13 +180,13 @@ var params = {
 };
 
 // with callbacks
-client.edgeDeployments.replace(params, function (err, result) {
+client.embeddedDeployments.replace(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.edgeDeployments.replace(params)
+client.embeddedDeployments.replace(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -194,14 +194,14 @@ client.edgeDeployments.replace(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, edgeDeployments.*, or edgeDeployments.replace.
+all.Application, all.Organization, all.User, embeddedDeployments.*, or embeddedDeployments.replace.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| deployment | [Edge Deployment Replace](../lib/schemas/edgeDeploymentReplace.json) | Y | Deployment replacement information |  | [Edge Deployment Replace Example](_schemas.md#edge-deployment-replace-example) |
+| deployment | [Embedded Deployment Replace](../lib/schemas/embeddedDeploymentReplace.json) | Y | Deployment replacement information |  | [Embedded Deployment Replace Example](_schemas.md#embedded-deployment-replace-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

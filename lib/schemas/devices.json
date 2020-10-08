@@ -198,7 +198,8 @@
               "peripheral",
               "floating",
               "edgeCompute",
-              "system"
+              "system",
+              "embedded"
             ]
           },
           "gatewayId": {
@@ -290,7 +291,8 @@
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     "tagFilter": {

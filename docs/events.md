@@ -147,7 +147,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | sortField | string | N | Field to sort the results by. Accepted values are: subject, id, creationDate, lastUpdated, level, state, deviceId | creationDate | subject |
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | desc | asc |
 | page | string | N | Which page of results to return | 0 | 0 |
-| perPage | string | N | How many items to return per page | 1000 | 10 |
+| perPage | string | N | How many items to return per page | 100 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: subject |  | subject |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | abnormal power to * |
 | state | string | N | If provided, return events only in the given state. Accepted values are: new, acknowledged, resolved |  | new |
