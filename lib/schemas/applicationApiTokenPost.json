@@ -149,6 +149,7 @@
           "deviceRecipe.patch",
           "deviceRecipes.get",
           "deviceRecipes.post",
+          "devices.attributeNames",
           "devices.patch",
           "devices.delete",
           "devices.removeData",

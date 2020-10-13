@@ -44,7 +44,7 @@ all.Organization, all.Organization.read, all.User, all.User.read, auditLogs.*, o
 | sortField | string | N | Field to sort the results by. Accepted values are: creationDate, responseStatus, actorName | creationDate | creationDate |
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | desc | asc |
 | page | string | N | Which page of results to return | 0 | 0 |
-| perPage | string | N | How many items to return per page | 1000 | 10 |
+| perPage | string | N | How many items to return per page | 100 | 10 |
 | start | string | N | Start of time range for audit log query |  | 1465790400000 |
 | end | string | N | End of time range for audit log query |  | 1465790400000 |
 | auditLogFilter | [Audit Log Filter](../lib/schemas/auditLogFilter.json) | N | Filters for the audit log query |  | [Audit Log Filter Example](_schemas.md#audit-log-filter-example) |
