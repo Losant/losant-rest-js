@@ -9,6 +9,9 @@
     "token": {
       "type": "string",
       "minLength": 1
+    },
+    "needsToVerifyEmail": {
+      "type": "boolean"
     }
   },
   "required": [

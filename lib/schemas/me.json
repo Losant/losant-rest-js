@@ -64,6 +64,9 @@
     "emailVerified": {
       "type": "boolean"
     },
+    "needsToVerifyEmail": {
+      "type": "boolean"
+    },
     "twoFactorAuthEnabled": {
       "type": "boolean"
     },

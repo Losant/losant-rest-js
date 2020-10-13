@@ -42,7 +42,7 @@ all.User, all.User.read, orgs.*, or orgs.get.
 | sortField | string | N | Field to sort the results by. Accepted values are: name, id, creationDate, lastUpdated | name | name |
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
 | page | string | N | Which page of results to return | 0 | 0 |
-| perPage | string | N | How many items to return per page | 1000 | 10 |
+| perPage | string | N | How many items to return per page | 100 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*org |
 | summaryExclude | string | N | Comma-separated list of summary fields to exclude from org summaries |  | payloadCount |

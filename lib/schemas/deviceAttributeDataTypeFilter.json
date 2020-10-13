@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "oneOf": [
+    {
+      "type": "string",
+      "enum": [
+        "string",
+        "number",
+        "gps",
+        "boolean",
+        "blob"
+      ]
+    },
+    {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": [
+          "string",
+          "number",
+          "gps",
+          "boolean",
+          "blob"
+        ]
+      }
+    }
+  ]
+}

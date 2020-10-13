@@ -24,8 +24,7 @@
           "edgeCompute",
           "system"
         ]
-      },
-      "additionalProperties": false
+      }
     }
   ]
 }
