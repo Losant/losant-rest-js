@@ -33098,8 +33098,8 @@ Select one or multiple device attribute data types
 
 ```json
 [
-  "standalone",
-  "edgeCompute"
+  "number",
+  "blob"
 ]
 ```
 
