@@ -88080,6 +88080,13 @@ Schema for a single Notebook
     "jupyterFileUrl": {
       "type": "string"
     },
+    "imageVersion": {
+      "type": "string",
+      "enum": [
+        "v1",
+        "v2"
+      ]
+    },
     "inputs": {
       "type": "array",
       "items": {
@@ -88856,6 +88863,13 @@ Schema for a set of Notebook execution logs
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
       },
+      "imageVersion": {
+        "type": "string",
+        "enum": [
+          "v1",
+          "v2"
+        ]
+      },
       "applicationId": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
@@ -89628,6 +89642,13 @@ Schema for the body of a Notebook modification request
           }
         ]
       }
+    },
+    "imageVersion": {
+      "type": "string",
+      "enum": [
+        "v1",
+        "v2"
+      ]
     }
   },
   "additionalProperties": false
@@ -89662,6 +89683,13 @@ Schema for the body of an Notebook creation request
     "description": {
       "type": "string",
       "maxLength": 32767
+    },
+    "imageVersion": {
+      "type": "string",
+      "enum": [
+        "v1",
+        "v2"
+      ]
     },
     "inputs": {
       "type": "array",
@@ -90300,6 +90328,13 @@ Schema for a collection of Notebooks
           },
           "jupyterFileUrl": {
             "type": "string"
+          },
+          "imageVersion": {
+            "type": "string",
+            "enum": [
+              "v1",
+              "v2"
+            ]
           },
           "inputs": {
             "type": "array",

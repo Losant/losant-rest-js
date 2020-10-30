@@ -576,6 +576,13 @@
           }
         ]
       }
+    },
+    "imageVersion": {
+      "type": "string",
+      "enum": [
+        "v1",
+        "v2"
+      ]
     }
   },
   "additionalProperties": false
