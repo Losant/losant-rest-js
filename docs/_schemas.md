@@ -12243,6 +12243,9 @@ Schema for a single Dashboard
                             },
                             "defaultValue": {
                               "type": "boolean"
+                            },
+                            "includeLabel": {
+                              "type": "boolean"
                             }
                           },
                           "additionalProperties": false
@@ -17975,6 +17978,9 @@ Schema for the body of a Dashboard modification request
                             },
                             "defaultValue": {
                               "type": "boolean"
+                            },
+                            "includeLabel": {
+                              "type": "boolean"
                             }
                           },
                           "additionalProperties": false
@@ -23635,6 +23641,9 @@ Schema for the body of a Dashboard creation request
                               "additionalProperties": false
                             },
                             "defaultValue": {
+                              "type": "boolean"
+                            },
+                            "includeLabel": {
                               "type": "boolean"
                             }
                           },
@@ -29551,6 +29560,9 @@ Schema for a collection of Dashboards
                                     "additionalProperties": false
                                   },
                                   "defaultValue": {
+                                    "type": "boolean"
+                                  },
+                                  "includeLabel": {
                                     "type": "boolean"
                                   }
                                 },
