@@ -37,6 +37,15 @@
     "endpointDefaultCors": {
       "type": "boolean"
     },
+    "allowedCorsOrigins": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 8,
+        "maxLength": 270
+      },
+      "maxItems": 100
+    },
     "version": {
       "type": "string",
       "minLength": 1,

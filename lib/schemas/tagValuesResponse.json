@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "tagKey": {
+      "type": "string",
+      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+    },
+    "tagValues": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 255
+      },
+      "maxItems": 1000
+    }
+  }
+}

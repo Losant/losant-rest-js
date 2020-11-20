@@ -37,6 +37,7 @@
 *   [Application Template Category](#application-template-category)
 *   [Application Templates](#application-templates)
 *   [Applications](#applications)
+*   [Attribute Names Response](#attribute-names-response)
 *   [Audit Log](#audit-log)
 *   [Audit Log Filter](#audit-log-filter)
 *   [Audit Logs](#audit-logs)
@@ -202,6 +203,8 @@
 *   [SAML Response](#saml-response)
 *   [SSO Request](#sso-request)
 *   [Success](#success)
+*   [Tag Keys Response](#tag-keys-response)
+*   [Tag Values Response](#tag-values-response)
 *   [Template Keywords](#template-keywords)
 *   [Time Series Data](#time-series-data)
 *   [Time Series Query](#time-series-query)
@@ -3533,6 +3536,8 @@ Schema for the body of an Application API Token creation request
           "devices.get",
           "devices.post",
           "devices.sendCommand",
+          "devices.tagKeys",
+          "devices.tagValues",
           "edgeDeployments.get",
           "edgeDeployments.release",
           "edgeDeployments.remove",
@@ -7531,6 +7536,42 @@ Schema for a collection of Applications
   "page": 0,
   "sortField": "name",
   "sortDirection": "asc"
+}
+```
+
+<br/>
+
+## Attribute Names Response
+
+Schema for a list of attribute names
+
+### <a name="attribute-names-response-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "attributeNames": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+      },
+      "maxItems": 1000
+    }
+  }
+}
+```
+### <a name="attribute-names-response-example"></a> Example
+
+```json
+{
+  "attributeNames": [
+    "voltage",
+    "location",
+    "rpm"
+  ]
 }
 ```
 
@@ -53218,6 +53259,15 @@ Schema for a single Experience Version
     "endpointDefaultCors": {
       "type": "boolean"
     },
+    "allowedCorsOrigins": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 8,
+        "maxLength": 270
+      },
+      "maxItems": 100
+    },
     "version": {
       "type": "string",
       "minLength": 1,
@@ -53303,6 +53353,15 @@ Schema for the body of an Experience Version modification request
   "properties": {
     "endpointDefaultCors": {
       "type": "boolean"
+    },
+    "allowedCorsOrigins": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 8,
+        "maxLength": 270
+      },
+      "maxItems": 100
     },
     "description": {
       "type": "string",
@@ -53439,6 +53498,15 @@ Schema for a collection of Experience Versions
           },
           "endpointDefaultCors": {
             "type": "boolean"
+          },
+          "allowedCorsOrigins": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 270
+            },
+            "maxItems": 100
           },
           "version": {
             "type": "string",
@@ -84962,6 +85030,8 @@ Schema for the body of a Github login request
                   "devices.get",
                   "devices.post",
                   "devices.sendCommand",
+                  "devices.tagKeys",
+                  "devices.tagValues",
                   "edgeDeployments.get",
                   "edgeDeployments.release",
                   "edgeDeployments.remove",
@@ -93225,6 +93295,84 @@ Schema for reporting a successful operation
 
 <br/>
 
+## Tag Keys Response
+
+Schema for a list of tag keys
+
+### <a name="tag-keys-response-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "tagKeys": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+      },
+      "maxItems": 1000
+    }
+  }
+}
+```
+### <a name="tag-keys-response-example"></a> Example
+
+```json
+{
+  "tagKeys": [
+    "key1",
+    "key2",
+    "key3"
+  ]
+}
+```
+
+<br/>
+
+## Tag Values Response
+
+Schema for a list of tag values for a key
+
+### <a name="tag-values-response-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "tagKey": {
+      "type": "string",
+      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+    },
+    "tagValues": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 255
+      },
+      "maxItems": 1000
+    }
+  }
+}
+```
+### <a name="tag-values-response-example"></a> Example
+
+```json
+{
+  "tagKey": "key1",
+  "tagValues": [
+    "value1",
+    "value2",
+    "value3"
+  ]
+}
+```
+
+<br/>
+
 ## Template Keywords
 
 Schema for a collection of template keywords
@@ -93867,6 +94015,8 @@ Schema for the body of a User authentication request
                   "devices.get",
                   "devices.post",
                   "devices.sendCommand",
+                  "devices.tagKeys",
+                  "devices.tagValues",
                   "edgeDeployments.get",
                   "edgeDeployments.release",
                   "edgeDeployments.remove",
@@ -94302,6 +94452,8 @@ Schema for the body of a User creation request
                   "devices.get",
                   "devices.post",
                   "devices.sendCommand",
+                  "devices.tagKeys",
+                  "devices.tagValues",
                   "edgeDeployments.get",
                   "edgeDeployments.release",
                   "edgeDeployments.remove",
