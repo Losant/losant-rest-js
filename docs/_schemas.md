@@ -66,6 +66,7 @@
 *   [Data Table Rows Export](#data-table-rows-export)
 *   [Data Tables](#data-tables)
 *   [Device](#device)
+*   [Device Attribute Data Type Filter](#device-attribute-data-type-filter)
 *   [Device Class Filter](#device-class-filter)
 *   [Device Command](#device-command)
 *   [Device Commands](#device-commands)
@@ -3529,6 +3530,7 @@ Schema for the body of an Application API Token creation request
           "deviceRecipe.patch",
           "deviceRecipes.get",
           "deviceRecipes.post",
+          "devices.attributeNames",
           "devices.patch",
           "devices.delete",
           "devices.removeData",
@@ -8171,6 +8173,9 @@ Schema for the successful response when authenticating a User
     "token": {
       "type": "string",
       "minLength": 1
+    },
+    "needsToVerifyEmail": {
+      "type": "boolean"
     }
   },
   "required": [
@@ -8214,7 +8219,7 @@ Schema for the body of a request to change the current user&#x27;s password
       "type": "string",
       "minLength": 12,
       "maxLength": 2048,
-      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{12,}$"
+      "pattern": "^(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.*[0-9])(?=.*[a-z]).{12,}$"
     },
     "invalidateExistingTokens": {
       "type": "boolean"
@@ -9619,6 +9624,9 @@ Schema for a single Dashboard
                       "type": "string",
                       "maxLength": 255
                     }
+                  },
+                  "includeDeviceInfo": {
+                    "type": "boolean"
                   }
                 },
                 "additionalProperties": false
@@ -15351,6 +15359,9 @@ Schema for the body of a Dashboard modification request
                       "type": "string",
                       "maxLength": 255
                     }
+                  },
+                  "includeDeviceInfo": {
+                    "type": "boolean"
                   }
                 },
                 "additionalProperties": false
@@ -21012,6 +21023,9 @@ Schema for the body of a Dashboard creation request
                       "type": "string",
                       "maxLength": 255
                     }
+                  },
+                  "includeDeviceInfo": {
+                    "type": "boolean"
                   }
                 },
                 "additionalProperties": false
@@ -26928,6 +26942,9 @@ Schema for a collection of Dashboards
                             "type": "string",
                             "maxLength": 255
                           }
+                        },
+                        "includeDeviceInfo": {
+                          "type": "boolean"
                         }
                       },
                       "additionalProperties": false
@@ -33064,6 +33081,54 @@ Schema for a single Device
 
 <br/>
 
+## Device Attribute Data Type Filter
+
+Select one or multiple device attribute data types
+
+### <a name="device-attribute-data-type-filter-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "oneOf": [
+    {
+      "type": "string",
+      "enum": [
+        "string",
+        "number",
+        "gps",
+        "boolean",
+        "blob"
+      ]
+    },
+    {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": [
+          "string",
+          "number",
+          "gps",
+          "boolean",
+          "blob"
+        ]
+      }
+    }
+  ]
+}
+```
+### <a name="device-attribute-data-type-filter-example"></a> Example
+
+```json
+[
+  "number",
+  "blob"
+]
+```
+
+<br/>
+
 ## Device Class Filter
 
 Select one or multiple device classes
@@ -33099,8 +33164,7 @@ Select one or multiple device classes
           "system",
           "embedded"
         ]
-      },
-      "additionalProperties": false
+      }
     }
   ]
 }
@@ -48077,11 +48141,19 @@ The body of an experience linked resources response
                               "type": "string",
                               "maxLength": 1024
                             },
+                            "writeOnOpenEncoding": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
                             "byteLength": {
                               "type": "string",
                               "maxLength": 48
                             },
                             "delimiter": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "delimiterEncoding": {
                               "type": "string",
                               "maxLength": 48
                             }
@@ -50307,11 +50379,19 @@ The body of an experience linked resources response
                                   "type": "string",
                                   "maxLength": 1024
                                 },
+                                "writeOnOpenEncoding": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
                                 "byteLength": {
                                   "type": "string",
                                   "maxLength": 48
                                 },
                                 "delimiter": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
+                                "delimiterEncoding": {
                                   "type": "string",
                                   "maxLength": 48
                                 }
@@ -52486,11 +52566,19 @@ The body of an experience linked resources response
                                   "type": "string",
                                   "maxLength": 1024
                                 },
+                                "writeOnOpenEncoding": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
                                 "byteLength": {
                                   "type": "string",
                                   "maxLength": 48
                                 },
                                 "delimiter": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
+                                "delimiterEncoding": {
                                   "type": "string",
                                   "maxLength": 48
                                 }
@@ -56548,11 +56636,19 @@ Schema for a single Workflow
                     "type": "string",
                     "maxLength": 1024
                   },
+                  "writeOnOpenEncoding": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
                   "byteLength": {
                     "type": "string",
                     "maxLength": 48
                   },
                   "delimiter": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "delimiterEncoding": {
                     "type": "string",
                     "maxLength": 48
                   }
@@ -58935,11 +59031,19 @@ Schema for the body of a Workflow modification request
                     "type": "string",
                     "maxLength": 1024
                   },
+                  "writeOnOpenEncoding": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
                   "byteLength": {
                     "type": "string",
                     "maxLength": 48
                   },
                   "delimiter": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "delimiterEncoding": {
                     "type": "string",
                     "maxLength": 48
                   }
@@ -61077,11 +61181,19 @@ Schema for the body of a Workflow creation request
                     "type": "string",
                     "maxLength": 1024
                   },
+                  "writeOnOpenEncoding": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
                   "byteLength": {
                     "type": "string",
                     "maxLength": 48
                   },
                   "delimiter": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "delimiterEncoding": {
                     "type": "string",
                     "maxLength": 48
                   }
@@ -63443,11 +63555,19 @@ Schema for a single Workflow Version
                         "type": "string",
                         "maxLength": 1024
                       },
+                      "writeOnOpenEncoding": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
                       "byteLength": {
                         "type": "string",
                         "maxLength": 48
                       },
                       "delimiter": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "delimiterEncoding": {
                         "type": "string",
                         "maxLength": 48
                       }
@@ -65622,11 +65742,19 @@ Schema for a single Workflow Version
                         "type": "string",
                         "maxLength": 1024
                       },
+                      "writeOnOpenEncoding": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
                       "byteLength": {
                         "type": "string",
                         "maxLength": 48
                       },
                       "delimiter": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "delimiterEncoding": {
                         "type": "string",
                         "maxLength": 48
                       }
@@ -67504,11 +67632,19 @@ Schema for the body of a Workflow Version creation request
                     "type": "string",
                     "maxLength": 1024
                   },
+                  "writeOnOpenEncoding": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
                   "byteLength": {
                     "type": "string",
                     "maxLength": 48
                   },
                   "delimiter": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "delimiterEncoding": {
                     "type": "string",
                     "maxLength": 48
                   }
@@ -69671,11 +69807,19 @@ Schema for a collection of Workflow Versions
                               "type": "string",
                               "maxLength": 1024
                             },
+                            "writeOnOpenEncoding": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
                             "byteLength": {
                               "type": "string",
                               "maxLength": 48
                             },
                             "delimiter": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "delimiterEncoding": {
                               "type": "string",
                               "maxLength": 48
                             }
@@ -71850,11 +71994,19 @@ Schema for a collection of Workflow Versions
                               "type": "string",
                               "maxLength": 1024
                             },
+                            "writeOnOpenEncoding": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
                             "byteLength": {
                               "type": "string",
                               "maxLength": 48
                             },
                             "delimiter": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "delimiterEncoding": {
                               "type": "string",
                               "maxLength": 48
                             }
@@ -73803,11 +73955,19 @@ Schema for a collection of Workflows
                           "type": "string",
                           "maxLength": 1024
                         },
+                        "writeOnOpenEncoding": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
                         "byteLength": {
                           "type": "string",
                           "maxLength": 48
                         },
                         "delimiter": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "delimiterEncoding": {
                           "type": "string",
                           "maxLength": 48
                         }
@@ -76060,11 +76220,19 @@ Schema for the body of a workflow import request
                           "type": "string",
                           "maxLength": 1024
                         },
+                        "writeOnOpenEncoding": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
                         "byteLength": {
                           "type": "string",
                           "maxLength": 48
                         },
                         "delimiter": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "delimiterEncoding": {
                           "type": "string",
                           "maxLength": 48
                         }
@@ -78221,11 +78389,19 @@ Schema for the body of a workflow import request
                           "type": "string",
                           "maxLength": 1024
                         },
+                        "writeOnOpenEncoding": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
                         "byteLength": {
                           "type": "string",
                           "maxLength": 48
                         },
                         "delimiter": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "delimiterEncoding": {
                           "type": "string",
                           "maxLength": 48
                         }
@@ -80429,11 +80605,19 @@ Schema for the result of a workflow import request
                           "type": "string",
                           "maxLength": 1024
                         },
+                        "writeOnOpenEncoding": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
                         "byteLength": {
                           "type": "string",
                           "maxLength": 48
                         },
                         "delimiter": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "delimiterEncoding": {
                           "type": "string",
                           "maxLength": 48
                         }
@@ -82608,11 +82792,19 @@ Schema for the result of a workflow import request
                               "type": "string",
                               "maxLength": 1024
                             },
+                            "writeOnOpenEncoding": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
                             "byteLength": {
                               "type": "string",
                               "maxLength": 48
                             },
                             "delimiter": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "delimiterEncoding": {
                               "type": "string",
                               "maxLength": 48
                             }
@@ -84787,11 +84979,19 @@ Schema for the result of a workflow import request
                               "type": "string",
                               "maxLength": 1024
                             },
+                            "writeOnOpenEncoding": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
                             "byteLength": {
                               "type": "string",
                               "maxLength": 48
                             },
                             "delimiter": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "delimiterEncoding": {
                               "type": "string",
                               "maxLength": 48
                             }
@@ -85425,6 +85625,7 @@ Schema for the body of a Github login request
                   "deviceRecipe.patch",
                   "deviceRecipes.get",
                   "deviceRecipes.post",
+                  "devices.attributeNames",
                   "devices.patch",
                   "devices.delete",
                   "devices.removeData",
@@ -86856,6 +87057,9 @@ Schema for information about the currently authenticated user
     "emailVerified": {
       "type": "boolean"
     },
+    "needsToVerifyEmail": {
+      "type": "boolean"
+    },
     "twoFactorAuthEnabled": {
       "type": "boolean"
     },
@@ -87267,6 +87471,7 @@ Schema for information about the currently authenticated user
   "companyName": "Losant IoT, Inc.",
   "url": "https://www.losant.com",
   "emailVerified": true,
+  "needsToVerifyEmail": false,
   "twoFactorAuthEnabled": false,
   "fullName": "Example Name",
   "summary": {
@@ -87335,7 +87540,7 @@ Schema for the body of request to modify the current user
       "type": "string",
       "minLength": 12,
       "maxLength": 2048,
-      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{12,}$"
+      "pattern": "^(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.*[0-9])(?=.*[a-z]).{12,}$"
     },
     "tokenCutoff": {
       "type": "string",
@@ -88563,6 +88768,13 @@ Schema for a single Notebook
     "jupyterFileUrl": {
       "type": "string"
     },
+    "imageVersion": {
+      "type": "string",
+      "enum": [
+        "v1",
+        "v2"
+      ]
+    },
     "inputs": {
       "type": "array",
       "items": {
@@ -89339,6 +89551,13 @@ Schema for a set of Notebook execution logs
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
       },
+      "imageVersion": {
+        "type": "string",
+        "enum": [
+          "v1",
+          "v2"
+        ]
+      },
       "applicationId": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
@@ -90111,6 +90330,13 @@ Schema for the body of a Notebook modification request
           }
         ]
       }
+    },
+    "imageVersion": {
+      "type": "string",
+      "enum": [
+        "v1",
+        "v2"
+      ]
     }
   },
   "additionalProperties": false
@@ -90145,6 +90371,13 @@ Schema for the body of an Notebook creation request
     "description": {
       "type": "string",
       "maxLength": 32767
+    },
+    "imageVersion": {
+      "type": "string",
+      "enum": [
+        "v1",
+        "v2"
+      ]
     },
     "inputs": {
       "type": "array",
@@ -90783,6 +91016,13 @@ Schema for a collection of Notebooks
           },
           "jupyterFileUrl": {
             "type": "string"
+          },
+          "imageVersion": {
+            "type": "string",
+            "enum": [
+              "v1",
+              "v2"
+            ]
           },
           "inputs": {
             "type": "array",
@@ -93136,7 +93376,7 @@ Schema for the body of a request to complete the reset password flow
       "type": "string",
       "minLength": 12,
       "maxLength": 2048,
-      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{12,}$"
+      "pattern": "^(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.*[0-9])(?=.*[a-z]).{12,}$"
     }
   },
   "required": [
@@ -94295,6 +94535,7 @@ Schema for the body of a User authentication request
                   "deviceRecipe.patch",
                   "deviceRecipes.get",
                   "deviceRecipes.post",
+                  "devices.attributeNames",
                   "devices.patch",
                   "devices.delete",
                   "devices.removeData",
@@ -94580,7 +94821,7 @@ Schema for the body of a User creation request
       "type": "string",
       "minLength": 12,
       "maxLength": 2048,
-      "pattern": "^(?=.*[A-Z])(?=.*[^A-z0-9])(?=.*[0-9])(?=.*[a-z]).{12,}$"
+      "pattern": "^(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.*[0-9])(?=.*[a-z]).{12,}$"
     },
     "acceptTerms": {
       "enum": [
@@ -94734,6 +94975,7 @@ Schema for the body of a User creation request
                   "deviceRecipe.patch",
                   "deviceRecipes.get",
                   "deviceRecipes.post",
+                  "devices.attributeNames",
                   "devices.patch",
                   "devices.delete",
                   "devices.removeData",

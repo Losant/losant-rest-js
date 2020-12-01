@@ -1816,11 +1816,19 @@
                               "type": "string",
                               "maxLength": 1024
                             },
+                            "writeOnOpenEncoding": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
                             "byteLength": {
                               "type": "string",
                               "maxLength": 48
                             },
                             "delimiter": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "delimiterEncoding": {
                               "type": "string",
                               "maxLength": 48
                             }
@@ -4046,11 +4054,19 @@
                                   "type": "string",
                                   "maxLength": 1024
                                 },
+                                "writeOnOpenEncoding": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
                                 "byteLength": {
                                   "type": "string",
                                   "maxLength": 48
                                 },
                                 "delimiter": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
+                                "delimiterEncoding": {
                                   "type": "string",
                                   "maxLength": 48
                                 }
@@ -6225,11 +6241,19 @@
                                   "type": "string",
                                   "maxLength": 1024
                                 },
+                                "writeOnOpenEncoding": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
                                 "byteLength": {
                                   "type": "string",
                                   "maxLength": 48
                                 },
                                 "delimiter": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
+                                "delimiterEncoding": {
                                   "type": "string",
                                   "maxLength": 48
                                 }

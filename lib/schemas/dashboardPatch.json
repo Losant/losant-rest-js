@@ -1183,6 +1183,9 @@
                       "type": "string",
                       "maxLength": 255
                     }
+                  },
+                  "includeDeviceInfo": {
+                    "type": "boolean"
                   }
                 },
                 "additionalProperties": false
