@@ -47033,6 +47033,17 @@ The body of an experience linked resources response
                         },
                         "config": {
                           "type": "object",
+                          "properties": {
+                            "scope": {
+                              "type": "string",
+                              "enum": [
+                                "local",
+                                "global",
+                                "experience",
+                                "cloud"
+                              ]
+                            }
+                          },
                           "additionalProperties": false
                         },
                         "meta": {
@@ -49270,6 +49281,17 @@ The body of an experience linked resources response
                             },
                             "config": {
                               "type": "object",
+                              "properties": {
+                                "scope": {
+                                  "type": "string",
+                                  "enum": [
+                                    "local",
+                                    "global",
+                                    "experience",
+                                    "cloud"
+                                  ]
+                                }
+                              },
                               "additionalProperties": false
                             },
                             "meta": {
@@ -51457,6 +51479,17 @@ The body of an experience linked resources response
                             },
                             "config": {
                               "type": "object",
+                              "properties": {
+                                "scope": {
+                                  "type": "string",
+                                  "enum": [
+                                    "local",
+                                    "global",
+                                    "experience",
+                                    "cloud"
+                                  ]
+                                }
+                              },
                               "additionalProperties": false
                             },
                             "meta": {
@@ -55553,6 +55586,17 @@ Schema for a single Workflow
               },
               "config": {
                 "type": "object",
+                "properties": {
+                  "scope": {
+                    "type": "string",
+                    "enum": [
+                      "local",
+                      "global",
+                      "experience",
+                      "cloud"
+                    ]
+                  }
+                },
                 "additionalProperties": false
               },
               "meta": {
@@ -57948,6 +57992,17 @@ Schema for the body of a Workflow modification request
               },
               "config": {
                 "type": "object",
+                "properties": {
+                  "scope": {
+                    "type": "string",
+                    "enum": [
+                      "local",
+                      "global",
+                      "experience",
+                      "cloud"
+                    ]
+                  }
+                },
                 "additionalProperties": false
               },
               "meta": {
@@ -60098,6 +60153,17 @@ Schema for the body of a Workflow creation request
               },
               "config": {
                 "type": "object",
+                "properties": {
+                  "scope": {
+                    "type": "string",
+                    "enum": [
+                      "local",
+                      "global",
+                      "experience",
+                      "cloud"
+                    ]
+                  }
+                },
                 "additionalProperties": false
               },
               "meta": {
@@ -62471,6 +62537,17 @@ Schema for a single Workflow Version
                   },
                   "config": {
                     "type": "object",
+                    "properties": {
+                      "scope": {
+                        "type": "string",
+                        "enum": [
+                          "local",
+                          "global",
+                          "experience",
+                          "cloud"
+                        ]
+                      }
+                    },
                     "additionalProperties": false
                   },
                   "meta": {
@@ -64658,6 +64735,17 @@ Schema for a single Workflow Version
                   },
                   "config": {
                     "type": "object",
+                    "properties": {
+                      "scope": {
+                        "type": "string",
+                        "enum": [
+                          "local",
+                          "global",
+                          "experience",
+                          "cloud"
+                        ]
+                      }
+                    },
                     "additionalProperties": false
                   },
                   "meta": {
@@ -66548,6 +66636,17 @@ Schema for the body of a Workflow Version creation request
               },
               "config": {
                 "type": "object",
+                "properties": {
+                  "scope": {
+                    "type": "string",
+                    "enum": [
+                      "local",
+                      "global",
+                      "experience",
+                      "cloud"
+                    ]
+                  }
+                },
                 "additionalProperties": false
               },
               "meta": {
@@ -68723,6 +68822,17 @@ Schema for a collection of Workflow Versions
                         },
                         "config": {
                           "type": "object",
+                          "properties": {
+                            "scope": {
+                              "type": "string",
+                              "enum": [
+                                "local",
+                                "global",
+                                "experience",
+                                "cloud"
+                              ]
+                            }
+                          },
                           "additionalProperties": false
                         },
                         "meta": {
@@ -70910,6 +71020,17 @@ Schema for a collection of Workflow Versions
                         },
                         "config": {
                           "type": "object",
+                          "properties": {
+                            "scope": {
+                              "type": "string",
+                              "enum": [
+                                "local",
+                                "global",
+                                "experience",
+                                "cloud"
+                              ]
+                            }
+                          },
                           "additionalProperties": false
                         },
                         "meta": {
@@ -72870,6 +72991,17 @@ Schema for a collection of Workflows
                     },
                     "config": {
                       "type": "object",
+                      "properties": {
+                        "scope": {
+                          "type": "string",
+                          "enum": [
+                            "local",
+                            "global",
+                            "experience",
+                            "cloud"
+                          ]
+                        }
+                      },
                       "additionalProperties": false
                     },
                     "meta": {
@@ -75134,6 +75266,17 @@ Schema for the body of a workflow import request
                     },
                     "config": {
                       "type": "object",
+                      "properties": {
+                        "scope": {
+                          "type": "string",
+                          "enum": [
+                            "local",
+                            "global",
+                            "experience",
+                            "cloud"
+                          ]
+                        }
+                      },
                       "additionalProperties": false
                     },
                     "meta": {
@@ -77302,6 +77445,17 @@ Schema for the body of a workflow import request
                     },
                     "config": {
                       "type": "object",
+                      "properties": {
+                        "scope": {
+                          "type": "string",
+                          "enum": [
+                            "local",
+                            "global",
+                            "experience",
+                            "cloud"
+                          ]
+                        }
+                      },
                       "additionalProperties": false
                     },
                     "meta": {
@@ -79517,6 +79671,17 @@ Schema for the result of a workflow import request
                     },
                     "config": {
                       "type": "object",
+                      "properties": {
+                        "scope": {
+                          "type": "string",
+                          "enum": [
+                            "local",
+                            "global",
+                            "experience",
+                            "cloud"
+                          ]
+                        }
+                      },
                       "additionalProperties": false
                     },
                     "meta": {
@@ -81704,6 +81869,17 @@ Schema for the result of a workflow import request
                         },
                         "config": {
                           "type": "object",
+                          "properties": {
+                            "scope": {
+                              "type": "string",
+                              "enum": [
+                                "local",
+                                "global",
+                                "experience",
+                                "cloud"
+                              ]
+                            }
+                          },
                           "additionalProperties": false
                         },
                         "meta": {
@@ -83891,6 +84067,17 @@ Schema for the result of a workflow import request
                         },
                         "config": {
                           "type": "object",
+                          "properties": {
+                            "scope": {
+                              "type": "string",
+                              "enum": [
+                                "local",
+                                "global",
+                                "experience",
+                                "cloud"
+                              ]
+                            }
+                          },
                           "additionalProperties": false
                         },
                         "meta": {
@@ -85364,6 +85551,9 @@ Schema for a single Integration
           "type": "string",
           "maxLength": 32767,
           "minLength": 4
+        },
+        "disableSSLVerification": {
+          "type": "boolean"
         }
       },
       "additionalProperties": false,
@@ -85616,6 +85806,9 @@ Schema for the body of an Integration modification request
           "type": "string",
           "maxLength": 32767,
           "minLength": 4
+        },
+        "disableSSLVerification": {
+          "type": "boolean"
         }
       },
       "additionalProperties": false,
@@ -85806,6 +85999,9 @@ Schema for the body of an Integration creation request
           "type": "string",
           "maxLength": 32767,
           "minLength": 4
+        },
+        "disableSSLVerification": {
+          "type": "boolean"
         }
       },
       "additionalProperties": false,
@@ -86037,6 +86233,9 @@ Schema for a collection of Integrations
                 "type": "string",
                 "maxLength": 32767,
                 "minLength": 4
+              },
+              "disableSSLVerification": {
+                "type": "boolean"
               }
             },
             "additionalProperties": false,

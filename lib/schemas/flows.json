@@ -954,6 +954,17 @@
                     },
                     "config": {
                       "type": "object",
+                      "properties": {
+                        "scope": {
+                          "type": "string",
+                          "enum": [
+                            "local",
+                            "global",
+                            "experience",
+                            "cloud"
+                          ]
+                        }
+                      },
                       "additionalProperties": false
                     },
                     "meta": {
