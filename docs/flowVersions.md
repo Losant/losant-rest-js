@@ -51,6 +51,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: version |  | version |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*version |
 | includeCustomNodes | string | N | If the result of the request should also include the details of any custom nodes referenced by the returned workflows | false | true |
+| query | [Advanced Workflow Version Query](../lib/schemas/advancedFlowVersionQuery.json) | N | Workflow filter JSON object which overrides the filterField and filter parameters. |  | [Advanced Workflow Version Query Example](_schemas.md#advanced-workflow-version-query-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
