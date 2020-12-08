@@ -158,6 +158,8 @@
           "devices.get",
           "devices.post",
           "devices.sendCommand",
+          "devices.tagKeys",
+          "devices.tagValues",
           "edgeDeployments.get",
           "edgeDeployments.release",
           "edgeDeployments.remove",

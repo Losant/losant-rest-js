@@ -11,6 +11,13 @@
       "type": "string",
       "maxLength": 32767
     },
+    "imageVersion": {
+      "type": "string",
+      "enum": [
+        "v1",
+        "v2"
+      ]
+    },
     "inputs": {
       "type": "array",
       "items": {

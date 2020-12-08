@@ -3938,6 +3938,9 @@
                                   },
                                   "defaultValue": {
                                     "type": "boolean"
+                                  },
+                                  "includeLabel": {
+                                    "type": "boolean"
                                   }
                                 },
                                 "additionalProperties": false

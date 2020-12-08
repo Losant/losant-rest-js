@@ -2,6 +2,9 @@
 
 *   [Advanced Device Query](#advanced-device-query)
 *   [Advanced Event Query](#advanced-event-query)
+*   [Advanced Workflow By Version Query](#advanced-workflow-by-version-query)
+*   [Advanced Workflow Query](#advanced-workflow-query)
+*   [Advanced Workflow Version Query](#advanced-workflow-version-query)
 *   [Advanced Query](#advanced-query)
 *   [API Token](#api-token)
 *   [API Token Patch](#api-token-patch)
@@ -37,6 +40,7 @@
 *   [Application Template Category](#application-template-category)
 *   [Application Templates](#application-templates)
 *   [Applications](#applications)
+*   [Attribute Names Response](#attribute-names-response)
 *   [Audit Log](#audit-log)
 *   [Audit Log Filter](#audit-log-filter)
 *   [Audit Logs](#audit-logs)
@@ -202,6 +206,8 @@
 *   [SAML Response](#saml-response)
 *   [SSO Request](#sso-request)
 *   [Success](#success)
+*   [Tag Keys Response](#tag-keys-response)
+*   [Tag Values Response](#tag-values-response)
 *   [Template Keywords](#template-keywords)
 *   [Time Series Data](#time-series-data)
 *   [Time Series Query](#time-series-query)
@@ -2474,6 +2480,2106 @@ Schema for advanced event queries
 
 <br/>
 
+## Advanced Workflow By Version Query
+
+Schema for advanced workflow queries
+
+### <a name="advanced-workflow-by-version-query-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "$and": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedFlowByVersionQuery"
+      },
+      "maxItems": 100
+    },
+    "$or": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedFlowByVersionQuery"
+      },
+      "maxItems": 100
+    },
+    "$nor": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedFlowByVersionQuery"
+      },
+      "maxItems": 100
+    },
+    "name": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "id": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    },
+    "creationDate": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "lastUpdated": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "flowClass": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "enabled": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "flowId": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="advanced-workflow-by-version-query-example"></a> Example
+
+```json
+{
+  "flowId": "000000000000000000000000"
+}
+```
+
+<br/>
+
+## Advanced Workflow Query
+
+Schema for advanced workflow queries
+
+### <a name="advanced-workflow-query-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "$and": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedFlowQuery"
+      },
+      "maxItems": 100
+    },
+    "$or": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedFlowQuery"
+      },
+      "maxItems": 100
+    },
+    "$nor": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedFlowQuery"
+      },
+      "maxItems": 100
+    },
+    "name": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "id": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    },
+    "creationDate": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "lastUpdated": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "flowClass": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "enabled": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "defaultVersion": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="advanced-workflow-query-example"></a> Example
+
+```json
+{
+  "$or": [
+    {
+      "name": {
+        "$ne": "flowie"
+      }
+    },
+    {
+      "enabled": false
+    }
+  ]
+}
+```
+
+<br/>
+
+## Advanced Workflow Version Query
+
+Schema for advanced workflow queries
+
+### <a name="advanced-workflow-version-query-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "$and": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedFlowVersionQuery"
+      },
+      "maxItems": 100
+    },
+    "$or": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedFlowVersionQuery"
+      },
+      "maxItems": 100
+    },
+    "$nor": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedFlowVersionQuery"
+      },
+      "maxItems": 100
+    },
+    "name": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "id": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    },
+    "creationDate": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "lastUpdated": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "flowClass": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "enabled": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "version": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="advanced-workflow-version-query-example"></a> Example
+
+```json
+{
+  "version": "theVersion"
+}
+```
+
+<br/>
+
 ## Advanced Query
 
 Schema for advanced filters and queries
@@ -3533,6 +5639,8 @@ Schema for the body of an Application API Token creation request
           "devices.get",
           "devices.post",
           "devices.sendCommand",
+          "devices.tagKeys",
+          "devices.tagValues",
           "edgeDeployments.get",
           "edgeDeployments.release",
           "edgeDeployments.remove",
@@ -7531,6 +9639,42 @@ Schema for a collection of Applications
   "page": 0,
   "sortField": "name",
   "sortDirection": "asc"
+}
+```
+
+<br/>
+
+## Attribute Names Response
+
+Schema for a list of attribute names
+
+### <a name="attribute-names-response-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "attributeNames": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+      },
+      "maxItems": 1000
+    }
+  }
+}
+```
+### <a name="attribute-names-response-example"></a> Example
+
+```json
+{
+  "attributeNames": [
+    "voltage",
+    "location",
+    "rpm"
+  ]
 }
 ```
 
@@ -12242,6 +14386,9 @@ Schema for a single Dashboard
                               "additionalProperties": false
                             },
                             "defaultValue": {
+                              "type": "boolean"
+                            },
+                            "includeLabel": {
                               "type": "boolean"
                             }
                           },
@@ -17975,6 +20122,9 @@ Schema for the body of a Dashboard modification request
                             },
                             "defaultValue": {
                               "type": "boolean"
+                            },
+                            "includeLabel": {
+                              "type": "boolean"
                             }
                           },
                           "additionalProperties": false
@@ -23635,6 +25785,9 @@ Schema for the body of a Dashboard creation request
                               "additionalProperties": false
                             },
                             "defaultValue": {
+                              "type": "boolean"
+                            },
+                            "includeLabel": {
                               "type": "boolean"
                             }
                           },
@@ -29551,6 +31704,9 @@ Schema for a collection of Dashboards
                                     "additionalProperties": false
                                   },
                                   "defaultValue": {
+                                    "type": "boolean"
+                                  },
+                                  "includeLabel": {
                                     "type": "boolean"
                                   }
                                 },
@@ -46980,6 +49136,17 @@ The body of an experience linked resources response
                         },
                         "config": {
                           "type": "object",
+                          "properties": {
+                            "scope": {
+                              "type": "string",
+                              "enum": [
+                                "local",
+                                "global",
+                                "experience",
+                                "cloud"
+                              ]
+                            }
+                          },
                           "additionalProperties": false
                         },
                         "meta": {
@@ -49217,6 +51384,17 @@ The body of an experience linked resources response
                             },
                             "config": {
                               "type": "object",
+                              "properties": {
+                                "scope": {
+                                  "type": "string",
+                                  "enum": [
+                                    "local",
+                                    "global",
+                                    "experience",
+                                    "cloud"
+                                  ]
+                                }
+                              },
                               "additionalProperties": false
                             },
                             "meta": {
@@ -51404,6 +53582,17 @@ The body of an experience linked resources response
                             },
                             "config": {
                               "type": "object",
+                              "properties": {
+                                "scope": {
+                                  "type": "string",
+                                  "enum": [
+                                    "local",
+                                    "global",
+                                    "experience",
+                                    "cloud"
+                                  ]
+                                }
+                              },
                               "additionalProperties": false
                             },
                             "meta": {
@@ -53206,6 +55395,15 @@ Schema for a single Experience Version
     "endpointDefaultCors": {
       "type": "boolean"
     },
+    "allowedCorsOrigins": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 8,
+        "maxLength": 270
+      },
+      "maxItems": 100
+    },
     "version": {
       "type": "string",
       "minLength": 1,
@@ -53291,6 +55489,15 @@ Schema for the body of an Experience Version modification request
   "properties": {
     "endpointDefaultCors": {
       "type": "boolean"
+    },
+    "allowedCorsOrigins": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 8,
+        "maxLength": 270
+      },
+      "maxItems": 100
     },
     "description": {
       "type": "string",
@@ -53427,6 +55634,15 @@ Schema for a collection of Experience Versions
           },
           "endpointDefaultCors": {
             "type": "boolean"
+          },
+          "allowedCorsOrigins": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 270
+            },
+            "maxItems": 100
           },
           "version": {
             "type": "string",
@@ -55473,6 +57689,17 @@ Schema for a single Workflow
               },
               "config": {
                 "type": "object",
+                "properties": {
+                  "scope": {
+                    "type": "string",
+                    "enum": [
+                      "local",
+                      "global",
+                      "experience",
+                      "cloud"
+                    ]
+                  }
+                },
                 "additionalProperties": false
               },
               "meta": {
@@ -57868,6 +60095,17 @@ Schema for the body of a Workflow modification request
               },
               "config": {
                 "type": "object",
+                "properties": {
+                  "scope": {
+                    "type": "string",
+                    "enum": [
+                      "local",
+                      "global",
+                      "experience",
+                      "cloud"
+                    ]
+                  }
+                },
                 "additionalProperties": false
               },
               "meta": {
@@ -60018,6 +62256,17 @@ Schema for the body of a Workflow creation request
               },
               "config": {
                 "type": "object",
+                "properties": {
+                  "scope": {
+                    "type": "string",
+                    "enum": [
+                      "local",
+                      "global",
+                      "experience",
+                      "cloud"
+                    ]
+                  }
+                },
                 "additionalProperties": false
               },
               "meta": {
@@ -62391,6 +64640,17 @@ Schema for a single Workflow Version
                   },
                   "config": {
                     "type": "object",
+                    "properties": {
+                      "scope": {
+                        "type": "string",
+                        "enum": [
+                          "local",
+                          "global",
+                          "experience",
+                          "cloud"
+                        ]
+                      }
+                    },
                     "additionalProperties": false
                   },
                   "meta": {
@@ -64578,6 +66838,17 @@ Schema for a single Workflow Version
                   },
                   "config": {
                     "type": "object",
+                    "properties": {
+                      "scope": {
+                        "type": "string",
+                        "enum": [
+                          "local",
+                          "global",
+                          "experience",
+                          "cloud"
+                        ]
+                      }
+                    },
                     "additionalProperties": false
                   },
                   "meta": {
@@ -66468,6 +68739,17 @@ Schema for the body of a Workflow Version creation request
               },
               "config": {
                 "type": "object",
+                "properties": {
+                  "scope": {
+                    "type": "string",
+                    "enum": [
+                      "local",
+                      "global",
+                      "experience",
+                      "cloud"
+                    ]
+                  }
+                },
                 "additionalProperties": false
               },
               "meta": {
@@ -68643,6 +70925,17 @@ Schema for a collection of Workflow Versions
                         },
                         "config": {
                           "type": "object",
+                          "properties": {
+                            "scope": {
+                              "type": "string",
+                              "enum": [
+                                "local",
+                                "global",
+                                "experience",
+                                "cloud"
+                              ]
+                            }
+                          },
                           "additionalProperties": false
                         },
                         "meta": {
@@ -70830,6 +73123,17 @@ Schema for a collection of Workflow Versions
                         },
                         "config": {
                           "type": "object",
+                          "properties": {
+                            "scope": {
+                              "type": "string",
+                              "enum": [
+                                "local",
+                                "global",
+                                "experience",
+                                "cloud"
+                              ]
+                            }
+                          },
                           "additionalProperties": false
                         },
                         "meta": {
@@ -72790,6 +75094,17 @@ Schema for a collection of Workflows
                     },
                     "config": {
                       "type": "object",
+                      "properties": {
+                        "scope": {
+                          "type": "string",
+                          "enum": [
+                            "local",
+                            "global",
+                            "experience",
+                            "cloud"
+                          ]
+                        }
+                      },
                       "additionalProperties": false
                     },
                     "meta": {
@@ -75054,6 +77369,17 @@ Schema for the body of a workflow import request
                     },
                     "config": {
                       "type": "object",
+                      "properties": {
+                        "scope": {
+                          "type": "string",
+                          "enum": [
+                            "local",
+                            "global",
+                            "experience",
+                            "cloud"
+                          ]
+                        }
+                      },
                       "additionalProperties": false
                     },
                     "meta": {
@@ -77222,6 +79548,17 @@ Schema for the body of a workflow import request
                     },
                     "config": {
                       "type": "object",
+                      "properties": {
+                        "scope": {
+                          "type": "string",
+                          "enum": [
+                            "local",
+                            "global",
+                            "experience",
+                            "cloud"
+                          ]
+                        }
+                      },
                       "additionalProperties": false
                     },
                     "meta": {
@@ -79437,6 +81774,17 @@ Schema for the result of a workflow import request
                     },
                     "config": {
                       "type": "object",
+                      "properties": {
+                        "scope": {
+                          "type": "string",
+                          "enum": [
+                            "local",
+                            "global",
+                            "experience",
+                            "cloud"
+                          ]
+                        }
+                      },
                       "additionalProperties": false
                     },
                     "meta": {
@@ -81624,6 +83972,17 @@ Schema for the result of a workflow import request
                         },
                         "config": {
                           "type": "object",
+                          "properties": {
+                            "scope": {
+                              "type": "string",
+                              "enum": [
+                                "local",
+                                "global",
+                                "experience",
+                                "cloud"
+                              ]
+                            }
+                          },
                           "additionalProperties": false
                         },
                         "meta": {
@@ -83811,6 +86170,17 @@ Schema for the result of a workflow import request
                         },
                         "config": {
                           "type": "object",
+                          "properties": {
+                            "scope": {
+                              "type": "string",
+                              "enum": [
+                                "local",
+                                "global",
+                                "experience",
+                                "cloud"
+                              ]
+                            }
+                          },
                           "additionalProperties": false
                         },
                         "meta": {
@@ -84950,6 +87320,8 @@ Schema for the body of a Github login request
                   "devices.get",
                   "devices.post",
                   "devices.sendCommand",
+                  "devices.tagKeys",
+                  "devices.tagValues",
                   "edgeDeployments.get",
                   "edgeDeployments.release",
                   "edgeDeployments.remove",
@@ -85282,6 +87654,9 @@ Schema for a single Integration
           "type": "string",
           "maxLength": 32767,
           "minLength": 4
+        },
+        "disableSSLVerification": {
+          "type": "boolean"
         }
       },
       "additionalProperties": false,
@@ -85534,6 +87909,9 @@ Schema for the body of an Integration modification request
           "type": "string",
           "maxLength": 32767,
           "minLength": 4
+        },
+        "disableSSLVerification": {
+          "type": "boolean"
         }
       },
       "additionalProperties": false,
@@ -85724,6 +88102,9 @@ Schema for the body of an Integration creation request
           "type": "string",
           "maxLength": 32767,
           "minLength": 4
+        },
+        "disableSSLVerification": {
+          "type": "boolean"
         }
       },
       "additionalProperties": false,
@@ -85955,6 +88336,9 @@ Schema for a collection of Integrations
                 "type": "string",
                 "maxLength": 32767,
                 "minLength": 4
+              },
+              "disableSSLVerification": {
+                "type": "boolean"
               }
             },
             "additionalProperties": false,
@@ -88080,6 +90464,13 @@ Schema for a single Notebook
     "jupyterFileUrl": {
       "type": "string"
     },
+    "imageVersion": {
+      "type": "string",
+      "enum": [
+        "v1",
+        "v2"
+      ]
+    },
     "inputs": {
       "type": "array",
       "items": {
@@ -88856,6 +91247,13 @@ Schema for a set of Notebook execution logs
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
       },
+      "imageVersion": {
+        "type": "string",
+        "enum": [
+          "v1",
+          "v2"
+        ]
+      },
       "applicationId": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
@@ -89628,6 +92026,13 @@ Schema for the body of a Notebook modification request
           }
         ]
       }
+    },
+    "imageVersion": {
+      "type": "string",
+      "enum": [
+        "v1",
+        "v2"
+      ]
     }
   },
   "additionalProperties": false
@@ -89662,6 +92067,13 @@ Schema for the body of an Notebook creation request
     "description": {
       "type": "string",
       "maxLength": 32767
+    },
+    "imageVersion": {
+      "type": "string",
+      "enum": [
+        "v1",
+        "v2"
+      ]
     },
     "inputs": {
       "type": "array",
@@ -90300,6 +92712,13 @@ Schema for a collection of Notebooks
           },
           "jupyterFileUrl": {
             "type": "string"
+          },
+          "imageVersion": {
+            "type": "string",
+            "enum": [
+              "v1",
+              "v2"
+            ]
           },
           "inputs": {
             "type": "array",
@@ -93178,6 +95597,84 @@ Schema for reporting a successful operation
 
 <br/>
 
+## Tag Keys Response
+
+Schema for a list of tag keys
+
+### <a name="tag-keys-response-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "tagKeys": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+      },
+      "maxItems": 1000
+    }
+  }
+}
+```
+### <a name="tag-keys-response-example"></a> Example
+
+```json
+{
+  "tagKeys": [
+    "key1",
+    "key2",
+    "key3"
+  ]
+}
+```
+
+<br/>
+
+## Tag Values Response
+
+Schema for a list of tag values for a key
+
+### <a name="tag-values-response-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "tagKey": {
+      "type": "string",
+      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+    },
+    "tagValues": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 255
+      },
+      "maxItems": 1000
+    }
+  }
+}
+```
+### <a name="tag-values-response-example"></a> Example
+
+```json
+{
+  "tagKey": "key1",
+  "tagValues": [
+    "value1",
+    "value2",
+    "value3"
+  ]
+}
+```
+
+<br/>
+
 ## Template Keywords
 
 Schema for a collection of template keywords
@@ -93820,6 +96317,8 @@ Schema for the body of a User authentication request
                   "devices.get",
                   "devices.post",
                   "devices.sendCommand",
+                  "devices.tagKeys",
+                  "devices.tagValues",
                   "edgeDeployments.get",
                   "edgeDeployments.release",
                   "edgeDeployments.remove",
@@ -94255,6 +96754,8 @@ Schema for the body of a User creation request
                   "devices.get",
                   "devices.post",
                   "devices.sendCommand",
+                  "devices.tagKeys",
+                  "devices.tagValues",
                   "edgeDeployments.get",
                   "edgeDeployments.release",
                   "edgeDeployments.remove",

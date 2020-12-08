@@ -16,6 +16,13 @@
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
       },
+      "imageVersion": {
+        "type": "string",
+        "enum": [
+          "v1",
+          "v2"
+        ]
+      },
       "applicationId": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
