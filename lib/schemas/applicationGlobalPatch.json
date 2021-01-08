@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "maxItems": 100,
+  "items": {
+    "type": "object",
+    "properties": {
+      "key": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+      },
+      "json": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "minLength": 1,
+        "maxLength": 32767
+      },
+      "cloudOnly": {
+        "type": "boolean"
+      },
+      "description": {
+        "type": "string",
+        "maxLength": 1024
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "key"
+    ]
+  }
+}
