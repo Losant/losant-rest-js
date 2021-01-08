@@ -1578,8 +1578,17 @@
                             "state",
                             "tag",
                             "deviceName",
-                            "sourceId"
+                            "sourceId",
+                            "custom"
                           ]
+                        },
+                        "headerTemplate": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "rowTemplate": {
+                          "type": "string",
+                          "maxLength": 32767
                         }
                       },
                       "additionalProperties": false

@@ -25,6 +25,7 @@
 *   [Application Creation By Template Result](#application-creation-by-template-result)
 *   [Application Export Post Schema](#application-export-post-schema)
 *   [Application Export Result](#application-export-result)
+*   [Application Global Patch](#application-global-patch)
 *   [Application Key](#application-key)
 *   [Application Key Patch](#application-key-patch)
 *   [Application Key Post](#application-key-post)
@@ -3831,6 +3832,224 @@ Schema for advanced workflow queries
           "maxProperties": 1
         }
       ]
+    },
+    "triggers": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "key": {
+              "type": "string",
+              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+            },
+            "config": {
+              "type": "object",
+              "patternProperties": {
+                "^[0-9a-zA-Z_-]{1,255}$": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ],
+                  "maxLength": 1024
+                }
+              }
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "key": {
+                  "type": "string",
+                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                },
+                "config": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}$": {
+                      "type": [
+                        "string",
+                        "number",
+                        "boolean",
+                        "null"
+                      ],
+                      "maxLength": 1024
+                    }
+                  }
+                }
+              },
+              "required": [
+                "type"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "$eq"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$ne": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "key": {
+                  "type": "string",
+                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                },
+                "config": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}$": {
+                      "type": [
+                        "string",
+                        "number",
+                        "boolean",
+                        "null"
+                      ],
+                      "maxLength": 1024
+                    }
+                  }
+                }
+              },
+              "required": [
+                "type"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "$ne"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "nodes": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "config": {
+              "type": "object",
+              "patternProperties": {
+                "^[0-9a-zA-Z_-]{1,255}$": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ],
+                  "maxLength": 1024
+                }
+              }
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "config": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}$": {
+                      "type": [
+                        "string",
+                        "number",
+                        "boolean",
+                        "null"
+                      ],
+                      "maxLength": 1024
+                    }
+                  }
+                }
+              },
+              "required": [
+                "type"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "$eq"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$ne": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "config": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}$": {
+                      "type": [
+                        "string",
+                        "number",
+                        "boolean",
+                        "null"
+                      ],
+                      "maxLength": 1024
+                    }
+                  }
+                }
+              },
+              "required": [
+                "type"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "$ne"
+          ],
+          "additionalProperties": false
+        }
+      ]
     }
   },
   "additionalProperties": false
@@ -7388,6 +7607,67 @@ Schema for an application export result
 {
   "url": "https://s3.us-west-1.amazonaws.com/a-bucket-on-amazon/applicationExport.zip"
 }
+```
+
+<br/>
+
+## Application Global Patch
+
+Schema for the body of an Application Global modification request
+
+### <a name="application-global-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "maxItems": 100,
+  "items": {
+    "type": "object",
+    "properties": {
+      "key": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+      },
+      "json": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "minLength": 1,
+        "maxLength": 32767
+      },
+      "cloudOnly": {
+        "type": "boolean"
+      },
+      "description": {
+        "type": "string",
+        "maxLength": 1024
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "key"
+    ]
+  }
+}
+```
+### <a name="application-global-patch-example"></a> Example
+
+```json
+[
+  {
+    "key": "keyHere",
+    "description": "Description of my application global",
+    "json": "\"my json data here\"",
+    "cloudOnly": true
+  },
+  {
+    "key": "anotherKey",
+    "json": "\"more json\"",
+    "cloudOnly": false
+  }
+]
 ```
 
 <br/>
@@ -12034,8 +12314,17 @@ Schema for a single Dashboard
                             "state",
                             "tag",
                             "deviceName",
-                            "sourceId"
+                            "sourceId",
+                            "custom"
                           ]
+                        },
+                        "headerTemplate": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "rowTemplate": {
+                          "type": "string",
+                          "maxLength": 32767
                         }
                       },
                       "additionalProperties": false
@@ -17769,8 +18058,17 @@ Schema for the body of a Dashboard modification request
                             "state",
                             "tag",
                             "deviceName",
-                            "sourceId"
+                            "sourceId",
+                            "custom"
                           ]
+                        },
+                        "headerTemplate": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "rowTemplate": {
+                          "type": "string",
+                          "maxLength": 32767
                         }
                       },
                       "additionalProperties": false
@@ -23433,8 +23731,17 @@ Schema for the body of a Dashboard creation request
                             "state",
                             "tag",
                             "deviceName",
-                            "sourceId"
+                            "sourceId",
+                            "custom"
                           ]
+                        },
+                        "headerTemplate": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "rowTemplate": {
+                          "type": "string",
+                          "maxLength": 32767
                         }
                       },
                       "additionalProperties": false
@@ -29352,8 +29659,17 @@ Schema for a collection of Dashboards
                                   "state",
                                   "tag",
                                   "deviceName",
-                                  "sourceId"
+                                  "sourceId",
+                                  "custom"
                                 ]
+                              },
+                              "headerTemplate": {
+                                "type": "string",
+                                "maxLength": 1024
+                              },
+                              "rowTemplate": {
+                                "type": "string",
+                                "maxLength": 32767
                               }
                             },
                             "additionalProperties": false
