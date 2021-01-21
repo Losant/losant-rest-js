@@ -317,6 +317,8 @@
               "applicationTemplates.getUniqueKeywords",
               "me.*",
               "orgs.*",
+              "instance.*",
+              "instances.*",
               "me.get",
               "me.patch",
               "me.delete",
@@ -331,7 +333,9 @@
               "me.payloadCounts",
               "me.transferResources",
               "orgs.get",
-              "orgs.post"
+              "orgs.post",
+              "instance.get",
+              "instances.get"
             ]
           }
         ]

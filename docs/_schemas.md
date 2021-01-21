@@ -169,6 +169,8 @@
 *   [Workflows Import Post](#workflows-import-post)
 *   [Workflow Import Result](#workflow-import-result)
 *   [Github Login](#github-login)
+*   [Instance](#instance)
+*   [Instances](#instances)
 *   [Integration](#integration)
 *   [Integration Patch](#integration-patch)
 *   [Integration Post](#integration-post)
@@ -87799,6 +87801,8 @@ Schema for the body of a Github login request
               "applicationTemplates.getUniqueKeywords",
               "me.*",
               "orgs.*",
+              "instance.*",
+              "instances.*",
               "me.get",
               "me.patch",
               "me.delete",
@@ -87813,7 +87817,9 @@ Schema for the body of a Github login request
               "me.payloadCounts",
               "me.transferResources",
               "orgs.get",
-              "orgs.post"
+              "orgs.post",
+              "instance.get",
+              "instances.get"
             ]
           }
         ]
@@ -87835,6 +87841,329 @@ Schema for the body of a Github login request
 ```json
 {
   "accessToken": "the github access token"
+}
+```
+
+<br/>
+
+## Instance
+
+Schema for a single Instance
+
+### <a name="instance-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "instanceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "allowAuditLogging": {
+      "type": "boolean"
+    },
+    "limits": {
+      "organization": {
+        "type": "number"
+      },
+      "apitoken": {
+        "type": "number"
+      },
+      "application": {
+        "type": "number"
+      },
+      "applicationkey": {
+        "type": "number"
+      },
+      "dashboard": {
+        "type": "number"
+      },
+      "datatable": {
+        "type": "number"
+      },
+      "device": {
+        "type": "number"
+      },
+      "devicerecipe": {
+        "type": "number"
+      },
+      "experiencedomain": {
+        "type": "number"
+      },
+      "experienceendpoint": {
+        "type": "number"
+      },
+      "experiencegroup": {
+        "type": "number"
+      },
+      "experienceslug": {
+        "type": "number"
+      },
+      "experienceuser": {
+        "type": "number"
+      },
+      "experienceversion": {
+        "type": "number"
+      },
+      "experienceview": {
+        "type": "number"
+      },
+      "file": {
+        "type": "number"
+      },
+      "flow": {
+        "type": "number"
+      },
+      "integration": {
+        "type": "number"
+      },
+      "notebook": {
+        "type": "number"
+      },
+      "webhook": {
+        "type": "number"
+      },
+      "dataTTL": {
+        "type": "number"
+      },
+      "member": {
+        "type": "number"
+      },
+      "payload": {
+        "type": "number"
+      },
+      "notebookMinutesPerRun": {
+        "type": "number"
+      },
+      "notebookMinutesPerMonth": {
+        "type": "number"
+      },
+      "notebookInParallel": {
+        "type": "number"
+      }
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "edit",
+              "collaborate",
+              "view",
+              "none"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
+```
+### <a name="instance-example"></a> Example
+
+```json
+{
+  "name": "B",
+  "limits": {
+    "organization": 2000,
+    "apitoken": 1000,
+    "application": 100,
+    "applicationcertificate": 1000,
+    "applicationcertificateauthority": 1000,
+    "applicationkey": 1000,
+    "dashboard": 100,
+    "datatable": 100,
+    "device": 1000,
+    "devicerecipe": 1000,
+    "experiencedomain": 100,
+    "experienceendpoint": 500,
+    "experienceslug": 100,
+    "experienceversion": 1000,
+    "experienceview": 500,
+    "experiencegroup": 100,
+    "experienceuser": 1000,
+    "file": 1000,
+    "flow": 1000,
+    "integration": 50,
+    "notebook": 100,
+    "webhook": 1000,
+    "dataTTL": 15552000,
+    "member": 100,
+    "payload": 75000000,
+    "storage": 1073741824,
+    "notebookMinutesPerRun": 60,
+    "notebookMinutesPerMonth": 930,
+    "notebookInParallel": 5,
+    "systemInterval": 5
+  },
+  "members": [
+    {
+      "userId": "5ff89ff825013dc6c2856184",
+      "role": "admin"
+    },
+    {
+      "userId": "5ff89ff825013dc6c2856185",
+      "role": "view"
+    },
+    {
+      "userId": "5ff89ff825013dc6c2856186",
+      "role": "view"
+    }
+  ],
+  "creationDate": "2021-01-08T18:10:00.054Z",
+  "lastUpdated": "2021-01-08T18:10:00.054Z",
+  "allowAuditLogging": false,
+  "instanceId": "5ff89ff825013dc6c2856188",
+  "id": "5ff89ff825013dc6c2856188"
+}
+```
+
+<br/>
+
+## Instances
+
+Schema for a collection of Instances
+
+### <a name="instances-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "#/definitions/instance"
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc",
+        "ASC",
+        "DESC",
+        ""
+      ]
+    }
+  }
+}
+```
+### <a name="instances-example"></a> Example
+
+```json
+{
+  "count": 2,
+  "items": [
+    {
+      "name": "B",
+      "limits": {
+        "organization": 2000,
+        "apitoken": 1000,
+        "application": 100,
+        "applicationcertificate": 1000,
+        "applicationcertificateauthority": 1000,
+        "applicationkey": 1000,
+        "dashboard": 100,
+        "datatable": 100,
+        "device": 1000,
+        "devicerecipe": 1000,
+        "experiencedomain": 100,
+        "experienceendpoint": 500,
+        "experienceslug": 100,
+        "experienceversion": 1000,
+        "experienceview": 500,
+        "experiencegroup": 100,
+        "experienceuser": 1000,
+        "file": 1000,
+        "flow": 1000,
+        "integration": 50,
+        "notebook": 100,
+        "webhook": 1000,
+        "dataTTL": 15552000,
+        "member": 100,
+        "payload": 75000000,
+        "storage": 1073741824,
+        "notebookMinutesPerRun": 60,
+        "notebookMinutesPerMonth": 930,
+        "notebookInParallel": 5,
+        "systemInterval": 5
+      },
+      "members": [
+        {
+          "userId": "5ff89ff825013dc6c2856184",
+          "role": "admin"
+        },
+        {
+          "userId": "5ff89ff825013dc6c2856185",
+          "role": "view"
+        },
+        {
+          "userId": "5ff89ff825013dc6c2856186",
+          "role": "view"
+        }
+      ],
+      "creationDate": "2021-01-08T18:10:00.054Z",
+      "lastUpdated": "2021-01-08T18:10:00.054Z",
+      "allowAuditLogging": false,
+      "instanceId": "5ff89ff825013dc6c2856188",
+      "id": "5ff89ff825013dc6c2856188"
+    }
+  ],
+  "perPage": 100,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc",
+  "totalCount": 2
 }
 ```
 
@@ -96796,6 +97125,8 @@ Schema for the body of a User authentication request
               "applicationTemplates.getUniqueKeywords",
               "me.*",
               "orgs.*",
+              "instance.*",
+              "instances.*",
               "me.get",
               "me.patch",
               "me.delete",
@@ -96810,7 +97141,9 @@ Schema for the body of a User authentication request
               "me.payloadCounts",
               "me.transferResources",
               "orgs.get",
-              "orgs.post"
+              "orgs.post",
+              "instance.get",
+              "instances.get"
             ]
           }
         ]
@@ -97233,6 +97566,8 @@ Schema for the body of a User creation request
               "applicationTemplates.getUniqueKeywords",
               "me.*",
               "orgs.*",
+              "instance.*",
+              "instances.*",
               "me.get",
               "me.patch",
               "me.delete",
@@ -97247,7 +97582,9 @@ Schema for the body of a User creation request
               "me.payloadCounts",
               "me.transferResources",
               "orgs.get",
-              "orgs.post"
+              "orgs.post",
+              "instance.get",
+              "instances.get"
             ]
           }
         ]
