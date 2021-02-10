@@ -325,7 +325,14 @@
               "me.*",
               "orgs.*",
               "instance.*",
+              "instance.get",
               "instances.*",
+              "instances.get",
+              "instanceOrg.*",
+              "instanceOrg.get",
+              "instanceOrgs.*",
+              "instanceOrgs.get",
+              "instanceOrgs.post",
               "me.get",
               "me.patch",
               "me.delete",
@@ -340,9 +347,7 @@
               "me.payloadCounts",
               "me.transferResources",
               "orgs.get",
-              "orgs.post",
-              "instance.get",
-              "instances.get"
+              "orgs.post"
             ]
           }
         ]

@@ -171,6 +171,9 @@
 *   [Workflow Import Result](#workflow-import-result)
 *   [Github Login](#github-login)
 *   [Instance](#instance)
+*   [Instance Organization](#instance-organization)
+*   [Instance Owned Organization Post](#instance-owned-organization-post)
+*   [Instance Organizations](#instance-organizations)
 *   [Instances](#instances)
 *   [Integration](#integration)
 *   [Integration Patch](#integration-patch)
@@ -8692,6 +8695,24 @@ Schema for the body of an Application scoped Dashboard creation request
                       "$and",
                       "advanced"
                     ]
+                  }
+                },
+                "columns": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "type": {
+                        "type": "string",
+                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "additionalProperties": false
@@ -17666,6 +17687,24 @@ Schema for a single Dashboard
                     ]
                   }
                 },
+                "columns": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "type": {
+                        "type": "string",
+                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
                 "additionalProperties": false
               }
             },
@@ -23410,6 +23449,24 @@ Schema for the body of a Dashboard modification request
                     ]
                   }
                 },
+                "columns": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "type": {
+                        "type": "string",
+                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
                 "additionalProperties": false
               }
             },
@@ -29081,6 +29138,24 @@ Schema for the body of a Dashboard creation request
                       "$and",
                       "advanced"
                     ]
+                  }
+                },
+                "columns": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "type": {
+                        "type": "string",
+                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "additionalProperties": false
@@ -35009,6 +35084,24 @@ Schema for a collection of Dashboards
                             "$and",
                             "advanced"
                           ]
+                        }
+                      },
+                      "columns": {
+                        "type": "array",
+                        "maxItems": 100,
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "type": {
+                              "type": "string",
+                              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                            }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "additionalProperties": false
@@ -62899,6 +62992,9 @@ Schema for a collection of files
         "DESC",
         ""
       ]
+    },
+    "parentExists": {
+      "type": "boolean"
     }
   }
 }
@@ -93701,7 +93797,14 @@ Schema for the body of a Github login request
               "me.*",
               "orgs.*",
               "instance.*",
+              "instance.get",
               "instances.*",
+              "instances.get",
+              "instanceOrg.*",
+              "instanceOrg.get",
+              "instanceOrgs.*",
+              "instanceOrgs.get",
+              "instanceOrgs.post",
               "me.get",
               "me.patch",
               "me.delete",
@@ -93716,9 +93819,7 @@ Schema for the body of a Github login request
               "me.payloadCounts",
               "me.transferResources",
               "orgs.get",
-              "orgs.post",
-              "instance.get",
-              "instances.get"
+              "orgs.post"
             ]
           }
         ]
@@ -93941,6 +94042,476 @@ Schema for a single Instance
   "allowAuditLogging": false,
   "instanceId": "5ff89ff825013dc6c2856188",
   "id": "5ff89ff825013dc6c2856188"
+}
+```
+
+<br/>
+
+## Instance Organization
+
+Schema for the body of an Organization owned by an instance
+
+### <a name="instance-organization-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "instanceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "iconColor": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "limits": {
+      "apitoken": {
+        "type": "number"
+      },
+      "application": {
+        "type": "number"
+      },
+      "applicationkey": {
+        "type": "number"
+      },
+      "dashboard": {
+        "type": "number"
+      },
+      "datatable": {
+        "type": "number"
+      },
+      "device": {
+        "type": "number"
+      },
+      "devicerecipe": {
+        "type": "number"
+      },
+      "experiencedomain": {
+        "type": "number"
+      },
+      "experienceendpoint": {
+        "type": "number"
+      },
+      "experiencegroup": {
+        "type": "number"
+      },
+      "experienceslug": {
+        "type": "number"
+      },
+      "experienceuser": {
+        "type": "number"
+      },
+      "experienceversion": {
+        "type": "number"
+      },
+      "experienceview": {
+        "type": "number"
+      },
+      "file": {
+        "type": "number"
+      },
+      "flow": {
+        "type": "number"
+      },
+      "integration": {
+        "type": "number"
+      },
+      "notebook": {
+        "type": "number"
+      },
+      "webhook": {
+        "type": "number"
+      },
+      "dataTTL": {
+        "type": "number"
+      },
+      "member": {
+        "type": "number"
+      },
+      "payload": {
+        "type": "number"
+      },
+      "notebookMinutesPerRun": {
+        "type": "number"
+      },
+      "notebookMinutesPerMonth": {
+        "type": "number"
+      },
+      "notebookInParallel": {
+        "type": "number"
+      }
+    },
+    "whitelistedEmailDomains": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 45,
+        "minLength": 3
+      }
+    },
+    "auditLogEnabled": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name"
+  ]
+}
+```
+### <a name="instance-organization-example"></a> Example
+
+```json
+{
+  "name": "My Org",
+  "id": "60106426dc03c6aad06540bb",
+  "instanceId": "60106426dc03c6aad06560ba",
+  "limits": {
+    "members": 500
+  },
+  "auditLogEnabled": true
+}
+```
+
+<br/>
+
+## Instance Owned Organization Post
+
+Schema for the body of an Organization creation request within an instance
+
+### <a name="instance-owned-organization-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "iconColor": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "limits": {
+      "apitoken": {
+        "type": "number"
+      },
+      "application": {
+        "type": "number"
+      },
+      "applicationkey": {
+        "type": "number"
+      },
+      "dashboard": {
+        "type": "number"
+      },
+      "datatable": {
+        "type": "number"
+      },
+      "device": {
+        "type": "number"
+      },
+      "devicerecipe": {
+        "type": "number"
+      },
+      "experiencedomain": {
+        "type": "number"
+      },
+      "experienceendpoint": {
+        "type": "number"
+      },
+      "experiencegroup": {
+        "type": "number"
+      },
+      "experienceslug": {
+        "type": "number"
+      },
+      "experienceuser": {
+        "type": "number"
+      },
+      "experienceversion": {
+        "type": "number"
+      },
+      "experienceview": {
+        "type": "number"
+      },
+      "file": {
+        "type": "number"
+      },
+      "flow": {
+        "type": "number"
+      },
+      "integration": {
+        "type": "number"
+      },
+      "notebook": {
+        "type": "number"
+      },
+      "webhook": {
+        "type": "number"
+      },
+      "dataTTL": {
+        "type": "number"
+      },
+      "member": {
+        "type": "number"
+      },
+      "payload": {
+        "type": "number"
+      },
+      "notebookMinutesPerRun": {
+        "type": "number"
+      },
+      "notebookMinutesPerMonth": {
+        "type": "number"
+      },
+      "notebookInParallel": {
+        "type": "number"
+      }
+    },
+    "whitelistedEmailDomains": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 45,
+        "minLength": 3
+      }
+    },
+    "auditLogEnabled": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name"
+  ]
+}
+```
+### <a name="instance-owned-organization-post-example"></a> Example
+
+```json
+{
+  "name": "My Org",
+  "limits": {
+    "members": 500
+  },
+  "auditLogEnabled": true
+}
+```
+
+<br/>
+
+## Instance Organizations
+
+Schema for a collection of Organizations within an instance
+
+### <a name="instance-organizations-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Instance Organization",
+        "description": "Schema for the body of an Organization owned by an instance",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "instanceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "iconColor": {
+            "type": "string",
+            "maxLength": 64
+          },
+          "limits": {
+            "apitoken": {
+              "type": "number"
+            },
+            "application": {
+              "type": "number"
+            },
+            "applicationkey": {
+              "type": "number"
+            },
+            "dashboard": {
+              "type": "number"
+            },
+            "datatable": {
+              "type": "number"
+            },
+            "device": {
+              "type": "number"
+            },
+            "devicerecipe": {
+              "type": "number"
+            },
+            "experiencedomain": {
+              "type": "number"
+            },
+            "experienceendpoint": {
+              "type": "number"
+            },
+            "experiencegroup": {
+              "type": "number"
+            },
+            "experienceslug": {
+              "type": "number"
+            },
+            "experienceuser": {
+              "type": "number"
+            },
+            "experienceversion": {
+              "type": "number"
+            },
+            "experienceview": {
+              "type": "number"
+            },
+            "file": {
+              "type": "number"
+            },
+            "flow": {
+              "type": "number"
+            },
+            "integration": {
+              "type": "number"
+            },
+            "notebook": {
+              "type": "number"
+            },
+            "webhook": {
+              "type": "number"
+            },
+            "dataTTL": {
+              "type": "number"
+            },
+            "member": {
+              "type": "number"
+            },
+            "payload": {
+              "type": "number"
+            },
+            "notebookMinutesPerRun": {
+              "type": "number"
+            },
+            "notebookMinutesPerMonth": {
+              "type": "number"
+            },
+            "notebookInParallel": {
+              "type": "number"
+            }
+          },
+          "whitelistedEmailDomains": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 45,
+              "minLength": 3
+            }
+          },
+          "auditLogEnabled": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name"
+        ]
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc",
+        "ASC",
+        "DESC",
+        ""
+      ]
+    }
+  }
+}
+```
+### <a name="instance-organizations-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "name": "My Org",
+      "id": "60106426dc03c6aad06540bb",
+      "instanceId": "60106426dc03c6aad06560ba",
+      "limits": {
+        "members": 500
+      },
+      "auditLogEnabled": true
+    }
+  ],
+  "count": 1,
+  "totalCount": 2,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc"
 }
 ```
 
@@ -103032,7 +103603,14 @@ Schema for the body of a User authentication request
               "me.*",
               "orgs.*",
               "instance.*",
+              "instance.get",
               "instances.*",
+              "instances.get",
+              "instanceOrg.*",
+              "instanceOrg.get",
+              "instanceOrgs.*",
+              "instanceOrgs.get",
+              "instanceOrgs.post",
               "me.get",
               "me.patch",
               "me.delete",
@@ -103047,9 +103625,7 @@ Schema for the body of a User authentication request
               "me.payloadCounts",
               "me.transferResources",
               "orgs.get",
-              "orgs.post",
-              "instance.get",
-              "instances.get"
+              "orgs.post"
             ]
           }
         ]
@@ -103480,7 +104056,14 @@ Schema for the body of a User creation request
               "me.*",
               "orgs.*",
               "instance.*",
+              "instance.get",
               "instances.*",
+              "instances.get",
+              "instanceOrg.*",
+              "instanceOrg.get",
+              "instanceOrgs.*",
+              "instanceOrgs.get",
+              "instanceOrgs.post",
               "me.get",
               "me.patch",
               "me.delete",
@@ -103495,9 +104078,7 @@ Schema for the body of a User creation request
               "me.payloadCounts",
               "me.transferResources",
               "orgs.get",
-              "orgs.post",
-              "instance.get",
-              "instances.get"
+              "orgs.post"
             ]
           }
         ]
