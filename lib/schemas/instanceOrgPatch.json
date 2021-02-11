@@ -95,20 +95,9 @@
         }
       }
     },
-    "whitelistedEmailDomains": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "maxLength": 45,
-        "minLength": 3
-      }
-    },
     "auditLogEnabled": {
       "type": "boolean"
     }
   },
-  "additionalProperties": false,
-  "required": [
-    "name"
-  ]
+  "additionalProperties": false
 }

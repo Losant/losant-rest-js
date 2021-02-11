@@ -330,6 +330,8 @@
               "instances.get",
               "instanceOrg.*",
               "instanceOrg.get",
+              "instanceOrg.patch",
+              "instanceOrg.delete",
               "instanceOrgs.*",
               "instanceOrgs.get",
               "instanceOrgs.post",

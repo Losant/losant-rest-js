@@ -172,6 +172,7 @@
 *   [Github Login](#github-login)
 *   [Instance](#instance)
 *   [Instance Organization](#instance-organization)
+*   [Instance Owned Organization Patch](#instance-owned-organization-patch)
 *   [Instance Owned Organization Post](#instance-owned-organization-post)
 *   [Instance Organizations](#instance-organizations)
 *   [Instances](#instances)
@@ -8695,24 +8696,24 @@ Schema for the body of an Application scoped Dashboard creation request
                       "$and",
                       "advanced"
                     ]
-                  }
-                },
-                "columns": {
-                  "type": "array",
-                  "maxItems": 100,
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string",
-                        "maxLength": 48
+                  },
+                  "columns": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "type": {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        }
                       },
-                      "type": {
-                        "type": "string",
-                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                      }
-                    },
-                    "additionalProperties": false
+                      "additionalProperties": false
+                    }
                   }
                 },
                 "additionalProperties": false
@@ -17685,24 +17686,24 @@ Schema for a single Dashboard
                       "$and",
                       "advanced"
                     ]
-                  }
-                },
-                "columns": {
-                  "type": "array",
-                  "maxItems": 100,
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string",
-                        "maxLength": 48
+                  },
+                  "columns": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "type": {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        }
                       },
-                      "type": {
-                        "type": "string",
-                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                      }
-                    },
-                    "additionalProperties": false
+                      "additionalProperties": false
+                    }
                   }
                 },
                 "additionalProperties": false
@@ -23447,24 +23448,24 @@ Schema for the body of a Dashboard modification request
                       "$and",
                       "advanced"
                     ]
-                  }
-                },
-                "columns": {
-                  "type": "array",
-                  "maxItems": 100,
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string",
-                        "maxLength": 48
+                  },
+                  "columns": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "type": {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        }
                       },
-                      "type": {
-                        "type": "string",
-                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                      }
-                    },
-                    "additionalProperties": false
+                      "additionalProperties": false
+                    }
                   }
                 },
                 "additionalProperties": false
@@ -29138,24 +29139,24 @@ Schema for the body of a Dashboard creation request
                       "$and",
                       "advanced"
                     ]
-                  }
-                },
-                "columns": {
-                  "type": "array",
-                  "maxItems": 100,
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string",
-                        "maxLength": 48
+                  },
+                  "columns": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "type": {
+                          "type": "string",
+                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                        }
                       },
-                      "type": {
-                        "type": "string",
-                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                      }
-                    },
-                    "additionalProperties": false
+                      "additionalProperties": false
+                    }
                   }
                 },
                 "additionalProperties": false
@@ -35084,24 +35085,24 @@ Schema for a collection of Dashboards
                             "$and",
                             "advanced"
                           ]
-                        }
-                      },
-                      "columns": {
-                        "type": "array",
-                        "maxItems": 100,
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "maxLength": 48
+                        },
+                        "columns": {
+                          "type": "array",
+                          "maxItems": 100,
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "maxLength": 48
+                              },
+                              "type": {
+                                "type": "string",
+                                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                              }
                             },
-                            "type": {
-                              "type": "string",
-                              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                            }
-                          },
-                          "additionalProperties": false
+                            "additionalProperties": false
+                          }
                         }
                       },
                       "additionalProperties": false
@@ -93802,6 +93803,8 @@ Schema for the body of a Github login request
               "instances.get",
               "instanceOrg.*",
               "instanceOrg.get",
+              "instanceOrg.patch",
+              "instanceOrg.delete",
               "instanceOrgs.*",
               "instanceOrgs.get",
               "instanceOrgs.post",
@@ -94190,6 +94193,131 @@ Schema for the body of an Organization owned by an instance
 
 <br/>
 
+## Instance Owned Organization Patch
+
+Schema for the body of an Organization modification request within an instance
+
+### <a name="instance-owned-organization-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "iconColor": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "limits": {
+      "type": "object",
+      "properties": {
+        "apitoken": {
+          "type": "number"
+        },
+        "application": {
+          "type": "number"
+        },
+        "applicationkey": {
+          "type": "number"
+        },
+        "dashboard": {
+          "type": "number"
+        },
+        "datatable": {
+          "type": "number"
+        },
+        "device": {
+          "type": "number"
+        },
+        "devicerecipe": {
+          "type": "number"
+        },
+        "experiencedomain": {
+          "type": "number"
+        },
+        "experienceendpoint": {
+          "type": "number"
+        },
+        "experiencegroup": {
+          "type": "number"
+        },
+        "experienceslug": {
+          "type": "number"
+        },
+        "experienceuser": {
+          "type": "number"
+        },
+        "experienceversion": {
+          "type": "number"
+        },
+        "experienceview": {
+          "type": "number"
+        },
+        "file": {
+          "type": "number"
+        },
+        "flow": {
+          "type": "number"
+        },
+        "integration": {
+          "type": "number"
+        },
+        "notebook": {
+          "type": "number"
+        },
+        "webhook": {
+          "type": "number"
+        },
+        "dataTTL": {
+          "type": "number"
+        },
+        "member": {
+          "type": "number"
+        },
+        "payload": {
+          "type": "number"
+        },
+        "notebookMinutesPerRun": {
+          "type": "number"
+        },
+        "notebookMinutesPerMonth": {
+          "type": "number"
+        },
+        "notebookInParallel": {
+          "type": "number"
+        }
+      }
+    },
+    "auditLogEnabled": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="instance-owned-organization-patch-example"></a> Example
+
+```json
+{
+  "name": "My Org",
+  "limits": {
+    "members": 500
+  },
+  "auditLogEnabled": true
+}
+```
+
+<br/>
+
 ## Instance Owned Organization Post
 
 Schema for the body of an Organization creation request within an instance
@@ -94215,80 +94343,83 @@ Schema for the body of an Organization creation request within an instance
       "maxLength": 64
     },
     "limits": {
-      "apitoken": {
-        "type": "number"
-      },
-      "application": {
-        "type": "number"
-      },
-      "applicationkey": {
-        "type": "number"
-      },
-      "dashboard": {
-        "type": "number"
-      },
-      "datatable": {
-        "type": "number"
-      },
-      "device": {
-        "type": "number"
-      },
-      "devicerecipe": {
-        "type": "number"
-      },
-      "experiencedomain": {
-        "type": "number"
-      },
-      "experienceendpoint": {
-        "type": "number"
-      },
-      "experiencegroup": {
-        "type": "number"
-      },
-      "experienceslug": {
-        "type": "number"
-      },
-      "experienceuser": {
-        "type": "number"
-      },
-      "experienceversion": {
-        "type": "number"
-      },
-      "experienceview": {
-        "type": "number"
-      },
-      "file": {
-        "type": "number"
-      },
-      "flow": {
-        "type": "number"
-      },
-      "integration": {
-        "type": "number"
-      },
-      "notebook": {
-        "type": "number"
-      },
-      "webhook": {
-        "type": "number"
-      },
-      "dataTTL": {
-        "type": "number"
-      },
-      "member": {
-        "type": "number"
-      },
-      "payload": {
-        "type": "number"
-      },
-      "notebookMinutesPerRun": {
-        "type": "number"
-      },
-      "notebookMinutesPerMonth": {
-        "type": "number"
-      },
-      "notebookInParallel": {
-        "type": "number"
+      "type": "object",
+      "properties": {
+        "apitoken": {
+          "type": "number"
+        },
+        "application": {
+          "type": "number"
+        },
+        "applicationkey": {
+          "type": "number"
+        },
+        "dashboard": {
+          "type": "number"
+        },
+        "datatable": {
+          "type": "number"
+        },
+        "device": {
+          "type": "number"
+        },
+        "devicerecipe": {
+          "type": "number"
+        },
+        "experiencedomain": {
+          "type": "number"
+        },
+        "experienceendpoint": {
+          "type": "number"
+        },
+        "experiencegroup": {
+          "type": "number"
+        },
+        "experienceslug": {
+          "type": "number"
+        },
+        "experienceuser": {
+          "type": "number"
+        },
+        "experienceversion": {
+          "type": "number"
+        },
+        "experienceview": {
+          "type": "number"
+        },
+        "file": {
+          "type": "number"
+        },
+        "flow": {
+          "type": "number"
+        },
+        "integration": {
+          "type": "number"
+        },
+        "notebook": {
+          "type": "number"
+        },
+        "webhook": {
+          "type": "number"
+        },
+        "dataTTL": {
+          "type": "number"
+        },
+        "member": {
+          "type": "number"
+        },
+        "payload": {
+          "type": "number"
+        },
+        "notebookMinutesPerRun": {
+          "type": "number"
+        },
+        "notebookMinutesPerMonth": {
+          "type": "number"
+        },
+        "notebookInParallel": {
+          "type": "number"
+        }
       }
     },
     "whitelistedEmailDomains": {
@@ -103608,6 +103739,8 @@ Schema for the body of a User authentication request
               "instances.get",
               "instanceOrg.*",
               "instanceOrg.get",
+              "instanceOrg.patch",
+              "instanceOrg.delete",
               "instanceOrgs.*",
               "instanceOrgs.get",
               "instanceOrgs.post",
@@ -104061,6 +104194,8 @@ Schema for the body of a User creation request
               "instances.get",
               "instanceOrg.*",
               "instanceOrg.get",
+              "instanceOrg.patch",
+              "instanceOrg.delete",
               "instanceOrgs.*",
               "instanceOrgs.get",
               "instanceOrgs.post",

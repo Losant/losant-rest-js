@@ -1041,24 +1041,24 @@
                             "$and",
                             "advanced"
                           ]
-                        }
-                      },
-                      "columns": {
-                        "type": "array",
-                        "maxItems": 100,
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "maxLength": 48
+                        },
+                        "columns": {
+                          "type": "array",
+                          "maxItems": 100,
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "maxLength": 48
+                              },
+                              "type": {
+                                "type": "string",
+                                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                              }
                             },
-                            "type": {
-                              "type": "string",
-                              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                            }
-                          },
-                          "additionalProperties": false
+                            "additionalProperties": false
+                          }
                         }
                       },
                       "additionalProperties": false
