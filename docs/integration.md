@@ -45,7 +45,7 @@ all.Application, all.Organization, all.User, integration.*, or integration.delet
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | integrationId | string | Y | ID associated with the integration |  | 575ed78e7ae143cd83dc4aab |
-| includeWorkflows | undefined | N | If the workflows that utilize this integration should also be deleted. |  | undefined |
+| includeWorkflows | string | N | If the workflows that utilize this integration should also be deleted. |  | true |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
