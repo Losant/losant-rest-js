@@ -1,7 +1,7 @@
-# Application Keys Actions
+# Application Dashboards Actions
 
 Details on the various actions that can be performed on the
-Application Keys resource, including the expected
+Application Dashboards resource, including the expected
 parameters and the potential responses.
 
 ##### Contents
@@ -13,7 +13,7 @@ parameters and the potential responses.
 
 ## Get
 
-Returns the applicationKeys for an application
+Returns all dashboards scoped to the given application.
 
 ```javascript
 var params = {
@@ -21,13 +21,13 @@ var params = {
 };
 
 // with callbacks
-client.applicationKeys.get(params, function (err, result) {
+client.applicationDashboards.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.applicationKeys.get(params)
+client.applicationDashboards.get(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -35,27 +35,26 @@ client.applicationKeys.get(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, applicationKeys.*, or applicationKeys.get.
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, applicationDashboards.*, or applicationDashboards.get.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| sortField | string | N | Field to sort the results by. Accepted values are: key, status, id, creationDate, lastUpdated | name | name |
+| sortField | string | N | Field to sort the results by. Accepted values are: name, id, creationDate | name | name |
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
 | page | string | N | Which page of results to return | 0 | 0 |
 | perPage | string | N | How many items to return per page | 100 | 10 |
-| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: key, status |  | key |
-| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | the*key |
-| query | [Advanced Application Key Query](../lib/schemas/advancedApplicationKeyQuery.json) | N | Application key filter JSON object which overrides the filterField and filter parameters. |  | [Advanced Application Key Query Example](_schemas.md#advanced-application-key-query-example) |
+| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
+| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my * dashboard |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Application Keys](../lib/schemas/applicationKeys.json) | Collection of applicationKeys |
+| 200 | [Dashboards](../lib/schemas/dashboards.json) | Collection of dashboards |
 
 #### Error Responses
 
@@ -68,22 +67,22 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 ## Post
 
-Create a new applicationKey for an application
+Create a new dashboard
 
 ```javascript
 var params = {
   applicationId: myApplicationId,
-  applicationKey: myApplicationKey
+  dashboard: myDashboard
 };
 
 // with callbacks
-client.applicationKeys.post(params, function (err, result) {
+client.applicationDashboards.post(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.applicationKeys.post(params)
+client.applicationDashboards.post(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -91,21 +90,21 @@ client.applicationKeys.post(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, applicationKeys.*, or applicationKeys.post.
+all.Application, all.Organization, all.User, applicationDashboards.*, or applicationDashboards.post.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| applicationKey | [Application Key Post](../lib/schemas/applicationKeyPost.json) | Y | ApplicationKey information |  | [Application Key Post Example](_schemas.md#application-key-post-example) |
+| dashboard | [Application Dashboard Post](../lib/schemas/applicationDashboardPost.json) | Y | New dashboard information |  | [Application Dashboard Post Example](_schemas.md#application-dashboard-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Application Key Post Response](../lib/schemas/applicationKeyPostResponse.json) | Successfully created applicationKey |
+| 201 | [Dashboard](../lib/schemas/dashboard.json) | Successfully created dashboard |
 
 #### Error Responses
 

@@ -1,7 +1,7 @@
-# Integration Actions
+# Application Dashboard Actions
 
 Details on the various actions that can be performed on the
-Integration resource, including the expected
+Application Dashboard resource, including the expected
 parameters and the potential responses.
 
 ##### Contents
@@ -14,22 +14,22 @@ parameters and the potential responses.
 
 ## Delete
 
-Deletes an integration
+Deletes a dashboard
 
 ```javascript
 var params = {
-  applicationId: myApplicationId,
-  integrationId: myIntegrationId
+  dashboardId: myDashboardId,
+  applicationId: myApplicationId
 };
 
 // with callbacks
-client.integration.delete(params, function (err, result) {
+client.applicationDashboard.delete(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.integration.delete(params)
+client.applicationDashboard.delete(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -37,50 +37,49 @@ client.integration.delete(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, integration.*, or integration.delete.
+all.Application, all.Organization, all.User, applicationDashboard.*, or applicationDashboard.delete.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| integrationId | string | Y | ID associated with the integration |  | 575ed78e7ae143cd83dc4aab |
-| includeWorkflows | string | N | If the workflows that utilize this integration should also be deleted. |  | true |
+| dashboardId | string | Y | ID of the associated dashboard |  | 575ece2b7ae143cd83dc4a9b |
+| applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If integration was successfully deleted |
+| 200 | [Success](../lib/schemas/success.json) | If dashboard was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if integration was not found |
+| 404 | [Error](../lib/schemas/error.json) | Error if dashboard was not found |
 
 <br/>
 
 ## Get
 
-Retrieves information on an integration
+Retrieves information on a dashboard
 
 ```javascript
 var params = {
-  applicationId: myApplicationId,
-  integrationId: myIntegrationId
+  dashboardId: myDashboardId,
+  applicationId: myApplicationId
 };
 
 // with callbacks
-client.integration.get(params, function (err, result) {
+client.applicationDashboard.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.integration.get(params)
+client.applicationDashboard.get(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -88,50 +87,50 @@ client.integration.get(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, integration.*, or integration.get.
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, applicationDashboard.*, or applicationDashboard.get.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| integrationId | string | Y | ID associated with the integration |  | 575ed78e7ae143cd83dc4aab |
+| dashboardId | string | Y | ID of the associated dashboard |  | 575ece2b7ae143cd83dc4a9b |
+| applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Integration](../lib/schemas/integration.json) | integration information |
+| 200 | [Dashboard](../lib/schemas/dashboard.json) | Dashboard information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if integration was not found |
+| 404 | [Error](../lib/schemas/error.json) | Error if dashboard was not found |
 
 <br/>
 
 ## Patch
 
-Updates information about an integration
+Updates information about a dashboard
 
 ```javascript
 var params = {
+  dashboardId: myDashboardId,
   applicationId: myApplicationId,
-  integrationId: myIntegrationId,
-  integration: myIntegration
+  dashboard: myDashboard
 };
 
 // with callbacks
-client.integration.patch(params, function (err, result) {
+client.applicationDashboard.patch(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.integration.patch(params)
+client.applicationDashboard.patch(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -139,26 +138,26 @@ client.integration.patch(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, integration.*, or integration.patch.
+all.Application, all.Organization, all.User, applicationDashboard.*, or applicationDashboard.patch.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| integrationId | string | Y | ID associated with the integration |  | 575ed78e7ae143cd83dc4aab |
-| integration | [Integration Patch](../lib/schemas/integrationPatch.json) | Y | Object containing new properties of the integration |  | [Integration Patch Example](_schemas.md#integration-patch-example) |
+| dashboardId | string | Y | ID of the associated dashboard |  | 575ece2b7ae143cd83dc4a9b |
+| applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
+| dashboard | [Dashboard Patch](../lib/schemas/dashboardPatch.json) | Y | Object containing new dashboard properties |  | [Dashboard Patch Example](_schemas.md#dashboard-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Integration](../lib/schemas/integration.json) | Updated integration information |
+| 200 | [Dashboard](../lib/schemas/dashboard.json) | Update dashboard information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if integration was not found |
+| 404 | [Error](../lib/schemas/error.json) | Error if dashboard was not found |

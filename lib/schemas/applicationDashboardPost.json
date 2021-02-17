@@ -2,128 +2,10 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "dashboardId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "creationDate": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "lastUpdated": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "ownerId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "ownerType": {
-      "type": "string",
-      "enum": [
-        "user",
-        "organization"
-      ]
-    },
-    "organizationName": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 255
-    },
-    "organizationIconColor": {
-      "type": "string",
-      "maxLength": 64
-    },
-    "applicationId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationName": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 255
-    },
     "name": {
       "type": "string",
       "minLength": 1,
       "maxLength": 255
-    },
-    "description": {
-      "type": "string",
-      "maxLength": 32767
-    },
-    "refreshRate": {
-      "type": "number",
-      "minimum": 5,
-      "maximum": 600
-    },
-    "defaultTheme": {
-      "type": "string",
-      "enum": [
-        "dark",
-        "light"
-      ]
-    },
-    "isPasswordProtected": {
-      "type": "boolean"
-    },
-    "public": {
-      "type": "boolean"
-    },
-    "reportConfigs": {
-      "type": "array",
-      "max": 10,
-      "items": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "maxLength": 48
-          },
-          "cron": {
-            "type": "string",
-            "maxLength": 255
-          },
-          "toEmail": {
-            "type": "array",
-            "min": 1,
-            "max": 10,
-            "items": {
-              "type": "string",
-              "format": "email",
-              "maxLength": 1024
-            }
-          },
-          "subject": {
-            "type": "string",
-            "maxLength": 255
-          },
-          "message": {
-            "type": "string",
-            "maxLength": 32767
-          },
-          "theme": {
-            "type": "string",
-            "enum": [
-              "dark",
-              "light"
-            ]
-          },
-          "timezone": {
-            "type": "string",
-            "maxLength": 255
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "cron",
-          "toEmail"
-        ]
-      }
     },
     "blocks": {
       "type": "array",
@@ -5375,6 +5257,82 @@
         ]
       }
     },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "refreshRate": {
+      "type": "number",
+      "minimum": 5,
+      "maximum": 600
+    },
+    "defaultTheme": {
+      "type": "string",
+      "enum": [
+        "dark",
+        "light"
+      ]
+    },
+    "reportConfigs": {
+      "type": "array",
+      "max": 10,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 48
+          },
+          "cron": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "toEmail": {
+            "type": "array",
+            "min": 1,
+            "max": 10,
+            "items": {
+              "type": "string",
+              "format": "email",
+              "maxLength": 1024
+            }
+          },
+          "subject": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "theme": {
+            "type": "string",
+            "enum": [
+              "dark",
+              "light"
+            ]
+          },
+          "timezone": {
+            "type": "string",
+            "maxLength": 255
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "cron",
+          "toEmail"
+        ]
+      }
+    },
+    "public": {
+      "type": "boolean"
+    },
+    "password": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "contextConfiguration": {
       "type": "array",
       "items": {
@@ -5699,5 +5657,9 @@
       },
       "maxItems": 100
     }
-  }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name"
+  ]
 }

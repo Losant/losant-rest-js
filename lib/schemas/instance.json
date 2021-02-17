@@ -1,0 +1,132 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "instanceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "allowAuditLogging": {
+      "type": "boolean"
+    },
+    "limits": {
+      "organization": {
+        "type": "number"
+      },
+      "apitoken": {
+        "type": "number"
+      },
+      "application": {
+        "type": "number"
+      },
+      "applicationkey": {
+        "type": "number"
+      },
+      "dashboard": {
+        "type": "number"
+      },
+      "datatable": {
+        "type": "number"
+      },
+      "device": {
+        "type": "number"
+      },
+      "devicerecipe": {
+        "type": "number"
+      },
+      "experiencedomain": {
+        "type": "number"
+      },
+      "experienceendpoint": {
+        "type": "number"
+      },
+      "experiencegroup": {
+        "type": "number"
+      },
+      "experienceslug": {
+        "type": "number"
+      },
+      "experienceuser": {
+        "type": "number"
+      },
+      "experienceversion": {
+        "type": "number"
+      },
+      "experienceview": {
+        "type": "number"
+      },
+      "file": {
+        "type": "number"
+      },
+      "flow": {
+        "type": "number"
+      },
+      "integration": {
+        "type": "number"
+      },
+      "notebook": {
+        "type": "number"
+      },
+      "webhook": {
+        "type": "number"
+      },
+      "dataTTL": {
+        "type": "number"
+      },
+      "member": {
+        "type": "number"
+      },
+      "payload": {
+        "type": "number"
+      },
+      "notebookMinutesPerRun": {
+        "type": "number"
+      },
+      "notebookMinutesPerMonth": {
+        "type": "number"
+      },
+      "notebookInParallel": {
+        "type": "number"
+      }
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "edit",
+              "collaborate",
+              "view",
+              "none"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

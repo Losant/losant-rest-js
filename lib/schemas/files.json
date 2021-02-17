@@ -125,6 +125,9 @@
         "DESC",
         ""
       ]
+    },
+    "parentExists": {
+      "type": "boolean"
     }
   }
 }

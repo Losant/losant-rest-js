@@ -46,6 +46,7 @@ all.Application, all.Organization, all.User, experienceEndpoint.*, or experience
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | experienceEndpointId | string | Y | ID associated with the experience endpoint |  | 575ed78e7ae143cd83dc4aab |
+| includeWorkflows | string | N | If the workflows that utilize this experience endpoint should also be deleted. |  | true |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
