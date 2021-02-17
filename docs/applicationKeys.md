@@ -48,6 +48,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | perPage | string | N | How many items to return per page | 100 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: key, status |  | key |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | the*key |
+| query | [Advanced Application Key Query](../lib/schemas/advancedApplicationKeyQuery.json) | N | Application key filter JSON object which overrides the filterField and filter parameters. |  | [Advanced Application Key Query Example](_schemas.md#advanced-application-key-query-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
