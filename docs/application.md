@@ -15,6 +15,7 @@ parameters and the potential responses.
 *   [Full Data Tables Archive](#full-data-tables-archive)
 *   [Full Events Archive](#full-events-archive)
 *   [Get](#get)
+*   [Globals](#globals)
 *   [Import](#import)
 *   [Mqtt Publish Message](#mqtt-publish-message)
 *   [Patch](#patch)
@@ -461,6 +462,56 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Application](../lib/schemas/application.json) | Application information |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+
+<br/>
+
+## Globals
+
+Updates an application global at the given key
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  globals: myGlobals
+};
+
+// with callbacks
+client.application.globals(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.application.globals(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, application.*, or application.patch.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
+| globals | [Application Global Patch](../lib/schemas/applicationGlobalPatch.json) | Y | Array of objects containing new application global information |  | [Application Global Patch Example](_schemas.md#application-global-patch-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Application](../lib/schemas/application.json) | Updated application information |
 
 #### Error Responses
 

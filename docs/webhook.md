@@ -45,6 +45,7 @@ all.Application, all.Organization, all.User, webhook.*, or webhook.delete.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | webhookId | string | Y | ID associated with the webhook |  | 575ed78e7ae143cd83dc4aab |
+| includeWorkflows | string | N | If the workflows that utilize this webhook should also be deleted. |  | true |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
