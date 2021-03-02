@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "view"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "userId",
+    "role"
+  ]
+}

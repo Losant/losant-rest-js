@@ -172,6 +172,9 @@
 *   [Workflow Import Result](#workflow-import-result)
 *   [Github Login](#github-login)
 *   [Instance](#instance)
+*   [Instance Member](#instance-member)
+*   [Instance Member Patch](#instance-member-patch)
+*   [Instance Member Post](#instance-member-post)
 *   [Instance Organization](#instance-organization)
 *   [Instance Owned Organization Patch](#instance-owned-organization-patch)
 *   [Instance Owned Organization Post](#instance-owned-organization-post)
@@ -9821,8 +9824,26 @@ Schema for the body of an Application scoped Dashboard creation request
                           "maxLength": 48
                         },
                         "type": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "$custom"
+                              ]
+                            }
+                          ]
+                        },
+                        "headerTemplate": {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          "maxLength": 1024
+                        },
+                        "rowTemplate": {
+                          "type": "string",
+                          "maxLength": 32767
                         }
                       },
                       "additionalProperties": false
@@ -18811,8 +18832,26 @@ Schema for a single Dashboard
                           "maxLength": 48
                         },
                         "type": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "$custom"
+                              ]
+                            }
+                          ]
+                        },
+                        "headerTemplate": {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          "maxLength": 1024
+                        },
+                        "rowTemplate": {
+                          "type": "string",
+                          "maxLength": 32767
                         }
                       },
                       "additionalProperties": false
@@ -24573,8 +24612,26 @@ Schema for the body of a Dashboard modification request
                           "maxLength": 48
                         },
                         "type": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "$custom"
+                              ]
+                            }
+                          ]
+                        },
+                        "headerTemplate": {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          "maxLength": 1024
+                        },
+                        "rowTemplate": {
+                          "type": "string",
+                          "maxLength": 32767
                         }
                       },
                       "additionalProperties": false
@@ -30264,8 +30321,26 @@ Schema for the body of a Dashboard creation request
                           "maxLength": 48
                         },
                         "type": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "$custom"
+                              ]
+                            }
+                          ]
+                        },
+                        "headerTemplate": {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          "maxLength": 1024
+                        },
+                        "rowTemplate": {
+                          "type": "string",
+                          "maxLength": 32767
                         }
                       },
                       "additionalProperties": false
@@ -36210,8 +36285,26 @@ Schema for a collection of Dashboards
                                 "maxLength": 48
                               },
                               "type": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "$custom"
+                                    ]
+                                  }
+                                ]
+                              },
+                              "headerTemplate": {
                                 "type": "string",
-                                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                                "maxLength": 1024
+                              },
+                              "rowTemplate": {
+                                "type": "string",
+                                "maxLength": 32767
                               }
                             },
                             "additionalProperties": false
@@ -94921,6 +95014,13 @@ Schema for the body of a Github login request
               "instanceOrgs.*",
               "instanceOrgs.get",
               "instanceOrgs.post",
+              "instanceMember.*",
+              "instanceMember.get",
+              "instanceMember.patch",
+              "instanceMember.delete",
+              "instanceMembers.*",
+              "instanceMembers.get",
+              "instanceMembers.post",
               "me.get",
               "me.patch",
               "me.delete",
@@ -95158,6 +95258,134 @@ Schema for a single Instance
   "allowAuditLogging": false,
   "instanceId": "5ff89ff825013dc6c2856188",
   "id": "5ff89ff825013dc6c2856188"
+}
+```
+
+<br/>
+
+## Instance Member
+
+Schema for an Instance member
+
+### <a name="instance-member-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "firstName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "view"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="instance-member-example"></a> Example
+
+```json
+{
+  "userId": "575ef90f7ae143cd83dc4aad",
+  "role": "view"
+}
+```
+
+<br/>
+
+## Instance Member Patch
+
+Schema for an Instance member modification request
+
+### <a name="instance-member-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "view"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "role"
+  ]
+}
+```
+### <a name="instance-member-patch-example"></a> Example
+
+```json
+{
+  "role": "view"
+}
+```
+
+<br/>
+
+## Instance Member Post
+
+Schema for an Instance member creation request
+
+### <a name="instance-member-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "view"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "userId",
+    "role"
+  ]
+}
+```
+### <a name="instance-member-post-example"></a> Example
+
+```json
+{
+  "userId": "675ed18f7ae143cd83dc4bb7",
+  "role": "view"
 }
 ```
 
@@ -104857,6 +105085,13 @@ Schema for the body of a User authentication request
               "instanceOrgs.*",
               "instanceOrgs.get",
               "instanceOrgs.post",
+              "instanceMember.*",
+              "instanceMember.get",
+              "instanceMember.patch",
+              "instanceMember.delete",
+              "instanceMembers.*",
+              "instanceMembers.get",
+              "instanceMembers.post",
               "me.get",
               "me.patch",
               "me.delete",
@@ -105312,6 +105547,13 @@ Schema for the body of a User creation request
               "instanceOrgs.*",
               "instanceOrgs.get",
               "instanceOrgs.post",
+              "instanceMember.*",
+              "instanceMember.get",
+              "instanceMember.patch",
+              "instanceMember.delete",
+              "instanceMembers.*",
+              "instanceMembers.get",
+              "instanceMembers.post",
               "me.get",
               "me.patch",
               "me.delete",
