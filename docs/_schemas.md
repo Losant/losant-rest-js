@@ -162,6 +162,7 @@
 *   [Workflow Statistics](#workflow-statistics)
 *   [Workflow Storage Entries](#workflow-storage-entries)
 *   [Workflow Storage Entry](#workflow-storage-entry)
+*   [Get Workflow Storage Entries Metadata](#get-workflow-storage-entries-metadata)
 *   [Workflow Trigger Filter](#workflow-trigger-filter)
 *   [Workflow Version](#workflow-version)
 *   [Workflow Version Patch](#workflow-version-patch)
@@ -7283,6 +7284,7 @@ Schema for the body of an Application API Token creation request
           "flow.patch",
           "flow.pressVirtualButton",
           "flow.setStorageEntry",
+          "flow.getStorageEntriesMetadata",
           "flow.stats",
           "flows.get",
           "flows.getByVersion",
@@ -71172,6 +71174,38 @@ Schema for the body of a request to set a Workflow storage entry
 
 <br/>
 
+## Get Workflow Storage Entries Metadata
+
+Schema for the result of get storage metadata request
+
+### <a name="get-workflow-storage-entries-metadata-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "memoryUsed": {
+      "type": "number"
+    },
+    "keysCount": {
+      "type": "number"
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="get-workflow-storage-entries-metadata-example"></a> Example
+
+```json
+{
+  "memoryUsage": 610,
+  "keyCount": 2
+}
+```
+
+<br/>
+
 ## Workflow Trigger Filter
 
 Array of triggers for filtering workflows. Trigger keys and trigger types are optional.
@@ -94917,6 +94951,7 @@ Schema for the body of a Github login request
                   "flow.patch",
                   "flow.pressVirtualButton",
                   "flow.setStorageEntry",
+                  "flow.getStorageEntriesMetadata",
                   "flow.stats",
                   "flows.get",
                   "flows.getByVersion",
@@ -104988,6 +105023,7 @@ Schema for the body of a User authentication request
                   "flow.patch",
                   "flow.pressVirtualButton",
                   "flow.setStorageEntry",
+                  "flow.getStorageEntriesMetadata",
                   "flow.stats",
                   "flows.get",
                   "flows.getByVersion",
@@ -105450,6 +105486,7 @@ Schema for the body of a User creation request
                   "flow.patch",
                   "flow.pressVirtualButton",
                   "flow.setStorageEntry",
+                  "flow.getStorageEntriesMetadata",
                   "flow.stats",
                   "flows.get",
                   "flows.getByVersion",

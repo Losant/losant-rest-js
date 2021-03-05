@@ -238,6 +238,7 @@
                   "flow.patch",
                   "flow.pressVirtualButton",
                   "flow.setStorageEntry",
+                  "flow.getStorageEntriesMetadata",
                   "flow.stats",
                   "flows.get",
                   "flows.getByVersion",
