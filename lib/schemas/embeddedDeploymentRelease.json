@@ -40,6 +40,28 @@
         "additionalProperties": false
       },
       "maxItems": 100
+    },
+    "releaseTag": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "compatible": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "type": "string",
+        "enum": [
+          "all",
+          "alpine",
+          "cygwin3",
+          "stm32i475",
+          "ubuntu16"
+        ]
+      }
     }
   },
   "additionalProperties": false,

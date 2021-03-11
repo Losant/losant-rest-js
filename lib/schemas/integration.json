@@ -121,6 +121,9 @@
           "type": "string",
           "maxLength": 32767,
           "minLength": 4
+        },
+        "disableSSLVerification": {
+          "type": "boolean"
         }
       },
       "additionalProperties": false,

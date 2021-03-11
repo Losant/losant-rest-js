@@ -924,6 +924,42 @@
                       "$and",
                       "advanced"
                     ]
+                  },
+                  "columns": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "type": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "$custom"
+                              ]
+                            }
+                          ]
+                        },
+                        "headerTemplate": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "rowTemplate": {
+                          "type": "string",
+                          "maxLength": 32767
+                        }
+                      },
+                      "additionalProperties": false
+                    }
                   }
                 },
                 "additionalProperties": false
@@ -1468,8 +1504,17 @@
                             "state",
                             "tag",
                             "deviceName",
-                            "sourceId"
+                            "sourceId",
+                            "custom"
                           ]
+                        },
+                        "headerTemplate": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "rowTemplate": {
+                          "type": "string",
+                          "maxLength": 32767
                         }
                       },
                       "additionalProperties": false
@@ -3820,6 +3865,9 @@
                               "additionalProperties": false
                             },
                             "defaultValue": {
+                              "type": "boolean"
+                            },
+                            "includeLabel": {
                               "type": "boolean"
                             }
                           },

@@ -13,29 +13,9 @@
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
-          "embeddedDeploymentId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
           "applicationId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "deviceIds": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "pattern": "^[A-Fa-f\\d]{24}$"
-            },
-            "maxItems": 1000
-          },
-          "flowIds": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "pattern": "^[A-Fa-f\\d]{24}$"
-            },
-            "maxItems": 1000
           },
           "creationDate": {
             "type": "string",
@@ -45,66 +25,36 @@
             "type": "string",
             "format": "date-time"
           },
-          "currentVersion": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "minLength": 1,
-            "maxLength": 255
-          },
-          "desiredVersion": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "minLength": 1,
-            "maxLength": 255
-          },
-          "releaseTag": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "minLength": 1,
-            "maxLength": 255
-          },
-          "compatible": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 255
-            }
-          },
-          "mountpoints": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 255
-                },
-                "device": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 255
-                },
-                "encoding": {
-                  "type": "string",
-                  "enum": [
-                    "CBOR",
-                    "JSON"
-                  ]
-                },
-                "prefix": {
-                  "type": "string",
-                  "maxLength": 255
+          "flows": {
+            "type": "object",
+            "patternProperties": {
+              "^[A-Fa-f\\d]{24}$": {
+                "type": "object",
+                "properties": {
+                  "flowName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "currentVersion": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "desiredVersion": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  }
                 }
               }
-            }
+            },
+            "additionalProperties": false
+          },
+          "bundleVersion": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
           },
           "logs": {
             "type": "array",
@@ -133,10 +83,26 @@
                   "type": "string",
                   "enum": [
                     "current",
+                    "compiling",
                     "desired"
                   ]
                 },
-                "newValue": {
+                "updateType": {
+                  "type": "string",
+                  "enum": [
+                    "new flow",
+                    "replace flow",
+                    "remove flow",
+                    "clear",
+                    "globals",
+                    "device"
+                  ]
+                },
+                "updateFlowId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "desiredVersion": {
                   "type": [
                     "string",
                     "null"
@@ -144,7 +110,7 @@
                   "minLength": 1,
                   "maxLength": 255
                 },
-                "previousValue": {
+                "newBundle": {
                   "type": [
                     "string",
                     "null"
@@ -152,7 +118,15 @@
                   "minLength": 1,
                   "maxLength": 255
                 },
-                "attemptedValue": {
+                "previousBundle": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "attemptedBundle": {
                   "type": [
                     "string",
                     "null"
