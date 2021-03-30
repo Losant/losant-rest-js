@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "callbackUrl": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "resourceGroupBy": {
+      "type": "string",
+      "enum": [
+        "application",
+        "organization"
+      ]
+    },
+    "dateGroupBy": {
+      "type": "string",
+      "enum": [
+        "month"
+      ]
+    },
+    "includeSandbox": {
+      "type": "boolean"
+    },
+    "start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "end": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

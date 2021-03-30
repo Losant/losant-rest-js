@@ -34,7 +34,13 @@
         "height": {
           "type": "number"
         }
-      }
+      },
+      "additionalProperties": false
     }
-  }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "type"
+  ]
 }

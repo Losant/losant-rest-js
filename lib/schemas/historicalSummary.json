@@ -1,0 +1,455 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "resourceType": {
+      "type": "string",
+      "enum": [
+        "application",
+        "organization",
+        "whitelabel"
+      ]
+    },
+    "resourceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "resourceName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "resourceProration": {
+      "type": "number"
+    },
+    "ownerType": {
+      "type": "string",
+      "enum": [
+        "organization",
+        "user"
+      ]
+    },
+    "ownerId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "ownerName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "limits": {
+      "apitoken": {
+        "type": "number"
+      },
+      "application": {
+        "type": "number"
+      },
+      "applicationkey": {
+        "type": "number"
+      },
+      "dashboard": {
+        "type": "number"
+      },
+      "datatable": {
+        "type": "number"
+      },
+      "device": {
+        "type": "number"
+      },
+      "devicerecipe": {
+        "type": "number"
+      },
+      "experiencedomain": {
+        "type": "number"
+      },
+      "experienceendpoint": {
+        "type": "number"
+      },
+      "experiencegroup": {
+        "type": "number"
+      },
+      "experienceslug": {
+        "type": "number"
+      },
+      "experienceuser": {
+        "type": "number"
+      },
+      "experienceversion": {
+        "type": "number"
+      },
+      "experienceview": {
+        "type": "number"
+      },
+      "file": {
+        "type": "number"
+      },
+      "flow": {
+        "type": "number"
+      },
+      "integration": {
+        "type": "number"
+      },
+      "notebook": {
+        "type": "number"
+      },
+      "webhook": {
+        "type": "number"
+      },
+      "dataTTL": {
+        "type": "number"
+      },
+      "member": {
+        "type": "number"
+      },
+      "payload": {
+        "type": "number"
+      },
+      "notebookMinutesPerRun": {
+        "type": "number"
+      },
+      "notebookMinutesPerMonth": {
+        "type": "number"
+      },
+      "notebookInParallel": {
+        "type": "number"
+      }
+    },
+    "currentPeriodStart": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "currentPeriodEnd": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "applicationCount": {
+      "type": "number"
+    },
+    "applicationCountProrated": {
+      "type": "number"
+    },
+    "userCount": {
+      "type": "number"
+    },
+    "userCountProrated": {
+      "type": "number"
+    },
+    "apiTokenCount": {
+      "type": "number"
+    },
+    "applicationKeyCount": {
+      "type": "number"
+    },
+    "certificateAuthorityCount": {
+      "type": "number"
+    },
+    "certificateCount": {
+      "type": "number"
+    },
+    "dashboardCount": {
+      "type": "number"
+    },
+    "dataTableCount": {
+      "type": "number"
+    },
+    "dataTableRowCount": {
+      "type": "number"
+    },
+    "dataTableTotalSizeMb": {
+      "type": "number"
+    },
+    "deviceCount": {
+      "type": "number"
+    },
+    "deviceCountProrated": {
+      "type": "number"
+    },
+    "deviceRecipeCount": {
+      "type": "number"
+    },
+    "eventCount": {
+      "type": "number"
+    },
+    "experienceDomainCount": {
+      "type": "number"
+    },
+    "experienceEndpointCount": {
+      "type": "number"
+    },
+    "experienceGroupCount": {
+      "type": "number"
+    },
+    "experienceSlugCount": {
+      "type": "number"
+    },
+    "experienceUserCount": {
+      "type": "number"
+    },
+    "experienceVersionCount": {
+      "type": "number"
+    },
+    "experienceViewCount": {
+      "type": "number"
+    },
+    "fileCount": {
+      "type": "number"
+    },
+    "fileTotalSizeMb": {
+      "type": "number"
+    },
+    "integrationCount": {
+      "type": "number"
+    },
+    "notebookCount": {
+      "type": "number"
+    },
+    "notebookRunCount": {
+      "type": "number"
+    },
+    "notebookMinutesCount": {
+      "type": "number"
+    },
+    "webhookCount": {
+      "type": "number"
+    },
+    "workflowCount": {
+      "type": "number"
+    },
+    "payloadBillableCount": {
+      "type": "number"
+    },
+    "payloadNonbillableCount": {
+      "type": "number"
+    },
+    "payloadBillableSizeMb": {
+      "type": "number"
+    },
+    "payloadNonbillableSizeMb": {
+      "type": "number"
+    },
+    "payloadCountDetails": {
+      "title": "Payload Counts",
+      "description": "Schema for the result of a payload count request",
+      "type": "object",
+      "properties": {
+        "mqttOut": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "mqttIn": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "dataTable": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "deviceState": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "deviceCommand": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "webhook": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "timer": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "event": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "virtualButton": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "deviceConnect": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "deviceDisconnect": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "endpoint": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "integration": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "payloadSizeDetails": {
+      "title": "Payload Counts",
+      "description": "Schema for the result of a payload count request",
+      "type": "object",
+      "properties": {
+        "mqttOut": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "mqttIn": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "dataTable": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "deviceState": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "deviceCommand": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "webhook": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "timer": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "event": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "virtualButton": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "deviceConnect": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "deviceDisconnect": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "endpoint": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "integration": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

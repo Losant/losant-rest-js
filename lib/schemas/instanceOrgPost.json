@@ -105,6 +105,17 @@
     },
     "auditLogEnabled": {
       "type": "boolean"
+    },
+    "disabledAt": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "boolean"
+        }
+      ]
     }
   },
   "additionalProperties": false,

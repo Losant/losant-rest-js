@@ -162,6 +162,7 @@
 *   [Workflow Statistics](#workflow-statistics)
 *   [Workflow Storage Entries](#workflow-storage-entries)
 *   [Workflow Storage Entry](#workflow-storage-entry)
+*   [Get Workflow Storage Entries Metadata](#get-workflow-storage-entries-metadata)
 *   [Workflow Trigger Filter](#workflow-trigger-filter)
 *   [Workflow Version](#workflow-version)
 *   [Workflow Version Patch](#workflow-version-patch)
@@ -171,11 +172,22 @@
 *   [Workflows Import Post](#workflows-import-post)
 *   [Workflow Import Result](#workflow-import-result)
 *   [Github Login](#github-login)
+*   [Historical Summaries](#historical-summaries)
+*   [Historical Summary](#historical-summary)
 *   [Instance](#instance)
+*   [Instance Member](#instance-member)
+*   [Instance Member Patch](#instance-member-patch)
+*   [Instance Member Post](#instance-member-post)
+*   [Instance Members](#instance-members)
 *   [Instance Organization](#instance-organization)
+*   [Instance Org Member](#instance-org-member)
+*   [Instance Org Member Patch](#instance-org-member-patch)
+*   [Instance Org Member Post](#instance-org-member-post)
+*   [Instance Organization Members](#instance-organization-members)
 *   [Instance Owned Organization Patch](#instance-owned-organization-patch)
 *   [Instance Owned Organization Post](#instance-owned-organization-post)
 *   [Instance Organizations](#instance-organizations)
+*   [Instance Report Options Post](#instance-report-options-post)
 *   [Instances](#instances)
 *   [Integration](#integration)
 *   [Integration Patch](#integration-patch)
@@ -531,10 +543,106 @@ Schema for advanced application key queries
       ]
     },
     "status": {
-      "type": "string",
-      "enum": [
-        "active",
-        "inactive"
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
       ]
     },
     "deviceIds": {
@@ -595,6 +703,115 @@ Schema for advanced application key queries
           "additionalProperties": false,
           "minProperties": 1,
           "maxProperties": 1
+        }
+      ]
+    },
+    "deviceTags": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "$tagKey": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "$tagValue": {
+                  "type": "string",
+                  "maxLength": 255
+                }
+              },
+              "additionalProperties": false,
+              "minProperties": 1
+            },
+            {
+              "type": "object",
+              "patternProperties": {
+                "^[0-9a-zA-Z_-]{1,255}": {
+                  "type": "string",
+                  "maxLength": 255
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "$tagKey": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "$tagValue": {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false,
+                  "minProperties": 1
+                },
+                {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}": {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "$eq"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "$tagKey": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "$tagValue": {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false,
+                  "minProperties": 1
+                },
+                {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}": {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "$ne"
+          ],
+          "additionalProperties": false
         }
       ]
     },
@@ -807,81 +1024,87 @@ Schema for advanced application key queries
     "filterType": {
       "oneOf": [
         {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "all",
-                "whitelist",
-                "blacklist"
-              ]
-            },
-            {
-              "type": "string",
-              "enum": [
-                "none"
-              ]
-            }
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
           ]
         },
         {
           "type": "object",
           "properties": {
             "$eq": {
-              "oneOf": [
-                {
-                  "type": "string",
-                  "enum": [
-                    "all",
-                    "whitelist",
-                    "blacklist"
-                  ]
-                },
-                {
-                  "type": "string",
-                  "enum": [
-                    "none"
-                  ]
-                }
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
               ]
             },
             "$ne": {
-              "oneOf": [
-                {
-                  "type": "string",
-                  "enum": [
-                    "all",
-                    "whitelist",
-                    "blacklist"
-                  ]
-                },
-                {
-                  "type": "string",
-                  "enum": [
-                    "none"
-                  ]
-                }
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
               ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
             },
             "$in": {
               "type": "array",
               "maxItems": 100,
               "items": {
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "enum": [
-                      "all",
-                      "whitelist",
-                      "blacklist"
-                    ]
-                  },
-                  {
-                    "type": "string",
-                    "enum": [
-                      "none"
-                    ]
-                  }
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
                 ]
               }
             },
@@ -889,21 +1112,10 @@ Schema for advanced application key queries
               "type": "array",
               "maxItems": 100,
               "items": {
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "enum": [
-                      "all",
-                      "whitelist",
-                      "blacklist"
-                    ]
-                  },
-                  {
-                    "type": "string",
-                    "enum": [
-                      "none"
-                    ]
-                  }
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
                 ]
               }
             }
@@ -913,46 +1125,210 @@ Schema for advanced application key queries
       ]
     },
     "pubTopics": {
-      "type": "object",
-      "properties": {
-        "$in": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 1024
-          }
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
         },
-        "$nin": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 1024
-          }
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
         }
-      }
+      ]
     },
     "subTopics": {
-      "type": "object",
-      "properties": {
-        "$in": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 1024
-          }
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
         },
-        "$nin": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 1024
-          }
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
         }
-      }
+      ]
     }
   }
 }
@@ -1997,6 +2373,315 @@ Schema for advanced device queries
           "required": [
             "$ne"
           ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "disconnectedAt": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "connectedAt": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "connectionStatus": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
           "additionalProperties": false
         }
       ]
@@ -6916,6 +7601,7 @@ Schema for the body of an Application API Token creation request
           "flow.patch",
           "flow.pressVirtualButton",
           "flow.setStorageEntry",
+          "flow.getStorageEntriesMetadata",
           "flow.stats",
           "flows.get",
           "flows.getByVersion",
@@ -9457,8 +10143,26 @@ Schema for the body of an Application scoped Dashboard creation request
                           "maxLength": 48
                         },
                         "type": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "$custom"
+                              ]
+                            }
+                          ]
+                        },
+                        "headerTemplate": {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          "maxLength": 1024
+                        },
+                        "rowTemplate": {
+                          "type": "string",
+                          "maxLength": 32767
                         }
                       },
                       "additionalProperties": false
@@ -18447,8 +19151,26 @@ Schema for a single Dashboard
                           "maxLength": 48
                         },
                         "type": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "$custom"
+                              ]
+                            }
+                          ]
+                        },
+                        "headerTemplate": {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          "maxLength": 1024
+                        },
+                        "rowTemplate": {
+                          "type": "string",
+                          "maxLength": 32767
                         }
                       },
                       "additionalProperties": false
@@ -24209,8 +24931,26 @@ Schema for the body of a Dashboard modification request
                           "maxLength": 48
                         },
                         "type": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "$custom"
+                              ]
+                            }
+                          ]
+                        },
+                        "headerTemplate": {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          "maxLength": 1024
+                        },
+                        "rowTemplate": {
+                          "type": "string",
+                          "maxLength": 32767
                         }
                       },
                       "additionalProperties": false
@@ -29900,8 +30640,26 @@ Schema for the body of a Dashboard creation request
                           "maxLength": 48
                         },
                         "type": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "$custom"
+                              ]
+                            }
+                          ]
+                        },
+                        "headerTemplate": {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          "maxLength": 1024
+                        },
+                        "rowTemplate": {
+                          "type": "string",
+                          "maxLength": 32767
                         }
                       },
                       "additionalProperties": false
@@ -35846,8 +36604,26 @@ Schema for a collection of Dashboards
                                 "maxLength": 48
                               },
                               "type": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "$custom"
+                                    ]
+                                  }
+                                ]
+                              },
+                              "headerTemplate": {
                                 "type": "string",
-                                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                                "maxLength": 1024
+                              },
+                              "rowTemplate": {
+                                "type": "string",
+                                "maxLength": 32767
                               }
                             },
                             "additionalProperties": false
@@ -46238,6 +47014,315 @@ Schema for the body of a bulk device delete request
               "additionalProperties": false
             }
           ]
+        },
+        "disconnectedAt": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "connectedAt": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "connectionStatus": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
         }
       },
       "additionalProperties": false
@@ -47326,6 +48411,315 @@ Schema for the body of a device metadata export request
               "required": [
                 "$ne"
               ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "disconnectedAt": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "connectedAt": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "connectionStatus": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
               "additionalProperties": false
             }
           ]
@@ -48586,6 +49980,315 @@ Schema for the body of a Devices modification request
               "required": [
                 "$ne"
               ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "disconnectedAt": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "connectedAt": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "connectionStatus": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
               "additionalProperties": false
             }
           ]
@@ -50389,6 +52092,315 @@ Schema for the body of a bulk data removal request
               "required": [
                 "$ne"
               ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "disconnectedAt": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "connectedAt": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "connectionStatus": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
               "additionalProperties": false
             }
           ]
@@ -63445,9 +65457,15 @@ Schema to create a single file or directory
         "height": {
           "type": "number"
         }
-      }
+      },
+      "additionalProperties": false
     }
-  }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "type"
+  ]
 }
 ```
 ### <a name="file-post-example"></a> Example
@@ -70710,6 +72728,38 @@ Schema for the body of a request to set a Workflow storage entry
 {
   "key": "myStorageKey",
   "value": 12
+}
+```
+
+<br/>
+
+## Get Workflow Storage Entries Metadata
+
+Schema for the result of get storage metadata request
+
+### <a name="get-workflow-storage-entries-metadata-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "memoryUsed": {
+      "type": "number"
+    },
+    "keysCount": {
+      "type": "number"
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="get-workflow-storage-entries-metadata-example"></a> Example
+
+```json
+{
+  "memoryUsage": 610,
+  "keyCount": 2
 }
 ```
 
@@ -94460,6 +96510,7 @@ Schema for the body of a Github login request
                   "flow.patch",
                   "flow.pressVirtualButton",
                   "flow.setStorageEntry",
+                  "flow.getStorageEntriesMetadata",
                   "flow.stats",
                   "flows.get",
                   "flows.getByVersion",
@@ -94536,6 +96587,38 @@ Schema for the body of a Github login request
           {
             "type": "string",
             "enum": [
+              "all.Instance",
+              "all.Instance.read",
+              "instance.*",
+              "instance.get",
+              "instance.historicalSummaries",
+              "instance.generateReport",
+              "instanceOrg.*",
+              "instanceOrg.get",
+              "instanceOrg.patch",
+              "instanceOrg.delete",
+              "instanceOrgs.*",
+              "instanceOrgs.get",
+              "instanceOrgs.post",
+              "instanceMember.*",
+              "instanceMember.get",
+              "instanceMember.patch",
+              "instanceMember.delete",
+              "instanceMembers.*",
+              "instanceMembers.get",
+              "instanceMembers.post",
+              "instanceOrgMember.*",
+              "instanceOrgMember.get",
+              "instanceOrgMember.patch",
+              "instanceOrgMember.delete",
+              "instanceOrgMembers.*",
+              "instanceOrgMembers.get",
+              "instanceOrgMembers.post"
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
               "all.User",
               "all.User.read",
               "applicationTemplate.*",
@@ -94544,19 +96627,9 @@ Schema for the body of a Github login request
               "applicationTemplates.get",
               "applicationTemplates.getCategories",
               "applicationTemplates.getUniqueKeywords",
-              "me.*",
-              "orgs.*",
-              "instance.*",
-              "instance.get",
               "instances.*",
               "instances.get",
-              "instanceOrg.*",
-              "instanceOrg.get",
-              "instanceOrg.patch",
-              "instanceOrg.delete",
-              "instanceOrgs.*",
-              "instanceOrgs.get",
-              "instanceOrgs.post",
+              "me.*",
               "me.get",
               "me.patch",
               "me.delete",
@@ -94570,6 +96643,7 @@ Schema for the body of a Github login request
               "me.fetchRecentItems",
               "me.payloadCounts",
               "me.transferResources",
+              "orgs.*",
               "orgs.get",
               "orgs.post"
             ]
@@ -94593,6 +96667,660 @@ Schema for the body of a Github login request
 ```json
 {
   "accessToken": "the github access token"
+}
+```
+
+<br/>
+
+## Historical Summaries
+
+Schema for a collection of Historical Summaries
+
+### <a name="historical-summaries-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "#/definitions/historicalSummary"
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc",
+        "ASC",
+        "DESC",
+        ""
+      ]
+    }
+  }
+}
+```
+### <a name="historical-summaries-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "resourceType": "application",
+      "resourceId": "575ed18f7ae143cd83dc4aa6",
+      "resourceName": "My Application",
+      "resourceProration": 0.9,
+      "ownerType": "organization",
+      "ownerId": "575ed18f7ae143cd83dc4aa7",
+      "ownerName": "My Organization",
+      "currentPeriodStart": "2021-04-01T00:00:00.000Z",
+      "currentPeriodEnd": "2021-04-30T23:59:59.999Z",
+      "apiTokenCount": 2,
+      "applicationKeyCount": 0,
+      "certificateAuthorityCount": 0,
+      "certificateCount": 0,
+      "dashboardCount": 3,
+      "dataTableCount": 1,
+      "dataTableRowCount": 10,
+      "dataTableTotalSizeMb": 0.12,
+      "deviceCount": 7,
+      "deviceCountProrated": 6.57,
+      "deviceRecipeCount": 0,
+      "eventCount": 0,
+      "experienceDomainCount": 0,
+      "experienceEndpointCount": 0,
+      "experienceGroupCount": 0,
+      "experienceSlugCount": 0,
+      "experienceUserCount": 0,
+      "experienceVersionCount": 0,
+      "experienceViewCount": 0,
+      "fileCount": 0,
+      "fileTotalSizeMb": 0,
+      "integrationCount": 0,
+      "notebookCount": 0,
+      "notebookRunCount": 0,
+      "notebookMinutesCount": 0,
+      "webhookCount": 2,
+      "workflowCount": 3,
+      "payloadBillableCount": 437,
+      "payloadNonbillableCount": 12,
+      "payloadBillableSizeMb": 2.5,
+      "payloadNonbillableSizeMb": 0.2,
+      "payloadCountDetails": {
+        "mqtt": {
+          "device.mqttIn": 437
+        },
+        "dataTable": {
+          "flow.flow": 12
+        }
+      },
+      "payloadSizeDetails": {
+        "mqtt": {
+          "device.mqttIn": 2.5
+        },
+        "dataTable": {
+          "flow.flow": 0.2
+        }
+      }
+    }
+  ],
+  "count": 8,
+  "totalCount": 2,
+  "perPage": 100,
+  "page": 0,
+  "sortField": "name",
+  "sortDirection": "asc"
+}
+```
+
+<br/>
+
+## Historical Summary
+
+Schema for a historical summary report
+
+### <a name="historical-summary-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "resourceType": {
+      "type": "string",
+      "enum": [
+        "application",
+        "organization",
+        "whitelabel"
+      ]
+    },
+    "resourceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "resourceName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "resourceProration": {
+      "type": "number"
+    },
+    "ownerType": {
+      "type": "string",
+      "enum": [
+        "organization",
+        "user"
+      ]
+    },
+    "ownerId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "ownerName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "limits": {
+      "apitoken": {
+        "type": "number"
+      },
+      "application": {
+        "type": "number"
+      },
+      "applicationkey": {
+        "type": "number"
+      },
+      "dashboard": {
+        "type": "number"
+      },
+      "datatable": {
+        "type": "number"
+      },
+      "device": {
+        "type": "number"
+      },
+      "devicerecipe": {
+        "type": "number"
+      },
+      "experiencedomain": {
+        "type": "number"
+      },
+      "experienceendpoint": {
+        "type": "number"
+      },
+      "experiencegroup": {
+        "type": "number"
+      },
+      "experienceslug": {
+        "type": "number"
+      },
+      "experienceuser": {
+        "type": "number"
+      },
+      "experienceversion": {
+        "type": "number"
+      },
+      "experienceview": {
+        "type": "number"
+      },
+      "file": {
+        "type": "number"
+      },
+      "flow": {
+        "type": "number"
+      },
+      "integration": {
+        "type": "number"
+      },
+      "notebook": {
+        "type": "number"
+      },
+      "webhook": {
+        "type": "number"
+      },
+      "dataTTL": {
+        "type": "number"
+      },
+      "member": {
+        "type": "number"
+      },
+      "payload": {
+        "type": "number"
+      },
+      "notebookMinutesPerRun": {
+        "type": "number"
+      },
+      "notebookMinutesPerMonth": {
+        "type": "number"
+      },
+      "notebookInParallel": {
+        "type": "number"
+      }
+    },
+    "currentPeriodStart": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "currentPeriodEnd": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "applicationCount": {
+      "type": "number"
+    },
+    "applicationCountProrated": {
+      "type": "number"
+    },
+    "userCount": {
+      "type": "number"
+    },
+    "userCountProrated": {
+      "type": "number"
+    },
+    "apiTokenCount": {
+      "type": "number"
+    },
+    "applicationKeyCount": {
+      "type": "number"
+    },
+    "certificateAuthorityCount": {
+      "type": "number"
+    },
+    "certificateCount": {
+      "type": "number"
+    },
+    "dashboardCount": {
+      "type": "number"
+    },
+    "dataTableCount": {
+      "type": "number"
+    },
+    "dataTableRowCount": {
+      "type": "number"
+    },
+    "dataTableTotalSizeMb": {
+      "type": "number"
+    },
+    "deviceCount": {
+      "type": "number"
+    },
+    "deviceCountProrated": {
+      "type": "number"
+    },
+    "deviceRecipeCount": {
+      "type": "number"
+    },
+    "eventCount": {
+      "type": "number"
+    },
+    "experienceDomainCount": {
+      "type": "number"
+    },
+    "experienceEndpointCount": {
+      "type": "number"
+    },
+    "experienceGroupCount": {
+      "type": "number"
+    },
+    "experienceSlugCount": {
+      "type": "number"
+    },
+    "experienceUserCount": {
+      "type": "number"
+    },
+    "experienceVersionCount": {
+      "type": "number"
+    },
+    "experienceViewCount": {
+      "type": "number"
+    },
+    "fileCount": {
+      "type": "number"
+    },
+    "fileTotalSizeMb": {
+      "type": "number"
+    },
+    "integrationCount": {
+      "type": "number"
+    },
+    "notebookCount": {
+      "type": "number"
+    },
+    "notebookRunCount": {
+      "type": "number"
+    },
+    "notebookMinutesCount": {
+      "type": "number"
+    },
+    "webhookCount": {
+      "type": "number"
+    },
+    "workflowCount": {
+      "type": "number"
+    },
+    "payloadBillableCount": {
+      "type": "number"
+    },
+    "payloadNonbillableCount": {
+      "type": "number"
+    },
+    "payloadBillableSizeMb": {
+      "type": "number"
+    },
+    "payloadNonbillableSizeMb": {
+      "type": "number"
+    },
+    "payloadCountDetails": {
+      "title": "Payload Counts",
+      "description": "Schema for the result of a payload count request",
+      "type": "object",
+      "properties": {
+        "mqttOut": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "mqttIn": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "dataTable": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "deviceState": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "deviceCommand": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "webhook": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "timer": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "event": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "virtualButton": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "deviceConnect": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "deviceDisconnect": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "endpoint": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "integration": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "payloadSizeDetails": {
+      "title": "Payload Counts",
+      "description": "Schema for the result of a payload count request",
+      "type": "object",
+      "properties": {
+        "mqttOut": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "mqttIn": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "dataTable": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "deviceState": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "deviceCommand": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "webhook": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "timer": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "event": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "virtualButton": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "deviceConnect": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "deviceDisconnect": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "endpoint": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "integration": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="historical-summary-example"></a> Example
+
+```json
+{
+  "resourceType": "application",
+  "resourceId": "575ed18f7ae143cd83dc4aa6",
+  "resourceName": "My Application",
+  "resourceProration": 0.9,
+  "ownerType": "organization",
+  "ownerId": "575ed18f7ae143cd83dc4aa7",
+  "ownerName": "My Organization",
+  "currentPeriodStart": "2021-04-01T00:00:00.000Z",
+  "currentPeriodEnd": "2021-04-30T23:59:59.999Z",
+  "apiTokenCount": 2,
+  "applicationKeyCount": 0,
+  "certificateAuthorityCount": 0,
+  "certificateCount": 0,
+  "dashboardCount": 3,
+  "dataTableCount": 1,
+  "dataTableRowCount": 10,
+  "dataTableTotalSizeMb": 0.12,
+  "deviceCount": 7,
+  "deviceCountProrated": 6.57,
+  "deviceRecipeCount": 0,
+  "eventCount": 0,
+  "experienceDomainCount": 0,
+  "experienceEndpointCount": 0,
+  "experienceGroupCount": 0,
+  "experienceSlugCount": 0,
+  "experienceUserCount": 0,
+  "experienceVersionCount": 0,
+  "experienceViewCount": 0,
+  "fileCount": 0,
+  "fileTotalSizeMb": 0,
+  "integrationCount": 0,
+  "notebookCount": 0,
+  "notebookRunCount": 0,
+  "notebookMinutesCount": 0,
+  "webhookCount": 2,
+  "workflowCount": 3,
+  "payloadBillableCount": 437,
+  "payloadNonbillableCount": 12,
+  "payloadBillableSizeMb": 2.5,
+  "payloadNonbillableSizeMb": 0.2,
+  "payloadCountDetails": {
+    "mqtt": {
+      "device.mqttIn": 437
+    },
+    "dataTable": {
+      "flow.flow": 12
+    }
+  },
+  "payloadSizeDetails": {
+    "mqtt": {
+      "device.mqttIn": 2.5
+    },
+    "dataTable": {
+      "flow.flow": 0.2
+    }
+  }
 }
 ```
 
@@ -94799,6 +97527,233 @@ Schema for a single Instance
 
 <br/>
 
+## Instance Member
+
+Schema for an Instance member
+
+### <a name="instance-member-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "firstName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "view"
+      ]
+    },
+    "avatarUrl": {
+      "type": "string",
+      "format": "url"
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="instance-member-example"></a> Example
+
+```json
+{
+  "userId": "575ef90f7ae143cd83dc4aad",
+  "role": "view"
+}
+```
+
+<br/>
+
+## Instance Member Patch
+
+Schema for an Instance member modification request
+
+### <a name="instance-member-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "view"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "role"
+  ]
+}
+```
+### <a name="instance-member-patch-example"></a> Example
+
+```json
+{
+  "role": "view"
+}
+```
+
+<br/>
+
+## Instance Member Post
+
+Schema for an Instance member creation request
+
+### <a name="instance-member-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "view"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "userId",
+    "role"
+  ]
+}
+```
+### <a name="instance-member-post-example"></a> Example
+
+```json
+{
+  "userId": "675ed18f7ae143cd83dc4bb7",
+  "role": "view"
+}
+```
+
+<br/>
+
+## Instance Members
+
+Schema for a collection of Instance members
+
+### <a name="instance-members-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Instance Member",
+        "description": "Schema for an Instance member",
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 1024
+          },
+          "firstName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "lastName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "view"
+            ]
+          },
+          "avatarUrl": {
+            "type": "string",
+            "format": "url"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc",
+        "ASC",
+        "DESC",
+        ""
+      ]
+    }
+  }
+}
+```
+### <a name="instance-members-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "userId": "575ef90f7ae143cd83dc4aad",
+      "role": "view"
+    }
+  ],
+  "count": 4,
+  "sortField": "email",
+  "sortDirection": "asc"
+}
+```
+
+<br/>
+
 ## Instance Organization
 
 Schema for the body of an Organization owned by an instance
@@ -94918,6 +97873,20 @@ Schema for the body of an Organization owned by an instance
     },
     "auditLogEnabled": {
       "type": "boolean"
+    },
+    "disabledAt": {
+      "oneOf": [
+        {
+          "type": "boolean",
+          "enum": [
+            false
+          ]
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
     }
   },
   "additionalProperties": false,
@@ -94937,6 +97906,408 @@ Schema for the body of an Organization owned by an instance
     "members": 500
   },
   "auditLogEnabled": true
+}
+```
+
+<br/>
+
+## Instance Org Member
+
+Schema for an Instance Organization member
+
+### <a name="instance-org-member-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "firstName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "view"
+      ]
+    },
+    "avatarUrl": {
+      "type": "string",
+      "format": "url"
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="instance-org-member-example"></a> Example
+
+```json
+{
+  "userId": "575ef90f7ae143cd83dc4aad",
+  "role": "view",
+  "applicationRoles": [
+    {
+      "resourceId": "575ef90f7ae143cd83dc4a4f",
+      "role": "none"
+    }
+  ],
+  "dashboardRoles": []
+}
+```
+
+<br/>
+
+## Instance Org Member Patch
+
+Schema for an Instance Organization member modification request
+
+### <a name="instance-org-member-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "edit",
+        "collaborate",
+        "view",
+        "none"
+      ]
+    },
+    "applicationRoles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "resourceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "collaborate",
+              "view",
+              "none"
+            ]
+          }
+        },
+        "required": [
+          "resourceId",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 1000
+    },
+    "dashboardRoles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "resourceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "collaborate",
+              "view",
+              "none"
+            ]
+          }
+        },
+        "required": [
+          "resourceId",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 1000
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="instance-org-member-patch-example"></a> Example
+
+```json
+{
+  "role": "view"
+}
+```
+
+<br/>
+
+## Instance Org Member Post
+
+Schema for an Instance Organization member creation request
+
+### <a name="instance-org-member-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "admin",
+            "edit",
+            "collaborate",
+            "view",
+            "none"
+          ]
+        },
+        "applicationRoles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "resourceId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "collaborate",
+                  "view",
+                  "none"
+                ]
+              }
+            },
+            "required": [
+              "resourceId",
+              "role"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 1000
+        },
+        "dashboardRoles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "resourceId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "collaborate",
+                  "view",
+                  "none"
+                ]
+              }
+            },
+            "required": [
+              "resourceId",
+              "role"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 1000
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "userId",
+        "role"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 1024
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "admin",
+            "edit",
+            "collaborate",
+            "view",
+            "none"
+          ]
+        },
+        "applicationRoles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "resourceId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "collaborate",
+                  "view",
+                  "none"
+                ]
+              }
+            },
+            "required": [
+              "resourceId",
+              "role"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 1000
+        },
+        "dashboardRoles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "resourceId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "collaborate",
+                  "view",
+                  "none"
+                ]
+              }
+            },
+            "required": [
+              "resourceId",
+              "role"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 1000
+        },
+        "disallowTransfer": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "email",
+        "role"
+      ]
+    }
+  ]
+}
+```
+### <a name="instance-org-member-post-example"></a> Example
+
+```json
+{
+  "role": "view",
+  "applicationRoles": [
+    {
+      "resourceId": "575ef90f7ae143cd83dc4a4f",
+      "role": "none"
+    }
+  ]
+}
+```
+
+<br/>
+
+## Instance Organization Members
+
+Schema for a collection of Organization members within an instance
+
+### <a name="instance-organization-members-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/instanceOrgMembers"
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc",
+        "ASC",
+        "DESC",
+        ""
+      ]
+    }
+  }
+}
+```
+### <a name="instance-organization-members-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "userId": "575ef90f7ae143cd83dc4aad",
+      "role": "view",
+      "applicationRoles": [
+        {
+          "resourceId": "575ef90f7ae143cd83dc4a4f",
+          "role": "none"
+        }
+      ],
+      "dashboardRoles": []
+    }
+  ],
+  "count": 8,
+  "sortField": "role",
+  "sortDirection": "asc"
 }
 ```
 
@@ -95046,8 +98417,27 @@ Schema for the body of an Organization modification request within an instance
         }
       }
     },
+    "whitelistedEmailDomains": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 45,
+        "minLength": 3
+      }
+    },
     "auditLogEnabled": {
       "type": "boolean"
+    },
+    "disabledAt": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "boolean"
+        }
+      ]
     }
   },
   "additionalProperties": false
@@ -95181,6 +98571,17 @@ Schema for the body of an Organization creation request within an instance
     },
     "auditLogEnabled": {
       "type": "boolean"
+    },
+    "disabledAt": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "boolean"
+        }
+      ]
     }
   },
   "additionalProperties": false,
@@ -95329,6 +98730,20 @@ Schema for a collection of Organizations within an instance
           },
           "auditLogEnabled": {
             "type": "boolean"
+          },
+          "disabledAt": {
+            "oneOf": [
+              {
+                "type": "boolean",
+                "enum": [
+                  false
+                ]
+              },
+              {
+                "type": "string",
+                "format": "date-time"
+              }
+            ]
           }
         },
         "additionalProperties": false,
@@ -95392,6 +98807,70 @@ Schema for a collection of Organizations within an instance
   "page": 0,
   "sortField": "name",
   "sortDirection": "asc"
+}
+```
+
+<br/>
+
+## Instance Report Options Post
+
+Schema for the body of a instance report request
+
+### <a name="instance-report-options-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "callbackUrl": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "resourceGroupBy": {
+      "type": "string",
+      "enum": [
+        "application",
+        "organization"
+      ]
+    },
+    "dateGroupBy": {
+      "type": "string",
+      "enum": [
+        "month"
+      ]
+    },
+    "includeSandbox": {
+      "type": "boolean"
+    },
+    "start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "end": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="instance-report-options-post-example"></a> Example
+
+```json
+{
+  "email": "email@example.com",
+  "callbackUrl": "https://www.example.com/callback",
+  "ressourceGroupBy": "organization",
+  "dateGroupBy": "month",
+  "includeSandbox": false,
+  "start": "2020-01-01T00:00:00.000Z",
+  "end": "2020-01-31T11:59:59.999Z"
 }
 ```
 
@@ -98373,6 +101852,315 @@ Schema for the body of a request to send a command to multiple Devices
               "required": [
                 "$ne"
               ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "disconnectedAt": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "connectedAt": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "connectionStatus": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
               "additionalProperties": false
             }
           ]
@@ -102434,15 +106222,6 @@ Schema for the body of an Organization modification request
     "iconColor": {
       "type": "string",
       "maxLength": 64
-    },
-    "whitelistedEmailDomains": {
-      "type": "array",
-      "maxItems": 25,
-      "items": {
-        "type": "string",
-        "maxLength": 45,
-        "minLength": 3
-      }
     }
   },
   "additionalProperties": false
@@ -104396,6 +108175,7 @@ Schema for the body of a User authentication request
                   "flow.patch",
                   "flow.pressVirtualButton",
                   "flow.setStorageEntry",
+                  "flow.getStorageEntriesMetadata",
                   "flow.stats",
                   "flows.get",
                   "flows.getByVersion",
@@ -104472,6 +108252,38 @@ Schema for the body of a User authentication request
           {
             "type": "string",
             "enum": [
+              "all.Instance",
+              "all.Instance.read",
+              "instance.*",
+              "instance.get",
+              "instance.historicalSummaries",
+              "instance.generateReport",
+              "instanceOrg.*",
+              "instanceOrg.get",
+              "instanceOrg.patch",
+              "instanceOrg.delete",
+              "instanceOrgs.*",
+              "instanceOrgs.get",
+              "instanceOrgs.post",
+              "instanceMember.*",
+              "instanceMember.get",
+              "instanceMember.patch",
+              "instanceMember.delete",
+              "instanceMembers.*",
+              "instanceMembers.get",
+              "instanceMembers.post",
+              "instanceOrgMember.*",
+              "instanceOrgMember.get",
+              "instanceOrgMember.patch",
+              "instanceOrgMember.delete",
+              "instanceOrgMembers.*",
+              "instanceOrgMembers.get",
+              "instanceOrgMembers.post"
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
               "all.User",
               "all.User.read",
               "applicationTemplate.*",
@@ -104480,19 +108292,9 @@ Schema for the body of a User authentication request
               "applicationTemplates.get",
               "applicationTemplates.getCategories",
               "applicationTemplates.getUniqueKeywords",
-              "me.*",
-              "orgs.*",
-              "instance.*",
-              "instance.get",
               "instances.*",
               "instances.get",
-              "instanceOrg.*",
-              "instanceOrg.get",
-              "instanceOrg.patch",
-              "instanceOrg.delete",
-              "instanceOrgs.*",
-              "instanceOrgs.get",
-              "instanceOrgs.post",
+              "me.*",
               "me.get",
               "me.patch",
               "me.delete",
@@ -104506,6 +108308,7 @@ Schema for the body of a User authentication request
               "me.fetchRecentItems",
               "me.payloadCounts",
               "me.transferResources",
+              "orgs.*",
               "orgs.get",
               "orgs.post"
             ]
@@ -104851,6 +108654,7 @@ Schema for the body of a User creation request
                   "flow.patch",
                   "flow.pressVirtualButton",
                   "flow.setStorageEntry",
+                  "flow.getStorageEntriesMetadata",
                   "flow.stats",
                   "flows.get",
                   "flows.getByVersion",
@@ -104927,6 +108731,38 @@ Schema for the body of a User creation request
           {
             "type": "string",
             "enum": [
+              "all.Instance",
+              "all.Instance.read",
+              "instance.*",
+              "instance.get",
+              "instance.historicalSummaries",
+              "instance.generateReport",
+              "instanceOrg.*",
+              "instanceOrg.get",
+              "instanceOrg.patch",
+              "instanceOrg.delete",
+              "instanceOrgs.*",
+              "instanceOrgs.get",
+              "instanceOrgs.post",
+              "instanceMember.*",
+              "instanceMember.get",
+              "instanceMember.patch",
+              "instanceMember.delete",
+              "instanceMembers.*",
+              "instanceMembers.get",
+              "instanceMembers.post",
+              "instanceOrgMember.*",
+              "instanceOrgMember.get",
+              "instanceOrgMember.patch",
+              "instanceOrgMember.delete",
+              "instanceOrgMembers.*",
+              "instanceOrgMembers.get",
+              "instanceOrgMembers.post"
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
               "all.User",
               "all.User.read",
               "applicationTemplate.*",
@@ -104935,19 +108771,9 @@ Schema for the body of a User creation request
               "applicationTemplates.get",
               "applicationTemplates.getCategories",
               "applicationTemplates.getUniqueKeywords",
-              "me.*",
-              "orgs.*",
-              "instance.*",
-              "instance.get",
               "instances.*",
               "instances.get",
-              "instanceOrg.*",
-              "instanceOrg.get",
-              "instanceOrg.patch",
-              "instanceOrg.delete",
-              "instanceOrgs.*",
-              "instanceOrgs.get",
-              "instanceOrgs.post",
+              "me.*",
               "me.get",
               "me.patch",
               "me.delete",
@@ -104961,6 +108787,7 @@ Schema for the body of a User creation request
               "me.fetchRecentItems",
               "me.payloadCounts",
               "me.transferResources",
+              "orgs.*",
               "orgs.get",
               "orgs.post"
             ]
