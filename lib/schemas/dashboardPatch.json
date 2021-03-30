@@ -928,8 +928,26 @@
                           "maxLength": 48
                         },
                         "type": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "$custom"
+                              ]
+                            }
+                          ]
+                        },
+                        "headerTemplate": {
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                          "maxLength": 1024
+                        },
+                        "rowTemplate": {
+                          "type": "string",
+                          "maxLength": 32767
                         }
                       },
                       "additionalProperties": false

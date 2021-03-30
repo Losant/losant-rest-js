@@ -95,8 +95,27 @@
         }
       }
     },
+    "whitelistedEmailDomains": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 45,
+        "minLength": 3
+      }
+    },
     "auditLogEnabled": {
       "type": "boolean"
+    },
+    "disabledAt": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "boolean"
+        }
+      ]
     }
   },
   "additionalProperties": false

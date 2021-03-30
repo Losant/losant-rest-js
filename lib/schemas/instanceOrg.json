@@ -110,6 +110,20 @@
     },
     "auditLogEnabled": {
       "type": "boolean"
+    },
+    "disabledAt": {
+      "oneOf": [
+        {
+          "type": "boolean",
+          "enum": [
+            false
+          ]
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
     }
   },
   "additionalProperties": false,
