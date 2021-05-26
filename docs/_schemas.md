@@ -9,9 +9,9 @@
 *   [Advanced Query](#advanced-query)
 *   [API Token](#api-token)
 *   [API Token Patch](#api-token-patch)
+*   [API Token Post](#api-token-post)
 *   [API Tokens](#api-tokens)
 *   [Application](#application)
-*   [Application API Token Post](#application-api-token-post)
 *   [Application Apply Template Patch Schema](#application-apply-template-patch-schema)
 *   [Application Certificate](#application-certificate)
 *   [Application Certificate Authorities](#application-certificate-authorities)
@@ -49,6 +49,7 @@
 *   [Audit Logs](#audit-logs)
 *   [Authenticated Device](#authenticated-device)
 *   [Authenticated User](#authenticated-user)
+*   [Bulk Deletion Response](#bulk-deletion-response)
 *   [Change Password](#change-password)
 *   [Composite Device State](#composite-device-state)
 *   [Dashboard](#dashboard)
@@ -96,7 +97,6 @@
 *   [Devices](#devices)
 *   [Devices Data Removed](#devices-data-removed)
 *   [Devices Delete Post](#devices-delete-post)
-*   [Devices Deleted](#devices-deleted)
 *   [Devices Metadata Export Post](#devices-metadata-export-post)
 *   [Devices Patch](#devices-patch)
 *   [Devices Remove Data Post](#devices-remove-data-post)
@@ -168,6 +168,7 @@
 *   [Workflow Version Patch](#workflow-version-patch)
 *   [Workflow Version Post](#workflow-version-post)
 *   [Workflow Versions](#workflow-versions)
+*   [Flow Versions Delete Post](#flow-versions-delete-post)
 *   [Workflows](#workflows)
 *   [Workflows Import Post](#workflows-import-post)
 *   [Workflow Import Result](#workflow-import-result)
@@ -187,6 +188,7 @@
 *   [Instance Owned Organization Patch](#instance-owned-organization-patch)
 *   [Instance Owned Organization Post](#instance-owned-organization-post)
 *   [Instance Organizations](#instance-organizations)
+*   [Instance Patch](#instance-patch)
 *   [Instance Report Options Post](#instance-report-options-post)
 *   [Instances](#instances)
 *   [Integration](#integration)
@@ -6644,7 +6646,8 @@ Schema for a single API Token
     "ownerType": {
       "type": "string",
       "enum": [
-        "application"
+        "application",
+        "user"
       ]
     },
     "creatorId": {
@@ -6772,6 +6775,449 @@ Schema for the body of an API Token modification request
 
 <br/>
 
+## API Token Post
+
+Schema for the body of an API Token creation request
+
+### <a name="api-token-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "expirationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "oneOf": [
+          {
+            "oneOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "all.Application",
+                  "all.Application.read",
+                  "all.Application.cli",
+                  "all.Device",
+                  "all.Device.read",
+                  "application.*",
+                  "applicationApiToken.*",
+                  "applicationApiTokens.*",
+                  "applicationCertificate.*",
+                  "applicationCertificates.*",
+                  "applicationCertificateAuthority.*",
+                  "applicationCertificateAuthorities.*",
+                  "applicationDashboards.*",
+                  "applicationDashboard.*",
+                  "applicationKey.*",
+                  "applicationKeys.*",
+                  "data.*",
+                  "dataTable.*",
+                  "dataTables.*",
+                  "dataTableRow.*",
+                  "dataTableRows.*",
+                  "device.*",
+                  "deviceRecipe.*",
+                  "deviceRecipes.*",
+                  "devices.*",
+                  "edgeDeployments.*",
+                  "event.*",
+                  "events.*",
+                  "experience.*",
+                  "experienceDomain.*",
+                  "experienceDomains.*",
+                  "experienceEndpoint.*",
+                  "experienceEndpoints.*",
+                  "experienceGroup.*",
+                  "experienceGroups.*",
+                  "experienceSlug.*",
+                  "experienceSlugs.*",
+                  "experienceUser.*",
+                  "experienceUsers.*",
+                  "experienceVersion.*",
+                  "experienceVersions.*",
+                  "experienceView.*",
+                  "experienceViews.*",
+                  "integration.*",
+                  "integrations.*",
+                  "file.*",
+                  "files.*",
+                  "flow.*",
+                  "flows.*",
+                  "flowVersion.*",
+                  "flowVersions.*",
+                  "notebook.*",
+                  "notebooks.*",
+                  "webhook.*",
+                  "webhooks.*",
+                  "application.applyTemplate",
+                  "application.archiveData",
+                  "application.backfillArchiveData",
+                  "application.clone",
+                  "application.export",
+                  "application.import",
+                  "application.fullEventsArchive",
+                  "application.fullDataTablesArchive",
+                  "application.debug",
+                  "application.delete",
+                  "application.get",
+                  "application.mqttPublishMessage",
+                  "application.mqttSubscriptionStream",
+                  "application.patch",
+                  "application.payloadCounts",
+                  "application.search",
+                  "applicationApiToken.delete",
+                  "applicationApiToken.get",
+                  "applicationApiToken.patch",
+                  "applicationApiTokens.get",
+                  "applicationApiTokens.post",
+                  "applicationCertificate.delete",
+                  "applicationCertificate.get",
+                  "applicationCertificate.patch",
+                  "applicationCertificates.get",
+                  "applicationCertificates.post",
+                  "applicationCertificateAuthority.delete",
+                  "applicationCertificateAuthority.get",
+                  "applicationCertificateAuthority.patch",
+                  "applicationCertificateAuthorities.get",
+                  "applicationCertificateAuthorities.post",
+                  "applicationDashboard.get",
+                  "applicationDashboard.patch",
+                  "applicationDashboard.delete",
+                  "applicationDashboards.get",
+                  "applicationDashboards.post",
+                  "applicationKey.delete",
+                  "applicationKey.get",
+                  "applicationKey.patch",
+                  "applicationKeys.get",
+                  "applicationKeys.post",
+                  "data.export",
+                  "data.lastValueQuery",
+                  "data.timeSeriesQuery",
+                  "dataTable.addColumn",
+                  "dataTable.delete",
+                  "dataTable.get",
+                  "dataTable.patch",
+                  "dataTable.removeColumn",
+                  "dataTableRow.delete",
+                  "dataTableRow.get",
+                  "dataTableRow.patch",
+                  "dataTableRows.get",
+                  "dataTableRows.post",
+                  "dataTableRows.query",
+                  "dataTableRows.export",
+                  "dataTableRows.delete",
+                  "dataTableRows.truncate",
+                  "dataTables.get",
+                  "dataTables.post",
+                  "device.commandStream",
+                  "device.debug",
+                  "device.delete",
+                  "device.export",
+                  "device.get",
+                  "device.getCommand",
+                  "device.getCompositeState",
+                  "device.getLogEntries",
+                  "device.getState",
+                  "device.patch",
+                  "device.removeData",
+                  "device.sendCommand",
+                  "device.sendState",
+                  "device.setConnectionStatus",
+                  "device.stateStream",
+                  "deviceRecipe.bulkCreate",
+                  "deviceRecipe.delete",
+                  "deviceRecipe.get",
+                  "deviceRecipe.patch",
+                  "deviceRecipes.get",
+                  "deviceRecipes.post",
+                  "devices.attributeNames",
+                  "devices.patch",
+                  "devices.delete",
+                  "devices.removeData",
+                  "devices.detailedSummary",
+                  "devices.export",
+                  "devices.get",
+                  "devices.post",
+                  "devices.sendCommand",
+                  "devices.tagKeys",
+                  "devices.tagValues",
+                  "edgeDeployments.get",
+                  "edgeDeployments.release",
+                  "edgeDeployments.remove",
+                  "edgeDeployments.replace",
+                  "event.delete",
+                  "event.get",
+                  "event.patch",
+                  "events.delete",
+                  "events.get",
+                  "events.mostRecentBySeverity",
+                  "events.patch",
+                  "events.post",
+                  "events.export",
+                  "experience.delete",
+                  "experience.bootstrap",
+                  "experienceDomain.delete",
+                  "experienceDomain.get",
+                  "experienceDomain.patch",
+                  "experienceDomains.get",
+                  "experienceDomains.post",
+                  "experienceEndpoint.delete",
+                  "experienceEndpoint.get",
+                  "experienceEndpoint.linkedResources",
+                  "experienceEndpoint.patch",
+                  "experienceEndpoints.get",
+                  "experienceEndpoints.post",
+                  "experienceEndpoints.stats",
+                  "experienceGroup.delete",
+                  "experienceGroup.get",
+                  "experienceGroup.patch",
+                  "experienceGroups.detailedSummary",
+                  "experienceGroups.get",
+                  "experienceGroups.post",
+                  "experienceSlug.delete",
+                  "experienceSlug.get",
+                  "experienceSlug.patch",
+                  "experienceSlugs.get",
+                  "experienceSlugs.post",
+                  "experienceUser.delete",
+                  "experienceUser.get",
+                  "experienceUser.patch",
+                  "experienceUsers.detailedSummary",
+                  "experienceUsers.get",
+                  "experienceUsers.post",
+                  "experienceVersion.delete",
+                  "experienceVersion.get",
+                  "experienceVersion.patch",
+                  "experienceVersions.get",
+                  "experienceVersions.post",
+                  "experienceView.debug",
+                  "experienceView.delete",
+                  "experienceView.get",
+                  "experienceView.linkedResources",
+                  "experienceView.patch",
+                  "experienceViews.debug",
+                  "experienceViews.detailedSummary",
+                  "experienceViews.get",
+                  "experienceViews.post",
+                  "file.get",
+                  "file.patch",
+                  "file.move",
+                  "file.delete",
+                  "file.upload",
+                  "files.get",
+                  "files.post",
+                  "flow.clearStorageEntries",
+                  "flow.debug",
+                  "flow.delete",
+                  "flow.errors",
+                  "flow.get",
+                  "flow.getStorageEntries",
+                  "flow.log",
+                  "flow.patch",
+                  "flow.pressVirtualButton",
+                  "flow.setStorageEntry",
+                  "flow.getStorageEntriesMetadata",
+                  "flow.stats",
+                  "flows.get",
+                  "flows.getByVersion",
+                  "flows.import",
+                  "flows.post",
+                  "flowVersion.delete",
+                  "flowVersion.errors",
+                  "flowVersion.get",
+                  "flowVersion.log",
+                  "flowVersion.patch",
+                  "flowVersion.stats",
+                  "flowVersions.delete",
+                  "flowVersions.get",
+                  "flowVersions.post",
+                  "integration.delete",
+                  "integration.get",
+                  "integration.patch",
+                  "integrations.get",
+                  "integrations.post",
+                  "notebook.delete",
+                  "notebook.execute",
+                  "notebook.get",
+                  "notebook.logs",
+                  "notebook.patch",
+                  "notebook.requestInputDataExport",
+                  "notebook.upload",
+                  "notebooks.get",
+                  "notebooks.post",
+                  "webhook.delete",
+                  "webhook.get",
+                  "webhook.patch",
+                  "webhooks.get",
+                  "webhooks.post"
+                ]
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "all.Organization",
+                  "all.Organization.read",
+                  "applications.*",
+                  "auditLog.*",
+                  "auditLogs.*",
+                  "dashboard.*",
+                  "dashboards.*",
+                  "org.*",
+                  "applications.get",
+                  "applications.post",
+                  "applications.import",
+                  "applications.detailedSummary",
+                  "auditLog.get",
+                  "auditLogs.get",
+                  "dashboard.patch",
+                  "dashboard.delete",
+                  "dashboard.sendReport",
+                  "dashboards.get",
+                  "dashboards.post",
+                  "org.get",
+                  "org.patch",
+                  "org.delete",
+                  "org.pendingInvites",
+                  "org.inviteMember",
+                  "org.revokeInvite",
+                  "org.modifyMember",
+                  "org.removeMember",
+                  "org.payloadCounts",
+                  "org.invoices",
+                  "org.currentCard",
+                  "org.chargeDetails",
+                  "org.transferResources"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
+              "all.Instance",
+              "all.Instance.read",
+              "instance.*",
+              "instance.get",
+              "instance.patch",
+              "instance.historicalSummaries",
+              "instance.generateReport",
+              "instanceOrg.*",
+              "instanceOrg.get",
+              "instanceOrg.patch",
+              "instanceOrg.delete",
+              "instanceOrgs.*",
+              "instanceOrgs.get",
+              "instanceOrgs.post",
+              "instanceMember.*",
+              "instanceMember.get",
+              "instanceMember.patch",
+              "instanceMember.delete",
+              "instanceMembers.*",
+              "instanceMembers.get",
+              "instanceMembers.post",
+              "instanceOrgMember.*",
+              "instanceOrgMember.get",
+              "instanceOrgMember.patch",
+              "instanceOrgMember.delete",
+              "instanceOrgMembers.*",
+              "instanceOrgMembers.get",
+              "instanceOrgMembers.post",
+              "instanceApiTokens.*",
+              "instanceApiTokens.get",
+              "instanceApiTokens.post",
+              "instanceApiToken.*",
+              "instanceApiToken.get",
+              "instanceApiToken.patch",
+              "instanceApiToken.delete"
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
+              "all.User",
+              "all.User.read",
+              "all.User.cli",
+              "userApiToken.*",
+              "userApiToken.get",
+              "userApiToken.patch",
+              "userApiToken.delete",
+              "userApiTokens.*",
+              "userApiTokens.get",
+              "userApiTokens.post",
+              "applicationTemplate.*",
+              "applicationTemplate.get",
+              "applicationTemplates.*",
+              "applicationTemplates.get",
+              "applicationTemplates.getCategories",
+              "applicationTemplates.getUniqueKeywords",
+              "instances.*",
+              "instances.get",
+              "me.*",
+              "me.get",
+              "me.patch",
+              "me.delete",
+              "me.verifyEmail",
+              "me.changePassword",
+              "me.enableTwoFactorAuth",
+              "me.disableTwoFactorAuth",
+              "me.disconnectGithub",
+              "me.connectGithub",
+              "me.addRecentItem",
+              "me.fetchRecentItems",
+              "me.payloadCounts",
+              "me.transferResources",
+              "orgs.*",
+              "orgs.get",
+              "orgs.post"
+            ]
+          }
+        ]
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name"
+  ]
+}
+```
+### <a name="api-token-post-example"></a> Example
+
+```json
+{
+  "name": "My New API Token",
+  "expirationDate": "2017-06-13T04:00:00.000Z",
+  "scope": [
+    "all.Application"
+  ],
+  "status": "active"
+}
+```
+
+<br/>
+
 ## API Tokens
 
 Schema for a collection of API Tokens
@@ -6805,7 +7251,8 @@ Schema for a collection of API Tokens
           "ownerType": {
             "type": "string",
             "enum": [
-              "application"
+              "application",
+              "user"
             ]
           },
           "creatorId": {
@@ -6905,7 +7352,8 @@ Schema for a collection of API Tokens
     "ownerType": {
       "type": "string",
       "enum": [
-        "application"
+        "application",
+        "user"
       ]
     }
   }
@@ -7345,322 +7793,6 @@ Schema for a single Application
       "575ec8687ae143cd83dc4a91"
     ]
   }
-}
-```
-
-<br/>
-
-## Application API Token Post
-
-Schema for the body of an Application API Token creation request
-
-### <a name="application-api-token-post-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "name": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 255
-    },
-    "description": {
-      "type": "string",
-      "maxLength": 32767
-    },
-    "expirationDate": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "scope": {
-      "type": "array",
-      "uniqueItems": true,
-      "items": {
-        "type": "string",
-        "enum": [
-          "all.Application",
-          "all.Application.read",
-          "all.Device",
-          "all.Device.read",
-          "application.*",
-          "applicationApiToken.*",
-          "applicationApiTokens.*",
-          "applicationCertificate.*",
-          "applicationCertificates.*",
-          "applicationCertificateAuthority.*",
-          "applicationCertificateAuthorities.*",
-          "applicationDashboards.*",
-          "applicationDashboard.*",
-          "applicationKey.*",
-          "applicationKeys.*",
-          "data.*",
-          "dataTable.*",
-          "dataTables.*",
-          "dataTableRow.*",
-          "dataTableRows.*",
-          "device.*",
-          "deviceRecipe.*",
-          "deviceRecipes.*",
-          "devices.*",
-          "edgeDeployments.*",
-          "event.*",
-          "events.*",
-          "experience.*",
-          "experienceDomain.*",
-          "experienceDomains.*",
-          "experienceEndpoint.*",
-          "experienceEndpoints.*",
-          "experienceGroup.*",
-          "experienceGroups.*",
-          "experienceSlug.*",
-          "experienceSlugs.*",
-          "experienceUser.*",
-          "experienceUsers.*",
-          "experienceVersion.*",
-          "experienceVersions.*",
-          "experienceView.*",
-          "experienceViews.*",
-          "integration.*",
-          "integrations.*",
-          "file.*",
-          "files.*",
-          "flow.*",
-          "flows.*",
-          "flowVersion.*",
-          "flowVersions.*",
-          "notebook.*",
-          "notebooks.*",
-          "webhook.*",
-          "webhooks.*",
-          "application.applyTemplate",
-          "application.archiveData",
-          "application.backfillArchiveData",
-          "application.clone",
-          "application.export",
-          "application.import",
-          "application.fullEventsArchive",
-          "application.fullDataTablesArchive",
-          "application.debug",
-          "application.delete",
-          "application.get",
-          "application.mqttPublishMessage",
-          "application.mqttSubscriptionStream",
-          "application.patch",
-          "application.payloadCounts",
-          "application.search",
-          "applicationApiToken.delete",
-          "applicationApiToken.get",
-          "applicationApiToken.patch",
-          "applicationApiTokens.get",
-          "applicationApiTokens.post",
-          "applicationCertificate.delete",
-          "applicationCertificate.get",
-          "applicationCertificate.patch",
-          "applicationCertificates.get",
-          "applicationCertificates.post",
-          "applicationCertificateAuthority.delete",
-          "applicationCertificateAuthority.get",
-          "applicationCertificateAuthority.patch",
-          "applicationCertificateAuthorities.get",
-          "applicationCertificateAuthorities.post",
-          "applicationDashboard.get",
-          "applicationDashboard.patch",
-          "applicationDashboard.delete",
-          "applicationDashboards.get",
-          "applicationDashboards.post",
-          "applicationKey.delete",
-          "applicationKey.get",
-          "applicationKey.patch",
-          "applicationKeys.get",
-          "applicationKeys.post",
-          "data.export",
-          "data.lastValueQuery",
-          "data.timeSeriesQuery",
-          "dataTable.addColumn",
-          "dataTable.delete",
-          "dataTable.get",
-          "dataTable.patch",
-          "dataTable.removeColumn",
-          "dataTableRow.delete",
-          "dataTableRow.get",
-          "dataTableRow.patch",
-          "dataTableRows.get",
-          "dataTableRows.post",
-          "dataTableRows.query",
-          "dataTableRows.export",
-          "dataTableRows.delete",
-          "dataTableRows.truncate",
-          "dataTables.get",
-          "dataTables.post",
-          "device.commandStream",
-          "device.debug",
-          "device.delete",
-          "device.export",
-          "device.get",
-          "device.getCommand",
-          "device.getCompositeState",
-          "device.getLogEntries",
-          "device.getState",
-          "device.patch",
-          "device.removeData",
-          "device.sendCommand",
-          "device.sendState",
-          "device.setConnectionStatus",
-          "device.stateStream",
-          "deviceRecipe.bulkCreate",
-          "deviceRecipe.delete",
-          "deviceRecipe.get",
-          "deviceRecipe.patch",
-          "deviceRecipes.get",
-          "deviceRecipes.post",
-          "devices.attributeNames",
-          "devices.patch",
-          "devices.delete",
-          "devices.removeData",
-          "devices.detailedSummary",
-          "devices.export",
-          "devices.get",
-          "devices.post",
-          "devices.sendCommand",
-          "devices.tagKeys",
-          "devices.tagValues",
-          "edgeDeployments.get",
-          "edgeDeployments.release",
-          "edgeDeployments.remove",
-          "edgeDeployments.replace",
-          "event.delete",
-          "event.get",
-          "event.patch",
-          "events.delete",
-          "events.get",
-          "events.mostRecentBySeverity",
-          "events.patch",
-          "events.post",
-          "events.export",
-          "experience.delete",
-          "experience.bootstrap",
-          "experienceDomain.delete",
-          "experienceDomain.get",
-          "experienceDomain.patch",
-          "experienceDomains.get",
-          "experienceDomains.post",
-          "experienceEndpoint.delete",
-          "experienceEndpoint.get",
-          "experienceEndpoint.linkedResources",
-          "experienceEndpoint.patch",
-          "experienceEndpoints.get",
-          "experienceEndpoints.post",
-          "experienceEndpoints.stats",
-          "experienceGroup.delete",
-          "experienceGroup.get",
-          "experienceGroup.patch",
-          "experienceGroups.detailedSummary",
-          "experienceGroups.get",
-          "experienceGroups.post",
-          "experienceSlug.delete",
-          "experienceSlug.get",
-          "experienceSlug.patch",
-          "experienceSlugs.get",
-          "experienceSlugs.post",
-          "experienceUser.delete",
-          "experienceUser.get",
-          "experienceUser.patch",
-          "experienceUsers.detailedSummary",
-          "experienceUsers.get",
-          "experienceUsers.post",
-          "experienceVersion.delete",
-          "experienceVersion.get",
-          "experienceVersion.patch",
-          "experienceVersions.get",
-          "experienceVersions.post",
-          "experienceView.debug",
-          "experienceView.delete",
-          "experienceView.get",
-          "experienceView.linkedResources",
-          "experienceView.patch",
-          "experienceViews.debug",
-          "experienceViews.detailedSummary",
-          "experienceViews.get",
-          "experienceViews.post",
-          "file.get",
-          "file.patch",
-          "file.move",
-          "file.delete",
-          "file.upload",
-          "files.get",
-          "files.post",
-          "flow.clearStorageEntries",
-          "flow.debug",
-          "flow.delete",
-          "flow.errors",
-          "flow.get",
-          "flow.getStorageEntries",
-          "flow.log",
-          "flow.patch",
-          "flow.pressVirtualButton",
-          "flow.setStorageEntry",
-          "flow.getStorageEntriesMetadata",
-          "flow.stats",
-          "flows.get",
-          "flows.getByVersion",
-          "flows.import",
-          "flows.post",
-          "flowVersion.delete",
-          "flowVersion.errors",
-          "flowVersion.get",
-          "flowVersion.log",
-          "flowVersion.patch",
-          "flowVersion.stats",
-          "flowVersions.get",
-          "flowVersions.post",
-          "integration.delete",
-          "integration.get",
-          "integration.patch",
-          "integrations.get",
-          "integrations.post",
-          "notebook.delete",
-          "notebook.execute",
-          "notebook.get",
-          "notebook.logs",
-          "notebook.patch",
-          "notebook.requestInputDataExport",
-          "notebook.upload",
-          "notebooks.get",
-          "notebooks.post",
-          "webhook.delete",
-          "webhook.get",
-          "webhook.patch",
-          "webhooks.get",
-          "webhooks.post"
-        ]
-      }
-    },
-    "status": {
-      "type": "string",
-      "enum": [
-        "active",
-        "inactive"
-      ]
-    }
-  },
-  "additionalProperties": false,
-  "required": [
-    "name"
-  ]
-}
-```
-### <a name="application-api-token-post-example"></a> Example
-
-```json
-{
-  "name": "My New API Token",
-  "expirationDate": "2017-06-13T04:00:00.000Z",
-  "scope": [
-    "all.Application"
-  ],
-  "status": "active"
 }
 ```
 
@@ -9345,7 +9477,7 @@ Schema for the body of an Application scoped Dashboard creation request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -9356,7 +9488,7 @@ Schema for the body of an Application scoped Dashboard creation request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -10797,7 +10929,7 @@ Schema for the body of an Application scoped Dashboard creation request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -10808,7 +10940,7 @@ Schema for the body of an Application scoped Dashboard creation request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -10829,7 +10961,7 @@ Schema for the body of an Application scoped Dashboard creation request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -11292,7 +11424,7 @@ Schema for the body of an Application scoped Dashboard creation request
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -11303,7 +11435,7 @@ Schema for the body of an Application scoped Dashboard creation request
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -11450,7 +11582,7 @@ Schema for the body of an Application scoped Dashboard creation request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -12225,7 +12357,7 @@ Schema for the body of an Application scoped Dashboard creation request
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -12236,7 +12368,7 @@ Schema for the body of an Application scoped Dashboard creation request
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -12844,7 +12976,7 @@ Schema for the body of an Application scoped Dashboard creation request
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -12855,7 +12987,7 @@ Schema for the body of an Application scoped Dashboard creation request
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -12866,7 +12998,7 @@ Schema for the body of an Application scoped Dashboard creation request
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -12877,7 +13009,7 @@ Schema for the body of an Application scoped Dashboard creation request
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             }
@@ -13724,7 +13856,7 @@ Schema for the body of an Application scoped Dashboard creation request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -14235,7 +14367,7 @@ Schema for the body of an Application scoped Dashboard creation request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -14548,6 +14680,10 @@ Schema for the body of an Application scoped Dashboard creation request
           "timezone": {
             "type": "string",
             "maxLength": 255
+          },
+          "locale": {
+            "type": "string",
+            "maxLength": 5
           }
         },
         "additionalProperties": false,
@@ -17380,7 +17516,10 @@ Schema for a single Audit Log entry
       "type": "string",
       "enum": [
         "ApiToken",
+        "ApplicationCertificateAuthority",
+        "ApplicationCertificate",
         "ApplicationKey",
+        "Dashboard",
         "DataTable",
         "Device",
         "DeviceRecipe",
@@ -17395,6 +17534,7 @@ Schema for a single Audit Log entry
         "File",
         "Flow",
         "Integration",
+        "Notebook",
         "Webhook"
       ]
     },
@@ -17527,7 +17667,10 @@ Schema for the filter of an audit log query
             "type": "string",
             "enum": [
               "ApiToken",
+              "ApplicationCertificateAuthority",
+              "ApplicationCertificate",
               "ApplicationKey",
+              "Dashboard",
               "DataTable",
               "Device",
               "DeviceRecipe",
@@ -17542,6 +17685,7 @@ Schema for the filter of an audit log query
               "File",
               "Flow",
               "Integration",
+              "Notebook",
               "Webhook"
             ]
           },
@@ -17691,7 +17835,10 @@ Schema for a collection of Audit Logs
             "type": "string",
             "enum": [
               "ApiToken",
+              "ApplicationCertificateAuthority",
+              "ApplicationCertificate",
               "ApplicationKey",
+              "Dashboard",
               "DataTable",
               "Device",
               "DeviceRecipe",
@@ -17706,6 +17853,7 @@ Schema for a collection of Audit Logs
               "File",
               "Flow",
               "Integration",
+              "Notebook",
               "Webhook"
             ]
           },
@@ -17977,6 +18125,36 @@ Schema for the successful response when authenticating a User
 
 <br/>
 
+## Bulk Deletion Response
+
+Schema for the response to a bulk deletion
+
+### <a name="bulk-deletion-response-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "removed": {
+      "type": "number"
+    },
+    "failed": {
+      "type": "number"
+    }
+  }
+}
+```
+### <a name="bulk-deletion-response-example"></a> Example
+
+```json
+{
+  "removed": 3
+}
+```
+
+<br/>
+
 ## Change Password
 
 Schema for the body of a request to change the current user&#x27;s password
@@ -18221,6 +18399,10 @@ Schema for a single Dashboard
           "timezone": {
             "type": "string",
             "maxLength": 255
+          },
+          "locale": {
+            "type": "string",
+            "maxLength": 5
           }
         },
         "additionalProperties": false,
@@ -18353,7 +18535,7 @@ Schema for a single Dashboard
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -18364,7 +18546,7 @@ Schema for a single Dashboard
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -19805,7 +19987,7 @@ Schema for a single Dashboard
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -19816,7 +19998,7 @@ Schema for a single Dashboard
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -19837,7 +20019,7 @@ Schema for a single Dashboard
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -20300,7 +20482,7 @@ Schema for a single Dashboard
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -20311,7 +20493,7 @@ Schema for a single Dashboard
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -20458,7 +20640,7 @@ Schema for a single Dashboard
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -21233,7 +21415,7 @@ Schema for a single Dashboard
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -21244,7 +21426,7 @@ Schema for a single Dashboard
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -21852,7 +22034,7 @@ Schema for a single Dashboard
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -21863,7 +22045,7 @@ Schema for a single Dashboard
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -21874,7 +22056,7 @@ Schema for a single Dashboard
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -21885,7 +22067,7 @@ Schema for a single Dashboard
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             }
@@ -22732,7 +22914,7 @@ Schema for a single Dashboard
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -23243,7 +23425,7 @@ Schema for a single Dashboard
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -23850,7 +24032,7 @@ Schema for a single Dashboard
       "toEmail": [
         "test@email.com"
       ],
-      "cron": "0 0 12 * * MON-FRI *",
+      "cron": "0 0 12 * * TUE-THU",
       "theme": "dark",
       "subject": "Daily Dashboard Report"
     }
@@ -24133,7 +24315,7 @@ Schema for the body of a Dashboard modification request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -24144,7 +24326,7 @@ Schema for the body of a Dashboard modification request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -25585,7 +25767,7 @@ Schema for the body of a Dashboard modification request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -25596,7 +25778,7 @@ Schema for the body of a Dashboard modification request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -25617,7 +25799,7 @@ Schema for the body of a Dashboard modification request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -26080,7 +26262,7 @@ Schema for the body of a Dashboard modification request
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -26091,7 +26273,7 @@ Schema for the body of a Dashboard modification request
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -26238,7 +26420,7 @@ Schema for the body of a Dashboard modification request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -27013,7 +27195,7 @@ Schema for the body of a Dashboard modification request
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -27024,7 +27206,7 @@ Schema for the body of a Dashboard modification request
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -27632,7 +27814,7 @@ Schema for the body of a Dashboard modification request
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -27643,7 +27825,7 @@ Schema for the body of a Dashboard modification request
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -27654,7 +27836,7 @@ Schema for the body of a Dashboard modification request
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -27665,7 +27847,7 @@ Schema for the body of a Dashboard modification request
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             }
@@ -28512,7 +28694,7 @@ Schema for the body of a Dashboard modification request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -29023,7 +29205,7 @@ Schema for the body of a Dashboard modification request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -29320,6 +29502,10 @@ Schema for the body of a Dashboard modification request
           "timezone": {
             "type": "string",
             "maxLength": 255
+          },
+          "locale": {
+            "type": "string",
+            "maxLength": 5
           }
         },
         "additionalProperties": false,
@@ -29842,7 +30028,7 @@ Schema for the body of a Dashboard creation request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -29853,7 +30039,7 @@ Schema for the body of a Dashboard creation request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -31294,7 +31480,7 @@ Schema for the body of a Dashboard creation request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -31305,7 +31491,7 @@ Schema for the body of a Dashboard creation request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -31326,7 +31512,7 @@ Schema for the body of a Dashboard creation request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -31789,7 +31975,7 @@ Schema for the body of a Dashboard creation request
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -31800,7 +31986,7 @@ Schema for the body of a Dashboard creation request
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -31947,7 +32133,7 @@ Schema for the body of a Dashboard creation request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -32722,7 +32908,7 @@ Schema for the body of a Dashboard creation request
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -32733,7 +32919,7 @@ Schema for the body of a Dashboard creation request
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -33341,7 +33527,7 @@ Schema for the body of a Dashboard creation request
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -33352,7 +33538,7 @@ Schema for the body of a Dashboard creation request
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -33363,7 +33549,7 @@ Schema for the body of a Dashboard creation request
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -33374,7 +33560,7 @@ Schema for the body of a Dashboard creation request
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             }
@@ -34221,7 +34407,7 @@ Schema for the body of a Dashboard creation request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -34732,7 +34918,7 @@ Schema for the body of a Dashboard creation request
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -35045,6 +35231,10 @@ Schema for the body of a Dashboard creation request
           "timezone": {
             "type": "string",
             "maxLength": 255
+          },
+          "locale": {
+            "type": "string",
+            "maxLength": 5
           }
         },
         "additionalProperties": false,
@@ -35450,6 +35640,10 @@ Schema for the body of a Dashboard report request
     "timezone": {
       "type": "string",
       "max": 255
+    },
+    "locale": {
+      "type": "string",
+      "max": 5
     }
   },
   "additionalProperties": false
@@ -35466,7 +35660,8 @@ Schema for the body of a Dashboard report request
   "message": "Lookit",
   "time": 1551887386704,
   "theme": "dark",
-  "timezone": "America/New_York"
+  "timezone": "America/New_York",
+  "locale": "en-us"
 }
 ```
 
@@ -35674,6 +35869,10 @@ Schema for a collection of Dashboards
                 "timezone": {
                   "type": "string",
                   "maxLength": 255
+                },
+                "locale": {
+                  "type": "string",
+                  "maxLength": 5
                 }
               },
               "additionalProperties": false,
@@ -35806,7 +36005,7 @@ Schema for a collection of Dashboards
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -35817,7 +36016,7 @@ Schema for a collection of Dashboards
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -37258,7 +37457,7 @@ Schema for a collection of Dashboards
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -37269,7 +37468,7 @@ Schema for a collection of Dashboards
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -37290,7 +37489,7 @@ Schema for a collection of Dashboards
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -37753,7 +37952,7 @@ Schema for a collection of Dashboards
                                   },
                                   {
                                     "type": "string",
-                                    "maxLength": 64
+                                    "maxLength": 128
                                   }
                                 ]
                               },
@@ -37764,7 +37963,7 @@ Schema for a collection of Dashboards
                                   },
                                   {
                                     "type": "string",
-                                    "maxLength": 64
+                                    "maxLength": 128
                                   }
                                 ]
                               },
@@ -37911,7 +38110,7 @@ Schema for a collection of Dashboards
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -38686,7 +38885,7 @@ Schema for a collection of Dashboards
                                       },
                                       {
                                         "type": "string",
-                                        "maxLength": 64
+                                        "maxLength": 128
                                       }
                                     ]
                                   },
@@ -38697,7 +38896,7 @@ Schema for a collection of Dashboards
                                       },
                                       {
                                         "type": "string",
-                                        "maxLength": 64
+                                        "maxLength": 128
                                       }
                                     ]
                                   },
@@ -39305,7 +39504,7 @@ Schema for a collection of Dashboards
                                       },
                                       {
                                         "type": "string",
-                                        "maxLength": 64
+                                        "maxLength": 128
                                       }
                                     ]
                                   },
@@ -39316,7 +39515,7 @@ Schema for a collection of Dashboards
                                       },
                                       {
                                         "type": "string",
-                                        "maxLength": 64
+                                        "maxLength": 128
                                       }
                                     ]
                                   },
@@ -39327,7 +39526,7 @@ Schema for a collection of Dashboards
                                       },
                                       {
                                         "type": "string",
-                                        "maxLength": 64
+                                        "maxLength": 128
                                       }
                                     ]
                                   },
@@ -39338,7 +39537,7 @@ Schema for a collection of Dashboards
                                       },
                                       {
                                         "type": "string",
-                                        "maxLength": 64
+                                        "maxLength": 128
                                       }
                                     ]
                                   }
@@ -40185,7 +40384,7 @@ Schema for a collection of Dashboards
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -40696,7 +40895,7 @@ Schema for a collection of Dashboards
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -41347,7 +41546,7 @@ Schema for a collection of Dashboards
           "toEmail": [
             "test@email.com"
           ],
-          "cron": "0 0 12 * * MON-FRI *",
+          "cron": "0 0 12 * * TUE-THU",
           "theme": "dark",
           "subject": "Daily Dashboard Report"
         }
@@ -47344,36 +47543,6 @@ Schema for the body of a bulk device delete request
     }
   },
   "email": "email@example.com"
-}
-```
-
-<br/>
-
-## Devices Deleted
-
-Schema for response to devices removal
-
-### <a name="devices-deleted-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "removed": {
-      "type": "number"
-    },
-    "failed": {
-      "type": "number"
-    }
-  }
-}
-```
-### <a name="devices-deleted-example"></a> Example
-
-```json
-{
-  "removed": 3
 }
 ```
 
@@ -56390,6 +56559,12 @@ Schema for a single Experience Group
           "type": "null"
         }
       ]
+    },
+    "directDeviceCount": {
+      "type": "number"
+    },
+    "totalDeviceCount": {
+      "type": "number"
     }
   }
 }
@@ -56786,6 +56961,12 @@ Schema for a collection of Experience Groups
                 "type": "null"
               }
             ]
+          },
+          "directDeviceCount": {
+            "type": "number"
+          },
+          "totalDeviceCount": {
+            "type": "number"
           }
         }
       }
@@ -83237,6 +83418,970 @@ Schema for a collection of Workflow Versions
 
 <br/>
 
+## Flow Versions Delete Post
+
+Schema for the body of a bulk flow versions delete request
+
+### <a name="flow-versions-delete-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "query": {
+      "title": "Advanced Workflow Version Query",
+      "description": "Schema for advanced workflow queries",
+      "type": "object",
+      "properties": {
+        "$and": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/advancedFlowVersionQuery"
+          },
+          "maxItems": 100
+        },
+        "$or": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/advancedFlowVersionQuery"
+          },
+          "maxItems": 100
+        },
+        "$nor": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/advancedFlowVersionQuery"
+          },
+          "maxItems": 100
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "id": {
+          "oneOf": [
+            {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "minProperties": 1,
+              "maxProperties": 1
+            }
+          ]
+        },
+        "creationDate": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "lastUpdated": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "flowClass": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "enabled": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "version": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$ne": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lt": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$gte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$lte": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "$startsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$endsWith": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$contains": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$ci": {
+                  "type": "boolean"
+                },
+                "$in": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "$nin": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "triggers": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "key": {
+                  "type": "string",
+                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                },
+                "config": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}$": {
+                      "type": [
+                        "string",
+                        "number",
+                        "boolean",
+                        "null"
+                      ],
+                      "maxLength": 1024
+                    }
+                  }
+                }
+              },
+              "required": [
+                "type"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "key": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "config": {
+                      "type": "object",
+                      "patternProperties": {
+                        "^[0-9a-zA-Z_-]{1,255}$": {
+                          "type": [
+                            "string",
+                            "number",
+                            "boolean",
+                            "null"
+                          ],
+                          "maxLength": 1024
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "$eq"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$ne": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "key": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "config": {
+                      "type": "object",
+                      "patternProperties": {
+                        "^[0-9a-zA-Z_-]{1,255}$": {
+                          "type": [
+                            "string",
+                            "number",
+                            "boolean",
+                            "null"
+                          ],
+                          "maxLength": 1024
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "$ne"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "nodes": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "config": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}$": {
+                      "type": [
+                        "string",
+                        "number",
+                        "boolean",
+                        "null"
+                      ],
+                      "maxLength": 1024
+                    }
+                  }
+                }
+              },
+              "required": [
+                "type"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$eq": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "config": {
+                      "type": "object",
+                      "patternProperties": {
+                        "^[0-9a-zA-Z_-]{1,255}$": {
+                          "type": [
+                            "string",
+                            "number",
+                            "boolean",
+                            "null"
+                          ],
+                          "maxLength": 1024
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "$eq"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "$ne": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "config": {
+                      "type": "object",
+                      "patternProperties": {
+                        "^[0-9a-zA-Z_-]{1,255}$": {
+                          "type": [
+                            "string",
+                            "number",
+                            "boolean",
+                            "null"
+                          ],
+                          "maxLength": 1024
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "$ne"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "query"
+  ]
+}
+```
+### <a name="flow-versions-delete-post-example"></a> Example
+
+```json
+{
+  "query": {
+    "version": {
+      "$ne": "versionToKeep"
+    }
+  },
+  "email": "email@example.com"
+}
+```
+
+<br/>
+
 ## Workflows
 
 Schema for a collection of Workflows
@@ -96291,6 +97436,7 @@ Schema for the body of a Github login request
                 "enum": [
                   "all.Application",
                   "all.Application.read",
+                  "all.Application.cli",
                   "all.Device",
                   "all.Device.read",
                   "application.*",
@@ -96522,6 +97668,7 @@ Schema for the body of a Github login request
                   "flowVersion.log",
                   "flowVersion.patch",
                   "flowVersion.stats",
+                  "flowVersions.delete",
                   "flowVersions.get",
                   "flowVersions.post",
                   "integration.delete",
@@ -96591,6 +97738,7 @@ Schema for the body of a Github login request
               "all.Instance.read",
               "instance.*",
               "instance.get",
+              "instance.patch",
               "instance.historicalSummaries",
               "instance.generateReport",
               "instanceOrg.*",
@@ -96613,7 +97761,14 @@ Schema for the body of a Github login request
               "instanceOrgMember.delete",
               "instanceOrgMembers.*",
               "instanceOrgMembers.get",
-              "instanceOrgMembers.post"
+              "instanceOrgMembers.post",
+              "instanceApiTokens.*",
+              "instanceApiTokens.get",
+              "instanceApiTokens.post",
+              "instanceApiToken.*",
+              "instanceApiToken.get",
+              "instanceApiToken.patch",
+              "instanceApiToken.delete"
             ]
           },
           {
@@ -96621,6 +97776,14 @@ Schema for the body of a Github login request
             "enum": [
               "all.User",
               "all.User.read",
+              "all.User.cli",
+              "userApiToken.*",
+              "userApiToken.get",
+              "userApiToken.patch",
+              "userApiToken.delete",
+              "userApiTokens.*",
+              "userApiTokens.get",
+              "userApiTokens.post",
               "applicationTemplate.*",
               "applicationTemplate.get",
               "applicationTemplates.*",
@@ -96955,6 +98118,9 @@ Schema for a historical summary report
       "type": "number"
     },
     "dashboardCount": {
+      "type": "number"
+    },
+    "dashboardCountProrated": {
       "type": "number"
     },
     "dataTableCount": {
@@ -97360,6 +98526,66 @@ Schema for a single Instance
     },
     "allowAuditLogging": {
       "type": "boolean"
+    },
+    "reportConfigs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "max": 10,
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 48
+          },
+          "cron": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "timezone": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "emails": {
+            "type": "array",
+            "max": 10,
+            "items": {
+              "type": "string",
+              "format": "email",
+              "maxLength": 1024
+            }
+          },
+          "callbackUrl": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "resourceGroupBy": {
+            "type": "string",
+            "enum": [
+              "application",
+              "organization"
+            ]
+          },
+          "dateGroupBy": {
+            "type": "string",
+            "enum": [
+              "day",
+              "month"
+            ]
+          },
+          "periods": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 90
+          },
+          "includeSandbox": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "cron"
+        ],
+        "additionalProperties": false
+      }
     },
     "limits": {
       "organization": {
@@ -98240,7 +99466,8 @@ Schema for an Instance Organization member creation request
       "resourceId": "575ef90f7ae143cd83dc4a4f",
       "role": "none"
     }
-  ]
+  ],
+  "userId": "675ed18f7ae143cd83dc4bb7"
 }
 ```
 
@@ -98561,6 +99788,172 @@ Schema for the body of an Organization creation request within an instance
         }
       }
     },
+    "members": {
+      "type": "array",
+      "max": "10",
+      "items": {
+        "title": "Instance Org Member Post",
+        "description": "Schema for an Instance Organization member creation request",
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "userId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "admin",
+                  "edit",
+                  "collaborate",
+                  "view",
+                  "none"
+                ]
+              },
+              "applicationRoles": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "resourceId": {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    "role": {
+                      "type": "string",
+                      "enum": [
+                        "collaborate",
+                        "view",
+                        "none"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "resourceId",
+                    "role"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 1000
+              },
+              "dashboardRoles": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "resourceId": {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    "role": {
+                      "type": "string",
+                      "enum": [
+                        "collaborate",
+                        "view",
+                        "none"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "resourceId",
+                    "role"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 1000
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "userId",
+              "role"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "string",
+                "format": "email",
+                "maxLength": 1024
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "admin",
+                  "edit",
+                  "collaborate",
+                  "view",
+                  "none"
+                ]
+              },
+              "applicationRoles": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "resourceId": {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    "role": {
+                      "type": "string",
+                      "enum": [
+                        "collaborate",
+                        "view",
+                        "none"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "resourceId",
+                    "role"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 1000
+              },
+              "dashboardRoles": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "resourceId": {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    "role": {
+                      "type": "string",
+                      "enum": [
+                        "collaborate",
+                        "view",
+                        "none"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "resourceId",
+                    "role"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 1000
+              },
+              "disallowTransfer": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "email",
+              "role"
+            ]
+          }
+        ]
+      }
+    },
     "whitelistedEmailDomains": {
       "type": "array",
       "items": {
@@ -98596,7 +99989,7 @@ Schema for the body of an Organization creation request within an instance
 {
   "name": "My Org",
   "limits": {
-    "members": 500
+    "member": 500
   },
   "auditLogEnabled": true
 }
@@ -98812,6 +100205,111 @@ Schema for a collection of Organizations within an instance
 
 <br/>
 
+## Instance Patch
+
+Schema for instance patch request
+
+### <a name="instance-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "reportConfigs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "max": 10,
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 48
+          },
+          "cron": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "timezone": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "emails": {
+            "type": "array",
+            "max": 10,
+            "items": {
+              "type": "string",
+              "format": "email",
+              "maxLength": 1024
+            }
+          },
+          "callbackUrl": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "resourceGroupBy": {
+            "type": "string",
+            "enum": [
+              "application",
+              "organization"
+            ]
+          },
+          "dateGroupBy": {
+            "type": "string",
+            "enum": [
+              "day",
+              "month"
+            ]
+          },
+          "periods": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 90
+          },
+          "includeSandbox": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "cron"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="instance-patch-example"></a> Example
+
+```json
+{
+  "reportConfigs": [
+    {
+      "email": [
+        "email@example.com"
+      ],
+      "callbackUrl": "https://www.example.com/callback",
+      "resourceGroupBy": "organization",
+      "dateGroupBy": "month",
+      "includeSandbox": false,
+      "periods": 3
+    },
+    {
+      "email": [
+        "email@example.com",
+        "anotheremail@example.com"
+      ],
+      "resourceGroupBy": "application",
+      "dateGroupBy": "month",
+      "includeSandbox": true
+    }
+  ]
+}
+```
+
+<br/>
+
 ## Instance Report Options Post
 
 Schema for the body of a instance report request
@@ -98842,6 +100340,7 @@ Schema for the body of a instance report request
     "dateGroupBy": {
       "type": "string",
       "enum": [
+        "day",
         "month"
       ]
     },
@@ -98866,7 +100365,7 @@ Schema for the body of a instance report request
 {
   "email": "email@example.com",
   "callbackUrl": "https://www.example.com/callback",
-  "ressourceGroupBy": "organization",
+  "resourceGroupBy": "organization",
   "dateGroupBy": "month",
   "includeSandbox": false,
   "start": "2020-01-01T00:00:00.000Z",
@@ -102819,6 +104318,21 @@ Schema for a single Notebook
           }
         ]
       }
+    },
+    "stats": {
+      "type": "object",
+      "properties": {
+        "minutesThisPeriod": {
+          "type": "number"
+        },
+        "runsThisPeriod": {
+          "type": "number"
+        },
+        "errorsThisPeriod": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
     }
   }
 }
@@ -102943,7 +104457,12 @@ Schema for a single Notebook
       "outputType": "directory",
       "destinationDirectoryTemplate": "/{{notebook.name}}/{{execution.runStartedAt}}"
     }
-  ]
+  ],
+  "stats": {
+    "minutesThisPeriod": 3,
+    "runsThisPeriod": 2,
+    "errorsThisPeriod": 1
+  }
 }
 ```
 
@@ -105068,6 +106587,21 @@ Schema for a collection of Notebooks
                 }
               ]
             }
+          },
+          "stats": {
+            "type": "object",
+            "properties": {
+              "minutesThisPeriod": {
+                "type": "number"
+              },
+              "runsThisPeriod": {
+                "type": "number"
+              },
+              "errorsThisPeriod": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
           }
         }
       }
@@ -105232,7 +106766,12 @@ Schema for a collection of Notebooks
           "outputType": "directory",
           "destinationDirectoryTemplate": "/{{notebook.name}}/{{execution.runStartedAt}}"
         }
-      ]
+      ],
+      "stats": {
+        "minutesThisPeriod": 3,
+        "runsThisPeriod": 2,
+        "errorsThisPeriod": 1
+      }
     }
   ],
   "count": 1,
@@ -107956,6 +109495,7 @@ Schema for the body of a User authentication request
                 "enum": [
                   "all.Application",
                   "all.Application.read",
+                  "all.Application.cli",
                   "all.Device",
                   "all.Device.read",
                   "application.*",
@@ -108187,6 +109727,7 @@ Schema for the body of a User authentication request
                   "flowVersion.log",
                   "flowVersion.patch",
                   "flowVersion.stats",
+                  "flowVersions.delete",
                   "flowVersions.get",
                   "flowVersions.post",
                   "integration.delete",
@@ -108256,6 +109797,7 @@ Schema for the body of a User authentication request
               "all.Instance.read",
               "instance.*",
               "instance.get",
+              "instance.patch",
               "instance.historicalSummaries",
               "instance.generateReport",
               "instanceOrg.*",
@@ -108278,7 +109820,14 @@ Schema for the body of a User authentication request
               "instanceOrgMember.delete",
               "instanceOrgMembers.*",
               "instanceOrgMembers.get",
-              "instanceOrgMembers.post"
+              "instanceOrgMembers.post",
+              "instanceApiTokens.*",
+              "instanceApiTokens.get",
+              "instanceApiTokens.post",
+              "instanceApiToken.*",
+              "instanceApiToken.get",
+              "instanceApiToken.patch",
+              "instanceApiToken.delete"
             ]
           },
           {
@@ -108286,6 +109835,14 @@ Schema for the body of a User authentication request
             "enum": [
               "all.User",
               "all.User.read",
+              "all.User.cli",
+              "userApiToken.*",
+              "userApiToken.get",
+              "userApiToken.patch",
+              "userApiToken.delete",
+              "userApiTokens.*",
+              "userApiTokens.get",
+              "userApiTokens.post",
               "applicationTemplate.*",
               "applicationTemplate.get",
               "applicationTemplates.*",
@@ -108435,6 +109992,7 @@ Schema for the body of a User creation request
                 "enum": [
                   "all.Application",
                   "all.Application.read",
+                  "all.Application.cli",
                   "all.Device",
                   "all.Device.read",
                   "application.*",
@@ -108666,6 +110224,7 @@ Schema for the body of a User creation request
                   "flowVersion.log",
                   "flowVersion.patch",
                   "flowVersion.stats",
+                  "flowVersions.delete",
                   "flowVersions.get",
                   "flowVersions.post",
                   "integration.delete",
@@ -108735,6 +110294,7 @@ Schema for the body of a User creation request
               "all.Instance.read",
               "instance.*",
               "instance.get",
+              "instance.patch",
               "instance.historicalSummaries",
               "instance.generateReport",
               "instanceOrg.*",
@@ -108757,7 +110317,14 @@ Schema for the body of a User creation request
               "instanceOrgMember.delete",
               "instanceOrgMembers.*",
               "instanceOrgMembers.get",
-              "instanceOrgMembers.post"
+              "instanceOrgMembers.post",
+              "instanceApiTokens.*",
+              "instanceApiTokens.get",
+              "instanceApiTokens.post",
+              "instanceApiToken.*",
+              "instanceApiToken.get",
+              "instanceApiToken.patch",
+              "instanceApiToken.delete"
             ]
           },
           {
@@ -108765,6 +110332,14 @@ Schema for the body of a User creation request
             "enum": [
               "all.User",
               "all.User.read",
+              "all.User.cli",
+              "userApiToken.*",
+              "userApiToken.get",
+              "userApiToken.patch",
+              "userApiToken.delete",
+              "userApiTokens.*",
+              "userApiTokens.get",
+              "userApiTokens.post",
               "applicationTemplate.*",
               "applicationTemplate.get",
               "applicationTemplates.*",
@@ -108913,6 +110488,40 @@ Schema for the result of a validateContext call when invalid context is passed
                       }
                     }
                   }
+                },
+                "attributes": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}$": {
+                      "type": "object",
+                      "properties": {
+                        "dataType": {
+                          "type": "string",
+                          "enum": [
+                            "string",
+                            "number",
+                            "gps",
+                            "boolean",
+                            "blob"
+                          ]
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "tags": {
+                          "type": "object",
+                          "patternProperties": {
+                            "^[0-9a-zA-Z_-]{1,255}$": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -108936,7 +110545,8 @@ Schema for the result of a validateContext call when invalid context is passed
       "name": "Cincinnati",
       "tags": {
         "type": [
-          "Weather Station"
+          "Weather Station",
+          "Sensor"
         ],
         "region": [
           "Midwest"
@@ -108944,6 +110554,17 @@ Schema for the result of a validateContext call when invalid context is passed
         "DeviceRecipe": [
           "Weather Station"
         ]
+      },
+      "attributes": {
+        "temperature": {
+          "dataType": "number",
+          "tags": {
+            "units": "celsius"
+          }
+        },
+        "dew-point": {
+          "dataType": "number"
+        }
       }
     },
     "deviceId-noValidationNoFullDevice": "589de9bca1975a00017b2296",
@@ -109037,6 +110658,40 @@ Schema for the result of a successful validateContext call
                       }
                     }
                   }
+                },
+                "attributes": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}$": {
+                      "type": "object",
+                      "properties": {
+                        "dataType": {
+                          "type": "string",
+                          "enum": [
+                            "string",
+                            "number",
+                            "gps",
+                            "boolean",
+                            "blob"
+                          ]
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "tags": {
+                          "type": "object",
+                          "patternProperties": {
+                            "^[0-9a-zA-Z_-]{1,255}$": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -109059,7 +110714,8 @@ Schema for the result of a successful validateContext call
       "name": "Cincinnati",
       "tags": {
         "type": [
-          "Weather Station"
+          "Weather Station",
+          "Sensor"
         ],
         "region": [
           "Midwest"
@@ -109067,6 +110723,17 @@ Schema for the result of a successful validateContext call
         "DeviceRecipe": [
           "Weather Station"
         ]
+      },
+      "attributes": {
+        "temperature": {
+          "dataType": "number",
+          "tags": {
+            "units": "celsius"
+          }
+        },
+        "dew-point": {
+          "dataType": "number"
+        }
       }
     },
     "deviceId-noValidationNoFullDevice": "589de9bca1975a00017b2296",

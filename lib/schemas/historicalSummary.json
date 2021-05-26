@@ -150,6 +150,9 @@
     "dashboardCount": {
       "type": "number"
     },
+    "dashboardCountProrated": {
+      "type": "number"
+    },
     "dataTableCount": {
       "type": "number"
     },

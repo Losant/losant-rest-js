@@ -611,6 +611,21 @@
           }
         ]
       }
+    },
+    "stats": {
+      "type": "object",
+      "properties": {
+        "minutesThisPeriod": {
+          "type": "number"
+        },
+        "runsThisPeriod": {
+          "type": "number"
+        },
+        "errorsThisPeriod": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
     }
   }
 }

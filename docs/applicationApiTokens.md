@@ -96,7 +96,7 @@ all.Application, all.Organization, all.User, applicationApiTokens.*, or applicat
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| apiToken | [Application API Token Post](../lib/schemas/applicationApiTokenPost.json) | Y | API token information |  | [Application API Token Post Example](_schemas.md#application-api-token-post-example) |
+| apiToken | [API Token Post](../lib/schemas/apiTokenPost.json) | Y | API token information |  | [API Token Post Example](_schemas.md#api-token-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

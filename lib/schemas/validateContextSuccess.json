@@ -66,6 +66,40 @@
                       }
                     }
                   }
+                },
+                "attributes": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}$": {
+                      "type": "object",
+                      "properties": {
+                        "dataType": {
+                          "type": "string",
+                          "enum": [
+                            "string",
+                            "number",
+                            "gps",
+                            "boolean",
+                            "blob"
+                          ]
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "tags": {
+                          "type": "object",
+                          "patternProperties": {
+                            "^[0-9a-zA-Z_-]{1,255}$": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }

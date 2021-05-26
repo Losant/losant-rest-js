@@ -9,6 +9,7 @@ parameters and the potential responses.
 *   [Generate Report](#generate-report)
 *   [Get](#get)
 *   [Historical Summaries](#historical-summaries)
+*   [Patch](#patch)
 
 <br/>
 
@@ -153,6 +154,54 @@ all.Instance, all.Instance.read, all.User, all.User.read, instance.*, or instanc
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Historical Summaries](../lib/schemas/historicalSummaries.json) | Collection of historical summaries |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+
+<br/>
+
+## Patch
+
+Updates information about an instance
+
+```javascript
+var params = {
+  instanceId: myInstanceId
+};
+
+// with callbacks
+client.instance.patch(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.instance.patch(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Instance, all.User, instance.*, or instance.patch.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| instanceId | string | Y | ID associated with the instance |  | 575ec8687ae143cd83dc4a97 |
+| instance | [Instance Patch](../lib/schemas/instancePatch.json) | N | Updated instance information |  | [Instance Patch Example](_schemas.md#instance-patch-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Instance](../lib/schemas/instance.json) | The updated instance object |
 
 #### Error Responses
 

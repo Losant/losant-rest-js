@@ -21,6 +21,7 @@
     "dateGroupBy": {
       "type": "string",
       "enum": [
+        "day",
         "month"
       ]
     },

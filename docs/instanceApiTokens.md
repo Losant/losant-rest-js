@@ -1,7 +1,7 @@
-# Experience Slugs Actions
+# Instance Api Tokens Actions
 
 Details on the various actions that can be performed on the
-Experience Slugs resource, including the expected
+Instance Api Tokens resource, including the expected
 parameters and the potential responses.
 
 ##### Contents
@@ -13,21 +13,21 @@ parameters and the potential responses.
 
 ## Get
 
-Returns the experience slugs for an application
+Returns the API tokens for an instance
 
 ```javascript
 var params = {
-  applicationId: myApplicationId
+  instanceId: myInstanceId
 };
 
 // with callbacks
-client.experienceSlugs.get(params, function (err, result) {
+client.instanceApiTokens.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.experienceSlugs.get(params)
+client.instanceApiTokens.get(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -35,48 +35,53 @@ client.experienceSlugs.get(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.cli, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.cli, all.User.read, experienceSlugs.*, or experienceSlugs.get.
+all.Instance, all.Instance.read, all.User, all.User.read, instanceApiTokens.*, or instanceApiTokens.get.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| instanceId | string | Y | ID associated with the instance |  | 575ec7417ae143cd83dc4a96 |
+| sortField | string | N | Field to sort the results by. Accepted values are: name, status, id, creationDate, lastUpdated, expirationDate | name | name |
+| sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
+| page | string | N | Which page of results to return | 0 | 0 |
+| perPage | string | N | How many items to return per page | 100 | 10 |
+| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name, status |  | key |
+| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*token |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience Slugs](../lib/schemas/experienceSlugs.json) | Collection of experience slugs |
+| 200 | [API Token](../lib/schemas/apiToken.json) | Collection of API tokens |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
 
 <br/>
 
 ## Post
 
-Create a new experience slug for an application
+Create a new API token for an instance
 
 ```javascript
 var params = {
-  applicationId: myApplicationId,
-  experienceSlug: myExperienceSlug
+  instanceId: myInstanceId,
+  apiToken: myApiToken
 };
 
 // with callbacks
-client.experienceSlugs.post(params, function (err, result) {
+client.instanceApiTokens.post(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.experienceSlugs.post(params)
+client.instanceApiTokens.post(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -84,25 +89,24 @@ client.experienceSlugs.post(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, experienceSlugs.*, or experienceSlugs.post.
+all.Instance, all.User, instanceApiTokens.*, or instanceApiTokens.post.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| experienceSlug | [Experience Slug Post](../lib/schemas/experienceSlugPost.json) | Y | New experience slug information |  | [Experience Slug Post Example](_schemas.md#experience-slug-post-example) |
+| instanceId | string | Y | ID associated with the instance |  | 575ec7417ae143cd83dc4a96 |
+| apiToken | [API Token Post](../lib/schemas/apiTokenPost.json) | Y | API token information |  | [API Token Post Example](_schemas.md#api-token-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Experience Slug](../lib/schemas/experienceSlug.json) | Successfully created experience slug |
+| 201 | [API Token](../lib/schemas/apiToken.json) | The successfully created API token |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |

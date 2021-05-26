@@ -49,7 +49,10 @@
             "type": "string",
             "enum": [
               "ApiToken",
+              "ApplicationCertificateAuthority",
+              "ApplicationCertificate",
               "ApplicationKey",
+              "Dashboard",
               "DataTable",
               "Device",
               "DeviceRecipe",
@@ -64,6 +67,7 @@
               "File",
               "Flow",
               "Integration",
+              "Notebook",
               "Webhook"
             ]
           },
