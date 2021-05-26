@@ -109,6 +109,12 @@
                 "type": "null"
               }
             ]
+          },
+          "directDeviceCount": {
+            "type": "number"
+          },
+          "totalDeviceCount": {
+            "type": "number"
           }
         }
       }

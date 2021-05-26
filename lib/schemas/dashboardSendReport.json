@@ -36,6 +36,10 @@
     "timezone": {
       "type": "string",
       "max": 255
+    },
+    "locale": {
+      "type": "string",
+      "max": 5
     }
   },
   "additionalProperties": false

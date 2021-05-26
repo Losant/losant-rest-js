@@ -34,7 +34,7 @@ client.applications.get(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Organization, all.Organization.read, all.User, all.User.read, applications.*, or applications.get.
+all.Organization, all.Organization.read, all.User, all.User.cli, all.User.read, applications.*, or applications.get.
 
 #### Available Parameters
 

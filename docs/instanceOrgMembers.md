@@ -13,7 +13,7 @@ parameters and the potential responses.
 
 ## Get
 
-Returns an instance member
+Returns a collection of instance organization members
 
 ```javascript
 var params = {

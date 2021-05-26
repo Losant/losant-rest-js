@@ -116,6 +116,10 @@
           "timezone": {
             "type": "string",
             "maxLength": 255
+          },
+          "locale": {
+            "type": "string",
+            "maxLength": 5
           }
         },
         "additionalProperties": false,
@@ -248,7 +252,7 @@
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -259,7 +263,7 @@
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -1700,7 +1704,7 @@
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -1711,7 +1715,7 @@
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -1732,7 +1736,7 @@
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -2195,7 +2199,7 @@
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -2206,7 +2210,7 @@
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -2353,7 +2357,7 @@
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -3128,7 +3132,7 @@
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -3139,7 +3143,7 @@
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -3747,7 +3751,7 @@
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -3758,7 +3762,7 @@
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -3769,7 +3773,7 @@
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -3780,7 +3784,7 @@
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             }
@@ -4627,7 +4631,7 @@
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -5138,7 +5142,7 @@
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },

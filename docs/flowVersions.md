@@ -6,8 +6,62 @@ parameters and the potential responses.
 
 ##### Contents
 
+*   [Delete](#delete)
 *   [Get](#get)
 *   [Post](#post)
+
+<br/>
+
+## Delete
+
+Delete flow versions
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  flowId: myFlowId,
+  options: myOptions
+};
+
+// with callbacks
+client.flowVersions.delete(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.flowVersions.delete(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, flowVersions.*, or flowVersions.delete.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| flowId | string | Y | ID associated with the flow |  | 575ed18f7ae143cd83dc4aa6 |
+| options | [Flow Versions Delete Post](../lib/schemas/flowVersionsDeletePost.json) | Y | Object containing flow version deletion options |  | [Flow Versions Delete Post Example](_schemas.md#flow-versions-delete-post-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Bulk Deletion Response](../lib/schemas/bulkDeleteResponse.json) | Object indicating number of flow versions deleted or failed |
+| 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | If a job was enqueued for the flow versions to be deleted |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
 
 <br/>
 

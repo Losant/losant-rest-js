@@ -87,6 +87,7 @@
                 "enum": [
                   "all.Application",
                   "all.Application.read",
+                  "all.Application.cli",
                   "all.Device",
                   "all.Device.read",
                   "application.*",
@@ -318,6 +319,7 @@
                   "flowVersion.log",
                   "flowVersion.patch",
                   "flowVersion.stats",
+                  "flowVersions.delete",
                   "flowVersions.get",
                   "flowVersions.post",
                   "integration.delete",
@@ -387,6 +389,7 @@
               "all.Instance.read",
               "instance.*",
               "instance.get",
+              "instance.patch",
               "instance.historicalSummaries",
               "instance.generateReport",
               "instanceOrg.*",
@@ -409,7 +412,14 @@
               "instanceOrgMember.delete",
               "instanceOrgMembers.*",
               "instanceOrgMembers.get",
-              "instanceOrgMembers.post"
+              "instanceOrgMembers.post",
+              "instanceApiTokens.*",
+              "instanceApiTokens.get",
+              "instanceApiTokens.post",
+              "instanceApiToken.*",
+              "instanceApiToken.get",
+              "instanceApiToken.patch",
+              "instanceApiToken.delete"
             ]
           },
           {
@@ -417,6 +427,14 @@
             "enum": [
               "all.User",
               "all.User.read",
+              "all.User.cli",
+              "userApiToken.*",
+              "userApiToken.get",
+              "userApiToken.patch",
+              "userApiToken.delete",
+              "userApiTokens.*",
+              "userApiTokens.get",
+              "userApiTokens.post",
               "applicationTemplate.*",
               "applicationTemplate.get",
               "applicationTemplates.*",

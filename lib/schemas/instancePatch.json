@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "reportConfigs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "max": 10,
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 48
+          },
+          "cron": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "timezone": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "emails": {
+            "type": "array",
+            "max": 10,
+            "items": {
+              "type": "string",
+              "format": "email",
+              "maxLength": 1024
+            }
+          },
+          "callbackUrl": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "resourceGroupBy": {
+            "type": "string",
+            "enum": [
+              "application",
+              "organization"
+            ]
+          },
+          "dateGroupBy": {
+            "type": "string",
+            "enum": [
+              "day",
+              "month"
+            ]
+          },
+          "periods": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 90
+          },
+          "includeSandbox": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "cron"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

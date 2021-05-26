@@ -95,6 +95,8 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | experienceGroupId | string | Y | ID associated with the experience group |  | 575ed78e7ae143cd83dc4aab |
+| includeDirectDeviceCount | string | N | Whether or not to return count of devices associated directly with this group | false | true |
+| includeTotalDeviceCount | string | N | Whether or not to return count of devices associated with this group or any of its descendents | false | true |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

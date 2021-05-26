@@ -17,7 +17,8 @@
     "ownerType": {
       "type": "string",
       "enum": [
-        "application"
+        "application",
+        "user"
       ]
     },
     "creatorId": {
