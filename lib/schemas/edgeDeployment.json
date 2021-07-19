@@ -23,6 +23,22 @@
       "minLength": 1,
       "maxLength": 255
     },
+    "deviceConnectionInfo": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "connected": {
+          "enum": [
+            1,
+            0,
+            null
+          ]
+        }
+      }
+    },
     "flowId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"

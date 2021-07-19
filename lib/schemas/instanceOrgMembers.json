@@ -8,6 +8,14 @@
         "$ref": "#/definitions/instanceOrgMembers"
       }
     },
+    "instanceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "orgId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "count": {
       "type": "integer"
     },

@@ -715,7 +715,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Payload Counts](../lib/schemas/payloadStats.json) | Payload counts, by type and source |
+| 200 | [Payload Stats](../lib/schemas/payloadStats.json) | Payload counts, by type and source |
 
 #### Error Responses
 

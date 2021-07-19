@@ -1,7 +1,7 @@
-# Instance Org Members Actions
+# Instance Org Invites Actions
 
 Details on the various actions that can be performed on the
-Instance Org Members resource, including the expected
+Instance Org Invites resource, including the expected
 parameters and the potential responses.
 
 ##### Contents
@@ -13,7 +13,7 @@ parameters and the potential responses.
 
 ## Get
 
-Returns a collection of instance organization members
+Returns a collection of instance organization invites
 
 ```javascript
 var params = {
@@ -22,13 +22,13 @@ var params = {
 };
 
 // with callbacks
-client.instanceOrgMembers.get(params, function (err, result) {
+client.instanceOrgInvites.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.instanceOrgMembers.get(params)
+client.instanceOrgInvites.get(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -36,7 +36,7 @@ client.instanceOrgMembers.get(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Instance, all.Instance.read, all.User, all.User.read, instanceOrgMembers.*, or instanceOrgMembers.get.
+all.Instance, all.Instance.read, all.User, all.User.read, instanceOrgInvites.*, or instanceOrgInvites.get.
 
 #### Available Parameters
 
@@ -44,8 +44,8 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceOrgMembers.*, 
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | instanceId | string | Y | ID associated with the instance |  | 575ec8687ae143cd83dc4a97 |
 | orgId | string | Y | ID associated with the organization |  | 575ec8687ae143cd83dc4a97 |
-| sortField | string | N | Field to sort the results by. Accepted values are: email, role | email | role |
-| sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
+| sortField | string | N | Field to sort the results by. Accepted values are: email, role, inviteDate | inviteDate | role |
+| sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | desc | asc |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: email, role |  | email |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my * instance |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
@@ -54,36 +54,36 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceOrgMembers.*, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Instance Organization Members](../lib/schemas/instanceOrgMembers.json) | A collection of instance organization members |
+| 200 | [Instance Organization Invitations](../lib/schemas/orgInviteCollection.json) | A collection of instance organization invitations |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if instance was not found |
+| 404 | [Error](../lib/schemas/error.json) | Error if instance or organization was not found |
 
 <br/>
 
 ## Post
 
-Creates a new organization member
+Invites a member to an instance organization
 
 ```javascript
 var params = {
   instanceId: myInstanceId,
   orgId: myOrgId,
-  member: myMember
+  invite: myInvite
 };
 
 // with callbacks
-client.instanceOrgMembers.post(params, function (err, result) {
+client.instanceOrgInvites.post(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.instanceOrgMembers.post(params)
+client.instanceOrgInvites.post(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -91,7 +91,7 @@ client.instanceOrgMembers.post(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Instance, all.User, instanceOrgMembers.*, or instanceOrgMembers.post.
+all.Instance, all.User, instanceOrgInvites.*, or instanceOrgInvites.post.
 
 #### Available Parameters
 
@@ -99,18 +99,18 @@ all.Instance, all.User, instanceOrgMembers.*, or instanceOrgMembers.post.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | instanceId | string | Y | ID associated with the instance |  | 575ec8687ae143cd83dc4a97 |
 | orgId | string | Y | ID associated with the organization |  | 575ec8687ae143cd83dc4a97 |
-| member | [Instance Org Member Post](../lib/schemas/instanceOrgMemberPost.json) | Y | Object containing new member info |  | [Instance Org Member Post Example](_schemas.md#instance-org-member-post-example) |
+| invite | [Organization Invitation Post](../lib/schemas/orgInvitePost.json) | Y | Object containing new invite info |  | [Organization Invitation Post Example](_schemas.md#organization-invitation-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Instance Org Member](../lib/schemas/instanceOrgMember.json) | The newly created instance member |
+| 201 | [Instance Organization Invitations](../lib/schemas/orgInviteCollection.json) | The new organization invite |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if instance was not found |
+| 404 | [Error](../lib/schemas/error.json) | Error if instance or organization was not found |

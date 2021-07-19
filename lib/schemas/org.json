@@ -255,26 +255,10 @@
           "type": "number"
         },
         "payloadCount": {
-          "title": "Payload Counts",
-          "description": "Schema for the result of a payload count request",
+          "title": "Payload Stats",
+          "description": "Schema for the result of a payload stats request",
           "type": "object",
           "properties": {
-            "mqttOut": {
-              "type": "object",
-              "patternProperties": {
-                ".*": {
-                  "type": "number"
-                }
-              }
-            },
-            "mqttIn": {
-              "type": "object",
-              "patternProperties": {
-                ".*": {
-                  "type": "number"
-                }
-              }
-            },
             "dataTable": {
               "type": "object",
               "patternProperties": {
@@ -283,47 +267,7 @@
                 }
               }
             },
-            "deviceState": {
-              "type": "object",
-              "patternProperties": {
-                ".*": {
-                  "type": "number"
-                }
-              }
-            },
             "deviceCommand": {
-              "type": "object",
-              "patternProperties": {
-                ".*": {
-                  "type": "number"
-                }
-              }
-            },
-            "webhook": {
-              "type": "object",
-              "patternProperties": {
-                ".*": {
-                  "type": "number"
-                }
-              }
-            },
-            "timer": {
-              "type": "object",
-              "patternProperties": {
-                ".*": {
-                  "type": "number"
-                }
-              }
-            },
-            "event": {
-              "type": "object",
-              "patternProperties": {
-                ".*": {
-                  "type": "number"
-                }
-              }
-            },
-            "virtualButton": {
               "type": "object",
               "patternProperties": {
                 ".*": {
@@ -347,6 +291,14 @@
                 }
               }
             },
+            "deviceState": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
             "endpoint": {
               "type": "object",
               "patternProperties": {
@@ -355,7 +307,71 @@
                 }
               }
             },
+            "event": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "flowError": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
             "integration": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "mqttIn": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "mqttOut": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "notebook": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "timer": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "virtualButton": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "webhook": {
               "type": "object",
               "patternProperties": {
                 ".*": {

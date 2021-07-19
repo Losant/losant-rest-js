@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "deviceCommand": {
+      "type": "number"
+    },
+    "deviceConnect": {
+      "type": "number"
+    },
+    "deviceDisconnect": {
+      "type": "number"
+    },
+    "deviceState": {
+      "type": "number"
+    },
+    "mqttIn": {
+      "type": "number"
+    },
+    "mqttOut": {
+      "type": "number"
+    }
+  }
+}

@@ -14,6 +14,7 @@ parameters and the potential responses.
 *   [Get Log Entries](#get-log-entries)
 *   [Get State](#get-state)
 *   [Patch](#patch)
+*   [Payload Counts](#payload-counts)
 *   [Remove Data](#remove-data)
 *   [Send Command](#send-command)
 *   [Send State](#send-state)
@@ -431,6 +432,58 @@ all.Application, all.Organization, all.User, device.*, or device.patch.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Device](../lib/schemas/device.json) | Updated device information |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if device was not found |
+
+<br/>
+
+## Payload Counts
+
+Returns payload counts for the time range specified for this device
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  deviceId: myDeviceId
+};
+
+// with callbacks
+client.device.payloadCounts(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.device.payloadCounts(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, device.*, or device.payloadCounts.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
+| start | string | N | Start of range for payload count query (ms since epoch) | -2592000000 | 0 |
+| end | string | N | End of range for payload count query (ms since epoch) | 0 | 1465790400000 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Device Payload Counts](../lib/schemas/devicePayloadCounts.json) | Payload counts, by type |
 
 #### Error Responses
 

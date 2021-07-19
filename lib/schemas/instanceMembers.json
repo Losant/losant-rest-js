@@ -9,6 +9,10 @@
         "description": "Schema for an Instance member",
         "type": "object",
         "properties": {
+          "instanceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
           "userId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
@@ -42,6 +46,10 @@
         },
         "additionalProperties": false
       }
+    },
+    "instanceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "count": {
       "type": "integer"

@@ -48,7 +48,6 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceOrgs.*, or ins
 | perPage | string | N | How many items to return per page | 100 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*org |
-| summaryExclude | string | N | Comma-separated list of summary fields to exclude from org summaries |  | payloadCount |
 | summaryInclude | string | N | Comma-separated list of summary fields to include in org summary |  | payloadCount |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
@@ -97,6 +96,7 @@ all.Instance, all.User, instanceOrgs.*, or instanceOrgs.post.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | instanceId | string | Y | ID associated with the instance |  | 575ec8687ae143cd83dc4a97 |
+| summaryInclude | string | N | Comma-separated list of summary fields to include in org summary |  | payloadCount |
 | orgConfig | [Instance Owned Organization Post](../lib/schemas/instanceOrgPost.json) | N | Object containing configurations for the new organization |  | [Instance Owned Organization Post Example](_schemas.md#instance-owned-organization-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 

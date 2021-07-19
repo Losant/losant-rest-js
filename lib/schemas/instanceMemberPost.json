@@ -6,6 +6,11 @@
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
     "role": {
       "type": "string",
       "enum": [
@@ -15,8 +20,18 @@
     }
   },
   "additionalProperties": false,
-  "required": [
-    "userId",
-    "role"
+  "anyOf": [
+    {
+      "required": [
+        "email",
+        "role"
+      ]
+    },
+    {
+      "required": [
+        "userId",
+        "role"
+      ]
+    }
   ]
 }

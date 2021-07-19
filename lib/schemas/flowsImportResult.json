@@ -329,6 +329,21 @@
                         },
                         "maxAge": {
                           "type": "number"
+                        },
+                        "triggerOn": {
+                          "type": "string",
+                          "enum": [
+                            "batch",
+                            "individual",
+                            "both"
+                          ]
+                        },
+                        "batchBehavior": {
+                          "type": "string",
+                          "enum": [
+                            "once",
+                            "each"
+                          ]
                         }
                       },
                       "additionalProperties": false
@@ -2527,6 +2542,21 @@
                             },
                             "maxAge": {
                               "type": "number"
+                            },
+                            "triggerOn": {
+                              "type": "string",
+                              "enum": [
+                                "batch",
+                                "individual",
+                                "both"
+                              ]
+                            },
+                            "batchBehavior": {
+                              "type": "string",
+                              "enum": [
+                                "once",
+                                "each"
+                              ]
                             }
                           },
                           "additionalProperties": false
@@ -4725,6 +4755,21 @@
                             },
                             "maxAge": {
                               "type": "number"
+                            },
+                            "triggerOn": {
+                              "type": "string",
+                              "enum": [
+                                "batch",
+                                "individual",
+                                "both"
+                              ]
+                            },
+                            "batchBehavior": {
+                              "type": "string",
+                              "enum": [
+                                "once",
+                                "each"
+                              ]
                             }
                           },
                           "additionalProperties": false

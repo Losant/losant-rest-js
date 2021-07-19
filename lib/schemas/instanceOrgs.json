@@ -139,6 +139,10 @@
         ]
       }
     },
+    "instanceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "count": {
       "type": "integer"
     },
