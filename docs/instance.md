@@ -169,7 +169,8 @@ Updates information about an instance
 
 ```javascript
 var params = {
-  instanceId: myInstanceId
+  instanceId: myInstanceId,
+  instance: myInstance
 };
 
 // with callbacks
@@ -194,7 +195,7 @@ all.Instance, all.User, instance.*, or instance.patch.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | instanceId | string | Y | ID associated with the instance |  | 575ec8687ae143cd83dc4a97 |
-| instance | [Instance Patch](../lib/schemas/instancePatch.json) | N | Updated instance information |  | [Instance Patch Example](_schemas.md#instance-patch-example) |
+| instance | [Instance Patch](../lib/schemas/instancePatch.json) | Y | Updated instance information |  | [Instance Patch Example](_schemas.md#instance-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

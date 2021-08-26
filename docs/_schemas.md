@@ -42582,7 +42582,7 @@ Schema for response to data table rows removal
   "type": "object",
   "properties": {
     "removed": {
-      "type": "Number"
+      "type": "number"
     }
   }
 }
@@ -55460,7 +55460,7 @@ Schema for response to events removal
   "type": "object",
   "properties": {
     "removed": {
-      "type": "Number"
+      "type": "number"
     }
   }
 }
@@ -58982,7 +58982,6 @@ The body of an experience linked resources response
                             "onBoot",
                             "onConnect",
                             "onDisconnect",
-                            "request",
                             "udp",
                             "webhook"
                           ]
@@ -59016,7 +59015,6 @@ The body of an experience linked resources response
                                 "onConnect",
                                 "onDisconnect",
                                 "particle",
-                                "request",
                                 "udp",
                                 "webhook"
                               ]
@@ -60325,6 +60323,118 @@ The body of an experience linked resources response
                         "type": {
                           "type": "string",
                           "enum": [
+                            "request"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {
+                            "method": {
+                              "type": "string",
+                              "enum": [
+                                "*",
+                                "delete",
+                                "get",
+                                "options",
+                                "patch",
+                                "post",
+                                "put"
+                              ]
+                            },
+                            "route": {
+                              "type": "string",
+                              "maxLength": 1024
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "request"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "triggerId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
                             "serial"
                           ]
                         },
@@ -61245,7 +61355,6 @@ The body of an experience linked resources response
                                 "onBoot",
                                 "onConnect",
                                 "onDisconnect",
-                                "request",
                                 "udp",
                                 "webhook"
                               ]
@@ -61279,7 +61388,6 @@ The body of an experience linked resources response
                                     "onConnect",
                                     "onDisconnect",
                                     "particle",
-                                    "request",
                                     "udp",
                                     "webhook"
                                   ]
@@ -62552,6 +62660,118 @@ The body of an experience linked resources response
                                 },
                                 "outputCount": {
                                   "type": "number"
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "outputIds": {
+                              "type": "array",
+                              "items": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "maxLength": 255
+                                },
+                                "maxItems": 100
+                              },
+                              "maxItems": 100
+                            }
+                          },
+                          "required": [
+                            "type"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "request"
+                              ]
+                            },
+                            "config": {
+                              "type": "object",
+                              "properties": {
+                                "method": {
+                                  "type": "string",
+                                  "enum": [
+                                    "*",
+                                    "delete",
+                                    "get",
+                                    "options",
+                                    "patch",
+                                    "post",
+                                    "put"
+                                  ]
+                                },
+                                "route": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "meta": {
+                              "type": "object",
+                              "properties": {
+                                "category": {
+                                  "type": "string",
+                                  "enum": [
+                                    "trigger"
+                                  ]
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "enum": [
+                                    "request"
+                                  ]
+                                },
+                                "label": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 255
+                                },
+                                "x": {
+                                  "type": "number"
+                                },
+                                "y": {
+                                  "type": "number"
+                                },
+                                "uiId": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                },
+                                "icon": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "color": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "inputCount": {
+                                  "type": "number"
+                                },
+                                "outputCount": {
+                                  "type": "number"
+                                },
+                                "triggerId": {
+                                  "type": "string",
+                                  "maxLength": 48
                                 },
                                 "id": {
                                   "type": "string",
@@ -63458,7 +63678,6 @@ The body of an experience linked resources response
                                 "onBoot",
                                 "onConnect",
                                 "onDisconnect",
-                                "request",
                                 "udp",
                                 "webhook"
                               ]
@@ -63492,7 +63711,6 @@ The body of an experience linked resources response
                                     "onConnect",
                                     "onDisconnect",
                                     "particle",
-                                    "request",
                                     "udp",
                                     "webhook"
                                   ]
@@ -64765,6 +64983,118 @@ The body of an experience linked resources response
                                 },
                                 "outputCount": {
                                   "type": "number"
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "outputIds": {
+                              "type": "array",
+                              "items": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "maxLength": 255
+                                },
+                                "maxItems": 100
+                              },
+                              "maxItems": 100
+                            }
+                          },
+                          "required": [
+                            "type"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "request"
+                              ]
+                            },
+                            "config": {
+                              "type": "object",
+                              "properties": {
+                                "method": {
+                                  "type": "string",
+                                  "enum": [
+                                    "*",
+                                    "delete",
+                                    "get",
+                                    "options",
+                                    "patch",
+                                    "post",
+                                    "put"
+                                  ]
+                                },
+                                "route": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "meta": {
+                              "type": "object",
+                              "properties": {
+                                "category": {
+                                  "type": "string",
+                                  "enum": [
+                                    "trigger"
+                                  ]
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "enum": [
+                                    "request"
+                                  ]
+                                },
+                                "label": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 255
+                                },
+                                "x": {
+                                  "type": "number"
+                                },
+                                "y": {
+                                  "type": "number"
+                                },
+                                "uiId": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                },
+                                "icon": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "color": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "inputCount": {
+                                  "type": "number"
+                                },
+                                "outputCount": {
+                                  "type": "number"
+                                },
+                                "triggerId": {
+                                  "type": "string",
+                                  "maxLength": 48
                                 },
                                 "id": {
                                   "type": "string",
@@ -67589,7 +67919,6 @@ Schema for a single Workflow
                   "onBoot",
                   "onConnect",
                   "onDisconnect",
-                  "request",
                   "udp",
                   "webhook"
                 ]
@@ -67623,7 +67952,6 @@ Schema for a single Workflow
                       "onConnect",
                       "onDisconnect",
                       "particle",
-                      "request",
                       "udp",
                       "webhook"
                     ]
@@ -68896,6 +69224,118 @@ Schema for a single Workflow
                   },
                   "outputCount": {
                     "type": "number"
+                  },
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
+                  }
+                },
+                "additionalProperties": false
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "request"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "enum": [
+                      "*",
+                      "delete",
+                      "get",
+                      "options",
+                      "patch",
+                      "post",
+                      "put"
+                    ]
+                  },
+                  "route": {
+                    "type": "string",
+                    "maxLength": 1024
+                  }
+                },
+                "additionalProperties": false
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "trigger"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "request"
+                    ]
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "uiId": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "icon": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "color": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "inputCount": {
+                    "type": "number"
+                  },
+                  "outputCount": {
+                    "type": "number"
+                  },
+                  "triggerId": {
+                    "type": "string",
+                    "maxLength": 48
                   },
                   "id": {
                     "type": "string",
@@ -70010,7 +70450,6 @@ Schema for the body of a Workflow modification request
                   "onBoot",
                   "onConnect",
                   "onDisconnect",
-                  "request",
                   "udp",
                   "webhook"
                 ]
@@ -70044,7 +70483,6 @@ Schema for the body of a Workflow modification request
                       "onConnect",
                       "onDisconnect",
                       "particle",
-                      "request",
                       "udp",
                       "webhook"
                     ]
@@ -71317,6 +71755,118 @@ Schema for the body of a Workflow modification request
                   },
                   "outputCount": {
                     "type": "number"
+                  },
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
+                  }
+                },
+                "additionalProperties": false
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "request"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "enum": [
+                      "*",
+                      "delete",
+                      "get",
+                      "options",
+                      "patch",
+                      "post",
+                      "put"
+                    ]
+                  },
+                  "route": {
+                    "type": "string",
+                    "maxLength": 1024
+                  }
+                },
+                "additionalProperties": false
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "trigger"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "request"
+                    ]
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "uiId": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "icon": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "color": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "inputCount": {
+                    "type": "number"
+                  },
+                  "outputCount": {
+                    "type": "number"
+                  },
+                  "triggerId": {
+                    "type": "string",
+                    "maxLength": 48
                   },
                   "id": {
                     "type": "string",
@@ -72186,7 +72736,6 @@ Schema for the body of a Workflow creation request
                   "onBoot",
                   "onConnect",
                   "onDisconnect",
-                  "request",
                   "udp",
                   "webhook"
                 ]
@@ -72220,7 +72769,6 @@ Schema for the body of a Workflow creation request
                       "onConnect",
                       "onDisconnect",
                       "particle",
-                      "request",
                       "udp",
                       "webhook"
                     ]
@@ -73493,6 +74041,118 @@ Schema for the body of a Workflow creation request
                   },
                   "outputCount": {
                     "type": "number"
+                  },
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
+                  }
+                },
+                "additionalProperties": false
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "request"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "enum": [
+                      "*",
+                      "delete",
+                      "get",
+                      "options",
+                      "patch",
+                      "post",
+                      "put"
+                    ]
+                  },
+                  "route": {
+                    "type": "string",
+                    "maxLength": 1024
+                  }
+                },
+                "additionalProperties": false
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "trigger"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "request"
+                    ]
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "uiId": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "icon": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "color": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "inputCount": {
+                    "type": "number"
+                  },
+                  "outputCount": {
+                    "type": "number"
+                  },
+                  "triggerId": {
+                    "type": "string",
+                    "maxLength": 48
                   },
                   "id": {
                     "type": "string",
@@ -74617,7 +75277,6 @@ Schema for a single Workflow Version
                       "onBoot",
                       "onConnect",
                       "onDisconnect",
-                      "request",
                       "udp",
                       "webhook"
                     ]
@@ -74651,7 +75310,6 @@ Schema for a single Workflow Version
                           "onConnect",
                           "onDisconnect",
                           "particle",
-                          "request",
                           "udp",
                           "webhook"
                         ]
@@ -75924,6 +76582,118 @@ Schema for a single Workflow Version
                       },
                       "outputCount": {
                         "type": "number"
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "outputIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "maxItems": 100
+                    },
+                    "maxItems": 100
+                  }
+                },
+                "required": [
+                  "type"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "request"
+                    ]
+                  },
+                  "config": {
+                    "type": "object",
+                    "properties": {
+                      "method": {
+                        "type": "string",
+                        "enum": [
+                          "*",
+                          "delete",
+                          "get",
+                          "options",
+                          "patch",
+                          "post",
+                          "put"
+                        ]
+                      },
+                      "route": {
+                        "type": "string",
+                        "maxLength": 1024
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "meta": {
+                    "type": "object",
+                    "properties": {
+                      "category": {
+                        "type": "string",
+                        "enum": [
+                          "trigger"
+                        ]
+                      },
+                      "name": {
+                        "type": "string",
+                        "enum": [
+                          "request"
+                        ]
+                      },
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      },
+                      "x": {
+                        "type": "number"
+                      },
+                      "y": {
+                        "type": "number"
+                      },
+                      "uiId": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "icon": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "color": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "inputCount": {
+                        "type": "number"
+                      },
+                      "outputCount": {
+                        "type": "number"
+                      },
+                      "triggerId": {
+                        "type": "string",
+                        "maxLength": 48
                       },
                       "id": {
                         "type": "string",
@@ -76830,7 +77600,6 @@ Schema for a single Workflow Version
                       "onBoot",
                       "onConnect",
                       "onDisconnect",
-                      "request",
                       "udp",
                       "webhook"
                     ]
@@ -76864,7 +77633,6 @@ Schema for a single Workflow Version
                           "onConnect",
                           "onDisconnect",
                           "particle",
-                          "request",
                           "udp",
                           "webhook"
                         ]
@@ -78173,6 +78941,118 @@ Schema for a single Workflow Version
                   "type": {
                     "type": "string",
                     "enum": [
+                      "request"
+                    ]
+                  },
+                  "config": {
+                    "type": "object",
+                    "properties": {
+                      "method": {
+                        "type": "string",
+                        "enum": [
+                          "*",
+                          "delete",
+                          "get",
+                          "options",
+                          "patch",
+                          "post",
+                          "put"
+                        ]
+                      },
+                      "route": {
+                        "type": "string",
+                        "maxLength": 1024
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "meta": {
+                    "type": "object",
+                    "properties": {
+                      "category": {
+                        "type": "string",
+                        "enum": [
+                          "trigger"
+                        ]
+                      },
+                      "name": {
+                        "type": "string",
+                        "enum": [
+                          "request"
+                        ]
+                      },
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      },
+                      "x": {
+                        "type": "number"
+                      },
+                      "y": {
+                        "type": "number"
+                      },
+                      "uiId": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "icon": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "color": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "inputCount": {
+                        "type": "number"
+                      },
+                      "outputCount": {
+                        "type": "number"
+                      },
+                      "triggerId": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "outputIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "maxItems": 100
+                    },
+                    "maxItems": 100
+                  }
+                },
+                "required": [
+                  "type"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
                       "serial"
                     ]
                   },
@@ -78746,7 +79626,6 @@ Schema for the body of a Workflow Version creation request
                   "onBoot",
                   "onConnect",
                   "onDisconnect",
-                  "request",
                   "udp",
                   "webhook"
                 ]
@@ -78780,7 +79659,6 @@ Schema for the body of a Workflow Version creation request
                       "onConnect",
                       "onDisconnect",
                       "particle",
-                      "request",
                       "udp",
                       "webhook"
                     ]
@@ -80089,6 +80967,118 @@ Schema for the body of a Workflow Version creation request
               "type": {
                 "type": "string",
                 "enum": [
+                  "request"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "enum": [
+                      "*",
+                      "delete",
+                      "get",
+                      "options",
+                      "patch",
+                      "post",
+                      "put"
+                    ]
+                  },
+                  "route": {
+                    "type": "string",
+                    "maxLength": 1024
+                  }
+                },
+                "additionalProperties": false
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "trigger"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "request"
+                    ]
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "uiId": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "icon": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "color": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "inputCount": {
+                    "type": "number"
+                  },
+                  "outputCount": {
+                    "type": "number"
+                  },
+                  "triggerId": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
+                  }
+                },
+                "additionalProperties": false
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
                   "serial"
                 ]
               },
@@ -80947,7 +81937,6 @@ Schema for a collection of Workflow Versions
                             "onBoot",
                             "onConnect",
                             "onDisconnect",
-                            "request",
                             "udp",
                             "webhook"
                           ]
@@ -80981,7 +81970,6 @@ Schema for a collection of Workflow Versions
                                 "onConnect",
                                 "onDisconnect",
                                 "particle",
-                                "request",
                                 "udp",
                                 "webhook"
                               ]
@@ -82254,6 +83242,118 @@ Schema for a collection of Workflow Versions
                             },
                             "outputCount": {
                               "type": "number"
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "request"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {
+                            "method": {
+                              "type": "string",
+                              "enum": [
+                                "*",
+                                "delete",
+                                "get",
+                                "options",
+                                "patch",
+                                "post",
+                                "put"
+                              ]
+                            },
+                            "route": {
+                              "type": "string",
+                              "maxLength": 1024
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "request"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "triggerId": {
+                              "type": "string",
+                              "maxLength": 48
                             },
                             "id": {
                               "type": "string",
@@ -83160,7 +84260,6 @@ Schema for a collection of Workflow Versions
                             "onBoot",
                             "onConnect",
                             "onDisconnect",
-                            "request",
                             "udp",
                             "webhook"
                           ]
@@ -83194,7 +84293,6 @@ Schema for a collection of Workflow Versions
                                 "onConnect",
                                 "onDisconnect",
                                 "particle",
-                                "request",
                                 "udp",
                                 "webhook"
                               ]
@@ -84467,6 +85565,118 @@ Schema for a collection of Workflow Versions
                             },
                             "outputCount": {
                               "type": "number"
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "request"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {
+                            "method": {
+                              "type": "string",
+                              "enum": [
+                                "*",
+                                "delete",
+                                "get",
+                                "options",
+                                "patch",
+                                "post",
+                                "put"
+                              ]
+                            },
+                            "route": {
+                              "type": "string",
+                              "maxLength": 1024
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "request"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "triggerId": {
+                              "type": "string",
+                              "maxLength": 48
                             },
                             "id": {
                               "type": "string",
@@ -86110,7 +87320,6 @@ Schema for a collection of Workflows
                         "onBoot",
                         "onConnect",
                         "onDisconnect",
-                        "request",
                         "udp",
                         "webhook"
                       ]
@@ -86144,7 +87353,6 @@ Schema for a collection of Workflows
                             "onConnect",
                             "onDisconnect",
                             "particle",
-                            "request",
                             "udp",
                             "webhook"
                           ]
@@ -87417,6 +88625,118 @@ Schema for a collection of Workflows
                         },
                         "outputCount": {
                           "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "request"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "method": {
+                          "type": "string",
+                          "enum": [
+                            "*",
+                            "delete",
+                            "get",
+                            "options",
+                            "patch",
+                            "post",
+                            "put"
+                          ]
+                        },
+                        "route": {
+                          "type": "string",
+                          "maxLength": 1024
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "request"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "triggerId": {
+                          "type": "string",
+                          "maxLength": 48
                         },
                         "id": {
                           "type": "string",
@@ -88400,7 +89720,6 @@ Schema for the body of a workflow import request
                         "onBoot",
                         "onConnect",
                         "onDisconnect",
-                        "request",
                         "udp",
                         "webhook"
                       ]
@@ -88434,7 +89753,6 @@ Schema for the body of a workflow import request
                             "onConnect",
                             "onDisconnect",
                             "particle",
-                            "request",
                             "udp",
                             "webhook"
                           ]
@@ -89707,6 +91025,118 @@ Schema for the body of a workflow import request
                         },
                         "outputCount": {
                           "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "request"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "method": {
+                          "type": "string",
+                          "enum": [
+                            "*",
+                            "delete",
+                            "get",
+                            "options",
+                            "patch",
+                            "post",
+                            "put"
+                          ]
+                        },
+                        "route": {
+                          "type": "string",
+                          "maxLength": 1024
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "request"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "triggerId": {
+                          "type": "string",
+                          "maxLength": 48
                         },
                         "id": {
                           "type": "string",
@@ -90594,7 +92024,6 @@ Schema for the body of a workflow import request
                         "onBoot",
                         "onConnect",
                         "onDisconnect",
-                        "request",
                         "udp",
                         "webhook"
                       ]
@@ -90628,7 +92057,6 @@ Schema for the body of a workflow import request
                             "onConnect",
                             "onDisconnect",
                             "particle",
-                            "request",
                             "udp",
                             "webhook"
                           ]
@@ -91901,6 +93329,118 @@ Schema for the body of a workflow import request
                         },
                         "outputCount": {
                           "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "request"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "method": {
+                          "type": "string",
+                          "enum": [
+                            "*",
+                            "delete",
+                            "get",
+                            "options",
+                            "patch",
+                            "post",
+                            "put"
+                          ]
+                        },
+                        "route": {
+                          "type": "string",
+                          "maxLength": 1024
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "request"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "triggerId": {
+                          "type": "string",
+                          "maxLength": 48
                         },
                         "id": {
                           "type": "string",
@@ -92835,7 +94375,6 @@ Schema for the result of a workflow import request
                         "onBoot",
                         "onConnect",
                         "onDisconnect",
-                        "request",
                         "udp",
                         "webhook"
                       ]
@@ -92869,7 +94408,6 @@ Schema for the result of a workflow import request
                             "onConnect",
                             "onDisconnect",
                             "particle",
-                            "request",
                             "udp",
                             "webhook"
                           ]
@@ -94178,6 +95716,118 @@ Schema for the result of a workflow import request
                     "type": {
                       "type": "string",
                       "enum": [
+                        "request"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "method": {
+                          "type": "string",
+                          "enum": [
+                            "*",
+                            "delete",
+                            "get",
+                            "options",
+                            "patch",
+                            "post",
+                            "put"
+                          ]
+                        },
+                        "route": {
+                          "type": "string",
+                          "maxLength": 1024
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "request"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "triggerId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
                         "serial"
                       ]
                     },
@@ -95048,7 +96698,6 @@ Schema for the result of a workflow import request
                             "onBoot",
                             "onConnect",
                             "onDisconnect",
-                            "request",
                             "udp",
                             "webhook"
                           ]
@@ -95082,7 +96731,6 @@ Schema for the result of a workflow import request
                                 "onConnect",
                                 "onDisconnect",
                                 "particle",
-                                "request",
                                 "udp",
                                 "webhook"
                               ]
@@ -96355,6 +98003,118 @@ Schema for the result of a workflow import request
                             },
                             "outputCount": {
                               "type": "number"
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "request"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {
+                            "method": {
+                              "type": "string",
+                              "enum": [
+                                "*",
+                                "delete",
+                                "get",
+                                "options",
+                                "patch",
+                                "post",
+                                "put"
+                              ]
+                            },
+                            "route": {
+                              "type": "string",
+                              "maxLength": 1024
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "request"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "triggerId": {
+                              "type": "string",
+                              "maxLength": 48
                             },
                             "id": {
                               "type": "string",
@@ -97261,7 +99021,6 @@ Schema for the result of a workflow import request
                             "onBoot",
                             "onConnect",
                             "onDisconnect",
-                            "request",
                             "udp",
                             "webhook"
                           ]
@@ -97295,7 +99054,6 @@ Schema for the result of a workflow import request
                                 "onConnect",
                                 "onDisconnect",
                                 "particle",
-                                "request",
                                 "udp",
                                 "webhook"
                               ]
@@ -98568,6 +100326,118 @@ Schema for the result of a workflow import request
                             },
                             "outputCount": {
                               "type": "number"
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "request"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {
+                            "method": {
+                              "type": "string",
+                              "enum": [
+                                "*",
+                                "delete",
+                                "get",
+                                "options",
+                                "patch",
+                                "post",
+                                "put"
+                              ]
+                            },
+                            "route": {
+                              "type": "string",
+                              "maxLength": 1024
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "request"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "triggerId": {
+                              "type": "string",
+                              "maxLength": 48
                             },
                             "id": {
                               "type": "string",
