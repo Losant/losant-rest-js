@@ -89,7 +89,7 @@
       "properties": {
         "directory": {
           "type": "string",
-          "max": 255
+          "maxLength": 255
         },
         "mode": {
           "type": "string",
@@ -159,21 +159,21 @@
           "properties": {
             "bucket": {
               "type": "string",
-              "max": 255
+              "maxLength": 255
             },
             "accessKeyId": {
               "type": "string",
-              "min": 4,
-              "max": 128
+              "minLength": 4,
+              "maxLength": 128
             },
             "secretAccessKey": {
               "type": "string",
-              "min": 4,
-              "max": 128
+              "minLength": 4,
+              "maxLength": 128
             },
             "region": {
               "type": "string",
-              "max": 128
+              "maxLength": 128
             }
           },
           "required": [
@@ -199,7 +199,7 @@
             },
             "bucket": {
               "type": "string",
-              "max": 255
+              "maxLength": 255
             }
           },
           "required": [
@@ -214,17 +214,17 @@
           "properties": {
             "account": {
               "type": "string",
-              "min": 3,
-              "max": 24
+              "minLength": 3,
+              "maxLength": 24
             },
             "accountKey": {
               "type": "string",
-              "max": 255
+              "maxLength": 255
             },
             "bucket": {
               "type": "string",
-              "min": 3,
-              "max": 63
+              "minLength": 3,
+              "maxLength": 63
             }
           },
           "required": [

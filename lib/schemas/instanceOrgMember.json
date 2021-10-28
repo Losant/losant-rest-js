@@ -39,6 +39,12 @@
     "avatarUrl": {
       "type": "string",
       "format": "url"
+    },
+    "twoFactorAuthEnabled": {
+      "type": "boolean"
+    },
+    "ssoLinked": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false

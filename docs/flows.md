@@ -50,7 +50,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | perPage | string | N | How many items to return per page | 100 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*flow |
-| flowClass | string | N | Filter the workflows by the given flow class. Accepted values are: edge, cloud, customNode, experience | cloud | cloud |
+| flowClass | string | N | Filter the workflows by the given flow class. Accepted values are: edge, embedded, cloud, customNode, experience | cloud | cloud |
 | triggerFilter | [Workflow Trigger Filter](../lib/schemas/flowTriggerFilter.json) | N | Array of triggers to filter by - always filters against default flow version. |  | [Workflow Trigger Filter Example](_schemas.md#workflow-trigger-filter-example) |
 | includeCustomNodes | string | N | If the result of the request should also include the details of any custom nodes referenced by the returned workflows | false | true |
 | query | [Advanced Workflow Query](../lib/schemas/advancedFlowQuery.json) | N | Workflow filter JSON object which overrides the filterField, filter, triggerFilter, and flowClass parameters. |  | [Advanced Workflow Query Example](_schemas.md#advanced-workflow-query-example) |
@@ -110,7 +110,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | perPage | string | N | How many items to return per page | 100 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*flow |
-| flowClass | string | N | Filter the workflows by the given flow class. Accepted values are: edge, cloud, customNode, experience | cloud | cloud |
+| flowClass | string | N | Filter the workflows by the given flow class. Accepted values are: edge, embedded, cloud, customNode, experience | cloud | cloud |
 | version | string | Y | Return the workflow versions for the given version. |  | myVersion |
 | triggerFilter | [Workflow Trigger Filter](../lib/schemas/flowTriggerFilter.json) | N | Array of triggers to filter by - always filters against default flow version. |  | [Workflow Trigger Filter Example](_schemas.md#workflow-trigger-filter-example) |
 | includeCustomNodes | string | N | If the result of the request should also include the details of any custom nodes referenced by the returned workflows | false | true |

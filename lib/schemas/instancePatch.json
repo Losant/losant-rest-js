@@ -4,9 +4,9 @@
   "properties": {
     "reportConfigs": {
       "type": "array",
+      "maxItems": 10,
       "items": {
         "type": "object",
-        "max": 10,
         "properties": {
           "id": {
             "type": "string",
@@ -22,7 +22,7 @@
           },
           "emails": {
             "type": "array",
-            "max": 10,
+            "maxItems": 10,
             "items": {
               "type": "string",
               "format": "email",

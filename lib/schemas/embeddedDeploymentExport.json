@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "embeddedDeploymentId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "traceLevel": {
+      "enum": [
+        0,
+        1,
+        2
+      ]
+    },
+    "disableDebugMessage": {
+      "type": "boolean"
+    },
+    "stackSize": {
+      "type": "integer",
+      "minimum": 1600,
+      "maximum": 2147483648
+    },
+    "debugSymbols": {
+      "type": "boolean"
+    },
+    "exportMemory": {
+      "type": "boolean"
+    },
+    "gzip": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

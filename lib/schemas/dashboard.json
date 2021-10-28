@@ -76,7 +76,7 @@
     },
     "reportConfigs": {
       "type": "array",
-      "max": 10,
+      "maxItems": 10,
       "items": {
         "type": "object",
         "properties": {
@@ -90,8 +90,8 @@
           },
           "toEmail": {
             "type": "array",
-            "min": 1,
-            "max": 10,
+            "minItems": 1,
+            "maxItems": 10,
             "items": {
               "type": "string",
               "format": "email",
@@ -3157,8 +3157,8 @@
                             },
                             "length": {
                               "type": "integer",
-                              "min": 1,
-                              "max": 10
+                              "minimum": 1,
+                              "maximum": 10
                             },
                             "orientation": {
                               "type": "string",
@@ -5371,6 +5371,9 @@
                     "type": "boolean"
                   },
                   "includeEdge": {
+                    "type": "boolean"
+                  },
+                  "includeEmbedded": {
                     "type": "boolean"
                   },
                   "includeExperience": {

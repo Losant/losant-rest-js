@@ -75,6 +75,7 @@
                       "deviceCommand",
                       "deviceIdsTagsConnect",
                       "deviceIdsTagsDisconnect",
+                      "eeaInit",
                       "flowError",
                       "googlePubSub",
                       "meridian",
@@ -138,7 +139,8 @@
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -242,7 +244,8 @@
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -386,7 +389,8 @@
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -482,7 +486,100 @@
                   "type": "array",
                   "items": {
                     "type": "string",
+                    "maxLength": 48,
+                    "minLength": 1
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "direct"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "trigger"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "direct"
+                    ]
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
                     "maxLength": 255
+                  },
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "uiId": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "icon": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "color": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "inputCount": {
+                    "type": "number"
+                  },
+                  "outputCount": {
+                    "type": "number"
+                  },
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
+                  }
+                },
+                "additionalProperties": false
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -579,7 +676,8 @@
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -684,7 +782,8 @@
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -792,7 +891,8 @@
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -903,7 +1003,8 @@
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -1004,7 +1105,8 @@
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -1107,7 +1209,8 @@
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -1247,7 +1350,8 @@
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -1370,7 +1474,8 @@
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -1482,7 +1587,8 @@
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -1625,7 +1731,8 @@
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -1751,7 +1858,8 @@
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -1866,7 +1974,8 @@
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -1907,7 +2016,8 @@
               "type": "array",
               "items": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48,
+                "minLength": 1
               },
               "maxItems": 100
             },
@@ -1948,6 +2058,7 @@
       "enum": [
         "cloud",
         "edge",
+        "embedded",
         "experience",
         "customNode"
       ]

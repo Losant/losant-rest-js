@@ -66,52 +66,52 @@
       "type": "object",
       "properties": {
         "applicationCertificateAuthorityCount": {
-          "type": "number"
+          "type": "integer"
         },
         "dashboardCount": {
-          "type": "number"
+          "type": "integer"
         },
         "deviceCount": {
-          "type": "number"
+          "type": "integer"
         },
         "deviceRecipeCount": {
-          "type": "number"
+          "type": "integer"
         },
         "dataTableCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceGroupCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceUserCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceVersionCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceViewCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceEndpointCount": {
-          "type": "number"
+          "type": "integer"
         },
         "fileCount": {
-          "type": "number"
+          "type": "integer"
         },
         "flowCount": {
-          "type": "number"
+          "type": "integer"
         },
         "integrationCount": {
-          "type": "number"
+          "type": "integer"
         },
         "notebookCount": {
-          "type": "number"
+          "type": "integer"
         },
         "dataTableCsvSize": {
-          "type": "number"
+          "type": "integer"
         },
         "webhookCount": {
-          "type": "number"
+          "type": "integer"
         }
       }
     }

@@ -110,6 +110,12 @@
 *   [Edge Deployment Replace](#edge-deployment-replace)
 *   [Edge Deployments](#edge-deployments)
 *   [Email Verification Verify](#email-verification-verify)
+*   [Embedded Deployment](#embedded-deployment)
+*   [Embedded Deployment Export](#embedded-deployment-export)
+*   [Embedded Deployment Release](#embedded-deployment-release)
+*   [Embedded Deployment Remove](#embedded-deployment-remove)
+*   [Embedded Deployment Replace](#embedded-deployment-replace)
+*   [Embedded Deployments](#embedded-deployments)
 *   [Enable Two Factor Auth](#enable-two-factor-auth)
 *   [Error](#error)
 *   [Event](#event)
@@ -6841,6 +6847,8 @@ Schema for the body of an API Token creation request
                   "devices.*",
                   "edgeDeployment.*",
                   "edgeDeployments.*",
+                  "embeddedDeployment.*",
+                  "embeddedDeployments.*",
                   "event.*",
                   "events.*",
                   "experience.*",
@@ -6969,6 +6977,12 @@ Schema for the body of an API Token creation request
                   "edgeDeployments.release",
                   "edgeDeployments.remove",
                   "edgeDeployments.replace",
+                  "embeddedDeployment.get",
+                  "embeddedDeployments.get",
+                  "embeddedDeployments.release",
+                  "embeddedDeployments.remove",
+                  "embeddedDeployments.replace",
+                  "embeddedDeployments.export",
                   "event.delete",
                   "event.get",
                   "event.patch",
@@ -7528,66 +7542,66 @@ Schema for a single Application
       "type": "object",
       "properties": {
         "apiTokenCount": {
-          "type": "number"
+          "type": "integer"
         },
         "dataTableCount": {
-          "type": "number"
+          "type": "integer"
         },
         "deviceCount": {
-          "type": "number"
+          "type": "integer"
         },
         "deviceRecipeCount": {
-          "type": "number"
+          "type": "integer"
         },
         "eventCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceDomainCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceEndpointCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceGroupCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceSlugCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceUserCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceVersionCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceViewCount": {
-          "type": "number"
+          "type": "integer"
         },
         "fileCount": {
-          "type": "number"
+          "type": "integer"
         },
         "flowCount": {
-          "type": "number"
+          "type": "integer"
         },
         "integrationCount": {
-          "type": "number"
+          "type": "integer"
         },
         "keyCount": {
-          "type": "number"
+          "type": "integer"
         },
         "storageStats": {
           "type": "object",
           "properties": {
             "count": {
-              "type": "number"
+              "type": "integer"
             },
             "size": {
-              "type": "number"
+              "type": "integer"
             }
           }
         },
         "webhookCount": {
-          "type": "number"
+          "type": "integer"
         }
       }
     },
@@ -7625,7 +7639,7 @@ Schema for a single Application
       "properties": {
         "directory": {
           "type": "string",
-          "max": 255
+          "maxLength": 255
         },
         "mode": {
           "type": "string",
@@ -7695,21 +7709,21 @@ Schema for a single Application
           "properties": {
             "bucket": {
               "type": "string",
-              "max": 255
+              "maxLength": 255
             },
             "accessKeyId": {
               "type": "string",
-              "min": 4,
-              "max": 128
+              "minLength": 4,
+              "maxLength": 128
             },
             "secretAccessKey": {
               "type": "string",
-              "min": 4,
-              "max": 128
+              "minLength": 4,
+              "maxLength": 128
             },
             "region": {
               "type": "string",
-              "max": 128
+              "maxLength": 128
             }
           },
           "required": [
@@ -7735,7 +7749,7 @@ Schema for a single Application
             },
             "bucket": {
               "type": "string",
-              "max": 255
+              "maxLength": 255
             }
           },
           "required": [
@@ -7750,17 +7764,17 @@ Schema for a single Application
           "properties": {
             "account": {
               "type": "string",
-              "min": 3,
-              "max": 24
+              "minLength": 3,
+              "maxLength": 24
             },
             "accountKey": {
               "type": "string",
-              "max": 255
+              "maxLength": 255
             },
             "bucket": {
               "type": "string",
-              "min": 3,
-              "max": 63
+              "minLength": 3,
+              "maxLength": 63
             }
           },
           "required": [
@@ -9035,66 +9049,66 @@ Schema for creating an application by template result
           "type": "object",
           "properties": {
             "apiTokenCount": {
-              "type": "number"
+              "type": "integer"
             },
             "dataTableCount": {
-              "type": "number"
+              "type": "integer"
             },
             "deviceCount": {
-              "type": "number"
+              "type": "integer"
             },
             "deviceRecipeCount": {
-              "type": "number"
+              "type": "integer"
             },
             "eventCount": {
-              "type": "number"
+              "type": "integer"
             },
             "experienceDomainCount": {
-              "type": "number"
+              "type": "integer"
             },
             "experienceEndpointCount": {
-              "type": "number"
+              "type": "integer"
             },
             "experienceGroupCount": {
-              "type": "number"
+              "type": "integer"
             },
             "experienceSlugCount": {
-              "type": "number"
+              "type": "integer"
             },
             "experienceUserCount": {
-              "type": "number"
+              "type": "integer"
             },
             "experienceVersionCount": {
-              "type": "number"
+              "type": "integer"
             },
             "experienceViewCount": {
-              "type": "number"
+              "type": "integer"
             },
             "fileCount": {
-              "type": "number"
+              "type": "integer"
             },
             "flowCount": {
-              "type": "number"
+              "type": "integer"
             },
             "integrationCount": {
-              "type": "number"
+              "type": "integer"
             },
             "keyCount": {
-              "type": "number"
+              "type": "integer"
             },
             "storageStats": {
               "type": "object",
               "properties": {
                 "count": {
-                  "type": "number"
+                  "type": "integer"
                 },
                 "size": {
-                  "type": "number"
+                  "type": "integer"
                 }
               }
             },
             "webhookCount": {
-              "type": "number"
+              "type": "integer"
             }
           }
         },
@@ -9132,7 +9146,7 @@ Schema for creating an application by template result
           "properties": {
             "directory": {
               "type": "string",
-              "max": 255
+              "maxLength": 255
             },
             "mode": {
               "type": "string",
@@ -9202,21 +9216,21 @@ Schema for creating an application by template result
               "properties": {
                 "bucket": {
                   "type": "string",
-                  "max": 255
+                  "maxLength": 255
                 },
                 "accessKeyId": {
                   "type": "string",
-                  "min": 4,
-                  "max": 128
+                  "minLength": 4,
+                  "maxLength": 128
                 },
                 "secretAccessKey": {
                   "type": "string",
-                  "min": 4,
-                  "max": 128
+                  "minLength": 4,
+                  "maxLength": 128
                 },
                 "region": {
                   "type": "string",
-                  "max": 128
+                  "maxLength": 128
                 }
               },
               "required": [
@@ -9242,7 +9256,7 @@ Schema for creating an application by template result
                 },
                 "bucket": {
                   "type": "string",
-                  "max": 255
+                  "maxLength": 255
                 }
               },
               "required": [
@@ -9257,17 +9271,17 @@ Schema for creating an application by template result
               "properties": {
                 "account": {
                   "type": "string",
-                  "min": 3,
-                  "max": 24
+                  "minLength": 3,
+                  "maxLength": 24
                 },
                 "accountKey": {
                   "type": "string",
-                  "max": 255
+                  "maxLength": 255
                 },
                 "bucket": {
                   "type": "string",
-                  "min": 3,
-                  "max": 63
+                  "minLength": 3,
+                  "maxLength": 63
                 }
               },
               "required": [
@@ -12398,8 +12412,8 @@ Schema for the body of an Application scoped Dashboard creation request
                             },
                             "length": {
                               "type": "integer",
-                              "min": 1,
-                              "max": 10
+                              "minimum": 1,
+                              "maximum": 10
                             },
                             "orientation": {
                               "type": "string",
@@ -14614,6 +14628,9 @@ Schema for the body of an Application scoped Dashboard creation request
                   "includeEdge": {
                     "type": "boolean"
                   },
+                  "includeEmbedded": {
+                    "type": "boolean"
+                  },
                   "includeExperience": {
                     "type": "boolean"
                   },
@@ -14656,7 +14673,7 @@ Schema for the body of an Application scoped Dashboard creation request
     },
     "reportConfigs": {
       "type": "array",
-      "max": 10,
+      "maxItems": 10,
       "items": {
         "type": "object",
         "properties": {
@@ -14670,8 +14687,8 @@ Schema for the body of an Application scoped Dashboard creation request
           },
           "toEmail": {
             "type": "array",
-            "min": 1,
-            "max": 10,
+            "minItems": 1,
+            "maxItems": 10,
             "items": {
               "type": "string",
               "format": "email",
@@ -15902,7 +15919,7 @@ Schema for the body of an Application modification request
       "properties": {
         "directory": {
           "type": "string",
-          "max": 255
+          "maxLength": 255
         },
         "mode": {
           "type": "string",
@@ -15972,21 +15989,21 @@ Schema for the body of an Application modification request
           "properties": {
             "bucket": {
               "type": "string",
-              "max": 255
+              "maxLength": 255
             },
             "accessKeyId": {
               "type": "string",
-              "min": 4,
-              "max": 128
+              "minLength": 4,
+              "maxLength": 128
             },
             "secretAccessKey": {
               "type": "string",
-              "min": 4,
-              "max": 128
+              "minLength": 4,
+              "maxLength": 128
             },
             "region": {
               "type": "string",
-              "max": 128
+              "maxLength": 128
             }
           },
           "required": [
@@ -16012,7 +16029,7 @@ Schema for the body of an Application modification request
             },
             "bucket": {
               "type": "string",
-              "max": 255
+              "maxLength": 255
             }
           },
           "required": [
@@ -16027,17 +16044,17 @@ Schema for the body of an Application modification request
           "properties": {
             "account": {
               "type": "string",
-              "min": 3,
-              "max": 24
+              "minLength": 3,
+              "maxLength": 24
             },
             "accountKey": {
               "type": "string",
-              "max": 255
+              "maxLength": 255
             },
             "bucket": {
               "type": "string",
-              "min": 3,
-              "max": 63
+              "minLength": 3,
+              "maxLength": 63
             }
           },
           "required": [
@@ -16155,7 +16172,7 @@ Schema for the body of an Application creation request
       "properties": {
         "directory": {
           "type": "string",
-          "max": 255
+          "maxLength": 255
         },
         "mode": {
           "type": "string",
@@ -16225,21 +16242,21 @@ Schema for the body of an Application creation request
           "properties": {
             "bucket": {
               "type": "string",
-              "max": 255
+              "maxLength": 255
             },
             "accessKeyId": {
               "type": "string",
-              "min": 4,
-              "max": 128
+              "minLength": 4,
+              "maxLength": 128
             },
             "secretAccessKey": {
               "type": "string",
-              "min": 4,
-              "max": 128
+              "minLength": 4,
+              "maxLength": 128
             },
             "region": {
               "type": "string",
-              "max": 128
+              "maxLength": 128
             }
           },
           "required": [
@@ -16265,7 +16282,7 @@ Schema for the body of an Application creation request
             },
             "bucket": {
               "type": "string",
-              "max": 255
+              "maxLength": 255
             }
           },
           "required": [
@@ -16280,17 +16297,17 @@ Schema for the body of an Application creation request
           "properties": {
             "account": {
               "type": "string",
-              "min": 3,
-              "max": 24
+              "minLength": 3,
+              "maxLength": 24
             },
             "accountKey": {
               "type": "string",
-              "max": 255
+              "maxLength": 255
             },
             "bucket": {
               "type": "string",
-              "min": 3,
-              "max": 63
+              "minLength": 3,
+              "maxLength": 63
             }
           },
           "required": [
@@ -16559,52 +16576,52 @@ Schema for a single Application Template
       "type": "object",
       "properties": {
         "applicationCertificateAuthorityCount": {
-          "type": "number"
+          "type": "integer"
         },
         "dashboardCount": {
-          "type": "number"
+          "type": "integer"
         },
         "deviceCount": {
-          "type": "number"
+          "type": "integer"
         },
         "deviceRecipeCount": {
-          "type": "number"
+          "type": "integer"
         },
         "dataTableCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceGroupCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceUserCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceVersionCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceViewCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceEndpointCount": {
-          "type": "number"
+          "type": "integer"
         },
         "fileCount": {
-          "type": "number"
+          "type": "integer"
         },
         "flowCount": {
-          "type": "number"
+          "type": "integer"
         },
         "integrationCount": {
-          "type": "number"
+          "type": "integer"
         },
         "notebookCount": {
-          "type": "number"
+          "type": "integer"
         },
         "dataTableCsvSize": {
-          "type": "number"
+          "type": "integer"
         },
         "webhookCount": {
-          "type": "number"
+          "type": "integer"
         }
       }
     }
@@ -16847,52 +16864,52 @@ Schema for a collection of Application Templates
             "type": "object",
             "properties": {
               "applicationCertificateAuthorityCount": {
-                "type": "number"
+                "type": "integer"
               },
               "dashboardCount": {
-                "type": "number"
+                "type": "integer"
               },
               "deviceCount": {
-                "type": "number"
+                "type": "integer"
               },
               "deviceRecipeCount": {
-                "type": "number"
+                "type": "integer"
               },
               "dataTableCount": {
-                "type": "number"
+                "type": "integer"
               },
               "experienceGroupCount": {
-                "type": "number"
+                "type": "integer"
               },
               "experienceUserCount": {
-                "type": "number"
+                "type": "integer"
               },
               "experienceVersionCount": {
-                "type": "number"
+                "type": "integer"
               },
               "experienceViewCount": {
-                "type": "number"
+                "type": "integer"
               },
               "experienceEndpointCount": {
-                "type": "number"
+                "type": "integer"
               },
               "fileCount": {
-                "type": "number"
+                "type": "integer"
               },
               "flowCount": {
-                "type": "number"
+                "type": "integer"
               },
               "integrationCount": {
-                "type": "number"
+                "type": "integer"
               },
               "notebookCount": {
-                "type": "number"
+                "type": "integer"
               },
               "dataTableCsvSize": {
-                "type": "number"
+                "type": "integer"
               },
               "webhookCount": {
-                "type": "number"
+                "type": "integer"
               }
             }
           }
@@ -17115,66 +17132,66 @@ Schema for a collection of Applications
             "type": "object",
             "properties": {
               "apiTokenCount": {
-                "type": "number"
+                "type": "integer"
               },
               "dataTableCount": {
-                "type": "number"
+                "type": "integer"
               },
               "deviceCount": {
-                "type": "number"
+                "type": "integer"
               },
               "deviceRecipeCount": {
-                "type": "number"
+                "type": "integer"
               },
               "eventCount": {
-                "type": "number"
+                "type": "integer"
               },
               "experienceDomainCount": {
-                "type": "number"
+                "type": "integer"
               },
               "experienceEndpointCount": {
-                "type": "number"
+                "type": "integer"
               },
               "experienceGroupCount": {
-                "type": "number"
+                "type": "integer"
               },
               "experienceSlugCount": {
-                "type": "number"
+                "type": "integer"
               },
               "experienceUserCount": {
-                "type": "number"
+                "type": "integer"
               },
               "experienceVersionCount": {
-                "type": "number"
+                "type": "integer"
               },
               "experienceViewCount": {
-                "type": "number"
+                "type": "integer"
               },
               "fileCount": {
-                "type": "number"
+                "type": "integer"
               },
               "flowCount": {
-                "type": "number"
+                "type": "integer"
               },
               "integrationCount": {
-                "type": "number"
+                "type": "integer"
               },
               "keyCount": {
-                "type": "number"
+                "type": "integer"
               },
               "storageStats": {
                 "type": "object",
                 "properties": {
                   "count": {
-                    "type": "number"
+                    "type": "integer"
                   },
                   "size": {
-                    "type": "number"
+                    "type": "integer"
                   }
                 }
               },
               "webhookCount": {
-                "type": "number"
+                "type": "integer"
               }
             }
           },
@@ -17212,7 +17229,7 @@ Schema for a collection of Applications
             "properties": {
               "directory": {
                 "type": "string",
-                "max": 255
+                "maxLength": 255
               },
               "mode": {
                 "type": "string",
@@ -17282,21 +17299,21 @@ Schema for a collection of Applications
                 "properties": {
                   "bucket": {
                     "type": "string",
-                    "max": 255
+                    "maxLength": 255
                   },
                   "accessKeyId": {
                     "type": "string",
-                    "min": 4,
-                    "max": 128
+                    "minLength": 4,
+                    "maxLength": 128
                   },
                   "secretAccessKey": {
                     "type": "string",
-                    "min": 4,
-                    "max": 128
+                    "minLength": 4,
+                    "maxLength": 128
                   },
                   "region": {
                     "type": "string",
-                    "max": 128
+                    "maxLength": 128
                   }
                 },
                 "required": [
@@ -17322,7 +17339,7 @@ Schema for a collection of Applications
                   },
                   "bucket": {
                     "type": "string",
-                    "max": 255
+                    "maxLength": 255
                   }
                 },
                 "required": [
@@ -17337,17 +17354,17 @@ Schema for a collection of Applications
                 "properties": {
                   "account": {
                     "type": "string",
-                    "min": 3,
-                    "max": 24
+                    "minLength": 3,
+                    "maxLength": 24
                   },
                   "accountKey": {
                     "type": "string",
-                    "max": 255
+                    "maxLength": 255
                   },
                   "bucket": {
                     "type": "string",
-                    "min": 3,
-                    "max": 63
+                    "minLength": 3,
+                    "maxLength": 63
                   }
                 },
                 "required": [
@@ -18023,7 +18040,8 @@ Schema for the successful response when authenticating a Device
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     "token": {
@@ -18375,7 +18393,7 @@ Schema for a single Dashboard
     },
     "reportConfigs": {
       "type": "array",
-      "max": 10,
+      "maxItems": 10,
       "items": {
         "type": "object",
         "properties": {
@@ -18389,8 +18407,8 @@ Schema for a single Dashboard
           },
           "toEmail": {
             "type": "array",
-            "min": 1,
-            "max": 10,
+            "minItems": 1,
+            "maxItems": 10,
             "items": {
               "type": "string",
               "format": "email",
@@ -21456,8 +21474,8 @@ Schema for a single Dashboard
                             },
                             "length": {
                               "type": "integer",
-                              "min": 1,
-                              "max": 10
+                              "minimum": 1,
+                              "maximum": 10
                             },
                             "orientation": {
                               "type": "string",
@@ -23670,6 +23688,9 @@ Schema for a single Dashboard
                     "type": "boolean"
                   },
                   "includeEdge": {
+                    "type": "boolean"
+                  },
+                  "includeEmbedded": {
                     "type": "boolean"
                   },
                   "includeExperience": {
@@ -27236,8 +27257,8 @@ Schema for the body of a Dashboard modification request
                             },
                             "length": {
                               "type": "integer",
-                              "min": 1,
-                              "max": 10
+                              "minimum": 1,
+                              "maximum": 10
                             },
                             "orientation": {
                               "type": "string",
@@ -29452,6 +29473,9 @@ Schema for the body of a Dashboard modification request
                   "includeEdge": {
                     "type": "boolean"
                   },
+                  "includeEmbedded": {
+                    "type": "boolean"
+                  },
                   "includeExperience": {
                     "type": "boolean"
                   },
@@ -29478,7 +29502,7 @@ Schema for the body of a Dashboard modification request
     },
     "reportConfigs": {
       "type": "array",
-      "max": 10,
+      "maxItems": 10,
       "items": {
         "type": "object",
         "properties": {
@@ -29492,8 +29516,8 @@ Schema for the body of a Dashboard modification request
           },
           "toEmail": {
             "type": "array",
-            "min": 1,
-            "max": 10,
+            "minItems": 1,
+            "maxItems": 10,
             "items": {
               "type": "string",
               "format": "email",
@@ -32949,8 +32973,8 @@ Schema for the body of a Dashboard creation request
                             },
                             "length": {
                               "type": "integer",
-                              "min": 1,
-                              "max": 10
+                              "minimum": 1,
+                              "maximum": 10
                             },
                             "orientation": {
                               "type": "string",
@@ -35165,6 +35189,9 @@ Schema for the body of a Dashboard creation request
                   "includeEdge": {
                     "type": "boolean"
                   },
+                  "includeEmbedded": {
+                    "type": "boolean"
+                  },
                   "includeExperience": {
                     "type": "boolean"
                   },
@@ -35207,7 +35234,7 @@ Schema for the body of a Dashboard creation request
     },
     "reportConfigs": {
       "type": "array",
-      "max": 10,
+      "maxItems": 10,
       "items": {
         "type": "object",
         "properties": {
@@ -35221,8 +35248,8 @@ Schema for the body of a Dashboard creation request
           },
           "toEmail": {
             "type": "array",
-            "min": 1,
-            "max": 10,
+            "minItems": 1,
+            "maxItems": 10,
             "items": {
               "type": "string",
               "format": "email",
@@ -35627,8 +35654,8 @@ Schema for the body of a Dashboard report request
   "properties": {
     "toEmail": {
       "type": "array",
-      "min": 1,
-      "max": 10,
+      "minItems": 1,
+      "maxItems": 10,
       "items": {
         "type": "string",
         "format": "email",
@@ -35637,11 +35664,11 @@ Schema for the body of a Dashboard report request
     },
     "subject": {
       "type": "string",
-      "max": 255
+      "maxLength": 255
     },
     "message": {
       "type": "string",
-      "max": 32767
+      "maxLength": 32767
     },
     "theme": {
       "type": "string",
@@ -35655,11 +35682,11 @@ Schema for the body of a Dashboard report request
     },
     "timezone": {
       "type": "string",
-      "max": 255
+      "maxLength": 255
     },
     "locale": {
       "type": "string",
-      "max": 5
+      "maxLength": 5
     }
   },
   "additionalProperties": false
@@ -35845,7 +35872,7 @@ Schema for a collection of Dashboards
           },
           "reportConfigs": {
             "type": "array",
-            "max": 10,
+            "maxItems": 10,
             "items": {
               "type": "object",
               "properties": {
@@ -35859,8 +35886,8 @@ Schema for a collection of Dashboards
                 },
                 "toEmail": {
                   "type": "array",
-                  "min": 1,
-                  "max": 10,
+                  "minItems": 1,
+                  "maxItems": 10,
                   "items": {
                     "type": "string",
                     "format": "email",
@@ -38926,8 +38953,8 @@ Schema for a collection of Dashboards
                                   },
                                   "length": {
                                     "type": "integer",
-                                    "min": 1,
-                                    "max": 10
+                                    "minimum": 1,
+                                    "maximum": 10
                                   },
                                   "orientation": {
                                     "type": "string",
@@ -41142,6 +41169,9 @@ Schema for a collection of Dashboards
                         "includeEdge": {
                           "type": "boolean"
                         },
+                        "includeEmbedded": {
+                          "type": "boolean"
+                        },
                         "includeExperience": {
                           "type": "boolean"
                         },
@@ -43170,7 +43200,8 @@ Schema for a single Device
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     "gatewayId": {
@@ -43323,7 +43354,8 @@ Select one or multiple device classes
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     {
@@ -43336,7 +43368,8 @@ Select one or multiple device classes
           "peripheral",
           "floating",
           "edgeCompute",
-          "system"
+          "system",
+          "embedded"
         ]
       }
     }
@@ -43955,7 +43988,8 @@ Schema for the body of a Device modification request
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     "gatewayId": {
@@ -44234,7 +44268,8 @@ Schema for the body of a Device creation request
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     "gatewayId": {
@@ -44500,7 +44535,8 @@ Schema for a single Device Recipe
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     "gatewayId": {
@@ -44858,7 +44894,8 @@ Schema for the body of a Device Recipe modification request
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     "gatewayId": {
@@ -45103,7 +45140,8 @@ Schema for the body of a Device Recipe creation request
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     "gatewayId": {
@@ -45378,7 +45416,8 @@ Schema for a collection of Device Recipes
               "peripheral",
               "floating",
               "edgeCompute",
-              "system"
+              "system",
+              "embedded"
             ]
           },
           "gatewayId": {
@@ -46030,7 +46069,8 @@ Schema for a collection of Devices
               "peripheral",
               "floating",
               "edgeCompute",
-              "system"
+              "system",
+              "embedded"
             ]
           },
           "gatewayId": {
@@ -46122,7 +46162,8 @@ Schema for a collection of Devices
         "peripheral",
         "floating",
         "edgeCompute",
-        "system"
+        "system",
+        "embedded"
       ]
     },
     "tagFilter": {
@@ -50534,7 +50575,8 @@ Schema for the body of a Devices modification request
             "peripheral",
             "floating",
             "edgeCompute",
-            "system"
+            "system",
+            "embedded"
           ]
         },
         "gatewayId": {
@@ -51955,7 +51997,8 @@ Schema for the body of a Devices modification request
                   "peripheral",
                   "floating",
                   "edgeCompute",
-                  "system"
+                  "system",
+                  "embedded"
                 ]
               }
             },
@@ -54200,6 +54243,10 @@ Schema for a single deployment of an edge workflow to an edge device
       "minLength": 1,
       "maxLength": 255
     },
+    "fileName": {
+      "type": "string",
+      "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
+    },
     "creationDate": {
       "type": "string",
       "format": "date-time"
@@ -54544,6 +54591,10 @@ Schema for a collection of Edge Deployments
             "minLength": 1,
             "maxLength": 255
           },
+          "fileName": {
+            "type": "string",
+            "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
+          },
           "creationDate": {
             "type": "string",
             "format": "date-time"
@@ -54730,6 +54781,732 @@ Schema for the body of a request verifying an email
 {
   "email": "email@example.com",
   "token": "the email verification token"
+}
+```
+
+<br/>
+
+## Embedded Deployment
+
+Schema for a single deployment of embedded workflows to embedded devices
+
+### <a name="embedded-deployment-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "embeddedDeploymentId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "deviceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "deviceConnectionInfo": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "connected": {
+          "enum": [
+            1,
+            0,
+            null
+          ]
+        }
+      }
+    },
+    "flows": {
+      "type": "object",
+      "patternProperties": {
+        "^[A-Fa-f\\d]{24}$": {
+          "type": "object",
+          "properties": {
+            "flowName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 255
+            },
+            "currentVersion": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1,
+              "maxLength": 255
+            },
+            "desiredVersion": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1,
+              "maxLength": 255
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "currentBundleVersion": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "desiredBundleVersion": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "unknownBundle": {
+      "type": "boolean"
+    },
+    "logs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sourceType": {
+            "type": "string",
+            "enum": [
+              "flow",
+              "user",
+              "device",
+              "apiToken",
+              "notebook"
+            ]
+          },
+          "sourceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "changeType": {
+            "type": "string",
+            "enum": [
+              "current",
+              "desired"
+            ]
+          },
+          "updateType": {
+            "type": "string",
+            "enum": [
+              "newFlow",
+              "replaceFlow",
+              "removeFlow",
+              "clear",
+              "globals",
+              "device",
+              "unknownBundle",
+              "knownBundle"
+            ]
+          },
+          "updateFlowId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "desiredVersion": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "newBundle": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "attemptedBundle": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
+```
+### <a name="embedded-deployment-example"></a> Example
+
+```json
+{
+  "id": "5a591be186b70d7b9f9b0954",
+  "embeddedDeploymentId": "5a591be186b70d7b9f9b0954",
+  "applicationId": "575ec8687ae143cd83dc4a97",
+  "flows": {
+    "575ed18f7ae143cd83dc4aa6": {
+      "flowName": "my flow",
+      "desiredVersion": "v1.4.0",
+      "currentVersion": null
+    }
+  },
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "currentBundleVersion": "nullVersion",
+  "desiredBundleVersion": "1615500683",
+  "unknownBundle": false,
+  "logs": [
+    {
+      "sourceType": "user",
+      "sourceId": "575ed70c7ae143cd83dc4aa9",
+      "date": "2016-06-13T04:00:00.000Z",
+      "changeType": "desired",
+      "updateType": "newFlow",
+      "updateFlowId": "575ed18f7ae143cd83dc4aa6",
+      "desiredVersion": "v1.4.1",
+      "newBundle": "v1.4.0"
+    }
+  ]
+}
+```
+
+<br/>
+
+## Embedded Deployment Export
+
+Schema for the body of a compiled embedded deployment files request
+
+### <a name="embedded-deployment-export-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "embeddedDeploymentId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "traceLevel": {
+      "enum": [
+        0,
+        1,
+        2
+      ]
+    },
+    "disableDebugMessage": {
+      "type": "boolean"
+    },
+    "stackSize": {
+      "type": "integer",
+      "minimum": 1600,
+      "maximum": 2147483648
+    },
+    "debugSymbols": {
+      "type": "boolean"
+    },
+    "exportMemory": {
+      "type": "boolean"
+    },
+    "gzip": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="embedded-deployment-export-example"></a> Example
+
+```json
+{
+  "email": "email.example.com",
+  "deviceId": "575ecf887ae143cd83dc4aa2"
+}
+```
+
+<br/>
+
+## Embedded Deployment Release
+
+Schema for deploying an embedded workflow to one or more edge devices
+
+### <a name="embedded-deployment-release-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "flowId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "version": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "deviceIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    },
+    "deviceTags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        },
+        "additionalProperties": false
+      },
+      "maxItems": 100
+    },
+    "releaseTag": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 255
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "flowId",
+    "version"
+  ]
+}
+```
+### <a name="embedded-deployment-release-example"></a> Example
+
+```json
+{
+  "flowId": "575ed18f7ae143cd83dc4aa6",
+  "version": "v1.2.3",
+  "deviceIds": [
+    "575ecf887ae143cd83dc4aa2"
+  ]
+}
+```
+
+<br/>
+
+## Embedded Deployment Remove
+
+Schema for removing embedded deployments. Can remove a specific workflow from a specific device, can remove all workflows from a specific device, or can remove a specific workflow from all devices.
+
+### <a name="embedded-deployment-remove-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "flowId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "flowId",
+    "deviceId"
+  ]
+}
+```
+### <a name="embedded-deployment-remove-example"></a> Example
+
+```json
+{
+  "flowId": "575ed18f7ae143cd83dc4aa6",
+  "deviceId": null
+}
+```
+
+<br/>
+
+## Embedded Deployment Replace
+
+Schema for replacing a deployment of a workflow version with a different workflow version
+
+### <a name="embedded-deployment-replace-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "flowId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "oldVersion": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "newVersion": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 255
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "flowId",
+    "oldVersion",
+    "newVersion"
+  ]
+}
+```
+### <a name="embedded-deployment-replace-example"></a> Example
+
+```json
+{
+  "flowId": "575ed18f7ae143cd83dc4aa6",
+  "oldVersion": "v1.2.3",
+  "newVersion": "v1.2.4"
+}
+```
+
+<br/>
+
+## Embedded Deployments
+
+Schema for a collection of Embedded Deployments
+
+### <a name="embedded-deployments-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Embedded Deployment",
+        "description": "Schema for a single deployment of embedded workflows to embedded devices",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "embeddedDeploymentId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deviceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "deviceName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "deviceConnectionInfo": {
+            "type": "object",
+            "properties": {
+              "time": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "connected": {
+                "enum": [
+                  1,
+                  0,
+                  null
+                ]
+              }
+            }
+          },
+          "flows": {
+            "type": "object",
+            "patternProperties": {
+              "^[A-Fa-f\\d]{24}$": {
+                "type": "object",
+                "properties": {
+                  "flowName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "currentVersion": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "desiredVersion": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 255
+                  }
+                }
+              }
+            },
+            "additionalProperties": false
+          },
+          "currentBundleVersion": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "desiredBundleVersion": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "unknownBundle": {
+            "type": "boolean"
+          },
+          "logs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sourceType": {
+                  "type": "string",
+                  "enum": [
+                    "flow",
+                    "user",
+                    "device",
+                    "apiToken",
+                    "notebook"
+                  ]
+                },
+                "sourceId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "changeType": {
+                  "type": "string",
+                  "enum": [
+                    "current",
+                    "desired"
+                  ]
+                },
+                "updateType": {
+                  "type": "string",
+                  "enum": [
+                    "newFlow",
+                    "replaceFlow",
+                    "removeFlow",
+                    "clear",
+                    "globals",
+                    "device",
+                    "unknownBundle",
+                    "knownBundle"
+                  ]
+                },
+                "updateFlowId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "desiredVersion": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "newBundle": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "attemptedBundle": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "error": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "deviceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "flowId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    }
+  }
+}
+```
+### <a name="embedded-deployments-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "5a591be186b70d7b9f9b0954",
+      "embeddedDeploymentId": "5a591be186b70d7b9f9b0954",
+      "applicationId": "575ec8687ae143cd83dc4a97",
+      "flows": {
+        "575ed18f7ae143cd83dc4aa6": {
+          "flowName": "my flow",
+          "desiredVersion": "v1.4.0",
+          "currentVersion": null
+        }
+      },
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "currentBundleVersion": "nullVersion",
+      "desiredBundleVersion": "1615500683",
+      "unknownBundle": false,
+      "logs": [
+        {
+          "sourceType": "user",
+          "sourceId": "575ed70c7ae143cd83dc4aa9",
+          "date": "2016-06-13T04:00:00.000Z",
+          "changeType": "desired",
+          "updateType": "newFlow",
+          "updateFlowId": "575ed18f7ae143cd83dc4aa6",
+          "desiredVersion": "v1.4.1",
+          "newBundle": "v1.4.0"
+        }
+      ]
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "perPage": 1,
+  "page": 0,
+  "sortField": "id",
+  "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97"
 }
 ```
 
@@ -57200,10 +57977,9 @@ Schema for a single Experience Endpoint
               "type": "string"
             },
             "statusCode": {
-              "type": "number",
-              "min": 100,
-              "max": 599,
-              "integer": true
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 599
             },
             "type": {
               "type": "string",
@@ -57233,10 +58009,9 @@ Schema for a single Experience Endpoint
               "type": "string"
             },
             "statusCode": {
-              "type": "number",
-              "min": 100,
-              "max": 599,
-              "integer": true
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 599
             },
             "type": {
               "type": "string",
@@ -57371,10 +58146,9 @@ Schema for the body of an Experience Endpoint modification request
               "type": "string"
             },
             "statusCode": {
-              "type": "number",
-              "min": 100,
-              "max": 599,
-              "integer": true
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 599
             },
             "type": {
               "type": "string",
@@ -57404,10 +58178,9 @@ Schema for the body of an Experience Endpoint modification request
               "type": "string"
             },
             "statusCode": {
-              "type": "number",
-              "min": 100,
-              "max": 599,
-              "integer": true
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 599
             },
             "type": {
               "type": "string",
@@ -57515,10 +58288,9 @@ Schema for the body of an Experience Endpoint creation request
               "type": "string"
             },
             "statusCode": {
-              "type": "number",
-              "min": 100,
-              "max": 599,
-              "integer": true
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 599
             },
             "type": {
               "type": "string",
@@ -57548,10 +58320,9 @@ Schema for the body of an Experience Endpoint creation request
               "type": "string"
             },
             "statusCode": {
-              "type": "number",
-              "min": 100,
-              "max": 599,
-              "integer": true
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 599
             },
             "type": {
               "type": "string",
@@ -57763,10 +58534,9 @@ Schema for a collection of Experience Endpoints
                     "type": "string"
                   },
                   "statusCode": {
-                    "type": "number",
-                    "min": 100,
-                    "max": 599,
-                    "integer": true
+                    "type": "integer",
+                    "minimum": 100,
+                    "maximum": 599
                   },
                   "type": {
                     "type": "string",
@@ -57796,10 +58566,9 @@ Schema for a collection of Experience Endpoints
                     "type": "string"
                   },
                   "statusCode": {
-                    "type": "number",
-                    "min": 100,
-                    "max": 599,
-                    "integer": true
+                    "type": "integer",
+                    "minimum": 100,
+                    "maximum": 599
                   },
                   "type": {
                     "type": "string",
@@ -58776,10 +59545,9 @@ The body of an experience linked resources response
                         "type": "string"
                       },
                       "statusCode": {
-                        "type": "number",
-                        "min": 100,
-                        "max": 599,
-                        "integer": true
+                        "type": "integer",
+                        "minimum": 100,
+                        "maximum": 599
                       },
                       "type": {
                         "type": "string",
@@ -58809,10 +59577,9 @@ The body of an experience linked resources response
                         "type": "string"
                       },
                       "statusCode": {
-                        "type": "number",
-                        "min": 100,
-                        "max": 599,
-                        "integer": true
+                        "type": "integer",
+                        "minimum": 100,
+                        "maximum": 599
                       },
                       "type": {
                         "type": "string",
@@ -58953,6 +59720,7 @@ The body of an experience linked resources response
                 "enum": [
                   "cloud",
                   "edge",
+                  "embedded",
                   "experience",
                   "customNode"
                 ]
@@ -59006,6 +59774,7 @@ The body of an experience linked resources response
                                 "deviceCommand",
                                 "deviceIdsTagsConnect",
                                 "deviceIdsTagsDisconnect",
+                                "eeaInit",
                                 "flowError",
                                 "googlePubSub",
                                 "meridian",
@@ -59069,7 +59838,8 @@ The body of an experience linked resources response
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -59173,7 +59943,8 @@ The body of an experience linked resources response
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -59317,7 +60088,8 @@ The body of an experience linked resources response
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -59413,7 +60185,100 @@ The body of an experience linked resources response
                             "type": "array",
                             "items": {
                               "type": "string",
+                              "maxLength": 48,
+                              "minLength": 1
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "direct"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {},
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "direct"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
                               "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -59510,7 +60375,8 @@ The body of an experience linked resources response
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -59615,7 +60481,8 @@ The body of an experience linked resources response
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -59723,7 +60590,8 @@ The body of an experience linked resources response
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -59834,7 +60702,8 @@ The body of an experience linked resources response
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -59935,7 +60804,8 @@ The body of an experience linked resources response
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -60038,7 +60908,8 @@ The body of an experience linked resources response
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -60178,7 +61049,8 @@ The body of an experience linked resources response
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -60301,7 +61173,8 @@ The body of an experience linked resources response
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -60413,7 +61286,8 @@ The body of an experience linked resources response
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -60556,7 +61430,8 @@ The body of an experience linked resources response
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -60682,7 +61557,8 @@ The body of an experience linked resources response
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -60797,7 +61673,8 @@ The body of an experience linked resources response
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -60838,7 +61715,8 @@ The body of an experience linked resources response
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -61273,6 +62151,7 @@ The body of an experience linked resources response
           "enum": [
             "cloud",
             "edge",
+            "embedded",
             "experience",
             "customNode"
           ]
@@ -61291,7 +62170,7 @@ The body of an experience linked resources response
             "description": "Schema for a single Workflow Version",
             "oneOf": [
               {
-                "description": "Schema for a single Cloud/Edge/Custom Node Workflow Version",
+                "description": "Schema for a single Cloud/Edge/Embedded/Custom Node Workflow Version",
                 "type": "object",
                 "properties": {
                   "id": {
@@ -61379,6 +62258,7 @@ The body of an experience linked resources response
                                     "deviceCommand",
                                     "deviceIdsTagsConnect",
                                     "deviceIdsTagsDisconnect",
+                                    "eeaInit",
                                     "flowError",
                                     "googlePubSub",
                                     "meridian",
@@ -61442,7 +62322,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -61546,7 +62427,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -61690,7 +62572,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -61786,7 +62669,100 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
+                                  "maxLength": 48,
+                                  "minLength": 1
+                                },
+                                "maxItems": 100
+                              },
+                              "maxItems": 100
+                            }
+                          },
+                          "required": [
+                            "type"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "direct"
+                              ]
+                            },
+                            "config": {
+                              "type": "object",
+                              "properties": {},
+                              "additionalProperties": false
+                            },
+                            "meta": {
+                              "type": "object",
+                              "properties": {
+                                "category": {
+                                  "type": "string",
+                                  "enum": [
+                                    "trigger"
+                                  ]
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "enum": [
+                                    "direct"
+                                  ]
+                                },
+                                "label": {
+                                  "type": "string",
+                                  "minLength": 1,
                                   "maxLength": 255
+                                },
+                                "x": {
+                                  "type": "number"
+                                },
+                                "y": {
+                                  "type": "number"
+                                },
+                                "uiId": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                },
+                                "icon": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "color": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "inputCount": {
+                                  "type": "number"
+                                },
+                                "outputCount": {
+                                  "type": "number"
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "outputIds": {
+                              "type": "array",
+                              "items": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -61883,7 +62859,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -61988,7 +62965,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -62096,7 +63074,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -62207,7 +63186,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -62308,7 +63288,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -62411,7 +63392,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -62551,7 +63533,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -62674,7 +63657,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -62786,7 +63770,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -62929,7 +63914,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -63055,7 +64041,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -63170,7 +64157,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -63211,7 +64199,8 @@ The body of an experience linked resources response
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -63702,6 +64691,7 @@ The body of an experience linked resources response
                                     "deviceCommand",
                                     "deviceIdsTagsConnect",
                                     "deviceIdsTagsDisconnect",
+                                    "eeaInit",
                                     "flowError",
                                     "googlePubSub",
                                     "meridian",
@@ -63765,7 +64755,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -63869,7 +64860,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -64013,7 +65005,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -64109,7 +65102,100 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
+                                  "maxLength": 48,
+                                  "minLength": 1
+                                },
+                                "maxItems": 100
+                              },
+                              "maxItems": 100
+                            }
+                          },
+                          "required": [
+                            "type"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "direct"
+                              ]
+                            },
+                            "config": {
+                              "type": "object",
+                              "properties": {},
+                              "additionalProperties": false
+                            },
+                            "meta": {
+                              "type": "object",
+                              "properties": {
+                                "category": {
+                                  "type": "string",
+                                  "enum": [
+                                    "trigger"
+                                  ]
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "enum": [
+                                    "direct"
+                                  ]
+                                },
+                                "label": {
+                                  "type": "string",
+                                  "minLength": 1,
                                   "maxLength": 255
+                                },
+                                "x": {
+                                  "type": "number"
+                                },
+                                "y": {
+                                  "type": "number"
+                                },
+                                "uiId": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                },
+                                "icon": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "color": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "inputCount": {
+                                  "type": "number"
+                                },
+                                "outputCount": {
+                                  "type": "number"
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "outputIds": {
+                              "type": "array",
+                              "items": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -64206,7 +65292,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -64311,7 +65398,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -64419,7 +65507,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -64530,7 +65619,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -64631,7 +65721,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -64734,7 +65825,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -64874,7 +65966,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -64997,7 +66090,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -65109,7 +66203,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -65252,7 +66347,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -65378,7 +66474,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -65493,7 +66590,8 @@ The body of an experience linked resources response
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "maxLength": 255
+                                  "maxLength": 48,
+                                  "minLength": 1
                                 },
                                 "maxItems": 100
                               },
@@ -65534,7 +66632,8 @@ The body of an experience linked resources response
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -67890,6 +68989,7 @@ Schema for a single Workflow
       "enum": [
         "cloud",
         "edge",
+        "embedded",
         "experience",
         "customNode"
       ]
@@ -67943,6 +69043,7 @@ Schema for a single Workflow
                       "deviceCommand",
                       "deviceIdsTagsConnect",
                       "deviceIdsTagsDisconnect",
+                      "eeaInit",
                       "flowError",
                       "googlePubSub",
                       "meridian",
@@ -68006,7 +69107,8 @@ Schema for a single Workflow
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -68110,7 +69212,8 @@ Schema for a single Workflow
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -68254,7 +69357,8 @@ Schema for a single Workflow
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -68350,7 +69454,100 @@ Schema for a single Workflow
                   "type": "array",
                   "items": {
                     "type": "string",
+                    "maxLength": 48,
+                    "minLength": 1
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "direct"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "trigger"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "direct"
+                    ]
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
                     "maxLength": 255
+                  },
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "uiId": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "icon": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "color": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "inputCount": {
+                    "type": "number"
+                  },
+                  "outputCount": {
+                    "type": "number"
+                  },
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
+                  }
+                },
+                "additionalProperties": false
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -68447,7 +69644,8 @@ Schema for a single Workflow
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -68552,7 +69750,8 @@ Schema for a single Workflow
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -68660,7 +69859,8 @@ Schema for a single Workflow
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -68771,7 +69971,8 @@ Schema for a single Workflow
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -68872,7 +70073,8 @@ Schema for a single Workflow
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -68975,7 +70177,8 @@ Schema for a single Workflow
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -69115,7 +70318,8 @@ Schema for a single Workflow
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -69238,7 +70442,8 @@ Schema for a single Workflow
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -69350,7 +70555,8 @@ Schema for a single Workflow
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -69493,7 +70699,8 @@ Schema for a single Workflow
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -69619,7 +70826,8 @@ Schema for a single Workflow
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -69734,7 +70942,8 @@ Schema for a single Workflow
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -69775,7 +70984,8 @@ Schema for a single Workflow
               "type": "array",
               "items": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48,
+                "minLength": 1
               },
               "maxItems": 100
             },
@@ -70474,6 +71684,7 @@ Schema for the body of a Workflow modification request
                       "deviceCommand",
                       "deviceIdsTagsConnect",
                       "deviceIdsTagsDisconnect",
+                      "eeaInit",
                       "flowError",
                       "googlePubSub",
                       "meridian",
@@ -70537,7 +71748,8 @@ Schema for the body of a Workflow modification request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -70641,7 +71853,8 @@ Schema for the body of a Workflow modification request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -70785,7 +71998,8 @@ Schema for the body of a Workflow modification request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -70881,7 +72095,100 @@ Schema for the body of a Workflow modification request
                   "type": "array",
                   "items": {
                     "type": "string",
+                    "maxLength": 48,
+                    "minLength": 1
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "direct"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "trigger"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "direct"
+                    ]
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
                     "maxLength": 255
+                  },
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "uiId": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "icon": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "color": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "inputCount": {
+                    "type": "number"
+                  },
+                  "outputCount": {
+                    "type": "number"
+                  },
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
+                  }
+                },
+                "additionalProperties": false
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -70978,7 +72285,8 @@ Schema for the body of a Workflow modification request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -71083,7 +72391,8 @@ Schema for the body of a Workflow modification request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -71191,7 +72500,8 @@ Schema for the body of a Workflow modification request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -71302,7 +72612,8 @@ Schema for the body of a Workflow modification request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -71403,7 +72714,8 @@ Schema for the body of a Workflow modification request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -71506,7 +72818,8 @@ Schema for the body of a Workflow modification request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -71646,7 +72959,8 @@ Schema for the body of a Workflow modification request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -71769,7 +73083,8 @@ Schema for the body of a Workflow modification request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -71881,7 +73196,8 @@ Schema for the body of a Workflow modification request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -72024,7 +73340,8 @@ Schema for the body of a Workflow modification request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -72150,7 +73467,8 @@ Schema for the body of a Workflow modification request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -72265,7 +73583,8 @@ Schema for the body of a Workflow modification request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -72306,7 +73625,8 @@ Schema for the body of a Workflow modification request
               "type": "array",
               "items": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48,
+                "minLength": 1
               },
               "maxItems": 100
             },
@@ -72760,6 +74080,7 @@ Schema for the body of a Workflow creation request
                       "deviceCommand",
                       "deviceIdsTagsConnect",
                       "deviceIdsTagsDisconnect",
+                      "eeaInit",
                       "flowError",
                       "googlePubSub",
                       "meridian",
@@ -72823,7 +74144,8 @@ Schema for the body of a Workflow creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -72927,7 +74249,8 @@ Schema for the body of a Workflow creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -73071,7 +74394,8 @@ Schema for the body of a Workflow creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -73167,7 +74491,100 @@ Schema for the body of a Workflow creation request
                   "type": "array",
                   "items": {
                     "type": "string",
+                    "maxLength": 48,
+                    "minLength": 1
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "direct"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "trigger"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "direct"
+                    ]
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
                     "maxLength": 255
+                  },
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "uiId": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "icon": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "color": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "inputCount": {
+                    "type": "number"
+                  },
+                  "outputCount": {
+                    "type": "number"
+                  },
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
+                  }
+                },
+                "additionalProperties": false
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -73264,7 +74681,8 @@ Schema for the body of a Workflow creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -73369,7 +74787,8 @@ Schema for the body of a Workflow creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -73477,7 +74896,8 @@ Schema for the body of a Workflow creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -73588,7 +75008,8 @@ Schema for the body of a Workflow creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -73689,7 +75110,8 @@ Schema for the body of a Workflow creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -73792,7 +75214,8 @@ Schema for the body of a Workflow creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -73932,7 +75355,8 @@ Schema for the body of a Workflow creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -74055,7 +75479,8 @@ Schema for the body of a Workflow creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -74167,7 +75592,8 @@ Schema for the body of a Workflow creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -74310,7 +75736,8 @@ Schema for the body of a Workflow creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -74436,7 +75863,8 @@ Schema for the body of a Workflow creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -74551,7 +75979,8 @@ Schema for the body of a Workflow creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -74592,7 +76021,8 @@ Schema for the body of a Workflow creation request
               "type": "array",
               "items": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48,
+                "minLength": 1
               },
               "maxItems": 100
             },
@@ -74633,6 +76063,7 @@ Schema for the body of a Workflow creation request
       "enum": [
         "cloud",
         "edge",
+        "embedded",
         "experience",
         "customNode"
       ]
@@ -75213,7 +76644,7 @@ Schema for a single Workflow Version
   "$schema": "http://json-schema.org/draft-04/schema#",
   "oneOf": [
     {
-      "description": "Schema for a single Cloud/Edge/Custom Node Workflow Version",
+      "description": "Schema for a single Cloud/Edge/Embedded/Custom Node Workflow Version",
       "type": "object",
       "properties": {
         "id": {
@@ -75301,6 +76732,7 @@ Schema for a single Workflow Version
                           "deviceCommand",
                           "deviceIdsTagsConnect",
                           "deviceIdsTagsDisconnect",
+                          "eeaInit",
                           "flowError",
                           "googlePubSub",
                           "meridian",
@@ -75364,7 +76796,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -75468,7 +76901,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -75612,7 +77046,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -75708,7 +77143,100 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
+                        "maxLength": 48,
+                        "minLength": 1
+                      },
+                      "maxItems": 100
+                    },
+                    "maxItems": 100
+                  }
+                },
+                "required": [
+                  "type"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "direct"
+                    ]
+                  },
+                  "config": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": false
+                  },
+                  "meta": {
+                    "type": "object",
+                    "properties": {
+                      "category": {
+                        "type": "string",
+                        "enum": [
+                          "trigger"
+                        ]
+                      },
+                      "name": {
+                        "type": "string",
+                        "enum": [
+                          "direct"
+                        ]
+                      },
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
                         "maxLength": 255
+                      },
+                      "x": {
+                        "type": "number"
+                      },
+                      "y": {
+                        "type": "number"
+                      },
+                      "uiId": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "icon": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "color": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "inputCount": {
+                        "type": "number"
+                      },
+                      "outputCount": {
+                        "type": "number"
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "outputIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -75805,7 +77333,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -75910,7 +77439,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -76018,7 +77548,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -76129,7 +77660,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -76230,7 +77762,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -76333,7 +77866,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -76473,7 +78007,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -76596,7 +78131,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -76708,7 +78244,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -76851,7 +78388,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -76977,7 +78515,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -77092,7 +78631,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -77133,7 +78673,8 @@ Schema for a single Workflow Version
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -77624,6 +79165,7 @@ Schema for a single Workflow Version
                           "deviceCommand",
                           "deviceIdsTagsConnect",
                           "deviceIdsTagsDisconnect",
+                          "eeaInit",
                           "flowError",
                           "googlePubSub",
                           "meridian",
@@ -77687,7 +79229,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -77791,7 +79334,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -77935,7 +79479,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -78031,7 +79576,100 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
+                        "maxLength": 48,
+                        "minLength": 1
+                      },
+                      "maxItems": 100
+                    },
+                    "maxItems": 100
+                  }
+                },
+                "required": [
+                  "type"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "direct"
+                    ]
+                  },
+                  "config": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": false
+                  },
+                  "meta": {
+                    "type": "object",
+                    "properties": {
+                      "category": {
+                        "type": "string",
+                        "enum": [
+                          "trigger"
+                        ]
+                      },
+                      "name": {
+                        "type": "string",
+                        "enum": [
+                          "direct"
+                        ]
+                      },
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
                         "maxLength": 255
+                      },
+                      "x": {
+                        "type": "number"
+                      },
+                      "y": {
+                        "type": "number"
+                      },
+                      "uiId": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "icon": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "color": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "inputCount": {
+                        "type": "number"
+                      },
+                      "outputCount": {
+                        "type": "number"
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "outputIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -78128,7 +79766,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -78233,7 +79872,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -78341,7 +79981,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -78452,7 +80093,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -78553,7 +80195,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -78656,7 +80299,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -78796,7 +80440,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -78919,7 +80564,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -79031,7 +80677,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -79174,7 +80821,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -79300,7 +80948,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -79415,7 +81064,8 @@ Schema for a single Workflow Version
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "maxLength": 255
+                        "maxLength": 48,
+                        "minLength": 1
                       },
                       "maxItems": 100
                     },
@@ -79456,7 +81106,8 @@ Schema for a single Workflow Version
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -79650,6 +81301,7 @@ Schema for the body of a Workflow Version creation request
                       "deviceCommand",
                       "deviceIdsTagsConnect",
                       "deviceIdsTagsDisconnect",
+                      "eeaInit",
                       "flowError",
                       "googlePubSub",
                       "meridian",
@@ -79713,7 +81365,8 @@ Schema for the body of a Workflow Version creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -79817,7 +81470,8 @@ Schema for the body of a Workflow Version creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -79961,7 +81615,8 @@ Schema for the body of a Workflow Version creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -80057,7 +81712,100 @@ Schema for the body of a Workflow Version creation request
                   "type": "array",
                   "items": {
                     "type": "string",
+                    "maxLength": 48,
+                    "minLength": 1
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "direct"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "trigger"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "direct"
+                    ]
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
                     "maxLength": 255
+                  },
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "uiId": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "icon": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "color": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "inputCount": {
+                    "type": "number"
+                  },
+                  "outputCount": {
+                    "type": "number"
+                  },
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
+                  }
+                },
+                "additionalProperties": false
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -80154,7 +81902,8 @@ Schema for the body of a Workflow Version creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -80259,7 +82008,8 @@ Schema for the body of a Workflow Version creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -80367,7 +82117,8 @@ Schema for the body of a Workflow Version creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -80478,7 +82229,8 @@ Schema for the body of a Workflow Version creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -80579,7 +82331,8 @@ Schema for the body of a Workflow Version creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -80682,7 +82435,8 @@ Schema for the body of a Workflow Version creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -80822,7 +82576,8 @@ Schema for the body of a Workflow Version creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -80945,7 +82700,8 @@ Schema for the body of a Workflow Version creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -81057,7 +82813,8 @@ Schema for the body of a Workflow Version creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -81200,7 +82957,8 @@ Schema for the body of a Workflow Version creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -81326,7 +83084,8 @@ Schema for the body of a Workflow Version creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -81441,7 +83200,8 @@ Schema for the body of a Workflow Version creation request
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "maxLength": 255
+                    "maxLength": 48,
+                    "minLength": 1
                   },
                   "maxItems": 100
                 },
@@ -81482,7 +83242,8 @@ Schema for the body of a Workflow Version creation request
               "type": "array",
               "items": {
                 "type": "string",
-                "maxLength": 255
+                "maxLength": 48,
+                "minLength": 1
               },
               "maxItems": 100
             },
@@ -81873,7 +83634,7 @@ Schema for a collection of Workflow Versions
         "description": "Schema for a single Workflow Version",
         "oneOf": [
           {
-            "description": "Schema for a single Cloud/Edge/Custom Node Workflow Version",
+            "description": "Schema for a single Cloud/Edge/Embedded/Custom Node Workflow Version",
             "type": "object",
             "properties": {
               "id": {
@@ -81961,6 +83722,7 @@ Schema for a collection of Workflow Versions
                                 "deviceCommand",
                                 "deviceIdsTagsConnect",
                                 "deviceIdsTagsDisconnect",
+                                "eeaInit",
                                 "flowError",
                                 "googlePubSub",
                                 "meridian",
@@ -82024,7 +83786,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -82128,7 +83891,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -82272,7 +84036,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -82368,7 +84133,100 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
+                              "maxLength": 48,
+                              "minLength": 1
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "direct"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {},
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "direct"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
                               "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -82465,7 +84323,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -82570,7 +84429,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -82678,7 +84538,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -82789,7 +84650,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -82890,7 +84752,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -82993,7 +84856,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -83133,7 +84997,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -83256,7 +85121,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -83368,7 +85234,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -83511,7 +85378,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -83637,7 +85505,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -83752,7 +85621,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -83793,7 +85663,8 @@ Schema for a collection of Workflow Versions
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -84284,6 +86155,7 @@ Schema for a collection of Workflow Versions
                                 "deviceCommand",
                                 "deviceIdsTagsConnect",
                                 "deviceIdsTagsDisconnect",
+                                "eeaInit",
                                 "flowError",
                                 "googlePubSub",
                                 "meridian",
@@ -84347,7 +86219,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -84451,7 +86324,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -84595,7 +86469,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -84691,7 +86566,100 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
+                              "maxLength": 48,
+                              "minLength": 1
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "direct"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {},
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "direct"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
                               "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -84788,7 +86756,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -84893,7 +86862,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -85001,7 +86971,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -85112,7 +87083,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -85213,7 +87185,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -85316,7 +87289,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -85456,7 +87430,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -85579,7 +87554,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -85691,7 +87667,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -85834,7 +87811,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -85960,7 +87938,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -86075,7 +88054,8 @@ Schema for a collection of Workflow Versions
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -86116,7 +88096,8 @@ Schema for a collection of Workflow Versions
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -87291,6 +89272,7 @@ Schema for a collection of Workflows
             "enum": [
               "cloud",
               "edge",
+              "embedded",
               "experience",
               "customNode"
             ]
@@ -87344,6 +89326,7 @@ Schema for a collection of Workflows
                             "deviceCommand",
                             "deviceIdsTagsConnect",
                             "deviceIdsTagsDisconnect",
+                            "eeaInit",
                             "flowError",
                             "googlePubSub",
                             "meridian",
@@ -87407,7 +89390,8 @@ Schema for a collection of Workflows
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -87511,7 +89495,8 @@ Schema for a collection of Workflows
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -87655,7 +89640,8 @@ Schema for a collection of Workflows
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -87751,7 +89737,100 @@ Schema for a collection of Workflows
                         "type": "array",
                         "items": {
                           "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "direct"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {},
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "direct"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
                           "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -87848,7 +89927,8 @@ Schema for a collection of Workflows
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -87953,7 +90033,8 @@ Schema for a collection of Workflows
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -88061,7 +90142,8 @@ Schema for a collection of Workflows
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -88172,7 +90254,8 @@ Schema for a collection of Workflows
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -88273,7 +90356,8 @@ Schema for a collection of Workflows
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -88376,7 +90460,8 @@ Schema for a collection of Workflows
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -88516,7 +90601,8 @@ Schema for a collection of Workflows
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -88639,7 +90725,8 @@ Schema for a collection of Workflows
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -88751,7 +90838,8 @@ Schema for a collection of Workflows
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -88894,7 +90982,8 @@ Schema for a collection of Workflows
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -89020,7 +91109,8 @@ Schema for a collection of Workflows
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -89135,7 +91225,8 @@ Schema for a collection of Workflows
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -89176,7 +91267,8 @@ Schema for a collection of Workflows
                     "type": "array",
                     "items": {
                       "type": "string",
-                      "maxLength": 255
+                      "maxLength": 48,
+                      "minLength": 1
                     },
                     "maxItems": 100
                   },
@@ -89611,6 +91703,7 @@ Schema for a collection of Workflows
       "enum": [
         "cloud",
         "edge",
+        "embedded",
         "experience",
         "customNode"
       ]
@@ -89744,6 +91837,7 @@ Schema for the body of a workflow import request
                             "deviceCommand",
                             "deviceIdsTagsConnect",
                             "deviceIdsTagsDisconnect",
+                            "eeaInit",
                             "flowError",
                             "googlePubSub",
                             "meridian",
@@ -89807,7 +91901,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -89911,7 +92006,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -90055,7 +92151,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -90151,7 +92248,100 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "direct"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {},
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "direct"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
                           "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -90248,7 +92438,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -90353,7 +92544,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -90461,7 +92653,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -90572,7 +92765,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -90673,7 +92867,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -90776,7 +92971,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -90916,7 +93112,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -91039,7 +93236,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -91151,7 +93349,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -91294,7 +93493,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -91420,7 +93620,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -91535,7 +93736,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -91576,7 +93778,8 @@ Schema for the body of a workflow import request
                     "type": "array",
                     "items": {
                       "type": "string",
-                      "maxLength": 255
+                      "maxLength": 48,
+                      "minLength": 1
                     },
                     "maxItems": 100
                   },
@@ -91617,6 +93820,7 @@ Schema for the body of a workflow import request
             "enum": [
               "cloud",
               "edge",
+              "embedded",
               "experience",
               "customNode"
             ]
@@ -92048,6 +94252,7 @@ Schema for the body of a workflow import request
                             "deviceCommand",
                             "deviceIdsTagsConnect",
                             "deviceIdsTagsDisconnect",
+                            "eeaInit",
                             "flowError",
                             "googlePubSub",
                             "meridian",
@@ -92111,7 +94316,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -92215,7 +94421,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -92359,7 +94566,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -92455,7 +94663,100 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "direct"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {},
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "direct"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
                           "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -92552,7 +94853,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -92657,7 +94959,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -92765,7 +95068,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -92876,7 +95180,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -92977,7 +95282,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -93080,7 +95386,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -93220,7 +95527,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -93343,7 +95651,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -93455,7 +95764,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -93598,7 +95908,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -93724,7 +96035,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -93839,7 +96151,8 @@ Schema for the body of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -93880,7 +96193,8 @@ Schema for the body of a workflow import request
                     "type": "array",
                     "items": {
                       "type": "string",
-                      "maxLength": 255
+                      "maxLength": 48,
+                      "minLength": 1
                     },
                     "maxItems": 100
                   },
@@ -94346,6 +96660,7 @@ Schema for the result of a workflow import request
             "enum": [
               "cloud",
               "edge",
+              "embedded",
               "experience",
               "customNode"
             ]
@@ -94399,6 +96714,7 @@ Schema for the result of a workflow import request
                             "deviceCommand",
                             "deviceIdsTagsConnect",
                             "deviceIdsTagsDisconnect",
+                            "eeaInit",
                             "flowError",
                             "googlePubSub",
                             "meridian",
@@ -94462,7 +96778,8 @@ Schema for the result of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -94566,7 +96883,8 @@ Schema for the result of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -94710,7 +97028,8 @@ Schema for the result of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -94806,7 +97125,100 @@ Schema for the result of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "direct"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {},
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "direct"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
                           "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -94903,7 +97315,8 @@ Schema for the result of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -95008,7 +97421,8 @@ Schema for the result of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -95116,7 +97530,8 @@ Schema for the result of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -95227,7 +97642,8 @@ Schema for the result of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -95328,7 +97744,8 @@ Schema for the result of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -95431,7 +97848,8 @@ Schema for the result of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -95571,7 +97989,8 @@ Schema for the result of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -95694,7 +98113,8 @@ Schema for the result of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -95806,7 +98226,8 @@ Schema for the result of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -95949,7 +98370,8 @@ Schema for the result of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -96075,7 +98497,8 @@ Schema for the result of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -96190,7 +98613,8 @@ Schema for the result of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -96231,7 +98655,8 @@ Schema for the result of a workflow import request
                     "type": "array",
                     "items": {
                       "type": "string",
-                      "maxLength": 255
+                      "maxLength": 48,
+                      "minLength": 1
                     },
                     "maxItems": 100
                   },
@@ -96634,7 +99059,7 @@ Schema for the result of a workflow import request
         "description": "Schema for a single Workflow Version",
         "oneOf": [
           {
-            "description": "Schema for a single Cloud/Edge/Custom Node Workflow Version",
+            "description": "Schema for a single Cloud/Edge/Embedded/Custom Node Workflow Version",
             "type": "object",
             "properties": {
               "id": {
@@ -96722,6 +99147,7 @@ Schema for the result of a workflow import request
                                 "deviceCommand",
                                 "deviceIdsTagsConnect",
                                 "deviceIdsTagsDisconnect",
+                                "eeaInit",
                                 "flowError",
                                 "googlePubSub",
                                 "meridian",
@@ -96785,7 +99211,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -96889,7 +99316,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -97033,7 +99461,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -97129,7 +99558,100 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
+                              "maxLength": 48,
+                              "minLength": 1
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "direct"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {},
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "direct"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
                               "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -97226,7 +99748,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -97331,7 +99854,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -97439,7 +99963,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -97550,7 +100075,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -97651,7 +100177,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -97754,7 +100281,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -97894,7 +100422,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -98017,7 +100546,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -98129,7 +100659,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -98272,7 +100803,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -98398,7 +100930,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -98513,7 +101046,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -98554,7 +101088,8 @@ Schema for the result of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -99045,6 +101580,7 @@ Schema for the result of a workflow import request
                                 "deviceCommand",
                                 "deviceIdsTagsConnect",
                                 "deviceIdsTagsDisconnect",
+                                "eeaInit",
                                 "flowError",
                                 "googlePubSub",
                                 "meridian",
@@ -99108,7 +101644,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -99212,7 +101749,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -99356,7 +101894,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -99452,7 +101991,100 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
+                              "maxLength": 48,
+                              "minLength": 1
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "direct"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {},
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "direct"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
                               "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -99549,7 +102181,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -99654,7 +102287,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -99762,7 +102396,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -99873,7 +102508,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -99974,7 +102610,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -100077,7 +102714,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -100217,7 +102855,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -100340,7 +102979,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -100452,7 +103092,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -100595,7 +103236,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -100721,7 +103363,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -100836,7 +103479,8 @@ Schema for the result of a workflow import request
                             "type": "array",
                             "items": {
                               "type": "string",
-                              "maxLength": 255
+                              "maxLength": 48,
+                              "minLength": 1
                             },
                             "maxItems": 100
                           },
@@ -100877,7 +103521,8 @@ Schema for the result of a workflow import request
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -101052,6 +103697,8 @@ Schema for the body of a Github login request
                   "devices.*",
                   "edgeDeployment.*",
                   "edgeDeployments.*",
+                  "embeddedDeployment.*",
+                  "embeddedDeployments.*",
                   "event.*",
                   "events.*",
                   "experience.*",
@@ -101180,6 +103827,12 @@ Schema for the body of a Github login request
                   "edgeDeployments.release",
                   "edgeDeployments.remove",
                   "edgeDeployments.replace",
+                  "embeddedDeployment.get",
+                  "embeddedDeployments.get",
+                  "embeddedDeployments.release",
+                  "embeddedDeployments.remove",
+                  "embeddedDeployments.replace",
+                  "embeddedDeployments.export",
                   "event.delete",
                   "event.get",
                   "event.patch",
@@ -101611,81 +104264,94 @@ Schema for a historical summary report
       "maxLength": 255
     },
     "limits": {
-      "apitoken": {
-        "type": "number"
+      "type": "object",
+      "properties": {
+        "apitoken": {
+          "type": "integer"
+        },
+        "application": {
+          "type": "integer"
+        },
+        "applicationkey": {
+          "type": "integer"
+        },
+        "dashboard": {
+          "type": "integer"
+        },
+        "datatable": {
+          "type": "integer"
+        },
+        "device": {
+          "type": "integer"
+        },
+        "devicerecipe": {
+          "type": "integer"
+        },
+        "experiencedomain": {
+          "type": "integer"
+        },
+        "experienceendpoint": {
+          "type": "integer"
+        },
+        "experiencegroup": {
+          "type": "integer"
+        },
+        "experienceslug": {
+          "type": "integer"
+        },
+        "experienceuser": {
+          "type": "integer"
+        },
+        "experienceversion": {
+          "type": "integer"
+        },
+        "experienceview": {
+          "type": "integer"
+        },
+        "file": {
+          "type": "integer"
+        },
+        "flow": {
+          "type": "integer"
+        },
+        "integration": {
+          "type": "integer"
+        },
+        "notebook": {
+          "type": "integer"
+        },
+        "webhook": {
+          "type": "integer"
+        },
+        "dataTTL": {
+          "type": "integer"
+        },
+        "member": {
+          "type": "integer"
+        },
+        "payload": {
+          "type": "integer"
+        },
+        "storage": {
+          "type": "integer"
+        },
+        "notebookMinutesPerRun": {
+          "type": "integer"
+        },
+        "notebookMinutesPerMonth": {
+          "type": "integer"
+        },
+        "notebookInParallel": {
+          "type": "integer"
+        },
+        "experienceFlowSlots": {
+          "type": "integer"
+        },
+        "applicationFlowSlots": {
+          "type": "integer"
+        }
       },
-      "application": {
-        "type": "number"
-      },
-      "applicationkey": {
-        "type": "number"
-      },
-      "dashboard": {
-        "type": "number"
-      },
-      "datatable": {
-        "type": "number"
-      },
-      "device": {
-        "type": "number"
-      },
-      "devicerecipe": {
-        "type": "number"
-      },
-      "experiencedomain": {
-        "type": "number"
-      },
-      "experienceendpoint": {
-        "type": "number"
-      },
-      "experiencegroup": {
-        "type": "number"
-      },
-      "experienceslug": {
-        "type": "number"
-      },
-      "experienceuser": {
-        "type": "number"
-      },
-      "experienceversion": {
-        "type": "number"
-      },
-      "experienceview": {
-        "type": "number"
-      },
-      "file": {
-        "type": "number"
-      },
-      "flow": {
-        "type": "number"
-      },
-      "integration": {
-        "type": "number"
-      },
-      "notebook": {
-        "type": "number"
-      },
-      "webhook": {
-        "type": "number"
-      },
-      "dataTTL": {
-        "type": "number"
-      },
-      "member": {
-        "type": "number"
-      },
-      "payload": {
-        "type": "number"
-      },
-      "notebookMinutesPerRun": {
-        "type": "number"
-      },
-      "notebookMinutesPerMonth": {
-        "type": "number"
-      },
-      "notebookInParallel": {
-        "type": "number"
-      }
+      "additionalProperties": false
     },
     "currentPeriodStart": {
       "type": "string",
@@ -102163,9 +104829,9 @@ Schema for a single Instance
     },
     "reportConfigs": {
       "type": "array",
+      "maxItems": 10,
       "items": {
         "type": "object",
-        "max": 10,
         "properties": {
           "id": {
             "type": "string",
@@ -102181,7 +104847,7 @@ Schema for a single Instance
           },
           "emails": {
             "type": "array",
-            "max": 10,
+            "maxItems": 10,
             "items": {
               "type": "string",
               "format": "email",
@@ -102222,84 +104888,97 @@ Schema for a single Instance
       }
     },
     "limits": {
-      "organization": {
-        "type": "number"
+      "type": "object",
+      "properties": {
+        "organization": {
+          "type": "integer"
+        },
+        "apitoken": {
+          "type": "integer"
+        },
+        "application": {
+          "type": "integer"
+        },
+        "applicationkey": {
+          "type": "integer"
+        },
+        "dashboard": {
+          "type": "integer"
+        },
+        "datatable": {
+          "type": "integer"
+        },
+        "device": {
+          "type": "integer"
+        },
+        "devicerecipe": {
+          "type": "integer"
+        },
+        "experiencedomain": {
+          "type": "integer"
+        },
+        "experienceendpoint": {
+          "type": "integer"
+        },
+        "experiencegroup": {
+          "type": "integer"
+        },
+        "experienceslug": {
+          "type": "integer"
+        },
+        "experienceuser": {
+          "type": "integer"
+        },
+        "experienceversion": {
+          "type": "integer"
+        },
+        "experienceview": {
+          "type": "integer"
+        },
+        "file": {
+          "type": "integer"
+        },
+        "flow": {
+          "type": "integer"
+        },
+        "integration": {
+          "type": "integer"
+        },
+        "notebook": {
+          "type": "integer"
+        },
+        "webhook": {
+          "type": "integer"
+        },
+        "dataTTL": {
+          "type": "integer"
+        },
+        "member": {
+          "type": "integer"
+        },
+        "payload": {
+          "type": "integer"
+        },
+        "storage": {
+          "type": "integer"
+        },
+        "notebookMinutesPerRun": {
+          "type": "integer"
+        },
+        "notebookMinutesPerMonth": {
+          "type": "integer"
+        },
+        "notebookInParallel": {
+          "type": "integer"
+        },
+        "experienceFlowSlots": {
+          "type": "integer"
+        },
+        "applicationFlowSlots": {
+          "type": "integer"
+        }
       },
-      "apitoken": {
-        "type": "number"
-      },
-      "application": {
-        "type": "number"
-      },
-      "applicationkey": {
-        "type": "number"
-      },
-      "dashboard": {
-        "type": "number"
-      },
-      "datatable": {
-        "type": "number"
-      },
-      "device": {
-        "type": "number"
-      },
-      "devicerecipe": {
-        "type": "number"
-      },
-      "experiencedomain": {
-        "type": "number"
-      },
-      "experienceendpoint": {
-        "type": "number"
-      },
-      "experiencegroup": {
-        "type": "number"
-      },
-      "experienceslug": {
-        "type": "number"
-      },
-      "experienceuser": {
-        "type": "number"
-      },
-      "experienceversion": {
-        "type": "number"
-      },
-      "experienceview": {
-        "type": "number"
-      },
-      "file": {
-        "type": "number"
-      },
-      "flow": {
-        "type": "number"
-      },
-      "integration": {
-        "type": "number"
-      },
-      "notebook": {
-        "type": "number"
-      },
-      "webhook": {
-        "type": "number"
-      },
-      "dataTTL": {
-        "type": "number"
-      },
-      "member": {
-        "type": "number"
-      },
-      "payload": {
-        "type": "number"
-      },
-      "notebookMinutesPerRun": {
-        "type": "number"
-      },
-      "notebookMinutesPerMonth": {
-        "type": "number"
-      },
-      "notebookInParallel": {
-        "type": "number"
-      }
+      "additionalProperties": false
     },
     "members": {
       "type": "array",
@@ -102431,6 +105110,12 @@ Schema for an Instance member
     "avatarUrl": {
       "type": "string",
       "format": "url"
+    },
+    "twoFactorAuthEnabled": {
+      "type": "boolean"
+    },
+    "ssoLinked": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false
@@ -102589,6 +105274,12 @@ Schema for a collection of Instance members
           "avatarUrl": {
             "type": "string",
             "format": "url"
+          },
+          "twoFactorAuthEnabled": {
+            "type": "boolean"
+          },
+          "ssoLinked": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -102674,81 +105365,94 @@ Schema for the body of an Organization owned by an instance
       "maxLength": 64
     },
     "limits": {
-      "apitoken": {
-        "type": "number"
+      "type": "object",
+      "properties": {
+        "apitoken": {
+          "type": "integer"
+        },
+        "application": {
+          "type": "integer"
+        },
+        "applicationkey": {
+          "type": "integer"
+        },
+        "dashboard": {
+          "type": "integer"
+        },
+        "datatable": {
+          "type": "integer"
+        },
+        "device": {
+          "type": "integer"
+        },
+        "devicerecipe": {
+          "type": "integer"
+        },
+        "experiencedomain": {
+          "type": "integer"
+        },
+        "experienceendpoint": {
+          "type": "integer"
+        },
+        "experiencegroup": {
+          "type": "integer"
+        },
+        "experienceslug": {
+          "type": "integer"
+        },
+        "experienceuser": {
+          "type": "integer"
+        },
+        "experienceversion": {
+          "type": "integer"
+        },
+        "experienceview": {
+          "type": "integer"
+        },
+        "file": {
+          "type": "integer"
+        },
+        "flow": {
+          "type": "integer"
+        },
+        "integration": {
+          "type": "integer"
+        },
+        "notebook": {
+          "type": "integer"
+        },
+        "webhook": {
+          "type": "integer"
+        },
+        "dataTTL": {
+          "type": "integer"
+        },
+        "member": {
+          "type": "integer"
+        },
+        "payload": {
+          "type": "integer"
+        },
+        "storage": {
+          "type": "integer"
+        },
+        "notebookMinutesPerRun": {
+          "type": "integer"
+        },
+        "notebookMinutesPerMonth": {
+          "type": "integer"
+        },
+        "notebookInParallel": {
+          "type": "integer"
+        },
+        "experienceFlowSlots": {
+          "type": "integer"
+        },
+        "applicationFlowSlots": {
+          "type": "integer"
+        }
       },
-      "application": {
-        "type": "number"
-      },
-      "applicationkey": {
-        "type": "number"
-      },
-      "dashboard": {
-        "type": "number"
-      },
-      "datatable": {
-        "type": "number"
-      },
-      "device": {
-        "type": "number"
-      },
-      "devicerecipe": {
-        "type": "number"
-      },
-      "experiencedomain": {
-        "type": "number"
-      },
-      "experienceendpoint": {
-        "type": "number"
-      },
-      "experiencegroup": {
-        "type": "number"
-      },
-      "experienceslug": {
-        "type": "number"
-      },
-      "experienceuser": {
-        "type": "number"
-      },
-      "experienceversion": {
-        "type": "number"
-      },
-      "experienceview": {
-        "type": "number"
-      },
-      "file": {
-        "type": "number"
-      },
-      "flow": {
-        "type": "number"
-      },
-      "integration": {
-        "type": "number"
-      },
-      "notebook": {
-        "type": "number"
-      },
-      "webhook": {
-        "type": "number"
-      },
-      "dataTTL": {
-        "type": "number"
-      },
-      "member": {
-        "type": "number"
-      },
-      "payload": {
-        "type": "number"
-      },
-      "notebookMinutesPerRun": {
-        "type": "number"
-      },
-      "notebookMinutesPerMonth": {
-        "type": "number"
-      },
-      "notebookInParallel": {
-        "type": "number"
-      }
+      "additionalProperties": false
     },
     "whitelistedEmailDomains": {
       "type": "array",
@@ -102846,6 +105550,12 @@ Schema for an Instance Organization member
     "avatarUrl": {
       "type": "string",
       "format": "url"
+    },
+    "twoFactorAuthEnabled": {
+      "type": "boolean"
+    },
+    "ssoLinked": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false
@@ -103245,81 +105955,119 @@ Schema for the body of an Organization modification request within an instance
       "type": "object",
       "properties": {
         "apitoken": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "application": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "applicationkey": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "dashboard": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "datatable": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "device": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "devicerecipe": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experiencedomain": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceendpoint": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experiencegroup": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceslug": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceuser": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceversion": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceview": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "file": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "flow": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "integration": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "notebook": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "webhook": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "dataTTL": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 86400
         },
         "member": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "payload": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
+        },
+        "storage": {
+          "type": "integer",
+          "minimum": 0
         },
         "notebookMinutesPerRun": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "notebookMinutesPerMonth": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "notebookInParallel": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceFlowSlots": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "applicationFlowSlots": {
+          "type": "integer",
+          "minimum": 0
         }
-      }
+      },
+      "additionalProperties": false
     },
     "whitelistedEmailDomains": {
       "type": "array",
@@ -103389,85 +106137,123 @@ Schema for the body of an Organization creation request within an instance
       "type": "object",
       "properties": {
         "apitoken": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "application": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "applicationkey": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "dashboard": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "datatable": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "device": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "devicerecipe": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experiencedomain": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceendpoint": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experiencegroup": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceslug": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceuser": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceversion": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceview": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "file": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "flow": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "integration": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "notebook": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "webhook": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "dataTTL": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 86400
         },
         "member": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "payload": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
+        },
+        "storage": {
+          "type": "integer",
+          "minimum": 0
         },
         "notebookMinutesPerRun": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "notebookMinutesPerMonth": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "notebookInParallel": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceFlowSlots": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "applicationFlowSlots": {
+          "type": "integer",
+          "minimum": 0
         }
-      }
+      },
+      "additionalProperties": false
     },
     "members": {
       "type": "array",
-      "max": "10",
+      "maxItems": "10",
       "items": {
         "title": "Instance Org Member Post",
         "description": "Schema for an Instance Organization member creation request",
@@ -103714,81 +106500,94 @@ Schema for a collection of Organizations within an instance
             "maxLength": 64
           },
           "limits": {
-            "apitoken": {
-              "type": "number"
+            "type": "object",
+            "properties": {
+              "apitoken": {
+                "type": "integer"
+              },
+              "application": {
+                "type": "integer"
+              },
+              "applicationkey": {
+                "type": "integer"
+              },
+              "dashboard": {
+                "type": "integer"
+              },
+              "datatable": {
+                "type": "integer"
+              },
+              "device": {
+                "type": "integer"
+              },
+              "devicerecipe": {
+                "type": "integer"
+              },
+              "experiencedomain": {
+                "type": "integer"
+              },
+              "experienceendpoint": {
+                "type": "integer"
+              },
+              "experiencegroup": {
+                "type": "integer"
+              },
+              "experienceslug": {
+                "type": "integer"
+              },
+              "experienceuser": {
+                "type": "integer"
+              },
+              "experienceversion": {
+                "type": "integer"
+              },
+              "experienceview": {
+                "type": "integer"
+              },
+              "file": {
+                "type": "integer"
+              },
+              "flow": {
+                "type": "integer"
+              },
+              "integration": {
+                "type": "integer"
+              },
+              "notebook": {
+                "type": "integer"
+              },
+              "webhook": {
+                "type": "integer"
+              },
+              "dataTTL": {
+                "type": "integer"
+              },
+              "member": {
+                "type": "integer"
+              },
+              "payload": {
+                "type": "integer"
+              },
+              "storage": {
+                "type": "integer"
+              },
+              "notebookMinutesPerRun": {
+                "type": "integer"
+              },
+              "notebookMinutesPerMonth": {
+                "type": "integer"
+              },
+              "notebookInParallel": {
+                "type": "integer"
+              },
+              "experienceFlowSlots": {
+                "type": "integer"
+              },
+              "applicationFlowSlots": {
+                "type": "integer"
+              }
             },
-            "application": {
-              "type": "number"
-            },
-            "applicationkey": {
-              "type": "number"
-            },
-            "dashboard": {
-              "type": "number"
-            },
-            "datatable": {
-              "type": "number"
-            },
-            "device": {
-              "type": "number"
-            },
-            "devicerecipe": {
-              "type": "number"
-            },
-            "experiencedomain": {
-              "type": "number"
-            },
-            "experienceendpoint": {
-              "type": "number"
-            },
-            "experiencegroup": {
-              "type": "number"
-            },
-            "experienceslug": {
-              "type": "number"
-            },
-            "experienceuser": {
-              "type": "number"
-            },
-            "experienceversion": {
-              "type": "number"
-            },
-            "experienceview": {
-              "type": "number"
-            },
-            "file": {
-              "type": "number"
-            },
-            "flow": {
-              "type": "number"
-            },
-            "integration": {
-              "type": "number"
-            },
-            "notebook": {
-              "type": "number"
-            },
-            "webhook": {
-              "type": "number"
-            },
-            "dataTTL": {
-              "type": "number"
-            },
-            "member": {
-              "type": "number"
-            },
-            "payload": {
-              "type": "number"
-            },
-            "notebookMinutesPerRun": {
-              "type": "number"
-            },
-            "notebookMinutesPerMonth": {
-              "type": "number"
-            },
-            "notebookInParallel": {
-              "type": "number"
-            }
+            "additionalProperties": false
           },
           "whitelistedEmailDomains": {
             "type": "array",
@@ -103899,9 +106698,9 @@ Schema for instance patch request
   "properties": {
     "reportConfigs": {
       "type": "array",
+      "maxItems": 10,
       "items": {
         "type": "object",
-        "max": 10,
         "properties": {
           "id": {
             "type": "string",
@@ -103917,7 +106716,7 @@ Schema for instance patch request
           },
           "emails": {
             "type": "array",
-            "max": 10,
+            "maxItems": 10,
             "items": {
               "type": "string",
               "format": "email",
@@ -105424,78 +108223,91 @@ Schema for information about the currently authenticated user
       "format": "url"
     },
     "limits": {
-      "apitoken": {
-        "type": "number"
+      "type": "object",
+      "properties": {
+        "apitoken": {
+          "type": "integer"
+        },
+        "application": {
+          "type": "integer"
+        },
+        "applicationkey": {
+          "type": "integer"
+        },
+        "dashboard": {
+          "type": "integer"
+        },
+        "datatable": {
+          "type": "integer"
+        },
+        "device": {
+          "type": "integer"
+        },
+        "devicerecipe": {
+          "type": "integer"
+        },
+        "experiencedomain": {
+          "type": "integer"
+        },
+        "experienceendpoint": {
+          "type": "integer"
+        },
+        "experiencegroup": {
+          "type": "integer"
+        },
+        "experienceslug": {
+          "type": "integer"
+        },
+        "experienceuser": {
+          "type": "integer"
+        },
+        "experienceversion": {
+          "type": "integer"
+        },
+        "experienceview": {
+          "type": "integer"
+        },
+        "file": {
+          "type": "integer"
+        },
+        "flow": {
+          "type": "integer"
+        },
+        "integration": {
+          "type": "integer"
+        },
+        "notebook": {
+          "type": "integer"
+        },
+        "webhook": {
+          "type": "integer"
+        },
+        "dataTTL": {
+          "type": "integer"
+        },
+        "payload": {
+          "type": "integer"
+        },
+        "storage": {
+          "type": "integer"
+        },
+        "notebookMinutesPerRun": {
+          "type": "integer"
+        },
+        "notebookMinutesPerMonth": {
+          "type": "integer"
+        },
+        "notebookInParallel": {
+          "type": "integer"
+        },
+        "experienceFlowSlots": {
+          "type": "integer"
+        },
+        "applicationFlowSlots": {
+          "type": "integer"
+        }
       },
-      "application": {
-        "type": "number"
-      },
-      "applicationkey": {
-        "type": "number"
-      },
-      "dashboard": {
-        "type": "number"
-      },
-      "datatable": {
-        "type": "number"
-      },
-      "device": {
-        "type": "number"
-      },
-      "devicerecipe": {
-        "type": "number"
-      },
-      "experiencedomain": {
-        "type": "number"
-      },
-      "experienceendpoint": {
-        "type": "number"
-      },
-      "experiencegroup": {
-        "type": "number"
-      },
-      "experienceslug": {
-        "type": "number"
-      },
-      "experienceuser": {
-        "type": "number"
-      },
-      "experienceversion": {
-        "type": "number"
-      },
-      "experienceview": {
-        "type": "number"
-      },
-      "file": {
-        "type": "number"
-      },
-      "flow": {
-        "type": "number"
-      },
-      "integration": {
-        "type": "number"
-      },
-      "notebook": {
-        "type": "number"
-      },
-      "webhook": {
-        "type": "number"
-      },
-      "dataTTL": {
-        "type": "number"
-      },
-      "payload": {
-        "type": "number"
-      },
-      "notebookMinutesPerRun": {
-        "type": "number"
-      },
-      "notebookMinutesPerMonth": {
-        "type": "number"
-      },
-      "notebookInParallel": {
-        "type": "number"
-      }
+      "additionalProperties": false
     },
     "recentDashboards": {
       "title": "Recent Item List",
@@ -105615,55 +108427,55 @@ Schema for information about the currently authenticated user
       "type": "object",
       "properties": {
         "apiTokenCount": {
-          "type": "number"
+          "type": "integer"
         },
         "appCount": {
-          "type": "number"
+          "type": "integer"
         },
         "dashCount": {
-          "type": "number"
+          "type": "integer"
         },
         "dataTableCount": {
-          "type": "number"
+          "type": "integer"
         },
         "deviceCount": {
-          "type": "number"
+          "type": "integer"
         },
         "deviceRecipeCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceEndpointCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceGroupCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceSlugCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceUserCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceVersionCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceViewCount": {
-          "type": "number"
+          "type": "integer"
         },
         "fileCount": {
-          "type": "number"
+          "type": "integer"
         },
         "flowCount": {
-          "type": "number"
+          "type": "integer"
         },
         "integrationCount": {
-          "type": "number"
+          "type": "integer"
         },
         "keyCount": {
-          "type": "number"
+          "type": "integer"
         },
         "orgCount": {
-          "type": "number"
+          "type": "integer"
         },
         "payloadCount": {
           "title": "Payload Stats",
@@ -105796,15 +108608,15 @@ Schema for information about the currently authenticated user
           "type": "object",
           "properties": {
             "count": {
-              "type": "number"
+              "type": "integer"
             },
             "size": {
-              "type": "number"
+              "type": "integer"
             }
           }
         },
         "webhookCount": {
-          "type": "number"
+          "type": "integer"
         }
       }
     },
@@ -110728,143 +113540,162 @@ Schema for a single Organization
               "additionalProperties": false
             },
             "maxItems": 1000
+          },
+          "twoFactorAuthEnabled": {
+            "type": "boolean"
+          },
+          "ssoLinked": {
+            "type": "boolean"
           }
         }
       }
     },
     "limits": {
-      "apitoken": {
-        "type": "number"
+      "type": "object",
+      "properties": {
+        "apitoken": {
+          "type": "integer"
+        },
+        "application": {
+          "type": "integer"
+        },
+        "applicationkey": {
+          "type": "integer"
+        },
+        "dashboard": {
+          "type": "integer"
+        },
+        "datatable": {
+          "type": "integer"
+        },
+        "device": {
+          "type": "integer"
+        },
+        "devicerecipe": {
+          "type": "integer"
+        },
+        "experiencedomain": {
+          "type": "integer"
+        },
+        "experienceendpoint": {
+          "type": "integer"
+        },
+        "experiencegroup": {
+          "type": "integer"
+        },
+        "experienceslug": {
+          "type": "integer"
+        },
+        "experienceuser": {
+          "type": "integer"
+        },
+        "experienceversion": {
+          "type": "integer"
+        },
+        "experienceview": {
+          "type": "integer"
+        },
+        "file": {
+          "type": "integer"
+        },
+        "flow": {
+          "type": "integer"
+        },
+        "integration": {
+          "type": "integer"
+        },
+        "notebook": {
+          "type": "integer"
+        },
+        "webhook": {
+          "type": "integer"
+        },
+        "dataTTL": {
+          "type": "integer"
+        },
+        "member": {
+          "type": "integer"
+        },
+        "payload": {
+          "type": "integer"
+        },
+        "storage": {
+          "type": "integer"
+        },
+        "notebookMinutesPerRun": {
+          "type": "integer"
+        },
+        "notebookMinutesPerMonth": {
+          "type": "integer"
+        },
+        "notebookInParallel": {
+          "type": "integer"
+        },
+        "experienceFlowSlots": {
+          "type": "integer"
+        },
+        "applicationFlowSlots": {
+          "type": "integer"
+        }
       },
-      "application": {
-        "type": "number"
-      },
-      "applicationkey": {
-        "type": "number"
-      },
-      "dashboard": {
-        "type": "number"
-      },
-      "datatable": {
-        "type": "number"
-      },
-      "device": {
-        "type": "number"
-      },
-      "devicerecipe": {
-        "type": "number"
-      },
-      "experiencedomain": {
-        "type": "number"
-      },
-      "experienceendpoint": {
-        "type": "number"
-      },
-      "experiencegroup": {
-        "type": "number"
-      },
-      "experienceslug": {
-        "type": "number"
-      },
-      "experienceuser": {
-        "type": "number"
-      },
-      "experienceversion": {
-        "type": "number"
-      },
-      "experienceview": {
-        "type": "number"
-      },
-      "file": {
-        "type": "number"
-      },
-      "flow": {
-        "type": "number"
-      },
-      "integration": {
-        "type": "number"
-      },
-      "notebook": {
-        "type": "number"
-      },
-      "webhook": {
-        "type": "number"
-      },
-      "dataTTL": {
-        "type": "number"
-      },
-      "member": {
-        "type": "number"
-      },
-      "payload": {
-        "type": "number"
-      },
-      "notebookMinutesPerRun": {
-        "type": "number"
-      },
-      "notebookMinutesPerMonth": {
-        "type": "number"
-      },
-      "notebookInParallel": {
-        "type": "number"
-      }
+      "additionalProperties": false
     },
     "summary": {
       "type": "object",
       "properties": {
         "apiTokenCount": {
-          "type": "number"
+          "type": "integer"
         },
         "appCount": {
-          "type": "number"
+          "type": "integer"
         },
         "dashCount": {
-          "type": "number"
+          "type": "integer"
         },
         "dataTableCount": {
-          "type": "number"
+          "type": "integer"
         },
         "deviceCount": {
-          "type": "number"
+          "type": "integer"
         },
         "deviceRecipeCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceDomainCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceEndpointCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceGroupCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceSlugCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceUserCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceVersionCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceViewCount": {
-          "type": "number"
+          "type": "integer"
         },
         "fileCount": {
-          "type": "number"
+          "type": "integer"
         },
         "flowCount": {
-          "type": "number"
+          "type": "integer"
         },
         "integrationCount": {
-          "type": "number"
+          "type": "integer"
         },
         "keyCount": {
-          "type": "number"
+          "type": "integer"
         },
         "memberCount": {
-          "type": "number"
+          "type": "integer"
         },
         "payloadCount": {
           "title": "Payload Stats",
@@ -110994,21 +113825,21 @@ Schema for a single Organization
           }
         },
         "pendingInviteCount": {
-          "type": "number"
+          "type": "integer"
         },
         "storageStats": {
           "type": "object",
           "properties": {
             "count": {
-              "type": "number"
+              "type": "integer"
             },
             "size": {
-              "type": "number"
+              "type": "integer"
             }
           }
         },
         "webhookCount": {
-          "type": "number"
+          "type": "integer"
         }
       }
     },
@@ -112188,143 +115019,162 @@ Schema for a collection of Organizations
                     "additionalProperties": false
                   },
                   "maxItems": 1000
+                },
+                "twoFactorAuthEnabled": {
+                  "type": "boolean"
+                },
+                "ssoLinked": {
+                  "type": "boolean"
                 }
               }
             }
           },
           "limits": {
-            "apitoken": {
-              "type": "number"
+            "type": "object",
+            "properties": {
+              "apitoken": {
+                "type": "integer"
+              },
+              "application": {
+                "type": "integer"
+              },
+              "applicationkey": {
+                "type": "integer"
+              },
+              "dashboard": {
+                "type": "integer"
+              },
+              "datatable": {
+                "type": "integer"
+              },
+              "device": {
+                "type": "integer"
+              },
+              "devicerecipe": {
+                "type": "integer"
+              },
+              "experiencedomain": {
+                "type": "integer"
+              },
+              "experienceendpoint": {
+                "type": "integer"
+              },
+              "experiencegroup": {
+                "type": "integer"
+              },
+              "experienceslug": {
+                "type": "integer"
+              },
+              "experienceuser": {
+                "type": "integer"
+              },
+              "experienceversion": {
+                "type": "integer"
+              },
+              "experienceview": {
+                "type": "integer"
+              },
+              "file": {
+                "type": "integer"
+              },
+              "flow": {
+                "type": "integer"
+              },
+              "integration": {
+                "type": "integer"
+              },
+              "notebook": {
+                "type": "integer"
+              },
+              "webhook": {
+                "type": "integer"
+              },
+              "dataTTL": {
+                "type": "integer"
+              },
+              "member": {
+                "type": "integer"
+              },
+              "payload": {
+                "type": "integer"
+              },
+              "storage": {
+                "type": "integer"
+              },
+              "notebookMinutesPerRun": {
+                "type": "integer"
+              },
+              "notebookMinutesPerMonth": {
+                "type": "integer"
+              },
+              "notebookInParallel": {
+                "type": "integer"
+              },
+              "experienceFlowSlots": {
+                "type": "integer"
+              },
+              "applicationFlowSlots": {
+                "type": "integer"
+              }
             },
-            "application": {
-              "type": "number"
-            },
-            "applicationkey": {
-              "type": "number"
-            },
-            "dashboard": {
-              "type": "number"
-            },
-            "datatable": {
-              "type": "number"
-            },
-            "device": {
-              "type": "number"
-            },
-            "devicerecipe": {
-              "type": "number"
-            },
-            "experiencedomain": {
-              "type": "number"
-            },
-            "experienceendpoint": {
-              "type": "number"
-            },
-            "experiencegroup": {
-              "type": "number"
-            },
-            "experienceslug": {
-              "type": "number"
-            },
-            "experienceuser": {
-              "type": "number"
-            },
-            "experienceversion": {
-              "type": "number"
-            },
-            "experienceview": {
-              "type": "number"
-            },
-            "file": {
-              "type": "number"
-            },
-            "flow": {
-              "type": "number"
-            },
-            "integration": {
-              "type": "number"
-            },
-            "notebook": {
-              "type": "number"
-            },
-            "webhook": {
-              "type": "number"
-            },
-            "dataTTL": {
-              "type": "number"
-            },
-            "member": {
-              "type": "number"
-            },
-            "payload": {
-              "type": "number"
-            },
-            "notebookMinutesPerRun": {
-              "type": "number"
-            },
-            "notebookMinutesPerMonth": {
-              "type": "number"
-            },
-            "notebookInParallel": {
-              "type": "number"
-            }
+            "additionalProperties": false
           },
           "summary": {
             "type": "object",
             "properties": {
               "apiTokenCount": {
-                "type": "number"
+                "type": "integer"
               },
               "appCount": {
-                "type": "number"
+                "type": "integer"
               },
               "dashCount": {
-                "type": "number"
+                "type": "integer"
               },
               "dataTableCount": {
-                "type": "number"
+                "type": "integer"
               },
               "deviceCount": {
-                "type": "number"
+                "type": "integer"
               },
               "deviceRecipeCount": {
-                "type": "number"
+                "type": "integer"
               },
               "experienceDomainCount": {
-                "type": "number"
+                "type": "integer"
               },
               "experienceEndpointCount": {
-                "type": "number"
+                "type": "integer"
               },
               "experienceGroupCount": {
-                "type": "number"
+                "type": "integer"
               },
               "experienceSlugCount": {
-                "type": "number"
+                "type": "integer"
               },
               "experienceUserCount": {
-                "type": "number"
+                "type": "integer"
               },
               "experienceVersionCount": {
-                "type": "number"
+                "type": "integer"
               },
               "experienceViewCount": {
-                "type": "number"
+                "type": "integer"
               },
               "fileCount": {
-                "type": "number"
+                "type": "integer"
               },
               "flowCount": {
-                "type": "number"
+                "type": "integer"
               },
               "integrationCount": {
-                "type": "number"
+                "type": "integer"
               },
               "keyCount": {
-                "type": "number"
+                "type": "integer"
               },
               "memberCount": {
-                "type": "number"
+                "type": "integer"
               },
               "payloadCount": {
                 "title": "Payload Stats",
@@ -112454,21 +115304,21 @@ Schema for a collection of Organizations
                 }
               },
               "pendingInviteCount": {
-                "type": "number"
+                "type": "integer"
               },
               "storageStats": {
                 "type": "object",
                 "properties": {
                   "count": {
-                    "type": "number"
+                    "type": "integer"
                   },
                   "size": {
-                    "type": "number"
+                    "type": "integer"
                   }
                 }
               },
               "webhookCount": {
-                "type": "number"
+                "type": "integer"
               }
             }
           },
@@ -113776,6 +116626,8 @@ Schema for the body of a User authentication request
                   "devices.*",
                   "edgeDeployment.*",
                   "edgeDeployments.*",
+                  "embeddedDeployment.*",
+                  "embeddedDeployments.*",
                   "event.*",
                   "events.*",
                   "experience.*",
@@ -113904,6 +116756,12 @@ Schema for the body of a User authentication request
                   "edgeDeployments.release",
                   "edgeDeployments.remove",
                   "edgeDeployments.replace",
+                  "embeddedDeployment.get",
+                  "embeddedDeployments.get",
+                  "embeddedDeployments.release",
+                  "embeddedDeployments.remove",
+                  "embeddedDeployments.replace",
+                  "embeddedDeployments.export",
                   "event.delete",
                   "event.get",
                   "event.patch",
@@ -114284,6 +117142,8 @@ Schema for the body of a User creation request
                   "devices.*",
                   "edgeDeployment.*",
                   "edgeDeployments.*",
+                  "embeddedDeployment.*",
+                  "embeddedDeployments.*",
                   "event.*",
                   "events.*",
                   "experience.*",
@@ -114412,6 +117272,12 @@ Schema for the body of a User creation request
                   "edgeDeployments.release",
                   "edgeDeployments.remove",
                   "edgeDeployments.replace",
+                  "embeddedDeployment.get",
+                  "embeddedDeployments.get",
+                  "embeddedDeployments.release",
+                  "embeddedDeployments.remove",
+                  "embeddedDeployments.replace",
+                  "embeddedDeployments.export",
                   "event.delete",
                   "event.get",
                   "event.patch",

@@ -5,21 +5,29 @@
     "items": {
       "type": "array",
       "items": {
-        "title": "Edge Deployment",
-        "description": "Schema for a single deployment of an edge workflow to an edge device",
+        "title": "Embedded Deployment",
+        "description": "Schema for a single deployment of embedded workflows to embedded devices",
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
-          "edgeDeploymentId": {
+          "embeddedDeploymentId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "applicationId": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
           },
           "deviceId": {
             "type": "string",
@@ -46,28 +54,39 @@
               }
             }
           },
-          "flowId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
+          "flows": {
+            "type": "object",
+            "patternProperties": {
+              "^[A-Fa-f\\d]{24}$": {
+                "type": "object",
+                "properties": {
+                  "flowName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "currentVersion": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "desiredVersion": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 255
+                  }
+                }
+              }
+            },
+            "additionalProperties": false
           },
-          "flowName": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 255
-          },
-          "fileName": {
-            "type": "string",
-            "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
-          },
-          "creationDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "lastUpdated": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "currentVersion": {
+          "currentBundleVersion": {
             "type": [
               "string",
               "null"
@@ -75,13 +94,16 @@
             "minLength": 1,
             "maxLength": 255
           },
-          "desiredVersion": {
+          "desiredBundleVersion": {
             "type": [
               "string",
               "null"
             ],
             "minLength": 1,
             "maxLength": 255
+          },
+          "unknownBundle": {
+            "type": "boolean"
           },
           "logs": {
             "type": "array",
@@ -113,7 +135,24 @@
                     "desired"
                   ]
                 },
-                "newValue": {
+                "updateType": {
+                  "type": "string",
+                  "enum": [
+                    "newFlow",
+                    "replaceFlow",
+                    "removeFlow",
+                    "clear",
+                    "globals",
+                    "device",
+                    "unknownBundle",
+                    "knownBundle"
+                  ]
+                },
+                "updateFlowId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "desiredVersion": {
                   "type": [
                     "string",
                     "null"
@@ -121,7 +160,7 @@
                   "minLength": 1,
                   "maxLength": 255
                 },
-                "previousValue": {
+                "newBundle": {
                   "type": [
                     "string",
                     "null"
@@ -129,7 +168,7 @@
                   "minLength": 1,
                   "maxLength": 255
                 },
-                "attemptedValue": {
+                "attemptedBundle": {
                   "type": [
                     "string",
                     "null"

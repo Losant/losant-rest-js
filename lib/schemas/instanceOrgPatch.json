@@ -19,81 +19,119 @@
       "type": "object",
       "properties": {
         "apitoken": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "application": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "applicationkey": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "dashboard": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "datatable": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "device": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "devicerecipe": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experiencedomain": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceendpoint": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experiencegroup": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceslug": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceuser": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceversion": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceview": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "file": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "flow": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "integration": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "notebook": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "webhook": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "dataTTL": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 86400
         },
         "member": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "payload": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
+        },
+        "storage": {
+          "type": "integer",
+          "minimum": 0
         },
         "notebookMinutesPerRun": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "notebookMinutesPerMonth": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
         },
         "notebookInParallel": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceFlowSlots": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "applicationFlowSlots": {
+          "type": "integer",
+          "minimum": 0
         }
-      }
+      },
+      "additionalProperties": false
     },
     "whitelistedEmailDomains": {
       "type": "array",

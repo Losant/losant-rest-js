@@ -108,66 +108,66 @@
       "type": "object",
       "properties": {
         "apiTokenCount": {
-          "type": "number"
+          "type": "integer"
         },
         "dataTableCount": {
-          "type": "number"
+          "type": "integer"
         },
         "deviceCount": {
-          "type": "number"
+          "type": "integer"
         },
         "deviceRecipeCount": {
-          "type": "number"
+          "type": "integer"
         },
         "eventCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceDomainCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceEndpointCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceGroupCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceSlugCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceUserCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceVersionCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceViewCount": {
-          "type": "number"
+          "type": "integer"
         },
         "fileCount": {
-          "type": "number"
+          "type": "integer"
         },
         "flowCount": {
-          "type": "number"
+          "type": "integer"
         },
         "integrationCount": {
-          "type": "number"
+          "type": "integer"
         },
         "keyCount": {
-          "type": "number"
+          "type": "integer"
         },
         "storageStats": {
           "type": "object",
           "properties": {
             "count": {
-              "type": "number"
+              "type": "integer"
             },
             "size": {
-              "type": "number"
+              "type": "integer"
             }
           }
         },
         "webhookCount": {
-          "type": "number"
+          "type": "integer"
         }
       }
     },
@@ -205,7 +205,7 @@
       "properties": {
         "directory": {
           "type": "string",
-          "max": 255
+          "maxLength": 255
         },
         "mode": {
           "type": "string",
@@ -275,21 +275,21 @@
           "properties": {
             "bucket": {
               "type": "string",
-              "max": 255
+              "maxLength": 255
             },
             "accessKeyId": {
               "type": "string",
-              "min": 4,
-              "max": 128
+              "minLength": 4,
+              "maxLength": 128
             },
             "secretAccessKey": {
               "type": "string",
-              "min": 4,
-              "max": 128
+              "minLength": 4,
+              "maxLength": 128
             },
             "region": {
               "type": "string",
-              "max": 128
+              "maxLength": 128
             }
           },
           "required": [
@@ -315,7 +315,7 @@
             },
             "bucket": {
               "type": "string",
-              "max": 255
+              "maxLength": 255
             }
           },
           "required": [
@@ -330,17 +330,17 @@
           "properties": {
             "account": {
               "type": "string",
-              "min": 3,
-              "max": 24
+              "minLength": 3,
+              "maxLength": 24
             },
             "accountKey": {
               "type": "string",
-              "max": 255
+              "maxLength": 255
             },
             "bucket": {
               "type": "string",
-              "min": 3,
-              "max": 63
+              "minLength": 3,
+              "maxLength": 63
             }
           },
           "required": [

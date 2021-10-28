@@ -61,10 +61,9 @@
               "type": "string"
             },
             "statusCode": {
-              "type": "number",
-              "min": 100,
-              "max": 599,
-              "integer": true
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 599
             },
             "type": {
               "type": "string",
@@ -94,10 +93,9 @@
               "type": "string"
             },
             "statusCode": {
-              "type": "number",
-              "min": 100,
-              "max": 599,
-              "integer": true
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 599
             },
             "type": {
               "type": "string",

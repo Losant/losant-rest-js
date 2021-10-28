@@ -7,8 +7,8 @@
   "properties": {
     "toEmail": {
       "type": "array",
-      "min": 1,
-      "max": 10,
+      "minItems": 1,
+      "maxItems": 10,
       "items": {
         "type": "string",
         "format": "email",
@@ -17,11 +17,11 @@
     },
     "subject": {
       "type": "string",
-      "max": 255
+      "maxLength": 255
     },
     "message": {
       "type": "string",
-      "max": 32767
+      "maxLength": 32767
     },
     "theme": {
       "type": "string",
@@ -35,11 +35,11 @@
     },
     "timezone": {
       "type": "string",
-      "max": 255
+      "maxLength": 255
     },
     "locale": {
       "type": "string",
-      "max": 5
+      "maxLength": 5
     }
   },
   "additionalProperties": false

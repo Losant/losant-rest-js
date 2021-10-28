@@ -81,78 +81,91 @@
       "format": "url"
     },
     "limits": {
-      "apitoken": {
-        "type": "number"
+      "type": "object",
+      "properties": {
+        "apitoken": {
+          "type": "integer"
+        },
+        "application": {
+          "type": "integer"
+        },
+        "applicationkey": {
+          "type": "integer"
+        },
+        "dashboard": {
+          "type": "integer"
+        },
+        "datatable": {
+          "type": "integer"
+        },
+        "device": {
+          "type": "integer"
+        },
+        "devicerecipe": {
+          "type": "integer"
+        },
+        "experiencedomain": {
+          "type": "integer"
+        },
+        "experienceendpoint": {
+          "type": "integer"
+        },
+        "experiencegroup": {
+          "type": "integer"
+        },
+        "experienceslug": {
+          "type": "integer"
+        },
+        "experienceuser": {
+          "type": "integer"
+        },
+        "experienceversion": {
+          "type": "integer"
+        },
+        "experienceview": {
+          "type": "integer"
+        },
+        "file": {
+          "type": "integer"
+        },
+        "flow": {
+          "type": "integer"
+        },
+        "integration": {
+          "type": "integer"
+        },
+        "notebook": {
+          "type": "integer"
+        },
+        "webhook": {
+          "type": "integer"
+        },
+        "dataTTL": {
+          "type": "integer"
+        },
+        "payload": {
+          "type": "integer"
+        },
+        "storage": {
+          "type": "integer"
+        },
+        "notebookMinutesPerRun": {
+          "type": "integer"
+        },
+        "notebookMinutesPerMonth": {
+          "type": "integer"
+        },
+        "notebookInParallel": {
+          "type": "integer"
+        },
+        "experienceFlowSlots": {
+          "type": "integer"
+        },
+        "applicationFlowSlots": {
+          "type": "integer"
+        }
       },
-      "application": {
-        "type": "number"
-      },
-      "applicationkey": {
-        "type": "number"
-      },
-      "dashboard": {
-        "type": "number"
-      },
-      "datatable": {
-        "type": "number"
-      },
-      "device": {
-        "type": "number"
-      },
-      "devicerecipe": {
-        "type": "number"
-      },
-      "experiencedomain": {
-        "type": "number"
-      },
-      "experienceendpoint": {
-        "type": "number"
-      },
-      "experiencegroup": {
-        "type": "number"
-      },
-      "experienceslug": {
-        "type": "number"
-      },
-      "experienceuser": {
-        "type": "number"
-      },
-      "experienceversion": {
-        "type": "number"
-      },
-      "experienceview": {
-        "type": "number"
-      },
-      "file": {
-        "type": "number"
-      },
-      "flow": {
-        "type": "number"
-      },
-      "integration": {
-        "type": "number"
-      },
-      "notebook": {
-        "type": "number"
-      },
-      "webhook": {
-        "type": "number"
-      },
-      "dataTTL": {
-        "type": "number"
-      },
-      "payload": {
-        "type": "number"
-      },
-      "notebookMinutesPerRun": {
-        "type": "number"
-      },
-      "notebookMinutesPerMonth": {
-        "type": "number"
-      },
-      "notebookInParallel": {
-        "type": "number"
-      }
+      "additionalProperties": false
     },
     "recentDashboards": {
       "title": "Recent Item List",
@@ -272,55 +285,55 @@
       "type": "object",
       "properties": {
         "apiTokenCount": {
-          "type": "number"
+          "type": "integer"
         },
         "appCount": {
-          "type": "number"
+          "type": "integer"
         },
         "dashCount": {
-          "type": "number"
+          "type": "integer"
         },
         "dataTableCount": {
-          "type": "number"
+          "type": "integer"
         },
         "deviceCount": {
-          "type": "number"
+          "type": "integer"
         },
         "deviceRecipeCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceEndpointCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceGroupCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceSlugCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceUserCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceVersionCount": {
-          "type": "number"
+          "type": "integer"
         },
         "experienceViewCount": {
-          "type": "number"
+          "type": "integer"
         },
         "fileCount": {
-          "type": "number"
+          "type": "integer"
         },
         "flowCount": {
-          "type": "number"
+          "type": "integer"
         },
         "integrationCount": {
-          "type": "number"
+          "type": "integer"
         },
         "keyCount": {
-          "type": "number"
+          "type": "integer"
         },
         "orgCount": {
-          "type": "number"
+          "type": "integer"
         },
         "payloadCount": {
           "title": "Payload Stats",
@@ -453,15 +466,15 @@
           "type": "object",
           "properties": {
             "count": {
-              "type": "number"
+              "type": "integer"
             },
             "size": {
-              "type": "number"
+              "type": "integer"
             }
           }
         },
         "webhookCount": {
-          "type": "number"
+          "type": "integer"
         }
       }
     },
