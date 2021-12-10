@@ -56268,6 +56268,10 @@ Export options for events
       "format": "email",
       "maxLength": 1024
     },
+    "callbackUrl": {
+      "type": "string",
+      "maxLength": 1024
+    },
     "query": {
       "title": "Advanced Event Query",
       "description": "Schema for advanced event queries",
@@ -106776,7 +106780,7 @@ Schema for instance patch request
       "periods": 3
     },
     {
-      "email": [
+      "emails": [
         "email@example.com",
         "anotheremail@example.com"
       ],
@@ -110259,7 +110263,8 @@ Schema for a single Notebook
       "type": "string",
       "enum": [
         "v1",
-        "v2"
+        "v2",
+        "v3"
       ]
     },
     "inputs": {
@@ -111092,7 +111097,8 @@ Schema for a set of Notebook execution logs
         "type": "string",
         "enum": [
           "v1",
-          "v2"
+          "v2",
+          "v3"
         ]
       },
       "applicationId": {
@@ -111902,7 +111908,8 @@ Schema for the body of a Notebook modification request
       "type": "string",
       "enum": [
         "v1",
-        "v2"
+        "v2",
+        "v3"
       ]
     }
   },
@@ -111943,7 +111950,8 @@ Schema for the body of an Notebook creation request
       "type": "string",
       "enum": [
         "v1",
-        "v2"
+        "v2",
+        "v3"
       ]
     },
     "inputs": {
@@ -112618,7 +112626,8 @@ Schema for a collection of Notebooks
             "type": "string",
             "enum": [
               "v1",
-              "v2"
+              "v2",
+              "v3"
             ]
           },
           "inputs": {

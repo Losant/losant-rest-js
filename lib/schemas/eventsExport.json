@@ -7,6 +7,10 @@
       "format": "email",
       "maxLength": 1024
     },
+    "callbackUrl": {
+      "type": "string",
+      "maxLength": 1024
+    },
     "query": {
       "title": "Advanced Event Query",
       "description": "Schema for advanced event queries",
