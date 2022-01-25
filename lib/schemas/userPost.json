@@ -14,7 +14,6 @@
     },
     "lastName": {
       "type": "string",
-      "minLength": 1,
       "maxLength": 1024
     },
     "companyName": {
@@ -230,6 +229,7 @@
                   "devices.delete",
                   "devices.removeData",
                   "devices.detailedSummary",
+                  "devices.deviceNames",
                   "devices.export",
                   "devices.get",
                   "devices.payloadCounts",

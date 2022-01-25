@@ -81,6 +81,7 @@
 *   [Device Connection Status](#device-connection-status)
 *   [Device Credentials](#device-credentials)
 *   [Device Log](#device-log)
+*   [Device Names Response](#device-names-response)
 *   [Device Patch](#device-patch)
 *   [Device Payload Counts](#device-payload-counts)
 *   [Device Post](#device-post)
@@ -6965,6 +6966,7 @@ Schema for the body of an API Token creation request
                   "devices.delete",
                   "devices.removeData",
                   "devices.detailedSummary",
+                  "devices.deviceNames",
                   "devices.export",
                   "devices.get",
                   "devices.payloadCounts",
@@ -43808,6 +43810,66 @@ Log of connection information for a Device
 
 <br/>
 
+## Device Names Response
+
+Schema for a list of device names
+
+### <a name="device-names-response-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "deviceSummary": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "deviceClass": {
+            "type": "string",
+            "enum": [
+              "standalone",
+              "gateway",
+              "peripheral",
+              "floating",
+              "edgeCompute",
+              "system",
+              "embedded"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        }
+      },
+      "maxItems": 1000
+    }
+  }
+}
+```
+### <a name="device-names-response-example"></a> Example
+
+```json
+{
+  "deviceSummary": [
+    {
+      "name": "My Device",
+      "id": "575ecf887ae143cd83dc4aa2",
+      "deviceClass": "standalone"
+    }
+  ]
+}
+```
+
+<br/>
+
 ## Device Patch
 
 Schema for the body of a Device modification request
@@ -61457,6 +61519,161 @@ The body of an experience linked resources response
                         "type": {
                           "type": "string",
                           "enum": [
+                            "snmpTrap"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {
+                            "udpPort": {
+                              "type": "string",
+                              "maxLength": 5
+                            },
+                            "snmpTrapConfig": {
+                              "type": "object",
+                              "properties": {
+                                "community": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "user": {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string",
+                                      "maxLength": 1024
+                                    },
+                                    "securityLevel": {
+                                      "type": "string",
+                                      "enum": [
+                                        "none",
+                                        "auth",
+                                        "authAndEncrypt"
+                                      ]
+                                    },
+                                    "authMethod": {
+                                      "type": "string",
+                                      "enum": [
+                                        "sha",
+                                        "md5"
+                                      ]
+                                    },
+                                    "authKey": {
+                                      "type": "string",
+                                      "maxLength": 1024
+                                    },
+                                    "encryptionMethod": {
+                                      "type": "string",
+                                      "enum": [
+                                        "aes",
+                                        "des"
+                                      ]
+                                    },
+                                    "encryptionKey": {
+                                      "type": "string",
+                                      "maxLength": 1024
+                                    }
+                                  },
+                                  "required": [
+                                    "name",
+                                    "securityLevel"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "udpPort",
+                            "snmpTrapConfig"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "snmpTrap"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 48,
+                              "minLength": 1
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
                             "timer"
                           ]
                         },
@@ -63941,6 +64158,161 @@ The body of an experience linked resources response
                             "type": {
                               "type": "string",
                               "enum": [
+                                "snmpTrap"
+                              ]
+                            },
+                            "config": {
+                              "type": "object",
+                              "properties": {
+                                "udpPort": {
+                                  "type": "string",
+                                  "maxLength": 5
+                                },
+                                "snmpTrapConfig": {
+                                  "type": "object",
+                                  "properties": {
+                                    "community": {
+                                      "type": "string",
+                                      "maxLength": 1024
+                                    },
+                                    "user": {
+                                      "type": "object",
+                                      "properties": {
+                                        "name": {
+                                          "type": "string",
+                                          "maxLength": 1024
+                                        },
+                                        "securityLevel": {
+                                          "type": "string",
+                                          "enum": [
+                                            "none",
+                                            "auth",
+                                            "authAndEncrypt"
+                                          ]
+                                        },
+                                        "authMethod": {
+                                          "type": "string",
+                                          "enum": [
+                                            "sha",
+                                            "md5"
+                                          ]
+                                        },
+                                        "authKey": {
+                                          "type": "string",
+                                          "maxLength": 1024
+                                        },
+                                        "encryptionMethod": {
+                                          "type": "string",
+                                          "enum": [
+                                            "aes",
+                                            "des"
+                                          ]
+                                        },
+                                        "encryptionKey": {
+                                          "type": "string",
+                                          "maxLength": 1024
+                                        }
+                                      },
+                                      "required": [
+                                        "name",
+                                        "securityLevel"
+                                      ],
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": [
+                                "udpPort",
+                                "snmpTrapConfig"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "meta": {
+                              "type": "object",
+                              "properties": {
+                                "category": {
+                                  "type": "string",
+                                  "enum": [
+                                    "trigger"
+                                  ]
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "enum": [
+                                    "snmpTrap"
+                                  ]
+                                },
+                                "label": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 255
+                                },
+                                "x": {
+                                  "type": "number"
+                                },
+                                "y": {
+                                  "type": "number"
+                                },
+                                "uiId": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                },
+                                "icon": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "color": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "inputCount": {
+                                  "type": "number"
+                                },
+                                "outputCount": {
+                                  "type": "number"
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "outputIds": {
+                              "type": "array",
+                              "items": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "maxLength": 48,
+                                  "minLength": 1
+                                },
+                                "maxItems": 100
+                              },
+                              "maxItems": 100
+                            }
+                          },
+                          "required": [
+                            "type"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
                                 "timer"
                               ]
                             },
@@ -66341,6 +66713,161 @@ The body of an experience linked resources response
                                     "byteLength",
                                     "delimiter"
                                   ]
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "outputIds": {
+                              "type": "array",
+                              "items": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "maxLength": 48,
+                                  "minLength": 1
+                                },
+                                "maxItems": 100
+                              },
+                              "maxItems": 100
+                            }
+                          },
+                          "required": [
+                            "type"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "snmpTrap"
+                              ]
+                            },
+                            "config": {
+                              "type": "object",
+                              "properties": {
+                                "udpPort": {
+                                  "type": "string",
+                                  "maxLength": 5
+                                },
+                                "snmpTrapConfig": {
+                                  "type": "object",
+                                  "properties": {
+                                    "community": {
+                                      "type": "string",
+                                      "maxLength": 1024
+                                    },
+                                    "user": {
+                                      "type": "object",
+                                      "properties": {
+                                        "name": {
+                                          "type": "string",
+                                          "maxLength": 1024
+                                        },
+                                        "securityLevel": {
+                                          "type": "string",
+                                          "enum": [
+                                            "none",
+                                            "auth",
+                                            "authAndEncrypt"
+                                          ]
+                                        },
+                                        "authMethod": {
+                                          "type": "string",
+                                          "enum": [
+                                            "sha",
+                                            "md5"
+                                          ]
+                                        },
+                                        "authKey": {
+                                          "type": "string",
+                                          "maxLength": 1024
+                                        },
+                                        "encryptionMethod": {
+                                          "type": "string",
+                                          "enum": [
+                                            "aes",
+                                            "des"
+                                          ]
+                                        },
+                                        "encryptionKey": {
+                                          "type": "string",
+                                          "maxLength": 1024
+                                        }
+                                      },
+                                      "required": [
+                                        "name",
+                                        "securityLevel"
+                                      ],
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": [
+                                "udpPort",
+                                "snmpTrapConfig"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "meta": {
+                              "type": "object",
+                              "properties": {
+                                "category": {
+                                  "type": "string",
+                                  "enum": [
+                                    "trigger"
+                                  ]
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "enum": [
+                                    "snmpTrap"
+                                  ]
+                                },
+                                "label": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 255
+                                },
+                                "x": {
+                                  "type": "number"
+                                },
+                                "y": {
+                                  "type": "number"
+                                },
+                                "uiId": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                },
+                                "icon": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "color": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "inputCount": {
+                                  "type": "number"
+                                },
+                                "outputCount": {
+                                  "type": "number"
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "maxLength": 48
                                 }
                               },
                               "additionalProperties": false
@@ -70726,6 +71253,161 @@ Schema for a single Workflow
               "type": {
                 "type": "string",
                 "enum": [
+                  "snmpTrap"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "udpPort": {
+                    "type": "string",
+                    "maxLength": 5
+                  },
+                  "snmpTrapConfig": {
+                    "type": "object",
+                    "properties": {
+                      "community": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "user": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "maxLength": 1024
+                          },
+                          "securityLevel": {
+                            "type": "string",
+                            "enum": [
+                              "none",
+                              "auth",
+                              "authAndEncrypt"
+                            ]
+                          },
+                          "authMethod": {
+                            "type": "string",
+                            "enum": [
+                              "sha",
+                              "md5"
+                            ]
+                          },
+                          "authKey": {
+                            "type": "string",
+                            "maxLength": 1024
+                          },
+                          "encryptionMethod": {
+                            "type": "string",
+                            "enum": [
+                              "aes",
+                              "des"
+                            ]
+                          },
+                          "encryptionKey": {
+                            "type": "string",
+                            "maxLength": 1024
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "securityLevel"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "udpPort",
+                  "snmpTrapConfig"
+                ],
+                "additionalProperties": false
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "trigger"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "snmpTrap"
+                    ]
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "uiId": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "icon": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "color": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "inputCount": {
+                    "type": "number"
+                  },
+                  "outputCount": {
+                    "type": "number"
+                  },
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
+                  }
+                },
+                "additionalProperties": false
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 48,
+                    "minLength": 1
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
                   "timer"
                 ]
               },
@@ -73367,6 +74049,161 @@ Schema for the body of a Workflow modification request
               "type": {
                 "type": "string",
                 "enum": [
+                  "snmpTrap"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "udpPort": {
+                    "type": "string",
+                    "maxLength": 5
+                  },
+                  "snmpTrapConfig": {
+                    "type": "object",
+                    "properties": {
+                      "community": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "user": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "maxLength": 1024
+                          },
+                          "securityLevel": {
+                            "type": "string",
+                            "enum": [
+                              "none",
+                              "auth",
+                              "authAndEncrypt"
+                            ]
+                          },
+                          "authMethod": {
+                            "type": "string",
+                            "enum": [
+                              "sha",
+                              "md5"
+                            ]
+                          },
+                          "authKey": {
+                            "type": "string",
+                            "maxLength": 1024
+                          },
+                          "encryptionMethod": {
+                            "type": "string",
+                            "enum": [
+                              "aes",
+                              "des"
+                            ]
+                          },
+                          "encryptionKey": {
+                            "type": "string",
+                            "maxLength": 1024
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "securityLevel"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "udpPort",
+                  "snmpTrapConfig"
+                ],
+                "additionalProperties": false
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "trigger"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "snmpTrap"
+                    ]
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "uiId": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "icon": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "color": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "inputCount": {
+                    "type": "number"
+                  },
+                  "outputCount": {
+                    "type": "number"
+                  },
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
+                  }
+                },
+                "additionalProperties": false
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 48,
+                    "minLength": 1
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
                   "timer"
                 ]
               },
@@ -75730,6 +76567,161 @@ Schema for the body of a Workflow creation request
                       "byteLength",
                       "delimiter"
                     ]
+                  }
+                },
+                "additionalProperties": false
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 48,
+                    "minLength": 1
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "snmpTrap"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "udpPort": {
+                    "type": "string",
+                    "maxLength": 5
+                  },
+                  "snmpTrapConfig": {
+                    "type": "object",
+                    "properties": {
+                      "community": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "user": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "maxLength": 1024
+                          },
+                          "securityLevel": {
+                            "type": "string",
+                            "enum": [
+                              "none",
+                              "auth",
+                              "authAndEncrypt"
+                            ]
+                          },
+                          "authMethod": {
+                            "type": "string",
+                            "enum": [
+                              "sha",
+                              "md5"
+                            ]
+                          },
+                          "authKey": {
+                            "type": "string",
+                            "maxLength": 1024
+                          },
+                          "encryptionMethod": {
+                            "type": "string",
+                            "enum": [
+                              "aes",
+                              "des"
+                            ]
+                          },
+                          "encryptionKey": {
+                            "type": "string",
+                            "maxLength": 1024
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "securityLevel"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "udpPort",
+                  "snmpTrapConfig"
+                ],
+                "additionalProperties": false
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "trigger"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "snmpTrap"
+                    ]
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "uiId": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "icon": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "color": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "inputCount": {
+                    "type": "number"
+                  },
+                  "outputCount": {
+                    "type": "number"
+                  },
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
                   }
                 },
                 "additionalProperties": false
@@ -78415,6 +79407,161 @@ Schema for a single Workflow Version
                   "type": {
                     "type": "string",
                     "enum": [
+                      "snmpTrap"
+                    ]
+                  },
+                  "config": {
+                    "type": "object",
+                    "properties": {
+                      "udpPort": {
+                        "type": "string",
+                        "maxLength": 5
+                      },
+                      "snmpTrapConfig": {
+                        "type": "object",
+                        "properties": {
+                          "community": {
+                            "type": "string",
+                            "maxLength": 1024
+                          },
+                          "user": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "maxLength": 1024
+                              },
+                              "securityLevel": {
+                                "type": "string",
+                                "enum": [
+                                  "none",
+                                  "auth",
+                                  "authAndEncrypt"
+                                ]
+                              },
+                              "authMethod": {
+                                "type": "string",
+                                "enum": [
+                                  "sha",
+                                  "md5"
+                                ]
+                              },
+                              "authKey": {
+                                "type": "string",
+                                "maxLength": 1024
+                              },
+                              "encryptionMethod": {
+                                "type": "string",
+                                "enum": [
+                                  "aes",
+                                  "des"
+                                ]
+                              },
+                              "encryptionKey": {
+                                "type": "string",
+                                "maxLength": 1024
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "securityLevel"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "udpPort",
+                      "snmpTrapConfig"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "meta": {
+                    "type": "object",
+                    "properties": {
+                      "category": {
+                        "type": "string",
+                        "enum": [
+                          "trigger"
+                        ]
+                      },
+                      "name": {
+                        "type": "string",
+                        "enum": [
+                          "snmpTrap"
+                        ]
+                      },
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      },
+                      "x": {
+                        "type": "number"
+                      },
+                      "y": {
+                        "type": "number"
+                      },
+                      "uiId": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "icon": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "color": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "inputCount": {
+                        "type": "number"
+                      },
+                      "outputCount": {
+                        "type": "number"
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "outputIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "maxLength": 48,
+                        "minLength": 1
+                      },
+                      "maxItems": 100
+                    },
+                    "maxItems": 100
+                  }
+                },
+                "required": [
+                  "type"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
                       "timer"
                     ]
                   },
@@ -80848,6 +81995,161 @@ Schema for a single Workflow Version
                   "type": {
                     "type": "string",
                     "enum": [
+                      "snmpTrap"
+                    ]
+                  },
+                  "config": {
+                    "type": "object",
+                    "properties": {
+                      "udpPort": {
+                        "type": "string",
+                        "maxLength": 5
+                      },
+                      "snmpTrapConfig": {
+                        "type": "object",
+                        "properties": {
+                          "community": {
+                            "type": "string",
+                            "maxLength": 1024
+                          },
+                          "user": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "maxLength": 1024
+                              },
+                              "securityLevel": {
+                                "type": "string",
+                                "enum": [
+                                  "none",
+                                  "auth",
+                                  "authAndEncrypt"
+                                ]
+                              },
+                              "authMethod": {
+                                "type": "string",
+                                "enum": [
+                                  "sha",
+                                  "md5"
+                                ]
+                              },
+                              "authKey": {
+                                "type": "string",
+                                "maxLength": 1024
+                              },
+                              "encryptionMethod": {
+                                "type": "string",
+                                "enum": [
+                                  "aes",
+                                  "des"
+                                ]
+                              },
+                              "encryptionKey": {
+                                "type": "string",
+                                "maxLength": 1024
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "securityLevel"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "udpPort",
+                      "snmpTrapConfig"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "meta": {
+                    "type": "object",
+                    "properties": {
+                      "category": {
+                        "type": "string",
+                        "enum": [
+                          "trigger"
+                        ]
+                      },
+                      "name": {
+                        "type": "string",
+                        "enum": [
+                          "snmpTrap"
+                        ]
+                      },
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      },
+                      "x": {
+                        "type": "number"
+                      },
+                      "y": {
+                        "type": "number"
+                      },
+                      "uiId": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "icon": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "color": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "inputCount": {
+                        "type": "number"
+                      },
+                      "outputCount": {
+                        "type": "number"
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "outputIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "maxLength": 48,
+                        "minLength": 1
+                      },
+                      "maxItems": 100
+                    },
+                    "maxItems": 100
+                  }
+                },
+                "required": [
+                  "type"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
                       "timer"
                     ]
                   },
@@ -82951,6 +84253,161 @@ Schema for the body of a Workflow Version creation request
                       "byteLength",
                       "delimiter"
                     ]
+                  }
+                },
+                "additionalProperties": false
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 48,
+                    "minLength": 1
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "snmpTrap"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "udpPort": {
+                    "type": "string",
+                    "maxLength": 5
+                  },
+                  "snmpTrapConfig": {
+                    "type": "object",
+                    "properties": {
+                      "community": {
+                        "type": "string",
+                        "maxLength": 1024
+                      },
+                      "user": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "maxLength": 1024
+                          },
+                          "securityLevel": {
+                            "type": "string",
+                            "enum": [
+                              "none",
+                              "auth",
+                              "authAndEncrypt"
+                            ]
+                          },
+                          "authMethod": {
+                            "type": "string",
+                            "enum": [
+                              "sha",
+                              "md5"
+                            ]
+                          },
+                          "authKey": {
+                            "type": "string",
+                            "maxLength": 1024
+                          },
+                          "encryptionMethod": {
+                            "type": "string",
+                            "enum": [
+                              "aes",
+                              "des"
+                            ]
+                          },
+                          "encryptionKey": {
+                            "type": "string",
+                            "maxLength": 1024
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "securityLevel"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "udpPort",
+                  "snmpTrapConfig"
+                ],
+                "additionalProperties": false
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "trigger"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "snmpTrap"
+                    ]
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "uiId": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "icon": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "color": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "inputCount": {
+                    "type": "number"
+                  },
+                  "outputCount": {
+                    "type": "number"
+                  },
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
                   }
                 },
                 "additionalProperties": false
@@ -85405,6 +86862,161 @@ Schema for a collection of Workflow Versions
                         "type": {
                           "type": "string",
                           "enum": [
+                            "snmpTrap"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {
+                            "udpPort": {
+                              "type": "string",
+                              "maxLength": 5
+                            },
+                            "snmpTrapConfig": {
+                              "type": "object",
+                              "properties": {
+                                "community": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "user": {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string",
+                                      "maxLength": 1024
+                                    },
+                                    "securityLevel": {
+                                      "type": "string",
+                                      "enum": [
+                                        "none",
+                                        "auth",
+                                        "authAndEncrypt"
+                                      ]
+                                    },
+                                    "authMethod": {
+                                      "type": "string",
+                                      "enum": [
+                                        "sha",
+                                        "md5"
+                                      ]
+                                    },
+                                    "authKey": {
+                                      "type": "string",
+                                      "maxLength": 1024
+                                    },
+                                    "encryptionMethod": {
+                                      "type": "string",
+                                      "enum": [
+                                        "aes",
+                                        "des"
+                                      ]
+                                    },
+                                    "encryptionKey": {
+                                      "type": "string",
+                                      "maxLength": 1024
+                                    }
+                                  },
+                                  "required": [
+                                    "name",
+                                    "securityLevel"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "udpPort",
+                            "snmpTrapConfig"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "snmpTrap"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 48,
+                              "minLength": 1
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
                             "timer"
                           ]
                         },
@@ -87805,6 +89417,161 @@ Schema for a collection of Workflow Versions
                                 "byteLength",
                                 "delimiter"
                               ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 48,
+                              "minLength": 1
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "snmpTrap"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {
+                            "udpPort": {
+                              "type": "string",
+                              "maxLength": 5
+                            },
+                            "snmpTrapConfig": {
+                              "type": "object",
+                              "properties": {
+                                "community": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "user": {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string",
+                                      "maxLength": 1024
+                                    },
+                                    "securityLevel": {
+                                      "type": "string",
+                                      "enum": [
+                                        "none",
+                                        "auth",
+                                        "authAndEncrypt"
+                                      ]
+                                    },
+                                    "authMethod": {
+                                      "type": "string",
+                                      "enum": [
+                                        "sha",
+                                        "md5"
+                                      ]
+                                    },
+                                    "authKey": {
+                                      "type": "string",
+                                      "maxLength": 1024
+                                    },
+                                    "encryptionMethod": {
+                                      "type": "string",
+                                      "enum": [
+                                        "aes",
+                                        "des"
+                                      ]
+                                    },
+                                    "encryptionKey": {
+                                      "type": "string",
+                                      "maxLength": 1024
+                                    }
+                                  },
+                                  "required": [
+                                    "name",
+                                    "securityLevel"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "udpPort",
+                            "snmpTrapConfig"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "snmpTrap"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
                             }
                           },
                           "additionalProperties": false
@@ -91009,6 +92776,161 @@ Schema for a collection of Workflows
                     "type": {
                       "type": "string",
                       "enum": [
+                        "snmpTrap"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "udpPort": {
+                          "type": "string",
+                          "maxLength": 5
+                        },
+                        "snmpTrapConfig": {
+                          "type": "object",
+                          "properties": {
+                            "community": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "user": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "securityLevel": {
+                                  "type": "string",
+                                  "enum": [
+                                    "none",
+                                    "auth",
+                                    "authAndEncrypt"
+                                  ]
+                                },
+                                "authMethod": {
+                                  "type": "string",
+                                  "enum": [
+                                    "sha",
+                                    "md5"
+                                  ]
+                                },
+                                "authKey": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "encryptionMethod": {
+                                  "type": "string",
+                                  "enum": [
+                                    "aes",
+                                    "des"
+                                  ]
+                                },
+                                "encryptionKey": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "securityLevel"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "udpPort",
+                        "snmpTrapConfig"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "snmpTrap"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
                         "timer"
                       ]
                     },
@@ -93520,6 +95442,161 @@ Schema for the body of a workflow import request
                     "type": {
                       "type": "string",
                       "enum": [
+                        "snmpTrap"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "udpPort": {
+                          "type": "string",
+                          "maxLength": 5
+                        },
+                        "snmpTrapConfig": {
+                          "type": "object",
+                          "properties": {
+                            "community": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "user": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "securityLevel": {
+                                  "type": "string",
+                                  "enum": [
+                                    "none",
+                                    "auth",
+                                    "authAndEncrypt"
+                                  ]
+                                },
+                                "authMethod": {
+                                  "type": "string",
+                                  "enum": [
+                                    "sha",
+                                    "md5"
+                                  ]
+                                },
+                                "authKey": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "encryptionMethod": {
+                                  "type": "string",
+                                  "enum": [
+                                    "aes",
+                                    "des"
+                                  ]
+                                },
+                                "encryptionKey": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "securityLevel"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "udpPort",
+                        "snmpTrapConfig"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "snmpTrap"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
                         "timer"
                       ]
                     },
@@ -95902,6 +97979,161 @@ Schema for the body of a workflow import request
                             "byteLength",
                             "delimiter"
                           ]
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "snmpTrap"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "udpPort": {
+                          "type": "string",
+                          "maxLength": 5
+                        },
+                        "snmpTrapConfig": {
+                          "type": "object",
+                          "properties": {
+                            "community": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "user": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "securityLevel": {
+                                  "type": "string",
+                                  "enum": [
+                                    "none",
+                                    "auth",
+                                    "authAndEncrypt"
+                                  ]
+                                },
+                                "authMethod": {
+                                  "type": "string",
+                                  "enum": [
+                                    "sha",
+                                    "md5"
+                                  ]
+                                },
+                                "authKey": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "encryptionMethod": {
+                                  "type": "string",
+                                  "enum": [
+                                    "aes",
+                                    "des"
+                                  ]
+                                },
+                                "encryptionKey": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "securityLevel"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "udpPort",
+                        "snmpTrapConfig"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "snmpTrap"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
                         }
                       },
                       "additionalProperties": false
@@ -98397,6 +100629,161 @@ Schema for the result of a workflow import request
                     "type": {
                       "type": "string",
                       "enum": [
+                        "snmpTrap"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "udpPort": {
+                          "type": "string",
+                          "maxLength": 5
+                        },
+                        "snmpTrapConfig": {
+                          "type": "object",
+                          "properties": {
+                            "community": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "user": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "securityLevel": {
+                                  "type": "string",
+                                  "enum": [
+                                    "none",
+                                    "auth",
+                                    "authAndEncrypt"
+                                  ]
+                                },
+                                "authMethod": {
+                                  "type": "string",
+                                  "enum": [
+                                    "sha",
+                                    "md5"
+                                  ]
+                                },
+                                "authKey": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "encryptionMethod": {
+                                  "type": "string",
+                                  "enum": [
+                                    "aes",
+                                    "des"
+                                  ]
+                                },
+                                "encryptionKey": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "securityLevel"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "udpPort",
+                        "snmpTrapConfig"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "snmpTrap"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
                         "timer"
                       ]
                     },
@@ -100797,6 +103184,161 @@ Schema for the result of a workflow import request
                                 "byteLength",
                                 "delimiter"
                               ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 48,
+                              "minLength": 1
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "snmpTrap"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {
+                            "udpPort": {
+                              "type": "string",
+                              "maxLength": 5
+                            },
+                            "snmpTrapConfig": {
+                              "type": "object",
+                              "properties": {
+                                "community": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "user": {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string",
+                                      "maxLength": 1024
+                                    },
+                                    "securityLevel": {
+                                      "type": "string",
+                                      "enum": [
+                                        "none",
+                                        "auth",
+                                        "authAndEncrypt"
+                                      ]
+                                    },
+                                    "authMethod": {
+                                      "type": "string",
+                                      "enum": [
+                                        "sha",
+                                        "md5"
+                                      ]
+                                    },
+                                    "authKey": {
+                                      "type": "string",
+                                      "maxLength": 1024
+                                    },
+                                    "encryptionMethod": {
+                                      "type": "string",
+                                      "enum": [
+                                        "aes",
+                                        "des"
+                                      ]
+                                    },
+                                    "encryptionKey": {
+                                      "type": "string",
+                                      "maxLength": 1024
+                                    }
+                                  },
+                                  "required": [
+                                    "name",
+                                    "securityLevel"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "udpPort",
+                            "snmpTrapConfig"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "snmpTrap"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
                             }
                           },
                           "additionalProperties": false
@@ -103263,6 +105805,161 @@ Schema for the result of a workflow import request
                         "type": {
                           "type": "string",
                           "enum": [
+                            "snmpTrap"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {
+                            "udpPort": {
+                              "type": "string",
+                              "maxLength": 5
+                            },
+                            "snmpTrapConfig": {
+                              "type": "object",
+                              "properties": {
+                                "community": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "user": {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string",
+                                      "maxLength": 1024
+                                    },
+                                    "securityLevel": {
+                                      "type": "string",
+                                      "enum": [
+                                        "none",
+                                        "auth",
+                                        "authAndEncrypt"
+                                      ]
+                                    },
+                                    "authMethod": {
+                                      "type": "string",
+                                      "enum": [
+                                        "sha",
+                                        "md5"
+                                      ]
+                                    },
+                                    "authKey": {
+                                      "type": "string",
+                                      "maxLength": 1024
+                                    },
+                                    "encryptionMethod": {
+                                      "type": "string",
+                                      "enum": [
+                                        "aes",
+                                        "des"
+                                      ]
+                                    },
+                                    "encryptionKey": {
+                                      "type": "string",
+                                      "maxLength": 1024
+                                    }
+                                  },
+                                  "required": [
+                                    "name",
+                                    "securityLevel"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "udpPort",
+                            "snmpTrapConfig"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "snmpTrap"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "icon": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "color": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "inputCount": {
+                              "type": "number"
+                            },
+                            "outputCount": {
+                              "type": "number"
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 48,
+                              "minLength": 1
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
                             "timer"
                           ]
                         },
@@ -103819,6 +106516,7 @@ Schema for the body of a Github login request
                   "devices.delete",
                   "devices.removeData",
                   "devices.detailedSummary",
+                  "devices.deviceNames",
                   "devices.export",
                   "devices.get",
                   "devices.payloadCounts",
@@ -105101,7 +107799,6 @@ Schema for an Instance member
     },
     "lastName": {
       "type": "string",
-      "minLength": 1,
       "maxLength": 1024
     },
     "role": {
@@ -105265,7 +107962,6 @@ Schema for a collection of Instance members
           },
           "lastName": {
             "type": "string",
-            "minLength": 1,
             "maxLength": 1024
           },
           "role": {
@@ -105541,7 +108237,6 @@ Schema for an Instance Organization member
     },
     "lastName": {
       "type": "string",
-      "minLength": 1,
       "maxLength": 1024
     },
     "role": {
@@ -107015,7 +109710,7 @@ Schema for a single Integration
     "name": {
       "type": "string",
       "minLength": 1,
-      "maxLength": 1024
+      "maxLength": 255
     },
     "integrationType": {
       "type": "string",
@@ -107270,7 +109965,7 @@ Schema for the body of an Integration modification request
     "name": {
       "type": "string",
       "minLength": 1,
-      "maxLength": 1024
+      "maxLength": 255
     },
     "integrationType": {
       "type": "string",
@@ -107463,7 +110158,7 @@ Schema for the body of an Integration creation request
     "name": {
       "type": "string",
       "minLength": 1,
-      "maxLength": 1024
+      "maxLength": 255
     },
     "integrationType": {
       "type": "string",
@@ -107697,7 +110392,7 @@ Schema for a collection of Integrations
           "name": {
             "type": "string",
             "minLength": 1,
-            "maxLength": 1024
+            "maxLength": 255
           },
           "integrationType": {
             "type": "string",
@@ -108180,7 +110875,6 @@ Schema for information about the currently authenticated user
     },
     "lastName": {
       "type": "string",
-      "minLength": 1,
       "maxLength": 1024
     },
     "companyName": {
@@ -108695,7 +111389,6 @@ Schema for the body of request to modify the current user
     },
     "lastName": {
       "type": "string",
-      "minLength": 1,
       "maxLength": 1024
     },
     "companyName": {
@@ -113476,7 +116169,6 @@ Schema for a single Organization
           },
           "lastName": {
             "type": "string",
-            "minLength": 1,
             "maxLength": 1024
           },
           "email": {
@@ -114955,7 +117647,6 @@ Schema for a collection of Organizations
                 },
                 "lastName": {
                   "type": "string",
-                  "minLength": 1,
                   "maxLength": 1024
                 },
                 "email": {
@@ -116753,6 +119444,7 @@ Schema for the body of a User authentication request
                   "devices.delete",
                   "devices.removeData",
                   "devices.detailedSummary",
+                  "devices.deviceNames",
                   "devices.export",
                   "devices.get",
                   "devices.payloadCounts",
@@ -117053,7 +119745,6 @@ Schema for the body of a User creation request
     },
     "lastName": {
       "type": "string",
-      "minLength": 1,
       "maxLength": 1024
     },
     "companyName": {
@@ -117269,6 +119960,7 @@ Schema for the body of a User creation request
                   "devices.delete",
                   "devices.removeData",
                   "devices.detailedSummary",
+                  "devices.deviceNames",
                   "devices.export",
                   "devices.get",
                   "devices.payloadCounts",

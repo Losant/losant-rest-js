@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "deviceSummary": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "deviceClass": {
+            "type": "string",
+            "enum": [
+              "standalone",
+              "gateway",
+              "peripheral",
+              "floating",
+              "edgeCompute",
+              "system",
+              "embedded"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        }
+      },
+      "maxItems": 1000
+    }
+  }
+}

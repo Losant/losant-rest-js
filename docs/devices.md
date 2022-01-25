@@ -8,6 +8,7 @@ parameters and the potential responses.
 
 *   [Attribute Names](#attribute-names)
 *   [Delete](#delete)
+*   [Device Names](#device-names)
 *   [Export](#export)
 *   [Get](#get)
 *   [Patch](#patch)
@@ -112,6 +113,56 @@ all.Application, all.Organization, all.User, devices.*, or devices.delete.
 | ---- | ---- | ----------- |
 | 200 | [Bulk Deletion Response](../lib/schemas/bulkDeleteResponse.json) | Object indicating number of devices deleted or failed |
 | 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | If a job was enqueued for the devices to be deleted |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+
+<br/>
+
+## Device Names
+
+Gets the device names that match the given query. Maximum 1K returned.
+
+```javascript
+var params = {
+  applicationId: myApplicationId
+};
+
+// with callbacks
+client.devices.deviceNames(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.devices.deviceNames(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, devices.*, or devices.deviceNames.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| query | [Advanced Device Query](../lib/schemas/advancedDeviceQuery.json) | N | Device filter JSON object |  | [Advanced Device Query Example](_schemas.md#advanced-device-query-example) |
+| startsWith | string | N | Filter devices down to those that have names starting with the given string. Case insensitive. |  | temper |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Device Names Response](../lib/schemas/deviceNamesResponse.json) | The matching device names |
 
 #### Error Responses
 

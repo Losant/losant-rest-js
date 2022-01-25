@@ -32,7 +32,7 @@
           "name": {
             "type": "string",
             "minLength": 1,
-            "maxLength": 1024
+            "maxLength": 255
           },
           "integrationType": {
             "type": "string",

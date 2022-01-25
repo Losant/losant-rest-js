@@ -1792,6 +1792,161 @@
                     "type": {
                       "type": "string",
                       "enum": [
+                        "snmpTrap"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "udpPort": {
+                          "type": "string",
+                          "maxLength": 5
+                        },
+                        "snmpTrapConfig": {
+                          "type": "object",
+                          "properties": {
+                            "community": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "user": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "securityLevel": {
+                                  "type": "string",
+                                  "enum": [
+                                    "none",
+                                    "auth",
+                                    "authAndEncrypt"
+                                  ]
+                                },
+                                "authMethod": {
+                                  "type": "string",
+                                  "enum": [
+                                    "sha",
+                                    "md5"
+                                  ]
+                                },
+                                "authKey": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "encryptionMethod": {
+                                  "type": "string",
+                                  "enum": [
+                                    "aes",
+                                    "des"
+                                  ]
+                                },
+                                "encryptionKey": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "securityLevel"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "udpPort",
+                        "snmpTrapConfig"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "snmpTrap"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
                         "timer"
                       ]
                     },

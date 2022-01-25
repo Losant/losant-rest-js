@@ -241,6 +241,6 @@ Each of the following is a property on the client instance, and wraps the action
 
 *****
 
-Copyright (c) 2020 Losant IoT, Inc
+Copyright (c) 2022 Losant IoT, Inc
 
 <https://www.losant.com>
