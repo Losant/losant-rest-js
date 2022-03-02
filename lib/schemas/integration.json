@@ -30,6 +30,7 @@
     "integrationType": {
       "type": "string",
       "enum": [
+        "azureEventHub",
         "googlePubSub",
         "meridian",
         "mqtt",
@@ -46,6 +47,32 @@
         "minLength": 1,
         "maxLength": 1024
       }
+    },
+    "azureEventHubConfig": {
+      "type": "object",
+      "properties": {
+        "hubName": {
+          "type": "string",
+          "maxLength": 256,
+          "minLength": 1
+        },
+        "consumerGroup": {
+          "type": "string",
+          "maxLength": 256,
+          "minLength": 1
+        },
+        "connectionString": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "hubName",
+        "consumerGroup",
+        "connectionString"
+      ]
     },
     "googlePubSubConfig": {
       "type": "object",

@@ -99,6 +99,7 @@
                                 "deviceIdsTagsDisconnect",
                                 "eeaInit",
                                 "flowError",
+                                "azureEventHub",
                                 "googlePubSub",
                                 "meridian",
                                 "mqtt",
@@ -2614,11 +2615,6 @@
                 "type": "string",
                 "maxLength": 32767
               },
-              "iconData": {
-                "type": "string",
-                "maxLength": 32767,
-                "pattern": "^data:image/(jpg|jpeg|png|svg\\+xml);base64,[0-9a-zA-Z+/=]*$"
-              },
               "flowClass": {
                 "type": "string",
                 "enum": [
@@ -2687,6 +2683,7 @@
                                 "deviceIdsTagsDisconnect",
                                 "eeaInit",
                                 "flowError",
+                                "azureEventHub",
                                 "googlePubSub",
                                 "meridian",
                                 "mqtt",

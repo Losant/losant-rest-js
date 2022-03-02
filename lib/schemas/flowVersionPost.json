@@ -65,6 +65,7 @@
                       "deviceIdsTagsDisconnect",
                       "eeaInit",
                       "flowError",
+                      "azureEventHub",
                       "googlePubSub",
                       "meridian",
                       "mqtt",

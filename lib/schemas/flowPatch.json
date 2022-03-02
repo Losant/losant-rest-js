@@ -11,6 +11,10 @@
       "type": "string",
       "maxLength": 32767
     },
+    "shortDescription": {
+      "type": "string",
+      "maxLength": 1024
+    },
     "iconData": {
       "oneOf": [
         {
@@ -21,6 +25,20 @@
         {
           "type": "null"
         }
+      ]
+    },
+    "docsUrl": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "data",
+        "experience",
+        "logic",
+        "output",
+        ""
       ]
     },
     "enabled": {
@@ -88,6 +106,7 @@
                       "deviceIdsTagsDisconnect",
                       "eeaInit",
                       "flowError",
+                      "azureEventHub",
                       "googlePubSub",
                       "meridian",
                       "mqtt",

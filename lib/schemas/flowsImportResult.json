@@ -39,10 +39,27 @@
             "type": "string",
             "maxLength": 32767
           },
+          "shortDescription": {
+            "type": "string",
+            "maxLength": 1024
+          },
           "iconData": {
             "type": "string",
             "maxLength": 32767,
             "pattern": "^data:image/(jpg|jpeg|png|svg\\+xml);base64,[0-9a-zA-Z+/=]*$"
+          },
+          "docsUrl": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "data",
+              "experience",
+              "logic",
+              "output"
+            ]
           },
           "enabled": {
             "type": "boolean"
@@ -116,6 +133,7 @@
                             "deviceIdsTagsDisconnect",
                             "eeaInit",
                             "flowError",
+                            "azureEventHub",
                             "googlePubSub",
                             "meridian",
                             "mqtt",
@@ -2704,6 +2722,7 @@
                                 "deviceIdsTagsDisconnect",
                                 "eeaInit",
                                 "flowError",
+                                "azureEventHub",
                                 "googlePubSub",
                                 "meridian",
                                 "mqtt",
@@ -5219,11 +5238,6 @@
                 "type": "string",
                 "maxLength": 32767
               },
-              "iconData": {
-                "type": "string",
-                "maxLength": 32767,
-                "pattern": "^data:image/(jpg|jpeg|png|svg\\+xml);base64,[0-9a-zA-Z+/=]*$"
-              },
               "flowClass": {
                 "type": "string",
                 "enum": [
@@ -5292,6 +5306,7 @@
                                 "deviceIdsTagsDisconnect",
                                 "eeaInit",
                                 "flowError",
+                                "azureEventHub",
                                 "googlePubSub",
                                 "meridian",
                                 "mqtt",

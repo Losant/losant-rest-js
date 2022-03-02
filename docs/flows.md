@@ -9,6 +9,7 @@ parameters and the potential responses.
 *   [Get](#get)
 *   [Get by Version](#get-by-version)
 *   [Import](#import)
+*   [Palette](#palette)
 *   [Post](#post)
 
 <br/>
@@ -172,6 +173,54 @@ all.Application, all.Organization, all.User, flows.*, or flows.import.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 201 | [Workflow Import Result](../lib/schemas/flowsImportResult.json) | Successfully imported workflows |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+
+<br/>
+
+## Palette
+
+Gets additional nodes that should be available in the palette
+
+```javascript
+var params = {
+  applicationId: myApplicationId
+};
+
+// with callbacks
+client.flows.palette(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.flows.palette(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, flows.*, or flows.palette.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Palette Response](../lib/schemas/paletteResponse.json) | The additional nodes available in the palette |
 
 #### Error Responses
 
