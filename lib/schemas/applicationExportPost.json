@@ -18,6 +18,10 @@
       "type": "string",
       "format": "email",
       "maxLength": 1024
+    },
+    "callbackUrl": {
+      "type": "string",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false

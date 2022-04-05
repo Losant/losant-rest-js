@@ -116,6 +116,7 @@
                   "applicationCertificateAuthorities.post",
                   "applicationDashboard.get",
                   "applicationDashboard.patch",
+                  "applicationDashboard.sendReport",
                   "applicationDashboard.delete",
                   "applicationDashboards.get",
                   "applicationDashboards.post",

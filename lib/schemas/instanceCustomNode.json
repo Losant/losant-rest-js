@@ -569,6 +569,15 @@
             },
             "flowCount": {
               "type": "integer"
+            },
+            "orgName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 255
+            },
+            "orgIconColor": {
+              "type": "string",
+              "maxLength": 64
             }
           },
           "additionalProperties": false

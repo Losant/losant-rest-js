@@ -24,7 +24,7 @@
     },
     "slug": {
       "type": "string",
-      "minLength": 4,
+      "minLength": 3,
       "maxLength": 63,
       "pattern": "^[0-9a-z-]*$"
     },

@@ -6918,6 +6918,7 @@ Schema for the body of an API Token creation request
                   "applicationCertificateAuthorities.post",
                   "applicationDashboard.get",
                   "applicationDashboard.patch",
+                  "applicationDashboard.sendReport",
                   "applicationDashboard.delete",
                   "applicationDashboards.get",
                   "applicationDashboards.post",
@@ -7509,7 +7510,7 @@ Schema for a single Application
     },
     "endpointSlug": {
       "type": "string",
-      "minLength": 4,
+      "minLength": 3,
       "maxLength": 63,
       "pattern": "^[0-9a-z-]*$"
     },
@@ -7864,6 +7865,11 @@ Schema for the body of an application template import request
     "email": {
       "type": "string",
       "format": "email",
+      "maxLength": 1024
+    },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
       "maxLength": 1024
     }
   },
@@ -8925,6 +8931,11 @@ Schema for the body of an application clone request
       "type": "string",
       "format": "email",
       "maxLength": 1024
+    },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false
@@ -9016,7 +9027,7 @@ Schema for creating an application by template result
         },
         "endpointSlug": {
           "type": "string",
-          "minLength": 4,
+          "minLength": 3,
           "maxLength": 63,
           "pattern": "^[0-9a-z-]*$"
         },
@@ -10349,6 +10360,147 @@ Schema for the body of an Application scoped Dashboard creation request
                     }
                   }
                 },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "blockType",
+              "startX",
+              "startY",
+              "width",
+              "height"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "maxLength": 48
+              },
+              "title": {
+                "type": "string",
+                "maxLength": 255
+              },
+              "description": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "startX": {
+                "type": "number"
+              },
+              "startY": {
+                "type": "number"
+              },
+              "width": {
+                "type": "number"
+              },
+              "height": {
+                "type": "number"
+              },
+              "blockType": {
+                "type": "string",
+                "enum": [
+                  "device-count"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "segments": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "query": {
+                          "type": "string",
+                          "maxLength": 32767
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "query"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "conditions": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "color": {
+                          "type": "string",
+                          "maxLength": 64
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "label": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "condition": {
+                          "type": "string",
+                          "maxLength": 2048
+                        },
+                        "imageUrl": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "shape": {
+                          "type": "string",
+                          "enum": [
+                            "circle",
+                            "square",
+                            "triangle-down",
+                            "triangle-up",
+                            "octagon"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "defaultCondition": {
+                    "type": "object",
+                    "properties": {
+                      "color": {
+                        "type": "string",
+                        "maxLength": 64
+                      },
+                      "label": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "value": {
+                        "type": "string",
+                        "maxLength": 32767
+                      }
+                    },
+                    "required": [
+                      "color"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "segments",
+                  "defaultCondition"
+                ],
                 "additionalProperties": false
               }
             },
@@ -14713,6 +14865,11 @@ Schema for the body of an Application scoped Dashboard creation request
               "maxLength": 1024
             }
           },
+          "callbackUrl": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 1024
+          },
           "subject": {
             "type": "string",
             "maxLength": 255
@@ -14735,12 +14892,25 @@ Schema for the body of an Application scoped Dashboard creation request
           "locale": {
             "type": "string",
             "maxLength": 5
+          },
+          "ctx": {
+            "ref": "#/definitions/dashboardContextInstance"
           }
         },
         "additionalProperties": false,
-        "required": [
-          "cron",
-          "toEmail"
+        "anyOf": [
+          {
+            "required": [
+              "cron",
+              "toEmail"
+            ]
+          },
+          {
+            "required": [
+              "cron",
+              "callbackUrl"
+            ]
+          }
         ]
       }
     },
@@ -15122,6 +15292,10 @@ Schema for the body of an application export request
       "type": "string",
       "format": "email",
       "maxLength": 1024
+    },
+    "callbackUrl": {
+      "type": "string",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false
@@ -15241,7 +15415,39 @@ Schema for additional application import options
   "properties": {
     "importUrl": {
       "type": "string",
-      "format": "url"
+      "format": "uri",
+      "maxLength": 1024
+    },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
+    },
+    "include": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "ApplicationCertificateAuthority",
+          "Dashboard",
+          "DataTableRow",
+          "DataTable",
+          "DeviceRecipe",
+          "Device",
+          "ExperienceEndpoint",
+          "ExperienceFlowVersion",
+          "ExperienceGroup",
+          "ExperienceUser",
+          "ExperienceVersion",
+          "ExperienceView",
+          "File",
+          "FlowVersion",
+          "Flow",
+          "Integration",
+          "Notebook",
+          "Webhook"
+        ]
+      },
+      "uniqueItems": true
     }
   },
   "additionalProperties": false
@@ -15251,7 +15457,11 @@ Schema for additional application import options
 
 ```json
 {
-  "importUrl": "https://storage.mySite.com/myZipFile.zip"
+  "importUrl": "https://storage.mySite.com/myZipFile.zip",
+  "include": [
+    "Flow",
+    "Device"
+  ]
 }
 ```
 
@@ -15890,7 +16100,7 @@ Schema for the body of an Application modification request
     },
     "endpointSlug": {
       "type": "string",
-      "minLength": 4,
+      "minLength": 3,
       "maxLength": 63,
       "pattern": "^[0-9a-z-]*$"
     },
@@ -16172,7 +16382,7 @@ Schema for the body of an Application creation request
     },
     "endpointSlug": {
       "type": "string",
-      "minLength": 4,
+      "minLength": 3,
       "maxLength": 63,
       "pattern": "^[0-9a-z-]*$"
     },
@@ -17128,7 +17338,7 @@ Schema for a collection of Applications
           },
           "endpointSlug": {
             "type": "string",
-            "minLength": 4,
+            "minLength": 3,
             "maxLength": 63,
             "pattern": "^[0-9a-z-]*$"
           },
@@ -18462,6 +18672,11 @@ Schema for a single Dashboard
               "maxLength": 1024
             }
           },
+          "callbackUrl": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 1024
+          },
           "subject": {
             "type": "string",
             "maxLength": 255
@@ -18484,12 +18699,25 @@ Schema for a single Dashboard
           "locale": {
             "type": "string",
             "maxLength": 5
+          },
+          "ctx": {
+            "ref": "#/definitions/dashboardContextInstance"
           }
         },
         "additionalProperties": false,
-        "required": [
-          "cron",
-          "toEmail"
+        "anyOf": [
+          {
+            "required": [
+              "cron",
+              "toEmail"
+            ]
+          },
+          {
+            "required": [
+              "cron",
+              "callbackUrl"
+            ]
+          }
         ]
       }
     },
@@ -19440,6 +19668,147 @@ Schema for a single Dashboard
                     }
                   }
                 },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "blockType",
+              "startX",
+              "startY",
+              "width",
+              "height"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "maxLength": 48
+              },
+              "title": {
+                "type": "string",
+                "maxLength": 255
+              },
+              "description": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "startX": {
+                "type": "number"
+              },
+              "startY": {
+                "type": "number"
+              },
+              "width": {
+                "type": "number"
+              },
+              "height": {
+                "type": "number"
+              },
+              "blockType": {
+                "type": "string",
+                "enum": [
+                  "device-count"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "segments": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "query": {
+                          "type": "string",
+                          "maxLength": 32767
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "query"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "conditions": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "color": {
+                          "type": "string",
+                          "maxLength": 64
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "label": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "condition": {
+                          "type": "string",
+                          "maxLength": 2048
+                        },
+                        "imageUrl": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "shape": {
+                          "type": "string",
+                          "enum": [
+                            "circle",
+                            "square",
+                            "triangle-down",
+                            "triangle-up",
+                            "octagon"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "defaultCondition": {
+                    "type": "object",
+                    "properties": {
+                      "color": {
+                        "type": "string",
+                        "maxLength": 64
+                      },
+                      "label": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "value": {
+                        "type": "string",
+                        "maxLength": 32767
+                      }
+                    },
+                    "required": [
+                      "color"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "segments",
+                  "defaultCondition"
+                ],
                 "additionalProperties": false
               }
             },
@@ -25269,6 +25638,147 @@ Schema for the body of a Dashboard modification request
               "blockType": {
                 "type": "string",
                 "enum": [
+                  "device-count"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "segments": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "query": {
+                          "type": "string",
+                          "maxLength": 32767
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "query"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "conditions": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "color": {
+                          "type": "string",
+                          "maxLength": 64
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "label": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "condition": {
+                          "type": "string",
+                          "maxLength": 2048
+                        },
+                        "imageUrl": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "shape": {
+                          "type": "string",
+                          "enum": [
+                            "circle",
+                            "square",
+                            "triangle-down",
+                            "triangle-up",
+                            "octagon"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "defaultCondition": {
+                    "type": "object",
+                    "properties": {
+                      "color": {
+                        "type": "string",
+                        "maxLength": 64
+                      },
+                      "label": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "value": {
+                        "type": "string",
+                        "maxLength": 32767
+                      }
+                    },
+                    "required": [
+                      "color"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "segments",
+                  "defaultCondition"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "blockType",
+              "startX",
+              "startY",
+              "width",
+              "height"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "maxLength": 48
+              },
+              "title": {
+                "type": "string",
+                "maxLength": 255
+              },
+              "description": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "startX": {
+                "type": "number"
+              },
+              "startY": {
+                "type": "number"
+              },
+              "width": {
+                "type": "number"
+              },
+              "height": {
+                "type": "number"
+              },
+              "blockType": {
+                "type": "string",
+                "enum": [
                   "device-list"
                 ]
               },
@@ -29571,6 +30081,11 @@ Schema for the body of a Dashboard modification request
               "maxLength": 1024
             }
           },
+          "callbackUrl": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 1024
+          },
           "subject": {
             "type": "string",
             "maxLength": 255
@@ -29593,12 +30108,25 @@ Schema for the body of a Dashboard modification request
           "locale": {
             "type": "string",
             "maxLength": 5
+          },
+          "ctx": {
+            "ref": "#/definitions/dashboardContextInstance"
           }
         },
         "additionalProperties": false,
-        "required": [
-          "cron",
-          "toEmail"
+        "anyOf": [
+          {
+            "required": [
+              "cron",
+              "toEmail"
+            ]
+          },
+          {
+            "required": [
+              "cron",
+              "callbackUrl"
+            ]
+          }
         ]
       }
     },
@@ -30985,6 +31513,147 @@ Schema for the body of a Dashboard creation request
               "blockType": {
                 "type": "string",
                 "enum": [
+                  "device-count"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "segments": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "query": {
+                          "type": "string",
+                          "maxLength": 32767
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "query"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "conditions": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "color": {
+                          "type": "string",
+                          "maxLength": 64
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "label": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "condition": {
+                          "type": "string",
+                          "maxLength": 2048
+                        },
+                        "imageUrl": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "shape": {
+                          "type": "string",
+                          "enum": [
+                            "circle",
+                            "square",
+                            "triangle-down",
+                            "triangle-up",
+                            "octagon"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "defaultCondition": {
+                    "type": "object",
+                    "properties": {
+                      "color": {
+                        "type": "string",
+                        "maxLength": 64
+                      },
+                      "label": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "value": {
+                        "type": "string",
+                        "maxLength": 32767
+                      }
+                    },
+                    "required": [
+                      "color"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "segments",
+                  "defaultCondition"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "blockType",
+              "startX",
+              "startY",
+              "width",
+              "height"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "maxLength": 48
+              },
+              "title": {
+                "type": "string",
+                "maxLength": 255
+              },
+              "description": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "startX": {
+                "type": "number"
+              },
+              "startY": {
+                "type": "number"
+              },
+              "width": {
+                "type": "number"
+              },
+              "height": {
+                "type": "number"
+              },
+              "blockType": {
+                "type": "string",
+                "enum": [
                   "device-list"
                 ]
               },
@@ -35303,6 +35972,11 @@ Schema for the body of a Dashboard creation request
               "maxLength": 1024
             }
           },
+          "callbackUrl": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 1024
+          },
           "subject": {
             "type": "string",
             "maxLength": 255
@@ -35325,12 +35999,25 @@ Schema for the body of a Dashboard creation request
           "locale": {
             "type": "string",
             "maxLength": 5
+          },
+          "ctx": {
+            "ref": "#/definitions/dashboardContextInstance"
           }
         },
         "additionalProperties": false,
-        "required": [
-          "cron",
-          "toEmail"
+        "anyOf": [
+          {
+            "required": [
+              "cron",
+              "toEmail"
+            ]
+          },
+          {
+            "required": [
+              "cron",
+              "callbackUrl"
+            ]
+          }
         ]
       }
     },
@@ -35695,9 +36382,6 @@ Schema for the body of a Dashboard report request
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
-  "required": [
-    "toEmail"
-  ],
   "properties": {
     "toEmail": {
       "type": "array",
@@ -35708,6 +36392,11 @@ Schema for the body of a Dashboard report request
         "format": "email",
         "maxLength": 1024
       }
+    },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
     },
     "subject": {
       "type": "string",
@@ -35734,8 +36423,23 @@ Schema for the body of a Dashboard report request
     "locale": {
       "type": "string",
       "maxLength": 5
+    },
+    "ctx": {
+      "ref": "#/definitions/dashboardContextInstance"
     }
   },
+  "anyOf": [
+    {
+      "required": [
+        "toEmail"
+      ]
+    },
+    {
+      "required": [
+        "callbackUrl"
+      ]
+    }
+  ],
   "additionalProperties": false
 }
 ```
@@ -35941,6 +36645,11 @@ Schema for a collection of Dashboards
                     "maxLength": 1024
                   }
                 },
+                "callbackUrl": {
+                  "type": "string",
+                  "format": "uri",
+                  "maxLength": 1024
+                },
                 "subject": {
                   "type": "string",
                   "maxLength": 255
@@ -35963,12 +36672,25 @@ Schema for a collection of Dashboards
                 "locale": {
                   "type": "string",
                   "maxLength": 5
+                },
+                "ctx": {
+                  "ref": "#/definitions/dashboardContextInstance"
                 }
               },
               "additionalProperties": false,
-              "required": [
-                "cron",
-                "toEmail"
+              "anyOf": [
+                {
+                  "required": [
+                    "cron",
+                    "toEmail"
+                  ]
+                },
+                {
+                  "required": [
+                    "cron",
+                    "callbackUrl"
+                  ]
+                }
               ]
             }
           },
@@ -36919,6 +37641,147 @@ Schema for a collection of Dashboards
                           }
                         }
                       },
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "blockType",
+                    "startX",
+                    "startY",
+                    "width",
+                    "height"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 48
+                    },
+                    "title": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "description": {
+                      "type": "string",
+                      "maxLength": 32767
+                    },
+                    "applicationId": {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    "startX": {
+                      "type": "number"
+                    },
+                    "startY": {
+                      "type": "number"
+                    },
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    },
+                    "blockType": {
+                      "type": "string",
+                      "enum": [
+                        "device-count"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "segments": {
+                          "type": "array",
+                          "minItems": 1,
+                          "maxItems": 100,
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "maxLength": 48
+                              },
+                              "query": {
+                                "type": "string",
+                                "maxLength": 32767
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "query"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "conditions": {
+                          "type": "array",
+                          "maxItems": 100,
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "color": {
+                                "type": "string",
+                                "maxLength": 64
+                              },
+                              "id": {
+                                "type": "string",
+                                "maxLength": 48
+                              },
+                              "label": {
+                                "type": "string",
+                                "maxLength": 32767
+                              },
+                              "condition": {
+                                "type": "string",
+                                "maxLength": 2048
+                              },
+                              "imageUrl": {
+                                "type": "string",
+                                "maxLength": 32767
+                              },
+                              "shape": {
+                                "type": "string",
+                                "enum": [
+                                  "circle",
+                                  "square",
+                                  "triangle-down",
+                                  "triangle-up",
+                                  "octagon"
+                                ]
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "defaultCondition": {
+                          "type": "object",
+                          "properties": {
+                            "color": {
+                              "type": "string",
+                              "maxLength": 64
+                            },
+                            "label": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "value": {
+                              "type": "string",
+                              "maxLength": 32767
+                            }
+                          },
+                          "required": [
+                            "color"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "segments",
+                        "defaultCondition"
+                      ],
                       "additionalProperties": false
                     }
                   },
@@ -57617,7 +58480,7 @@ The body of an experience bootstrap request
     },
     "slug": {
       "type": "string",
-      "minLength": 4,
+      "minLength": 3,
       "maxLength": 63,
       "pattern": "^[0-9a-z-]*$"
     }
@@ -67486,7 +68349,7 @@ Schema for a single Experience Slug
     },
     "slug": {
       "type": "string",
-      "minLength": 4,
+      "minLength": 3,
       "maxLength": 63,
       "pattern": "^[0-9a-z-]*$"
     },
@@ -67539,7 +68402,7 @@ Schema for the body of an Experience Slug modification request
     },
     "slug": {
       "type": "string",
-      "minLength": 4,
+      "minLength": 3,
       "maxLength": 63,
       "pattern": "^[0-9a-z-]*$"
     }
@@ -67583,7 +68446,7 @@ Schema for the body of an Experience Slug creation request
     },
     "slug": {
       "type": "string",
-      "minLength": 4,
+      "minLength": 3,
       "maxLength": 63,
       "pattern": "^[0-9a-z-]*$"
     }
@@ -67645,7 +68508,7 @@ Schema for a collection of Experience Slugs
           },
           "slug": {
             "type": "string",
-            "minLength": 4,
+            "minLength": 3,
             "maxLength": 63,
             "pattern": "^[0-9a-z-]*$"
           },
@@ -67747,7 +68610,8 @@ Schema for a single Experience User
     },
     "avatarUrl": {
       "type": "string",
-      "format": "url"
+      "format": "uri",
+      "maxLength": 1024
     },
     "tokenCutoff": {
       "type": "string",
@@ -68013,7 +68877,8 @@ Schema for a collection of Experience Users
           },
           "avatarUrl": {
             "type": "string",
-            "format": "url"
+            "format": "uri",
+            "maxLength": 1024
           },
           "tokenCutoff": {
             "type": "string",
@@ -106633,6 +107498,7 @@ Schema for the body of a Github login request
                   "applicationCertificateAuthorities.post",
                   "applicationDashboard.get",
                   "applicationDashboard.patch",
+                  "applicationDashboard.sendReport",
                   "applicationDashboard.delete",
                   "applicationDashboards.get",
                   "applicationDashboards.post",
@@ -108527,6 +109393,15 @@ Schema for a single Instance Custom Node
             },
             "flowCount": {
               "type": "integer"
+            },
+            "orgName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 255
+            },
+            "orgIconColor": {
+              "type": "string",
+              "maxLength": 64
             }
           },
           "additionalProperties": false
@@ -110559,6 +111434,15 @@ Schema for a collection of Custom Nodes within an instance
                   },
                   "flowCount": {
                     "type": "integer"
+                  },
+                  "orgName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "orgIconColor": {
+                    "type": "string",
+                    "maxLength": 64
                   }
                 },
                 "additionalProperties": false
@@ -110696,7 +111580,8 @@ Schema for an Instance member
     },
     "avatarUrl": {
       "type": "string",
-      "format": "url"
+      "format": "uri",
+      "maxLength": 1024
     },
     "twoFactorAuthEnabled": {
       "type": "boolean"
@@ -110859,7 +111744,8 @@ Schema for a collection of Instance members
           },
           "avatarUrl": {
             "type": "string",
-            "format": "url"
+            "format": "uri",
+            "maxLength": 1024
           },
           "twoFactorAuthEnabled": {
             "type": "boolean"
@@ -110929,6 +111815,14 @@ Schema for the body of an Organization owned by an instance
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
     "name": {
       "type": "string",
       "minLength": 1,
@@ -111134,7 +112028,8 @@ Schema for an Instance Organization member
     },
     "avatarUrl": {
       "type": "string",
-      "format": "url"
+      "format": "uri",
+      "maxLength": 1024
     },
     "twoFactorAuthEnabled": {
       "type": "boolean"
@@ -112063,6 +112958,14 @@ Schema for a collection of Organizations within an instance
         "description": "Schema for the body of an Organization owned by an instance",
         "type": "object",
         "properties": {
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
           "name": {
             "type": "string",
             "minLength": 1,
@@ -112617,7 +113520,8 @@ Schema for a single Integration
         "type": "string",
         "minLength": 1,
         "maxLength": 1024
-      }
+      },
+      "uniqueItems": true
     },
     "azureEventHubConfig": {
       "type": "object",
@@ -112899,7 +113803,8 @@ Schema for the body of an Integration modification request
         "type": "string",
         "minLength": 1,
         "maxLength": 1024
-      }
+      },
+      "uniqueItems": true
     },
     "azureEventHubConfig": {
       "type": "object",
@@ -113119,7 +114024,8 @@ Schema for the body of an Integration creation request
         "type": "string",
         "minLength": 1,
         "maxLength": 1024
-      }
+      },
+      "uniqueItems": true
     },
     "azureEventHubConfig": {
       "type": "object",
@@ -113380,7 +114286,8 @@ Schema for a collection of Integrations
               "type": "string",
               "minLength": 1,
               "maxLength": 1024
-            }
+            },
+            "uniqueItems": true
           },
           "azureEventHubConfig": {
             "type": "object",
@@ -113912,7 +114819,8 @@ Schema for information about the currently authenticated user
     },
     "avatarUrl": {
       "type": "string",
-      "format": "url"
+      "format": "uri",
+      "maxLength": 1024
     },
     "limits": {
       "type": "object",
@@ -119172,7 +120080,8 @@ Schema for a single Organization
           },
           "avatarUrl": {
             "type": "string",
-            "format": "url"
+            "format": "uri",
+            "maxLength": 1024
           },
           "role": {
             "type": "string",
@@ -120650,7 +121559,8 @@ Schema for a collection of Organizations
                 },
                 "avatarUrl": {
                   "type": "string",
-                  "format": "url"
+                  "format": "uri",
+                  "maxLength": 1024
                 },
                 "role": {
                   "type": "string",
@@ -123218,6 +124128,7 @@ Schema for the body of a User authentication request
                   "applicationCertificateAuthorities.post",
                   "applicationDashboard.get",
                   "applicationDashboard.patch",
+                  "applicationDashboard.sendReport",
                   "applicationDashboard.delete",
                   "applicationDashboards.get",
                   "applicationDashboards.post",
@@ -123744,6 +124655,7 @@ Schema for the body of a User creation request
                   "applicationCertificateAuthorities.post",
                   "applicationDashboard.get",
                   "applicationDashboard.patch",
+                  "applicationDashboard.sendReport",
                   "applicationDashboard.delete",
                   "applicationDashboards.get",
                   "applicationDashboards.post",

@@ -46,7 +46,8 @@
         "type": "string",
         "minLength": 1,
         "maxLength": 1024
-      }
+      },
+      "uniqueItems": true
     },
     "azureEventHubConfig": {
       "type": "object",

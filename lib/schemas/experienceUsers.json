@@ -52,7 +52,8 @@
           },
           "avatarUrl": {
             "type": "string",
-            "format": "url"
+            "format": "uri",
+            "maxLength": 1024
           },
           "tokenCutoff": {
             "type": "string",

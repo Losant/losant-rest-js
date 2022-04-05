@@ -9,6 +9,14 @@
         "description": "Schema for the body of an Organization owned by an instance",
         "type": "object",
         "properties": {
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
           "name": {
             "type": "string",
             "minLength": 1,
