@@ -449,7 +449,13 @@
               "instanceCustomNode.patch",
               "instanceCustomNode.delete",
               "instanceCustomNode.errors",
-              "instanceCustomNode.stats"
+              "instanceCustomNode.stats",
+              "instanceSandbox.*",
+              "instanceSandbox.get",
+              "instanceSandbox.delete",
+              "instanceSandbox.undelete",
+              "instanceSandboxes.*",
+              "instanceSandboxes.get"
             ]
           },
           {

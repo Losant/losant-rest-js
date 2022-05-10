@@ -28,7 +28,6 @@
 *   [Application Export Post Schema](#application-export-post-schema)
 *   [Application Export Result](#application-export-result)
 *   [Application Global Patch](#application-global-patch)
-*   [Application Import Options](#application-import-options)
 *   [Application Key](#application-key)
 *   [Application Key Patch](#application-key-patch)
 *   [Application Key Post](#application-key-post)
@@ -185,6 +184,8 @@
 *   [Github Login](#github-login)
 *   [Historical Summaries](#historical-summaries)
 *   [Historical Summary](#historical-summary)
+*   [Application Import Options](#application-import-options)
+*   [Applications Import Options](#applications-import-options)
 *   [Instance](#instance)
 *   [Instance Custom Node](#instance-custom-node)
 *   [Instance Custom Node Patch](#instance-custom-node-patch)
@@ -204,6 +205,8 @@
 *   [Instance Organizations](#instance-organizations)
 *   [Instance Patch](#instance-patch)
 *   [Instance Report Options Post](#instance-report-options-post)
+*   [Instance Sandbox User](#instance-sandbox-user)
+*   [Instance Sandboxes](#instance-sandboxes)
 *   [Instances](#instances)
 *   [Integration](#integration)
 *   [Integration Patch](#integration-patch)
@@ -7192,7 +7195,13 @@ Schema for the body of an API Token creation request
               "instanceCustomNode.patch",
               "instanceCustomNode.delete",
               "instanceCustomNode.errors",
-              "instanceCustomNode.stats"
+              "instanceCustomNode.stats",
+              "instanceSandbox.*",
+              "instanceSandbox.get",
+              "instanceSandbox.delete",
+              "instanceSandbox.undelete",
+              "instanceSandboxes.*",
+              "instanceSandboxes.get"
             ]
           },
           {
@@ -14895,6 +14904,9 @@ Schema for the body of an Application scoped Dashboard creation request
           },
           "ctx": {
             "ref": "#/definitions/dashboardContextInstance"
+          },
+          "branded": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false,
@@ -15295,6 +15307,7 @@ Schema for the body of an application export request
     },
     "callbackUrl": {
       "type": "string",
+      "format": "uri",
       "maxLength": 1024
     }
   },
@@ -15398,71 +15411,6 @@ Schema for the body of an Application Global modification request
     "cloudOnly": false
   }
 ]
-```
-
-<br/>
-
-## Application Import Options
-
-Schema for additional application import options
-
-### <a name="application-import-options-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "importUrl": {
-      "type": "string",
-      "format": "uri",
-      "maxLength": 1024
-    },
-    "callbackUrl": {
-      "type": "string",
-      "format": "uri",
-      "maxLength": 1024
-    },
-    "include": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "ApplicationCertificateAuthority",
-          "Dashboard",
-          "DataTableRow",
-          "DataTable",
-          "DeviceRecipe",
-          "Device",
-          "ExperienceEndpoint",
-          "ExperienceFlowVersion",
-          "ExperienceGroup",
-          "ExperienceUser",
-          "ExperienceVersion",
-          "ExperienceView",
-          "File",
-          "FlowVersion",
-          "Flow",
-          "Integration",
-          "Notebook",
-          "Webhook"
-        ]
-      },
-      "uniqueItems": true
-    }
-  },
-  "additionalProperties": false
-}
-```
-### <a name="application-import-options-example"></a> Example
-
-```json
-{
-  "importUrl": "https://storage.mySite.com/myZipFile.zip",
-  "include": [
-    "Flow",
-    "Device"
-  ]
-}
 ```
 
 <br/>
@@ -16729,7 +16677,8 @@ Results of a search of an application&#x27;s resources
           "file",
           "flow",
           "integration",
-          "webhook"
+          "webhook",
+          "notebook"
         ]
       }
     },
@@ -16955,6 +16904,17 @@ Schema for a collection of Application Template Categories
           "description": {
             "type": "string",
             "maxLength": 32767
+          },
+          "resourceTypes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "DeviceRecipe",
+                "CustomNode"
+              ]
+            },
+            "maxItems": 100
           }
         }
       }
@@ -17023,6 +16983,17 @@ Schema for a single Application Template Category
     "description": {
       "type": "string",
       "maxLength": 32767
+    },
+    "resourceTypes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "DeviceRecipe",
+          "CustomNode"
+        ]
+      },
+      "maxItems": 100
     }
   }
 }
@@ -18702,6 +18673,9 @@ Schema for a single Dashboard
           },
           "ctx": {
             "ref": "#/definitions/dashboardContextInstance"
+          },
+          "branded": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false,
@@ -30111,6 +30085,9 @@ Schema for the body of a Dashboard modification request
           },
           "ctx": {
             "ref": "#/definitions/dashboardContextInstance"
+          },
+          "branded": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false,
@@ -36002,6 +35979,9 @@ Schema for the body of a Dashboard creation request
           },
           "ctx": {
             "ref": "#/definitions/dashboardContextInstance"
+          },
+          "branded": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false,
@@ -36426,6 +36406,9 @@ Schema for the body of a Dashboard report request
     },
     "ctx": {
       "ref": "#/definitions/dashboardContextInstance"
+    },
+    "branded": {
+      "type": "boolean"
     }
   },
   "anyOf": [
@@ -36675,6 +36658,9 @@ Schema for a collection of Dashboards
                 },
                 "ctx": {
                   "ref": "#/definitions/dashboardContextInstance"
+                },
+                "branded": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false,
@@ -42620,6 +42606,7 @@ Schema for exporting data devices query
     },
     "callbackUrl": {
       "type": "string",
+      "format": "uri",
       "maxLength": 1024
     },
     "deviceIds": {
@@ -48597,6 +48584,11 @@ Schema for the body of a bulk device delete request
         }
       },
       "additionalProperties": false
+    },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false,
@@ -48638,6 +48630,7 @@ Schema for the body of a device payload count export request
     },
     "callbackUrl": {
       "type": "string",
+      "format": "uri",
       "maxLength": 1024
     },
     "query": {
@@ -50011,6 +50004,7 @@ Schema for the body of a device metadata export request
     },
     "callbackUrl": {
       "type": "string",
+      "format": "uri",
       "maxLength": 1024
     },
     "query": {
@@ -53648,6 +53642,11 @@ Schema for the body of a Devices modification request
       "type": "string",
       "format": "email",
       "maxLength": 1024
+    },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false,
@@ -55995,6 +55994,11 @@ Schema for the body of a compiled embedded deployment files request
       "format": "email",
       "maxLength": 1024
     },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
+    },
     "embeddedDeploymentId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
@@ -57240,6 +57244,7 @@ Export options for events
     },
     "callbackUrl": {
       "type": "string",
+      "format": "uri",
       "maxLength": 1024
     },
     "query": {
@@ -91928,6 +91933,11 @@ Schema for the body of a bulk flow versions delete request
         }
       },
       "additionalProperties": false
+    },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false,
@@ -107772,7 +107782,13 @@ Schema for the body of a Github login request
               "instanceCustomNode.patch",
               "instanceCustomNode.delete",
               "instanceCustomNode.errors",
-              "instanceCustomNode.stats"
+              "instanceCustomNode.stats",
+              "instanceSandbox.*",
+              "instanceSandbox.get",
+              "instanceSandbox.delete",
+              "instanceSandbox.undelete",
+              "instanceSandboxes.*",
+              "instanceSandboxes.get"
             ]
           },
           {
@@ -108541,6 +108557,146 @@ Schema for a historical summary report
 
 <br/>
 
+## Application Import Options
+
+Schema for additional application import options
+
+### <a name="application-import-options-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "importUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
+    },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
+    },
+    "conflictBehavior": {
+      "type": "string",
+      "enum": [
+        "create",
+        "error"
+      ],
+      "default": "create"
+    },
+    "include": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "ApplicationCertificateAuthority",
+          "Dashboard",
+          "DataTableRow",
+          "DataTable",
+          "DeviceRecipe",
+          "Device",
+          "ExperienceDevelopConfig",
+          "ExperienceEndpoint",
+          "ExperienceFlowVersion",
+          "ExperienceGroup",
+          "ExperienceUser",
+          "ExperienceVersion",
+          "ExperienceView",
+          "File",
+          "FlowVersion",
+          "Flow",
+          "Integration",
+          "Notebook",
+          "Webhook"
+        ]
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="application-import-options-example"></a> Example
+
+```json
+{
+  "importUrl": "https://storage.mySite.com/myZipFile.zip",
+  "include": [
+    "Flow",
+    "Device"
+  ]
+}
+```
+
+<br/>
+
+## Applications Import Options
+
+Schema for additional application import options (new application)
+
+### <a name="applications-import-options-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "importUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
+    },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
+    },
+    "include": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "ApplicationCertificateAuthority",
+          "Dashboard",
+          "DataTableRow",
+          "DataTable",
+          "DeviceRecipe",
+          "Device",
+          "ExperienceDevelopConfig",
+          "ExperienceEndpoint",
+          "ExperienceFlowVersion",
+          "ExperienceGroup",
+          "ExperienceUser",
+          "ExperienceVersion",
+          "ExperienceView",
+          "File",
+          "FlowVersion",
+          "Flow",
+          "Integration",
+          "Notebook",
+          "Webhook"
+        ]
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="applications-import-options-example"></a> Example
+
+```json
+{
+  "importUrl": "https://storage.mySite.com/myZipFile.zip",
+  "include": [
+    "Flow",
+    "Device"
+  ]
+}
+```
+
+<br/>
+
 ## Instance
 
 Schema for a single Instance
@@ -108605,6 +108761,7 @@ Schema for a single Instance
           },
           "callbackUrl": {
             "type": "string",
+            "format": "uri",
             "maxLength": 1024
           },
           "resourceGroupBy": {
@@ -111958,6 +112115,36 @@ Schema for the body of an Organization owned by an instance
           "format": "date-time"
         }
       ]
+    },
+    "isReadOnly": {
+      "type": "boolean"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        },
+        "required": [
+          "key",
+          "value"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 100
+    },
+    "referralId": {
+      "type": "string",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false,
@@ -112570,6 +112757,35 @@ Schema for the body of an Organization modification request within an instance
           "type": "boolean"
         }
       ]
+    },
+    "isReadOnly": {
+      "type": "boolean"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        },
+        "required": [
+          "key",
+          "value"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 100
+    },
+    "referralId": {
+      "ref": "#/definitions/common/optMedStr"
     }
   },
   "additionalProperties": false
@@ -112918,6 +113134,35 @@ Schema for the body of an Organization creation request within an instance
           "type": "boolean"
         }
       ]
+    },
+    "isReadOnly": {
+      "type": "boolean"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        },
+        "required": [
+          "key",
+          "value"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 100
+    },
+    "referralId": {
+      "ref": "#/definitions/common/optMedStr"
     }
   },
   "additionalProperties": false,
@@ -113101,6 +113346,36 @@ Schema for a collection of Organizations within an instance
                 "format": "date-time"
               }
             ]
+          },
+          "isReadOnly": {
+            "type": "boolean"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                },
+                "value": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                }
+              },
+              "required": [
+                "key",
+                "value"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 100
+          },
+          "referralId": {
+            "type": "string",
+            "maxLength": 1024
           }
         },
         "additionalProperties": false,
@@ -113213,6 +113488,7 @@ Schema for instance patch request
           },
           "callbackUrl": {
             "type": "string",
+            "format": "uri",
             "maxLength": 1024
           },
           "resourceGroupBy": {
@@ -113296,6 +113572,7 @@ Schema for the body of a instance report request
     },
     "callbackUrl": {
       "type": "string",
+      "format": "uri",
       "maxLength": 1024
     },
     "resourceGroupBy": {
@@ -113338,6 +113615,622 @@ Schema for the body of a instance report request
   "includeSandbox": false,
   "start": "2020-01-01T00:00:00.000Z",
   "end": "2020-01-31T11:59:59.999Z"
+}
+```
+
+<br/>
+
+## Instance Sandbox User
+
+Schema for information about a sandbox user within an instance domain
+
+### <a name="instance-sandbox-user-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "instanceSandboxId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "instanceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "permanentDeletion": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "dataDeletion": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastSuccessfulLogin": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastFailedLogin": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "failedLoginCount": {
+      "type": "number"
+    },
+    "passwordLastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "firstName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "lastName": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "companyName": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "phoneNumber": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "location": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "url": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "tokenCutoff": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "emailVerified": {
+      "type": "boolean"
+    },
+    "needsToVerifyEmail": {
+      "type": "boolean"
+    },
+    "twoFactorAuthEnabled": {
+      "type": "boolean"
+    },
+    "fullName": {
+      "type": "string"
+    },
+    "githubName": {
+      "type": "string"
+    },
+    "avatarUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
+    },
+    "limits": {
+      "type": "object",
+      "properties": {
+        "apitoken": {
+          "type": "integer"
+        },
+        "application": {
+          "type": "integer"
+        },
+        "applicationkey": {
+          "type": "integer"
+        },
+        "dashboard": {
+          "type": "integer"
+        },
+        "datatable": {
+          "type": "integer"
+        },
+        "device": {
+          "type": "integer"
+        },
+        "devicerecipe": {
+          "type": "integer"
+        },
+        "experiencedomain": {
+          "type": "integer"
+        },
+        "experienceendpoint": {
+          "type": "integer"
+        },
+        "experiencegroup": {
+          "type": "integer"
+        },
+        "experienceslug": {
+          "type": "integer"
+        },
+        "experienceuser": {
+          "type": "integer"
+        },
+        "experienceversion": {
+          "type": "integer"
+        },
+        "experienceview": {
+          "type": "integer"
+        },
+        "file": {
+          "type": "integer"
+        },
+        "flow": {
+          "type": "integer"
+        },
+        "integration": {
+          "type": "integer"
+        },
+        "notebook": {
+          "type": "integer"
+        },
+        "webhook": {
+          "type": "integer"
+        },
+        "dataTTL": {
+          "type": "integer"
+        },
+        "payload": {
+          "type": "integer"
+        },
+        "storage": {
+          "type": "integer"
+        },
+        "notebookMinutesPerRun": {
+          "type": "integer"
+        },
+        "notebookMinutesPerMonth": {
+          "type": "integer"
+        },
+        "notebookInParallel": {
+          "type": "integer"
+        },
+        "experienceFlowSlots": {
+          "type": "integer"
+        },
+        "applicationFlowSlots": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "apiTokenCount": {
+          "type": "integer"
+        },
+        "appCount": {
+          "type": "integer"
+        },
+        "dashCount": {
+          "type": "integer"
+        },
+        "dataTableCount": {
+          "type": "integer"
+        },
+        "deviceCount": {
+          "type": "integer"
+        },
+        "deviceRecipeCount": {
+          "type": "integer"
+        },
+        "experienceEndpointCount": {
+          "type": "integer"
+        },
+        "experienceGroupCount": {
+          "type": "integer"
+        },
+        "experienceSlugCount": {
+          "type": "integer"
+        },
+        "experienceUserCount": {
+          "type": "integer"
+        },
+        "experienceVersionCount": {
+          "type": "integer"
+        },
+        "experienceViewCount": {
+          "type": "integer"
+        },
+        "fileCount": {
+          "type": "integer"
+        },
+        "flowCount": {
+          "type": "integer"
+        },
+        "integrationCount": {
+          "type": "integer"
+        },
+        "keyCount": {
+          "type": "integer"
+        },
+        "orgCount": {
+          "type": "integer"
+        },
+        "payloadCount": {
+          "title": "Payload Stats",
+          "description": "Schema for the result of a payload stats request",
+          "type": "object",
+          "properties": {
+            "dataTable": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "deviceCommand": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "deviceConnect": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "deviceDisconnect": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "deviceState": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "endpoint": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "event": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "flowError": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "integration": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "mqttIn": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "mqttOut": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "notebook": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "timer": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "virtualButton": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "webhook": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "storageStats": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "type": "integer"
+            },
+            "size": {
+              "type": "integer"
+            }
+          }
+        },
+        "webhookCount": {
+          "type": "integer"
+        }
+      }
+    },
+    "currentPeriodStart": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "currentPeriodEnd": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ssoLinked": {
+      "type": "boolean"
+    },
+    "orgs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "iconColor": {
+            "type": "string",
+            "maxLength": 64
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        }
+      }
+    }
+  }
+}
+```
+### <a name="instance-sandbox-user-example"></a> Example
+
+```json
+{
+  "id": "575ed70c7ae143cd83dc4aa9",
+  "instanceId": "575ed70c7ae143cd83dc4aa9",
+  "instanceSandboxId": "575ed70c7ae143cd83dc4aa9",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "passwordLastUpdated": "2016-06-13T04:00:00.000Z",
+  "email": "email@example.com",
+  "firstName": "Example",
+  "lastName": "Name",
+  "companyName": "Example, Inc.",
+  "url": "https://example.com",
+  "emailVerified": true,
+  "needsToVerifyEmail": false,
+  "twoFactorAuthEnabled": false,
+  "fullName": "Example Name",
+  "summary": {
+    "appCount": 8,
+    "dashCount": 5,
+    "orgCount": 2,
+    "deviceCount": 12,
+    "flowCount": 3,
+    "webhookCount": 0,
+    "keyCount": 2,
+    "deviceRecipeCount": 0
+  },
+  "orgs": [
+    {
+      "id": "575ed70c7ae143cd83dc4aa9",
+      "iconColor": "red",
+      "name": "Example"
+    }
+  ],
+  "ssoLinked": false
+}
+```
+
+<br/>
+
+## Instance Sandboxes
+
+Schema for a collection of instance associated sandboxes
+
+### <a name="instance-sandboxes-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "#/definitions/instanceSandbox"
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "limit": {
+      "type": "integer"
+    },
+    "startingAfterId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "endingBeforeId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc",
+        "ASC",
+        "DESC",
+        ""
+      ]
+    },
+    "hasMore": {
+      "type": "boolean"
+    }
+  }
+}
+```
+### <a name="instance-sandboxes-example"></a> Example
+
+```json
+{
+  "count": 2,
+  "items": [
+    {
+      "id": "575ed70c7ae143cd83dc4aa9",
+      "instanceId": "575ed70c7ae143cd83dc4aa9",
+      "instanceSandboxId": "575ed70c7ae143cd83dc4aa9",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "passwordLastUpdated": "2016-06-13T04:00:00.000Z",
+      "email": "email@example.com",
+      "firstName": "Example",
+      "lastName": "Name",
+      "companyName": "Example, Inc.",
+      "url": "https://example.com",
+      "emailVerified": true,
+      "needsToVerifyEmail": false,
+      "twoFactorAuthEnabled": false,
+      "fullName": "Example Name",
+      "summary": {
+        "appCount": 8,
+        "dashCount": 5,
+        "orgCount": 2,
+        "deviceCount": 12,
+        "flowCount": 3,
+        "webhookCount": 0,
+        "keyCount": 2,
+        "deviceRecipeCount": 0
+      },
+      "orgs": [
+        {
+          "id": "575ed70c7ae143cd83dc4aa9",
+          "iconColor": "red",
+          "name": "Example"
+        }
+      ],
+      "ssoLinked": false
+    },
+    {
+      "id": "575ed70c7ae143cd83dc4aa9",
+      "instanceId": "575ed70c7ae143cd83dc4aa9",
+      "instanceSandboxId": "575ed70c7ae143cd83dc4aa9",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "passwordLastUpdated": "2016-06-13T04:00:00.000Z",
+      "email": "email@example.com",
+      "firstName": "Example",
+      "lastName": "Name",
+      "companyName": "Example, Inc.",
+      "url": "https://example.com",
+      "emailVerified": true,
+      "needsToVerifyEmail": false,
+      "twoFactorAuthEnabled": false,
+      "fullName": "Example Name",
+      "summary": {
+        "appCount": 8,
+        "dashCount": 5,
+        "orgCount": 2,
+        "deviceCount": 12,
+        "flowCount": 3,
+        "webhookCount": 0,
+        "keyCount": 2,
+        "deviceRecipeCount": 0
+      },
+      "orgs": [
+        {
+          "id": "575ed70c7ae143cd83dc4aa9",
+          "iconColor": "red",
+          "name": "Example"
+        }
+      ],
+      "ssoLinked": false
+    }
+  ],
+  "limit": 100,
+  "startingAfterId": "575ed70c7ae143cd83dc4aa9",
+  "sortField": "firstName",
+  "sortDirection": "asc",
+  "hasMore": false
 }
 ```
 
@@ -117648,6 +118541,11 @@ Schema for the options for a Notebook data export request
     "templateContext": {
       "type": "string",
       "maxLength": 32767
+    },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false
@@ -120488,6 +121386,23 @@ Schema for a single Organization
         "maxLength": 45,
         "minLength": 3
       }
+    },
+    "disabledAt": {
+      "oneOf": [
+        {
+          "type": "boolean",
+          "enum": [
+            false
+          ]
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "isReadOnly": {
+      "type": "boolean"
     }
   }
 }
@@ -121967,6 +122882,23 @@ Schema for a collection of Organizations
               "maxLength": 45,
               "minLength": 3
             }
+          },
+          "disabledAt": {
+            "oneOf": [
+              {
+                "type": "boolean",
+                "enum": [
+                  false
+                ]
+              },
+              {
+                "type": "string",
+                "format": "date-time"
+              }
+            ]
+          },
+          "isReadOnly": {
+            "type": "boolean"
           }
         }
       }
@@ -124402,7 +125334,13 @@ Schema for the body of a User authentication request
               "instanceCustomNode.patch",
               "instanceCustomNode.delete",
               "instanceCustomNode.errors",
-              "instanceCustomNode.stats"
+              "instanceCustomNode.stats",
+              "instanceSandbox.*",
+              "instanceSandbox.get",
+              "instanceSandbox.delete",
+              "instanceSandbox.undelete",
+              "instanceSandboxes.*",
+              "instanceSandboxes.get"
             ]
           },
           {
@@ -124929,7 +125867,13 @@ Schema for the body of a User creation request
               "instanceCustomNode.patch",
               "instanceCustomNode.delete",
               "instanceCustomNode.errors",
-              "instanceCustomNode.stats"
+              "instanceCustomNode.stats",
+              "instanceSandbox.*",
+              "instanceSandbox.get",
+              "instanceSandbox.delete",
+              "instanceSandbox.undelete",
+              "instanceSandboxes.*",
+              "instanceSandboxes.get"
             ]
           },
           {

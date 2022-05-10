@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "importUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
+    },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
+    },
+    "conflictBehavior": {
+      "type": "string",
+      "enum": [
+        "create",
+        "error"
+      ],
+      "default": "create"
+    },
+    "include": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "ApplicationCertificateAuthority",
+          "Dashboard",
+          "DataTableRow",
+          "DataTable",
+          "DeviceRecipe",
+          "Device",
+          "ExperienceDevelopConfig",
+          "ExperienceEndpoint",
+          "ExperienceFlowVersion",
+          "ExperienceGroup",
+          "ExperienceUser",
+          "ExperienceVersion",
+          "ExperienceView",
+          "File",
+          "FlowVersion",
+          "Flow",
+          "Integration",
+          "Notebook",
+          "Webhook"
+        ]
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false
+}

@@ -5473,6 +5473,9 @@
           },
           "ctx": {
             "ref": "#/definitions/dashboardContextInstance"
+          },
+          "branded": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false,

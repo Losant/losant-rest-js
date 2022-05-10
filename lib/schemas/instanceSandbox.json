@@ -6,7 +6,11 @@
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
-    "orgId": {
+    "instanceSandboxId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "instanceId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
@@ -14,117 +18,90 @@
       "type": "string",
       "format": "date-time"
     },
+    "permanentDeletion": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "dataDeletion": {
+      "type": "string",
+      "format": "date-time"
+    },
     "lastUpdated": {
       "type": "string",
       "format": "date-time"
     },
-    "name": {
+    "lastSuccessfulLogin": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastFailedLogin": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "failedLoginCount": {
+      "type": "number"
+    },
+    "passwordLastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "firstName": {
       "type": "string",
       "minLength": 1,
-      "maxLength": 255
+      "maxLength": 1024
     },
-    "description": {
+    "lastName": {
       "type": "string",
-      "maxLength": 32767
+      "maxLength": 1024
     },
-    "members": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "string",
-            "pattern": "^[A-Fa-f\\d]{24}$"
-          },
-          "firstName": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 1024
-          },
-          "lastName": {
-            "type": "string",
-            "maxLength": 1024
-          },
-          "email": {
-            "type": "string",
-            "format": "email",
-            "maxLength": 1024
-          },
-          "avatarUrl": {
-            "type": "string",
-            "format": "uri",
-            "maxLength": 1024
-          },
-          "role": {
-            "type": "string",
-            "enum": [
-              "admin",
-              "edit",
-              "collaborate",
-              "view",
-              "none"
-            ]
-          },
-          "applicationRoles": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "resourceId": {
-                  "type": "string",
-                  "pattern": "^[A-Fa-f\\d]{24}$"
-                },
-                "role": {
-                  "type": "string",
-                  "enum": [
-                    "collaborate",
-                    "view",
-                    "none"
-                  ]
-                }
-              },
-              "required": [
-                "resourceId",
-                "role"
-              ],
-              "additionalProperties": false
-            },
-            "maxItems": 1000
-          },
-          "dashboardRoles": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "resourceId": {
-                  "type": "string",
-                  "pattern": "^[A-Fa-f\\d]{24}$"
-                },
-                "role": {
-                  "type": "string",
-                  "enum": [
-                    "collaborate",
-                    "view",
-                    "none"
-                  ]
-                }
-              },
-              "required": [
-                "resourceId",
-                "role"
-              ],
-              "additionalProperties": false
-            },
-            "maxItems": 1000
-          },
-          "twoFactorAuthEnabled": {
-            "type": "boolean"
-          },
-          "ssoLinked": {
-            "type": "boolean"
-          }
-        }
-      }
+    "companyName": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "phoneNumber": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "location": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "url": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "tokenCutoff": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "emailVerified": {
+      "type": "boolean"
+    },
+    "needsToVerifyEmail": {
+      "type": "boolean"
+    },
+    "twoFactorAuthEnabled": {
+      "type": "boolean"
+    },
+    "fullName": {
+      "type": "string"
+    },
+    "githubName": {
+      "type": "string"
+    },
+    "avatarUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
     },
     "limits": {
       "type": "object",
@@ -189,9 +166,6 @@
         "dataTTL": {
           "type": "integer"
         },
-        "member": {
-          "type": "integer"
-        },
         "payload": {
           "type": "integer"
         },
@@ -237,9 +211,6 @@
         "deviceRecipeCount": {
           "type": "integer"
         },
-        "experienceDomainCount": {
-          "type": "integer"
-        },
         "experienceEndpointCount": {
           "type": "integer"
         },
@@ -270,7 +241,7 @@
         "keyCount": {
           "type": "integer"
         },
-        "memberCount": {
+        "orgCount": {
           "type": "integer"
         },
         "payloadCount": {
@@ -400,9 +371,6 @@
             }
           }
         },
-        "pendingInviteCount": {
-          "type": "integer"
-        },
         "storageStats": {
           "type": "object",
           "properties": {
@@ -419,25 +387,6 @@
         }
       }
     },
-    "planId": {
-      "type": "string",
-      "maxLength": 1024
-    },
-    "billingEmail": {
-      "type": "string",
-      "format": "email",
-      "maxLength": 1024
-    },
-    "subscriptionStatus": {
-      "type": "string",
-      "enum": [
-        "trialing",
-        "active",
-        "past_due",
-        "canceled",
-        "unpaid"
-      ]
-    },
     "currentPeriodStart": {
       "type": "string",
       "format": "date-time"
@@ -446,37 +395,29 @@
       "type": "string",
       "format": "date-time"
     },
-    "isEnterprise": {
+    "ssoLinked": {
       "type": "boolean"
     },
-    "iconColor": {
-      "type": "string",
-      "maxLength": 64
-    },
-    "whitelistedEmailDomains": {
+    "orgs": {
       "type": "array",
       "items": {
-        "type": "string",
-        "maxLength": 45,
-        "minLength": 3
-      }
-    },
-    "disabledAt": {
-      "oneOf": [
-        {
-          "type": "boolean",
-          "enum": [
-            false
-          ]
-        },
-        {
-          "type": "string",
-          "format": "date-time"
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "iconColor": {
+            "type": "string",
+            "maxLength": 64
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
         }
-      ]
-    },
-    "isReadOnly": {
-      "type": "boolean"
+      }
     }
   }
 }

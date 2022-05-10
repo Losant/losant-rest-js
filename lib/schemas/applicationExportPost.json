@@ -21,6 +21,7 @@
     },
     "callbackUrl": {
       "type": "string",
+      "format": "uri",
       "maxLength": 1024
     }
   },

@@ -18,6 +18,17 @@
     "description": {
       "type": "string",
       "maxLength": 32767
+    },
+    "resourceTypes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "DeviceRecipe",
+          "CustomNode"
+        ]
+      },
+      "maxItems": 100
     }
   }
 }

@@ -932,6 +932,11 @@
         }
       },
       "additionalProperties": false
+    },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false,

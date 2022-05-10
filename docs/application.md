@@ -555,7 +555,7 @@ all.Application, all.Organization, all.User, application.*, or application.impor
 | applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
 | importBundle | file | N | The zip file containing all of the resources to import into the application |  | undefined |
 | email | string | N | Email address to notify the user when the job to import the application resources has completed or errored, defaults to the email address of the user making the request |  | email@example.com |
-| options | [Application Import Options](../lib/schemas/applicationImportOptions.json) | N | Additional import options |  | [Application Import Options Example](_schemas.md#application-import-options-example) |
+| options | [Application Import Options](../lib/schemas/importIntoApplicationOptions.json) | N | Additional import options |  | [Application Import Options Example](_schemas.md#application-import-options-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

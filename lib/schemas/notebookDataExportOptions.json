@@ -32,6 +32,11 @@
     "templateContext": {
       "type": "string",
       "maxLength": 32767
+    },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false

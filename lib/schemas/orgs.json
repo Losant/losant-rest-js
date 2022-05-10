@@ -467,6 +467,23 @@
               "maxLength": 45,
               "minLength": 3
             }
+          },
+          "disabledAt": {
+            "oneOf": [
+              {
+                "type": "boolean",
+                "enum": [
+                  false
+                ]
+              },
+              {
+                "type": "string",
+                "format": "date-time"
+              }
+            ]
+          },
+          "isReadOnly": {
+            "type": "boolean"
           }
         }
       }

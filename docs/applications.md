@@ -100,7 +100,7 @@ all.Organization, all.User, applications.*, or applications.import.
 | includeDataTableRows | string | N | If set, import data table rows from import bundle |  | true |
 | includeFiles | string | N | If set, import files from import bundle |  | true |
 | email | string | N | Email address to notify the user when the job to import the application has completed or errored, defaults to the email address of the user making the request |  | email@example.com |
-| options | [Application Import Options](../lib/schemas/applicationImportOptions.json) | N | Additional import options |  | [Application Import Options Example](_schemas.md#application-import-options-example) |
+| options | [Applications Import Options](../lib/schemas/importNewApplicationOptions.json) | N | Additional import options |  | [Applications Import Options Example](_schemas.md#applications-import-options-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

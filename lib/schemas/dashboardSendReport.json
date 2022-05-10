@@ -45,6 +45,9 @@
     },
     "ctx": {
       "ref": "#/definitions/dashboardContextInstance"
+    },
+    "branded": {
+      "type": "boolean"
     }
   },
   "anyOf": [

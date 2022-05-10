@@ -39,7 +39,8 @@
           "file",
           "flow",
           "integration",
-          "webhook"
+          "webhook",
+          "notebook"
         ]
       }
     },
