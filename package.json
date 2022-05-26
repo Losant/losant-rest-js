@@ -32,7 +32,7 @@
   "dependencies": {
     "axios": "^0.21.2",
     "es6-promise": "^4.2.8",
-    "eventsource": "^1.0.7",
+    "eventsource": "^2.0.2",
     "form-data": "^3.0.0",
     "qs": "^6.9.4",
     "uri-template": "^1.0.1"
