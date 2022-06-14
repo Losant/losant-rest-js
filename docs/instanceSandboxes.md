@@ -41,6 +41,8 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceSandboxes.*, o
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | instanceId | string | Y | ID associated with the instance |  | 575ec8687ae143cd83dc4a97 |
+| summaryExclude | string | N | Comma-separated list of summary fields to exclude from user summary |  | payloadCount |
+| summaryInclude | string | N | Comma-separated list of summary fields to include in user summary |  | payloadCount |
 | sortField | string | N | Field to sort the results by. Accepted values are: firstName, lastName, email, id, creationDate, lastSuccessfulLogin, lastFailedLogin, failedLoginCount, lastUpdated | email | firstName |
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
 | startingAfterId | string | N | Exclusive ID from which to begin querying |  | 575ec8687ae143cd83dc4a97 |

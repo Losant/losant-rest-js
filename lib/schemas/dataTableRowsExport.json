@@ -141,6 +141,11 @@
       },
       "additionalProperties": false
     },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
+    },
     "queryOptions": {
       "type": "object",
       "properties": {

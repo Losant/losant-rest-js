@@ -336,6 +336,50 @@ Schema for advanced application key queries
                 }
               ]
             },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
             "$in": {
               "type": "array",
               "maxItems": 100,
@@ -696,6 +740,50 @@ Schema for advanced application key queries
               ]
             },
             "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
               "oneOf": [
                 {
                   "type": "string",
@@ -1448,6 +1536,50 @@ Schema for advanced device queries
                 }
               ]
             },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
             "$in": {
               "type": "array",
               "maxItems": 100,
@@ -1921,6 +2053,50 @@ Schema for advanced device queries
                 }
               ]
             },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
             "$in": {
               "type": "array",
               "maxItems": 100,
@@ -1982,6 +2158,50 @@ Schema for advanced device queries
                 }
               ]
             },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
             "$in": {
               "type": "array",
               "maxItems": 100,
@@ -2033,6 +2253,50 @@ Schema for advanced device queries
               ]
             },
             "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
               "oneOf": [
                 {
                   "type": "string",
@@ -2207,6 +2471,50 @@ Schema for advanced device queries
                 }
               ]
             },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
             "$in": {
               "type": "array",
               "maxItems": 100,
@@ -2258,6 +2566,50 @@ Schema for advanced device queries
               ]
             },
             "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
               "oneOf": [
                 {
                   "type": "string",
@@ -3729,6 +4081,50 @@ Schema for advanced event queries
                 }
               ]
             },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
             "$in": {
               "type": "array",
               "maxItems": 100,
@@ -3780,6 +4176,50 @@ Schema for advanced event queries
               ]
             },
             "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
               "oneOf": [
                 {
                   "type": "string",
@@ -4108,6 +4548,50 @@ Schema for advanced workflow queries
               ]
             },
             "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
               "oneOf": [
                 {
                   "type": "string",
@@ -4591,6 +5075,50 @@ Schema for advanced workflow queries
                 }
               ]
             },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
             "$in": {
               "type": "array",
               "maxItems": 100,
@@ -4791,6 +5319,50 @@ Schema for advanced workflow queries
               ]
             },
             "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
               "oneOf": [
                 {
                   "type": "string",
@@ -5274,6 +5846,50 @@ Schema for advanced workflow queries
                 }
               ]
             },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
             "$in": {
               "type": "array",
               "maxItems": 100,
@@ -5701,6 +6317,50 @@ Schema for advanced workflow queries
               ]
             },
             "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
               "oneOf": [
                 {
                   "type": "string",
@@ -43674,6 +44334,11 @@ Schema for the body of a data table export
       },
       "additionalProperties": false
     },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
+    },
     "queryOptions": {
       "type": "object",
       "properties": {
@@ -45642,6 +46307,11 @@ Schema for the body of a bulk Device creation request
       "type": "string",
       "format": "email",
       "maxLength": 1024
+    },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false,
@@ -47321,6 +47991,50 @@ Schema for the body of a bulk device delete request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -47794,6 +48508,50 @@ Schema for the body of a bulk device delete request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -47855,6 +48613,50 @@ Schema for the body of a bulk device delete request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -47906,6 +48708,50 @@ Schema for the body of a bulk device delete request
                   ]
                 },
                 "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
                   "oneOf": [
                     {
                       "type": "string",
@@ -48080,6 +48926,50 @@ Schema for the body of a bulk device delete request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -48131,6 +49021,50 @@ Schema for the body of a bulk device delete request
                   ]
                 },
                 "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
                   "oneOf": [
                     {
                       "type": "string",
@@ -48697,6 +49631,50 @@ Schema for the body of a device payload count export request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -49170,6 +50148,50 @@ Schema for the body of a device payload count export request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -49231,6 +50253,50 @@ Schema for the body of a device payload count export request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -49282,6 +50348,50 @@ Schema for the body of a device payload count export request
                   ]
                 },
                 "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
                   "oneOf": [
                     {
                       "type": "string",
@@ -49456,6 +50566,50 @@ Schema for the body of a device payload count export request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -49507,6 +50661,50 @@ Schema for the body of a device payload count export request
                   ]
                 },
                 "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
                   "oneOf": [
                     {
                       "type": "string",
@@ -50071,6 +51269,50 @@ Schema for the body of a device metadata export request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -50544,6 +51786,50 @@ Schema for the body of a device metadata export request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -50605,6 +51891,50 @@ Schema for the body of a device metadata export request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -50656,6 +51986,50 @@ Schema for the body of a device metadata export request
                   ]
                 },
                 "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
                   "oneOf": [
                     {
                       "type": "string",
@@ -50830,6 +52204,50 @@ Schema for the body of a device metadata export request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -50881,6 +52299,50 @@ Schema for the body of a device metadata export request
                   ]
                 },
                 "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
                   "oneOf": [
                     {
                       "type": "string",
@@ -51641,6 +53103,50 @@ Schema for the body of a Devices modification request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -52114,6 +53620,50 @@ Schema for the body of a Devices modification request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -52175,6 +53725,50 @@ Schema for the body of a Devices modification request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -52226,6 +53820,50 @@ Schema for the body of a Devices modification request
                   ]
                 },
                 "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
                   "oneOf": [
                     {
                       "type": "string",
@@ -52400,6 +54038,50 @@ Schema for the body of a Devices modification request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -52451,6 +54133,50 @@ Schema for the body of a Devices modification request
                   ]
                 },
                 "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
                   "oneOf": [
                     {
                       "type": "string",
@@ -53759,6 +55485,50 @@ Schema for the body of a bulk data removal request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -54232,6 +56002,50 @@ Schema for the body of a bulk data removal request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -54293,6 +56107,50 @@ Schema for the body of a bulk data removal request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -54344,6 +56202,50 @@ Schema for the body of a bulk data removal request
                   ]
                 },
                 "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
                   "oneOf": [
                     {
                       "type": "string",
@@ -54518,6 +56420,50 @@ Schema for the body of a bulk data removal request
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -54569,6 +56515,50 @@ Schema for the body of a bulk data removal request
                   ]
                 },
                 "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
                   "oneOf": [
                     {
                       "type": "string",
@@ -58238,6 +60228,50 @@ Export options for events
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -58289,6 +60323,50 @@ Export options for events
                   ]
                 },
                 "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
                   "oneOf": [
                     {
                       "type": "string",
@@ -68646,6 +70724,17 @@ Schema for a single Experience User
           "id": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "parentId": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         }
       }
@@ -68913,6 +71002,17 @@ Schema for a collection of Experience Users
                 "id": {
                   "type": "string",
                   "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "parentId": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
                 }
               }
             }
@@ -91165,6 +93265,50 @@ Schema for the body of a bulk flow versions delete request
                   ]
                 },
                 "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
                   "oneOf": [
                     {
                       "type": "string",
@@ -116404,6 +118548,50 @@ Schema for the body of a request to send a command to multiple Devices
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -116877,6 +119065,50 @@ Schema for the body of a request to send a command to multiple Devices
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -116938,6 +119170,50 @@ Schema for the body of a request to send a command to multiple Devices
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -116989,6 +119265,50 @@ Schema for the body of a request to send a command to multiple Devices
                   ]
                 },
                 "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
                   "oneOf": [
                     {
                       "type": "string",
@@ -117163,6 +119483,50 @@ Schema for the body of a request to send a command to multiple Devices
                     }
                   ]
                 },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "$in": {
                   "type": "array",
                   "maxItems": 100,
@@ -117214,6 +119578,50 @@ Schema for the body of a request to send a command to multiple Devices
                   ]
                 },
                 "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
                   "oneOf": [
                     {
                       "type": "string",
@@ -124297,6 +126705,437 @@ SAML Response body for login
       "type": "string",
       "maxLength": 45,
       "minLength": 3
+    },
+    "requestedScopes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "oneOf": [
+          {
+            "oneOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "all.Application",
+                  "all.Application.read",
+                  "all.Application.cli",
+                  "all.Device",
+                  "all.Device.read",
+                  "application.*",
+                  "applicationApiToken.*",
+                  "applicationApiTokens.*",
+                  "applicationCertificate.*",
+                  "applicationCertificates.*",
+                  "applicationCertificateAuthority.*",
+                  "applicationCertificateAuthorities.*",
+                  "applicationDashboards.*",
+                  "applicationDashboard.*",
+                  "applicationKey.*",
+                  "applicationKeys.*",
+                  "data.*",
+                  "dataTable.*",
+                  "dataTables.*",
+                  "dataTableRow.*",
+                  "dataTableRows.*",
+                  "device.*",
+                  "deviceRecipe.*",
+                  "deviceRecipes.*",
+                  "devices.*",
+                  "edgeDeployment.*",
+                  "edgeDeployments.*",
+                  "embeddedDeployment.*",
+                  "embeddedDeployments.*",
+                  "event.*",
+                  "events.*",
+                  "experience.*",
+                  "experienceDomain.*",
+                  "experienceDomains.*",
+                  "experienceEndpoint.*",
+                  "experienceEndpoints.*",
+                  "experienceGroup.*",
+                  "experienceGroups.*",
+                  "experienceSlug.*",
+                  "experienceSlugs.*",
+                  "experienceUser.*",
+                  "experienceUsers.*",
+                  "experienceVersion.*",
+                  "experienceVersions.*",
+                  "experienceView.*",
+                  "experienceViews.*",
+                  "integration.*",
+                  "integrations.*",
+                  "file.*",
+                  "files.*",
+                  "flow.*",
+                  "flows.*",
+                  "flowVersion.*",
+                  "flowVersions.*",
+                  "notebook.*",
+                  "notebooks.*",
+                  "webhook.*",
+                  "webhooks.*",
+                  "application.applyTemplate",
+                  "application.archiveData",
+                  "application.backfillArchiveData",
+                  "application.clone",
+                  "application.export",
+                  "application.import",
+                  "application.fullEventsArchive",
+                  "application.fullDataTablesArchive",
+                  "application.debug",
+                  "application.delete",
+                  "application.get",
+                  "application.mqttPublishMessage",
+                  "application.mqttSubscriptionStream",
+                  "application.patch",
+                  "application.payloadCounts",
+                  "application.search",
+                  "applicationApiToken.delete",
+                  "applicationApiToken.get",
+                  "applicationApiToken.patch",
+                  "applicationApiTokens.get",
+                  "applicationApiTokens.post",
+                  "applicationCertificate.delete",
+                  "applicationCertificate.get",
+                  "applicationCertificate.patch",
+                  "applicationCertificates.get",
+                  "applicationCertificates.post",
+                  "applicationCertificateAuthority.delete",
+                  "applicationCertificateAuthority.get",
+                  "applicationCertificateAuthority.patch",
+                  "applicationCertificateAuthorities.get",
+                  "applicationCertificateAuthorities.post",
+                  "applicationDashboard.get",
+                  "applicationDashboard.patch",
+                  "applicationDashboard.sendReport",
+                  "applicationDashboard.delete",
+                  "applicationDashboards.get",
+                  "applicationDashboards.post",
+                  "applicationKey.delete",
+                  "applicationKey.get",
+                  "applicationKey.patch",
+                  "applicationKeys.get",
+                  "applicationKeys.post",
+                  "data.export",
+                  "data.lastValueQuery",
+                  "data.timeSeriesQuery",
+                  "dataTable.addColumn",
+                  "dataTable.delete",
+                  "dataTable.get",
+                  "dataTable.patch",
+                  "dataTable.removeColumn",
+                  "dataTableRow.delete",
+                  "dataTableRow.get",
+                  "dataTableRow.patch",
+                  "dataTableRows.get",
+                  "dataTableRows.post",
+                  "dataTableRows.query",
+                  "dataTableRows.export",
+                  "dataTableRows.delete",
+                  "dataTableRows.truncate",
+                  "dataTables.get",
+                  "dataTables.post",
+                  "device.commandStream",
+                  "device.debug",
+                  "device.delete",
+                  "device.export",
+                  "device.get",
+                  "device.getCommand",
+                  "device.getCompositeState",
+                  "device.getLogEntries",
+                  "device.getState",
+                  "device.patch",
+                  "device.payloadCounts",
+                  "device.removeData",
+                  "device.sendCommand",
+                  "device.sendState",
+                  "device.setConnectionStatus",
+                  "device.stateStream",
+                  "deviceRecipe.bulkCreate",
+                  "deviceRecipe.delete",
+                  "deviceRecipe.get",
+                  "deviceRecipe.patch",
+                  "deviceRecipes.get",
+                  "deviceRecipes.post",
+                  "devices.attributeNames",
+                  "devices.patch",
+                  "devices.delete",
+                  "devices.removeData",
+                  "devices.detailedSummary",
+                  "devices.deviceNames",
+                  "devices.export",
+                  "devices.get",
+                  "devices.payloadCounts",
+                  "devices.post",
+                  "devices.sendCommand",
+                  "devices.tagKeys",
+                  "devices.tagValues",
+                  "edgeDeployment.get",
+                  "edgeDeployments.get",
+                  "edgeDeployments.release",
+                  "edgeDeployments.remove",
+                  "edgeDeployments.replace",
+                  "embeddedDeployment.get",
+                  "embeddedDeployments.get",
+                  "embeddedDeployments.release",
+                  "embeddedDeployments.remove",
+                  "embeddedDeployments.replace",
+                  "embeddedDeployments.export",
+                  "event.delete",
+                  "event.get",
+                  "event.patch",
+                  "events.delete",
+                  "events.get",
+                  "events.mostRecentBySeverity",
+                  "events.patch",
+                  "events.post",
+                  "events.export",
+                  "experience.delete",
+                  "experience.bootstrap",
+                  "experienceDomain.delete",
+                  "experienceDomain.get",
+                  "experienceDomain.patch",
+                  "experienceDomains.get",
+                  "experienceDomains.post",
+                  "experienceEndpoint.delete",
+                  "experienceEndpoint.get",
+                  "experienceEndpoint.linkedResources",
+                  "experienceEndpoint.patch",
+                  "experienceEndpoints.get",
+                  "experienceEndpoints.post",
+                  "experienceEndpoints.stats",
+                  "experienceGroup.delete",
+                  "experienceGroup.get",
+                  "experienceGroup.patch",
+                  "experienceGroups.detailedSummary",
+                  "experienceGroups.get",
+                  "experienceGroups.post",
+                  "experienceSlug.delete",
+                  "experienceSlug.get",
+                  "experienceSlug.patch",
+                  "experienceSlugs.get",
+                  "experienceSlugs.post",
+                  "experienceUser.delete",
+                  "experienceUser.get",
+                  "experienceUser.patch",
+                  "experienceUsers.detailedSummary",
+                  "experienceUsers.get",
+                  "experienceUsers.post",
+                  "experienceVersion.delete",
+                  "experienceVersion.get",
+                  "experienceVersion.patch",
+                  "experienceVersions.get",
+                  "experienceVersions.post",
+                  "experienceView.debug",
+                  "experienceView.delete",
+                  "experienceView.get",
+                  "experienceView.linkedResources",
+                  "experienceView.patch",
+                  "experienceViews.debug",
+                  "experienceViews.detailedSummary",
+                  "experienceViews.get",
+                  "experienceViews.post",
+                  "file.get",
+                  "file.patch",
+                  "file.move",
+                  "file.delete",
+                  "file.upload",
+                  "files.get",
+                  "files.post",
+                  "flow.clearStorageEntries",
+                  "flow.debug",
+                  "flow.delete",
+                  "flow.errors",
+                  "flow.get",
+                  "flow.getStorageEntries",
+                  "flow.log",
+                  "flow.patch",
+                  "flow.pressVirtualButton",
+                  "flow.setStorageEntry",
+                  "flow.getStorageEntriesMetadata",
+                  "flow.stats",
+                  "flows.get",
+                  "flows.getByVersion",
+                  "flows.import",
+                  "flows.palette",
+                  "flows.post",
+                  "flowVersion.delete",
+                  "flowVersion.errors",
+                  "flowVersion.get",
+                  "flowVersion.log",
+                  "flowVersion.patch",
+                  "flowVersion.stats",
+                  "flowVersions.delete",
+                  "flowVersions.get",
+                  "flowVersions.post",
+                  "integration.delete",
+                  "integration.get",
+                  "integration.patch",
+                  "integrations.get",
+                  "integrations.post",
+                  "notebook.delete",
+                  "notebook.execute",
+                  "notebook.get",
+                  "notebook.logs",
+                  "notebook.patch",
+                  "notebook.requestInputDataExport",
+                  "notebook.upload",
+                  "notebooks.get",
+                  "notebooks.post",
+                  "webhook.delete",
+                  "webhook.get",
+                  "webhook.patch",
+                  "webhooks.get",
+                  "webhooks.post"
+                ]
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "all.Organization",
+                  "all.Organization.read",
+                  "applications.*",
+                  "auditLog.*",
+                  "auditLogs.*",
+                  "dashboard.*",
+                  "dashboards.*",
+                  "org.*",
+                  "applications.get",
+                  "applications.post",
+                  "applications.import",
+                  "applications.detailedSummary",
+                  "auditLog.get",
+                  "auditLogs.get",
+                  "dashboard.patch",
+                  "dashboard.delete",
+                  "dashboard.sendReport",
+                  "dashboards.get",
+                  "dashboards.post",
+                  "org.get",
+                  "org.patch",
+                  "org.delete",
+                  "org.pendingInvites",
+                  "org.inviteMember",
+                  "org.revokeInvite",
+                  "org.modifyMember",
+                  "org.removeMember",
+                  "org.payloadCounts",
+                  "org.invoices",
+                  "org.currentCard",
+                  "org.chargeDetails",
+                  "org.transferResources"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
+              "all.Instance",
+              "all.Instance.read",
+              "instance.*",
+              "instance.get",
+              "instance.patch",
+              "instance.historicalSummaries",
+              "instance.generateReport",
+              "instanceOrg.*",
+              "instanceOrg.get",
+              "instanceOrg.patch",
+              "instanceOrg.delete",
+              "instanceOrgs.*",
+              "instanceOrgs.get",
+              "instanceOrgs.post",
+              "instanceMember.*",
+              "instanceMember.get",
+              "instanceMember.patch",
+              "instanceMember.delete",
+              "instanceMembers.*",
+              "instanceMembers.get",
+              "instanceMembers.post",
+              "instanceOrgMember.*",
+              "instanceOrgMember.get",
+              "instanceOrgMember.patch",
+              "instanceOrgMember.delete",
+              "instanceOrgMembers.*",
+              "instanceOrgMembers.get",
+              "instanceOrgMembers.post",
+              "instanceOrgInvite.*",
+              "instanceOrgInvite.get",
+              "instanceOrgInvite.delete",
+              "instanceOrgInvite.resendInvite",
+              "instanceOrgInvites.*",
+              "instanceOrgInvites.get",
+              "instanceOrgInvites.post",
+              "instanceApiTokens.*",
+              "instanceApiTokens.get",
+              "instanceApiTokens.post",
+              "instanceApiToken.*",
+              "instanceApiToken.get",
+              "instanceApiToken.patch",
+              "instanceApiToken.delete",
+              "instanceCustomNodes.*",
+              "instanceCustomNodes.get",
+              "instanceCustomNodes.post",
+              "instanceCustomNode.*",
+              "instanceCustomNode.get",
+              "instanceCustomNode.patch",
+              "instanceCustomNode.delete",
+              "instanceCustomNode.errors",
+              "instanceCustomNode.stats",
+              "instanceSandbox.*",
+              "instanceSandbox.get",
+              "instanceSandbox.delete",
+              "instanceSandbox.undelete",
+              "instanceSandboxes.*",
+              "instanceSandboxes.get"
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
+              "all.User",
+              "all.User.read",
+              "all.User.cli",
+              "userApiToken.*",
+              "userApiToken.get",
+              "userApiToken.patch",
+              "userApiToken.delete",
+              "userApiTokens.*",
+              "userApiTokens.get",
+              "userApiTokens.post",
+              "applicationTemplate.*",
+              "applicationTemplate.get",
+              "applicationTemplates.*",
+              "applicationTemplates.get",
+              "applicationTemplates.getCategories",
+              "applicationTemplates.getUniqueKeywords",
+              "instances.*",
+              "instances.get",
+              "me.*",
+              "me.get",
+              "me.patch",
+              "me.delete",
+              "me.verifyEmail",
+              "me.changePassword",
+              "me.enableTwoFactorAuth",
+              "me.disableTwoFactorAuth",
+              "me.disconnectGithub",
+              "me.connectGithub",
+              "me.addRecentItem",
+              "me.fetchRecentItems",
+              "me.payloadCounts",
+              "me.transferResources",
+              "orgs.*",
+              "orgs.get",
+              "orgs.post"
+            ]
+          }
+        ]
+      }
+    },
+    "tokenTTL": {
+      "type": "integer",
+      "minimum": 0
     }
   },
   "required": [
