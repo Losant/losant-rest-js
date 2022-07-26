@@ -108,6 +108,7 @@
                                 "onConnect",
                                 "onDisconnect",
                                 "particle",
+                                "sqs",
                                 "udp",
                                 "webhook"
                               ]
@@ -2692,6 +2693,7 @@
                                 "onConnect",
                                 "onDisconnect",
                                 "particle",
+                                "sqs",
                                 "udp",
                                 "webhook"
                               ]

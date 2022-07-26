@@ -14,7 +14,8 @@
         "googlePubSub",
         "meridian",
         "mqtt",
-        "particle"
+        "particle",
+        "sqs"
       ]
     },
     "enabled": {
@@ -168,6 +169,38 @@
       "additionalProperties": false,
       "required": [
         "accessToken"
+      ]
+    },
+    "sqsConfig": {
+      "type": "object",
+      "properties": {
+        "accessKeyId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "secretAccessKey": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "region": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "queueUrl": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "accessKeyId",
+        "secretAccessKey",
+        "region",
+        "queueUrl"
       ]
     },
     "meridianConfig": {

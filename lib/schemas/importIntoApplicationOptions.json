@@ -16,7 +16,8 @@
       "type": "string",
       "enum": [
         "create",
-        "error"
+        "error",
+        "retain"
       ],
       "default": "create"
     },

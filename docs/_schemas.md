@@ -62859,6 +62859,7 @@ The body of an experience linked resources response
                                 "onConnect",
                                 "onDisconnect",
                                 "particle",
+                                "sqs",
                                 "udp",
                                 "webhook"
                               ]
@@ -65499,6 +65500,7 @@ The body of an experience linked resources response
                                     "onConnect",
                                     "onDisconnect",
                                     "particle",
+                                    "sqs",
                                     "udp",
                                     "webhook"
                                   ]
@@ -68083,6 +68085,7 @@ The body of an experience linked resources response
                                     "onConnect",
                                     "onDisconnect",
                                     "particle",
+                                    "sqs",
                                     "udp",
                                     "webhook"
                                   ]
@@ -71160,6 +71163,33 @@ Schema for a single Experience Version
       "type": "string",
       "maxLength": 32767
     },
+    "globals": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "json": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 32767
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1024
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "json"
+        ]
+      }
+    },
     "attachedDomains": {
       "type": "array",
       "items": {
@@ -71246,6 +71276,33 @@ Schema for the body of an Experience Version modification request
       },
       "maxItems": 100
     },
+    "globals": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "json": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 32767
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1024
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "json"
+        ]
+      }
+    },
     "description": {
       "type": "string",
       "maxLength": 32767
@@ -71304,6 +71361,45 @@ Schema for the body of an Experience Version creation request
         "pattern": "^[A-Fa-f\\d]{24}$"
       },
       "maxItems": 1000
+    },
+    "endpointDefaultCors": {
+      "type": "boolean"
+    },
+    "globals": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+          },
+          "json": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 32767
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1024
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "json"
+        ]
+      }
+    },
+    "allowedCorsOrigins": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 8,
+        "maxLength": 270
+      },
+      "maxItems": 100
     }
   },
   "additionalProperties": false,
@@ -71399,6 +71495,33 @@ Schema for a collection of Experience Versions
           "description": {
             "type": "string",
             "maxLength": 32767
+          },
+          "globals": {
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                },
+                "json": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 32767
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 1024
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "key",
+                "json"
+              ]
+            }
           },
           "attachedDomains": {
             "type": "array",
@@ -72632,6 +72755,7 @@ Schema for a single Workflow
                       "onConnect",
                       "onDisconnect",
                       "particle",
+                      "sqs",
                       "udp",
                       "webhook"
                     ]
@@ -75447,6 +75571,7 @@ Schema for the body of a Workflow modification request
                       "onConnect",
                       "onDisconnect",
                       "particle",
+                      "sqs",
                       "udp",
                       "webhook"
                     ]
@@ -78017,6 +78142,7 @@ Schema for the body of a Workflow creation request
                       "onConnect",
                       "onDisconnect",
                       "particle",
+                      "sqs",
                       "udp",
                       "webhook"
                     ]
@@ -80825,6 +80951,7 @@ Schema for a single Workflow Version
                           "onConnect",
                           "onDisconnect",
                           "particle",
+                          "sqs",
                           "udp",
                           "webhook"
                         ]
@@ -83409,6 +83536,7 @@ Schema for a single Workflow Version
                           "onConnect",
                           "onDisconnect",
                           "particle",
+                          "sqs",
                           "udp",
                           "webhook"
                         ]
@@ -85701,6 +85829,7 @@ Schema for the body of a Workflow Version creation request
                       "onConnect",
                       "onDisconnect",
                       "particle",
+                      "sqs",
                       "udp",
                       "webhook"
                     ]
@@ -88278,6 +88407,7 @@ Schema for a collection of Workflow Versions
                                 "onConnect",
                                 "onDisconnect",
                                 "particle",
+                                "sqs",
                                 "udp",
                                 "webhook"
                               ]
@@ -90862,6 +90992,7 @@ Schema for a collection of Workflow Versions
                                 "onConnect",
                                 "onDisconnect",
                                 "particle",
+                                "sqs",
                                 "udp",
                                 "webhook"
                               ]
@@ -94255,6 +94386,7 @@ Schema for a collection of Workflows
                             "onConnect",
                             "onDisconnect",
                             "particle",
+                            "sqs",
                             "udp",
                             "webhook"
                           ]
@@ -96947,6 +97079,7 @@ Schema for the body of a workflow import request
                             "onConnect",
                             "onDisconnect",
                             "particle",
+                            "sqs",
                             "udp",
                             "webhook"
                           ]
@@ -99518,6 +99651,7 @@ Schema for the body of a workflow import request
                             "onConnect",
                             "onDisconnect",
                             "particle",
+                            "sqs",
                             "udp",
                             "webhook"
                           ]
@@ -102153,6 +102287,7 @@ Schema for the result of a workflow import request
                             "onConnect",
                             "onDisconnect",
                             "particle",
+                            "sqs",
                             "udp",
                             "webhook"
                           ]
@@ -104742,6 +104877,7 @@ Schema for the result of a workflow import request
                                 "onConnect",
                                 "onDisconnect",
                                 "particle",
+                                "sqs",
                                 "udp",
                                 "webhook"
                               ]
@@ -107326,6 +107462,7 @@ Schema for the result of a workflow import request
                                 "onConnect",
                                 "onDisconnect",
                                 "particle",
+                                "sqs",
                                 "udp",
                                 "webhook"
                               ]
@@ -110726,7 +110863,8 @@ Schema for additional application import options
       "type": "string",
       "enum": [
         "create",
-        "error"
+        "error",
+        "retain"
       ],
       "default": "create"
     },
@@ -111863,6 +112001,7 @@ Schema for the body of a Instance Custom Node modification request
                       "onConnect",
                       "onDisconnect",
                       "particle",
+                      "sqs",
                       "udp",
                       "webhook"
                     ]
@@ -112556,6 +112695,7 @@ Schema for the body of a Instance Custom Node creation request
                       "onConnect",
                       "onDisconnect",
                       "particle",
+                      "sqs",
                       "udp",
                       "webhook"
                     ]
@@ -116545,7 +116685,8 @@ Schema for a single Integration
         "googlePubSub",
         "meridian",
         "mqtt",
-        "particle"
+        "particle",
+        "sqs"
       ]
     },
     "enabled": {
@@ -116699,6 +116840,38 @@ Schema for a single Integration
       "additionalProperties": false,
       "required": [
         "accessToken"
+      ]
+    },
+    "sqsConfig": {
+      "type": "object",
+      "properties": {
+        "accessKeyId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "secretAccessKey": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "region": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "queueUrl": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "accessKeyId",
+        "secretAccessKey",
+        "region",
+        "queueUrl"
       ]
     },
     "meridianConfig": {
@@ -116828,7 +117001,8 @@ Schema for the body of an Integration modification request
         "googlePubSub",
         "meridian",
         "mqtt",
-        "particle"
+        "particle",
+        "sqs"
       ]
     },
     "enabled": {
@@ -116982,6 +117156,38 @@ Schema for the body of an Integration modification request
       "additionalProperties": false,
       "required": [
         "accessToken"
+      ]
+    },
+    "sqsConfig": {
+      "type": "object",
+      "properties": {
+        "accessKeyId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "secretAccessKey": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "region": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "queueUrl": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "accessKeyId",
+        "secretAccessKey",
+        "region",
+        "queueUrl"
       ]
     },
     "meridianConfig": {
@@ -117049,7 +117255,8 @@ Schema for the body of an Integration creation request
         "googlePubSub",
         "meridian",
         "mqtt",
-        "particle"
+        "particle",
+        "sqs"
       ]
     },
     "enabled": {
@@ -117203,6 +117410,38 @@ Schema for the body of an Integration creation request
       "additionalProperties": false,
       "required": [
         "accessToken"
+      ]
+    },
+    "sqsConfig": {
+      "type": "object",
+      "properties": {
+        "accessKeyId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "secretAccessKey": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "region": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "queueUrl": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "accessKeyId",
+        "secretAccessKey",
+        "region",
+        "queueUrl"
       ]
     },
     "meridianConfig": {
@@ -117311,7 +117550,8 @@ Schema for a collection of Integrations
               "googlePubSub",
               "meridian",
               "mqtt",
-              "particle"
+              "particle",
+              "sqs"
             ]
           },
           "enabled": {
@@ -117465,6 +117705,38 @@ Schema for a collection of Integrations
             "additionalProperties": false,
             "required": [
               "accessToken"
+            ]
+          },
+          "sqsConfig": {
+            "type": "object",
+            "properties": {
+              "accessKeyId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              },
+              "secretAccessKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              },
+              "region": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              },
+              "queueUrl": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "accessKeyId",
+              "secretAccessKey",
+              "region",
+              "queueUrl"
             ]
           },
           "meridianConfig": {

@@ -104,6 +104,7 @@
                       "onConnect",
                       "onDisconnect",
                       "particle",
+                      "sqs",
                       "udp",
                       "webhook"
                     ]
