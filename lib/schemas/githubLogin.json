@@ -418,6 +418,7 @@
               "me.delete",
               "me.verifyEmail",
               "me.changePassword",
+              "me.generateTwoFactorAuth",
               "me.enableTwoFactorAuth",
               "me.disableTwoFactorAuth",
               "me.disconnectGithub",

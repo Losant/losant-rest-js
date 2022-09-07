@@ -107,6 +107,9 @@
         }
       },
       "additionalProperties": false
+    },
+    "dashboard": {
+      "ref": "#/definitions/validateContextSuccess/properties/dashboard"
     }
   }
 }

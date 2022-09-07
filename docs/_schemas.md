@@ -255,6 +255,7 @@
 *   [Template Keywords](#template-keywords)
 *   [Time Series Data](#time-series-data)
 *   [Time Series Query](#time-series-query)
+*   [Two Factor Auth Info](#two-factor-auth-info)
 *   [User Credentials](#user-credentials)
 *   [User Post](#user-post)
 *   [Validate Context Error](#validate-context-error)
@@ -7891,6 +7892,7 @@ Schema for the body of an API Token creation request
               "me.delete",
               "me.verifyEmail",
               "me.changePassword",
+              "me.generateTwoFactorAuth",
               "me.enableTwoFactorAuth",
               "me.disableTwoFactorAuth",
               "me.disconnectGithub",
@@ -10187,8 +10189,18 @@ Schema for the body of an Application scoped Dashboard creation request
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "xAxisFormat": {
                     "type": "string",
@@ -10629,8 +10641,18 @@ Schema for the body of an Application scoped Dashboard creation request
                               }
                             },
                             "duration": {
-                              "type": "integer",
-                              "minimum": 0
+                              "oneOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "{{dashboard.duration}}"
+                                  ]
+                                }
+                              ]
                             },
                             "resolution": {
                               "oneOf": [
@@ -10802,8 +10824,18 @@ Schema for the body of an Application scoped Dashboard creation request
                               }
                             },
                             "duration": {
-                              "type": "integer",
-                              "minimum": 0
+                              "oneOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "{{dashboard.duration}}"
+                                  ]
+                                }
+                              ]
                             }
                           },
                           "additionalProperties": false
@@ -11538,8 +11570,18 @@ Schema for the body of an Application scoped Dashboard creation request
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "sortDirection": {
                     "type": "integer",
@@ -11788,8 +11830,18 @@ Schema for the body of an Application scoped Dashboard creation request
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "gaugeMax": {
                     "oneOf": [
@@ -12110,8 +12162,18 @@ Schema for the body of an Application scoped Dashboard creation request
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "resolution": {
                     "oneOf": [
@@ -12486,8 +12548,18 @@ Schema for the body of an Application scoped Dashboard creation request
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "locationTagKey": {
                     "oneOf": [
@@ -12875,8 +12947,18 @@ Schema for the body of an Application scoped Dashboard creation request
                               }
                             },
                             "duration": {
-                              "type": "integer",
-                              "minimum": 0
+                              "oneOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "{{dashboard.duration}}"
+                                  ]
+                                }
+                              ]
                             }
                           },
                           "additionalProperties": false
@@ -13331,8 +13413,18 @@ Schema for the body of an Application scoped Dashboard creation request
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "segments": {
                     "type": "array",
@@ -14760,8 +14852,18 @@ Schema for the body of an Application scoped Dashboard creation request
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "endColor": {
                     "type": "string",
@@ -14956,8 +15058,18 @@ Schema for the body of an Application scoped Dashboard creation request
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "percentFormat": {
                     "type": "string",
@@ -15271,8 +15383,18 @@ Schema for the body of an Application scoped Dashboard creation request
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "endColor": {
                     "type": "string",
@@ -15502,6 +15624,14 @@ Schema for the body of an Application scoped Dashboard creation request
       "type": "number",
       "minimum": 5,
       "maximum": 600
+    },
+    "duration": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "resolution": {
+      "type": "integer",
+      "minimum": 1
     },
     "defaultTheme": {
       "type": "string",
@@ -19266,6 +19396,14 @@ Schema for a single Dashboard
       "minimum": 5,
       "maximum": 600
     },
+    "duration": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "resolution": {
+      "type": "integer",
+      "minimum": 1
+    },
     "defaultTheme": {
       "type": "string",
       "enum": [
@@ -19460,8 +19598,18 @@ Schema for a single Dashboard
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "xAxisFormat": {
                     "type": "string",
@@ -19902,8 +20050,18 @@ Schema for a single Dashboard
                               }
                             },
                             "duration": {
-                              "type": "integer",
-                              "minimum": 0
+                              "oneOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "{{dashboard.duration}}"
+                                  ]
+                                }
+                              ]
                             },
                             "resolution": {
                               "oneOf": [
@@ -20075,8 +20233,18 @@ Schema for a single Dashboard
                               }
                             },
                             "duration": {
-                              "type": "integer",
-                              "minimum": 0
+                              "oneOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "{{dashboard.duration}}"
+                                  ]
+                                }
+                              ]
                             }
                           },
                           "additionalProperties": false
@@ -20811,8 +20979,18 @@ Schema for a single Dashboard
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "sortDirection": {
                     "type": "integer",
@@ -21061,8 +21239,18 @@ Schema for a single Dashboard
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "gaugeMax": {
                     "oneOf": [
@@ -21383,8 +21571,18 @@ Schema for a single Dashboard
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "resolution": {
                     "oneOf": [
@@ -21759,8 +21957,18 @@ Schema for a single Dashboard
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "locationTagKey": {
                     "oneOf": [
@@ -22148,8 +22356,18 @@ Schema for a single Dashboard
                               }
                             },
                             "duration": {
-                              "type": "integer",
-                              "minimum": 0
+                              "oneOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "{{dashboard.duration}}"
+                                  ]
+                                }
+                              ]
                             }
                           },
                           "additionalProperties": false
@@ -22604,8 +22822,18 @@ Schema for a single Dashboard
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "segments": {
                     "type": "array",
@@ -24033,8 +24261,18 @@ Schema for a single Dashboard
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "endColor": {
                     "type": "string",
@@ -24229,8 +24467,18 @@ Schema for a single Dashboard
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "percentFormat": {
                     "type": "string",
@@ -24544,8 +24792,18 @@ Schema for a single Dashboard
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "endColor": {
                     "type": "string",
@@ -25113,6 +25371,8 @@ Schema for a single Dashboard
   "isPasswordProtected": false,
   "defaultTheme": "light",
   "blocks": [],
+  "duration": 600000,
+  "resolution": 6000,
   "_currentRole": "admin",
   "reportConfigs": [
     {
@@ -25384,8 +25644,18 @@ Schema for the body of a Dashboard modification request
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "xAxisFormat": {
                     "type": "string",
@@ -25826,8 +26096,18 @@ Schema for the body of a Dashboard modification request
                               }
                             },
                             "duration": {
-                              "type": "integer",
-                              "minimum": 0
+                              "oneOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "{{dashboard.duration}}"
+                                  ]
+                                }
+                              ]
                             },
                             "resolution": {
                               "oneOf": [
@@ -25999,8 +26279,18 @@ Schema for the body of a Dashboard modification request
                               }
                             },
                             "duration": {
-                              "type": "integer",
-                              "minimum": 0
+                              "oneOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "{{dashboard.duration}}"
+                                  ]
+                                }
+                              ]
                             }
                           },
                           "additionalProperties": false
@@ -26735,8 +27025,18 @@ Schema for the body of a Dashboard modification request
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "sortDirection": {
                     "type": "integer",
@@ -26985,8 +27285,18 @@ Schema for the body of a Dashboard modification request
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "gaugeMax": {
                     "oneOf": [
@@ -27307,8 +27617,18 @@ Schema for the body of a Dashboard modification request
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "resolution": {
                     "oneOf": [
@@ -27683,8 +28003,18 @@ Schema for the body of a Dashboard modification request
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "locationTagKey": {
                     "oneOf": [
@@ -28072,8 +28402,18 @@ Schema for the body of a Dashboard modification request
                               }
                             },
                             "duration": {
-                              "type": "integer",
-                              "minimum": 0
+                              "oneOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "{{dashboard.duration}}"
+                                  ]
+                                }
+                              ]
                             }
                           },
                           "additionalProperties": false
@@ -28528,8 +28868,18 @@ Schema for the body of a Dashboard modification request
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "segments": {
                     "type": "array",
@@ -29957,8 +30307,18 @@ Schema for the body of a Dashboard modification request
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "endColor": {
                     "type": "string",
@@ -30153,8 +30513,18 @@ Schema for the body of a Dashboard modification request
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "percentFormat": {
                     "type": "string",
@@ -30468,8 +30838,18 @@ Schema for the body of a Dashboard modification request
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "endColor": {
                     "type": "string",
@@ -30775,6 +31155,14 @@ Schema for the body of a Dashboard modification request
       "type": "number",
       "minimum": 5,
       "maximum": 600
+    },
+    "duration": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "resolution": {
+      "type": "integer",
+      "minimum": 1
     },
     "defaultTheme": {
       "type": "string",
@@ -31262,8 +31650,18 @@ Schema for the body of a Dashboard creation request
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "xAxisFormat": {
                     "type": "string",
@@ -31704,8 +32102,18 @@ Schema for the body of a Dashboard creation request
                               }
                             },
                             "duration": {
-                              "type": "integer",
-                              "minimum": 0
+                              "oneOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "{{dashboard.duration}}"
+                                  ]
+                                }
+                              ]
                             },
                             "resolution": {
                               "oneOf": [
@@ -31877,8 +32285,18 @@ Schema for the body of a Dashboard creation request
                               }
                             },
                             "duration": {
-                              "type": "integer",
-                              "minimum": 0
+                              "oneOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "{{dashboard.duration}}"
+                                  ]
+                                }
+                              ]
                             }
                           },
                           "additionalProperties": false
@@ -32613,8 +33031,18 @@ Schema for the body of a Dashboard creation request
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "sortDirection": {
                     "type": "integer",
@@ -32863,8 +33291,18 @@ Schema for the body of a Dashboard creation request
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "gaugeMax": {
                     "oneOf": [
@@ -33185,8 +33623,18 @@ Schema for the body of a Dashboard creation request
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "resolution": {
                     "oneOf": [
@@ -33561,8 +34009,18 @@ Schema for the body of a Dashboard creation request
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "locationTagKey": {
                     "oneOf": [
@@ -33950,8 +34408,18 @@ Schema for the body of a Dashboard creation request
                               }
                             },
                             "duration": {
-                              "type": "integer",
-                              "minimum": 0
+                              "oneOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "{{dashboard.duration}}"
+                                  ]
+                                }
+                              ]
                             }
                           },
                           "additionalProperties": false
@@ -34406,8 +34874,18 @@ Schema for the body of a Dashboard creation request
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "segments": {
                     "type": "array",
@@ -35835,8 +36313,18 @@ Schema for the body of a Dashboard creation request
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "endColor": {
                     "type": "string",
@@ -36031,8 +36519,18 @@ Schema for the body of a Dashboard creation request
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "percentFormat": {
                     "type": "string",
@@ -36346,8 +36844,18 @@ Schema for the body of a Dashboard creation request
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "endColor": {
                     "type": "string",
@@ -36577,6 +37085,14 @@ Schema for the body of a Dashboard creation request
       "type": "number",
       "minimum": 5,
       "maximum": 600
+    },
+    "duration": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "resolution": {
+      "type": "integer",
+      "minimum": 1
     },
     "defaultTheme": {
       "type": "string",
@@ -37251,6 +37767,14 @@ Schema for a collection of Dashboards
             "minimum": 5,
             "maximum": 600
           },
+          "duration": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "resolution": {
+            "type": "integer",
+            "minimum": 1
+          },
           "defaultTheme": {
             "type": "string",
             "enum": [
@@ -37445,8 +37969,18 @@ Schema for a collection of Dashboards
                           "type": "boolean"
                         },
                         "duration": {
-                          "type": "integer",
-                          "minimum": 0
+                          "oneOf": [
+                            {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "{{dashboard.duration}}"
+                              ]
+                            }
+                          ]
                         },
                         "xAxisFormat": {
                           "type": "string",
@@ -37887,8 +38421,18 @@ Schema for a collection of Dashboards
                                     }
                                   },
                                   "duration": {
-                                    "type": "integer",
-                                    "minimum": 0
+                                    "oneOf": [
+                                      {
+                                        "type": "integer",
+                                        "minimum": 0
+                                      },
+                                      {
+                                        "type": "string",
+                                        "enum": [
+                                          "{{dashboard.duration}}"
+                                        ]
+                                      }
+                                    ]
                                   },
                                   "resolution": {
                                     "oneOf": [
@@ -38060,8 +38604,18 @@ Schema for a collection of Dashboards
                                     }
                                   },
                                   "duration": {
-                                    "type": "integer",
-                                    "minimum": 0
+                                    "oneOf": [
+                                      {
+                                        "type": "integer",
+                                        "minimum": 0
+                                      },
+                                      {
+                                        "type": "string",
+                                        "enum": [
+                                          "{{dashboard.duration}}"
+                                        ]
+                                      }
+                                    ]
                                   }
                                 },
                                 "additionalProperties": false
@@ -38796,8 +39350,18 @@ Schema for a collection of Dashboards
                           }
                         },
                         "duration": {
-                          "type": "integer",
-                          "minimum": 0
+                          "oneOf": [
+                            {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "{{dashboard.duration}}"
+                              ]
+                            }
+                          ]
                         },
                         "sortDirection": {
                           "type": "integer",
@@ -39046,8 +39610,18 @@ Schema for a collection of Dashboards
                           "type": "boolean"
                         },
                         "duration": {
-                          "type": "integer",
-                          "minimum": 0
+                          "oneOf": [
+                            {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "{{dashboard.duration}}"
+                              ]
+                            }
+                          ]
                         },
                         "gaugeMax": {
                           "oneOf": [
@@ -39368,8 +39942,18 @@ Schema for a collection of Dashboards
                           "type": "boolean"
                         },
                         "duration": {
-                          "type": "integer",
-                          "minimum": 0
+                          "oneOf": [
+                            {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "{{dashboard.duration}}"
+                              ]
+                            }
+                          ]
                         },
                         "resolution": {
                           "oneOf": [
@@ -39744,8 +40328,18 @@ Schema for a collection of Dashboards
                           }
                         },
                         "duration": {
-                          "type": "integer",
-                          "minimum": 0
+                          "oneOf": [
+                            {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "{{dashboard.duration}}"
+                              ]
+                            }
+                          ]
                         },
                         "locationTagKey": {
                           "oneOf": [
@@ -40133,8 +40727,18 @@ Schema for a collection of Dashboards
                                     }
                                   },
                                   "duration": {
-                                    "type": "integer",
-                                    "minimum": 0
+                                    "oneOf": [
+                                      {
+                                        "type": "integer",
+                                        "minimum": 0
+                                      },
+                                      {
+                                        "type": "string",
+                                        "enum": [
+                                          "{{dashboard.duration}}"
+                                        ]
+                                      }
+                                    ]
                                   }
                                 },
                                 "additionalProperties": false
@@ -40589,8 +41193,18 @@ Schema for a collection of Dashboards
                           "type": "boolean"
                         },
                         "duration": {
-                          "type": "integer",
-                          "minimum": 0
+                          "oneOf": [
+                            {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "{{dashboard.duration}}"
+                              ]
+                            }
+                          ]
                         },
                         "segments": {
                           "type": "array",
@@ -42018,8 +42632,18 @@ Schema for a collection of Dashboards
                           }
                         },
                         "duration": {
-                          "type": "integer",
-                          "minimum": 0
+                          "oneOf": [
+                            {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "{{dashboard.duration}}"
+                              ]
+                            }
+                          ]
                         },
                         "endColor": {
                           "type": "string",
@@ -42214,8 +42838,18 @@ Schema for a collection of Dashboards
                           "type": "boolean"
                         },
                         "duration": {
-                          "type": "integer",
-                          "minimum": 0
+                          "oneOf": [
+                            {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "{{dashboard.duration}}"
+                              ]
+                            }
+                          ]
                         },
                         "percentFormat": {
                           "type": "string",
@@ -42529,8 +43163,18 @@ Schema for a collection of Dashboards
                           }
                         },
                         "duration": {
-                          "type": "integer",
-                          "minimum": 0
+                          "oneOf": [
+                            {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "{{dashboard.duration}}"
+                              ]
+                            }
+                          ]
                         },
                         "endColor": {
                           "type": "string",
@@ -43142,6 +43786,8 @@ Schema for a collection of Dashboards
       "isPasswordProtected": false,
       "defaultTheme": "light",
       "blocks": [],
+      "duration": 600000,
+      "resolution": 6000,
       "_currentRole": "admin",
       "reportConfigs": [
         {
@@ -58496,11 +59142,15 @@ Schema for the body of a request to enable two factor auth
       "type": "string",
       "minLength": 8,
       "maxLength": 2048
+    },
+    "twoFactorCode": {
+      "type": "string",
+      "maxLength": 2048
     }
   },
   "required": [
     "password",
-    "twoFactorAuthKey"
+    "twoFactorCode"
   ],
   "additionalProperties": false
 }
@@ -58510,7 +59160,8 @@ Schema for the body of a request to enable two factor auth
 ```json
 {
   "twoFactorAuthKey": "HBBGWJJVOVLXS4ZGNRTDOUKTMESFUR3BMRWVQND2HJYT44TOMVJA",
-  "password": "this would be your password"
+  "password": "this would be your password",
+  "twoFactorCode": "012345"
 }
 ```
 
@@ -110099,6 +110750,7 @@ Schema for the body of a Github login request
               "me.delete",
               "me.verifyEmail",
               "me.changePassword",
+              "me.generateTwoFactorAuth",
               "me.enableTwoFactorAuth",
               "me.disableTwoFactorAuth",
               "me.disconnectGithub",
@@ -110868,6 +111520,10 @@ Schema for additional application import options
       ],
       "default": "create"
     },
+    "dryRun": {
+      "type": "boolean",
+      "default": false
+    },
     "include": {
       "type": "array",
       "items": {
@@ -110888,6 +111544,7 @@ Schema for additional application import options
           "File",
           "FlowVersion",
           "Flow",
+          "Global",
           "Integration",
           "Notebook",
           "Webhook"
@@ -110954,6 +111611,7 @@ Schema for additional application import options (new application)
           "File",
           "FlowVersion",
           "Flow",
+          "Global",
           "Integration",
           "Notebook",
           "Webhook"
@@ -127389,6 +128047,7 @@ SAML Response body for login
               "me.delete",
               "me.verifyEmail",
               "me.changePassword",
+              "me.generateTwoFactorAuth",
               "me.enableTwoFactorAuth",
               "me.disableTwoFactorAuth",
               "me.disconnectGithub",
@@ -128045,6 +128704,40 @@ Schema for the body of a time series query request
 
 <br/>
 
+## Two Factor Auth Info
+
+Schema for information about the two factor auth for currently authenticated use
+
+### <a name="two-factor-auth-info-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "keyUri": {
+      "type": "string",
+      "maxLength": 1024
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="two-factor-auth-info-example"></a> Example
+
+```json
+{
+  "key": "HBBGWJJVOVLXS4ZGNRTDOUKTMESFUR3BMRWVQND2HJYT44TOMVJA",
+  "keyUri": "string"
+}
+```
+
+<br/>
+
 ## User Credentials
 
 Schema for the body of a User authentication request
@@ -128481,6 +129174,7 @@ Schema for the body of a User authentication request
               "me.delete",
               "me.verifyEmail",
               "me.changePassword",
+              "me.generateTwoFactorAuth",
               "me.enableTwoFactorAuth",
               "me.disableTwoFactorAuth",
               "me.disconnectGithub",
@@ -129014,6 +129708,7 @@ Schema for the body of a User creation request
               "me.delete",
               "me.verifyEmail",
               "me.changePassword",
+              "me.generateTwoFactorAuth",
               "me.enableTwoFactorAuth",
               "me.disableTwoFactorAuth",
               "me.disconnectGithub",
@@ -129189,6 +129884,9 @@ Schema for the result of a validateContext call when invalid context is passed
         }
       },
       "additionalProperties": false
+    },
+    "dashboard": {
+      "ref": "#/definitions/validateContextSuccess/properties/dashboard"
     }
   }
 }
@@ -129359,6 +130057,33 @@ Schema for the result of a successful validateContext call
         }
       },
       "additionalProperties": false
+    },
+    "dashboard": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "duration": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "resolution": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "refreshRate": {
+          "type": "number",
+          "minimum": 5,
+          "maximum": 600
+        }
+      }
     }
   }
 }
@@ -129368,6 +130093,13 @@ Schema for the result of a successful validateContext call
 ```json
 {
   "success": true,
+  "dashboard": {
+    "id": "589de9bca1975a00017b2287",
+    "name": "My Dash",
+    "duration": 980,
+    "resolution": 98,
+    "refreshRate": 60
+  },
   "ctx": {
     "deviceId-withIdAndTagValidationAndIncludeFullDevice": {
       "id": "589de9bca1975a00017b2295",

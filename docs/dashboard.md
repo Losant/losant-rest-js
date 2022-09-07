@@ -241,6 +241,8 @@ No api access token is required to call this action.
 | dashboardId | string | Y | ID of the associated dashboard |  | 575ece2b7ae143cd83dc4a9b |
 | ctx | [Dashboard Context Instance](../lib/schemas/dashboardContextInstance.json) | Y | The context object to validate |  | [Dashboard Context Instance Example](_schemas.md#dashboard-context-instance-example) |
 | password | string | N | Password for password-protected dashboards |  | myPassword |
+| duration | string | N | Duration of data to fetch in milliseconds |  | 3600000 |
+| resolution | string | N | Resolution in milliseconds |  | 60000 |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

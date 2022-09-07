@@ -21,6 +21,10 @@
       ],
       "default": "create"
     },
+    "dryRun": {
+      "type": "boolean",
+      "default": false
+    },
     "include": {
       "type": "array",
       "items": {
@@ -41,6 +45,7 @@
           "File",
           "FlowVersion",
           "Flow",
+          "Global",
           "Integration",
           "Notebook",
           "Webhook"

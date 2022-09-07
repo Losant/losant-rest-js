@@ -11,11 +11,15 @@
       "type": "string",
       "minLength": 8,
       "maxLength": 2048
+    },
+    "twoFactorCode": {
+      "type": "string",
+      "maxLength": 2048
     }
   },
   "required": [
     "password",
-    "twoFactorAuthKey"
+    "twoFactorCode"
   ],
   "additionalProperties": false
 }

@@ -32,6 +32,7 @@
           "File",
           "FlowVersion",
           "Flow",
+          "Global",
           "Integration",
           "Notebook",
           "Webhook"

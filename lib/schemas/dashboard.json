@@ -61,6 +61,14 @@
       "minimum": 5,
       "maximum": 600
     },
+    "duration": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "resolution": {
+      "type": "integer",
+      "minimum": 1
+    },
     "defaultTheme": {
       "type": "string",
       "enum": [
@@ -255,8 +263,18 @@
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "xAxisFormat": {
                     "type": "string",
@@ -697,8 +715,18 @@
                               }
                             },
                             "duration": {
-                              "type": "integer",
-                              "minimum": 0
+                              "oneOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "{{dashboard.duration}}"
+                                  ]
+                                }
+                              ]
                             },
                             "resolution": {
                               "oneOf": [
@@ -870,8 +898,18 @@
                               }
                             },
                             "duration": {
-                              "type": "integer",
-                              "minimum": 0
+                              "oneOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "{{dashboard.duration}}"
+                                  ]
+                                }
+                              ]
                             }
                           },
                           "additionalProperties": false
@@ -1606,8 +1644,18 @@
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "sortDirection": {
                     "type": "integer",
@@ -1856,8 +1904,18 @@
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "gaugeMax": {
                     "oneOf": [
@@ -2178,8 +2236,18 @@
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "resolution": {
                     "oneOf": [
@@ -2554,8 +2622,18 @@
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "locationTagKey": {
                     "oneOf": [
@@ -2943,8 +3021,18 @@
                               }
                             },
                             "duration": {
-                              "type": "integer",
-                              "minimum": 0
+                              "oneOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "{{dashboard.duration}}"
+                                  ]
+                                }
+                              ]
                             }
                           },
                           "additionalProperties": false
@@ -3399,8 +3487,18 @@
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "segments": {
                     "type": "array",
@@ -4828,8 +4926,18 @@
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "endColor": {
                     "type": "string",
@@ -5024,8 +5132,18 @@
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "percentFormat": {
                     "type": "string",
@@ -5339,8 +5457,18 @@
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "endColor": {
                     "type": "string",

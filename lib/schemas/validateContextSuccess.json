@@ -107,6 +107,33 @@
         }
       },
       "additionalProperties": false
+    },
+    "dashboard": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "duration": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "resolution": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "refreshRate": {
+          "type": "number",
+          "minimum": 5,
+          "maximum": 600
+        }
+      }
     }
   }
 }
