@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "dryRun": {
@@ -45,6 +45,10 @@
       "type": "string",
       "format": "uri",
       "maxLength": 1024
+    },
+    "forceJob": {
+      "type": "boolean",
+      "default": false
     }
   },
   "additionalProperties": false

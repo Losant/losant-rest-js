@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -348,7 +348,8 @@
       "maxItems": 100
     },
     "referralId": {
-      "ref": "#/definitions/common/optMedStr"
+      "type": "string",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false,

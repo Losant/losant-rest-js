@@ -266,8 +266,8 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | excludeConnectionInfo | string | N | If set, do not return connection info |  | true |
 | parentId | string | N | Filter devices as children of a given system id |  | 575ecf887ae143cd83dc4aa2 |
 | query | [Advanced Device Query](../lib/schemas/advancedDeviceQuery.json) | N | Device filter JSON object which overrides the filterField, filter, deviceClass, tagFilter, and parentId parameters. |  | [Advanced Device Query Example](_schemas.md#advanced-device-query-example) |
-| tagsAsObject | string | N | Return tags as an object map instead of an array. |  | true |
-| attributesAsObject | string | N | Return attributes as an object map instead of an array. |  | false |
+| tagsAsObject | string | N | Return tags as an object map instead of an array |  | true |
+| attributesAsObject | string | N | Return attributes as an object map instead of an array |  | false |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -418,8 +418,8 @@ all.Application, all.Organization, all.User, devices.*, or devices.post.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | device | [Device Post](../lib/schemas/devicePost.json) | Y | New device information |  | [Device Post Example](_schemas.md#device-post-example) |
-| tagsAsObject | string | N | Return tags as an object map instead of an array. |  | true |
-| attributesAsObject | string | N | Return attributes as an object map instead of an array. |  | false |
+| tagsAsObject | string | N | Return tags as an object map instead of an array |  | true |
+| attributesAsObject | string | N | Return attributes as an object map instead of an array |  | false |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

@@ -48,6 +48,8 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | perPage | string | N | How many items to return per page | 100 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my * recipe |
+| tagsAsObject | string | N | Return tags as an object map instead of an array |  | false |
+| attributesAsObject | string | N | Return attributes as an object map instead of an array |  | true |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -98,6 +100,8 @@ all.Application, all.Organization, all.User, deviceRecipes.*, or deviceRecipes.p
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceRecipe | [Device Recipe Post](../lib/schemas/deviceRecipePost.json) | Y | New device recipe information |  | [Device Recipe Post Example](_schemas.md#device-recipe-post-example) |
+| tagsAsObject | string | N | Return tags as an object map instead of an array |  | false |
+| attributesAsObject | string | N | Return attributes as an object map instead of an array |  | true |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

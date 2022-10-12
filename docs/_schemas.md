@@ -250,6 +250,8 @@
 *   [SAML Response](#saml-response)
 *   [SSO Request](#sso-request)
 *   [Success](#success)
+*   [Success With Execution ID](#success-with-execution-id)
+*   [Success With Job ID](#success-with-job-id)
 *   [Tag Keys Response](#tag-keys-response)
 *   [Tag Values Response](#tag-values-response)
 *   [Template Keywords](#template-keywords)
@@ -275,7 +277,7 @@ Schema for advanced application key queries
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "$and": {
@@ -1475,7 +1477,7 @@ Schema for advanced device queries
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "$and": {
@@ -3093,7 +3095,7 @@ Schema for advanced event queries
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "$and": {
@@ -4394,7 +4396,7 @@ Schema for advanced workflow queries
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "$and": {
@@ -5165,7 +5167,7 @@ Schema for advanced workflow queries
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "$and": {
@@ -6163,7 +6165,7 @@ Schema for advanced workflow queries
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "$and": {
@@ -7150,7 +7152,7 @@ Schema for advanced filters and queries
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "$and": {
@@ -7310,7 +7312,7 @@ Schema for a single API Token
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -7423,7 +7425,7 @@ Schema for the body of an API Token modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -7465,7 +7467,7 @@ Schema for the body of an API Token creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -7946,7 +7948,7 @@ Schema for a collection of API Tokens
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -8123,7 +8125,7 @@ Schema for a single Application
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -8526,7 +8528,7 @@ Schema for the body of an application template import request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "templateId": {
@@ -8569,7 +8571,7 @@ Schema for a single Application Certificate
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -8733,7 +8735,7 @@ Schema for a collection of Application Certificate Authorities
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -8906,7 +8908,7 @@ Schema for a single Application Certificate Authority
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -9023,7 +9025,7 @@ Schema for the body of an Application Certificate Authority modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -9070,7 +9072,7 @@ Schema for the body of an Application Certificate Authority creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -9122,7 +9124,7 @@ Schema for the body of an Application Certificate modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "status": {
@@ -9198,7 +9200,7 @@ Schema for the body of an Application Certificate creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "status": {
@@ -9307,7 +9309,7 @@ Schema for a collection of Application Certificates
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -9527,7 +9529,7 @@ Schema for reporting a successful dry run of clone application
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "success": {
@@ -9561,7 +9563,7 @@ Schema for the body of an application clone request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "dryRun": {
@@ -9607,6 +9609,10 @@ Schema for the body of an application clone request
       "type": "string",
       "format": "uri",
       "maxLength": 1024
+    },
+    "forceJob": {
+      "type": "boolean",
+      "default": false
     }
   },
   "additionalProperties": false
@@ -9616,12 +9622,10 @@ Schema for the body of an application clone request
 
 ```json
 {
-  "options": {
-    "includeFiles": true,
-    "includeDevices": true,
-    "ownerType": "organization",
-    "ownerId": "575ec8687ae143cd83dc4a98"
-  }
+  "includeFiles": true,
+  "includeDevices": true,
+  "ownerType": "organization",
+  "ownerId": "575ec8687ae143cd83dc4a98"
 }
 ```
 
@@ -9635,7 +9639,7 @@ Schema for creating an application by template result
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "application": {
@@ -10076,7 +10080,7 @@ Schema for the body of an Application scoped Dashboard creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -15693,7 +15697,38 @@ Schema for the body of an Application scoped Dashboard creation request
             "maxLength": 5
           },
           "ctx": {
-            "ref": "#/definitions/dashboardContextInstance"
+            "title": "Dashboard Context Instance",
+            "description": "Schema for a dashboard context instance",
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string",
+                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      },
+                      "value": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false
           },
           "branded": {
             "type": "boolean"
@@ -16075,7 +16110,7 @@ Schema for the body of an application export request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "includeFiles": {
@@ -16124,7 +16159,7 @@ Schema for an application export result
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "url": {
@@ -16152,7 +16187,7 @@ Schema for the body of an Application Global modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "array",
   "maxItems": 100,
   "items": {
@@ -16213,7 +16248,7 @@ Schema for a single Application Key
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -16342,7 +16377,7 @@ Schema for the body of an Application Key modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "status": {
@@ -16413,7 +16448,7 @@ Schema for the body of an Application Key creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "deviceIds": {
@@ -16506,7 +16541,7 @@ Schema for a response of Application Key creation
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -16639,7 +16674,7 @@ Schema for a collection of Application Keys
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -16824,7 +16859,7 @@ Schema for the body of an Application modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -17090,7 +17125,7 @@ Schema for the body of an Application creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "orgId": {
@@ -17346,7 +17381,7 @@ Schema for an Application Readme
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "applicationId": {
@@ -17398,7 +17433,7 @@ Schema for the body of an Application Readme modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "content": {
@@ -17427,7 +17462,7 @@ Results of a search of an application&#x27;s resources
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "array",
   "items": {
     "type": "object",
@@ -17505,7 +17540,7 @@ Schema for a single Application Template
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -17668,7 +17703,7 @@ Schema for a collection of Application Template Categories
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -17754,7 +17789,7 @@ Schema for a single Application Template Category
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -17808,7 +17843,7 @@ Schema for a collection of Application Templates
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -18034,7 +18069,7 @@ Schema for a collection of Applications
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -18488,7 +18523,7 @@ Schema for a list of attribute names
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "attributeNames": {
@@ -18524,7 +18559,7 @@ Schema for a single Audit Log entry
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -18677,7 +18712,7 @@ Schema for the filter of an audit log query
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "primaryTarget": {
@@ -18836,7 +18871,7 @@ Schema for a collection of Audit Logs
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -19039,7 +19074,7 @@ Schema for the successful response when authenticating a Device
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "applicationId": {
@@ -19145,7 +19180,7 @@ Schema for the successful response when authenticating a User
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "userId": {
@@ -19185,7 +19220,7 @@ Schema for the response to a bulk deletion
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "removed": {
@@ -19215,7 +19250,7 @@ Schema for the body of a request to change the current user&#x27;s password
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "twoFactorCode": {
@@ -19268,7 +19303,7 @@ Schema for a composite Device state
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "patternProperties": {
     "^[0-9a-zA-Z_-]{1,255}$": {
@@ -19334,7 +19369,7 @@ Schema for a single Dashboard
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -19470,7 +19505,38 @@ Schema for a single Dashboard
             "maxLength": 5
           },
           "ctx": {
-            "ref": "#/definitions/dashboardContextInstance"
+            "title": "Dashboard Context Instance",
+            "description": "Schema for a dashboard context instance",
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string",
+                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      },
+                      "value": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false
           },
           "branded": {
             "type": "boolean"
@@ -25479,7 +25545,7 @@ Schema for a dashboard context instance
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "patternProperties": {
     "^[0-9a-zA-Z_-]{1,255}$": {
@@ -25531,7 +25597,7 @@ Schema for the body of a Dashboard modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -31124,7 +31190,38 @@ Schema for the body of a Dashboard modification request
             "maxLength": 5
           },
           "ctx": {
-            "ref": "#/definitions/dashboardContextInstance"
+            "title": "Dashboard Context Instance",
+            "description": "Schema for a dashboard context instance",
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string",
+                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      },
+                      "value": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false
           },
           "branded": {
             "type": "boolean"
@@ -31529,7 +31626,7 @@ Schema for the body of a Dashboard creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "orgId": {
@@ -37154,7 +37251,38 @@ Schema for the body of a Dashboard creation request
             "maxLength": 5
           },
           "ctx": {
-            "ref": "#/definitions/dashboardContextInstance"
+            "title": "Dashboard Context Instance",
+            "description": "Schema for a dashboard context instance",
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string",
+                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      },
+                      "value": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false
           },
           "branded": {
             "type": "boolean"
@@ -37536,7 +37664,7 @@ Schema for the body of a Dashboard report request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "toEmail": {
@@ -37581,7 +37709,38 @@ Schema for the body of a Dashboard report request
       "maxLength": 5
     },
     "ctx": {
-      "ref": "#/definitions/dashboardContextInstance"
+      "title": "Dashboard Context Instance",
+      "description": "Schema for a dashboard context instance",
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-zA-Z_-]{1,255}$": {
+          "oneOf": [
+            {
+              "type": "string",
+              "maxLength": 32767
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                },
+                "value": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
     },
     "branded": {
       "type": "boolean"
@@ -37628,7 +37787,7 @@ Schema for the body of an update events request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "eventIds": {
@@ -37698,7 +37857,7 @@ Schema for a collection of Dashboards
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -37841,7 +38000,38 @@ Schema for a collection of Dashboards
                   "maxLength": 5
                 },
                 "ctx": {
-                  "ref": "#/definitions/dashboardContextInstance"
+                  "title": "Dashboard Context Instance",
+                  "description": "Schema for a dashboard context instance",
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}$": {
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                            },
+                            "value": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
                 },
                 "branded": {
                   "type": "boolean"
@@ -43902,7 +44092,7 @@ Schema for exporting data devices query
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -44140,7 +44330,7 @@ Schema for a single Data Table
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -44254,7 +44444,7 @@ Schema for a single Data Table Column
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -44314,7 +44504,7 @@ Schema for the body of a Data Table modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -44348,7 +44538,7 @@ Schema for the body of a Data Table creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -44441,7 +44631,7 @@ Schema for a single Data Table Row
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -44491,7 +44681,7 @@ Schema for inserting data table rows
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "array",
   "items": {
     "title": "Data Table Row Insert Update",
@@ -44534,7 +44724,7 @@ Schema for inserting a data table row or rows
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "oneOf": [
     {
       "title": "Data Table Row Insert Update",
@@ -44594,7 +44784,7 @@ Schema for a the result of a single or multiple row insert
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "oneOf": [
     {
       "title": "Data Table Row",
@@ -44670,7 +44860,7 @@ Schema for inserting or updating a data table row
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "patternProperties": {
     "^[0-9a-zA-Z_-]{1,255}$": {
@@ -44703,7 +44893,7 @@ Schema for a collection of Data Table Rows
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -44811,7 +45001,7 @@ Schema for response to data table rows removal
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "removed": {
@@ -44838,7 +45028,7 @@ Schema for the body of a data table export
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -45046,7 +45236,7 @@ Schema for a collection of Data Tables
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -45216,7 +45406,7 @@ Schema for a single Device
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -45504,7 +45694,7 @@ Select one or multiple device attribute data types
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "oneOf": [
     {
       "type": "string",
@@ -45552,7 +45742,7 @@ Select one or multiple device classes
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "oneOf": [
     {
       "type": "string",
@@ -45603,7 +45793,7 @@ Schema for a command for a single Device
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "time": {
@@ -45667,7 +45857,7 @@ Schema for an array of Device Commands
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "array",
   "items": {
     "title": "Device Command",
@@ -45749,7 +45939,7 @@ Schema for the body of a request to set a device&#x27;s connection status
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "oneOf": [
     {
       "title": "Device Connected",
@@ -45882,7 +46072,7 @@ Schema for the body of a device authentication request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "deviceId": {
@@ -45953,7 +46143,7 @@ Log of connection information for a Device
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "array",
   "items": {
     "type": "object",
@@ -46024,7 +46214,7 @@ Schema for a list of device names
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "deviceSummary": {
@@ -46084,7 +46274,7 @@ Schema for the body of a Device modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -46319,7 +46509,7 @@ Schema for the result of a device payload count request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "deviceCommand": {
@@ -46364,7 +46554,7 @@ Schema for the body of a Device creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -46602,7 +46792,7 @@ Schema for a single Device Recipe
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -46872,7 +47062,7 @@ Schema for the result of a bulk Device creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "created": {
@@ -46907,11 +47097,15 @@ Schema for the result of a bulk Device creation request when creating more than 
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "jobQueued": {
       "type": "boolean"
+    },
+    "jobId": {
+      "type": "string",
+      "maxLength": 21
     }
   }
 }
@@ -46934,7 +47128,7 @@ Schema for the body of a bulk Device creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "nameColumn": {
@@ -46986,7 +47180,7 @@ Schema for the body of a Device Recipe modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -47232,7 +47426,7 @@ Schema for the body of a Device Recipe creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -47481,7 +47675,7 @@ Schema for a collection of Device Recipes
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -47807,7 +48001,7 @@ Schema for a single Device state
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "time": {
@@ -47879,7 +48073,7 @@ Schema for a single device state or an array of device states
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "oneOf": [
     {
       "title": "Device State",
@@ -48014,7 +48208,7 @@ Schema for an array of Device states
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "array",
   "items": {
     "title": "Device State",
@@ -48099,7 +48293,7 @@ Array of Tags for filtering devices. Tag keys and tag values are optional.
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "array",
   "items": {
     "type": "object",
@@ -48143,7 +48337,7 @@ Schema for a collection of Devices
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -48534,7 +48728,7 @@ Schema for response to bulk device data removal
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "completed": {
@@ -48565,7 +48759,7 @@ Schema for the body of a bulk device delete request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -50200,7 +50394,7 @@ Schema for the body of a device payload count export request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -51838,7 +52032,7 @@ Schema for the body of a device metadata export request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -53470,7 +53664,7 @@ Schema for the body of a Devices modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "updateFields": {
@@ -56064,7 +56258,7 @@ Schema for the body of a bulk data removal request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "query": {
@@ -57721,7 +57915,7 @@ Schema for response of devices updated if under 100 devices queried
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "updated": {
@@ -57760,7 +57954,7 @@ Schema for the body of a request to disable two factor auth
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "twoFactorCode": {
@@ -57799,7 +57993,7 @@ Schema for a single deployment of an edge workflow to an edge device
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -57975,7 +58169,7 @@ Schema for deploying an edge workflow to one or more edge devices
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "flowId": {
@@ -58047,7 +58241,7 @@ Schema for removing edge deployments. Can remove a specific workflow from a spec
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "flowId": {
@@ -58091,7 +58285,7 @@ Schema for replacing a deployment of a workflow version with a different workflo
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "flowId": {
@@ -58140,7 +58334,7 @@ Schema for a collection of Edge Deployments
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -58360,7 +58554,7 @@ Schema for the body of a request verifying an email
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -58399,7 +58593,7 @@ Schema for a single deployment of embedded workflows to embedded devices
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -58622,7 +58816,7 @@ Schema for the body of a compiled embedded deployment files request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -58690,7 +58884,7 @@ Schema for deploying an embedded workflow to one or more edge devices
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "flowId": {
@@ -58770,7 +58964,7 @@ Schema for removing embedded deployments. Can remove a specific workflow from a 
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "flowId": {
@@ -58814,7 +59008,7 @@ Schema for replacing a deployment of a workflow version with a different workflo
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "flowId": {
@@ -58863,7 +59057,7 @@ Schema for a collection of Embedded Deployments
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -59130,7 +59324,7 @@ Schema for the body of a request to enable two factor auth
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "twoFactorAuthKey": {
@@ -59175,7 +59369,7 @@ Schema for errors returned by the API
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "type": {
@@ -59206,7 +59400,7 @@ Schema for a single Event
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -59392,7 +59586,7 @@ Schema for the body of an Event modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "state": {
@@ -59442,7 +59636,7 @@ Schema for the body of an Event creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "level": {
@@ -59539,7 +59733,7 @@ Summary of all unique event tags and values in an application.
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "eventTags": {
@@ -59594,7 +59788,7 @@ Schema for a collection of Events
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -59848,7 +60042,7 @@ Schema for response to events removal
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "removed": {
@@ -59875,7 +60069,7 @@ Export options for events
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -61197,7 +61391,7 @@ The body of an experience bootstrap request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "replaceExisting": {
@@ -61240,7 +61434,7 @@ The result of an experience bootstrap request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "resourceSuffix": {
@@ -61276,7 +61470,7 @@ Schema for a single Experience Domain
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -61346,7 +61540,7 @@ Schema for the body of an Experience Domain modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "sslKey": {
@@ -61427,7 +61621,7 @@ Schema for the body of an Experience Domain creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "sslKey": {
@@ -61490,7 +61684,7 @@ Schema for a collection of Experience Domains
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -61587,7 +61781,7 @@ Schema for a single Experience Endpoint
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -61792,7 +61986,7 @@ Schema for the body of an Experience Endpoint modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "description": {
@@ -61934,7 +62128,7 @@ Schema for the body of an Experience Endpoint creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "description": {
@@ -62079,7 +62273,7 @@ Schema for stats for an experience&#x27;s endpoints
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "patternProperties": {
     ".*": {
@@ -62137,7 +62331,7 @@ Schema for a collection of Experience Endpoints
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -62399,7 +62593,7 @@ Schema for a single Experience Group
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -62543,7 +62737,7 @@ Schema for the body of an Experience Group modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -62667,7 +62861,7 @@ Schema for the body of an Experience Group creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -62794,7 +62988,7 @@ Schema for a collection of Experience Groups
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -62994,7 +63188,7 @@ The body of an experience linked resources response
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "experienceViews": {
@@ -71061,7 +71255,7 @@ Schema for a single Experience Slug
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -71122,7 +71316,7 @@ Schema for the body of an Experience Slug modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "version": {
@@ -71166,7 +71360,7 @@ Schema for the body of an Experience Slug creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "version": {
@@ -71213,7 +71407,7 @@ Schema for a collection of Experience Slugs
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -71301,7 +71495,7 @@ Schema for a single Experience User
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -71427,7 +71621,7 @@ Schema for the body of an Experience User modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -71496,7 +71690,7 @@ Schema for the body of an Experience User creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -71572,7 +71766,7 @@ Schema for a collection of Experience Users
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -71758,7 +71952,7 @@ Schema for a single Experience Version
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -71912,7 +72106,7 @@ Schema for the body of an Experience Version modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "endpointDefaultCors": {
@@ -71985,7 +72179,7 @@ Schema for the body of an Experience Version creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "version": {
@@ -72084,7 +72278,7 @@ Schema for a collection of Experience Versions
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -72265,7 +72459,7 @@ Schema for a single Experience View
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -72389,7 +72583,7 @@ Schema for the body of an Experience View modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -72449,7 +72643,7 @@ Schema for the body of an Experience View creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -72525,7 +72719,7 @@ Schema for a collection of Experience Views
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -72713,7 +72907,7 @@ Schema for a single file
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -72831,7 +73025,7 @@ Schema to patch a file
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "fileSize": {
@@ -72878,7 +73072,7 @@ Schema to create a single file or directory
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -72946,7 +73140,7 @@ Schema to upload the file to s3
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -73090,7 +73284,7 @@ Schema for a collection of files
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -73271,7 +73465,7 @@ Schema for a single Workflow
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -75921,7 +76115,7 @@ Workflow run error information
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "flowVersion": {
@@ -76039,7 +76233,7 @@ Log of aggregated workflow run information
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "array",
   "items": {
     "type": "object",
@@ -76106,7 +76300,7 @@ Schema for the body of a Workflow modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -78688,7 +78882,7 @@ Schema for the body of a Workflow creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -81280,7 +81474,7 @@ Statistics about the runs for a given workflow
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "flowVersion": {
@@ -81363,7 +81557,7 @@ Set of persistent workflow storage values
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "patternProperties": {
     "^.{1,255}$": {}
@@ -81393,7 +81587,7 @@ Schema for the body of a request to set a Workflow storage entry
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "key": {
@@ -81428,7 +81622,7 @@ Schema for the result of get storage metadata request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "memoryUsed": {
@@ -81460,7 +81654,7 @@ Array of triggers for filtering workflows. Trigger keys and trigger types are op
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "array",
   "items": {
     "type": "object",
@@ -81500,7 +81694,7 @@ Schema for a single Workflow Version
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "oneOf": [
     {
       "description": "Schema for a single Cloud/Edge/Embedded/Custom Node Workflow Version",
@@ -86372,7 +86566,7 @@ Schema for the body of a Workflow Version modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "notes": {
@@ -86405,7 +86599,7 @@ Schema for the body of a Workflow Version creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "version": {
@@ -88949,7 +89143,7 @@ Schema for a collection of Workflow Versions
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -93882,7 +94076,7 @@ Schema for the body of a bulk flow versions delete request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -94895,7 +95089,7 @@ Schema for a collection of Workflows
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -97611,7 +97805,7 @@ Schema for the body of a workflow import request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "flows": {
@@ -102795,7 +102989,7 @@ Schema for the result of a workflow import request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "flows": {
@@ -110331,7 +110525,7 @@ Schema for the body of a Github login request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "accessToken": {
@@ -110796,7 +110990,7 @@ Schema for a collection of Historical Summaries
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -110922,7 +111116,7 @@ Schema for a historical summary report
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "resourceType": {
@@ -111498,7 +111692,7 @@ Schema for additional application import options
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "importUrl": {
@@ -111516,7 +111710,8 @@ Schema for additional application import options
       "enum": [
         "create",
         "error",
-        "retain"
+        "retain",
+        "replace"
       ],
       "default": "create"
     },
@@ -111578,7 +111773,7 @@ Schema for additional application import options (new application)
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "importUrl": {
@@ -111645,7 +111840,7 @@ Schema for a single Instance
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -111920,7 +112115,7 @@ Schema for a single Instance Custom Node
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -112553,7 +112748,7 @@ Schema for the body of a Instance Custom Node modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -113247,7 +113442,7 @@ Schema for the body of a Instance Custom Node creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -113956,7 +114151,7 @@ Schema for a collection of Custom Nodes within an instance
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -114645,7 +114840,7 @@ Schema for an Instance member
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "instanceId": {
@@ -114711,7 +114906,7 @@ Schema for an Instance member modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "role": {
@@ -114746,7 +114941,7 @@ Schema for an Instance member creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "userId": {
@@ -114802,7 +114997,7 @@ Schema for a collection of Instance members
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -114911,7 +115106,7 @@ Schema for the body of an Organization owned by an instance
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "creationDate": {
@@ -115119,7 +115314,7 @@ Schema for an Instance Organization member
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "instanceId": {
@@ -115196,7 +115391,7 @@ Schema for an Instance Organization member modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "role": {
@@ -115283,7 +115478,7 @@ Schema for an Instance Organization member creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "oneOf": [
     {
       "type": "object",
@@ -115469,7 +115664,7 @@ Schema for a collection of Organization members within an instance
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -115544,7 +115739,7 @@ Schema for the body of an Organization modification request within an instance
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -115727,7 +115922,8 @@ Schema for the body of an Organization modification request within an instance
       "maxItems": 100
     },
     "referralId": {
-      "ref": "#/definitions/common/optMedStr"
+      "type": "string",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false
@@ -115755,7 +115951,7 @@ Schema for the body of an Organization creation request within an instance
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -116104,7 +116300,8 @@ Schema for the body of an Organization creation request within an instance
       "maxItems": 100
     },
     "referralId": {
-      "ref": "#/definitions/common/optMedStr"
+      "type": "string",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false,
@@ -116135,7 +116332,7 @@ Schema for a collection of Organizations within an instance
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -116398,7 +116595,7 @@ Schema for instance patch request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "reportConfigs": {
@@ -116504,7 +116701,7 @@ Schema for the body of a instance report request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -116570,7 +116767,7 @@ Schema for information about a sandbox user within an instance domain
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -117043,7 +117240,7 @@ Schema for a collection of instance associated sandboxes
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -117186,7 +117383,7 @@ Schema for a collection of Instances
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -117308,7 +117505,7 @@ Schema for a single Integration
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -117644,7 +117841,7 @@ Schema for the body of an Integration modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -117898,7 +118095,7 @@ Schema for the body of an Integration creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -118166,7 +118363,7 @@ Schema for a collection of Integrations
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -118552,17 +118749,21 @@ Schema for a collection of Integrations
 
 ## Job Enqueued API Result
 
-Schema for the result of an job being queued
+Schema for the result of a job being queued
 
 ### <a name="job-enqueued-api-result-schema"></a> Schema
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "jobQueued": {
       "type": "boolean"
+    },
+    "jobId": {
+      "type": "string",
+      "maxLength": 21
     }
   }
 }
@@ -118585,7 +118786,7 @@ Schema for the result of a last value query
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "patternProperties": {
     "^[A-Fa-f\\d]{24}$": {
@@ -118648,7 +118849,7 @@ Schema for the body of a last value query request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "attribute": {
@@ -118708,7 +118909,7 @@ Schema for information about the currently authenticated user
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -119243,7 +119444,7 @@ Schema for the body of request to modify the current user
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -119317,7 +119518,7 @@ Schema for the body an MQTT Publish Message request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "topic": {
@@ -119356,7 +119557,7 @@ Schema for the body of a request to send a command to multiple Devices
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "time": {
@@ -121045,7 +121246,7 @@ Schema for a single Notebook
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -121846,7 +122047,7 @@ Schema for the options for a Notebook data export request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -121907,7 +122108,7 @@ Schema for a set of Notebook execution logs
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "array",
   "items": {
     "type": "object",
@@ -122076,7 +122277,7 @@ Schema for the options for a Notebook execution request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "relativeTo": {
@@ -122127,7 +122328,7 @@ Schema for the body of a Notebook modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -122765,7 +122966,7 @@ Schema for the body of an Notebook creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -123406,7 +123607,7 @@ Schema for a collection of Notebooks
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -124263,7 +124464,7 @@ Schema for a single Organization
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -124793,7 +124994,7 @@ Schema for a pending invitation to an Organization
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -124919,7 +125120,7 @@ Schema for the body of a request to accept or reject an invitation
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -124963,7 +125164,7 @@ Schema for an collection of pending invitations to an Instance Organization
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -125136,7 +125337,7 @@ Schema for information about an invitation
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "orgName": {
@@ -125195,7 +125396,7 @@ Schema for the body of a request to send an invitation
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -125295,7 +125496,7 @@ Schema for the result of accepting/rejecting an invitation
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "accepted": {
@@ -125327,7 +125528,7 @@ Schema for an array of pending invitations to an Organization
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "array",
   "items": {
     "type": "object",
@@ -125463,7 +125664,7 @@ Schema for the body of a request to modify an Organization member
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "userId": {
@@ -125558,7 +125759,7 @@ Schema for the body of an Organization modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -125610,7 +125811,7 @@ Schema for the body of an Organization creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -125665,7 +125866,7 @@ Schema for an Organization member&#x27;s role info
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "role": {
@@ -125752,7 +125953,7 @@ Schema for a collection of Organizations
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -126333,7 +126534,7 @@ Schema for the set of additional nodes for the workflow palette
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "customNodes": {
@@ -127167,7 +127368,7 @@ Schema for the body of a request to complete the reset password flow
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "token": {
@@ -127214,7 +127415,7 @@ Schema for the body of a request to start the reset password flow
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -127247,7 +127448,7 @@ Schema for result of a successful password reset
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "success": {
@@ -127285,7 +127486,7 @@ Schema for the result of a payload stats request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "dataTable": {
@@ -127447,7 +127648,7 @@ Schema for the body of a request to add a recent item
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "itemType": {
@@ -127495,7 +127696,7 @@ Schema for an array of recent items
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "itemType": {
@@ -127560,7 +127761,7 @@ Schema for the body of a resource transfer request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "destinationId": {
@@ -127623,7 +127824,7 @@ SAML Response body for login
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "SAMLResponse": {
@@ -128095,7 +128296,7 @@ SSO Request built from the SP and IDP config
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "ssoType": {
@@ -128134,7 +128335,7 @@ Schema for reporting a successful operation
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "success": {
@@ -128156,6 +128357,76 @@ Schema for reporting a successful operation
 
 <br/>
 
+## Success With Execution ID
+
+Schema for reporting a successful operation with a corresponding execution ID
+
+### <a name="success-with-execution-id-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "boolean",
+      "enum": [
+        true
+      ]
+    },
+    "executionId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  }
+}
+```
+### <a name="success-with-execution-id-example"></a> Example
+
+```json
+{
+  "success": true,
+  "executionId": "89KDR0chj84e6qWC_aPFm"
+}
+```
+
+<br/>
+
+## Success With Job ID
+
+Schema for reporting a successful operation with a corresponding job id
+
+### <a name="success-with-job-id-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "boolean",
+      "enum": [
+        true
+      ]
+    },
+    "jobId": {
+      "type": "string",
+      "maxLength": 21
+    }
+  }
+}
+```
+### <a name="success-with-job-id-example"></a> Example
+
+```json
+{
+  "success": true,
+  "jobId": "89KDR0chj84e6qWC_aPFm"
+}
+```
+
+<br/>
+
 ## Tag Keys Response
 
 Schema for a list of tag keys
@@ -128164,7 +128435,7 @@ Schema for a list of tag keys
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "tagKeys": {
@@ -128200,7 +128471,7 @@ Schema for a list of tag values for a key
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "tagKey": {
@@ -128242,7 +128513,7 @@ Schema for a collection of template keywords
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "properties": {
     "keywords": {
       "type": "array",
@@ -128277,7 +128548,7 @@ Schema for the result of a time series query
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "start": {
@@ -128514,7 +128785,7 @@ Schema for the body of a time series query request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "start": {
@@ -128712,7 +128983,7 @@ Schema for information about the two factor auth for currently authenticated use
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "key": {
@@ -128746,7 +129017,7 @@ Schema for the body of a User authentication request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -129222,7 +129493,7 @@ Schema for the body of a User creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -129776,7 +130047,7 @@ Schema for the result of a validateContext call when invalid context is passed
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "type": {
@@ -129886,7 +130157,31 @@ Schema for the result of a validateContext call when invalid context is passed
       "additionalProperties": false
     },
     "dashboard": {
-      "ref": "#/definitions/validateContextSuccess/properties/dashboard"
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "duration": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "resolution": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "refreshRate": {
+          "type": "number",
+          "minimum": 5,
+          "maximum": 600
+        }
+      }
     }
   }
 }
@@ -129949,7 +130244,7 @@ Schema for the result of a successful validateContext call
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "success": {
@@ -130152,7 +130447,7 @@ Schema for validation errors returned by the API
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "type": {
@@ -130219,7 +130514,7 @@ Schema for the body of a request to press a Workflow virtual button
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "key": {
@@ -130268,7 +130563,7 @@ Schema for a single Webhook
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -130358,7 +130653,7 @@ Schema for the body of a Webhook modification request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -130419,7 +130714,7 @@ Schema for the body of a Webhook creation request
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -130482,7 +130777,7 @@ Schema for a collection of Webhooks
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {

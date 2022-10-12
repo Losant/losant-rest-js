@@ -52,7 +52,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If generation of export was successfully started |
+| 200 | [Success With Job ID](../lib/schemas/successWithJobId.json) | If generation of export was successfully started |
 
 #### Error Responses
 

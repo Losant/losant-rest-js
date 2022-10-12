@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "oneOf": [
     {
       "description": "Schema for a single Cloud/Edge/Embedded/Custom Node Workflow Version",

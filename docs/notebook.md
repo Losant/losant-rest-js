@@ -6,6 +6,7 @@ parameters and the potential responses.
 
 ##### Contents
 
+*   [Cancel Execution](#cancel-execution)
 *   [Delete](#delete)
 *   [Execute](#execute)
 *   [Get](#get)
@@ -13,6 +14,58 @@ parameters and the potential responses.
 *   [Patch](#patch)
 *   [Request Input Data Export](#request-input-data-export)
 *   [Upload](#upload)
+
+<br/>
+
+## Cancel Execution
+
+Marks a specific notebook execution for cancellation
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  notebookId: myNotebookId,
+  executionId: myExecutionId
+};
+
+// with callbacks
+client.notebook.cancelExecution(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.notebook.cancelExecution(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, notebook.*, or notebook.execute.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| notebookId | string | Y | ID associated with the notebook |  | 575ed78e7ae143cd83dc4aab |
+| executionId | undefined | Y | The ID of the execution to cancel |  | 632e18632f59592e773a4153 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Success](../lib/schemas/success.json) | If the execution was successfully marked for cancellation |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if execution was not found |
 
 <br/>
 
@@ -313,7 +366,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If export request was accepted and successfully queued |
+| 200 | [Success With Job ID](../lib/schemas/successWithJobId.json) | If export request was accepted and successfully queued |
 
 #### Error Responses
 

@@ -149,6 +149,8 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceRecipeId | string | Y | ID associated with the device recipe |  | 575ecec57ae143cd83dc4a9f |
+| tagsAsObject | string | N | Return tags as an object map instead of an array |  | true |
+| attributesAsObject | string | N | Return attributes as an object map instead of an array |  | true |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -201,6 +203,8 @@ all.Application, all.Organization, all.User, deviceRecipe.*, or deviceRecipe.pat
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceRecipeId | string | Y | ID associated with the device recipe |  | 575ecec57ae143cd83dc4a9f |
 | deviceRecipe | [Device Recipe Patch](../lib/schemas/deviceRecipePatch.json) | Y | Object containing new properties of the device recipe |  | [Device Recipe Patch Example](_schemas.md#device-recipe-patch-example) |
+| tagsAsObject | string | N | Return tags as an object map instead of an array |  | false |
+| attributesAsObject | string | N | Return attributes as an object map instead of an array |  | false |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

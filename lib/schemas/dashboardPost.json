@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "orgId": {
@@ -5624,7 +5624,38 @@
             "maxLength": 5
           },
           "ctx": {
-            "ref": "#/definitions/dashboardContextInstance"
+            "title": "Dashboard Context Instance",
+            "description": "Schema for a dashboard context instance",
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string",
+                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      },
+                      "value": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false
           },
           "branded": {
             "type": "boolean"
