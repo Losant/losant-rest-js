@@ -121,6 +121,7 @@
 *   [Error](#error)
 *   [Event](#event)
 *   [Event Patch](#event-patch)
+*   [Event Plus New Count](#event-plus-new-count)
 *   [Event Post](#event-post)
 *   [Event Tags Summary](#event-tags-summary)
 *   [Events](#events)
@@ -246,6 +247,12 @@
 *   [Payload Stats](#payload-stats)
 *   [Recent Item](#recent-item)
 *   [Recent Item List](#recent-item-list)
+*   [Resource Job](#resource-job)
+*   [Resource Job Execution Logs](#resource-job-execution-logs)
+*   [Resource Job Execution Options](#resource-job-execution-options)
+*   [Resource Job Patch](#resource-job-patch)
+*   [Resource Job Post](#resource-job-post)
+*   [Resource Jobs](#resource-jobs)
 *   [Resource Transfer](#resource-transfer)
 *   [SAML Response](#saml-response)
 *   [SSO Request](#sso-request)
@@ -7547,6 +7554,8 @@ Schema for the body of an API Token creation request
                   "flows.*",
                   "flowVersion.*",
                   "flowVersions.*",
+                  "resourceJobs.*",
+                  "resourceJob.*",
                   "notebook.*",
                   "notebooks.*",
                   "webhook.*",
@@ -7759,6 +7768,14 @@ Schema for the body of an API Token creation request
                   "notebook.upload",
                   "notebooks.get",
                   "notebooks.post",
+                  "resourceJob.get",
+                  "resourceJob.logs",
+                  "resourceJob.patch",
+                  "resourceJob.delete",
+                  "resourceJob.execute",
+                  "resourceJob.cancelExecution",
+                  "resourceJobs.get",
+                  "resourceJobs.post",
                   "webhook.delete",
                   "webhook.get",
                   "webhook.patch",
@@ -8506,7 +8523,7 @@ Schema for a single Application
     "s3": {
       "bucket": "bucketName",
       "accessKeyId": "awsAccessKey",
-      "accessSecretKey": "awsSecretKey",
+      "secretAccessKey": "awsSecretKey",
       "region": "us-west-1"
     },
     "mode": "all",
@@ -8875,7 +8892,7 @@ Schema for a collection of Application Certificate Authorities
       "status": "active",
       "name": "my certificate authority",
       "description": "An example certificate authority description",
-      "caBundle": "MY_SSL_CERTIFICATE",
+      "caBundle": "-----BEGIN CERTIFICATE-----\nMY_SSL_CERTIFICATE\n-----END CERTIFICATE-----",
       "caInfo": [
         {
           "serialNumber": "ad:0e:ff:63:27:83:e5:3e:6b:a9:fb:57:0d:37:fc:e9",
@@ -9001,7 +9018,7 @@ Schema for a single Application Certificate Authority
   "status": "active",
   "name": "my certificate authority",
   "description": "An example certificate authority description",
-  "caBundle": "MY_SSL_CERTIFICATE",
+  "caBundle": "-----BEGIN CERTIFICATE-----\nMY_SSL_CERTIFICATE\n-----END CERTIFICATE-----",
   "caInfo": [
     {
       "serialNumber": "ad:0e:ff:63:27:83:e5:3e:6b:a9:fb:57:0d:37:fc:e9",
@@ -9110,7 +9127,7 @@ Schema for the body of an Application Certificate Authority creation request
 {
   "name": "my certificate authority",
   "description": "An example new authority description",
-  "caBundle": "MY_SSL_CERTIFICATE"
+  "caBundle": "-----BEGIN CERTIFICATE-----\nMY_SSL_CERTIFICATE\n-----END CERTIFICATE-----"
 }
 ```
 
@@ -9292,7 +9309,7 @@ Schema for the body of an Application Certificate creation request
 ```json
 {
   "description": "An example new certificate description",
-  "certificate": "MY_SSL_CERTIFICATE",
+  "certificate": "-----BEGIN CERTIFICATE-----\nMY_SSL_CERTIFICATE\n-----END CERTIFICATE-----",
   "filterType": "all",
   "pubTopics": [],
   "subTopics": []
@@ -10012,15 +10029,7 @@ Schema for creating an application by template result
             "type": "string"
           },
           "id": {
-            "oneOf": [
-              {
-                "type": "string",
-                "pattern": "^[A-Fa-f\\d]{24}$"
-              },
-              {
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "message": {
             "type": "string"
@@ -10057,7 +10066,7 @@ Schema for creating an application by template result
       "s3": {
         "bucket": "bucketName",
         "accessKeyId": "awsAccessKey",
-        "accessSecretKey": "awsSecretKey",
+        "secretAccessKey": "awsSecretKey",
         "region": "us-west-1"
       },
       "mode": "all",
@@ -16134,6 +16143,10 @@ Schema for the body of an application export request
       "type": "string",
       "format": "uri",
       "maxLength": 1024
+    },
+    "forceJob": {
+      "type": "boolean",
+      "default": false
     }
   },
   "additionalProperties": false
@@ -17520,7 +17533,7 @@ Results of a search of an application&#x27;s resources
 ```json
 [
   {
-    "type": "device",
+    "_type": "device",
     "name": "My Device #1",
     "metadata": {
       "descriptor": "a basic description of device #1"
@@ -17648,6 +17661,9 @@ Schema for a single Application Template
         "notebookCount": {
           "type": "integer"
         },
+        "resourceJobCount": {
+          "type": "integer"
+        },
         "dataTableCsvSize": {
           "type": "integer"
         },
@@ -17687,6 +17703,7 @@ Schema for a single Application Template
     "flowCount": 1,
     "integrationCount": 0,
     "notebookCount": 0,
+    "resourceJobCount": 0,
     "dataTableCsvSize": 4008,
     "webhookCount": 0
   }
@@ -17958,6 +17975,9 @@ Schema for a collection of Application Templates
               "notebookCount": {
                 "type": "integer"
               },
+              "resourceJobCount": {
+                "type": "integer"
+              },
               "dataTableCsvSize": {
                 "type": "integer"
               },
@@ -18045,6 +18065,7 @@ Schema for a collection of Application Templates
         "flowCount": 1,
         "integrationCount": 0,
         "notebookCount": 0,
+        "resourceJobCount": 0,
         "dataTableCsvSize": 4008,
         "webhookCount": 0
       }
@@ -18493,7 +18514,7 @@ Schema for a collection of Applications
         "s3": {
           "bucket": "bucketName",
           "accessKeyId": "awsAccessKey",
-          "accessSecretKey": "awsSecretKey",
+          "secretAccessKey": "awsSecretKey",
           "region": "us-west-1"
         },
         "mode": "all",
@@ -18621,7 +18642,8 @@ Schema for a single Audit Log entry
         "Flow",
         "Integration",
         "Notebook",
-        "Webhook"
+        "Webhook",
+        "ResourceJob"
       ]
     },
     "secondaryTargetName": {
@@ -18772,7 +18794,8 @@ Schema for the filter of an audit log query
               "Flow",
               "Integration",
               "Notebook",
-              "Webhook"
+              "Webhook",
+              "ResourceJob"
             ]
           },
           "name": {
@@ -18940,7 +18963,8 @@ Schema for a collection of Audit Logs
               "Flow",
               "Integration",
               "Notebook",
-              "Webhook"
+              "Webhook",
+              "ResourceJob"
             ]
           },
           "secondaryTargetName": {
@@ -19287,7 +19311,7 @@ Schema for the body of a request to change the current user&#x27;s password
 
 ```json
 {
-  "newPassword": "yourNewPassword",
+  "newPassword": "yourNewPassword1!",
   "password": "yourCurrentPassword",
   "invalidateExistingTokens": true
 }
@@ -44833,7 +44857,8 @@ Schema for a the result of a single or multiple row insert
           },
           "maxItems": 1000
         }
-      }
+      },
+      "additionalProperties": false
     }
   ]
 }
@@ -44843,8 +44868,8 @@ Schema for a the result of a single or multiple row insert
 ```json
 {
   "id": "596fbb703fc088453872e609",
-  "creationDate": "2016-06-13T04:00:00.000Z",
-  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "createdAt": "2016-06-13T04:00:00.000Z",
+  "updatedAt": "2016-06-13T04:00:00.000Z",
   "myColumn1": "myValue",
   "myColumn2": 5
 }
@@ -58869,7 +58894,7 @@ Schema for the body of a compiled embedded deployment files request
 
 ```json
 {
-  "email": "email.example.com",
+  "email": "email@example.com",
   "deviceId": "575ecf887ae143cd83dc4aa2"
 }
 ```
@@ -59623,6 +59648,205 @@ Schema for the body of an Event modification request
 {
   "state": "acknowledged",
   "comment": "Looking into this issue"
+}
+```
+
+<br/>
+
+## Event Plus New Count
+
+Schema for an event plus a count of new events
+
+### <a name="event-plus-new-count-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "event": {
+      "title": "Event",
+      "description": "Schema for a single Event",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "eventId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "applicationId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "creationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sourceType": {
+          "type": "string",
+          "enum": [
+            "flow",
+            "user",
+            "device",
+            "apiToken",
+            "experienceUser",
+            "public"
+          ]
+        },
+        "sourceId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "sourceName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "level": {
+          "type": "string",
+          "enum": [
+            "info",
+            "warning",
+            "error",
+            "critical"
+          ]
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "new",
+            "acknowledged",
+            "resolved"
+          ]
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 32767
+        },
+        "data": {},
+        "deviceId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "deviceName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "eventTags": {
+          "type": "object",
+          "patternProperties": {
+            "^[0-9a-zA-Z_-]{1,255}$": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 255
+            }
+          },
+          "additionalProperties": false
+        },
+        "updates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sourceType": {
+                "type": "string",
+                "enum": [
+                  "flow",
+                  "user",
+                  "device",
+                  "apiToken",
+                  "experienceUser",
+                  "public"
+                ]
+              },
+              "sourceId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "sourceName": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              },
+              "creationDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "comment": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "data": {},
+              "stateChange": {
+                "type": "object",
+                "properties": {
+                  "old": {
+                    "type": "string",
+                    "enum": [
+                      "new",
+                      "acknowledged",
+                      "resolved"
+                    ]
+                  },
+                  "new": {
+                    "type": "string",
+                    "enum": [
+                      "new",
+                      "acknowledged",
+                      "resolved"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "newCount": {
+      "type": "integer"
+    }
+  }
+}
+```
+### <a name="event-plus-new-count-example"></a> Example
+
+```json
+{
+  "event": {
+    "id": "575ed0de7ae143cd83dc4aa5",
+    "eventId": "575ed0de7ae143cd83dc4aa5",
+    "applicationId": "575ec8687ae143cd83dc4a97",
+    "creationDate": "2016-06-13T04:00:00.000Z",
+    "lastUpdated": "2016-06-13T04:00:00.000Z",
+    "sourceType": "user",
+    "sourceId": "575ed70c7ae143cd83dc4aa9",
+    "sourceName": "hello@example.com",
+    "level": "info",
+    "state": "new",
+    "subject": "Power levels critical",
+    "message": "Power levels on device 432 have surpassed critical thresholds",
+    "updates": [],
+    "deviceId": "575ecf887ae143cd83dc4aa2",
+    "deviceName": "My Device",
+    "eventTags": {
+      "customKey": "customValue"
+    }
+  },
+  "newCount": 2
 }
 ```
 
@@ -61454,9 +61678,9 @@ The result of an experience bootstrap request
 
 ```json
 {
-  "homePath": "/",
   "password": "examplePass",
-  "email": "example.user@example.com"
+  "email": "example.user@example.com",
+  "resourceSuffix": ""
 }
 ```
 
@@ -61605,8 +61829,8 @@ Schema for the body of an Experience Domain modification request
 ```json
 {
   "domainName": "my.domain.example.com",
-  "sslCert": "MY_SSL_CERTIFICATE",
-  "sslKey": "MY_SSL_KEY",
+  "sslCert": "-----BEGIN CERTIFICATE-----\nMY_SSL_CERTIFICATE\n-----END CERTIFICATE-----",
+  "sslKey": "-----BEGIN PRIVATE KEY-----\nMY_SSL_KEY\n-----END PRIVATE KEY-----",
   "version": "develop"
 }
 ```
@@ -61668,8 +61892,8 @@ Schema for the body of an Experience Domain creation request
 ```json
 {
   "domainName": "my.domain.example.com",
-  "sslCert": "MY_SSL_CERTIFICATE",
-  "sslKey": "MY_SSL_KEY",
+  "sslCert": "-----BEGIN CERTIFICATE-----\nMY_SSL_CERTIFICATE\n-----END CERTIFICATE-----",
+  "sslKey": "-----BEGIN PRIVATE KEY-----\nMY_SSL_KEY\n-----END PRIVATE KEY-----",
   "version": "develop"
 }
 ```
@@ -62971,7 +63195,7 @@ Schema for the body of an Experience Group creation request
   "deviceTags": [
     {
       "key": "floor",
-      "value": 8
+      "value": "8"
     }
   ],
   "parentId": "58b9d743cbfafe1be675744e"
@@ -63670,7 +63894,10 @@ The body of an experience linked resources response
                             "onConnect",
                             "onDisconnect",
                             "udp",
-                            "webhook"
+                            "webhook",
+                            "resourceJobIteration",
+                            "resourceJobIterationTimeout",
+                            "resourceJobComplete"
                           ]
                         },
                         "config": {
@@ -63706,7 +63933,10 @@ The body of an experience linked resources response
                                 "particle",
                                 "sqs",
                                 "udp",
-                                "webhook"
+                                "webhook",
+                                "resourceJobIteration",
+                                "resourceJobIterationTimeout",
+                                "resourceJobComplete"
                               ]
                             },
                             "label": {
@@ -66278,6 +66508,15 @@ The body of an experience linked resources response
                     "minLength": 1,
                     "maxLength": 255
                   },
+                  "flowClass": {
+                    "type": "string",
+                    "enum": [
+                      "cloud",
+                      "edge",
+                      "embedded",
+                      "customNode"
+                    ]
+                  },
                   "notes": {
                     "type": "string",
                     "maxLength": 32767
@@ -66311,7 +66550,10 @@ The body of an experience linked resources response
                                 "onConnect",
                                 "onDisconnect",
                                 "udp",
-                                "webhook"
+                                "webhook",
+                                "resourceJobIteration",
+                                "resourceJobIterationTimeout",
+                                "resourceJobComplete"
                               ]
                             },
                             "config": {
@@ -66347,7 +66589,10 @@ The body of an experience linked resources response
                                     "particle",
                                     "sqs",
                                     "udp",
-                                    "webhook"
+                                    "webhook",
+                                    "resourceJobIteration",
+                                    "resourceJobIterationTimeout",
+                                    "resourceJobComplete"
                                   ]
                                 },
                                 "label": {
@@ -68896,7 +69141,10 @@ The body of an experience linked resources response
                                 "onConnect",
                                 "onDisconnect",
                                 "udp",
-                                "webhook"
+                                "webhook",
+                                "resourceJobIteration",
+                                "resourceJobIterationTimeout",
+                                "resourceJobComplete"
                               ]
                             },
                             "config": {
@@ -68932,7 +69180,10 @@ The body of an experience linked resources response
                                     "particle",
                                     "sqs",
                                     "udp",
-                                    "webhook"
+                                    "webhook",
+                                    "resourceJobIteration",
+                                    "resourceJobIterationTimeout",
+                                    "resourceJobComplete"
                                   ]
                                 },
                                 "label": {
@@ -71225,8 +71476,11 @@ The body of an experience linked resources response
         "applicationId": "575ec8687ae143cd83dc4a97",
         "creationDate": "2016-06-13T04:00:00.000Z",
         "lastUpdated": "2016-06-13T04:00:00.000Z",
-        "version": "v1.2.3",
-        "notes": "Description of my workflow version",
+        "description": "Description of my workflow version",
+        "flowClass": "experience",
+        "versions": [
+          "v1.2.3"
+        ],
         "enabled": true,
         "triggers": [],
         "nodes": [],
@@ -73566,7 +73820,10 @@ Schema for a single Workflow
                   "onConnect",
                   "onDisconnect",
                   "udp",
-                  "webhook"
+                  "webhook",
+                  "resourceJobIteration",
+                  "resourceJobIterationTimeout",
+                  "resourceJobComplete"
                 ]
               },
               "config": {
@@ -73602,7 +73859,10 @@ Schema for a single Workflow
                       "particle",
                       "sqs",
                       "udp",
-                      "webhook"
+                      "webhook",
+                      "resourceJobIteration",
+                      "resourceJobIterationTimeout",
+                      "resourceJobComplete"
                     ]
                   },
                   "label": {
@@ -76382,7 +76642,10 @@ Schema for the body of a Workflow modification request
                   "onConnect",
                   "onDisconnect",
                   "udp",
-                  "webhook"
+                  "webhook",
+                  "resourceJobIteration",
+                  "resourceJobIterationTimeout",
+                  "resourceJobComplete"
                 ]
               },
               "config": {
@@ -76418,7 +76681,10 @@ Schema for the body of a Workflow modification request
                       "particle",
                       "sqs",
                       "udp",
-                      "webhook"
+                      "webhook",
+                      "resourceJobIteration",
+                      "resourceJobIterationTimeout",
+                      "resourceJobComplete"
                     ]
                   },
                   "label": {
@@ -78953,7 +79219,10 @@ Schema for the body of a Workflow creation request
                   "onConnect",
                   "onDisconnect",
                   "udp",
-                  "webhook"
+                  "webhook",
+                  "resourceJobIteration",
+                  "resourceJobIterationTimeout",
+                  "resourceJobComplete"
                 ]
               },
               "config": {
@@ -78989,7 +79258,10 @@ Schema for the body of a Workflow creation request
                       "particle",
                       "sqs",
                       "udp",
-                      "webhook"
+                      "webhook",
+                      "resourceJobIteration",
+                      "resourceJobIterationTimeout",
+                      "resourceJobComplete"
                     ]
                   },
                   "label": {
@@ -81639,8 +81911,8 @@ Schema for the result of get storage metadata request
 
 ```json
 {
-  "memoryUsage": 610,
-  "keyCount": 2
+  "memoryUsed": 610,
+  "keysCount": 2
 }
 ```
 
@@ -81729,6 +82001,15 @@ Schema for a single Workflow Version
           "minLength": 1,
           "maxLength": 255
         },
+        "flowClass": {
+          "type": "string",
+          "enum": [
+            "cloud",
+            "edge",
+            "embedded",
+            "customNode"
+          ]
+        },
         "notes": {
           "type": "string",
           "maxLength": 32767
@@ -81762,7 +82043,10 @@ Schema for a single Workflow Version
                       "onConnect",
                       "onDisconnect",
                       "udp",
-                      "webhook"
+                      "webhook",
+                      "resourceJobIteration",
+                      "resourceJobIterationTimeout",
+                      "resourceJobComplete"
                     ]
                   },
                   "config": {
@@ -81798,7 +82082,10 @@ Schema for a single Workflow Version
                           "particle",
                           "sqs",
                           "udp",
-                          "webhook"
+                          "webhook",
+                          "resourceJobIteration",
+                          "resourceJobIterationTimeout",
+                          "resourceJobComplete"
                         ]
                       },
                       "label": {
@@ -84347,7 +84634,10 @@ Schema for a single Workflow Version
                       "onConnect",
                       "onDisconnect",
                       "udp",
-                      "webhook"
+                      "webhook",
+                      "resourceJobIteration",
+                      "resourceJobIterationTimeout",
+                      "resourceJobComplete"
                     ]
                   },
                   "config": {
@@ -84383,7 +84673,10 @@ Schema for a single Workflow Version
                           "particle",
                           "sqs",
                           "udp",
-                          "webhook"
+                          "webhook",
+                          "resourceJobIteration",
+                          "resourceJobIterationTimeout",
+                          "resourceJobComplete"
                         ]
                       },
                       "label": {
@@ -86547,8 +86840,11 @@ Schema for a single Workflow Version
   "applicationId": "575ec8687ae143cd83dc4a97",
   "creationDate": "2016-06-13T04:00:00.000Z",
   "lastUpdated": "2016-06-13T04:00:00.000Z",
-  "version": "v1.2.3",
-  "notes": "Description of my workflow version",
+  "description": "Description of my workflow version",
+  "flowClass": "experience",
+  "versions": [
+    "v1.2.3"
+  ],
   "enabled": true,
   "triggers": [],
   "nodes": [],
@@ -86640,7 +86936,10 @@ Schema for the body of a Workflow Version creation request
                   "onConnect",
                   "onDisconnect",
                   "udp",
-                  "webhook"
+                  "webhook",
+                  "resourceJobIteration",
+                  "resourceJobIterationTimeout",
+                  "resourceJobComplete"
                 ]
               },
               "config": {
@@ -86676,7 +86975,10 @@ Schema for the body of a Workflow Version creation request
                       "particle",
                       "sqs",
                       "udp",
-                      "webhook"
+                      "webhook",
+                      "resourceJobIteration",
+                      "resourceJobIterationTimeout",
+                      "resourceJobComplete"
                     ]
                   },
                   "label": {
@@ -89185,6 +89487,15 @@ Schema for a collection of Workflow Versions
                 "minLength": 1,
                 "maxLength": 255
               },
+              "flowClass": {
+                "type": "string",
+                "enum": [
+                  "cloud",
+                  "edge",
+                  "embedded",
+                  "customNode"
+                ]
+              },
               "notes": {
                 "type": "string",
                 "maxLength": 32767
@@ -89218,7 +89529,10 @@ Schema for a collection of Workflow Versions
                             "onConnect",
                             "onDisconnect",
                             "udp",
-                            "webhook"
+                            "webhook",
+                            "resourceJobIteration",
+                            "resourceJobIterationTimeout",
+                            "resourceJobComplete"
                           ]
                         },
                         "config": {
@@ -89254,7 +89568,10 @@ Schema for a collection of Workflow Versions
                                 "particle",
                                 "sqs",
                                 "udp",
-                                "webhook"
+                                "webhook",
+                                "resourceJobIteration",
+                                "resourceJobIterationTimeout",
+                                "resourceJobComplete"
                               ]
                             },
                             "label": {
@@ -91803,7 +92120,10 @@ Schema for a collection of Workflow Versions
                             "onConnect",
                             "onDisconnect",
                             "udp",
-                            "webhook"
+                            "webhook",
+                            "resourceJobIteration",
+                            "resourceJobIterationTimeout",
+                            "resourceJobComplete"
                           ]
                         },
                         "config": {
@@ -91839,7 +92159,10 @@ Schema for a collection of Workflow Versions
                                 "particle",
                                 "sqs",
                                 "udp",
-                                "webhook"
+                                "webhook",
+                                "resourceJobIteration",
+                                "resourceJobIterationTimeout",
+                                "resourceJobComplete"
                               ]
                             },
                             "label": {
@@ -94047,8 +94370,11 @@ Schema for a collection of Workflow Versions
       "applicationId": "575ec8687ae143cd83dc4a97",
       "creationDate": "2016-06-13T04:00:00.000Z",
       "lastUpdated": "2016-06-13T04:00:00.000Z",
-      "version": "v1.2.3",
-      "notes": "Description of my workflow version",
+      "description": "Description of my workflow version",
+      "flowClass": "experience",
+      "versions": [
+        "v1.2.3"
+      ],
       "enabled": true,
       "triggers": [],
       "nodes": [],
@@ -95197,7 +95523,10 @@ Schema for a collection of Workflows
                         "onConnect",
                         "onDisconnect",
                         "udp",
-                        "webhook"
+                        "webhook",
+                        "resourceJobIteration",
+                        "resourceJobIterationTimeout",
+                        "resourceJobComplete"
                       ]
                     },
                     "config": {
@@ -95233,7 +95562,10 @@ Schema for a collection of Workflows
                             "particle",
                             "sqs",
                             "udp",
-                            "webhook"
+                            "webhook",
+                            "resourceJobIteration",
+                            "resourceJobIterationTimeout",
+                            "resourceJobComplete"
                           ]
                         },
                         "label": {
@@ -97890,7 +98222,10 @@ Schema for the body of a workflow import request
                         "onConnect",
                         "onDisconnect",
                         "udp",
-                        "webhook"
+                        "webhook",
+                        "resourceJobIteration",
+                        "resourceJobIterationTimeout",
+                        "resourceJobComplete"
                       ]
                     },
                     "config": {
@@ -97926,7 +98261,10 @@ Schema for the body of a workflow import request
                             "particle",
                             "sqs",
                             "udp",
-                            "webhook"
+                            "webhook",
+                            "resourceJobIteration",
+                            "resourceJobIterationTimeout",
+                            "resourceJobComplete"
                           ]
                         },
                         "label": {
@@ -100462,7 +100800,10 @@ Schema for the body of a workflow import request
                         "onConnect",
                         "onDisconnect",
                         "udp",
-                        "webhook"
+                        "webhook",
+                        "resourceJobIteration",
+                        "resourceJobIterationTimeout",
+                        "resourceJobComplete"
                       ]
                     },
                     "config": {
@@ -100498,7 +100839,10 @@ Schema for the body of a workflow import request
                             "particle",
                             "sqs",
                             "udp",
-                            "webhook"
+                            "webhook",
+                            "resourceJobIteration",
+                            "resourceJobIterationTimeout",
+                            "resourceJobComplete"
                           ]
                         },
                         "label": {
@@ -102958,21 +103302,8 @@ Schema for the body of a workflow import request
 {
   "flows": [
     {
-      "id": "575ed18f7ae143cd83dc4aa6",
-      "flowId": "575ed18f7ae143cd83dc4aa6",
-      "applicationId": "575ec8687ae143cd83dc4a97",
-      "creationDate": "2016-06-13T04:00:00.000Z",
-      "lastUpdated": "2016-06-13T04:00:00.000Z",
-      "name": "My Workflow",
-      "description": "Description of my empty workflow",
-      "enabled": true,
-      "triggers": [],
-      "nodes": [],
-      "globals": [],
-      "stats": {
-        "runCount": 0,
-        "errorCount": 0
-      }
+      "name": "My New Workflow",
+      "description": "Description of my new workflow"
     }
   ],
   "flowVersions": []
@@ -103098,7 +103429,10 @@ Schema for the result of a workflow import request
                         "onConnect",
                         "onDisconnect",
                         "udp",
-                        "webhook"
+                        "webhook",
+                        "resourceJobIteration",
+                        "resourceJobIterationTimeout",
+                        "resourceJobComplete"
                       ]
                     },
                     "config": {
@@ -103134,7 +103468,10 @@ Schema for the result of a workflow import request
                             "particle",
                             "sqs",
                             "udp",
-                            "webhook"
+                            "webhook",
+                            "resourceJobIteration",
+                            "resourceJobIterationTimeout",
+                            "resourceJobComplete"
                           ]
                         },
                         "label": {
@@ -105655,6 +105992,15 @@ Schema for the result of a workflow import request
                 "minLength": 1,
                 "maxLength": 255
               },
+              "flowClass": {
+                "type": "string",
+                "enum": [
+                  "cloud",
+                  "edge",
+                  "embedded",
+                  "customNode"
+                ]
+              },
               "notes": {
                 "type": "string",
                 "maxLength": 32767
@@ -105688,7 +106034,10 @@ Schema for the result of a workflow import request
                             "onConnect",
                             "onDisconnect",
                             "udp",
-                            "webhook"
+                            "webhook",
+                            "resourceJobIteration",
+                            "resourceJobIterationTimeout",
+                            "resourceJobComplete"
                           ]
                         },
                         "config": {
@@ -105724,7 +106073,10 @@ Schema for the result of a workflow import request
                                 "particle",
                                 "sqs",
                                 "udp",
-                                "webhook"
+                                "webhook",
+                                "resourceJobIteration",
+                                "resourceJobIterationTimeout",
+                                "resourceJobComplete"
                               ]
                             },
                             "label": {
@@ -108273,7 +108625,10 @@ Schema for the result of a workflow import request
                             "onConnect",
                             "onDisconnect",
                             "udp",
-                            "webhook"
+                            "webhook",
+                            "resourceJobIteration",
+                            "resourceJobIterationTimeout",
+                            "resourceJobComplete"
                           ]
                         },
                         "config": {
@@ -108309,7 +108664,10 @@ Schema for the result of a workflow import request
                                 "particle",
                                 "sqs",
                                 "udp",
-                                "webhook"
+                                "webhook",
+                                "resourceJobIteration",
+                                "resourceJobIterationTimeout",
+                                "resourceJobComplete"
                               ]
                             },
                             "label": {
@@ -110597,6 +110955,8 @@ Schema for the body of a Github login request
                   "flows.*",
                   "flowVersion.*",
                   "flowVersions.*",
+                  "resourceJobs.*",
+                  "resourceJob.*",
                   "notebook.*",
                   "notebooks.*",
                   "webhook.*",
@@ -110809,6 +111169,14 @@ Schema for the body of a Github login request
                   "notebook.upload",
                   "notebooks.get",
                   "notebooks.post",
+                  "resourceJob.get",
+                  "resourceJob.logs",
+                  "resourceJob.patch",
+                  "resourceJob.delete",
+                  "resourceJob.execute",
+                  "resourceJob.cancelExecution",
+                  "resourceJobs.get",
+                  "resourceJobs.post",
                   "webhook.delete",
                   "webhook.get",
                   "webhook.patch",
@@ -110996,7 +111364,530 @@ Schema for a collection of Historical Summaries
     "items": {
       "type": "array",
       "items": {
-        "type": "#/definitions/historicalSummary"
+        "title": "Historical Summary",
+        "description": "Schema for a historical summary report",
+        "type": "object",
+        "properties": {
+          "resourceType": {
+            "type": "string",
+            "enum": [
+              "application",
+              "organization",
+              "whitelabel"
+            ]
+          },
+          "resourceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "resourceName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "resourceProration": {
+            "type": "number"
+          },
+          "ownerType": {
+            "type": "string",
+            "enum": [
+              "organization",
+              "user"
+            ]
+          },
+          "ownerId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "ownerName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "limits": {
+            "type": "object",
+            "properties": {
+              "apitoken": {
+                "type": "integer"
+              },
+              "application": {
+                "type": "integer"
+              },
+              "applicationkey": {
+                "type": "integer"
+              },
+              "dashboard": {
+                "type": "integer"
+              },
+              "datatable": {
+                "type": "integer"
+              },
+              "device": {
+                "type": "integer"
+              },
+              "devicerecipe": {
+                "type": "integer"
+              },
+              "experiencedomain": {
+                "type": "integer"
+              },
+              "experienceendpoint": {
+                "type": "integer"
+              },
+              "experiencegroup": {
+                "type": "integer"
+              },
+              "experienceslug": {
+                "type": "integer"
+              },
+              "experienceuser": {
+                "type": "integer"
+              },
+              "experienceversion": {
+                "type": "integer"
+              },
+              "experienceview": {
+                "type": "integer"
+              },
+              "file": {
+                "type": "integer"
+              },
+              "flow": {
+                "type": "integer"
+              },
+              "integration": {
+                "type": "integer"
+              },
+              "notebook": {
+                "type": "integer"
+              },
+              "resourcejob": {
+                "type": "integer"
+              },
+              "webhook": {
+                "type": "integer"
+              },
+              "dataTTL": {
+                "type": "integer"
+              },
+              "member": {
+                "type": "integer"
+              },
+              "payload": {
+                "type": "integer"
+              },
+              "storage": {
+                "type": "integer"
+              },
+              "notebookMinutesPerRun": {
+                "type": "integer"
+              },
+              "notebookMinutesPerMonth": {
+                "type": "integer"
+              },
+              "notebookInParallel": {
+                "type": "integer"
+              },
+              "experienceFlowSlots": {
+                "type": "integer"
+              },
+              "applicationFlowSlots": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false
+          },
+          "currentPeriodStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "currentPeriodEnd": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "applicationCount": {
+            "type": "number"
+          },
+          "applicationCountProrated": {
+            "type": "number"
+          },
+          "userCount": {
+            "type": "number"
+          },
+          "userCountProrated": {
+            "type": "number"
+          },
+          "apiTokenCount": {
+            "type": "number"
+          },
+          "applicationKeyCount": {
+            "type": "number"
+          },
+          "certificateAuthorityCount": {
+            "type": "number"
+          },
+          "certificateCount": {
+            "type": "number"
+          },
+          "dashboardCount": {
+            "type": "number"
+          },
+          "dashboardCountProrated": {
+            "type": "number"
+          },
+          "dataTableCount": {
+            "type": "number"
+          },
+          "dataTableRowCount": {
+            "type": "number"
+          },
+          "dataTableTotalSizeMb": {
+            "type": "number"
+          },
+          "deviceCount": {
+            "type": "number"
+          },
+          "deviceCountProrated": {
+            "type": "number"
+          },
+          "deviceRecipeCount": {
+            "type": "number"
+          },
+          "eventCount": {
+            "type": "number"
+          },
+          "experienceDomainCount": {
+            "type": "number"
+          },
+          "experienceEndpointCount": {
+            "type": "number"
+          },
+          "experienceGroupCount": {
+            "type": "number"
+          },
+          "experienceSlugCount": {
+            "type": "number"
+          },
+          "experienceUserCount": {
+            "type": "number"
+          },
+          "experienceVersionCount": {
+            "type": "number"
+          },
+          "experienceViewCount": {
+            "type": "number"
+          },
+          "fileCount": {
+            "type": "number"
+          },
+          "fileTotalSizeMb": {
+            "type": "number"
+          },
+          "integrationCount": {
+            "type": "number"
+          },
+          "notebookCount": {
+            "type": "number"
+          },
+          "resourceJobCount": {
+            "type": "integer"
+          },
+          "notebookRunCount": {
+            "type": "number"
+          },
+          "notebookMinutesCount": {
+            "type": "number"
+          },
+          "webhookCount": {
+            "type": "number"
+          },
+          "workflowCount": {
+            "type": "number"
+          },
+          "payloadBillableCount": {
+            "type": "number"
+          },
+          "payloadNonbillableCount": {
+            "type": "number"
+          },
+          "payloadBillableSizeMb": {
+            "type": "number"
+          },
+          "payloadNonbillableSizeMb": {
+            "type": "number"
+          },
+          "payloadCountDetails": {
+            "title": "Payload Stats",
+            "description": "Schema for the result of a payload stats request",
+            "type": "object",
+            "properties": {
+              "dataTable": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "deviceCommand": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "deviceConnect": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "deviceDisconnect": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "deviceState": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "endpoint": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "event": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "flowError": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "integration": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "mqttIn": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "mqttOut": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "notebook": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "timer": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "virtualButton": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "webhook": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "resourceJob": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "payloadSizeDetails": {
+            "title": "Payload Stats",
+            "description": "Schema for the result of a payload stats request",
+            "type": "object",
+            "properties": {
+              "dataTable": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "deviceCommand": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "deviceConnect": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "deviceDisconnect": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "deviceState": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "endpoint": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "event": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "flowError": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "integration": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "mqttIn": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "mqttOut": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "notebook": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "timer": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "virtualButton": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "webhook": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "resourceJob": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "additionalProperties": false
       }
     },
     "count": {
@@ -111071,6 +111962,7 @@ Schema for a collection of Historical Summaries
       "fileTotalSizeMb": 0,
       "integrationCount": 0,
       "notebookCount": 0,
+      "resourceJobCount": 0,
       "notebookRunCount": 0,
       "notebookMinutesCount": 0,
       "webhookCount": 2,
@@ -111212,6 +112104,9 @@ Schema for a historical summary report
         "notebook": {
           "type": "integer"
         },
+        "resourcejob": {
+          "type": "integer"
+        },
         "webhook": {
           "type": "integer"
         },
@@ -111336,6 +112231,9 @@ Schema for a historical summary report
     },
     "notebookCount": {
       "type": "number"
+    },
+    "resourceJobCount": {
+      "type": "integer"
     },
     "notebookRunCount": {
       "type": "number"
@@ -111485,6 +112383,14 @@ Schema for a historical summary report
               "type": "number"
             }
           }
+        },
+        "resourceJob": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
         }
       }
     },
@@ -111612,6 +112518,14 @@ Schema for a historical summary report
               "type": "number"
             }
           }
+        },
+        "resourceJob": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
         }
       }
     }
@@ -111655,6 +112569,7 @@ Schema for a historical summary report
   "fileTotalSizeMb": 0,
   "integrationCount": 0,
   "notebookCount": 0,
+  "resourceJobCount": 0,
   "notebookRunCount": 0,
   "notebookMinutesCount": 0,
   "webhookCount": 2,
@@ -111719,6 +112634,10 @@ Schema for additional application import options
       "type": "boolean",
       "default": false
     },
+    "forceJob": {
+      "type": "boolean",
+      "default": false
+    },
     "include": {
       "type": "array",
       "items": {
@@ -111742,7 +112661,8 @@ Schema for additional application import options
           "Global",
           "Integration",
           "Notebook",
-          "Webhook"
+          "Webhook",
+          "ResourceJob"
         ]
       },
       "uniqueItems": true
@@ -111809,10 +112729,15 @@ Schema for additional application import options (new application)
           "Global",
           "Integration",
           "Notebook",
-          "Webhook"
+          "Webhook",
+          "ResourceJob"
         ]
       },
       "uniqueItems": true
+    },
+    "forceJob": {
+      "type": "boolean",
+      "default": false
     }
   },
   "additionalProperties": false
@@ -111940,6 +112865,12 @@ Schema for a single Instance
         "application": {
           "type": "integer"
         },
+        "applicationcertificate": {
+          "type": "integer"
+        },
+        "applicationcertificateauthority": {
+          "type": "integer"
+        },
         "applicationkey": {
           "type": "integer"
         },
@@ -111988,6 +112919,9 @@ Schema for a single Instance
         "notebook": {
           "type": "integer"
         },
+        "resourcejob": {
+          "type": "integer"
+        },
         "webhook": {
           "type": "integer"
         },
@@ -112016,6 +112950,9 @@ Schema for a single Instance
           "type": "integer"
         },
         "applicationFlowSlots": {
+          "type": "integer"
+        },
+        "systemInterval": {
           "type": "integer"
         }
       },
@@ -112073,6 +113010,7 @@ Schema for a single Instance
     "flow": 1000,
     "integration": 50,
     "notebook": 100,
+    "resourcejob": 10,
     "webhook": 1000,
     "dataTTL": 15552000,
     "member": 100,
@@ -112820,7 +113758,10 @@ Schema for the body of a Instance Custom Node modification request
                   "onConnect",
                   "onDisconnect",
                   "udp",
-                  "webhook"
+                  "webhook",
+                  "resourceJobIteration",
+                  "resourceJobIterationTimeout",
+                  "resourceJobComplete"
                 ]
               },
               "config": {
@@ -112856,7 +113797,10 @@ Schema for the body of a Instance Custom Node modification request
                       "particle",
                       "sqs",
                       "udp",
-                      "webhook"
+                      "webhook",
+                      "resourceJobIteration",
+                      "resourceJobIterationTimeout",
+                      "resourceJobComplete"
                     ]
                   },
                   "label": {
@@ -113514,7 +114458,10 @@ Schema for the body of a Instance Custom Node creation request
                   "onConnect",
                   "onDisconnect",
                   "udp",
-                  "webhook"
+                  "webhook",
+                  "resourceJobIteration",
+                  "resourceJobIterationTimeout",
+                  "resourceJobComplete"
                 ]
               },
               "config": {
@@ -113550,7 +114497,10 @@ Schema for the body of a Instance Custom Node creation request
                       "particle",
                       "sqs",
                       "udp",
-                      "webhook"
+                      "webhook",
+                      "resourceJobIteration",
+                      "resourceJobIterationTimeout",
+                      "resourceJobComplete"
                     ]
                   },
                   "label": {
@@ -115195,6 +116145,9 @@ Schema for the body of an Organization owned by an instance
         "notebook": {
           "type": "integer"
         },
+        "resourcejob": {
+          "type": "integer"
+        },
         "webhook": {
           "type": "integer"
         },
@@ -115298,7 +116251,7 @@ Schema for the body of an Organization owned by an instance
   "id": "60106426dc03c6aad06540bb",
   "instanceId": "60106426dc03c6aad06560ba",
   "limits": {
-    "members": 500
+    "member": 500
   },
   "auditLogEnabled": true
 }
@@ -115370,14 +116323,7 @@ Schema for an Instance Organization member
 ```json
 {
   "userId": "575ef90f7ae143cd83dc4aad",
-  "role": "view",
-  "applicationRoles": [
-    {
-      "resourceId": "575ef90f7ae143cd83dc4a4f",
-      "role": "none"
-    }
-  ],
-  "dashboardRoles": []
+  "role": "view"
 }
 ```
 
@@ -115713,14 +116659,7 @@ Schema for a collection of Organization members within an instance
   "items": [
     {
       "userId": "575ef90f7ae143cd83dc4aad",
-      "role": "view",
-      "applicationRoles": [
-        {
-          "resourceId": "575ef90f7ae143cd83dc4a4f",
-          "role": "none"
-        }
-      ],
-      "dashboardRoles": []
+      "role": "view"
     }
   ],
   "count": 8,
@@ -115830,6 +116769,10 @@ Schema for the body of an Organization modification request within an instance
           "type": "integer",
           "minimum": 0
         },
+        "resourcejob": {
+          "type": "integer",
+          "minimum": 0
+        },
         "webhook": {
           "type": "integer",
           "minimum": 0
@@ -115935,7 +116878,7 @@ Schema for the body of an Organization modification request within an instance
 {
   "name": "My Org",
   "limits": {
-    "members": 500
+    "member": 500
   },
   "auditLogEnabled": true
 }
@@ -116039,6 +116982,10 @@ Schema for the body of an Organization creation request within an instance
           "minimum": 0
         },
         "notebook": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "resourcejob": {
           "type": "integer",
           "minimum": 0
         },
@@ -116428,6 +117375,9 @@ Schema for a collection of Organizations within an instance
               "notebook": {
                 "type": "integer"
               },
+              "resourcejob": {
+                "type": "integer"
+              },
               "webhook": {
                 "type": "integer"
               },
@@ -116571,7 +117521,7 @@ Schema for a collection of Organizations within an instance
       "id": "60106426dc03c6aad06540bb",
       "instanceId": "60106426dc03c6aad06560ba",
       "limits": {
-        "members": 500
+        "member": 500
       },
       "auditLogEnabled": true
     }
@@ -116669,14 +117619,15 @@ Schema for instance patch request
 {
   "reportConfigs": [
     {
-      "email": [
+      "emails": [
         "email@example.com"
       ],
       "callbackUrl": "https://example.com/callback",
       "resourceGroupBy": "organization",
       "dateGroupBy": "month",
       "includeSandbox": false,
-      "periods": 3
+      "periods": 3,
+      "cron": "0 4 1 * *"
     },
     {
       "emails": [
@@ -116685,7 +117636,8 @@ Schema for instance patch request
       ],
       "resourceGroupBy": "application",
       "dateGroupBy": "month",
-      "includeSandbox": true
+      "includeSandbox": true,
+      "cron": "0 4 1 * *"
     }
   ]
 }
@@ -116928,6 +117880,9 @@ Schema for information about a sandbox user within an instance domain
         "notebook": {
           "type": "integer"
         },
+        "resourcejob": {
+          "type": "integer"
+        },
         "webhook": {
           "type": "integer"
         },
@@ -117136,6 +118091,14 @@ Schema for information about a sandbox user within an instance domain
                   "type": "number"
                 }
               }
+            },
+            "resourceJob": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
             }
           }
         },
@@ -117246,7 +118209,439 @@ Schema for a collection of instance associated sandboxes
     "items": {
       "type": "array",
       "items": {
-        "type": "#/definitions/instanceSandbox"
+        "title": "Instance Sandbox User",
+        "description": "Schema for information about a sandbox user within an instance domain",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "instanceSandboxId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "instanceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "permanentDeletion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dataDeletion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastSuccessfulLogin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastFailedLogin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "failedLoginCount": {
+            "type": "number"
+          },
+          "passwordLastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 1024
+          },
+          "firstName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "lastName": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "companyName": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "phoneNumber": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "location": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "url": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "tokenCutoff": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "emailVerified": {
+            "type": "boolean"
+          },
+          "needsToVerifyEmail": {
+            "type": "boolean"
+          },
+          "twoFactorAuthEnabled": {
+            "type": "boolean"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "githubName": {
+            "type": "string"
+          },
+          "avatarUrl": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 1024
+          },
+          "limits": {
+            "type": "object",
+            "properties": {
+              "apitoken": {
+                "type": "integer"
+              },
+              "application": {
+                "type": "integer"
+              },
+              "applicationkey": {
+                "type": "integer"
+              },
+              "dashboard": {
+                "type": "integer"
+              },
+              "datatable": {
+                "type": "integer"
+              },
+              "device": {
+                "type": "integer"
+              },
+              "devicerecipe": {
+                "type": "integer"
+              },
+              "experiencedomain": {
+                "type": "integer"
+              },
+              "experienceendpoint": {
+                "type": "integer"
+              },
+              "experiencegroup": {
+                "type": "integer"
+              },
+              "experienceslug": {
+                "type": "integer"
+              },
+              "experienceuser": {
+                "type": "integer"
+              },
+              "experienceversion": {
+                "type": "integer"
+              },
+              "experienceview": {
+                "type": "integer"
+              },
+              "file": {
+                "type": "integer"
+              },
+              "flow": {
+                "type": "integer"
+              },
+              "integration": {
+                "type": "integer"
+              },
+              "notebook": {
+                "type": "integer"
+              },
+              "resourcejob": {
+                "type": "integer"
+              },
+              "webhook": {
+                "type": "integer"
+              },
+              "dataTTL": {
+                "type": "integer"
+              },
+              "payload": {
+                "type": "integer"
+              },
+              "storage": {
+                "type": "integer"
+              },
+              "notebookMinutesPerRun": {
+                "type": "integer"
+              },
+              "notebookMinutesPerMonth": {
+                "type": "integer"
+              },
+              "notebookInParallel": {
+                "type": "integer"
+              },
+              "experienceFlowSlots": {
+                "type": "integer"
+              },
+              "applicationFlowSlots": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false
+          },
+          "summary": {
+            "type": "object",
+            "properties": {
+              "apiTokenCount": {
+                "type": "integer"
+              },
+              "appCount": {
+                "type": "integer"
+              },
+              "dashCount": {
+                "type": "integer"
+              },
+              "dataTableCount": {
+                "type": "integer"
+              },
+              "deviceCount": {
+                "type": "integer"
+              },
+              "deviceRecipeCount": {
+                "type": "integer"
+              },
+              "experienceEndpointCount": {
+                "type": "integer"
+              },
+              "experienceGroupCount": {
+                "type": "integer"
+              },
+              "experienceSlugCount": {
+                "type": "integer"
+              },
+              "experienceUserCount": {
+                "type": "integer"
+              },
+              "experienceVersionCount": {
+                "type": "integer"
+              },
+              "experienceViewCount": {
+                "type": "integer"
+              },
+              "fileCount": {
+                "type": "integer"
+              },
+              "flowCount": {
+                "type": "integer"
+              },
+              "integrationCount": {
+                "type": "integer"
+              },
+              "keyCount": {
+                "type": "integer"
+              },
+              "orgCount": {
+                "type": "integer"
+              },
+              "payloadCount": {
+                "title": "Payload Stats",
+                "description": "Schema for the result of a payload stats request",
+                "type": "object",
+                "properties": {
+                  "dataTable": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "deviceCommand": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "deviceConnect": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "deviceDisconnect": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "deviceState": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "endpoint": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "event": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "flowError": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "integration": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "mqttIn": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "mqttOut": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "notebook": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "timer": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "virtualButton": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "webhook": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "resourceJob": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              },
+              "storageStats": {
+                "type": "object",
+                "properties": {
+                  "count": {
+                    "type": "integer"
+                  },
+                  "size": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "webhookCount": {
+                "type": "integer"
+              }
+            }
+          },
+          "currentPeriodStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "currentPeriodEnd": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ssoLinked": {
+            "type": "boolean"
+          },
+          "orgs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "iconColor": {
+                  "type": "string",
+                  "maxLength": 64
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                }
+              }
+            }
+          }
+        }
       }
     },
     "count": {
@@ -117389,7 +118784,223 @@ Schema for a collection of Instances
     "items": {
       "type": "array",
       "items": {
-        "type": "#/definitions/instance"
+        "title": "Instance",
+        "description": "Schema for a single Instance",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "instanceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "allowAuditLogging": {
+            "type": "boolean"
+          },
+          "reportConfigs": {
+            "type": "array",
+            "maxItems": 10,
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "maxLength": 48
+                },
+                "cron": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "timezone": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "emails": {
+                  "type": "array",
+                  "maxItems": 10,
+                  "items": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 1024
+                  }
+                },
+                "callbackUrl": {
+                  "type": "string",
+                  "format": "uri",
+                  "maxLength": 1024
+                },
+                "resourceGroupBy": {
+                  "type": "string",
+                  "enum": [
+                    "application",
+                    "organization"
+                  ]
+                },
+                "dateGroupBy": {
+                  "type": "string",
+                  "enum": [
+                    "day",
+                    "month"
+                  ]
+                },
+                "periods": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 90
+                },
+                "includeSandbox": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "cron"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "limits": {
+            "type": "object",
+            "properties": {
+              "organization": {
+                "type": "integer"
+              },
+              "apitoken": {
+                "type": "integer"
+              },
+              "application": {
+                "type": "integer"
+              },
+              "applicationcertificate": {
+                "type": "integer"
+              },
+              "applicationcertificateauthority": {
+                "type": "integer"
+              },
+              "applicationkey": {
+                "type": "integer"
+              },
+              "dashboard": {
+                "type": "integer"
+              },
+              "datatable": {
+                "type": "integer"
+              },
+              "device": {
+                "type": "integer"
+              },
+              "devicerecipe": {
+                "type": "integer"
+              },
+              "experiencedomain": {
+                "type": "integer"
+              },
+              "experienceendpoint": {
+                "type": "integer"
+              },
+              "experiencegroup": {
+                "type": "integer"
+              },
+              "experienceslug": {
+                "type": "integer"
+              },
+              "experienceuser": {
+                "type": "integer"
+              },
+              "experienceversion": {
+                "type": "integer"
+              },
+              "experienceview": {
+                "type": "integer"
+              },
+              "file": {
+                "type": "integer"
+              },
+              "flow": {
+                "type": "integer"
+              },
+              "integration": {
+                "type": "integer"
+              },
+              "notebook": {
+                "type": "integer"
+              },
+              "resourcejob": {
+                "type": "integer"
+              },
+              "webhook": {
+                "type": "integer"
+              },
+              "dataTTL": {
+                "type": "integer"
+              },
+              "member": {
+                "type": "integer"
+              },
+              "payload": {
+                "type": "integer"
+              },
+              "storage": {
+                "type": "integer"
+              },
+              "notebookMinutesPerRun": {
+                "type": "integer"
+              },
+              "notebookMinutesPerMonth": {
+                "type": "integer"
+              },
+              "notebookInParallel": {
+                "type": "integer"
+              },
+              "experienceFlowSlots": {
+                "type": "integer"
+              },
+              "applicationFlowSlots": {
+                "type": "integer"
+              },
+              "systemInterval": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "admin",
+                    "edit",
+                    "collaborate",
+                    "view",
+                    "none"
+                  ]
+                }
+              }
+            }
+          }
+        }
       }
     },
     "count": {
@@ -117456,6 +119067,7 @@ Schema for a collection of Instances
         "flow": 1000,
         "integration": 50,
         "notebook": 100,
+        "resourcejob": 10,
         "webhook": 1000,
         "dataTTL": 15552000,
         "member": 100,
@@ -119047,6 +120659,9 @@ Schema for information about the currently authenticated user
         "notebook": {
           "type": "integer"
         },
+        "resourcejob": {
+          "type": "integer"
+        },
         "webhook": {
           "type": "integer"
         },
@@ -119369,6 +120984,14 @@ Schema for information about the currently authenticated user
                   "type": "number"
                 }
               }
+            },
+            "resourceJob": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
             }
           }
         },
@@ -119504,7 +121127,7 @@ Schema for the body of request to modify the current user
   "lastName": "Name",
   "companyName": "Example, Inc.",
   "url": "https://example.com",
-  "password": "my new password"
+  "password": "My new password!!1"
 }
 ```
 
@@ -121230,7 +122853,7 @@ Schema for the body of a request to send a command to multiple Devices
   "deviceTags": [
     {
       "key": "floor",
-      "value": 8
+      "value": "8"
     }
   ]
 }
@@ -122144,7 +123767,9 @@ Schema for a set of Notebook execution logs
           "inProgress",
           "completed",
           "errored",
-          "timeout"
+          "timeout",
+          "canceling",
+          "canceled"
         ]
       },
       "executionRelativeTo": {
@@ -124648,6 +126273,9 @@ Schema for a single Organization
         "notebook": {
           "type": "integer"
         },
+        "resourcejob": {
+          "type": "integer"
+        },
         "webhook": {
           "type": "integer"
         },
@@ -124856,6 +126484,14 @@ Schema for a single Organization
               }
             },
             "webhook": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "resourceJob": {
               "type": "object",
               "patternProperties": {
                 ".*": {
@@ -126144,6 +127780,9 @@ Schema for a collection of Organizations
               "notebook": {
                 "type": "integer"
               },
+              "resourcejob": {
+                "type": "integer"
+              },
               "webhook": {
                 "type": "integer"
               },
@@ -126352,6 +127991,14 @@ Schema for a collection of Organizations
                     }
                   },
                   "webhook": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "resourceJob": {
                     "type": "object",
                     "patternProperties": {
                       ".*": {
@@ -127401,7 +129048,7 @@ Schema for the body of a request to complete the reset password flow
 {
   "token": "the_password_reset_token",
   "email": "email@example.com",
-  "password": "the new password"
+  "password": "The new password!1"
 }
 ```
 
@@ -127608,6 +129255,14 @@ Schema for the result of a payload stats request
           "type": "number"
         }
       }
+    },
+    "resourceJob": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "number"
+        }
+      }
     }
   }
 }
@@ -127748,6 +129403,643 @@ Schema for an array of recent items
       "name": "My Other Application"
     }
   ]
+}
+```
+
+<br/>
+
+## Resource Job
+
+Schema for a single resource job
+
+### <a name="resource-job-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "resourceJobId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "dataTableId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 255,
+          "pattern": ".*{{.+}}.*"
+        }
+      ]
+    },
+    "queryJson": {
+      "type": "string",
+      "maxLength": 8192
+    },
+    "resourceType": {
+      "type": "string",
+      "enum": [
+        "dataTableRow",
+        "device"
+      ]
+    },
+    "maxIterationConcurrency": {
+      "type": "number",
+      "enum": [
+        1,
+        10
+      ]
+    },
+    "iterationDelay": {
+      "type": "number",
+      "min": 0,
+      "max": 60000
+    },
+    "iterationTimeout": {
+      "type": "number",
+      "min": 60000,
+      "max": 900000
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastExecutionRequested": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "defaultContext": {
+      "type": "string",
+      "maxLength": 32767
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="resource-job-example"></a> Example
+
+```json
+{
+  "name": "Example Resource Job",
+  "iterationDelay": 60,
+  "iterationTimeout": 60000,
+  "defaultContext": "{}",
+  "applicationId": "6328c6c026517badf9142116",
+  "maxIterationConcurrency": 1,
+  "creationDate": "2022-09-19T19:45:04.453Z",
+  "lastUpdated": "2022-09-19T19:45:04.453Z",
+  "resourceJobId": "6328c6c026517badf914211a",
+  "resourceType": "device",
+  "queryJson": "{ \"name\": \"my device\"}"
+}
+```
+
+<br/>
+
+## Resource Job Execution Logs
+
+Schema for a set of Resource Job execution logs
+
+### <a name="resource-job-execution-logs-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "applicationId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "resourceJobExecutionId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "resourceJobId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "inProgress",
+          "completed",
+          "erroring",
+          "errored",
+          "canceling",
+          "canceled"
+        ]
+      },
+      "queryJson": {
+        "type": "string",
+        "maxLength": 8192
+      },
+      "resourceType": {
+        "type": "string",
+        "enum": [
+          "dataTableRow",
+          "device"
+        ]
+      },
+      "sourceType": {
+        "type": "string",
+        "enum": [
+          "flow",
+          "user",
+          "device",
+          "apiToken",
+          "notebook"
+        ]
+      },
+      "sourceId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "cancelSourceType": {
+        "type": "string",
+        "enum": [
+          "flow",
+          "user",
+          "device",
+          "apiToken",
+          "notebook"
+        ]
+      },
+      "cancelSourceId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "runStartedAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "runCompletedAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "executionReportUrl": {
+        "type": "string"
+      },
+      "templateContext": {
+        "type": "string",
+        "maxLength": 32767
+      },
+      "iterationDelay": {
+        "type": "number",
+        "min": 0,
+        "max": 60000
+      },
+      "iterationTimeout": {
+        "type": "number",
+        "min": 60000,
+        "max": 900000
+      },
+      "maxIterationConcurrency": {
+        "type": "number",
+        "enum": [
+          1,
+          10
+        ]
+      },
+      "executionSummary": {
+        "type": "object",
+        "properties": {
+          "succeeded": {
+            "type": "number"
+          },
+          "failed": {
+            "type": "number"
+          },
+          "timedOut": {
+            "type": "number"
+          },
+          "inProgress": {
+            "type": "number"
+          },
+          "remaining": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}
+```
+### <a name="resource-job-execution-logs-example"></a> Example
+
+```json
+[
+  {
+    "id": "5c7d3f9cd32c87a49f04c260",
+    "resourceJobExecutionId": "5c7d3f9cd32c87a49f04c260",
+    "resourceJobId": "5c782b8d4f3a8e51c1db42e4",
+    "applicationId": "575ec8687ae143cd83dc4a97",
+    "runStartedAt": "2016-06-13T03:59:00.000Z",
+    "sourceId": "575ed70c7ae143cd83dc4aa9",
+    "sourceType": "user",
+    "status": "inProgress",
+    "queryJson": "{ \"deviceClass\": \"standalone\"}",
+    "templateContext": "{ \"monarchs\": [\"lizzy\", \"vicky\", \"chuck\"] }",
+    "iterationDelay": 60,
+    "iterationTimeout": 60000,
+    "maxIterationConcurrency": 1,
+    "executionSummary": {
+      "succeeded": 5,
+      "failed": 3,
+      "timedOut": 0,
+      "inProgress": 22,
+      "remaining": 15
+    }
+  }
+]
+```
+
+<br/>
+
+## Resource Job Execution Options
+
+Schema for a resource job execution configuration
+
+### <a name="resource-job-execution-options-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "templateContext": {
+      "type": "string",
+      "maxLength": 32767
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="resource-job-execution-options-example"></a> Example
+
+```json
+{
+  "templateContext": "{ \"myData\": 123 }"
+}
+```
+
+<br/>
+
+## Resource Job Patch
+
+Schema for a resource job update
+
+### <a name="resource-job-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "dataTableId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 255,
+          "pattern": ".*{{.+}}.*"
+        }
+      ]
+    },
+    "queryJson": {
+      "type": "string",
+      "maxLength": 8192
+    },
+    "maxIterationConcurrency": {
+      "type": "number",
+      "enum": [
+        1,
+        10
+      ]
+    },
+    "iterationDelay": {
+      "type": "number",
+      "min": 0,
+      "max": 60000
+    },
+    "iterationTimeout": {
+      "type": "number",
+      "min": 60000,
+      "max": 900000
+    },
+    "defaultContext": {
+      "type": "string",
+      "maxLength": 32767
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="resource-job-patch-example"></a> Example
+
+```json
+{
+  "name": "Example Resource Job",
+  "queryJson": "{ \"name\": \"my device\"}"
+}
+```
+
+<br/>
+
+## Resource Job Post
+
+Schema for a resource job creation
+
+### <a name="resource-job-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "dataTableId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 255,
+          "pattern": ".*{{.+}}.*"
+        }
+      ]
+    },
+    "queryJson": {
+      "type": "string",
+      "maxLength": 8192
+    },
+    "resourceType": {
+      "type": "string",
+      "enum": [
+        "dataTableRow",
+        "device"
+      ]
+    },
+    "maxIterationConcurrency": {
+      "type": "number",
+      "enum": [
+        1,
+        10
+      ]
+    },
+    "iterationDelay": {
+      "type": "number",
+      "min": 0,
+      "max": 60000
+    },
+    "iterationTimeout": {
+      "type": "number",
+      "min": 60000,
+      "max": 900000
+    },
+    "defaultContext": {
+      "type": "string",
+      "maxLength": 32767
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "resourceType"
+  ]
+}
+```
+### <a name="resource-job-post-example"></a> Example
+
+```json
+{
+  "name": "Example Resource Job",
+  "resourceType": "device",
+  "queryJson": "{ \"name\": \"my device\"}"
+}
+```
+
+<br/>
+
+## Resource Jobs
+
+Schema for a collection of Resource Jobs
+
+### <a name="resource-jobs-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Resource Job",
+        "description": "Schema for a single resource job",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "resourceJobId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "dataTableId": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              {
+                "type": "string",
+                "minLength": 4,
+                "maxLength": 255,
+                "pattern": ".*{{.+}}.*"
+              }
+            ]
+          },
+          "queryJson": {
+            "type": "string",
+            "maxLength": 8192
+          },
+          "resourceType": {
+            "type": "string",
+            "enum": [
+              "dataTableRow",
+              "device"
+            ]
+          },
+          "maxIterationConcurrency": {
+            "type": "number",
+            "enum": [
+              1,
+              10
+            ]
+          },
+          "iterationDelay": {
+            "type": "number",
+            "min": 0,
+            "max": 60000
+          },
+          "iterationTimeout": {
+            "type": "number",
+            "min": 60000,
+            "max": 900000
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastExecutionRequested": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "defaultContext": {
+            "type": "string",
+            "maxLength": 32767
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc",
+        "ASC",
+        "DESC",
+        ""
+      ]
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    }
+  }
+}
+```
+### <a name="resource-jobs-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "name": "Example Resource Job",
+      "iterationDelay": 60,
+      "iterationTimeout": 60000,
+      "defaultContext": "{}",
+      "applicationId": "6328c6c026517badf9142116",
+      "maxIterationConcurrency": 1,
+      "creationDate": "2022-09-19T19:45:04.453Z",
+      "lastUpdated": "2022-09-19T19:45:04.453Z",
+      "resourceJobId": "6328c6c026517badf914211a",
+      "resourceType": "device",
+      "queryJson": "{ \"name\": \"my device\"}"
+    }
+  ],
+  "count": 1,
+  "totalCount": 4,
+  "sortField": "name",
+  "sortDirection": "asc",
+  "applicationId": "575ec8687ae143cd83dc4a97"
 }
 ```
 
@@ -127901,6 +130193,8 @@ SAML Response body for login
                   "flows.*",
                   "flowVersion.*",
                   "flowVersions.*",
+                  "resourceJobs.*",
+                  "resourceJob.*",
                   "notebook.*",
                   "notebooks.*",
                   "webhook.*",
@@ -128113,6 +130407,14 @@ SAML Response body for login
                   "notebook.upload",
                   "notebooks.get",
                   "notebooks.post",
+                  "resourceJob.get",
+                  "resourceJob.logs",
+                  "resourceJob.patch",
+                  "resourceJob.delete",
+                  "resourceJob.execute",
+                  "resourceJob.cancelExecution",
+                  "resourceJobs.get",
+                  "resourceJobs.post",
                   "webhook.delete",
                   "webhook.get",
                   "webhook.patch",
@@ -128386,7 +130688,7 @@ Schema for reporting a successful operation with a corresponding execution ID
 ```json
 {
   "success": true,
-  "executionId": "89KDR0chj84e6qWC_aPFm"
+  "executionId": "575ed78e7ae143cd83dc4aab"
 }
 ```
 
@@ -129098,6 +131400,8 @@ Schema for the body of a User authentication request
                   "flows.*",
                   "flowVersion.*",
                   "flowVersions.*",
+                  "resourceJobs.*",
+                  "resourceJob.*",
                   "notebook.*",
                   "notebooks.*",
                   "webhook.*",
@@ -129310,6 +131614,14 @@ Schema for the body of a User authentication request
                   "notebook.upload",
                   "notebooks.get",
                   "notebooks.post",
+                  "resourceJob.get",
+                  "resourceJob.logs",
+                  "resourceJob.patch",
+                  "resourceJob.delete",
+                  "resourceJob.execute",
+                  "resourceJob.cancelExecution",
+                  "resourceJobs.get",
+                  "resourceJobs.post",
                   "webhook.delete",
                   "webhook.get",
                   "webhook.patch",
@@ -129632,6 +131944,8 @@ Schema for the body of a User creation request
                   "flows.*",
                   "flowVersion.*",
                   "flowVersions.*",
+                  "resourceJobs.*",
+                  "resourceJob.*",
                   "notebook.*",
                   "notebooks.*",
                   "webhook.*",
@@ -129844,6 +132158,14 @@ Schema for the body of a User creation request
                   "notebook.upload",
                   "notebooks.get",
                   "notebooks.post",
+                  "resourceJob.get",
+                  "resourceJob.logs",
+                  "resourceJob.patch",
+                  "resourceJob.delete",
+                  "resourceJob.execute",
+                  "resourceJob.cancelExecution",
+                  "resourceJobs.get",
+                  "resourceJobs.post",
                   "webhook.delete",
                   "webhook.get",
                   "webhook.patch",
@@ -130032,7 +132354,7 @@ Schema for the body of a User creation request
   "lastName": "Name",
   "companyName": "Example, Inc.",
   "url": "https://example.com",
-  "password": "the new password",
+  "password": "The new password1!",
   "acceptTerms": "on"
 }
 ```
@@ -130055,6 +132377,10 @@ Schema for the result of a validateContext call when invalid context is passed
     },
     "message": {
       "type": "string"
+    },
+    "invalidCtxName": {
+      "type": "string",
+      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
     },
     "ctx": {
       "type": "object",
@@ -130468,15 +132794,7 @@ Schema for validation errors returned by the API
             "type": "string"
           },
           "id": {
-            "oneOf": [
-              {
-                "type": "string",
-                "pattern": "^[A-Fa-f\\d]{24}$"
-              },
-              {
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "message": {
             "type": "string"

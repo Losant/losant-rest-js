@@ -160,7 +160,7 @@ all.Application, all.Organization, all.User, notebook.*, or notebook.execute.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If execution request was accepted and successfully queued |
+| 200 | [Success With Execution ID](../lib/schemas/successWithExecutionId.json) | If execution request was accepted and successfully queued |
 
 #### Error Responses
 

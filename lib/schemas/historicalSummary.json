@@ -95,6 +95,9 @@
         "notebook": {
           "type": "integer"
         },
+        "resourcejob": {
+          "type": "integer"
+        },
         "webhook": {
           "type": "integer"
         },
@@ -219,6 +222,9 @@
     },
     "notebookCount": {
       "type": "number"
+    },
+    "resourceJobCount": {
+      "type": "integer"
     },
     "notebookRunCount": {
       "type": "number"
@@ -368,6 +374,14 @@
               "type": "number"
             }
           }
+        },
+        "resourceJob": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
         }
       }
     },
@@ -489,6 +503,14 @@
           }
         },
         "webhook": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "resourceJob": {
           "type": "object",
           "patternProperties": {
             ".*": {

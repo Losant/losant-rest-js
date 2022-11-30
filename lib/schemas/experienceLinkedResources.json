@@ -481,7 +481,10 @@
                             "onConnect",
                             "onDisconnect",
                             "udp",
-                            "webhook"
+                            "webhook",
+                            "resourceJobIteration",
+                            "resourceJobIterationTimeout",
+                            "resourceJobComplete"
                           ]
                         },
                         "config": {
@@ -517,7 +520,10 @@
                                 "particle",
                                 "sqs",
                                 "udp",
-                                "webhook"
+                                "webhook",
+                                "resourceJobIteration",
+                                "resourceJobIterationTimeout",
+                                "resourceJobComplete"
                               ]
                             },
                             "label": {
@@ -3089,6 +3095,15 @@
                     "minLength": 1,
                     "maxLength": 255
                   },
+                  "flowClass": {
+                    "type": "string",
+                    "enum": [
+                      "cloud",
+                      "edge",
+                      "embedded",
+                      "customNode"
+                    ]
+                  },
                   "notes": {
                     "type": "string",
                     "maxLength": 32767
@@ -3122,7 +3137,10 @@
                                 "onConnect",
                                 "onDisconnect",
                                 "udp",
-                                "webhook"
+                                "webhook",
+                                "resourceJobIteration",
+                                "resourceJobIterationTimeout",
+                                "resourceJobComplete"
                               ]
                             },
                             "config": {
@@ -3158,7 +3176,10 @@
                                     "particle",
                                     "sqs",
                                     "udp",
-                                    "webhook"
+                                    "webhook",
+                                    "resourceJobIteration",
+                                    "resourceJobIterationTimeout",
+                                    "resourceJobComplete"
                                   ]
                                 },
                                 "label": {
@@ -5707,7 +5728,10 @@
                                 "onConnect",
                                 "onDisconnect",
                                 "udp",
-                                "webhook"
+                                "webhook",
+                                "resourceJobIteration",
+                                "resourceJobIterationTimeout",
+                                "resourceJobComplete"
                               ]
                             },
                             "config": {
@@ -5743,7 +5767,10 @@
                                     "particle",
                                     "sqs",
                                     "udp",
-                                    "webhook"
+                                    "webhook",
+                                    "resourceJobIteration",
+                                    "resourceJobIterationTimeout",
+                                    "resourceJobComplete"
                                   ]
                                 },
                                 "label": {

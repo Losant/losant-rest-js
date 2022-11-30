@@ -26,6 +26,10 @@
       "type": "boolean",
       "default": false
     },
+    "forceJob": {
+      "type": "boolean",
+      "default": false
+    },
     "include": {
       "type": "array",
       "items": {
@@ -49,7 +53,8 @@
           "Global",
           "Integration",
           "Notebook",
-          "Webhook"
+          "Webhook",
+          "ResourceJob"
         ]
       },
       "uniqueItems": true

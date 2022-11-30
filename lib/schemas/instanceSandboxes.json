@@ -5,7 +5,439 @@
     "items": {
       "type": "array",
       "items": {
-        "type": "#/definitions/instanceSandbox"
+        "title": "Instance Sandbox User",
+        "description": "Schema for information about a sandbox user within an instance domain",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "instanceSandboxId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "instanceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "permanentDeletion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dataDeletion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastSuccessfulLogin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastFailedLogin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "failedLoginCount": {
+            "type": "number"
+          },
+          "passwordLastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 1024
+          },
+          "firstName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "lastName": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "companyName": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "phoneNumber": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "location": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "url": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "tokenCutoff": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "emailVerified": {
+            "type": "boolean"
+          },
+          "needsToVerifyEmail": {
+            "type": "boolean"
+          },
+          "twoFactorAuthEnabled": {
+            "type": "boolean"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "githubName": {
+            "type": "string"
+          },
+          "avatarUrl": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 1024
+          },
+          "limits": {
+            "type": "object",
+            "properties": {
+              "apitoken": {
+                "type": "integer"
+              },
+              "application": {
+                "type": "integer"
+              },
+              "applicationkey": {
+                "type": "integer"
+              },
+              "dashboard": {
+                "type": "integer"
+              },
+              "datatable": {
+                "type": "integer"
+              },
+              "device": {
+                "type": "integer"
+              },
+              "devicerecipe": {
+                "type": "integer"
+              },
+              "experiencedomain": {
+                "type": "integer"
+              },
+              "experienceendpoint": {
+                "type": "integer"
+              },
+              "experiencegroup": {
+                "type": "integer"
+              },
+              "experienceslug": {
+                "type": "integer"
+              },
+              "experienceuser": {
+                "type": "integer"
+              },
+              "experienceversion": {
+                "type": "integer"
+              },
+              "experienceview": {
+                "type": "integer"
+              },
+              "file": {
+                "type": "integer"
+              },
+              "flow": {
+                "type": "integer"
+              },
+              "integration": {
+                "type": "integer"
+              },
+              "notebook": {
+                "type": "integer"
+              },
+              "resourcejob": {
+                "type": "integer"
+              },
+              "webhook": {
+                "type": "integer"
+              },
+              "dataTTL": {
+                "type": "integer"
+              },
+              "payload": {
+                "type": "integer"
+              },
+              "storage": {
+                "type": "integer"
+              },
+              "notebookMinutesPerRun": {
+                "type": "integer"
+              },
+              "notebookMinutesPerMonth": {
+                "type": "integer"
+              },
+              "notebookInParallel": {
+                "type": "integer"
+              },
+              "experienceFlowSlots": {
+                "type": "integer"
+              },
+              "applicationFlowSlots": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false
+          },
+          "summary": {
+            "type": "object",
+            "properties": {
+              "apiTokenCount": {
+                "type": "integer"
+              },
+              "appCount": {
+                "type": "integer"
+              },
+              "dashCount": {
+                "type": "integer"
+              },
+              "dataTableCount": {
+                "type": "integer"
+              },
+              "deviceCount": {
+                "type": "integer"
+              },
+              "deviceRecipeCount": {
+                "type": "integer"
+              },
+              "experienceEndpointCount": {
+                "type": "integer"
+              },
+              "experienceGroupCount": {
+                "type": "integer"
+              },
+              "experienceSlugCount": {
+                "type": "integer"
+              },
+              "experienceUserCount": {
+                "type": "integer"
+              },
+              "experienceVersionCount": {
+                "type": "integer"
+              },
+              "experienceViewCount": {
+                "type": "integer"
+              },
+              "fileCount": {
+                "type": "integer"
+              },
+              "flowCount": {
+                "type": "integer"
+              },
+              "integrationCount": {
+                "type": "integer"
+              },
+              "keyCount": {
+                "type": "integer"
+              },
+              "orgCount": {
+                "type": "integer"
+              },
+              "payloadCount": {
+                "title": "Payload Stats",
+                "description": "Schema for the result of a payload stats request",
+                "type": "object",
+                "properties": {
+                  "dataTable": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "deviceCommand": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "deviceConnect": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "deviceDisconnect": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "deviceState": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "endpoint": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "event": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "flowError": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "integration": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "mqttIn": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "mqttOut": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "notebook": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "timer": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "virtualButton": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "webhook": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "resourceJob": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              },
+              "storageStats": {
+                "type": "object",
+                "properties": {
+                  "count": {
+                    "type": "integer"
+                  },
+                  "size": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "webhookCount": {
+                "type": "integer"
+              }
+            }
+          },
+          "currentPeriodStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "currentPeriodEnd": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ssoLinked": {
+            "type": "boolean"
+          },
+          "orgs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "iconColor": {
+                  "type": "string",
+                  "maxLength": 64
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                }
+              }
+            }
+          }
+        }
       }
     },
     "count": {

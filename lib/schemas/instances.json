@@ -5,7 +5,223 @@
     "items": {
       "type": "array",
       "items": {
-        "type": "#/definitions/instance"
+        "title": "Instance",
+        "description": "Schema for a single Instance",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "instanceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "allowAuditLogging": {
+            "type": "boolean"
+          },
+          "reportConfigs": {
+            "type": "array",
+            "maxItems": 10,
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "maxLength": 48
+                },
+                "cron": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "timezone": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "emails": {
+                  "type": "array",
+                  "maxItems": 10,
+                  "items": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 1024
+                  }
+                },
+                "callbackUrl": {
+                  "type": "string",
+                  "format": "uri",
+                  "maxLength": 1024
+                },
+                "resourceGroupBy": {
+                  "type": "string",
+                  "enum": [
+                    "application",
+                    "organization"
+                  ]
+                },
+                "dateGroupBy": {
+                  "type": "string",
+                  "enum": [
+                    "day",
+                    "month"
+                  ]
+                },
+                "periods": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 90
+                },
+                "includeSandbox": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "cron"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "limits": {
+            "type": "object",
+            "properties": {
+              "organization": {
+                "type": "integer"
+              },
+              "apitoken": {
+                "type": "integer"
+              },
+              "application": {
+                "type": "integer"
+              },
+              "applicationcertificate": {
+                "type": "integer"
+              },
+              "applicationcertificateauthority": {
+                "type": "integer"
+              },
+              "applicationkey": {
+                "type": "integer"
+              },
+              "dashboard": {
+                "type": "integer"
+              },
+              "datatable": {
+                "type": "integer"
+              },
+              "device": {
+                "type": "integer"
+              },
+              "devicerecipe": {
+                "type": "integer"
+              },
+              "experiencedomain": {
+                "type": "integer"
+              },
+              "experienceendpoint": {
+                "type": "integer"
+              },
+              "experiencegroup": {
+                "type": "integer"
+              },
+              "experienceslug": {
+                "type": "integer"
+              },
+              "experienceuser": {
+                "type": "integer"
+              },
+              "experienceversion": {
+                "type": "integer"
+              },
+              "experienceview": {
+                "type": "integer"
+              },
+              "file": {
+                "type": "integer"
+              },
+              "flow": {
+                "type": "integer"
+              },
+              "integration": {
+                "type": "integer"
+              },
+              "notebook": {
+                "type": "integer"
+              },
+              "resourcejob": {
+                "type": "integer"
+              },
+              "webhook": {
+                "type": "integer"
+              },
+              "dataTTL": {
+                "type": "integer"
+              },
+              "member": {
+                "type": "integer"
+              },
+              "payload": {
+                "type": "integer"
+              },
+              "storage": {
+                "type": "integer"
+              },
+              "notebookMinutesPerRun": {
+                "type": "integer"
+              },
+              "notebookMinutesPerMonth": {
+                "type": "integer"
+              },
+              "notebookInParallel": {
+                "type": "integer"
+              },
+              "experienceFlowSlots": {
+                "type": "integer"
+              },
+              "applicationFlowSlots": {
+                "type": "integer"
+              },
+              "systemInterval": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "admin",
+                    "edit",
+                    "collaborate",
+                    "view",
+                    "none"
+                  ]
+                }
+              }
+            }
+          }
+        }
       }
     },
     "count": {

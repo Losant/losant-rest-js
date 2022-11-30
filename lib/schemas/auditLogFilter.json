@@ -59,7 +59,8 @@
               "Flow",
               "Integration",
               "Notebook",
-              "Webhook"
+              "Webhook",
+              "ResourceJob"
             ]
           },
           "name": {

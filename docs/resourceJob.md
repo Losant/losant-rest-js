@@ -1,37 +1,90 @@
-# Events Actions
+# Resource Job Actions
 
 Details on the various actions that can be performed on the
-Events resource, including the expected
+Resource Job resource, including the expected
 parameters and the potential responses.
 
 ##### Contents
 
+*   [Cancel Execution](#cancel-execution)
 *   [Delete](#delete)
-*   [Export](#export)
+*   [Execute](#execute)
 *   [Get](#get)
-*   [Most Recent by Severity](#most-recent-by-severity)
+*   [Logs](#logs)
 *   [Patch](#patch)
-*   [Post](#post)
+
+<br/>
+
+## Cancel Execution
+
+Marks a specific resource job execution for cancellation
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  resourceJobId: myResourceJobId,
+  executionId: myExecutionId
+};
+
+// with callbacks
+client.resourceJob.cancelExecution(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.resourceJob.cancelExecution(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, resourceJob.*, or resourceJob.cancelExecution.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| resourceJobId | string | Y | ID associated with the resource job |  | 575ec8687ae143cd83dc4a97 |
+| executionId | undefined | Y | The ID of the execution to cancel |  | 632e18632f59592e773a4153 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Success](../lib/schemas/success.json) | If the execution was successfully marked for cancellation |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if execution was not found |
 
 <br/>
 
 ## Delete
 
-Delete events
+Deletes a resource job
 
 ```javascript
 var params = {
-  applicationId: myApplicationId
+  applicationId: myApplicationId,
+  resourceJobId: myResourceJobId
 };
 
 // with callbacks
-client.events.delete(params, function (err, result) {
+client.resourceJob.delete(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.events.delete(params)
+client.resourceJob.delete(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -39,48 +92,51 @@ client.events.delete(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, events.*, or events.delete.
+all.Application, all.Organization, all.User, resourceJob.*, or resourceJob.delete.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| query | [Advanced Event Query](../lib/schemas/advancedEventQuery.json) | N | Query to apply to filter the events |  | [Advanced Event Query Example](_schemas.md#advanced-event-query-example) |
+| resourceJobId | string | Y | ID associated with the resource job |  | 575ec8687ae143cd83dc4a97 |
+| includeWorkflows | string | N | If the workflows that trigger from this resource job should also be deleted. |  | true |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Events Deleted](../lib/schemas/eventsDeleted.json) | If request successfully deletes a set of Events |
+| 200 | [Success](../lib/schemas/success.json) | If resource job was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if events were not found |
+| 404 | [Error](../lib/schemas/error.json) | Error if resource job was not found |
 
 <br/>
 
-## Export
+## Execute
 
-Request an export of an application&#x27;s event data
+Queues the execution of a resource job
 
 ```javascript
 var params = {
-  applicationId: myApplicationId
+  applicationId: myApplicationId,
+  resourceJobId: myResourceJobId,
+  executionOptions: myExecutionOptions
 };
 
 // with callbacks
-client.events.export(params, function (err, result) {
+client.resourceJob.execute(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.events.export(params)
+client.resourceJob.execute(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -88,48 +144,50 @@ client.events.export(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, events.*, or events.export.
+all.Application, all.Organization, all.User, resourceJob.*, or resourceJob.execute.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| exportData | [Event Export Options](../lib/schemas/eventsExport.json) | N | Export options for events |  | [Event Export Options Example](_schemas.md#event-export-options-example) |
+| resourceJobId | string | Y | ID associated with the resource job |  | 575ec8687ae143cd83dc4a97 |
+| executionOptions | [Resource Job Execution Options](../lib/schemas/resourceJobExecutionOptions.json) | Y | The options for the execution |  | [Resource Job Execution Options Example](_schemas.md#resource-job-execution-options-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If generation of export was successfully started |
+| 200 | [Success With Execution ID](../lib/schemas/successWithExecutionId.json) | If the job was successfully queued |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+| 404 | [Error](../lib/schemas/error.json) | Error if resource job was not found |
 
 <br/>
 
 ## Get
 
-Returns the events for an application
+Returns a resource job
 
 ```javascript
 var params = {
-  applicationId: myApplicationId
+  applicationId: myApplicationId,
+  resourceJobId: myResourceJobId
 };
 
 // with callbacks
-client.events.get(params, function (err, result) {
+client.resourceJob.get(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.events.get(params)
+client.resourceJob.get(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -137,28 +195,21 @@ client.events.get(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, events.*, or events.get.
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, resourceJob.*, or resourceJob.get.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| sortField | string | N | Field to sort the results by. Accepted values are: subject, id, creationDate, lastUpdated, level, state, deviceId | creationDate | subject |
-| sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | desc | asc |
-| page | string | N | Which page of results to return | 0 | 0 |
-| perPage | string | N | How many items to return per page | 100 | 10 |
-| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: subject |  | subject |
-| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | abnormal power to * |
-| state | string | N | If provided, return events only in the given state. Accepted values are: new, acknowledged, resolved |  | new |
-| query | [Advanced Event Query](../lib/schemas/advancedEventQuery.json) | N | Event filter JSON object which overrides the filterField, filter, and state parameters. |  | [Advanced Event Query Example](_schemas.md#advanced-event-query-example) |
+| resourceJobId | string | Y | ID associated with the resource job |  | 575ec8687ae143cd83dc4a97 |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Events](../lib/schemas/events.json) | Collection of events |
+| 200 | [Resource Job](../lib/schemas/resourceJob.json) | A single resource job |
 
 #### Error Responses
 
@@ -169,23 +220,24 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 <br/>
 
-## Most Recent by Severity
+## Logs
 
-Returns the first new event ordered by severity and then creation
+Retrieves information on resource job executions
 
 ```javascript
 var params = {
-  applicationId: myApplicationId
+  applicationId: myApplicationId,
+  resourceJobId: myResourceJobId
 };
 
 // with callbacks
-client.events.mostRecentBySeverity(params, function (err, result) {
+client.resourceJob.logs(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.events.mostRecentBySeverity(params)
+client.resourceJob.logs(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -193,49 +245,52 @@ client.events.mostRecentBySeverity(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, events.*, or events.mostRecentBySeverity.
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, resourceJob.*, or resourceJob.logs.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| filter | string | N | Filter to apply against event subjects. Supports globbing. Blank or not provided means no filtering. |  | abnormal power to * |
-| query | [Advanced Event Query](../lib/schemas/advancedEventQuery.json) | N | Event filter JSON object which overrides the filter parameter. |  | [Advanced Event Query Example](_schemas.md#advanced-event-query-example) |
+| resourceJobId | string | Y | ID associated with the resource job |  | 575ec8687ae143cd83dc4a97 |
+| limit | string | N | Max log entries to return (ordered by time descending) | 1 | 10 |
+| since | string | N | Look for log entries since this time (ms since epoch) |  | 1465790400000 |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Event Plus New Count](../lib/schemas/eventPlusNewCount.json) | The event, plus count of currently new events |
+| 200 | [Resource Job Execution Logs](../lib/schemas/resourceJobExecutionLogs.json) | Resource job execution information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if resource job was not found |
 
 <br/>
 
 ## Patch
 
-Asynchronously updates information for matching events by subject and/or current state
+Update a resource job
 
 ```javascript
 var params = {
   applicationId: myApplicationId,
-  updates: myUpdates
+  resourceJobId: myResourceJobId,
+  resourceJob: myResourceJob
 };
 
 // with callbacks
-client.events.patch(params, function (err, result) {
+client.resourceJob.patch(params, function (err, result) {
   if (err) { return console.error(err); }
   console.log(result);
 });
 
 // with promises
-client.events.patch(params)
+client.resourceJob.patch(params)
   .then(console.log)
   .catch(console.error);
 ```
@@ -243,80 +298,26 @@ client.events.patch(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, events.*, or events.patch.
+all.Application, all.Organization, all.User, resourceJob.*, or resourceJob.patch.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| filterField | string | N | Field to filter the events to act on by. Blank or not provided means no filtering. Accepted values are: subject |  | subject |
-| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | abnormal power to * |
-| state | string | N | If provided, act on events only in the given state. Accepted values are: new, acknowledged, resolved |  | new |
-| query | [Advanced Event Query](../lib/schemas/advancedEventQuery.json) | N | Event filter JSON object which overrides the filterField, filter, and state parameters. |  | [Advanced Event Query Example](_schemas.md#advanced-event-query-example) |
-| updates | [Event Patch](../lib/schemas/eventPatch.json) | Y | Object containing updated information for the events |  | [Event Patch Example](_schemas.md#event-patch-example) |
+| resourceJobId | string | Y | ID associated with the resource job |  | 575ec8687ae143cd83dc4a97 |
+| resourceJob | [Resource Job Patch](../lib/schemas/resourceJobPatch.json) | Y | The new resource job configuration |  | [Resource Job Patch Example](_schemas.md#resource-job-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If the bulk update has been successfully started |
+| 201 | [Resource Job](../lib/schemas/resourceJob.json) | Successfully updated resource job |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application is not found |
-
-<br/>
-
-## Post
-
-Create a new event for an application
-
-```javascript
-var params = {
-  applicationId: myApplicationId,
-  event: myEvent
-};
-
-// with callbacks
-client.events.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.events.post(params)
-  .then(console.log)
-  .catch(console.error);
-```
-
-#### Authentication
-The client must be configured with a valid api access token to call this
-action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, events.*, or events.post.
-
-#### Available Parameters
-
-| Name | Type | Required | Description | Default | Example |
-| ---- | ---- | -------- | ----------- | ------- | ------- |
-| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| event | [Event Post](../lib/schemas/eventPost.json) | Y | New event information |  | [Event Post Example](_schemas.md#event-post-example) |
-| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
-
-#### Successful Responses
-
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 201 | [Event](../lib/schemas/event.json) | Successfully created event |
-
-#### Error Responses
-
-| Code | Type | Description |
-| ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
-| 429 | [Error](../lib/schemas/error.json) | Error if event creation rate limit exceeded |
+| 404 | [Error](../lib/schemas/error.json) | Error if resource job was not found |

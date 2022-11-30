@@ -90,6 +90,10 @@
           "type": "integer",
           "minimum": 0
         },
+        "resourcejob": {
+          "type": "integer",
+          "minimum": 0
+        },
         "webhook": {
           "type": "integer",
           "minimum": 0

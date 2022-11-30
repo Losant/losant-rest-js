@@ -35,10 +35,15 @@
           "Global",
           "Integration",
           "Notebook",
-          "Webhook"
+          "Webhook",
+          "ResourceJob"
         ]
       },
       "uniqueItems": true
+    },
+    "forceJob": {
+      "type": "boolean",
+      "default": false
     }
   },
   "additionalProperties": false

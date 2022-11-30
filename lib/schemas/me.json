@@ -137,6 +137,9 @@
         "notebook": {
           "type": "integer"
         },
+        "resourcejob": {
+          "type": "integer"
+        },
         "webhook": {
           "type": "integer"
         },
@@ -453,6 +456,14 @@
               }
             },
             "webhook": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "resourceJob": {
               "type": "object",
               "patternProperties": {
                 ".*": {

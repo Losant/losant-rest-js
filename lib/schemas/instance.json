@@ -99,6 +99,12 @@
         "application": {
           "type": "integer"
         },
+        "applicationcertificate": {
+          "type": "integer"
+        },
+        "applicationcertificateauthority": {
+          "type": "integer"
+        },
         "applicationkey": {
           "type": "integer"
         },
@@ -147,6 +153,9 @@
         "notebook": {
           "type": "integer"
         },
+        "resourcejob": {
+          "type": "integer"
+        },
         "webhook": {
           "type": "integer"
         },
@@ -175,6 +184,9 @@
           "type": "integer"
         },
         "applicationFlowSlots": {
+          "type": "integer"
+        },
+        "systemInterval": {
           "type": "integer"
         }
       },

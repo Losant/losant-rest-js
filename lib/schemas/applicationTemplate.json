@@ -107,6 +107,9 @@
         "notebookCount": {
           "type": "integer"
         },
+        "resourceJobCount": {
+          "type": "integer"
+        },
         "dataTableCsvSize": {
           "type": "integer"
         },

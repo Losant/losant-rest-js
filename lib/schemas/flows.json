@@ -107,7 +107,10 @@
                         "onConnect",
                         "onDisconnect",
                         "udp",
-                        "webhook"
+                        "webhook",
+                        "resourceJobIteration",
+                        "resourceJobIterationTimeout",
+                        "resourceJobComplete"
                       ]
                     },
                     "config": {
@@ -143,7 +146,10 @@
                             "particle",
                             "sqs",
                             "udp",
-                            "webhook"
+                            "webhook",
+                            "resourceJobIteration",
+                            "resourceJobIterationTimeout",
+                            "resourceJobComplete"
                           ]
                         },
                         "label": {

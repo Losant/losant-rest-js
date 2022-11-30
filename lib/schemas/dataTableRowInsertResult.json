@@ -48,7 +48,8 @@
           },
           "maxItems": 1000
         }
-      }
+      },
+      "additionalProperties": false
     }
   ]
 }

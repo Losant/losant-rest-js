@@ -23,6 +23,10 @@
       "type": "string",
       "format": "uri",
       "maxLength": 1024
+    },
+    "forceJob": {
+      "type": "boolean",
+      "default": false
     }
   },
   "additionalProperties": false

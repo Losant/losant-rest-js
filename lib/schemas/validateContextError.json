@@ -8,6 +8,10 @@
     "message": {
       "type": "string"
     },
+    "invalidCtxName": {
+      "type": "string",
+      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+    },
     "ctx": {
       "type": "object",
       "patternProperties": {

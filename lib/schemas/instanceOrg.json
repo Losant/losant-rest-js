@@ -88,6 +88,9 @@
         "notebook": {
           "type": "integer"
         },
+        "resourcejob": {
+          "type": "integer"
+        },
         "webhook": {
           "type": "integer"
         },

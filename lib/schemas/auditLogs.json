@@ -68,7 +68,8 @@
               "Flow",
               "Integration",
               "Notebook",
-              "Webhook"
+              "Webhook",
+              "ResourceJob"
             ]
           },
           "secondaryTargetName": {

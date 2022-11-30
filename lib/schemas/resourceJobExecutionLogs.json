@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "applicationId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "resourceJobExecutionId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "resourceJobId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "inProgress",
+          "completed",
+          "erroring",
+          "errored",
+          "canceling",
+          "canceled"
+        ]
+      },
+      "queryJson": {
+        "type": "string",
+        "maxLength": 8192
+      },
+      "resourceType": {
+        "type": "string",
+        "enum": [
+          "dataTableRow",
+          "device"
+        ]
+      },
+      "sourceType": {
+        "type": "string",
+        "enum": [
+          "flow",
+          "user",
+          "device",
+          "apiToken",
+          "notebook"
+        ]
+      },
+      "sourceId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "cancelSourceType": {
+        "type": "string",
+        "enum": [
+          "flow",
+          "user",
+          "device",
+          "apiToken",
+          "notebook"
+        ]
+      },
+      "cancelSourceId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "runStartedAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "runCompletedAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "executionReportUrl": {
+        "type": "string"
+      },
+      "templateContext": {
+        "type": "string",
+        "maxLength": 32767
+      },
+      "iterationDelay": {
+        "type": "number",
+        "min": 0,
+        "max": 60000
+      },
+      "iterationTimeout": {
+        "type": "number",
+        "min": 60000,
+        "max": 900000
+      },
+      "maxIterationConcurrency": {
+        "type": "number",
+        "enum": [
+          1,
+          10
+        ]
+      },
+      "executionSummary": {
+        "type": "object",
+        "properties": {
+          "succeeded": {
+            "type": "number"
+          },
+          "failed": {
+            "type": "number"
+          },
+          "timedOut": {
+            "type": "number"
+          },
+          "inProgress": {
+            "type": "number"
+          },
+          "remaining": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}

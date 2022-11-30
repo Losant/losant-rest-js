@@ -121,6 +121,14 @@
           "type": "number"
         }
       }
+    },
+    "resourceJob": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "number"
+        }
+      }
     }
   }
 }
