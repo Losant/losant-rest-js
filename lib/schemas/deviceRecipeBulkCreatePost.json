@@ -2,14 +2,27 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
-    "nameColumn": {
-      "type": "string"
-    },
-    "descriptionColumn": {
-      "type": "string"
-    },
     "csv": {
       "type": "string"
+    },
+    "count": {
+      "type": "integer"
+    },
+    "nameColumn": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "descriptionColumn": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "gatewayIdColumn": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "parentIdColumn": {
+      "type": "string",
+      "maxLength": 255
     },
     "makeUniqueKeySecret": {
       "type": "boolean"
@@ -23,10 +36,22 @@
       "type": "string",
       "format": "uri",
       "maxLength": 1024
+    },
+    "gatewayId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "parentId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
     }
   },
-  "additionalProperties": false,
-  "required": [
-    "csv"
-  ]
+  "additionalProperties": false
 }
