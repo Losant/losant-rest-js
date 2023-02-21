@@ -55,7 +55,7 @@ all.Application, all.Organization, all.User, deviceRecipe.*, or deviceRecipe.bul
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 201 | [Device Recipe Bulk Create](../lib/schemas/deviceRecipeBulkCreate.json) | If devices were successfully created |
-| 202 | [Device Recipe Bulk Create Enqueue](../lib/schemas/deviceRecipeBulkCreateEnqueued.json) | If devices were enqueued to be created |
+| 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | If devices were enqueued to be created |
 
 #### Error Responses
 

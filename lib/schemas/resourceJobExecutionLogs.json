@@ -20,6 +20,10 @@
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
       },
+      "accumulator": {
+        "type": "string",
+        "maxLength": 256
+      },
       "status": {
         "type": "string",
         "enum": [
@@ -39,7 +43,8 @@
         "type": "string",
         "enum": [
           "dataTableRow",
-          "device"
+          "device",
+          "experienceGroup"
         ]
       },
       "sourceType": {

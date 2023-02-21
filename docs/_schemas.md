@@ -3,6 +3,7 @@
 *   [Advanced Application Key Query](#advanced-application-key-query)
 *   [Advanced Device Query](#advanced-device-query)
 *   [Advanced Event Query](#advanced-event-query)
+*   [Advanced Experience Group Query](#advanced-experience-group-query)
 *   [Advanced Workflow By Version Query](#advanced-workflow-by-version-query)
 *   [Advanced Workflow Query](#advanced-workflow-query)
 *   [Advanced Workflow Version Query](#advanced-workflow-version-query)
@@ -87,7 +88,6 @@
 *   [Device Post](#device-post)
 *   [Device Recipe](#device-recipe)
 *   [Device Recipe Bulk Create](#device-recipe-bulk-create)
-*   [Device Recipe Bulk Create Enqueue](#device-recipe-bulk-create-enqueue)
 *   [Device Recipe Bulk Create Post](#device-recipe-bulk-create-post)
 *   [Device Recipe Patch](#device-recipe-patch)
 *   [Device Recipe Post](#device-recipe-post)
@@ -258,7 +258,6 @@
 *   [SSO Request](#sso-request)
 *   [Success](#success)
 *   [Success With Execution ID](#success-with-execution-id)
-*   [Success With Job ID](#success-with-job-id)
 *   [Tag Keys Response](#tag-keys-response)
 *   [Tag Values Response](#tag-values-response)
 *   [Template Keywords](#template-keywords)
@@ -4390,6 +4389,996 @@ Schema for advanced event queries
       "level": 5
     }
   ]
+}
+```
+
+<br/>
+
+## Advanced Experience Group Query
+
+Schema for advanced experience group queries
+
+### <a name="advanced-experience-group-query-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "$and": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedExperienceGroupQuery"
+      },
+      "maxItems": 100
+    },
+    "$or": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedExperienceGroupQuery"
+      },
+      "maxItems": 100
+    },
+    "$nor": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/advancedExperienceGroupQuery"
+      },
+      "maxItems": 100
+    },
+    "id": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    },
+    "creationDate": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "lastUpdated": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "name": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "parentId": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    },
+    "ancestorId": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    },
+    "groupTags": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "$tagKey": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "$tagValue": {
+                  "type": "string",
+                  "maxLength": 255
+                }
+              },
+              "additionalProperties": false,
+              "minProperties": 1
+            },
+            {
+              "type": "object",
+              "patternProperties": {
+                "^[0-9a-zA-Z_-]{1,255}": {
+                  "type": "string",
+                  "maxLength": 255
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "$tagKey": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "$tagValue": {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false,
+                  "minProperties": 1
+                },
+                {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}": {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "$eq"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "$tagKey": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "$tagValue": {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false,
+                  "minProperties": 1
+                },
+                {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}": {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "$ne"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "experienceUserId": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    },
+    "experienceEndpointId": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$ne": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lt": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$gte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$lte": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 1
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="advanced-experience-group-query-example"></a> Example
+
+```json
+{
+  "name": "My Great Group",
+  "lastUpdated": "2022-01-30T17:18:11.911Z"
 }
 ```
 
@@ -12509,6 +13498,9 @@ Schema for the body of an Application scoped Dashboard creation request
                     "type": "string",
                     "maxLength": 255
                   },
+                  "centerOnDataPoints": {
+                    "type": "boolean"
+                  },
                   "defaultBearing": {
                     "type": "number"
                   },
@@ -14807,6 +15799,9 @@ Schema for the body of an Application scoped Dashboard creation request
                     "type": "string",
                     "maxLength": 255
                   },
+                  "centerOnDataPoints": {
+                    "type": "boolean"
+                  },
                   "clusterPoints": {
                     "type": "boolean"
                   },
@@ -15336,6 +16331,9 @@ Schema for the body of an Application scoped Dashboard creation request
                       }
                     ]
                   },
+                  "centerOnDataPoints": {
+                    "type": "boolean"
+                  },
                   "compositeResult": {
                     "type": "boolean"
                   },
@@ -15351,7 +16349,6 @@ Schema for the body of an Application scoped Dashboard creation request
                   },
                   "defaultCenter": {
                     "type": "string",
-                    "minLength": 3,
                     "maxLength": 255
                   },
                   "defaultZoom": {
@@ -21995,6 +22992,9 @@ Schema for a single Dashboard
                     "type": "string",
                     "maxLength": 255
                   },
+                  "centerOnDataPoints": {
+                    "type": "boolean"
+                  },
                   "defaultBearing": {
                     "type": "number"
                   },
@@ -24293,6 +25293,9 @@ Schema for a single Dashboard
                     "type": "string",
                     "maxLength": 255
                   },
+                  "centerOnDataPoints": {
+                    "type": "boolean"
+                  },
                   "clusterPoints": {
                     "type": "boolean"
                   },
@@ -24822,6 +25825,9 @@ Schema for a single Dashboard
                       }
                     ]
                   },
+                  "centerOnDataPoints": {
+                    "type": "boolean"
+                  },
                   "compositeResult": {
                     "type": "boolean"
                   },
@@ -24837,7 +25843,6 @@ Schema for a single Dashboard
                   },
                   "defaultCenter": {
                     "type": "string",
-                    "minLength": 3,
                     "maxLength": 255
                   },
                   "defaultZoom": {
@@ -28041,6 +29046,9 @@ Schema for the body of a Dashboard modification request
                     "type": "string",
                     "maxLength": 255
                   },
+                  "centerOnDataPoints": {
+                    "type": "boolean"
+                  },
                   "defaultBearing": {
                     "type": "number"
                   },
@@ -30339,6 +31347,9 @@ Schema for the body of a Dashboard modification request
                     "type": "string",
                     "maxLength": 255
                   },
+                  "centerOnDataPoints": {
+                    "type": "boolean"
+                  },
                   "clusterPoints": {
                     "type": "boolean"
                   },
@@ -30868,6 +31879,9 @@ Schema for the body of a Dashboard modification request
                       }
                     ]
                   },
+                  "centerOnDataPoints": {
+                    "type": "boolean"
+                  },
                   "compositeResult": {
                     "type": "boolean"
                   },
@@ -30883,7 +31897,6 @@ Schema for the body of a Dashboard modification request
                   },
                   "defaultCenter": {
                     "type": "string",
-                    "minLength": 3,
                     "maxLength": 255
                   },
                   "defaultZoom": {
@@ -34078,6 +35091,9 @@ Schema for the body of a Dashboard creation request
                     "type": "string",
                     "maxLength": 255
                   },
+                  "centerOnDataPoints": {
+                    "type": "boolean"
+                  },
                   "defaultBearing": {
                     "type": "number"
                   },
@@ -36376,6 +37392,9 @@ Schema for the body of a Dashboard creation request
                     "type": "string",
                     "maxLength": 255
                   },
+                  "centerOnDataPoints": {
+                    "type": "boolean"
+                  },
                   "clusterPoints": {
                     "type": "boolean"
                   },
@@ -36905,6 +37924,9 @@ Schema for the body of a Dashboard creation request
                       }
                     ]
                   },
+                  "centerOnDataPoints": {
+                    "type": "boolean"
+                  },
                   "compositeResult": {
                     "type": "boolean"
                   },
@@ -36920,7 +37942,6 @@ Schema for the body of a Dashboard creation request
                   },
                   "defaultCenter": {
                     "type": "string",
-                    "minLength": 3,
                     "maxLength": 255
                   },
                   "defaultZoom": {
@@ -40490,6 +41511,9 @@ Schema for a collection of Dashboards
                           "type": "string",
                           "maxLength": 255
                         },
+                        "centerOnDataPoints": {
+                          "type": "boolean"
+                        },
                         "defaultBearing": {
                           "type": "number"
                         },
@@ -42788,6 +43812,9 @@ Schema for a collection of Dashboards
                           "type": "string",
                           "maxLength": 255
                         },
+                        "centerOnDataPoints": {
+                          "type": "boolean"
+                        },
                         "clusterPoints": {
                           "type": "boolean"
                         },
@@ -43317,6 +44344,9 @@ Schema for a collection of Dashboards
                             }
                           ]
                         },
+                        "centerOnDataPoints": {
+                          "type": "boolean"
+                        },
                         "compositeResult": {
                           "type": "boolean"
                         },
@@ -43332,7 +44362,6 @@ Schema for a collection of Dashboards
                         },
                         "defaultCenter": {
                           "type": "string",
-                          "minLength": 3,
                           "maxLength": 255
                         },
                         "defaultZoom": {
@@ -47114,37 +48143,6 @@ Schema for the result of a bulk Device creation request
 
 <br/>
 
-## Device Recipe Bulk Create Enqueue
-
-Schema for the result of a bulk Device creation request when creating more than 750 devices
-
-### <a name="device-recipe-bulk-create-enqueue-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "properties": {
-    "jobQueued": {
-      "type": "boolean"
-    },
-    "jobId": {
-      "type": "string",
-      "maxLength": 21
-    }
-  }
-}
-```
-### <a name="device-recipe-bulk-create-enqueue-example"></a> Example
-
-```json
-{
-  "jobQueued": true
-}
-```
-
-<br/>
-
 ## Device Recipe Bulk Create Post
 
 Schema for the body of a bulk Device creation request
@@ -47416,8 +48414,15 @@ Schema for the body of a Device Recipe modification request
       ]
     },
     "gatewayId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "parentId": {
       "oneOf": [
@@ -63949,7 +64954,6 @@ The body of an experience linked resources response
                                 "flowError",
                                 "azureEventHub",
                                 "googlePubSub",
-                                "meridian",
                                 "mqtt",
                                 "notebook",
                                 "onBoot",
@@ -66605,7 +67609,6 @@ The body of an experience linked resources response
                                     "flowError",
                                     "azureEventHub",
                                     "googlePubSub",
-                                    "meridian",
                                     "mqtt",
                                     "notebook",
                                     "onBoot",
@@ -69196,7 +70199,6 @@ The body of an experience linked resources response
                                     "flowError",
                                     "azureEventHub",
                                     "googlePubSub",
-                                    "meridian",
                                     "mqtt",
                                     "notebook",
                                     "onBoot",
@@ -73875,7 +74877,6 @@ Schema for a single Workflow
                       "flowError",
                       "azureEventHub",
                       "googlePubSub",
-                      "meridian",
                       "mqtt",
                       "notebook",
                       "onBoot",
@@ -76697,7 +77698,6 @@ Schema for the body of a Workflow modification request
                       "flowError",
                       "azureEventHub",
                       "googlePubSub",
-                      "meridian",
                       "mqtt",
                       "notebook",
                       "onBoot",
@@ -79274,7 +80274,6 @@ Schema for the body of a Workflow creation request
                       "flowError",
                       "azureEventHub",
                       "googlePubSub",
-                      "meridian",
                       "mqtt",
                       "notebook",
                       "onBoot",
@@ -82098,7 +83097,6 @@ Schema for a single Workflow Version
                           "flowError",
                           "azureEventHub",
                           "googlePubSub",
-                          "meridian",
                           "mqtt",
                           "notebook",
                           "onBoot",
@@ -84689,7 +85687,6 @@ Schema for a single Workflow Version
                           "flowError",
                           "azureEventHub",
                           "googlePubSub",
-                          "meridian",
                           "mqtt",
                           "notebook",
                           "onBoot",
@@ -86991,7 +87988,6 @@ Schema for the body of a Workflow Version creation request
                       "flowError",
                       "azureEventHub",
                       "googlePubSub",
-                      "meridian",
                       "mqtt",
                       "notebook",
                       "onBoot",
@@ -89584,7 +90580,6 @@ Schema for a collection of Workflow Versions
                                 "flowError",
                                 "azureEventHub",
                                 "googlePubSub",
-                                "meridian",
                                 "mqtt",
                                 "notebook",
                                 "onBoot",
@@ -92175,7 +93170,6 @@ Schema for a collection of Workflow Versions
                                 "flowError",
                                 "azureEventHub",
                                 "googlePubSub",
-                                "meridian",
                                 "mqtt",
                                 "notebook",
                                 "onBoot",
@@ -95578,7 +96572,6 @@ Schema for a collection of Workflows
                             "flowError",
                             "azureEventHub",
                             "googlePubSub",
-                            "meridian",
                             "mqtt",
                             "notebook",
                             "onBoot",
@@ -98277,7 +99270,6 @@ Schema for the body of a workflow import request
                             "flowError",
                             "azureEventHub",
                             "googlePubSub",
-                            "meridian",
                             "mqtt",
                             "notebook",
                             "onBoot",
@@ -100855,7 +101847,6 @@ Schema for the body of a workflow import request
                             "flowError",
                             "azureEventHub",
                             "googlePubSub",
-                            "meridian",
                             "mqtt",
                             "notebook",
                             "onBoot",
@@ -103484,7 +104475,6 @@ Schema for the result of a workflow import request
                             "flowError",
                             "azureEventHub",
                             "googlePubSub",
-                            "meridian",
                             "mqtt",
                             "notebook",
                             "onBoot",
@@ -106089,7 +107079,6 @@ Schema for the result of a workflow import request
                                 "flowError",
                                 "azureEventHub",
                                 "googlePubSub",
-                                "meridian",
                                 "mqtt",
                                 "notebook",
                                 "onBoot",
@@ -108680,7 +109669,6 @@ Schema for the result of a workflow import request
                                 "flowError",
                                 "azureEventHub",
                                 "googlePubSub",
-                                "meridian",
                                 "mqtt",
                                 "notebook",
                                 "onBoot",
@@ -111433,91 +112421,120 @@ Schema for a collection of Historical Summaries
             "type": "object",
             "properties": {
               "apitoken": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "application": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "applicationkey": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "dashboard": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "datatable": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "device": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "devicerecipe": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experiencedomain": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experienceendpoint": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experiencegroup": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experienceslug": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experienceuser": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experienceversion": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experienceview": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "file": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "flow": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "integration": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "notebook": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "resourcejob": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "webhook": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "dataTTL": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 86400
               },
               "member": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "payload": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "storage": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "notebookMinutesPerRun": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "notebookMinutesPerMonth": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "notebookInParallel": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experienceFlowSlots": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "applicationFlowSlots": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               }
             },
             "additionalProperties": false
@@ -112076,91 +113093,120 @@ Schema for a historical summary report
       "type": "object",
       "properties": {
         "apitoken": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "application": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "applicationkey": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "dashboard": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "datatable": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "device": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "devicerecipe": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experiencedomain": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceendpoint": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experiencegroup": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceslug": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceuser": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceversion": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceview": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "file": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "flow": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "integration": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "notebook": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "resourcejob": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "webhook": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "dataTTL": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 86400
         },
         "member": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "payload": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "storage": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "notebookMinutesPerRun": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "notebookMinutesPerMonth": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "notebookInParallel": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceFlowSlots": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "applicationFlowSlots": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         }
       },
       "additionalProperties": false
@@ -112979,6 +114025,128 @@ Schema for a single Instance
         },
         "systemInterval": {
           "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "orgDefaultLimitConfig": {
+      "type": "object",
+      "properties": {
+        "apitoken": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "application": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "applicationkey": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "dashboard": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "datatable": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "device": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "devicerecipe": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experiencedomain": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceendpoint": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experiencegroup": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceslug": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceuser": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceversion": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceview": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "file": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "flow": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "integration": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notebook": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "resourcejob": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "webhook": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "dataTTL": {
+          "type": "integer",
+          "minimum": 86400
+        },
+        "member": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "payload": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "storage": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notebookMinutesPerRun": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notebookMinutesPerMonth": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notebookInParallel": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceFlowSlots": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "applicationFlowSlots": {
+          "type": "integer",
+          "minimum": 0
         }
       },
       "additionalProperties": false
@@ -113813,7 +114981,6 @@ Schema for the body of a Instance Custom Node modification request
                       "flowError",
                       "azureEventHub",
                       "googlePubSub",
-                      "meridian",
                       "mqtt",
                       "notebook",
                       "onBoot",
@@ -114513,7 +115680,6 @@ Schema for the body of a Instance Custom Node creation request
                       "flowError",
                       "azureEventHub",
                       "googlePubSub",
-                      "meridian",
                       "mqtt",
                       "notebook",
                       "onBoot",
@@ -116117,91 +117283,120 @@ Schema for the body of an Organization owned by an instance
       "type": "object",
       "properties": {
         "apitoken": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "application": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "applicationkey": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "dashboard": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "datatable": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "device": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "devicerecipe": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experiencedomain": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceendpoint": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experiencegroup": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceslug": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceuser": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceversion": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceview": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "file": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "flow": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "integration": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "notebook": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "resourcejob": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "webhook": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "dataTTL": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 86400
         },
         "member": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "payload": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "storage": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "notebookMinutesPerRun": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "notebookMinutesPerMonth": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "notebookInParallel": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceFlowSlots": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "applicationFlowSlots": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         }
       },
       "additionalProperties": false
@@ -117347,91 +118542,120 @@ Schema for a collection of Organizations within an instance
             "type": "object",
             "properties": {
               "apitoken": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "application": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "applicationkey": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "dashboard": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "datatable": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "device": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "devicerecipe": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experiencedomain": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experienceendpoint": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experiencegroup": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experienceslug": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experienceuser": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experienceversion": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experienceview": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "file": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "flow": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "integration": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "notebook": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "resourcejob": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "webhook": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "dataTTL": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 86400
               },
               "member": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "payload": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "storage": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "notebookMinutesPerRun": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "notebookMinutesPerMonth": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "notebookInParallel": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experienceFlowSlots": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "applicationFlowSlots": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               }
             },
             "additionalProperties": false
@@ -117633,6 +118857,128 @@ Schema for instance patch request
         ],
         "additionalProperties": false
       }
+    },
+    "orgDefaultLimitConfig": {
+      "type": "object",
+      "properties": {
+        "apitoken": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "application": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "applicationkey": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "dashboard": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "datatable": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "device": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "devicerecipe": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experiencedomain": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceendpoint": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experiencegroup": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceslug": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceuser": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceversion": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceview": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "file": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "flow": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "integration": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notebook": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "resourcejob": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "webhook": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "dataTTL": {
+          "type": "integer",
+          "minimum": 86400
+        },
+        "member": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "payload": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "storage": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notebookMinutesPerRun": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notebookMinutesPerMonth": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notebookInParallel": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceFlowSlots": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "applicationFlowSlots": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": false
@@ -119003,6 +120349,128 @@ Schema for a collection of Instances
             },
             "additionalProperties": false
           },
+          "orgDefaultLimitConfig": {
+            "type": "object",
+            "properties": {
+              "apitoken": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "application": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "applicationkey": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "dashboard": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "datatable": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "device": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "devicerecipe": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experiencedomain": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceendpoint": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experiencegroup": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceslug": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceuser": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceversion": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceview": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "file": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "flow": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "integration": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "notebook": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "resourcejob": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "webhook": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "dataTTL": {
+                "type": "integer",
+                "minimum": 86400
+              },
+              "member": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "payload": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "storage": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "notebookMinutesPerRun": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "notebookMinutesPerMonth": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "notebookInParallel": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceFlowSlots": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "applicationFlowSlots": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "additionalProperties": false
+          },
           "members": {
             "type": "array",
             "items": {
@@ -119175,7 +120643,6 @@ Schema for a single Integration
       "enum": [
         "azureEventHub",
         "googlePubSub",
-        "meridian",
         "mqtt",
         "particle",
         "sqs"
@@ -119364,32 +120831,6 @@ Schema for a single Integration
         "secretAccessKey",
         "region",
         "queueUrl"
-      ]
-    },
-    "meridianConfig": {
-      "type": "object",
-      "properties": {
-        "authenticationToken": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 1024
-        },
-        "locationId": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 1024
-        },
-        "assetUpdates": {
-          "type": "boolean"
-        },
-        "zoneUpdates": {
-          "type": "boolean"
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "authenticationToken",
-        "locationId"
       ]
     },
     "status": {
@@ -119491,7 +120932,6 @@ Schema for the body of an Integration modification request
       "enum": [
         "azureEventHub",
         "googlePubSub",
-        "meridian",
         "mqtt",
         "particle",
         "sqs"
@@ -119680,32 +121120,6 @@ Schema for the body of an Integration modification request
         "secretAccessKey",
         "region",
         "queueUrl"
-      ]
-    },
-    "meridianConfig": {
-      "type": "object",
-      "properties": {
-        "authenticationToken": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 1024
-        },
-        "locationId": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 1024
-        },
-        "assetUpdates": {
-          "type": "boolean"
-        },
-        "zoneUpdates": {
-          "type": "boolean"
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "authenticationToken",
-        "locationId"
       ]
     }
   },
@@ -119745,7 +121159,6 @@ Schema for the body of an Integration creation request
       "enum": [
         "azureEventHub",
         "googlePubSub",
-        "meridian",
         "mqtt",
         "particle",
         "sqs"
@@ -119934,32 +121347,6 @@ Schema for the body of an Integration creation request
         "secretAccessKey",
         "region",
         "queueUrl"
-      ]
-    },
-    "meridianConfig": {
-      "type": "object",
-      "properties": {
-        "authenticationToken": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 1024
-        },
-        "locationId": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 1024
-        },
-        "assetUpdates": {
-          "type": "boolean"
-        },
-        "zoneUpdates": {
-          "type": "boolean"
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "authenticationToken",
-        "locationId"
       ]
     }
   },
@@ -120040,7 +121427,6 @@ Schema for a collection of Integrations
             "enum": [
               "azureEventHub",
               "googlePubSub",
-              "meridian",
               "mqtt",
               "particle",
               "sqs"
@@ -120231,32 +121617,6 @@ Schema for a collection of Integrations
               "queueUrl"
             ]
           },
-          "meridianConfig": {
-            "type": "object",
-            "properties": {
-              "authenticationToken": {
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
-              },
-              "locationId": {
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
-              },
-              "assetUpdates": {
-                "type": "boolean"
-              },
-              "zoneUpdates": {
-                "type": "boolean"
-              }
-            },
-            "additionalProperties": false,
-            "required": [
-              "authenticationToken",
-              "locationId"
-            ]
-          },
           "status": {
             "lastKeepAlive": {
               "type": [
@@ -120396,11 +121756,20 @@ Schema for the result of a job being queued
   "type": "object",
   "properties": {
     "jobQueued": {
-      "type": "boolean"
+      "type": "boolean",
+      "enum": [
+        true
+      ]
     },
     "jobId": {
       "type": "string",
       "maxLength": 21
+    },
+    "success": {
+      "type": "boolean",
+      "enum": [
+        true
+      ]
     }
   }
 }
@@ -120409,7 +121778,9 @@ Schema for the result of a job being queued
 
 ```json
 {
-  "jobQueued": true
+  "jobQueued": true,
+  "jobId": "clnHvJbyVkOWAZwYAwLP4",
+  "success": true
 }
 ```
 
@@ -126245,91 +127616,120 @@ Schema for a single Organization
       "type": "object",
       "properties": {
         "apitoken": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "application": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "applicationkey": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "dashboard": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "datatable": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "device": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "devicerecipe": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experiencedomain": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceendpoint": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experiencegroup": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceslug": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceuser": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceversion": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceview": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "file": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "flow": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "integration": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "notebook": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "resourcejob": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "webhook": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "dataTTL": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 86400
         },
         "member": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "payload": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "storage": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "notebookMinutesPerRun": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "notebookMinutesPerMonth": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "notebookInParallel": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "experienceFlowSlots": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "applicationFlowSlots": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         }
       },
       "additionalProperties": false
@@ -127752,91 +129152,120 @@ Schema for a collection of Organizations
             "type": "object",
             "properties": {
               "apitoken": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "application": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "applicationkey": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "dashboard": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "datatable": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "device": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "devicerecipe": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experiencedomain": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experienceendpoint": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experiencegroup": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experienceslug": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experienceuser": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experienceversion": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experienceview": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "file": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "flow": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "integration": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "notebook": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "resourcejob": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "webhook": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "dataTTL": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 86400
               },
               "member": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "payload": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "storage": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "notebookMinutesPerRun": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "notebookMinutesPerMonth": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "notebookInParallel": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "experienceFlowSlots": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               },
               "applicationFlowSlots": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
               }
             },
             "additionalProperties": false
@@ -129487,7 +130916,8 @@ Schema for a single resource job
       "type": "string",
       "enum": [
         "dataTableRow",
-        "device"
+        "device",
+        "experienceGroup"
       ]
     },
     "maxIterationConcurrency": {
@@ -129576,6 +131006,10 @@ Schema for a set of Resource Job execution logs
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
       },
+      "accumulator": {
+        "type": "string",
+        "maxLength": 256
+      },
       "status": {
         "type": "string",
         "enum": [
@@ -129595,7 +131029,8 @@ Schema for a set of Resource Job execution logs
         "type": "string",
         "enum": [
           "dataTableRow",
-          "device"
+          "device",
+          "experienceGroup"
         ]
       },
       "sourceType": {
@@ -129727,6 +131162,24 @@ Schema for a resource job execution configuration
     "templateContext": {
       "type": "string",
       "maxLength": 32767
+    },
+    "queryJson": {
+      "type": "string",
+      "maxLength": 8192
+    },
+    "dataTableId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 255,
+          "pattern": ".*{{.+}}.*"
+        }
+      ]
     }
   },
   "additionalProperties": false
@@ -129858,7 +131311,8 @@ Schema for a resource job creation
       "type": "string",
       "enum": [
         "dataTableRow",
-        "device"
+        "device",
+        "experienceGroup"
       ]
     },
     "maxIterationConcurrency": {
@@ -129963,7 +131417,8 @@ Schema for a collection of Resource Jobs
             "type": "string",
             "enum": [
               "dataTableRow",
-              "device"
+              "device",
+              "experienceGroup"
             ]
           },
           "maxIterationConcurrency": {
@@ -130714,41 +132169,6 @@ Schema for reporting a successful operation with a corresponding execution ID
 {
   "success": true,
   "executionId": "575ed78e7ae143cd83dc4aab"
-}
-```
-
-<br/>
-
-## Success With Job ID
-
-Schema for reporting a successful operation with a corresponding job id
-
-### <a name="success-with-job-id-schema"></a> Schema
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "properties": {
-    "success": {
-      "type": "boolean",
-      "enum": [
-        true
-      ]
-    },
-    "jobId": {
-      "type": "string",
-      "maxLength": 21
-    }
-  }
-}
-```
-### <a name="success-with-job-id-example"></a> Example
-
-```json
-{
-  "success": true,
-  "jobId": "89KDR0chj84e6qWC_aPFm"
 }
 ```
 
@@ -132934,6 +134354,10 @@ Schema for a single Webhook
       "minLength": 1,
       "maxLength": 255
     },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
     "token": {
       "type": "string",
       "minLength": 1
@@ -133004,6 +134428,10 @@ Schema for the body of a Webhook modification request
       "minLength": 1,
       "maxLength": 255
     },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
     "responseCode": {
       "type": "integer",
       "minimum": 100,
@@ -133064,6 +134492,10 @@ Schema for the body of a Webhook creation request
       "type": "string",
       "minLength": 1,
       "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
     },
     "responseCode": {
       "type": "integer",
@@ -133154,6 +134586,10 @@ Schema for a collection of Webhooks
             "type": "string",
             "minLength": 1,
             "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
           },
           "token": {
             "type": "string",

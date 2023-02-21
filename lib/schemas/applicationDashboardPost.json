@@ -2419,6 +2419,9 @@
                     "type": "string",
                     "maxLength": 255
                   },
+                  "centerOnDataPoints": {
+                    "type": "boolean"
+                  },
                   "defaultBearing": {
                     "type": "number"
                   },
@@ -4717,6 +4720,9 @@
                     "type": "string",
                     "maxLength": 255
                   },
+                  "centerOnDataPoints": {
+                    "type": "boolean"
+                  },
                   "clusterPoints": {
                     "type": "boolean"
                   },
@@ -5246,6 +5252,9 @@
                       }
                     ]
                   },
+                  "centerOnDataPoints": {
+                    "type": "boolean"
+                  },
                   "compositeResult": {
                     "type": "boolean"
                   },
@@ -5261,7 +5270,6 @@
                   },
                   "defaultCenter": {
                     "type": "string",
-                    "minLength": 3,
                     "maxLength": 255
                   },
                   "defaultZoom": {

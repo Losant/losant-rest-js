@@ -198,7 +198,7 @@ all.Organization, all.User, dashboard.*, or dashboard.sendReport.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | Send dashboard report |
+| 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | If dashboard report was enqueued to be sent |
 
 #### Error Responses
 

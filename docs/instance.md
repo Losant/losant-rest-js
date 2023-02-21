@@ -51,7 +51,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instance.*, or instanc
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If generation of report was successfully started |
+| 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | If generation of report was successfully started |
 
 #### Error Responses
 

@@ -27,6 +27,10 @@
       "minLength": 1,
       "maxLength": 255
     },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
     "token": {
       "type": "string",
       "minLength": 1

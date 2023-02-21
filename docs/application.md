@@ -116,7 +116,7 @@ all.Application, all.Organization, all.User, application.*, or application.archi
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | Enqueued a job to archive this applications device data |
+| 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | Enqueued a job to archive this applications device data |
 
 #### Error Responses
 
@@ -164,7 +164,7 @@ all.Application, all.Organization, all.User, application.*, or application.backf
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | Enqueued a job to backfill device data to this application archive location |
+| 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | Enqueued a job to backfill device data to this application archive location |
 
 #### Error Responses
 
@@ -363,7 +363,7 @@ all.Application, all.Organization, all.User, application.*, or application.fullD
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | Enqueued a job to archive all selected data tables of this application archive location |
+| 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | Enqueued a job to archive all selected data tables of this application archive location |
 
 #### Error Responses
 
@@ -411,7 +411,7 @@ all.Application, all.Organization, all.User, application.*, or application.fullE
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | Enqueued a job to archive all events to this application archive location |
+| 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | Enqueued a job to archive all events to this application archive location |
 
 #### Error Responses
 

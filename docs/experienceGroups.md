@@ -48,6 +48,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | perPage | string | N | How many items to return per page | 100 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*group |
+| query | [Advanced Experience Group Query](../lib/schemas/advancedExperienceGroupQuery.json) | N | Experience group filter JSON object which overrides the filter and filterField fields. |  | [Advanced Experience Group Query Example](_schemas.md#advanced-experience-group-query-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

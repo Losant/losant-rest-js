@@ -7,6 +7,10 @@
       "minLength": 1,
       "maxLength": 255
     },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
     "responseCode": {
       "type": "integer",
       "minimum": 100,

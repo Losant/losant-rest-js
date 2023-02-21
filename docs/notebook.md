@@ -366,7 +366,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success With Job ID](../lib/schemas/successWithJobId.json) | If export request was accepted and successfully queued |
+| 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | If export request was accepted and successfully queued |
 
 #### Error Responses
 

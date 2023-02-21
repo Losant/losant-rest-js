@@ -199,6 +199,128 @@
             },
             "additionalProperties": false
           },
+          "orgDefaultLimitConfig": {
+            "type": "object",
+            "properties": {
+              "apitoken": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "application": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "applicationkey": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "dashboard": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "datatable": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "device": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "devicerecipe": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experiencedomain": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceendpoint": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experiencegroup": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceslug": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceuser": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceversion": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceview": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "file": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "flow": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "integration": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "notebook": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "resourcejob": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "webhook": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "dataTTL": {
+                "type": "integer",
+                "minimum": 86400
+              },
+              "member": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "payload": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "storage": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "notebookMinutesPerRun": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "notebookMinutesPerMonth": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "notebookInParallel": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceFlowSlots": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "applicationFlowSlots": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "additionalProperties": false
+          },
           "members": {
             "type": "array",
             "items": {

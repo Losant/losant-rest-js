@@ -111,7 +111,6 @@
                       "flowError",
                       "azureEventHub",
                       "googlePubSub",
-                      "meridian",
                       "mqtt",
                       "notebook",
                       "onBoot",

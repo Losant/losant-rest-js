@@ -213,7 +213,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If generation of export was successfully started |
+| 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | If generation of export was successfully started |
 
 #### Error Responses
 
@@ -374,7 +374,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | If generation of export was successfully started |
+| 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | If generation of export was successfully started |
 
 #### Error Responses
 
@@ -528,6 +528,7 @@ all.Application, all.Device, all.Organization, all.User, devices.*, or devices.s
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Success](../lib/schemas/success.json) | If command was successfully sent |
+| 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | If command was queued to be sent |
 
 #### Error Responses
 

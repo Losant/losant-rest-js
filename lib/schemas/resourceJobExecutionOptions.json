@@ -5,6 +5,24 @@
     "templateContext": {
       "type": "string",
       "maxLength": 32767
+    },
+    "queryJson": {
+      "type": "string",
+      "maxLength": 8192
+    },
+    "dataTableId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 255,
+          "pattern": ".*{{.+}}.*"
+        }
+      ]
     }
   },
   "additionalProperties": false

@@ -39,7 +39,6 @@
             "enum": [
               "azureEventHub",
               "googlePubSub",
-              "meridian",
               "mqtt",
               "particle",
               "sqs"
@@ -228,32 +227,6 @@
               "secretAccessKey",
               "region",
               "queueUrl"
-            ]
-          },
-          "meridianConfig": {
-            "type": "object",
-            "properties": {
-              "authenticationToken": {
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
-              },
-              "locationId": {
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
-              },
-              "assetUpdates": {
-                "type": "boolean"
-              },
-              "zoneUpdates": {
-                "type": "boolean"
-              }
-            },
-            "additionalProperties": false,
-            "required": [
-              "authenticationToken",
-              "locationId"
             ]
           },
           "status": {
