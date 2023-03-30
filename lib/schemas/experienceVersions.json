@@ -41,6 +41,18 @@
             "type": "string",
             "format": "date-time"
           },
+          "lastUpdatedById": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "lastUpdatedByType": {
+            "type": "string",
+            "enum": [
+              "flow",
+              "user",
+              "apiToken"
+            ]
+          },
           "endpointDefaultCors": {
             "type": "boolean"
           },

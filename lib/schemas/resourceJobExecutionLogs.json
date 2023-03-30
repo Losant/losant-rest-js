@@ -91,17 +91,17 @@
         "maxLength": 32767
       },
       "iterationDelay": {
-        "type": "number",
+        "type": "integer",
         "min": 0,
         "max": 60000
       },
       "iterationTimeout": {
-        "type": "number",
+        "type": "integer",
         "min": 60000,
         "max": 900000
       },
       "maxIterationConcurrency": {
-        "type": "number",
+        "type": "integer",
         "enum": [
           1,
           10
@@ -127,6 +127,22 @@
           }
         }
       }
+    },
+    "retryOnTimeout": {
+      "type": "boolean"
+    },
+    "retryOnFailure": {
+      "type": "boolean"
+    },
+    "maxIterationRetries": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "retryDelay": {
+      "type": "integer",
+      "min": 0,
+      "max": 30000
     }
   }
 }

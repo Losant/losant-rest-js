@@ -976,6 +976,64 @@
                             }
                           },
                           "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "queryType": {
+                              "type": "string",
+                              "enum": [
+                                "device-info"
+                              ]
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "attributes": {
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "array",
+                                  "maxItems": 100,
+                                  "items": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                }
+                              ]
+                            },
+                            "excludeConnectionInfo": {
+                              "type": "boolean"
+                            },
+                            "sortField": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "sortDirection": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "page": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "perPage": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "query": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "compositeStateType": {
+                              "type": "string",
+                              "maxLength": 255
+                            }
+                          },
+                          "additionalProperties": false
                         }
                       ]
                     }
@@ -2264,6 +2322,9 @@
                 "type": "object",
                 "properties": {
                   "realTime": {
+                    "type": "boolean"
+                  },
+                  "disallowUserSelectedDuration": {
                     "type": "boolean"
                   },
                   "duration": {

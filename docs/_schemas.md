@@ -74,6 +74,8 @@
 *   [Data Table Rows Delete](#data-table-rows-delete)
 *   [Data Table Rows Export](#data-table-rows-export)
 *   [Data Tables](#data-tables)
+*   [Debug Exclude Node IDs](#debug-exclude-node-ids)
+*   [Debug Levels](#debug-levels)
 *   [Device](#device)
 *   [Device Attribute Data Type Filter](#device-attribute-data-type-filter)
 *   [Device Class Filter](#device-class-filter)
@@ -11873,6 +11875,64 @@ Schema for the body of an Application scoped Dashboard creation request
                             }
                           },
                           "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "queryType": {
+                              "type": "string",
+                              "enum": [
+                                "device-info"
+                              ]
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "attributes": {
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "array",
+                                  "maxItems": 100,
+                                  "items": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                }
+                              ]
+                            },
+                            "excludeConnectionInfo": {
+                              "type": "boolean"
+                            },
+                            "sortField": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "sortDirection": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "page": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "perPage": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "query": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "compositeStateType": {
+                              "type": "string",
+                              "maxLength": 255
+                            }
+                          },
+                          "additionalProperties": false
                         }
                       ]
                     }
@@ -13161,6 +13221,9 @@ Schema for the body of an Application scoped Dashboard creation request
                 "type": "object",
                 "properties": {
                   "realTime": {
+                    "type": "boolean"
+                  },
+                  "disallowUserSelectedDuration": {
                     "type": "boolean"
                   },
                   "duration": {
@@ -21367,6 +21430,64 @@ Schema for a single Dashboard
                             }
                           },
                           "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "queryType": {
+                              "type": "string",
+                              "enum": [
+                                "device-info"
+                              ]
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "attributes": {
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "array",
+                                  "maxItems": 100,
+                                  "items": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                }
+                              ]
+                            },
+                            "excludeConnectionInfo": {
+                              "type": "boolean"
+                            },
+                            "sortField": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "sortDirection": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "page": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "perPage": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "query": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "compositeStateType": {
+                              "type": "string",
+                              "maxLength": 255
+                            }
+                          },
+                          "additionalProperties": false
                         }
                       ]
                     }
@@ -22655,6 +22776,9 @@ Schema for a single Dashboard
                 "type": "object",
                 "properties": {
                   "realTime": {
+                    "type": "boolean"
+                  },
+                  "disallowUserSelectedDuration": {
                     "type": "boolean"
                   },
                   "duration": {
@@ -27421,6 +27545,64 @@ Schema for the body of a Dashboard modification request
                             }
                           },
                           "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "queryType": {
+                              "type": "string",
+                              "enum": [
+                                "device-info"
+                              ]
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "attributes": {
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "array",
+                                  "maxItems": 100,
+                                  "items": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                }
+                              ]
+                            },
+                            "excludeConnectionInfo": {
+                              "type": "boolean"
+                            },
+                            "sortField": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "sortDirection": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "page": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "perPage": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "query": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "compositeStateType": {
+                              "type": "string",
+                              "maxLength": 255
+                            }
+                          },
+                          "additionalProperties": false
                         }
                       ]
                     }
@@ -28709,6 +28891,9 @@ Schema for the body of a Dashboard modification request
                 "type": "object",
                 "properties": {
                   "realTime": {
+                    "type": "boolean"
+                  },
+                  "disallowUserSelectedDuration": {
                     "type": "boolean"
                   },
                   "duration": {
@@ -33466,6 +33651,64 @@ Schema for the body of a Dashboard creation request
                             }
                           },
                           "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "queryType": {
+                              "type": "string",
+                              "enum": [
+                                "device-info"
+                              ]
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "attributes": {
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "array",
+                                  "maxItems": 100,
+                                  "items": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                }
+                              ]
+                            },
+                            "excludeConnectionInfo": {
+                              "type": "boolean"
+                            },
+                            "sortField": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "sortDirection": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "page": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "perPage": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "query": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "compositeStateType": {
+                              "type": "string",
+                              "maxLength": 255
+                            }
+                          },
+                          "additionalProperties": false
                         }
                       ]
                     }
@@ -34754,6 +34997,9 @@ Schema for the body of a Dashboard creation request
                 "type": "object",
                 "properties": {
                   "realTime": {
+                    "type": "boolean"
+                  },
+                  "disallowUserSelectedDuration": {
                     "type": "boolean"
                   },
                   "duration": {
@@ -39886,6 +40132,64 @@ Schema for a collection of Dashboards
                                   }
                                 },
                                 "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "queryType": {
+                                    "type": "string",
+                                    "enum": [
+                                      "device-info"
+                                    ]
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "maxLength": 48
+                                  },
+                                  "attributes": {
+                                    "oneOf": [
+                                      {
+                                        "type": "null"
+                                      },
+                                      {
+                                        "type": "array",
+                                        "maxItems": 100,
+                                        "items": {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "excludeConnectionInfo": {
+                                    "type": "boolean"
+                                  },
+                                  "sortField": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  },
+                                  "sortDirection": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  },
+                                  "page": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  },
+                                  "perPage": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  },
+                                  "query": {
+                                    "type": "string",
+                                    "maxLength": 32767
+                                  },
+                                  "compositeStateType": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                },
+                                "additionalProperties": false
                               }
                             ]
                           }
@@ -41174,6 +41478,9 @@ Schema for a collection of Dashboards
                       "type": "object",
                       "properties": {
                         "realTime": {
+                          "type": "boolean"
+                        },
+                        "disallowUserSelectedDuration": {
                           "type": "boolean"
                         },
                         "duration": {
@@ -46448,6 +46755,70 @@ Schema for a collection of Data Tables
   "sortDirection": "asc",
   "applicationId": "575ec8687ae143cd83dc4a97"
 }
+```
+
+<br/>
+
+## Debug Exclude Node IDs
+
+Schema for an array of node IDs to exclude from debug output
+
+### <a name="debug-exclude-node-ids-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "maxItems": 50,
+  "items": {
+    "type": "string",
+    "maxLength": 48,
+    "minLength": 1
+  }
+}
+```
+### <a name="debug-exclude-node-ids-example"></a> Example
+
+```json
+[
+  "1MT01D98tc",
+  "shr-4IClop"
+]
+```
+
+<br/>
+
+## Debug Levels
+
+Schema for user debug levels
+
+### <a name="debug-levels-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "maxItems": 6,
+  "items": {
+    "type": "string",
+    "enum": [
+      "all",
+      "none",
+      "verbose",
+      "info",
+      "warn",
+      "error"
+    ]
+  }
+}
+```
+### <a name="debug-levels-example"></a> Example
+
+```json
+[
+  "warn",
+  "error"
+]
 ```
 
 <br/>
@@ -64846,6 +65217,30 @@ The body of an experience linked resources response
                 "type": "string",
                 "format": "date-time"
               },
+              "createdById": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "createdByType": {
+                "type": "string",
+                "enum": [
+                  "flow",
+                  "user",
+                  "apiToken"
+                ]
+              },
+              "lastUpdatedById": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "lastUpdatedByType": {
+                "type": "string",
+                "enum": [
+                  "flow",
+                  "user",
+                  "apiToken"
+                ]
+              },
               "name": {
                 "type": "string",
                 "minLength": 1,
@@ -64874,7 +65269,8 @@ The body of an experience linked resources response
                   "data",
                   "experience",
                   "logic",
-                  "output"
+                  "output",
+                  "debug"
                 ]
               },
               "enabled": {
@@ -67531,6 +67927,30 @@ The body of an experience linked resources response
                   "lastUpdated": {
                     "type": "string",
                     "format": "date-time"
+                  },
+                  "createdById": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "createdByType": {
+                    "type": "string",
+                    "enum": [
+                      "flow",
+                      "user",
+                      "apiToken"
+                    ]
+                  },
+                  "lastUpdatedById": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "lastUpdatedByType": {
+                    "type": "string",
+                    "enum": [
+                      "flow",
+                      "user",
+                      "apiToken"
+                    ]
                   },
                   "version": {
                     "type": "string",
@@ -73268,6 +73688,18 @@ Schema for a single Experience Version
       "type": "string",
       "format": "date-time"
     },
+    "lastUpdatedById": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "lastUpdatedByType": {
+      "type": "string",
+      "enum": [
+        "flow",
+        "user",
+        "apiToken"
+      ]
+    },
     "endpointDefaultCors": {
       "type": "boolean"
     },
@@ -73600,6 +74032,18 @@ Schema for a collection of Experience Versions
           "lastUpdated": {
             "type": "string",
             "format": "date-time"
+          },
+          "lastUpdatedById": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "lastUpdatedByType": {
+            "type": "string",
+            "enum": [
+              "flow",
+              "user",
+              "apiToken"
+            ]
           },
           "endpointDefaultCors": {
             "type": "boolean"
@@ -74769,6 +75213,30 @@ Schema for a single Workflow
       "type": "string",
       "format": "date-time"
     },
+    "createdById": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "createdByType": {
+      "type": "string",
+      "enum": [
+        "flow",
+        "user",
+        "apiToken"
+      ]
+    },
+    "lastUpdatedById": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "lastUpdatedByType": {
+      "type": "string",
+      "enum": [
+        "flow",
+        "user",
+        "apiToken"
+      ]
+    },
     "name": {
       "type": "string",
       "minLength": 1,
@@ -74797,7 +75265,8 @@ Schema for a single Workflow
         "data",
         "experience",
         "logic",
-        "output"
+        "output",
+        "debug"
       ]
     },
     "enabled": {
@@ -77625,6 +78094,7 @@ Schema for the body of a Workflow modification request
         "experience",
         "logic",
         "output",
+        "debug",
         ""
       ]
     },
@@ -80212,6 +80682,7 @@ Schema for the body of a Workflow creation request
         "experience",
         "logic",
         "output",
+        "debug",
         ""
       ]
     },
@@ -83019,6 +83490,30 @@ Schema for a single Workflow Version
         "lastUpdated": {
           "type": "string",
           "format": "date-time"
+        },
+        "createdById": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "createdByType": {
+          "type": "string",
+          "enum": [
+            "flow",
+            "user",
+            "apiToken"
+          ]
+        },
+        "lastUpdatedById": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "lastUpdatedByType": {
+          "type": "string",
+          "enum": [
+            "flow",
+            "user",
+            "apiToken"
+          ]
         },
         "version": {
           "type": "string",
@@ -90503,6 +90998,30 @@ Schema for a collection of Workflow Versions
                 "type": "string",
                 "format": "date-time"
               },
+              "createdById": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "createdByType": {
+                "type": "string",
+                "enum": [
+                  "flow",
+                  "user",
+                  "apiToken"
+                ]
+              },
+              "lastUpdatedById": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "lastUpdatedByType": {
+                "type": "string",
+                "enum": [
+                  "flow",
+                  "user",
+                  "apiToken"
+                ]
+              },
               "version": {
                 "type": "string",
                 "minLength": 1,
@@ -96464,6 +96983,30 @@ Schema for a collection of Workflows
             "type": "string",
             "format": "date-time"
           },
+          "createdById": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "createdByType": {
+            "type": "string",
+            "enum": [
+              "flow",
+              "user",
+              "apiToken"
+            ]
+          },
+          "lastUpdatedById": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "lastUpdatedByType": {
+            "type": "string",
+            "enum": [
+              "flow",
+              "user",
+              "apiToken"
+            ]
+          },
           "name": {
             "type": "string",
             "minLength": 1,
@@ -96492,7 +97035,8 @@ Schema for a collection of Workflows
               "data",
               "experience",
               "logic",
-              "output"
+              "output",
+              "debug"
             ]
           },
           "enabled": {
@@ -99208,6 +99752,7 @@ Schema for the body of a workflow import request
               "experience",
               "logic",
               "output",
+              "debug",
               ""
             ]
           },
@@ -104367,6 +104912,30 @@ Schema for the result of a workflow import request
             "type": "string",
             "format": "date-time"
           },
+          "createdById": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "createdByType": {
+            "type": "string",
+            "enum": [
+              "flow",
+              "user",
+              "apiToken"
+            ]
+          },
+          "lastUpdatedById": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "lastUpdatedByType": {
+            "type": "string",
+            "enum": [
+              "flow",
+              "user",
+              "apiToken"
+            ]
+          },
           "name": {
             "type": "string",
             "minLength": 1,
@@ -104395,7 +104964,8 @@ Schema for the result of a workflow import request
               "data",
               "experience",
               "logic",
-              "output"
+              "output",
+              "debug"
             ]
           },
           "enabled": {
@@ -107001,6 +107571,30 @@ Schema for the result of a workflow import request
               "lastUpdated": {
                 "type": "string",
                 "format": "date-time"
+              },
+              "createdById": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "createdByType": {
+                "type": "string",
+                "enum": [
+                  "flow",
+                  "user",
+                  "apiToken"
+                ]
+              },
+              "lastUpdatedById": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "lastUpdatedByType": {
+                "type": "string",
+                "enum": [
+                  "flow",
+                  "user",
+                  "apiToken"
+                ]
               },
               "version": {
                 "type": "string",
@@ -114319,7 +114913,8 @@ Schema for a single Instance Custom Node
         "data",
         "experience",
         "logic",
-        "output"
+        "output",
+        "debug"
       ]
     },
     "minimumAgentVersion": {
@@ -114918,6 +115513,7 @@ Schema for the body of a Instance Custom Node modification request
         "experience",
         "logic",
         "output",
+        "debug",
         ""
       ]
     },
@@ -115617,6 +116213,7 @@ Schema for the body of a Instance Custom Node creation request
         "experience",
         "logic",
         "output",
+        "debug",
         ""
       ]
     },
@@ -116372,7 +116969,8 @@ Schema for a collection of Custom Nodes within an instance
               "data",
               "experience",
               "logic",
-              "output"
+              "output",
+              "debug"
             ]
           },
           "minimumAgentVersion": {
@@ -129675,7 +130273,8 @@ Schema for the set of additional nodes for the workflow palette
               "data",
               "experience",
               "logic",
-              "output"
+              "output",
+              "debug"
             ]
           },
           "customNodeConfig": {
@@ -130066,7 +130665,8 @@ Schema for the set of additional nodes for the workflow palette
                 "data",
                 "experience",
                 "logic",
-                "output"
+                "output",
+                "debug"
               ]
             },
             "customNodeConfig": {
@@ -130921,19 +131521,19 @@ Schema for a single resource job
       ]
     },
     "maxIterationConcurrency": {
-      "type": "number",
+      "type": "integer",
       "enum": [
         1,
         10
       ]
     },
     "iterationDelay": {
-      "type": "number",
+      "type": "integer",
       "min": 0,
       "max": 60000
     },
     "iterationTimeout": {
-      "type": "number",
+      "type": "integer",
       "min": 60000,
       "max": 900000
     },
@@ -130952,6 +131552,22 @@ Schema for a single resource job
     "defaultContext": {
       "type": "string",
       "maxLength": 32767
+    },
+    "retryOnTimeout": {
+      "type": "boolean"
+    },
+    "retryOnFailure": {
+      "type": "boolean"
+    },
+    "maxIterationRetries": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "retryDelay": {
+      "type": "integer",
+      "min": 0,
+      "max": 30000
     }
   },
   "additionalProperties": false
@@ -131077,17 +131693,17 @@ Schema for a set of Resource Job execution logs
         "maxLength": 32767
       },
       "iterationDelay": {
-        "type": "number",
+        "type": "integer",
         "min": 0,
         "max": 60000
       },
       "iterationTimeout": {
-        "type": "number",
+        "type": "integer",
         "min": 60000,
         "max": 900000
       },
       "maxIterationConcurrency": {
-        "type": "number",
+        "type": "integer",
         "enum": [
           1,
           10
@@ -131113,6 +131729,22 @@ Schema for a set of Resource Job execution logs
           }
         }
       }
+    },
+    "retryOnTimeout": {
+      "type": "boolean"
+    },
+    "retryOnFailure": {
+      "type": "boolean"
+    },
+    "maxIterationRetries": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "retryDelay": {
+      "type": "integer",
+      "min": 0,
+      "max": 30000
     }
   }
 }
@@ -131234,25 +131866,41 @@ Schema for a resource job update
       "maxLength": 8192
     },
     "maxIterationConcurrency": {
-      "type": "number",
+      "type": "integer",
       "enum": [
         1,
         10
       ]
     },
     "iterationDelay": {
-      "type": "number",
+      "type": "integer",
       "min": 0,
       "max": 60000
     },
     "iterationTimeout": {
-      "type": "number",
+      "type": "integer",
       "min": 60000,
       "max": 900000
     },
     "defaultContext": {
       "type": "string",
       "maxLength": 32767
+    },
+    "retryOnTimeout": {
+      "type": "boolean"
+    },
+    "retryOnFailure": {
+      "type": "boolean"
+    },
+    "maxIterationRetries": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "retryDelay": {
+      "type": "integer",
+      "min": 0,
+      "max": 30000
     }
   },
   "additionalProperties": false
@@ -131316,25 +131964,41 @@ Schema for a resource job creation
       ]
     },
     "maxIterationConcurrency": {
-      "type": "number",
+      "type": "integer",
       "enum": [
         1,
         10
       ]
     },
     "iterationDelay": {
-      "type": "number",
+      "type": "integer",
       "min": 0,
       "max": 60000
     },
     "iterationTimeout": {
-      "type": "number",
+      "type": "integer",
       "min": 60000,
       "max": 900000
     },
     "defaultContext": {
       "type": "string",
       "maxLength": 32767
+    },
+    "retryOnTimeout": {
+      "type": "boolean"
+    },
+    "retryOnFailure": {
+      "type": "boolean"
+    },
+    "maxIterationRetries": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "retryDelay": {
+      "type": "integer",
+      "min": 0,
+      "max": 30000
     }
   },
   "additionalProperties": false,
@@ -131422,19 +132086,19 @@ Schema for a collection of Resource Jobs
             ]
           },
           "maxIterationConcurrency": {
-            "type": "number",
+            "type": "integer",
             "enum": [
               1,
               10
             ]
           },
           "iterationDelay": {
-            "type": "number",
+            "type": "integer",
             "min": 0,
             "max": 60000
           },
           "iterationTimeout": {
-            "type": "number",
+            "type": "integer",
             "min": 60000,
             "max": 900000
           },
@@ -131453,6 +132117,22 @@ Schema for a collection of Resource Jobs
           "defaultContext": {
             "type": "string",
             "maxLength": 32767
+          },
+          "retryOnTimeout": {
+            "type": "boolean"
+          },
+          "retryOnFailure": {
+            "type": "boolean"
+          },
+          "maxIterationRetries": {
+            "type": "integer",
+            "min": 1,
+            "max": 5
+          },
+          "retryDelay": {
+            "type": "integer",
+            "min": 0,
+            "max": 30000
           }
         },
         "additionalProperties": false

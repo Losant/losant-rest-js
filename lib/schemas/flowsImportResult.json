@@ -30,6 +30,30 @@
             "type": "string",
             "format": "date-time"
           },
+          "createdById": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "createdByType": {
+            "type": "string",
+            "enum": [
+              "flow",
+              "user",
+              "apiToken"
+            ]
+          },
+          "lastUpdatedById": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "lastUpdatedByType": {
+            "type": "string",
+            "enum": [
+              "flow",
+              "user",
+              "apiToken"
+            ]
+          },
           "name": {
             "type": "string",
             "minLength": 1,
@@ -58,7 +82,8 @@
               "data",
               "experience",
               "logic",
-              "output"
+              "output",
+              "debug"
             ]
           },
           "enabled": {
@@ -2664,6 +2689,30 @@
               "lastUpdated": {
                 "type": "string",
                 "format": "date-time"
+              },
+              "createdById": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "createdByType": {
+                "type": "string",
+                "enum": [
+                  "flow",
+                  "user",
+                  "apiToken"
+                ]
+              },
+              "lastUpdatedById": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "lastUpdatedByType": {
+                "type": "string",
+                "enum": [
+                  "flow",
+                  "user",
+                  "apiToken"
+                ]
               },
               "version": {
                 "type": "string",

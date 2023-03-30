@@ -72,7 +72,8 @@
         "data",
         "experience",
         "logic",
-        "output"
+        "output",
+        "debug"
       ]
     },
     "minimumAgentVersion": {

@@ -39,7 +39,8 @@
               "data",
               "experience",
               "logic",
-              "output"
+              "output",
+              "debug"
             ]
           },
           "customNodeConfig": {
@@ -430,7 +431,8 @@
                 "data",
                 "experience",
                 "logic",
-                "output"
+                "output",
+                "debug"
               ]
             },
             "customNodeConfig": {
