@@ -158,7 +158,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | limit | string | N | Maximum number of errors to return | 25 | 25 |
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | desc | desc |
 | flowVersion | string | N | Flow version name or ID. When not included, will be errors for all versions. Pass develop for just the develop version. |  | develop |
-| deviceId | string | N | For edge or embedded workflows, the Device ID to return workflow errors for. When not included, will be errors for all device IDs. |  | 575ed18f7ae143cd83dc4bb6 |
+| deviceId | string | N | For edge or embedded workflows, the Device ID for which to return workflow errors. When not included, will be errors for all device IDs. |  | 575ed18f7ae143cd83dc4bb6 |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

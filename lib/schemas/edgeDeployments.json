@@ -83,6 +83,16 @@
             "minLength": 1,
             "maxLength": 255
           },
+          "currentEtag": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "desiredEtag": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
           "logs": {
             "type": "array",
             "items": {
@@ -134,6 +144,21 @@
                     "string",
                     "null"
                   ],
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "newEtag": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "previousEtag": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "attemptedEtag": {
+                  "type": "string",
                   "minLength": 1,
                   "maxLength": 255
                 },
