@@ -243,6 +243,7 @@ No api access token is required to call this action.
 | password | string | N | Password for password-protected dashboards |  | myPassword |
 | duration | string | N | Duration of data to fetch in milliseconds |  | 3600000 |
 | resolution | string | N | Resolution in milliseconds |  | 60000 |
+| end | string | N | End timestamp of the data, in ms since epoch |  | 1465790400000 |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

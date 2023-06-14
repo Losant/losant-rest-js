@@ -791,6 +791,22 @@
                                 "$and",
                                 "advanced"
                               ]
+                            },
+                            "sortColumn": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "sortDirection": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "limit": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "offset": {
+                              "type": "string",
+                              "maxLength": 255
                             }
                           },
                           "additionalProperties": false
@@ -984,14 +1000,32 @@
                     "maxLength": 255
                   },
                   "defaultSortDirection": {
-                    "type": "string",
-                    "enum": [
-                      "asc",
-                      "desc",
-                      "ASC",
-                      "DESC",
-                      ""
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "asc",
+                          "desc",
+                          "ASC",
+                          "DESC",
+                          ""
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "minLength": 4,
+                        "maxLength": 255,
+                        "pattern": ".*{{.+}}.*"
+                      }
                     ]
+                  },
+                  "defaultLimit": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "defaultOffset": {
+                    "type": "string",
+                    "maxLength": 255
                   },
                   "query": {
                     "type": "string",

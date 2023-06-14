@@ -11,6 +11,7 @@ parameters and the potential responses.
 *   [Backfill Archive Data](#backfill-archive-data)
 *   [Clone](#clone)
 *   [Delete](#delete)
+*   [Device Counts](#device-counts)
 *   [Export](#export)
 *   [Full Data Tables Archive](#full-data-tables-archive)
 *   [Full Events Archive](#full-events-archive)
@@ -18,6 +19,7 @@ parameters and the potential responses.
 *   [Globals](#globals)
 *   [Import](#import)
 *   [Mqtt Publish Message](#mqtt-publish-message)
+*   [Notebook Minute Counts](#notebook-minute-counts)
 *   [Patch](#patch)
 *   [Payload Counts](#payload-counts)
 *   [Readme](#readme)
@@ -265,6 +267,56 @@ all.Application, all.Organization, all.User, application.*, or application.delet
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Success](../lib/schemas/success.json) | If application was successfully deleted |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+
+<br/>
+
+## Device Counts
+
+Returns device counts by day for the time range specified for this application
+
+```javascript
+var params = {
+  applicationId: myApplicationId
+};
+
+// with callbacks
+client.application.deviceCounts(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.application.deviceCounts(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, application.*, or application.deviceCounts.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
+| start | string | N | Start of range for device count query (ms since epoch) |  | 0 |
+| end | string | N | End of range for device count query (ms since epoch) |  | 1465790400000 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Device Counts](../lib/schemas/deviceCounts.json) | Device counts by day |
 
 #### Error Responses
 
@@ -614,6 +666,56 @@ all.Application, all.Organization, all.User, application.*, or application.mqttP
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Success](../lib/schemas/success.json) | Message successfully published |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+
+<br/>
+
+## Notebook Minute Counts
+
+Returns notebook execution usage by day for the time range specified for this application
+
+```javascript
+var params = {
+  applicationId: myApplicationId
+};
+
+// with callbacks
+client.application.notebookMinuteCounts(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.application.notebookMinuteCounts(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, application.*, or application.notebookMinuteCounts.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
+| start | string | N | Start of range for notebook execution query (ms since epoch) |  | 0 |
+| end | string | N | End of range for notebook execution query (ms since epoch) |  | 1465790400000 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Notebook Minute Counts](../lib/schemas/notebookMinuteCounts.json) | Notebook usage information |
 
 #### Error Responses
 

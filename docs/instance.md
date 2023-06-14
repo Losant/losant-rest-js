@@ -6,10 +6,62 @@ parameters and the potential responses.
 
 ##### Contents
 
+*   [Device Counts](#device-counts)
 *   [Generate Report](#generate-report)
 *   [Get](#get)
 *   [Historical Summaries](#historical-summaries)
+*   [Notebook Minute Counts](#notebook-minute-counts)
 *   [Patch](#patch)
+
+<br/>
+
+## Device Counts
+
+Returns device counts by day for the time range specified for this instance
+
+```javascript
+var params = {
+  instanceId: myInstanceId
+};
+
+// with callbacks
+client.instance.deviceCounts(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.instance.deviceCounts(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Instance, all.Instance.read, all.User, all.User.read, instance.*, or instance.deviceCounts.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| instanceId | string | Y | ID associated with the instance |  | 575ec8687ae143cd83dc4a97 |
+| start | string | N | Start of range for device count query (ms since epoch) |  | 0 |
+| end | string | N | End of range for device count query (ms since epoch) |  | 1465790400000 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Device Counts](../lib/schemas/deviceCounts.json) | Device counts by day |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if instance was not found |
 
 <br/>
 
@@ -160,6 +212,56 @@ all.Instance, all.Instance.read, all.User, all.User.read, instance.*, or instanc
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+
+<br/>
+
+## Notebook Minute Counts
+
+Returns notebook execution usage by day for the time range specified for this instance
+
+```javascript
+var params = {
+  instanceId: myInstanceId
+};
+
+// with callbacks
+client.instance.notebookMinuteCounts(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.instance.notebookMinuteCounts(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Instance, all.Instance.read, all.User, all.User.read, instance.*, or instance.notebookMinuteCounts.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| instanceId | string | Y | ID associated with the instance |  | 575ec8687ae143cd83dc4a97 |
+| start | string | N | Start of range for notebook execution query (ms since epoch) |  | 0 |
+| end | string | N | End of range for notebook execution query (ms since epoch) |  | 1465790400000 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Notebook Minute Counts](../lib/schemas/notebookMinuteCounts.json) | Notebook usage information |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if instance was not found |
 
 <br/>
 

@@ -1390,6 +1390,7 @@
                           "properties": {
                             "uri": {
                               "type": "string",
+                              "format": "uri",
                               "maxLength": 1024
                             },
                             "securityPolicy": {
@@ -1435,6 +1436,10 @@
                                 "type": "string",
                                 "maxLength": 255
                               }
+                            },
+                            "configName": {
+                              "type": "string",
+                              "maxLength": 1024
                             }
                           },
                           "additionalProperties": false
@@ -4068,6 +4073,7 @@
                           "properties": {
                             "uri": {
                               "type": "string",
+                              "format": "uri",
                               "maxLength": 1024
                             },
                             "securityPolicy": {
@@ -4113,6 +4119,10 @@
                                 "type": "string",
                                 "maxLength": 255
                               }
+                            },
+                            "configName": {
+                              "type": "string",
+                              "maxLength": 1024
                             }
                           },
                           "additionalProperties": false

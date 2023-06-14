@@ -9,12 +9,14 @@ parameters and the potential responses.
 *   [Add Recent Item](#add-recent-item)
 *   [Change Password](#change-password)
 *   [Delete](#delete)
+*   [Device Counts](#device-counts)
 *   [Disable Two Factor Auth](#disable-two-factor-auth)
 *   [Disconnect Github](#disconnect-github)
 *   [Enable Two Factor Auth](#enable-two-factor-auth)
 *   [Fetch Recent Items](#fetch-recent-items)
 *   [Generate Two Factor Auth](#generate-two-factor-auth)
 *   [Get](#get)
+*   [Notebook Minute Counts](#notebook-minute-counts)
 *   [Patch](#patch)
 *   [Payload Counts](#payload-counts)
 *   [Refresh Token](#refresh-token)
@@ -155,6 +157,52 @@ all.User, me.*, or me.delete.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Success](../lib/schemas/success.json) | If the user was successfully deleted |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+
+<br/>
+
+## Device Counts
+
+Returns device counts by day for the time range specified for all applications the current user owns
+
+```javascript
+var params = {}; // all params are optional
+
+// with callbacks
+client.me.deviceCounts(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.me.deviceCounts(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.User, all.User.read, me.*, or me.deviceCounts.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| start | string | N | Start of range for device count query (ms since epoch) |  | 0 |
+| end | string | N | End of range for device count query (ms since epoch) |  | 1465790400000 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Device Counts](../lib/schemas/deviceCounts.json) | Device counts by day |
 
 #### Error Responses
 
@@ -437,6 +485,52 @@ all.User, all.User.read, me.*, or me.get.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
+
+<br/>
+
+## Notebook Minute Counts
+
+Returns notebook execution usage by day for the time range specified for all applications the current user owns
+
+```javascript
+var params = {}; // all params are optional
+
+// with callbacks
+client.me.notebookMinuteCounts(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.me.notebookMinuteCounts(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.User, all.User.read, me.*, or me.notebookMinuteCounts.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| start | string | N | Start of range for notebook execution query (ms since epoch) |  | 0 |
+| end | string | N | End of range for notebook execution query (ms since epoch) |  | 1465790400000 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Notebook Minute Counts](../lib/schemas/notebookMinuteCounts.json) | Notebook usage information |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
 
 <br/>
 
