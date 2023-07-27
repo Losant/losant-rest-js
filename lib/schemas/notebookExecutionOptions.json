@@ -27,6 +27,16 @@
     "templateContext": {
       "type": "string",
       "maxLength": 32767
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false

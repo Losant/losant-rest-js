@@ -14,6 +14,7 @@ parameters and the potential responses.
 *   [Notebook Minute Counts](#notebook-minute-counts)
 *   [Patch](#patch)
 *   [Payload Counts](#payload-counts)
+*   [Payload Counts Breakdown](#payload-counts-breakdown)
 *   [Pending Invites](#pending-invites)
 *   [Remove Member](#remove-member)
 *   [Revoke Invite](#revoke-invite)
@@ -413,6 +414,59 @@ all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 200 | [Payload Stats](../lib/schemas/payloadStats.json) | Payload counts, by type and source |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if organization was not found |
+
+<br/>
+
+## Payload Counts Breakdown
+
+Returns payload counts per resolution in the time range specified for all application this organization owns
+
+```javascript
+var params = {
+  orgId: myOrgId
+};
+
+// with callbacks
+client.org.payloadCountsBreakdown(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.org.payloadCountsBreakdown(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.payloadCountsBreakdown.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
+| start | string | N | Start of range for payload count query (ms since epoch) |  | 0 |
+| end | string | N | End of range for payload count query (ms since epoch) |  | 1465790400000 |
+| resolution | string | N | Resolution in milliseconds. Accepted values are: 86400000, 3600000 | 86400000 | 86400000 |
+| asBytes | string | N | If the resulting stats should be returned as bytes | false | true |
+| includeNonBillable | string | N | If non-billable payloads should be included in the result | false | true |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Payload Counts Breakdown](../lib/schemas/payloadCountsBreakdown.json) | Sum of payload counts by date |
 
 #### Error Responses
 

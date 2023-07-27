@@ -39,7 +39,7 @@ all.Organization, all.Organization.read, all.User, all.User.read, dashboards.*, 
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| sortField | string | N | Field to sort the results by. Accepted values are: name, id, creationDate, ownerId, applicationId | name | name |
+| sortField | string | N | Field to sort the results by. Accepted values are: name, id, creationDate, ownerId, applicationId, lastUpdated | name | name |
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
 | page | string | N | Which page of results to return | 0 | 0 |
 | perPage | string | N | How many items to return per page | 100 | 10 |

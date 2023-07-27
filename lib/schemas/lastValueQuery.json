@@ -1624,6 +1624,9 @@
         }
       },
       "additionalProperties": false
+    },
+    "end": {
+      "type": "number"
     }
   },
   "additionalProperties": false

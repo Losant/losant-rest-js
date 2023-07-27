@@ -12,6 +12,7 @@ parameters and the potential responses.
 *   [Historical Summaries](#historical-summaries)
 *   [Notebook Minute Counts](#notebook-minute-counts)
 *   [Patch](#patch)
+*   [Payload Counts Breakdown](#payload-counts-breakdown)
 
 <br/>
 
@@ -311,3 +312,56 @@ all.Instance, all.User, instance.*, or instance.patch.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+
+<br/>
+
+## Payload Counts Breakdown
+
+Returns payload counts per resolution in the time range specified for this instance
+
+```javascript
+var params = {
+  instanceId: myInstanceId
+};
+
+// with callbacks
+client.instance.payloadCountsBreakdown(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.instance.payloadCountsBreakdown(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Instance, all.Instance.read, all.User, all.User.read, instance.*, or instance.payloadCountsBreakdown.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| instanceId | string | Y | ID associated with the instance |  | 575ec8687ae143cd83dc4a97 |
+| start | string | N | Start of range for payload count query (ms since epoch) |  | 0 |
+| end | string | N | End of range for payload count query (ms since epoch) |  | 1465790400000 |
+| resolution | string | N | Resolution in milliseconds. Accepted values are: 86400000, 3600000 | 86400000 | 86400000 |
+| asBytes | string | N | If the resulting stats should be returned as bytes | false | true |
+| includeNonBillable | string | N | If non-billable payloads should be included in the result | false | true |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Payload Counts Breakdown](../lib/schemas/payloadCountsBreakdown.json) | Sum of payload counts by date |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if instance was not found |

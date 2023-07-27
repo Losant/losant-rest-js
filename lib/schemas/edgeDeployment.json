@@ -48,6 +48,13 @@
       "minLength": 1,
       "maxLength": 255
     },
+    "flowClass": {
+      "type": "string",
+      "enum": [
+        "edge",
+        "customNode"
+      ]
+    },
     "fileName": {
       "type": "string",
       "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
