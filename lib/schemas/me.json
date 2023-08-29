@@ -92,6 +92,9 @@
         "applicationkey": {
           "type": "integer"
         },
+        "credential": {
+          "type": "integer"
+        },
         "dashboard": {
           "type": "integer"
         },
@@ -291,6 +294,9 @@
           "type": "integer"
         },
         "appCount": {
+          "type": "integer"
+        },
+        "credentialCount": {
           "type": "integer"
         },
         "dashCount": {

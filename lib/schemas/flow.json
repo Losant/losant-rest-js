@@ -1218,7 +1218,8 @@
                     "type": "string",
                     "enum": [
                       "losant",
-                      "local"
+                      "local",
+                      "external"
                     ]
                   }
                 },

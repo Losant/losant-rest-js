@@ -1226,7 +1226,8 @@
                           "type": "string",
                           "enum": [
                             "losant",
-                            "local"
+                            "local",
+                            "external"
                           ]
                         }
                       },
@@ -3949,7 +3950,8 @@
                               "type": "string",
                               "enum": [
                                 "losant",
-                                "local"
+                                "local",
+                                "external"
                               ]
                             }
                           },
@@ -6632,7 +6634,8 @@
                               "type": "string",
                               "enum": [
                                 "losant",
-                                "local"
+                                "local",
+                                "external"
                               ]
                             }
                           },

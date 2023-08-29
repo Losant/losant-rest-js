@@ -34,6 +34,11 @@
             "minLength": 1,
             "maxLength": 255
           },
+          "credentialName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
           "integrationType": {
             "type": "string",
             "enum": [
@@ -64,6 +69,11 @@
                 "maxLength": 256,
                 "minLength": 1
               },
+              "hostName": {
+                "type": "string",
+                "maxLength": 256,
+                "minLength": 1
+              },
               "consumerGroup": {
                 "type": "string",
                 "maxLength": 256,
@@ -76,10 +86,21 @@
               }
             },
             "additionalProperties": false,
-            "required": [
-              "hubName",
-              "consumerGroup",
-              "connectionString"
+            "oneOf": [
+              {
+                "required": [
+                  "hubName",
+                  "consumerGroup",
+                  "connectionString"
+                ]
+              },
+              {
+                "required": [
+                  "hubName",
+                  "consumerGroup",
+                  "hostName"
+                ]
+              }
             ]
           },
           "googlePubSubConfig": {
@@ -96,11 +117,7 @@
                 "minLength": 4
               }
             },
-            "additionalProperties": false,
-            "required": [
-              "projectId",
-              "keyJson"
-            ]
+            "additionalProperties": false
           },
           "mqttConfig": {
             "type": "object",
@@ -223,9 +240,6 @@
             },
             "additionalProperties": false,
             "required": [
-              "accessKeyId",
-              "secretAccessKey",
-              "region",
               "queueUrl"
             ]
           },

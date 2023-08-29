@@ -108,6 +108,9 @@
         "applicationkey": {
           "type": "integer"
         },
+        "credential": {
+          "type": "integer"
+        },
         "dashboard": {
           "type": "integer"
         },
@@ -204,6 +207,10 @@
           "minimum": 0
         },
         "applicationkey": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "credential": {
           "type": "integer",
           "minimum": 0
         },

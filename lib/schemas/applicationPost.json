@@ -164,12 +164,14 @@
             }
           },
           "required": [
-            "bucket",
-            "accessKeyId",
-            "secretAccessKey",
-            "region"
+            "bucket"
           ],
           "additionalProperties": false
+        },
+        "credentialName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
         },
         "gcs": {
           "type": "object",
@@ -190,8 +192,6 @@
             }
           },
           "required": [
-            "projectId",
-            "keyJson",
             "bucket"
           ],
           "additionalProperties": false
@@ -215,8 +215,6 @@
             }
           },
           "required": [
-            "account",
-            "accountKey",
             "bucket"
           ],
           "additionalProperties": false

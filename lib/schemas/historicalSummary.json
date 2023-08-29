@@ -53,6 +53,10 @@
           "type": "integer",
           "minimum": 0
         },
+        "credential": {
+          "type": "integer",
+          "minimum": 0
+        },
         "dashboard": {
           "type": "integer",
           "minimum": 0

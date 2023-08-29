@@ -5785,9 +5785,16 @@
       "type": "boolean"
     },
     "password": {
-      "type": [
-        "string",
-        "null"
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 12,
+          "maxLength": 2048,
+          "pattern": "^(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.*[0-9])(?=.*[a-z]).{12,}$"
+        },
+        {
+          "type": "null"
+        }
       ]
     },
     "contextConfiguration": {

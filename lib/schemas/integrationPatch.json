@@ -29,10 +29,27 @@
       },
       "uniqueItems": true
     },
+    "credentialName": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
     "azureEventHubConfig": {
       "type": "object",
       "properties": {
         "hubName": {
+          "type": "string",
+          "maxLength": 256,
+          "minLength": 1
+        },
+        "hostName": {
           "type": "string",
           "maxLength": 256,
           "minLength": 1
@@ -49,10 +66,21 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "hubName",
-        "consumerGroup",
-        "connectionString"
+      "oneOf": [
+        {
+          "required": [
+            "hubName",
+            "consumerGroup",
+            "connectionString"
+          ]
+        },
+        {
+          "required": [
+            "hubName",
+            "consumerGroup",
+            "hostName"
+          ]
+        }
       ]
     },
     "googlePubSubConfig": {
@@ -69,11 +97,7 @@
           "minLength": 4
         }
       },
-      "additionalProperties": false,
-      "required": [
-        "projectId",
-        "keyJson"
-      ]
+      "additionalProperties": false
     },
     "mqttConfig": {
       "type": "object",
@@ -196,9 +220,6 @@
       },
       "additionalProperties": false,
       "required": [
-        "accessKeyId",
-        "secretAccessKey",
-        "region",
         "queueUrl"
       ]
     }
