@@ -2594,6 +2594,10 @@
                             }
                           ]
                         },
+                        "yAxisId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
                         "lineType": {
                           "type": "string",
                           "enum": [
@@ -2646,6 +2650,62 @@
                         }
                       },
                       "additionalProperties": false
+                    }
+                  },
+                  "yAxes": {
+                    "type": "array",
+                    "maxItems": 10,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "label": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "position": {
+                          "type": "string",
+                          "enum": [
+                            "left",
+                            "right",
+                            "hidden"
+                          ],
+                          "default": "left"
+                        },
+                        "min": {
+                          "oneOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "string",
+                              "maxLength": 128
+                            }
+                          ]
+                        },
+                        "max": {
+                          "oneOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "string",
+                              "maxLength": 128
+                            }
+                          ]
+                        },
+                        "format": {
+                          "type": "string",
+                          "maxLength": 255
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "id"
+                      ]
                     }
                   }
                 },
@@ -3016,6 +3076,9 @@
                   },
                   "defaultZoom": {
                     "type": "number"
+                  },
+                  "disableZoom": {
+                    "type": "boolean"
                   },
                   "segments": {
                     "type": "array",
@@ -5583,6 +5646,9 @@
                         "maxLength": 128
                       }
                     ]
+                  },
+                  "disableZoom": {
+                    "type": "boolean"
                   },
                   "deviceIds": {
                     "type": "array",

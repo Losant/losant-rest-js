@@ -1,0 +1,172 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "applicationId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "summary": {
+            "type": "object",
+            "properties": {
+              "deviceCounts": {
+                "title": "Device Counts",
+                "description": "Schema for the result of a device counts request",
+                "type": "object",
+                "properties": {
+                  "start": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "end": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "counts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "date": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "created": {
+                          "type": "integer"
+                        },
+                        "deleted": {
+                          "type": "integer"
+                        },
+                        "total": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "notebookMinuteCounts": {
+                "title": "Notebook Minute Counts",
+                "description": "Schema for the result of a notebook minute counts request",
+                "type": "object",
+                "properties": {
+                  "start": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "end": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "counts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "date": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "minutes": {
+                          "type": "integer"
+                        },
+                        "completed": {
+                          "type": "integer"
+                        },
+                        "canceled": {
+                          "type": "integer"
+                        },
+                        "errored": {
+                          "type": "integer"
+                        },
+                        "timeout": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "payloadCounts": {
+                "title": "Payload Counts Breakdown",
+                "description": "Schema for the result of a payload counts breakdown request",
+                "type": "object",
+                "properties": {
+                  "start": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "end": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "counts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "date": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "value": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc",
+        "ASC",
+        "DESC",
+        ""
+      ]
+    }
+  }
+}

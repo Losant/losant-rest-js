@@ -396,6 +396,7 @@
                   "applications.post",
                   "applications.import",
                   "applications.detailedSummary",
+                  "applications.periodSummaries",
                   "auditLog.get",
                   "auditLogs.get",
                   "dashboard.patch",
@@ -530,6 +531,9 @@
               "me.deviceCounts",
               "me.notebookMinuteCounts",
               "me.transferResources",
+              "me.invite",
+              "me.invites",
+              "me.respondToInvite",
               "orgs.*",
               "orgs.get",
               "orgs.post"

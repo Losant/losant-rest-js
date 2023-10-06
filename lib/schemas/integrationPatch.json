@@ -7,16 +7,6 @@
       "minLength": 1,
       "maxLength": 255
     },
-    "integrationType": {
-      "type": "string",
-      "enum": [
-        "azureEventHub",
-        "googlePubSub",
-        "mqtt",
-        "particle",
-        "sqs"
-      ]
-    },
     "enabled": {
       "type": "boolean"
     },

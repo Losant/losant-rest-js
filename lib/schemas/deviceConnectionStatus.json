@@ -33,6 +33,11 @@
               ]
             }
           ]
+        },
+        "ipAddress": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 39
         }
       },
       "required": [
@@ -104,6 +109,11 @@
         },
         "messagesToClient": {
           "type": "number"
+        },
+        "ipAddress": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 39
         }
       },
       "required": [

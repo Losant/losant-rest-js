@@ -8,6 +8,7 @@ parameters and the potential responses.
 
 *   [Get](#get)
 *   [Import](#import)
+*   [Period Summaries](#period-summaries)
 *   [Post](#post)
 
 <br/>
@@ -117,6 +118,63 @@ all.Organization, all.User, applications.*, or applications.import.
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
 | 404 | [Error](../lib/schemas/error.json) | Error if application is not found |
 | 422 | [Validation Error](../lib/schemas/validationErrors.json) | Error if too many validation errors occurred on other resources |
+
+<br/>
+
+## Period Summaries
+
+Returns application usage summaries over a selected date range
+
+```javascript
+var params = {}; // all params are optional
+
+// with callbacks
+client.applications.periodSummaries(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.applications.periodSummaries(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Organization, all.User, applications.*, or applications.periodSummaries.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| start | string | N | Start of range for resource count queries (ms since epoch) |  | 0 |
+| end | string | N | End of range for resource count queries (ms since epoch) |  | 1465790400000 |
+| asBytes | string | N | If the resulting payload counts should be returned as bytes | false | true |
+| includeNonBillable | string | N | If non-billable payloads should be included in the result | false | true |
+| sortField | string | N | Field to sort the results by. Accepted values are: name, id, creationDate, ownerId, lastUpdated | name | name |
+| sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
+| page | string | N | Which page of results to return | 0 | 0 |
+| perPage | string | N | How many items to return per page | 100 | 10 |
+| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
+| filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my * app |
+| orgId | string | N | If not provided, return all applications. If provided but blank, only return applications belonging to the current user. If provided and an id, only return applications belonging to the given organization id. |  | 575ecdf07ae143cd83dc4a9a |
+| exclude | string | N | Comma-separated list of resources to exclude from summary |  | payloadCounts, deviceCounts, notebookMinuteCounts |
+| include | string | N | Comma-separated list of summary fields to include in application summary |  | deviceCounts |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Application Period Summaries](../lib/schemas/periodSummaries.json) | Collection of application period summaries |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
 
 <br/>
 

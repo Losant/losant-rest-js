@@ -16,11 +16,14 @@ parameters and the potential responses.
 *   [Fetch Recent Items](#fetch-recent-items)
 *   [Generate Two Factor Auth](#generate-two-factor-auth)
 *   [Get](#get)
+*   [Invite](#invite)
+*   [Invites](#invites)
 *   [Notebook Minute Counts](#notebook-minute-counts)
 *   [Patch](#patch)
 *   [Payload Counts](#payload-counts)
 *   [Payload Counts Breakdown](#payload-counts-breakdown)
 *   [Refresh Token](#refresh-token)
+*   [Respond to Invite](#respond-to-invite)
 *   [Transfer Resources](#transfer-resources)
 *   [Verify Email](#verify-email)
 
@@ -489,6 +492,98 @@ all.User, all.User.read, me.*, or me.get.
 
 <br/>
 
+## Invite
+
+Retrieves information for an invitation to an organization
+
+```javascript
+var params = {
+  inviteId: myInviteId
+};
+
+// with callbacks
+client.me.invite(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.me.invite(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.User, me.*, or me.invite.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| inviteId | string | Y | ID associated with the invitation |  | 575ec8687ae143cd83dc4a97 |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Organization Invitation Information For User](../lib/schemas/orgInviteUser.json) | Information about invitation |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if invite not found |
+
+<br/>
+
+## Invites
+
+Retrieves pending organization invitations for a user
+
+```javascript
+var params = {}; // all params are optional
+
+// with callbacks
+client.me.invites(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.me.invites(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.User, me.*, or me.invites.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [User Organization Invitations](../lib/schemas/orgInvitesUser.json) | Information about invitations |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+
+<br/>
+
 ## Notebook Minute Counts
 
 Returns notebook execution usage by day for the time range specified for all applications the current user owns
@@ -721,6 +816,57 @@ all.User, or me.*.
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
 | 401 | [Error](../lib/schemas/error.json) | Unauthorized error if authentication fails |
+
+<br/>
+
+## Respond to Invite
+
+Accepts or rejects an invitation to an organization
+
+```javascript
+var params = {
+  inviteId: myInviteId,
+  response: myResponse
+};
+
+// with callbacks
+client.me.respondToInvite(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.me.respondToInvite(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.User, me.*, or me.respondToInvite.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| inviteId | string | Y | ID associated with the invitation |  | 575ec8687ae143cd83dc4a97 |
+| response | [Organization Invitation Action For User](../lib/schemas/orgInviteActionUser.json) | Y | Response to invitation |  | [Organization Invitation Action For User Example](_schemas.md#organization-invitation-action-for-user-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Organization Invitation Result For User](../lib/schemas/orgInviteResultUser.json) | Acceptance or rejection of invitation |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if invitation not found |
+| 410 | [Error](../lib/schemas/error.json) | Error if invitation has expired |
 
 <br/>
 

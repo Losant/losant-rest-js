@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "title": "Organization Invitation Information For User",
+      "description": "Schema for information about an invitation",
+      "type": "object",
+      "properties": {
+        "orgName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "admin",
+            "edit",
+            "collaborate",
+            "view",
+            "none"
+          ]
+        },
+        "requiresMFA": {
+          "type": "boolean"
+        },
+        "inviteDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ttl": {
+          "type": "number"
+        },
+        "expired": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "invitedBy": {
+          "type": "object",
+          "properties": {
+            "fullName": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "maxLength": 1024
+            }
+          }
+        }
+      }
+    }
+  }
+}

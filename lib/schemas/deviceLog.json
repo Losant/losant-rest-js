@@ -22,6 +22,9 @@
       },
       "messagesToClient": {
         "type": "number"
+      },
+      "ipAddress": {
+        "type": "string"
       }
     }
   }

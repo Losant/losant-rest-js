@@ -123,6 +123,14 @@
             "maxLength": 32767
           },
           "data": {},
+          "state": {
+            "type": "string",
+            "enum": [
+              "new",
+              "acknowledged",
+              "resolved"
+            ]
+          },
           "stateChange": {
             "type": "object",
             "properties": {

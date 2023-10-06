@@ -215,8 +215,11 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
 | limit | string | N | Maximum number of command entries to return | 1 | 10 |
-| since | string | N | Look for command entries since this time (ms since epoch) |  | 1465790400000 |
+| since | string | N | (deprecated) Look for command entries since this time (ms since epoch) |  | 1465790400000 |
 | sortDirection | string | N | Direction to sort the command entries (by time). Accepted values are: asc, desc | desc | desc |
+| duration | string | N | Duration of time range to query in milliseconds |  | 86400000 |
+| start | string | N | Start of time range to query in milliseconds since epoch |  | 1465790400000 |
+| end | string | N | End of time range to query in milliseconds since epoch |  | 0 |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -321,8 +324,11 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
 | limit | string | N | Maximum number of log entries to return | 1 | 10 |
-| since | string | N | Look for log entries since this time (ms since epoch) |  | 1465790400000 |
+| since | string | N | (deprecated) Look for log entries since this time (ms since epoch) |  | 1465790400000 |
 | sortDirection | string | N | Direction to sort the log entries (by time). Accepted values are: asc, desc | desc | desc |
+| duration | string | N | Duration of time range to query in milliseconds |  | 86400000 |
+| start | string | N | Start of time range to query in milliseconds since epoch |  | 1465790400000 |
+| end | string | N | End of time range to query in milliseconds since epoch |  | 0 |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -374,8 +380,11 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | deviceId | string | Y | ID associated with the device |  | 575ecf887ae143cd83dc4aa2 |
 | limit | string | N | Maximum number of state entries to return | 1 | 10 |
-| since | string | N | Look for state entries since this time (ms since epoch) |  | 1465790400000 |
+| since | string | N | (deprecated) Look for state entries since this time (ms since epoch) |  | 1465790400000 |
 | sortDirection | string | N | Direction to sort the state entries (by time). Accepted values are: asc, desc | desc | desc |
+| duration | string | N | Duration of time range to query in milliseconds |  | 86400000 |
+| start | string | N | Start of time range to query in milliseconds since epoch |  | 1465790400000 |
+| end | string | N | End of time range to query in milliseconds since epoch |  | 0 |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
