@@ -11,7 +11,10 @@
       "format": "date-time"
     },
     "resolution": {
-      "type": "number"
+      "type": [
+        "number",
+        "null"
+      ]
     },
     "aggregation": {
       "oneOf": [
@@ -117,6 +120,19 @@
         }
       ]
     },
+    "limit": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "order": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
+    },
     "devices": {
       "type": "object",
       "patternProperties": {
@@ -127,6 +143,20 @@
               "type": "string",
               "minLength": 1,
               "maxLength": 255
+            },
+            "tags": {
+              "type": "object",
+              "patternProperties": {
+                "^[0-9a-zA-Z_-]{1,255}$": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  }
+                }
+              },
+              "additionalProperties": false
             },
             "points": {
               "type": "array",
@@ -162,7 +192,8 @@
           "additionalProperties": false,
           "required": [
             "name",
-            "points"
+            "points",
+            "tags"
           ]
         }
       },
@@ -175,6 +206,8 @@
     "end",
     "resolution",
     "aggregation",
+    "limit",
+    "order",
     "devices"
   ]
 }

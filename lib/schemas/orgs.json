@@ -144,6 +144,14 @@
                 "type": "integer",
                 "minimum": 0
               },
+              "applicationcertificate": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "applicationcertificateauthority": {
+                "type": "integer",
+                "minimum": 0
+              },
               "applicationkey": {
                 "type": "integer",
                 "minimum": 0
@@ -255,6 +263,11 @@
               "applicationFlowSlots": {
                 "type": "integer",
                 "minimum": 0
+              },
+              "systemInterval": {
+                "type": "integer",
+                "minimum": 5,
+                "maximum": 3600
               }
             },
             "additionalProperties": false
@@ -266,6 +279,12 @@
                 "type": "integer"
               },
               "appCount": {
+                "type": "integer"
+              },
+              "certificateCount": {
+                "type": "integer"
+              },
+              "certificateAuthorityCount": {
                 "type": "integer"
               },
               "credentialCount": {
@@ -281,6 +300,9 @@
                 "type": "integer"
               },
               "deviceRecipeCount": {
+                "type": "integer"
+              },
+              "eventCount": {
                 "type": "integer"
               },
               "experienceDomainCount": {
@@ -316,7 +338,19 @@
               "keyCount": {
                 "type": "integer"
               },
+              "notebookCount": {
+                "type": "integer"
+              },
+              "resourceJobCount": {
+                "type": "integer"
+              },
+              "webhookCount": {
+                "type": "integer"
+              },
               "memberCount": {
+                "type": "integer"
+              },
+              "pendingInviteCount": {
                 "type": "integer"
               },
               "payloadCount": {
@@ -454,9 +488,6 @@
                   }
                 }
               },
-              "pendingInviteCount": {
-                "type": "integer"
-              },
               "storageStats": {
                 "type": "object",
                 "properties": {
@@ -468,8 +499,19 @@
                   }
                 }
               },
-              "webhookCount": {
-                "type": "integer"
+              "notebookStats": {
+                "type": "object",
+                "properties": {
+                  "awaitingCompletion": {
+                    "type": "integer"
+                  },
+                  "minutesThisPeriod": {
+                    "type": "integer"
+                  },
+                  "runsThisPeriod": {
+                    "type": "integer"
+                  }
+                }
               }
             }
           },
@@ -531,6 +573,14 @@
           },
           "isReadOnly": {
             "type": "boolean"
+          },
+          "mfaMode": {
+            "type": "string",
+            "enum": [
+              "notRequired",
+              "adminRequired",
+              "required"
+            ]
           }
         }
       }

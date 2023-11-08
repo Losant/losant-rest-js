@@ -89,6 +89,12 @@
         "application": {
           "type": "integer"
         },
+        "applicationcertificate": {
+          "type": "integer"
+        },
+        "applicationcertificateauthority": {
+          "type": "integer"
+        },
         "applicationkey": {
           "type": "integer"
         },
@@ -168,6 +174,9 @@
           "type": "integer"
         },
         "applicationFlowSlots": {
+          "type": "integer"
+        },
+        "systemInterval": {
           "type": "integer"
         }
       },
@@ -296,6 +305,12 @@
         "appCount": {
           "type": "integer"
         },
+        "certificateCount": {
+          "type": "integer"
+        },
+        "certificateAuthorityCount": {
+          "type": "integer"
+        },
         "credentialCount": {
           "type": "integer"
         },
@@ -309,6 +324,12 @@
           "type": "integer"
         },
         "deviceRecipeCount": {
+          "type": "integer"
+        },
+        "eventCount": {
+          "type": "integer"
+        },
+        "experienceDomainCount": {
           "type": "integer"
         },
         "experienceEndpointCount": {
@@ -341,7 +362,19 @@
         "keyCount": {
           "type": "integer"
         },
+        "notebookCount": {
+          "type": "integer"
+        },
+        "resourceJobCount": {
+          "type": "integer"
+        },
+        "webhookCount": {
+          "type": "integer"
+        },
         "orgCount": {
+          "type": "integer"
+        },
+        "instanceCount": {
           "type": "integer"
         },
         "payloadCount": {
@@ -490,8 +523,19 @@
             }
           }
         },
-        "webhookCount": {
-          "type": "integer"
+        "notebookStats": {
+          "type": "object",
+          "properties": {
+            "awaitingCompletion": {
+              "type": "integer"
+            },
+            "minutesThisPeriod": {
+              "type": "integer"
+            },
+            "runsThisPeriod": {
+              "type": "integer"
+            }
+          }
         }
       }
     },

@@ -888,6 +888,9 @@
                       "vega4",
                       "vega5"
                     ]
+                  },
+                  "tooltipEventSubscribe": {
+                    "type": "boolean"
                   }
                 },
                 "additionalProperties": false
@@ -2182,6 +2185,9 @@
                 "type": "object",
                 "properties": {
                   "realTime": {
+                    "type": "boolean"
+                  },
+                  "hideLegend": {
                     "type": "boolean"
                   },
                   "disallowUserSelectedDuration": {

@@ -27,6 +27,14 @@
     "iconColor": {
       "type": "string",
       "maxLength": 64
+    },
+    "mfaMode": {
+      "type": "string",
+      "enum": [
+        "notRequired",
+        "adminRequired",
+        "required"
+      ]
     }
   },
   "additionalProperties": false,

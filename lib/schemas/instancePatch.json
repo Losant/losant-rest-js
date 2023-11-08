@@ -74,6 +74,14 @@
           "type": "integer",
           "minimum": 0
         },
+        "applicationcertificate": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "applicationcertificateauthority": {
+          "type": "integer",
+          "minimum": 0
+        },
         "applicationkey": {
           "type": "integer",
           "minimum": 0
@@ -185,6 +193,11 @@
         "applicationFlowSlots": {
           "type": "integer",
           "minimum": 0
+        },
+        "systemInterval": {
+          "type": "integer",
+          "minimum": 5,
+          "maximum": 3600
         }
       },
       "additionalProperties": false

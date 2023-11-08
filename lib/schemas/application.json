@@ -110,7 +110,16 @@
         "apiTokenCount": {
           "type": "integer"
         },
+        "certificateCount": {
+          "type": "integer"
+        },
+        "certificateAuthorityCount": {
+          "type": "integer"
+        },
         "credentialCount": {
+          "type": "integer"
+        },
+        "dashCount": {
           "type": "integer"
         },
         "dataTableCount": {
@@ -158,6 +167,150 @@
         "keyCount": {
           "type": "integer"
         },
+        "notebookCount": {
+          "type": "integer"
+        },
+        "resourceJobCount": {
+          "type": "integer"
+        },
+        "webhookCount": {
+          "type": "integer"
+        },
+        "payloadCount": {
+          "title": "Payload Stats",
+          "description": "Schema for the result of a payload stats request",
+          "type": "object",
+          "properties": {
+            "dataTable": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "deviceCommand": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "deviceConnect": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "deviceDisconnect": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "deviceState": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "endpoint": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "event": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "flowError": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "integration": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "mqttIn": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "mqttOut": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "notebook": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "timer": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "virtualButton": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "webhook": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
+            "resourceJob": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
         "storageStats": {
           "type": "object",
           "properties": {
@@ -169,8 +322,19 @@
             }
           }
         },
-        "webhookCount": {
-          "type": "integer"
+        "notebookStats": {
+          "type": "object",
+          "properties": {
+            "awaitingCompletion": {
+              "type": "integer"
+            },
+            "minutesThisPeriod": {
+              "type": "integer"
+            },
+            "runsThisPeriod": {
+              "type": "integer"
+            }
+          }
         }
       }
     },
