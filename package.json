@@ -30,12 +30,12 @@
     "url": "git+https://github.com/Losant/losant-rest-js.git"
   },
   "dependencies": {
-    "axios": "^0.21.2",
+    "axios": "^1.6.2",
     "es6-promise": "^4.2.8",
-    "eventsource": "^1.0.7",
-    "form-data": "^3.0.0",
-    "qs": "^6.9.4",
-    "uri-template": "^1.0.1"
+    "eventsource": "^2.0.2",
+    "form-data": "^4.0.0",
+    "qs": "^6.11.2",
+    "uri-template": "^2.0.0"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
