@@ -165,6 +165,7 @@
                   "application.deviceCounts",
                   "application.notebookMinuteCounts",
                   "application.search",
+                  "application.importLogs",
                   "applicationApiToken.delete",
                   "applicationApiToken.get",
                   "applicationApiToken.patch",
@@ -545,6 +546,13 @@
     "tokenTTL": {
       "type": "integer",
       "minimum": 0
+    },
+    "inviteToken": {
+      "type": "string",
+      "minLength": 1
+    },
+    "acceptInvite": {
+      "type": "boolean"
     }
   },
   "anyOf": [

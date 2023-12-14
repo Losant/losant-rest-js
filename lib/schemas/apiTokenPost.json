@@ -106,6 +106,7 @@
                   "application.deviceCounts",
                   "application.notebookMinuteCounts",
                   "application.search",
+                  "application.importLogs",
                   "applicationApiToken.delete",
                   "applicationApiToken.get",
                   "applicationApiToken.patch",

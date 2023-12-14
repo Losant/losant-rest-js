@@ -12,6 +12,10 @@
     },
     "needsToVerifyEmail": {
       "type": "boolean"
+    },
+    "orgId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     }
   },
   "required": [

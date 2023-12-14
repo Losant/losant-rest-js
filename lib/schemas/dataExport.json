@@ -1633,6 +1633,7 @@
     },
     "attributes": {
       "type": "array",
+      "maxItems": 256,
       "items": {
         "type": "string",
         "pattern": "^[0-9a-zA-Z_-]{1,255}$"

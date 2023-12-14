@@ -201,6 +201,14 @@
         }
       },
       "additionalProperties": false
+    },
+    "mfaMode": {
+      "type": "string",
+      "enum": [
+        "notRequired",
+        "adminRequired",
+        "required"
+      ]
     }
   },
   "additionalProperties": false

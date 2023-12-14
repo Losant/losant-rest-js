@@ -362,6 +362,14 @@
                 }
               }
             }
+          },
+          "mfaMode": {
+            "type": "string",
+            "enum": [
+              "notRequired",
+              "adminRequired",
+              "required"
+            ]
           }
         }
       }

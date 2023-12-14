@@ -1,0 +1,205 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "importSourceType": {
+        "type": "string",
+        "enum": [
+          "importBundle",
+          "importUrl",
+          "fromApplication"
+        ]
+      },
+      "importExecutionId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "applicationId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "fromApplicationId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "runQueuedAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "runStartedAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "runCompletedAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "queued",
+          "inProgress",
+          "completed",
+          "errored",
+          "failed"
+        ]
+      },
+      "dryRun": {
+        "type": "boolean"
+      },
+      "conflictBehavior": {
+        "type": "string",
+        "enum": [
+          "create",
+          "error",
+          "retain",
+          "replace"
+        ],
+        "default": "create"
+      },
+      "callbackUrl": {
+        "type": "string",
+        "format": "uri",
+        "maxLength": 1024
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "maxLength": 1024
+      },
+      "include": {
+        "type": "array",
+        "items": {
+          "enum": [
+            "ApplicationCertificateAuthority",
+            "Dashboard",
+            "DataTableRow",
+            "DataTable",
+            "DeviceRecipe",
+            "Device",
+            "ExperienceDevelopConfig",
+            "ExperienceEndpoint",
+            "ExperienceFlowVersion",
+            "ExperienceGroup",
+            "ExperienceUser",
+            "ExperienceVersion",
+            "ExperienceView",
+            "File",
+            "FlowVersion",
+            "Flow",
+            "Global",
+            "Integration",
+            "Notebook",
+            "Webhook",
+            "ResourceJob"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "jobId": {
+        "type": "string",
+        "maxLength": 21
+      },
+      "sourceId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "sourceType": {
+        "type": "string",
+        "enum": [
+          "flow",
+          "user",
+          "device",
+          "apiToken",
+          "notebook"
+        ]
+      },
+      "error": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "dryRunResults": {
+        "type": "object",
+        "properties": {
+          "limitErrors": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "ApplicationCertificateAuthority",
+                "Dashboard",
+                "DataTableRow",
+                "DataTable",
+                "DeviceRecipe",
+                "Device",
+                "ExperienceDevelopConfig",
+                "ExperienceEndpoint",
+                "ExperienceFlowVersion",
+                "ExperienceGroup",
+                "ExperienceUser",
+                "ExperienceVersion",
+                "ExperienceView",
+                "File",
+                "FlowVersion",
+                "Flow",
+                "Global",
+                "Integration",
+                "Notebook",
+                "Webhook",
+                "ResourceJob"
+              ]
+            },
+            "uniqueItems": true
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 1024
+          }
+        }
+      },
+      "validationErrors": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "importedFileUrl": {
+        "type": "string",
+        "format": "uri",
+        "maxLength": 1024
+      },
+      "importUrl": {
+        "type": "string",
+        "format": "uri",
+        "maxLength": 1024
+      }
+    }
+  }
+}
