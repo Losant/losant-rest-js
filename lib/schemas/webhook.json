@@ -64,6 +64,9 @@
     "basicAuthPassword": {
       "type": "string",
       "maxLength": 255
+    },
+    "isWebsocket": {
+      "type": "boolean"
     }
   }
 }

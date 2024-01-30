@@ -482,6 +482,24 @@
               "adminRequired",
               "required"
             ]
+          },
+          "banner": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "maxLength": 2048
+              },
+              "level": {
+                "type": "string",
+                "enum": [
+                  "info",
+                  "warning",
+                  "critical"
+                ]
+              }
+            },
+            "additionalProperties": false
           }
         },
         "additionalProperties": false,

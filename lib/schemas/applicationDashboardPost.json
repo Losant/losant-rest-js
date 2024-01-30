@@ -877,6 +877,8 @@
                     "enum": [
                       "vegaLite2",
                       "vegaLite3",
+                      "vegaLite4",
+                      "vegaLite5",
                       "vega4",
                       "vega5"
                     ]
