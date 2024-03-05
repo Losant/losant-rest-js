@@ -20,8 +20,7 @@
     },
     "body": {
       "type": "string",
-      "maxLength": 131072,
-      "minLength": 1
+      "maxLength": 131072
     },
     "viewTags": {
       "type": "object",

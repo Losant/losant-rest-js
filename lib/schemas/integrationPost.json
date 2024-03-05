@@ -149,6 +149,13 @@
         },
         "disableSSLVerification": {
           "type": "boolean"
+        },
+        "protocolVersion": {
+          "type": "string",
+          "enum": [
+            "3.1.1",
+            "5"
+          ]
         }
       },
       "additionalProperties": false,

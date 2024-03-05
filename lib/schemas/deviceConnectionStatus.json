@@ -105,10 +105,14 @@
           "maxLength": 1024
         },
         "messagesFromClient": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
         },
         "messagesToClient": {
-          "type": "number"
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
         },
         "ipAddress": {
           "type": "string",
