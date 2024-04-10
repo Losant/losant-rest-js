@@ -209,6 +209,7 @@
                   "event.get",
                   "event.patch",
                   "events.delete",
+                  "events.detailedSummary",
                   "events.get",
                   "events.mostRecentBySeverity",
                   "events.patch",
@@ -284,6 +285,7 @@
                   "flows.palette",
                   "flows.post",
                   "flowVersion.delete",
+                  "flowVersion.debug",
                   "flowVersion.errors",
                   "flowVersion.get",
                   "flowVersion.log",
@@ -430,7 +432,11 @@
               "instanceSandbox.delete",
               "instanceSandbox.undelete",
               "instanceSandboxes.*",
-              "instanceSandboxes.get"
+              "instanceSandboxes.get",
+              "instanceAuditLog.*",
+              "instanceAuditLog.get",
+              "instanceAuditLogs.*",
+              "instanceAuditLogs.get"
             ]
           },
           {

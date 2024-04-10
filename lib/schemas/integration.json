@@ -39,7 +39,8 @@
         "googlePubSub",
         "mqtt",
         "particle",
-        "sqs"
+        "sqs",
+        "websocket"
       ]
     },
     "enabled": {
@@ -241,6 +242,72 @@
       "additionalProperties": false,
       "required": [
         "queueUrl"
+      ]
+    },
+    "websocketConfig": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "disableSSLVerification": {
+          "type": "boolean"
+        },
+        "username": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "password": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "privateKey": {
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 4
+        },
+        "certificate": {
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 4
+        },
+        "caCertificate": {
+          "type": "string",
+          "maxLength": 32767,
+          "minLength": 4
+        },
+        "headers": {
+          "type": "array",
+          "maxItems": 50,
+          "items": {
+            "type": "object",
+            "properties": {
+              "headerKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              },
+              "headerValue": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "headerKey",
+              "headerValue"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "url"
       ]
     },
     "status": {

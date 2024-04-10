@@ -148,7 +148,8 @@
                                 "webhook",
                                 "resourceJobIteration",
                                 "resourceJobIterationTimeout",
-                                "resourceJobComplete"
+                                "resourceJobComplete",
+                                "websocket"
                               ]
                             },
                             "label": {
@@ -2832,7 +2833,8 @@
                                 "webhook",
                                 "resourceJobIteration",
                                 "resourceJobIterationTimeout",
-                                "resourceJobComplete"
+                                "resourceJobComplete",
+                                "websocket"
                               ]
                             },
                             "label": {

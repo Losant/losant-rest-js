@@ -43,6 +43,7 @@
               "ApplicationCertificateAuthority",
               "ApplicationCertificate",
               "ApplicationKey",
+              "Credential",
               "Dashboard",
               "DataTable",
               "Device",
@@ -59,8 +60,8 @@
               "Flow",
               "Integration",
               "Notebook",
-              "Webhook",
-              "ResourceJob"
+              "ResourceJob",
+              "Webhook"
             ]
           },
           "name": {

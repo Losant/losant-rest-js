@@ -32,7 +32,10 @@
       "type": "string",
       "enum": [
         "admin",
-        "view"
+        "edit",
+        "collaborate",
+        "view",
+        "none"
       ]
     },
     "avatarUrl": {
