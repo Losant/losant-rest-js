@@ -517,7 +517,8 @@
       "items": {
         "type": "string",
         "enum": [
-          "cloud"
+          "cloud",
+          "edge"
         ]
       }
     },

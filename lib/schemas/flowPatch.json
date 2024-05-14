@@ -76,7 +76,6 @@
                   "deviceTagConnect",
                   "deviceIdDisconnect",
                   "deviceTagDisconnect",
-                  "integration",
                   "notebook",
                   "onBoot",
                   "onConnect",
@@ -110,21 +109,15 @@
                       "deviceIdsTagsDisconnect",
                       "eeaInit",
                       "flowError",
-                      "azureEventHub",
-                      "googlePubSub",
-                      "mqtt",
                       "notebook",
                       "onBoot",
                       "onConnect",
                       "onDisconnect",
-                      "particle",
-                      "sqs",
                       "udp",
                       "webhook",
                       "resourceJobIteration",
                       "resourceJobIterationTimeout",
-                      "resourceJobComplete",
-                      "websocket"
+                      "resourceJobComplete"
                     ]
                   },
                   "label": {
@@ -268,6 +261,120 @@
                   },
                   "outputCount": {
                     "type": "number"
+                  },
+                  "id": {
+                    "type": "string",
+                    "maxLength": 48
+                  }
+                },
+                "additionalProperties": false
+              },
+              "outputIds": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 48,
+                    "minLength": 1
+                  },
+                  "maxItems": 100
+                },
+                "maxItems": 100
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 1024
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "integration"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "connect": {
+                    "type": "boolean"
+                  },
+                  "message": {
+                    "type": "boolean"
+                  },
+                  "disconnect": {
+                    "type": "boolean"
+                  },
+                  "failure": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "trigger"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "azureEventHub",
+                      "googlePubSub",
+                      "mqtt",
+                      "particle",
+                      "sqs",
+                      "websocket"
+                    ]
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "uiId": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  "icon": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "color": {
+                    "type": "string",
+                    "maxLength": 1024
+                  },
+                  "inputCount": {
+                    "type": "number"
+                  },
+                  "outputCount": {
+                    "type": "number"
+                  },
+                  "triggerId": {
+                    "type": "string",
+                    "maxLength": 48
                   },
                   "id": {
                     "type": "string",

@@ -46,7 +46,8 @@
       "enum": [
         "dataTableRow",
         "device",
-        "experienceGroup"
+        "experienceGroup",
+        "experienceUser"
       ]
     },
     "maxIterationConcurrency": {

@@ -94,6 +94,70 @@
         ]
       }
     },
+    "notFoundReply": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string"
+            },
+            "statusCode": {
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 599
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "page",
+                "redirect"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "unauthorizedReply": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string"
+            },
+            "statusCode": {
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 599
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "page",
+                "redirect"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
     "attachedDomains": {
       "type": "array",
       "items": {
