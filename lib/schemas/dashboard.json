@@ -6026,6 +6026,13 @@
                     },
                     "maxItems": 100
                   },
+                  "query": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 8192
+                  },
                   "includeFullDevice": {
                     "type": "boolean"
                   }

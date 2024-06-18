@@ -101,6 +101,17 @@
                   }
                 },
                 "additionalProperties": false
+              },
+              "headers": {
+                "type": "object",
+                "properties": {
+                  "content-type": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  }
+                },
+                "additionalProperties": false
               }
             }
           }

@@ -283,6 +283,14 @@
               "queryJson": {
                 "type": "string",
                 "maxLength": 8192
+              },
+              "format": {
+                "type": "string",
+                "enum": [
+                  "csv",
+                  "json"
+                ],
+                "default": "csv"
               }
             },
             "required": [

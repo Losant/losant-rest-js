@@ -49,6 +49,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceOrgs.*, or ins
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*org |
 | summaryInclude | string | N | Comma-separated list of summary fields to include in org summary |  | payloadCount |
+| query | [Advanced Instance Organization Query](../lib/schemas/advancedInstanceOrgQuery.json) | N | Organization filter JSON object which overrides all other filter params. |  | [Advanced Instance Organization Query Example](_schemas.md#advanced-instance-organization-query-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
