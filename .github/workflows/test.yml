@@ -8,11 +8,10 @@ on:
     types: ['opened', 'reopened', 'synchronize']
 
 jobs:
-  build:
+  test:
     strategy:
       matrix:
         nodejs: [ '12', '14', '16', '18', '20' ]
-  test:
     runs-on: ubuntu-latest
     permissions:
       actions: write
