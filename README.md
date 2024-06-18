@@ -1,6 +1,6 @@
 # Losant Javascript REST API Client
 
-[![Build Status](https://github.com/Losant/losant-rest/actions/workflows/test.yml/badge.svg)] [![npm version](https://badge.fury.io/js/losant-rest.svg)](https://badge.fury.io/js/losant-rest)
+![Build Status](https://github.com/Losant/losant-rest-js/actions/workflows/test.yml/badge.svg?branch=master) [![npm version](https://badge.fury.io/js/losant-rest.svg)](https://badge.fury.io/js/losant-rest)
 
 The [Losant](https://www.losant.com) REST API client provides a simple way to use the comprehensive Losant API. You can authenticate either as a Losant device or with your user account, and have access to all the functionality of the Losant platform.
 
