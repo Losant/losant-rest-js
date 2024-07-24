@@ -298,6 +298,14 @@
                 "description": "Schema for the result of a payload stats request",
                 "type": "object",
                 "properties": {
+                  "appFile": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
                   "dataTable": {
                     "type": "object",
                     "patternProperties": {
@@ -362,6 +370,14 @@
                       }
                     }
                   },
+                  "inboundEmail": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
                   "integration": {
                     "type": "object",
                     "patternProperties": {
@@ -394,6 +410,14 @@
                       }
                     }
                   },
+                  "resourceJob": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
                   "timer": {
                     "type": "object",
                     "patternProperties": {
@@ -411,14 +435,6 @@
                     }
                   },
                   "webhook": {
-                    "type": "object",
-                    "patternProperties": {
-                      ".*": {
-                        "type": "number"
-                      }
-                    }
-                  },
-                  "resourceJob": {
                     "type": "object",
                     "patternProperties": {
                       ".*": {

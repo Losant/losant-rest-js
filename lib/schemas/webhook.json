@@ -67,6 +67,19 @@
     },
     "isWebsocket": {
       "type": "boolean"
+    },
+    "castBuffersAs": {
+      "type": "string",
+      "enum": [
+        "array",
+        "binary",
+        "utf8",
+        "base64",
+        "hex"
+      ]
+    },
+    "annotateMultipart": {
+      "type": "boolean"
     }
   }
 }

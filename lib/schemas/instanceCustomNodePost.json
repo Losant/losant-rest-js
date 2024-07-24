@@ -66,15 +66,16 @@
                   "deviceTagConnect",
                   "deviceIdDisconnect",
                   "deviceTagDisconnect",
+                  "inboundEmail",
                   "notebook",
                   "onBoot",
                   "onConnect",
                   "onDisconnect",
-                  "udp",
-                  "webhook",
+                  "resourceJobComplete",
                   "resourceJobIteration",
                   "resourceJobIterationTimeout",
-                  "resourceJobComplete"
+                  "udp",
+                  "webhook"
                 ]
               },
               "config": {
@@ -99,15 +100,16 @@
                       "deviceIdsTagsDisconnect",
                       "eeaInit",
                       "flowError",
+                      "inboundEmail",
                       "notebook",
                       "onBoot",
                       "onConnect",
                       "onDisconnect",
-                      "udp",
-                      "webhook",
+                      "resourceJobComplete",
                       "resourceJobIteration",
                       "resourceJobIterationTimeout",
-                      "resourceJobComplete"
+                      "udp",
+                      "webhook"
                     ]
                   },
                   "label": {
