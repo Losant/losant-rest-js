@@ -1186,12 +1186,88 @@
                   "type": "object",
                   "properties": {
                     "$tagKey": {
-                      "type": "string",
-                      "maxLength": 255
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$in": {
+                              "type": "array",
+                              "maxItems": 100,
+                              "items": {
+                                "type": "string",
+                                "maxLength": 255
+                              }
+                            }
+                          },
+                          "required": [
+                            "$in"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$nin": {
+                              "type": "array",
+                              "maxItems": 100,
+                              "items": {
+                                "type": "string",
+                                "maxLength": 255
+                              }
+                            }
+                          },
+                          "required": [
+                            "$nin"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
                     },
                     "$tagValue": {
-                      "type": "string",
-                      "maxLength": 255
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$in": {
+                              "type": "array",
+                              "maxItems": 100,
+                              "items": {
+                                "type": "string",
+                                "maxLength": 255
+                              }
+                            }
+                          },
+                          "required": [
+                            "$in"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$nin": {
+                              "type": "array",
+                              "maxItems": 100,
+                              "items": {
+                                "type": "string",
+                                "maxLength": 255
+                              }
+                            }
+                          },
+                          "required": [
+                            "$nin"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
                     }
                   },
                   "additionalProperties": false,
@@ -1201,8 +1277,46 @@
                   "type": "object",
                   "patternProperties": {
                     "^[0-9a-zA-Z_-]{1,255}": {
-                      "type": "string",
-                      "maxLength": 255
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$in": {
+                              "type": "array",
+                              "maxItems": 100,
+                              "items": {
+                                "type": "string",
+                                "maxLength": 255
+                              }
+                            }
+                          },
+                          "required": [
+                            "$in"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$nin": {
+                              "type": "array",
+                              "maxItems": 100,
+                              "items": {
+                                "type": "string",
+                                "maxLength": 255
+                              }
+                            }
+                          },
+                          "required": [
+                            "$nin"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
                     }
                   },
                   "additionalProperties": false
@@ -1218,12 +1332,88 @@
                       "type": "object",
                       "properties": {
                         "$tagKey": {
-                          "type": "string",
-                          "maxLength": 255
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$in": {
+                                  "type": "array",
+                                  "maxItems": 100,
+                                  "items": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                }
+                              },
+                              "required": [
+                                "$in"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$nin": {
+                                  "type": "array",
+                                  "maxItems": 100,
+                                  "items": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                }
+                              },
+                              "required": [
+                                "$nin"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ]
                         },
                         "$tagValue": {
-                          "type": "string",
-                          "maxLength": 255
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$in": {
+                                  "type": "array",
+                                  "maxItems": 100,
+                                  "items": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                }
+                              },
+                              "required": [
+                                "$in"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$nin": {
+                                  "type": "array",
+                                  "maxItems": 100,
+                                  "items": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                }
+                              },
+                              "required": [
+                                "$nin"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ]
                         }
                       },
                       "additionalProperties": false,
@@ -1233,8 +1423,46 @@
                       "type": "object",
                       "patternProperties": {
                         "^[0-9a-zA-Z_-]{1,255}": {
-                          "type": "string",
-                          "maxLength": 255
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$in": {
+                                  "type": "array",
+                                  "maxItems": 100,
+                                  "items": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                }
+                              },
+                              "required": [
+                                "$in"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$nin": {
+                                  "type": "array",
+                                  "maxItems": 100,
+                                  "items": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                }
+                              },
+                              "required": [
+                                "$nin"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ]
                         }
                       },
                       "additionalProperties": false
@@ -1256,12 +1484,88 @@
                       "type": "object",
                       "properties": {
                         "$tagKey": {
-                          "type": "string",
-                          "maxLength": 255
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$in": {
+                                  "type": "array",
+                                  "maxItems": 100,
+                                  "items": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                }
+                              },
+                              "required": [
+                                "$in"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$nin": {
+                                  "type": "array",
+                                  "maxItems": 100,
+                                  "items": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                }
+                              },
+                              "required": [
+                                "$nin"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ]
                         },
                         "$tagValue": {
-                          "type": "string",
-                          "maxLength": 255
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$in": {
+                                  "type": "array",
+                                  "maxItems": 100,
+                                  "items": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                }
+                              },
+                              "required": [
+                                "$in"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$nin": {
+                                  "type": "array",
+                                  "maxItems": 100,
+                                  "items": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                }
+                              },
+                              "required": [
+                                "$nin"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ]
                         }
                       },
                       "additionalProperties": false,
@@ -1271,8 +1575,46 @@
                       "type": "object",
                       "patternProperties": {
                         "^[0-9a-zA-Z_-]{1,255}": {
-                          "type": "string",
-                          "maxLength": 255
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$in": {
+                                  "type": "array",
+                                  "maxItems": 100,
+                                  "items": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                }
+                              },
+                              "required": [
+                                "$in"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$nin": {
+                                  "type": "array",
+                                  "maxItems": 100,
+                                  "items": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                }
+                              },
+                              "required": [
+                                "$nin"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ]
                         }
                       },
                       "additionalProperties": false

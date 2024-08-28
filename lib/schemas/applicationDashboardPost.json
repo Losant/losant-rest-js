@@ -1892,7 +1892,8 @@
                       "dial",
                       "number",
                       "tank",
-                      "thermometer"
+                      "thermometer",
+                      "needle"
                     ]
                   },
                   "precision": {

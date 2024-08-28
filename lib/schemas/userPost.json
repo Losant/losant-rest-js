@@ -423,7 +423,6 @@
                   "org.notebookMinuteCounts",
                   "org.invoices",
                   "org.currentCard",
-                  "org.chargeDetails",
                   "org.transferResources"
                 ]
               }
@@ -449,6 +448,7 @@
               "instanceOrg.payloadCountsBreakdown",
               "instanceOrg.deviceCounts",
               "instanceOrg.notebookMinuteCounts",
+              "instanceOrg.convertToEnterprise",
               "instanceOrgs.*",
               "instanceOrgs.get",
               "instanceOrgs.post",

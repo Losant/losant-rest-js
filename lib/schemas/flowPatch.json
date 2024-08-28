@@ -173,6 +173,7 @@
                 "type": "string",
                 "enum": [
                   "customNodeStart",
+                  "deviceCreate",
                   "deviceCommand",
                   "deviceIdConnect",
                   "deviceTagConnect",
@@ -207,6 +208,7 @@
                     "type": "string",
                     "enum": [
                       "customNodeStart",
+                      "deviceCreate",
                       "deviceCommand",
                       "deviceIdsTagsConnect",
                       "deviceIdsTagsDisconnect",

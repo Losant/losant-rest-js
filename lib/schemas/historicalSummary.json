@@ -320,6 +320,14 @@
             }
           }
         },
+        "deviceCreate": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
         "deviceCommand": {
           "type": "object",
           "patternProperties": {
@@ -464,6 +472,14 @@
           }
         },
         "dataTable": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "number"
+            }
+          }
+        },
+        "deviceCreate": {
           "type": "object",
           "patternProperties": {
             ".*": {

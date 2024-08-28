@@ -374,6 +374,14 @@
                       }
                     }
                   },
+                  "deviceCreate": {
+                    "type": "object",
+                    "patternProperties": {
+                      ".*": {
+                        "type": "number"
+                      }
+                    }
+                  },
                   "deviceCommand": {
                     "type": "object",
                     "patternProperties": {

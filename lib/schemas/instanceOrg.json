@@ -272,6 +272,14 @@
                 }
               }
             },
+            "deviceCreate": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "number"
+                }
+              }
+            },
             "deviceCommand": {
               "type": "object",
               "patternProperties": {
@@ -509,6 +517,41 @@
         }
       },
       "additionalProperties": false
+    },
+    "planId": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "customerId": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "subscriptionId": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "billingEmail": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
+    "subscriptionStatus": {
+      "type": "string",
+      "enum": [
+        "trialing",
+        "active",
+        "past_due",
+        "canceled",
+        "unpaid"
+      ]
+    },
+    "currentPeriodStart": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "currentPeriodEnd": {
+      "type": "string",
+      "format": "date-time"
     }
   },
   "additionalProperties": false,
