@@ -516,6 +516,10 @@
                                   "additionalProperties": false
                                 }
                               },
+                              "query": {
+                                "type": "string",
+                                "maxLength": 32767
+                              },
                               "label": {
                                 "type": "string",
                                 "maxLength": 255
@@ -776,6 +780,10 @@
                                       "additionalProperties": false
                                     }
                                   },
+                                  "query": {
+                                    "type": "string",
+                                    "maxLength": 32767
+                                  },
                                   "duration": {
                                     "oneOf": [
                                       {
@@ -958,6 +966,10 @@
                                       },
                                       "additionalProperties": false
                                     }
+                                  },
+                                  "query": {
+                                    "type": "string",
+                                    "maxLength": 32767
                                   },
                                   "duration": {
                                     "oneOf": [
@@ -1701,6 +1713,32 @@
                             "maxLength": 255
                           }
                         },
+                        "deviceTags": {
+                          "type": "array",
+                          "maxItems": 100,
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string",
+                                "maxLength": 255
+                              },
+                              "value": {
+                                "type": "string",
+                                "maxLength": 255
+                              },
+                              "fromCtx": {
+                                "type": "string",
+                                "maxLength": 255
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "query": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
                         "includeDeviceInfo": {
                           "type": "boolean"
                         }
@@ -1801,6 +1839,10 @@
                             },
                             "additionalProperties": false
                           }
+                        },
+                        "query": {
+                          "type": "string",
+                          "maxLength": 32767
                         },
                         "duration": {
                           "oneOf": [
@@ -2272,6 +2314,10 @@
                                 "additionalProperties": false
                               }
                             },
+                            "query": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
                             "label": {
                               "type": "string",
                               "maxLength": 255
@@ -2663,6 +2709,10 @@
                                   },
                                   "additionalProperties": false
                                 }
+                              },
+                              "query": {
+                                "type": "string",
+                                "maxLength": 32767
                               }
                             },
                             "additionalProperties": false
@@ -2850,6 +2900,10 @@
                             "additionalProperties": false
                           }
                         },
+                        "query": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
                         "duration": {
                           "oneOf": [
                             {
@@ -2884,10 +2938,6 @@
                             "normal",
                             "satellite"
                           ]
-                        },
-                        "query": {
-                          "type": "string",
-                          "maxLength": 32767
                         }
                       },
                       "additionalProperties": false
@@ -3251,6 +3301,10 @@
                                       },
                                       "additionalProperties": false
                                     }
+                                  },
+                                  "query": {
+                                    "type": "string",
+                                    "maxLength": 32767
                                   },
                                   "duration": {
                                     "oneOf": [
@@ -3880,6 +3934,10 @@
                                   "additionalProperties": false
                                 }
                               },
+                              "query": {
+                                "type": "string",
+                                "maxLength": 32767
+                              },
                               "label": {
                                 "type": "string",
                                 "maxLength": 255
@@ -4232,6 +4290,10 @@
                                           },
                                           "additionalProperties": false
                                         }
+                                      },
+                                      "query": {
+                                        "type": "string",
+                                        "maxLength": 32767
                                       }
                                     },
                                     "additionalProperties": false
@@ -4466,6 +4528,10 @@
                                           },
                                           "additionalProperties": false
                                         }
+                                      },
+                                      "query": {
+                                        "type": "string",
+                                        "maxLength": 32767
                                       }
                                     },
                                     "additionalProperties": false
@@ -4658,6 +4724,10 @@
                                           },
                                           "additionalProperties": false
                                         }
+                                      },
+                                      "query": {
+                                        "type": "string",
+                                        "maxLength": 32767
                                       }
                                     },
                                     "additionalProperties": false
@@ -4848,6 +4918,10 @@
                                           },
                                           "additionalProperties": false
                                         }
+                                      },
+                                      "query": {
+                                        "type": "string",
+                                        "maxLength": 32767
                                       }
                                     },
                                     "additionalProperties": false
@@ -5018,6 +5092,10 @@
                                       "additionalProperties": false
                                     }
                                   },
+                                  "query": {
+                                    "type": "string",
+                                    "maxLength": 32767
+                                  },
                                   "commandName": {
                                     "type": "string",
                                     "maxLength": 255
@@ -5160,6 +5238,10 @@
                             "additionalProperties": false
                           }
                         },
+                        "query": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
                         "duration": {
                           "oneOf": [
                             {
@@ -5217,10 +5299,6 @@
                           ]
                         },
                         "popupTemplate": {
-                          "type": "string",
-                          "maxLength": 32767
-                        },
-                        "query": {
                           "type": "string",
                           "maxLength": 32767
                         },
@@ -5536,6 +5614,10 @@
                                   "additionalProperties": false
                                 }
                               },
+                              "query": {
+                                "type": "string",
+                                "maxLength": 32767
+                              },
                               "label": {
                                 "type": "string",
                                 "maxLength": 255
@@ -5695,6 +5777,10 @@
                             },
                             "additionalProperties": false
                           }
+                        },
+                        "query": {
+                          "type": "string",
+                          "maxLength": 32767
                         },
                         "duration": {
                           "oneOf": [
