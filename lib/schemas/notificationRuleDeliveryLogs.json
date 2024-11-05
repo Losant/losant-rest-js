@@ -1,0 +1,123 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "notificationRuleDeliveryId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "notificationRuleId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "ownerId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "ownerType": {
+        "type": "string",
+        "enum": [
+          "instance"
+        ]
+      },
+      "requestedById": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "requestedByType": {
+        "type": "string",
+        "enum": [
+          "user",
+          "apiToken",
+          "system"
+        ]
+      },
+      "sentAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "targetType": {
+        "type": "string",
+        "enum": [
+          "organization"
+        ]
+      },
+      "targetId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "targetName": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 255
+      },
+      "callbackUrl": {
+        "type": "string",
+        "format": "uri",
+        "maxLength": 1024
+      },
+      "email": {
+        "type": "object",
+        "properties": {
+          "subject": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "email",
+              "maxLength": 1024
+            }
+          }
+        }
+      },
+      "evaluation": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "ruleType": {
+            "type": "string",
+            "enum": [
+              "payloadUsage",
+              "notebookMinuteUsage"
+            ]
+          },
+          "thresholdType": {
+            "type": "string",
+            "enum": [
+              "percentOfLimit"
+            ]
+          },
+          "threshold": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1000
+          },
+          "maxFrequency": {
+            "type": "string",
+            "enum": [
+              "billingCycle",
+              "daily",
+              "unlimited"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

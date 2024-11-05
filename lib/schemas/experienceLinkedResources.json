@@ -245,8 +245,13 @@
                 "enum": [
                   "public",
                   "authenticated",
-                  "group"
+                  "group",
+                  "device"
                 ]
+              },
+              "deviceIdTemplate": {
+                "type": "string",
+                "maxLength": 255
               },
               "endpointTags": {
                 "type": "object",
@@ -780,6 +785,10 @@
                                 }
                               },
                               "maxItems": 100
+                            },
+                            "configName": {
+                              "type": "string",
+                              "maxLength": 1024
                             }
                           },
                           "additionalProperties": false
@@ -3907,6 +3916,10 @@
                                     }
                                   },
                                   "maxItems": 100
+                                },
+                                "configName": {
+                                  "type": "string",
+                                  "maxLength": 1024
                                 }
                               },
                               "additionalProperties": false
@@ -6943,6 +6956,10 @@
                                     }
                                   },
                                   "maxItems": 100
+                                },
+                                "configName": {
+                                  "type": "string",
+                                  "maxLength": 1024
                                 }
                               },
                               "additionalProperties": false

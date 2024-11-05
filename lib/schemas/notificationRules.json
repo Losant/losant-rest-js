@@ -1,0 +1,212 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "Notification Rule",
+        "description": "Schema for a single notification rule",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "notificationRuleId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "ownerId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "ownerType": {
+            "type": "string",
+            "enum": [
+              "instance"
+            ]
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdById": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "createdByType": {
+            "type": "string",
+            "enum": [
+              "apiToken",
+              "user"
+            ]
+          },
+          "lastUpdatedById": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "lastUpdatedByType": {
+            "type": "string",
+            "enum": [
+              "apiToken",
+              "user"
+            ]
+          },
+          "targetType": {
+            "type": "string",
+            "enum": [
+              "organization"
+            ]
+          },
+          "targetQueryJson": {
+            "type": "string",
+            "maxLength": 8192
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "callbackUrl": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 1024
+          },
+          "emailConfig": {
+            "type": "object",
+            "properties": {
+              "subjectTemplate": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              },
+              "bodyTemplate": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "sendToTarget": {
+                "type": "string",
+                "enum": [
+                  "admins",
+                  "members",
+                  "none"
+                ]
+              },
+              "sendToOwner": {
+                "type": "string",
+                "enum": [
+                  "admins",
+                  "members",
+                  "none"
+                ]
+              },
+              "sendToAddresses": {
+                "type": "array",
+                "maxItems": 10,
+                "items": {
+                  "type": "string",
+                  "format": "email",
+                  "maxLength": 1024
+                }
+              }
+            },
+            "required": [
+              "subjectTemplate",
+              "bodyTemplate"
+            ],
+            "additionalProperties": false
+          },
+          "ruleConfig": {
+            "type": "object",
+            "properties": {
+              "ruleType": {
+                "type": "string",
+                "enum": [
+                  "payloadUsage",
+                  "notebookMinuteUsage"
+                ]
+              },
+              "thresholdType": {
+                "type": "string",
+                "enum": [
+                  "percentOfLimit"
+                ]
+              },
+              "threshold": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1000
+              },
+              "maxFrequency": {
+                "type": "string",
+                "enum": [
+                  "billingCycle",
+                  "daily"
+                ]
+              }
+            },
+            "required": [
+              "ruleType",
+              "thresholdType",
+              "threshold"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc",
+        "ASC",
+        "DESC",
+        ""
+      ]
+    },
+    "ownerId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "ownerType": {
+      "type": "string",
+      "enum": [
+        "instance"
+      ]
+    }
+  }
+}

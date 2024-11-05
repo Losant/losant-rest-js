@@ -396,6 +396,10 @@
                             }
                           },
                           "maxItems": 100
+                        },
+                        "configName": {
+                          "type": "string",
+                          "maxLength": 1024
                         }
                       },
                       "additionalProperties": false

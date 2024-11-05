@@ -93,6 +93,15 @@
         "organization": {
           "type": "integer"
         },
+        "instanceApiToken": {
+          "type": "integer"
+        },
+        "instanceNotificationRule": {
+          "type": "integer"
+        },
+        "instanceCustomNode": {
+          "type": "integer"
+        },
         "apitoken": {
           "type": "integer"
         },

@@ -74,8 +74,13 @@
       "enum": [
         "public",
         "authenticated",
-        "group"
+        "group",
+        "device"
       ]
+    },
+    "deviceIdTemplate": {
+      "type": "string",
+      "maxLength": 255
     },
     "endpointTags": {
       "type": "object",

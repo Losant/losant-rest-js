@@ -1,0 +1,140 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "targetType": {
+      "type": "string",
+      "enum": [
+        "organization"
+      ]
+    },
+    "targetQueryJson": {
+      "type": "string",
+      "maxLength": 8192
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "callbackUrl": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 1024
+        },
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "enum": [
+            ""
+          ]
+        }
+      ]
+    },
+    "emailConfig": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "subjectTemplate": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024
+            },
+            "bodyTemplate": {
+              "type": "string",
+              "maxLength": 32767
+            },
+            "sendToTarget": {
+              "type": "string",
+              "enum": [
+                "admins",
+                "members",
+                "none"
+              ]
+            },
+            "sendToOwner": {
+              "type": "string",
+              "enum": [
+                "admins",
+                "members",
+                "none"
+              ]
+            },
+            "sendToAddresses": {
+              "type": "array",
+              "maxItems": 10,
+              "items": {
+                "type": "string",
+                "format": "email",
+                "maxLength": 1024
+              }
+            }
+          },
+          "required": [
+            "subjectTemplate",
+            "bodyTemplate"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "ruleConfig": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "payloadUsage",
+            "notebookMinuteUsage"
+          ]
+        },
+        "thresholdType": {
+          "type": "string",
+          "enum": [
+            "percentOfLimit"
+          ]
+        },
+        "threshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "maxFrequency": {
+          "type": "string",
+          "enum": [
+            "billingCycle",
+            "daily"
+          ]
+        }
+      },
+      "required": [
+        "ruleType",
+        "thresholdType",
+        "threshold"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "targetType",
+    "targetQueryJson",
+    "name",
+    "ruleConfig"
+  ]
+}

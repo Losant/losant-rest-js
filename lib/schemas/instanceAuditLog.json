@@ -28,7 +28,8 @@
         "Organization",
         "ApiToken",
         "User",
-        "InstanceCustomNode"
+        "InstanceCustomNode",
+        "NotificationRule"
       ]
     },
     "primaryTargetName": {

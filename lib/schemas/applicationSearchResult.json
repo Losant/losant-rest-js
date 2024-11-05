@@ -12,18 +12,57 @@
         "type": "string"
       },
       "metadata": {
-        "type": "object"
-      },
-      "viewType": {
-        "type": "string"
+        "type": "object",
+        "properties": {
+          "descriptor": {
+            "type": "string"
+          },
+          "parentDirectory": {
+            "type": "string"
+          },
+          "contentType": {
+            "type": "string"
+          }
+        }
       },
       "version": {
         "type": "string"
+      },
+      "viewType": {
+        "type": "string",
+        "enum": [
+          "layout",
+          "page",
+          "component"
+        ]
+      },
+      "flowClass": {
+        "type": "string",
+        "enum": [
+          "standalone",
+          "gateway",
+          "peripheral",
+          "floating",
+          "edgeCompute",
+          "system",
+          "embedded"
+        ]
+      },
+      "deviceClass": {
+        "type": "string",
+        "enum": [
+          "cloud",
+          "edge",
+          "embedded",
+          "experience",
+          "customNode"
+        ]
       },
       "_type": {
         "type": "string",
         "enum": [
           "applicationApiToken",
+          "credential",
           "dashboard",
           "dataTable",
           "deviceRecipe",
@@ -39,8 +78,9 @@
           "file",
           "flow",
           "integration",
-          "webhook",
-          "notebook"
+          "notebook",
+          "resourceJob",
+          "webhook"
         ]
       }
     },

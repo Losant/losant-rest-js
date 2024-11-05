@@ -19,6 +19,10 @@
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
+    "orgId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "instanceId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
