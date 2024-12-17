@@ -16,6 +16,7 @@ parameters and the potential responses.
 *   [Payload Counts](#payload-counts)
 *   [Post](#post)
 *   [Remove Data](#remove-data)
+*   [Restore](#restore)
 *   [Send Command](#send-command)
 *   [Tag Keys](#tag-keys)
 *   [Tag Values](#tag-values)
@@ -105,7 +106,7 @@ all.Application, all.Organization, all.User, devices.*, or devices.delete.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| options | [Devices Delete Post](../lib/schemas/devicesDeletePost.json) | Y | Object containing device query and email |  | [Devices Delete Post Example](_schemas.md#devices-delete-post-example) |
+| options | [Devices Delete Or Restore Post](../lib/schemas/devicesDeleteOrRestorePost.json) | Y | Object containing device deletion options |  | [Devices Delete Or Restore Post Example](_schemas.md#devices-delete-or-restore-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -256,7 +257,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| sortField | string | N | Field to sort the results by. Accepted values are: name, id, creationDate, lastUpdated, connectionStatus | name | name |
+| sortField | string | N | Field to sort the results by. Accepted values are: name, id, creationDate, lastUpdated, connectionStatus, deletedAt | name | name |
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
 | page | string | N | Which page of results to return | 0 | 0 |
 | perPage | string | N | How many items to return per page | 100 | 10 |
@@ -269,6 +270,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | query | [Advanced Device Query](../lib/schemas/advancedDeviceQuery.json) | N | Device filter JSON object which overrides the filterField, filter, deviceClass, tagFilter, and parentId parameters. |  | [Advanced Device Query Example](_schemas.md#advanced-device-query-example) |
 | tagsAsObject | string | N | Return tags as an object map instead of an array |  | true |
 | attributesAsObject | string | N | Return attributes as an object map instead of an array |  | false |
+| queryDeleted | string | N | If true, endpoint will return recently deleted devices instead |  | false |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -534,6 +536,57 @@ all.Application, all.Organization, all.User, devices.*, or devices.removeData.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | If a job was enqueued for device data to be removed |
+
+#### Error Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+
+<br/>
+
+## Restore
+
+Restore deleted devices
+
+```javascript
+var params = {
+  applicationId: myApplicationId,
+  options: myOptions
+};
+
+// with callbacks
+client.devices.restore(params, function (err, result) {
+  if (err) { return console.error(err); }
+  console.log(result);
+});
+
+// with promises
+client.devices.restore(params)
+  .then(console.log)
+  .catch(console.error);
+```
+
+#### Authentication
+The client must be configured with a valid api access token to call this
+action. The token must include at least one of the following scopes:
+all.Application, all.Organization, all.User, devices.*, or devices.restore.
+
+#### Available Parameters
+
+| Name | Type | Required | Description | Default | Example |
+| ---- | ---- | -------- | ----------- | ------- | ------- |
+| applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
+| options | [Devices Delete Or Restore Post](../lib/schemas/devicesDeleteOrRestorePost.json) | Y | Object containing device restoration options |  | [Devices Delete Or Restore Post Example](_schemas.md#devices-delete-or-restore-post-example) |
+| losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
+
+#### Successful Responses
+
+| Code | Type | Description |
+| ---- | ---- | ----------- |
+| 200 | [Bulk Restoration Response](../lib/schemas/bulkRestoreResponse.json) | Object indicating number of devices restored or failed |
+| 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | If a job was enqueued for the devices to be restored |
 
 #### Error Responses
 

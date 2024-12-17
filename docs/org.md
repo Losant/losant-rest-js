@@ -407,6 +407,7 @@ all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
 | start | string | N | Start of range for payload count query (ms since epoch) |  | 0 |
 | end | string | N | End of range for payload count query (ms since epoch) |  | 1465790400000 |
+| asBytes | string | N | If the resulting stats should be returned as bytes | false | true |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

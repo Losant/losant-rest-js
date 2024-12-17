@@ -863,6 +863,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
 | start | string | N | Start of range for payload count query (ms since epoch) | -2592000000 | 0 |
 | end | string | N | End of range for payload count query (ms since epoch) | 0 | 1465790400000 |
+| asBytes | string | N | If the resulting stats should be returned as bytes | false | true |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
