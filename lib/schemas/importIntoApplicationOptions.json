@@ -62,6 +62,23 @@
         ]
       },
       "uniqueItems": true
+    },
+    "credentialName": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "repo": {
+      "type": "object",
+      "properties": {
+        "branch": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "directory": {
+          "type": "string",
+          "maxLength": 1024
+        }
+      }
     }
   },
   "additionalProperties": false

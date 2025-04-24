@@ -100,7 +100,6 @@
                       "type": "object",
                       "additionalProperties": false
                     },
-                    "additionalProperties": false,
                     "maxItems": 0
                   },
                   "childAttributes": {
@@ -2759,7 +2758,6 @@
                           "type": "object",
                           "additionalProperties": false
                         },
-                        "additionalProperties": false,
                         "maxItems": 0
                       },
                       "childAttributes": {
@@ -2907,7 +2905,6 @@
                           "type": "object",
                           "additionalProperties": false
                         },
-                        "additionalProperties": false,
                         "maxItems": 0
                       },
                       "childAttributes": {
