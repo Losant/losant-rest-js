@@ -2554,6 +2554,71 @@
               "operation": {
                 "type": "string",
                 "enum": [
+                  "set"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "enum": [
+                  "attributeContentType"
+                ]
+              },
+              "attributeName": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "value": {
+                "type": "string",
+                "maxLength": 64,
+                "minLength": 1
+              }
+            },
+            "required": [
+              "operation",
+              "target",
+              "attributeName",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "operation": {
+                "type": "string",
+                "enum": [
+                  "set"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "enum": [
+                  "attributeName"
+                ]
+              },
+              "attributeName": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              },
+              "value": {
+                "type": "string",
+                "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+              }
+            },
+            "required": [
+              "operation",
+              "target",
+              "attributeName",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "operation": {
+                "type": "string",
+                "enum": [
                   "remove"
                 ]
               },

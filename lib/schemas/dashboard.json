@@ -1086,6 +1086,45 @@
                             }
                           },
                           "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "queryType": {
+                              "type": "string",
+                              "enum": [
+                                "events"
+                              ]
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "sortField": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "sortDirection": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "page": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "perPage": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "query": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "includeExtendedEventInfo": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
                         }
                       ]
                     }
@@ -2759,12 +2798,93 @@
                         "format": {
                           "type": "string",
                           "maxLength": 255
+                        },
+                        "scale": {
+                          "type": "string",
+                          "enum": [
+                            "linear",
+                            "log",
+                            "sqrt"
+                          ],
+                          "default": "linear"
+                        },
+                        "stacked": {
+                          "type": "boolean"
                         }
                       },
                       "additionalProperties": false,
                       "required": [
                         "id"
                       ]
+                    }
+                  },
+                  "decorators": {
+                    "type": "array",
+                    "maxItems": 10,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "line",
+                            "area"
+                          ]
+                        },
+                        "yAxisId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "label": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 64
+                        },
+                        "lineStyle": {
+                          "type": "string",
+                          "enum": [
+                            "solid",
+                            "dotted",
+                            "dashed"
+                          ]
+                        },
+                        "lineWeight": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 5
+                        },
+                        "y1": {
+                          "oneOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "string",
+                              "maxLength": 128
+                            }
+                          ]
+                        },
+                        "y2": {
+                          "oneOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "string",
+                              "maxLength": 128
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "yAxisId",
+                        "y1"
+                      ],
+                      "additionalProperties": false
                     }
                   }
                 },

@@ -282,6 +282,7 @@
                   "flow.setStorageEntry",
                   "flow.getStorageEntriesMetadata",
                   "flow.stats",
+                  "flow.suggestFunction",
                   "flows.get",
                   "flows.getByVersion",
                   "flows.import",

@@ -2104,6 +2104,10 @@
         "includeBlobData": {
           "type": "boolean",
           "default": false
+        },
+        "filePerDevice": {
+          "type": "boolean",
+          "default": false
         }
       }
     }
