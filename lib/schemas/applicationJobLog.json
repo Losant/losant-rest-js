@@ -1,0 +1,250 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "jobId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "jobExecutionId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "name": {
+      "type": "string"
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "runQueuedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "runStartedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "runCompletedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "inProgress",
+        "completed",
+        "errored",
+        "failed"
+      ]
+    },
+    "requestedById": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "requestedByType": {
+      "type": "string",
+      "enum": [
+        "user",
+        "apiToken",
+        "flow",
+        "device",
+        "system"
+      ]
+    },
+    "ownerType": {
+      "type": "string",
+      "enum": [
+        "application",
+        "user",
+        "organization"
+      ]
+    },
+    "ownerId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "resourceType": {
+      "type": "string",
+      "enum": [
+        "application",
+        "dashboard",
+        "datatable",
+        "event",
+        "device",
+        "notebook",
+        "deviceRecipe"
+      ]
+    },
+    "resourceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "progress": {
+      "type": "object",
+      "properties": {
+        "completed": {
+          "type": "number"
+        },
+        "total": {
+          "type": "number"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "input": {
+      "callbackUrl": {
+        "type": "string",
+        "format": "uri",
+        "maxLength": 1024
+      },
+      "emails": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 1024
+        }
+      },
+      "start": {
+        "type": "number"
+      },
+      "end": {
+        "type": "number"
+      },
+      "gatewayId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "parentId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "query": {
+        "type": "string"
+      },
+      "ownerId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "ownerType": {
+        "type": "string",
+        "enum": [
+          "user",
+          "organization"
+        ]
+      },
+      "fileUrl": {
+        "type": "string",
+        "format": "uri",
+        "maxLength": 1024
+      },
+      "templateContext": {
+        "type": "string"
+      }
+    },
+    "output": {
+      "downloadUrls": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 1024
+        }
+      },
+      "devicesDirectory": {
+        "type": "string"
+      },
+      "eventsDirectory": {
+        "type": "string"
+      },
+      "dataTablesDirectory": {
+        "type": "string"
+      },
+      "created": {
+        "type": "number"
+      },
+      "failed": {
+        "type": "number"
+      },
+      "removed": {
+        "type": "number"
+      },
+      "restored": {
+        "type": "number"
+      },
+      "repoUrl": {
+        "type": "string"
+      },
+      "commit": {
+        "type": "string"
+      },
+      "noChanges": {
+        "type": "boolean"
+      },
+      "applicationId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "validationErrors": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "skippedDeviceNotFound": {
+        "type": "number"
+      },
+      "skippedDateTooOld": {
+        "type": "number"
+      },
+      "skippedDateInFuture": {
+        "type": "number"
+      },
+      "skippedInvalidDate": {
+        "type": "number"
+      },
+      "skippedNoValidAttributes": {
+        "type": "number"
+      },
+      "written": {
+        "type": "number"
+      },
+      "eeaBundleVersion": {
+        "type": "string"
+      }
+    }
+  }
+}

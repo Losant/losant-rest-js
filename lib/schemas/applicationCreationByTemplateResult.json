@@ -466,6 +466,10 @@
               },
               "maxItems": 1000
             },
+            "delayDays": {
+              "type": "integer",
+              "minimum": 1
+            },
             "s3": {
               "type": "object",
               "properties": {

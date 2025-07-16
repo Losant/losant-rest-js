@@ -111,6 +111,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | email | string | N | Email address to send export to. Defaults to current user&#x27;s email. |  | email@example.com |
 | callbackUrl | string | N | Callback URL to call with export result |  | https://example.com/cburl |
 | includeBlobData | string | N | If set will export any blob attributes in base64 form, otherwise they will be downloadable links which will expire. |  | true |
+| query | [Device Data Export](../lib/schemas/deviceDataExport.json) | N | The export parameters. When provided overrides any options provided as a query param. |  | [Device Data Export Example](_schemas.md#device-data-export-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

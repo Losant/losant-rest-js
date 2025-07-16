@@ -44,7 +44,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| query | [Data Export](../lib/schemas/dataExport.json) | Y | The query parameters |  | [Data Export Example](_schemas.md#data-export-example) |
+| query | [Devices Data Export](../lib/schemas/devicesDataExport.json) | Y | The query parameters |  | [Devices Data Export Example](_schemas.md#devices-data-export-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
