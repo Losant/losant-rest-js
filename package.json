@@ -38,7 +38,9 @@
     "uri-template": "^2.0.0"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
+    "@eslint/js": "^9.31.0",
+    "eslint": "^9.31.0",
+    "globals": "^16.3.0",
     "mocha": "^11.7.1",
     "nock": "^14.0.5",
     "should": "^13.2.3"
