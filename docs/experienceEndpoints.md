@@ -153,7 +153,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | end | string | N | End of time range in milliseconds since epoch | 0 | 0 |
 | resolution | string | N | Resolution in milliseconds | 3600000 | 3600000 |
 | versionFilter | string | N | Filters the stats to a particular experience version |  | myVersion |
-| domainFilter | string | N | Filters the stats to a particular experience domain or slug |  | mycustomdomain.com |
+| domainFilter | string | N | Filters the stats to a particular experience domain or slug |  | example.com |
 | statusCodeFilter | string | N | Filters the stats to a particular status code |  | 200 |
 | endpointIdFilter | string | N | Filters the stats to a particular endpoint |  | 575ec8687ae143cd83dc4a98 |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |

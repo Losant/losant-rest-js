@@ -113,6 +113,18 @@
       "type": "string",
       "minLength": 1,
       "maxLength": 255
+    },
+    "responseHeaders": {
+      "type": "object",
+      "patternProperties": {
+        "^.{1,255}$": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        }
+      },
+      "maxProperties": 10,
+      "additionalProperties": false
     }
   },
   "additionalProperties": false
