@@ -22,8 +22,6 @@ const params = {
   applicationId: myApplicationId,
   experienceViewId: myExperienceViewId
 };
-
-// with promises
 try {
   console.log(await client.experienceView.delete(params));
 ';
@@ -69,8 +67,6 @@ const params = {
   applicationId: myApplicationId,
   experienceViewId: myExperienceViewId
 };
-
-// with promises
 try {
   console.log(await client.experienceView.get(params));
 ';
@@ -117,8 +113,6 @@ const params = {
   applicationId: myApplicationId,
   experienceViewId: myExperienceViewId
 };
-
-// with promises
 try {
   console.log(await client.experienceView.linkedResources(params));
 ';
@@ -167,8 +161,6 @@ const params = {
   experienceViewId: myExperienceViewId,
   experienceView: myExperienceView
 };
-
-// with promises
 try {
   console.log(await client.experienceView.patch(params));
 ';

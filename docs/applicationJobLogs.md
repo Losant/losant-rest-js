@@ -18,8 +18,6 @@ Returns the job logs for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.applicationJobLogs.get(params));
 ';

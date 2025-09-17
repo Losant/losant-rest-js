@@ -19,8 +19,6 @@ const params = {
   applicationId: myApplicationId,
   embeddedDeploymentId: myEmbeddedDeploymentId
 };
-
-// with promises
 try {
   console.log(await client.embeddedDeployment.get(params));
 ';

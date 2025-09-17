@@ -19,8 +19,6 @@ Returns the webhooks for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.webhooks.get(params));
 ';
@@ -71,8 +69,6 @@ const params = {
   applicationId: myApplicationId,
   webhook: myWebhook
 };
-
-// with promises
 try {
   console.log(await client.webhooks.post(params));
 ';

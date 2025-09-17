@@ -19,8 +19,6 @@ const params = {
   instanceId: myInstanceId,
   instanceAuditLogId: myInstanceAuditLogId
 };
-
-// with promises
 try {
   console.log(await client.instanceAuditLog.get(params));
 ';

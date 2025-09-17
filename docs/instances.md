@@ -16,8 +16,6 @@ Returns a collection of instances
 
 ```javascript
 const params = {}; // all params are optional
-
-// with promises
 try {
   console.log(await client.instances.get(params));
 ';

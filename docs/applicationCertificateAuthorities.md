@@ -19,8 +19,6 @@ Returns the application certificate authorities for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.applicationCertificateAuthorities.get(params));
 ';
@@ -71,8 +69,6 @@ const params = {
   applicationId: myApplicationId,
   applicationCertificateAuthority: myApplicationCertificateAuthority
 };
-
-// with promises
 try {
   console.log(await client.applicationCertificateAuthorities.post(params));
 ';

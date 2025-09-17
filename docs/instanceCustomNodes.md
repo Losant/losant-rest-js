@@ -19,8 +19,6 @@ Returns the Custom Nodes for an instance
 const params = {
   instanceId: myInstanceId
 };
-
-// with promises
 try {
   console.log(await client.instanceCustomNodes.get(params));
 ';
@@ -70,8 +68,6 @@ const params = {
   instanceId: myInstanceId,
   instanceCustomNode: myInstanceCustomNode
 };
-
-// with promises
 try {
   console.log(await client.instanceCustomNodes.post(params));
 ';

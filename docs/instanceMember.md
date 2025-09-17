@@ -21,8 +21,6 @@ const params = {
   instanceId: myInstanceId,
   userId: myUserId
 };
-
-// with promises
 try {
   console.log(await client.instanceMember.delete(params));
 ';
@@ -68,8 +66,6 @@ const params = {
   instanceId: myInstanceId,
   userId: myUserId
 };
-
-// with promises
 try {
   console.log(await client.instanceMember.get(params));
 ';
@@ -116,8 +112,6 @@ const params = {
   userId: myUserId,
   member: myMember
 };
-
-// with promises
 try {
   console.log(await client.instanceMember.patch(params));
 ';

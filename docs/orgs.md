@@ -17,8 +17,6 @@ Returns the organizations associated with the current user
 
 ```javascript
 const params = {}; // all params are optional
-
-// with promises
 try {
   console.log(await client.orgs.get(params));
 ';
@@ -68,8 +66,6 @@ Create a new organization
 const params = {
   organization: myOrganization
 };
-
-// with promises
 try {
   console.log(await client.orgs.post(params));
 ';

@@ -22,8 +22,6 @@ Deletes a dashboard
 const params = {
   dashboardId: myDashboardId
 };
-
-// with promises
 try {
   console.log(await client.dashboard.delete(params));
 ';
@@ -67,8 +65,6 @@ Retrieves information on a dashboard
 const params = {
   dashboardId: myDashboardId
 };
-
-// with promises
 try {
   console.log(await client.dashboard.get(params));
 ';
@@ -112,8 +108,6 @@ const params = {
   dashboardId: myDashboardId,
   dashboard: myDashboard
 };
-
-// with promises
 try {
   console.log(await client.dashboard.patch(params));
 ';
@@ -159,8 +153,6 @@ const params = {
   dashboardId: myDashboardId,
   reportConfig: myReportConfig
 };
-
-// with promises
 try {
   console.log(await client.dashboard.sendReport(params));
 ';
@@ -206,8 +198,6 @@ const params = {
   dashboardId: myDashboardId,
   ctx: myCtx
 };
-
-// with promises
 try {
   console.log(await client.dashboard.validateContext(params));
 ';

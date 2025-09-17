@@ -24,8 +24,6 @@ const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId
 };
-
-// with promises
 try {
   console.log(await client.dataTableRows.delete(params));
 ';
@@ -74,8 +72,6 @@ const params = {
   dataTableId: myDataTableId,
   exportData: myExportData
 };
-
-// with promises
 try {
   console.log(await client.dataTableRows.export(params));
 ';
@@ -122,8 +118,6 @@ const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId
 };
-
-// with promises
 try {
   console.log(await client.dataTableRows.get(params));
 ';
@@ -175,8 +169,6 @@ const params = {
   dataTableId: myDataTableId,
   dataTableRow: myDataTableRow
 };
-
-// with promises
 try {
   console.log(await client.dataTableRows.post(params));
 ';
@@ -223,8 +215,6 @@ const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId
 };
-
-// with promises
 try {
   console.log(await client.dataTableRows.query(params));
 ';
@@ -276,8 +266,6 @@ const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId
 };
-
-// with promises
 try {
   console.log(await client.dataTableRows.truncate(params));
 ';

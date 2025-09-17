@@ -19,8 +19,6 @@ Returns the notebooks for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.notebooks.get(params));
 ';
@@ -71,8 +69,6 @@ const params = {
   applicationId: myApplicationId,
   notebook: myNotebook
 };
-
-// with promises
 try {
   console.log(await client.notebooks.post(params));
 ';

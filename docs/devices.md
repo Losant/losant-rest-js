@@ -31,8 +31,6 @@ Gets the attribute names that match the given query. Maximum 1K returned.
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.devices.attributeNames(params));
 ';
@@ -80,8 +78,6 @@ const params = {
   applicationId: myApplicationId,
   options: myOptions
 };
-
-// with promises
 try {
   console.log(await client.devices.delete(params));
 ';
@@ -127,8 +123,6 @@ Gets the device names that match the given query. Maximum 1K returned.
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.devices.deviceNames(params));
 ';
@@ -174,8 +168,6 @@ Creates an export of all device metadata
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.devices.export(params));
 ';
@@ -222,8 +214,6 @@ Returns the devices for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.devices.get(params));
 ';
@@ -281,8 +271,6 @@ Retrieve the composite last complete state of the matching devices
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.devices.getCompositeState(params));
 ';
@@ -335,8 +323,6 @@ const params = {
   applicationId: myApplicationId,
   patchInfo: myPatchInfo
 };
-
-// with promises
 try {
   console.log(await client.devices.patch(params));
 ';
@@ -382,8 +368,6 @@ Creates an export of payload count information for the matching devices
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.devices.payloadCounts(params));
 ';
@@ -429,8 +413,6 @@ const params = {
   applicationId: myApplicationId,
   device: myDevice
 };
-
-// with promises
 try {
   console.log(await client.devices.post(params));
 ';
@@ -478,8 +460,6 @@ const params = {
   applicationId: myApplicationId,
   options: myOptions
 };
-
-// with promises
 try {
   console.log(await client.devices.removeData(params));
 ';
@@ -525,8 +505,6 @@ const params = {
   applicationId: myApplicationId,
   options: myOptions
 };
-
-// with promises
 try {
   console.log(await client.devices.restore(params));
 ';
@@ -573,8 +551,6 @@ const params = {
   applicationId: myApplicationId,
   multiDeviceCommand: myMultiDeviceCommand
 };
-
-// with promises
 try {
   console.log(await client.devices.sendCommand(params));
 ';
@@ -620,8 +596,6 @@ Gets the unique tag keys for devices that match the given query. Maximum 1K retu
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.devices.tagKeys(params));
 ';
@@ -668,8 +642,6 @@ const params = {
   applicationId: myApplicationId,
   key: myKey
 };
-
-// with promises
 try {
   console.log(await client.devices.tagValues(params));
 ';

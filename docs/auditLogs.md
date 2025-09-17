@@ -18,8 +18,6 @@ Returns the audit logs for the organization
 const params = {
   orgId: myOrgId
 };
-
-// with promises
 try {
   console.log(await client.auditLogs.get(params));
 ';

@@ -22,8 +22,6 @@ const params = {
   dashboardId: myDashboardId,
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.applicationDashboard.delete(params));
 ';
@@ -69,8 +67,6 @@ const params = {
   dashboardId: myDashboardId,
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.applicationDashboard.get(params));
 ';
@@ -117,8 +113,6 @@ const params = {
   applicationId: myApplicationId,
   dashboard: myDashboard
 };
-
-// with promises
 try {
   console.log(await client.applicationDashboard.patch(params));
 ';
@@ -166,8 +160,6 @@ const params = {
   applicationId: myApplicationId,
   reportConfig: myReportConfig
 };
-
-// with promises
 try {
   console.log(await client.applicationDashboard.sendReport(params));
 ';

@@ -25,8 +25,6 @@ const params = {
   resourceJobId: myResourceJobId,
   executionId: myExecutionId
 };
-
-// with promises
 try {
   console.log(await client.resourceJob.cancelExecution(params));
 ';
@@ -73,8 +71,6 @@ const params = {
   applicationId: myApplicationId,
   resourceJobId: myResourceJobId
 };
-
-// with promises
 try {
   console.log(await client.resourceJob.delete(params));
 ';
@@ -122,8 +118,6 @@ const params = {
   resourceJobId: myResourceJobId,
   executionOptions: myExecutionOptions
 };
-
-// with promises
 try {
   console.log(await client.resourceJob.execute(params));
 ';
@@ -170,8 +164,6 @@ const params = {
   applicationId: myApplicationId,
   resourceJobId: myResourceJobId
 };
-
-// with promises
 try {
   console.log(await client.resourceJob.get(params));
 ';
@@ -217,8 +209,6 @@ const params = {
   applicationId: myApplicationId,
   resourceJobId: myResourceJobId
 };
-
-// with promises
 try {
   console.log(await client.resourceJob.logs(params));
 ';
@@ -267,8 +257,6 @@ const params = {
   resourceJobId: myResourceJobId,
   resourceJob: myResourceJob
 };
-
-// with promises
 try {
   console.log(await client.resourceJob.patch(params));
 ';

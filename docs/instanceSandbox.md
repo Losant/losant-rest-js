@@ -25,8 +25,6 @@ const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
-
-// with promises
 try {
   console.log(await client.instanceSandbox.delete(params));
 ';
@@ -72,8 +70,6 @@ const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
-
-// with promises
 try {
   console.log(await client.instanceSandbox.deviceCounts(params));
 ';
@@ -121,8 +117,6 @@ const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
-
-// with promises
 try {
   console.log(await client.instanceSandbox.get(params));
 ';
@@ -170,8 +164,6 @@ const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
-
-// with promises
 try {
   console.log(await client.instanceSandbox.notebookMinuteCounts(params));
 ';
@@ -219,8 +211,6 @@ const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
-
-// with promises
 try {
   console.log(await client.instanceSandbox.payloadCounts(params));
 ';
@@ -269,8 +259,6 @@ const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
-
-// with promises
 try {
   console.log(await client.instanceSandbox.payloadCountsBreakdown(params));
 ';
@@ -321,8 +309,6 @@ const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
-
-// with promises
 try {
   console.log(await client.instanceSandbox.undelete(params));
 ';

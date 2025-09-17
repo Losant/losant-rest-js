@@ -20,8 +20,6 @@ const params = {
   applicationId: myApplicationId,
   options: myOptions
 };
-
-// with promises
 try {
   console.log(await client.experience.bootstrap(params));
 ';
@@ -66,8 +64,6 @@ Deletes multiple parts of an experience including users, groups, slugs, domains,
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.experience.delete(params));
 ';

@@ -21,8 +21,6 @@ const params = {
   applicationId: myApplicationId,
   eventId: myEventId
 };
-
-// with promises
 try {
   console.log(await client.event.delete(params));
 ';
@@ -68,8 +66,6 @@ const params = {
   applicationId: myApplicationId,
   eventId: myEventId
 };
-
-// with promises
 try {
   console.log(await client.event.get(params));
 ';
@@ -116,8 +112,6 @@ const params = {
   eventId: myEventId,
   event: myEvent
 };
-
-// with promises
 try {
   console.log(await client.event.patch(params));
 ';

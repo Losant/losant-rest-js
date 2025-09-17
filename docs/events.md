@@ -23,8 +23,6 @@ Delete events
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.events.delete(params));
 ';
@@ -72,8 +70,6 @@ Request an export of an application&#x27;s event data
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.events.export(params));
 ';
@@ -118,8 +114,6 @@ Returns the events for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.events.get(params));
 ';
@@ -171,8 +165,6 @@ Returns the first new event ordered by severity and then creation
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.events.mostRecentBySeverity(params));
 ';
@@ -218,8 +210,6 @@ const params = {
   applicationId: myApplicationId,
   updates: myUpdates
 };
-
-// with promises
 try {
   console.log(await client.events.patch(params));
 ';
@@ -270,8 +260,6 @@ const params = {
   applicationId: myApplicationId,
   event: myEvent
 };
-
-// with promises
 try {
   console.log(await client.events.post(params));
 ';

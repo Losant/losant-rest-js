@@ -22,8 +22,6 @@ const params = {
   orgId: myOrgId,
   inviteId: myInviteId
 };
-
-// with promises
 try {
   console.log(await client.instanceOrgInvite.delete(params));
 ';
@@ -71,8 +69,6 @@ const params = {
   orgId: myOrgId,
   inviteId: myInviteId
 };
-
-// with promises
 try {
   console.log(await client.instanceOrgInvite.get(params));
 ';
@@ -121,8 +117,6 @@ const params = {
   inviteId: myInviteId,
   roleInfo: myRoleInfo
 };
-
-// with promises
 try {
   console.log(await client.instanceOrgInvite.resendInvite(params));
 ';

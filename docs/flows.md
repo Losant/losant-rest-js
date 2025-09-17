@@ -22,8 +22,6 @@ Returns the flows for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.flows.get(params));
 ';
@@ -79,8 +77,6 @@ const params = {
   applicationId: myApplicationId,
   version: myVersion
 };
-
-// with promises
 try {
   console.log(await client.flows.getByVersion(params));
 ';
@@ -136,8 +132,6 @@ const params = {
   applicationId: myApplicationId,
   importData: myImportData
 };
-
-// with promises
 try {
   console.log(await client.flows.import(params));
 ';
@@ -182,8 +176,6 @@ Gets additional nodes that should be available in the palette
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.flows.palette(params));
 ';
@@ -228,8 +220,6 @@ const params = {
   applicationId: myApplicationId,
   flow: myFlow
 };
-
-// with promises
 try {
   console.log(await client.flows.post(params));
 ';

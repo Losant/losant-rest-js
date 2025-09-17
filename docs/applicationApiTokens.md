@@ -19,8 +19,6 @@ Returns the API tokens for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.applicationApiTokens.get(params));
 ';
@@ -70,8 +68,6 @@ const params = {
   applicationId: myApplicationId,
   apiToken: myApiToken
 };
-
-// with promises
 try {
   console.log(await client.applicationApiTokens.post(params));
 ';

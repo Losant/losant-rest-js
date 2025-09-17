@@ -23,8 +23,6 @@ const params = {
   deviceRecipeId: myDeviceRecipeId,
   bulkInfo: myBulkInfo
 };
-
-// with promises
 try {
   console.log(await client.deviceRecipe.bulkCreate(params));
 ';
@@ -72,8 +70,6 @@ const params = {
   applicationId: myApplicationId,
   deviceRecipeId: myDeviceRecipeId
 };
-
-// with promises
 try {
   console.log(await client.deviceRecipe.delete(params));
 ';
@@ -119,8 +115,6 @@ const params = {
   applicationId: myApplicationId,
   deviceRecipeId: myDeviceRecipeId
 };
-
-// with promises
 try {
   console.log(await client.deviceRecipe.get(params));
 ';
@@ -169,8 +163,6 @@ const params = {
   deviceRecipeId: myDeviceRecipeId,
   deviceRecipe: myDeviceRecipe
 };
-
-// with promises
 try {
   console.log(await client.deviceRecipe.patch(params));
 ';

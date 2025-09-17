@@ -21,8 +21,6 @@ const params = {
   applicationId: myApplicationId,
   experienceVersionIdOrName: myExperienceVersionIdOrName
 };
-
-// with promises
 try {
   console.log(await client.experienceVersion.delete(params));
 ';
@@ -68,8 +66,6 @@ const params = {
   applicationId: myApplicationId,
   experienceVersionIdOrName: myExperienceVersionIdOrName
 };
-
-// with promises
 try {
   console.log(await client.experienceVersion.get(params));
 ';
@@ -116,8 +112,6 @@ const params = {
   experienceVersionIdOrName: myExperienceVersionIdOrName,
   experienceVersion: myExperienceVersion
 };
-
-// with promises
 try {
   console.log(await client.experienceVersion.patch(params));
 ';

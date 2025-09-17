@@ -25,8 +25,6 @@ Returns device counts by day for the time range specified for this instance
 const params = {
   instanceId: myInstanceId
 };
-
-// with promises
 try {
   console.log(await client.instance.deviceCounts(params));
 ';
@@ -72,8 +70,6 @@ Generates a CSV report on instance stats
 const params = {
   instanceId: myInstanceId
 };
-
-// with promises
 try {
   console.log(await client.instance.generateReport(params));
 ';
@@ -117,8 +113,6 @@ Returns an instance
 const params = {
   instanceId: myInstanceId
 };
-
-// with promises
 try {
   console.log(await client.instance.get(params));
 ';
@@ -162,8 +156,6 @@ Return historical summary entries for an instance
 const params = {
   instanceId: myInstanceId
 };
-
-// with promises
 try {
   console.log(await client.instance.historicalSummaries(params));
 ';
@@ -213,8 +205,6 @@ Returns notebook execution usage by day for the time range specified for this in
 const params = {
   instanceId: myInstanceId
 };
-
-// with promises
 try {
   console.log(await client.instance.notebookMinuteCounts(params));
 ';
@@ -261,8 +251,6 @@ const params = {
   instanceId: myInstanceId,
   instance: myInstance
 };
-
-// with promises
 try {
   console.log(await client.instance.patch(params));
 ';
@@ -306,8 +294,6 @@ Returns payload counts for the time range specified for this instance
 const params = {
   instanceId: myInstanceId
 };
-
-// with promises
 try {
   console.log(await client.instance.payloadCounts(params));
 ';
@@ -354,8 +340,6 @@ Returns payload counts per resolution in the time range specified for this insta
 const params = {
   instanceId: myInstanceId
 };
-
-// with promises
 try {
   console.log(await client.instance.payloadCountsBreakdown(params));
 ';

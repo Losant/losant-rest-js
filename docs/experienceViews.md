@@ -19,8 +19,6 @@ Returns the experience views for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.experienceViews.get(params));
 ';
@@ -73,8 +71,6 @@ const params = {
   applicationId: myApplicationId,
   experienceView: myExperienceView
 };
-
-// with promises
 try {
   console.log(await client.experienceViews.post(params));
 ';

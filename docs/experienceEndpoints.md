@@ -20,8 +20,6 @@ Returns the experience endpoints for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.experienceEndpoints.get(params));
 ';
@@ -73,8 +71,6 @@ const params = {
   applicationId: myApplicationId,
   experienceEndpoint: myExperienceEndpoint
 };
-
-// with promises
 try {
   console.log(await client.experienceEndpoints.post(params));
 ';
@@ -119,8 +115,6 @@ Get statistics about endpoint requests
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.experienceEndpoints.stats(params));
 ';

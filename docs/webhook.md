@@ -21,8 +21,6 @@ const params = {
   applicationId: myApplicationId,
   webhookId: myWebhookId
 };
-
-// with promises
 try {
   console.log(await client.webhook.delete(params));
 ';
@@ -69,8 +67,6 @@ const params = {
   applicationId: myApplicationId,
   webhookId: myWebhookId
 };
-
-// with promises
 try {
   console.log(await client.webhook.get(params));
 ';
@@ -117,8 +113,6 @@ const params = {
   webhookId: myWebhookId,
   webhook: myWebhook
 };
-
-// with promises
 try {
   console.log(await client.webhook.patch(params));
 ';

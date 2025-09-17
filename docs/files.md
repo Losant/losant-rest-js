@@ -19,8 +19,6 @@ Returns the files for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.files.get(params));
 ';
@@ -74,8 +72,6 @@ const params = {
   applicationId: myApplicationId,
   file: myFile
 };
-
-// with promises
 try {
   console.log(await client.files.post(params));
 ';

@@ -19,8 +19,6 @@ Returns the notification rules for an instance
 const params = {
   instanceId: myInstanceId
 };
-
-// with promises
 try {
   console.log(await client.instanceNotificationRules.get(params));
 ';
@@ -70,8 +68,6 @@ const params = {
   instanceId: myInstanceId,
   notificationRule: myNotificationRule
 };
-
-// with promises
 try {
   console.log(await client.instanceNotificationRules.post(params));
 ';

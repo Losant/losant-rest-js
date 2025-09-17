@@ -21,8 +21,6 @@ const params = {
   applicationId: myApplicationId,
   query: myQuery
 };
-
-// with promises
 try {
   console.log(await client.data.export(params));
 ';
@@ -68,8 +66,6 @@ const params = {
   applicationId: myApplicationId,
   query: myQuery
 };
-
-// with promises
 try {
   console.log(await client.data.lastValueQuery(params));
 ';
@@ -115,8 +111,6 @@ const params = {
   applicationId: myApplicationId,
   query: myQuery
 };
-
-// with promises
 try {
   console.log(await client.data.timeSeriesQuery(params));
 ';

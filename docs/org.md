@@ -30,8 +30,6 @@ Deletes an organization
 const params = {
   orgId: myOrgId
 };
-
-// with promises
 try {
   console.log(await client.org.delete(params));
 ';
@@ -75,8 +73,6 @@ Returns device counts by day for the time range specified for this organization
 const params = {
   orgId: myOrgId
 };
-
-// with promises
 try {
   console.log(await client.org.deviceCounts(params));
 ';
@@ -122,8 +118,6 @@ Retrieves information on an organization
 const params = {
   orgId: myOrgId
 };
-
-// with promises
 try {
   console.log(await client.org.get(params));
 ';
@@ -170,8 +164,6 @@ const params = {
   orgId: myOrgId,
   invite: myInvite
 };
-
-// with promises
 try {
   console.log(await client.org.inviteMember(params));
 ';
@@ -217,8 +209,6 @@ const params = {
   orgId: myOrgId,
   member: myMember
 };
-
-// with promises
 try {
   console.log(await client.org.modifyMember(params));
 ';
@@ -265,8 +255,6 @@ Returns notebook execution usage by day for the time range specified for this or
 const params = {
   orgId: myOrgId
 };
-
-// with promises
 try {
   console.log(await client.org.notebookMinuteCounts(params));
 ';
@@ -313,8 +301,6 @@ const params = {
   orgId: myOrgId,
   organization: myOrganization
 };
-
-// with promises
 try {
   console.log(await client.org.patch(params));
 ';
@@ -361,8 +347,6 @@ Returns payload counts for the time range specified for all applications this or
 const params = {
   orgId: myOrgId
 };
-
-// with promises
 try {
   console.log(await client.org.payloadCounts(params));
 ';
@@ -409,8 +393,6 @@ Returns payload counts per resolution in the time range specified for all applic
 const params = {
   orgId: myOrgId
 };
-
-// with promises
 try {
   console.log(await client.org.payloadCountsBreakdown(params));
 ';
@@ -459,8 +441,6 @@ Gets the current pending invites
 const params = {
   orgId: myOrgId
 };
-
-// with promises
 try {
   console.log(await client.org.pendingInvites(params));
 ';
@@ -505,8 +485,6 @@ const params = {
   orgId: myOrgId,
   userId: myUserId
 };
-
-// with promises
 try {
   console.log(await client.org.removeMember(params));
 ';
@@ -554,8 +532,6 @@ const params = {
   orgId: myOrgId,
   inviteId: myInviteId
 };
-
-// with promises
 try {
   console.log(await client.org.revokeInvite(params));
 ';
@@ -601,8 +577,6 @@ const params = {
   orgId: myOrgId,
   transfer: myTransfer
 };
-
-// with promises
 try {
   console.log(await client.org.transferResources(params));
 ';

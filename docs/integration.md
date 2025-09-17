@@ -21,8 +21,6 @@ const params = {
   applicationId: myApplicationId,
   integrationId: myIntegrationId
 };
-
-// with promises
 try {
   console.log(await client.integration.delete(params));
 ';
@@ -69,8 +67,6 @@ const params = {
   applicationId: myApplicationId,
   integrationId: myIntegrationId
 };
-
-// with promises
 try {
   console.log(await client.integration.get(params));
 ';
@@ -117,8 +113,6 @@ const params = {
   integrationId: myIntegrationId,
   integration: myIntegration
 };
-
-// with promises
 try {
   console.log(await client.integration.patch(params));
 ';

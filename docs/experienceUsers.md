@@ -19,8 +19,6 @@ Returns the experience users for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.experienceUsers.get(params));
 ';
@@ -74,8 +72,6 @@ const params = {
   applicationId: myApplicationId,
   experienceUser: myExperienceUser
 };
-
-// with promises
 try {
   console.log(await client.experienceUsers.post(params));
 ';

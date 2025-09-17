@@ -19,8 +19,6 @@ Returns a collection of credentials for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.credentials.get(params));
 ';
@@ -71,8 +69,6 @@ const params = {
   applicationId: myApplicationId,
   credential: myCredential
 };
-
-// with promises
 try {
   console.log(await client.credentials.post(params));
 ';

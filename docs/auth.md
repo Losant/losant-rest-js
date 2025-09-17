@@ -22,8 +22,6 @@ Authenticates a device using the provided credentials.
 const params = {
   credentials: myCredentials
 };
-
-// with promises
 try {
   console.log(await client.auth.authenticateDevice(params));
 ';
@@ -65,8 +63,6 @@ Authenticates a user using the provided credentials.
 const params = {
   credentials: myCredentials
 };
-
-// with promises
 try {
   console.log(await client.auth.authenticateUser(params));
 ';
@@ -108,8 +104,6 @@ Authenticates a user via GitHub OAuth.
 const params = {
   oauth: myOauth
 };
-
-// with promises
 try {
   console.log(await client.auth.authenticateUserGithub(params));
 ';
@@ -151,8 +145,6 @@ Authenticates a user via a SAML response.
 const params = {
   saml: mySaml
 };
-
-// with promises
 try {
   console.log(await client.auth.authenticateUserSaml(params));
 ';
@@ -194,8 +186,6 @@ Checks email domain for SSO configuration.
 const params = {
   email: myEmail
 };
-
-// with promises
 try {
   console.log(await client.auth.ssoDomain(params));
 ';

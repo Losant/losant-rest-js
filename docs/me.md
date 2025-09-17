@@ -37,8 +37,6 @@ Adds an item to a recent item list
 const params = {
   data: myData
 };
-
-// with promises
 try {
   console.log(await client.me.addRecentItem(params));
 ';
@@ -81,8 +79,6 @@ Changes the current user&#x27;s password and optionally logs out all other sessi
 const params = {
   data: myData
 };
-
-// with promises
 try {
   console.log(await client.me.changePassword(params));
 ';
@@ -125,8 +121,6 @@ Deletes the current user
 const params = {
   credentials: myCredentials
 };
-
-// with promises
 try {
   console.log(await client.me.delete(params));
 ';
@@ -167,8 +161,6 @@ Returns device counts by day for the time range specified for all applications t
 
 ```javascript
 const params = {}; // all params are optional
-
-// with promises
 try {
   console.log(await client.me.deviceCounts(params));
 ';
@@ -212,8 +204,6 @@ Disables multi-factor authentication for the current user
 const params = {
   data: myData
 };
-
-// with promises
 try {
   console.log(await client.me.disableTwoFactorAuth(params));
 ';
@@ -254,8 +244,6 @@ Disconnects the user from Github
 
 ```javascript
 const params = {}; // all params are optional
-
-// with promises
 try {
   console.log(await client.me.disconnectGithub(params));
 ';
@@ -297,8 +285,6 @@ Enables multi-factor authentication for the current user
 const params = {
   data: myData
 };
-
-// with promises
 try {
   console.log(await client.me.enableTwoFactorAuth(params));
 ';
@@ -341,8 +327,6 @@ Gets a recent item list
 const params = {
   itemType: myItemType
 };
-
-// with promises
 try {
   console.log(await client.me.fetchRecentItems(params));
 ';
@@ -384,8 +368,6 @@ Returns the multi-factor authentication key for the current user
 
 ```javascript
 const params = {}; // all params are optional
-
-// with promises
 try {
   console.log(await client.me.generateTwoFactorAuth(params));
 ';
@@ -425,8 +407,6 @@ Retrieves information on the current user
 
 ```javascript
 const params = {}; // all params are optional
-
-// with promises
 try {
   console.log(await client.me.get(params));
 ';
@@ -470,8 +450,6 @@ Retrieves information for an invitation to an organization
 const params = {
   inviteId: myInviteId
 };
-
-// with promises
 try {
   console.log(await client.me.invite(params));
 ';
@@ -513,8 +491,6 @@ Retrieves pending organization invitations for a user
 
 ```javascript
 const params = {}; // all params are optional
-
-// with promises
 try {
   console.log(await client.me.invites(params));
 ';
@@ -554,8 +530,6 @@ Returns notebook execution usage by day for the time range specified for all app
 
 ```javascript
 const params = {}; // all params are optional
-
-// with promises
 try {
   console.log(await client.me.notebookMinuteCounts(params));
 ';
@@ -599,8 +573,6 @@ Updates information about the current user
 const params = {
   user: myUser
 };
-
-// with promises
 try {
   console.log(await client.me.patch(params));
 ';
@@ -643,8 +615,6 @@ Returns payload counts for the time range specified for all applications the cur
 
 ```javascript
 const params = {}; // all params are optional
-
-// with promises
 try {
   console.log(await client.me.payloadCounts(params));
 ';
@@ -687,8 +657,6 @@ Returns payload counts per resolution in the time range specified for all applic
 
 ```javascript
 const params = {}; // all params are optional
-
-// with promises
 try {
   console.log(await client.me.payloadCountsBreakdown(params));
 ';
@@ -733,8 +701,6 @@ Returns a new auth token based on the current auth token
 
 ```javascript
 const params = {}; // all params are optional
-
-// with promises
 try {
   console.log(await client.me.refreshToken(params));
 ';
@@ -778,8 +744,6 @@ const params = {
   inviteId: myInviteId,
   response: myResponse
 };
-
-// with promises
 try {
   console.log(await client.me.respondToInvite(params));
 ';
@@ -825,8 +789,6 @@ Moves resources to a new owner
 const params = {
   transfer: myTransfer
 };
-
-// with promises
 try {
   console.log(await client.me.transferResources(params));
 ';
@@ -867,8 +829,6 @@ Sends an email verification to the user
 
 ```javascript
 const params = {}; // all params are optional
-
-// with promises
 try {
   console.log(await client.me.verifyEmail(params));
 ';

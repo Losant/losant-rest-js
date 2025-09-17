@@ -19,8 +19,6 @@ const params = {
   applicationId: myApplicationId,
   jobId: myJobId
 };
-
-// with promises
 try {
   console.log(await client.applicationJobLog.get(params));
 ';

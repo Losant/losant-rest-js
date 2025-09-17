@@ -19,8 +19,6 @@ Returns the experience versions for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.experienceVersions.get(params));
 ';
@@ -71,8 +69,6 @@ const params = {
   applicationId: myApplicationId,
   experienceVersion: myExperienceVersion
 };
-
-// with promises
 try {
   console.log(await client.experienceVersions.post(params));
 ';

@@ -18,8 +18,6 @@ Returns a collection of instance sandboxes
 const params = {
   instanceId: myInstanceId
 };
-
-// with promises
 try {
   console.log(await client.instanceSandboxes.get(params));
 ';

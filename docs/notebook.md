@@ -28,8 +28,6 @@ const params = {
   notebookId: myNotebookId,
   executionId: myExecutionId
 };
-
-// with promises
 try {
   console.log(await client.notebook.cancelExecution(params));
 ';
@@ -76,8 +74,6 @@ const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId
 };
-
-// with promises
 try {
   console.log(await client.notebook.delete(params));
 ';
@@ -124,8 +120,6 @@ const params = {
   notebookId: myNotebookId,
   executionOptions: myExecutionOptions
 };
-
-// with promises
 try {
   console.log(await client.notebook.execute(params));
 ';
@@ -172,8 +166,6 @@ const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId
 };
-
-// with promises
 try {
   console.log(await client.notebook.get(params));
 ';
@@ -219,8 +211,6 @@ const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId
 };
-
-// with promises
 try {
   console.log(await client.notebook.logs(params));
 ';
@@ -268,8 +258,6 @@ const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId
 };
-
-// with promises
 try {
   console.log(await client.notebook.notebookMinuteCounts(params));
 ';
@@ -318,8 +306,6 @@ const params = {
   notebookId: myNotebookId,
   notebook: myNotebook
 };
-
-// with promises
 try {
   console.log(await client.notebook.patch(params));
 ';
@@ -367,8 +353,6 @@ const params = {
   notebookId: myNotebookId,
   exportOptions: myExportOptions
 };
-
-// with promises
 try {
   console.log(await client.notebook.requestInputDataExport(params));
 ';
@@ -416,8 +400,6 @@ const params = {
   notebookId: myNotebookId,
   jupyterFile: myJupyterFile
 };
-
-// with promises
 try {
   console.log(await client.notebook.upload(params));
 ';

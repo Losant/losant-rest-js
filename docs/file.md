@@ -23,8 +23,6 @@ const params = {
   applicationId: myApplicationId,
   fileId: myFileId
 };
-
-// with promises
 try {
   console.log(await client.file.delete(params));
 ';
@@ -70,8 +68,6 @@ const params = {
   applicationId: myApplicationId,
   fileId: myFileId
 };
-
-// with promises
 try {
   console.log(await client.file.get(params));
 ';
@@ -117,8 +113,6 @@ const params = {
   applicationId: myApplicationId,
   fileId: myFileId
 };
-
-// with promises
 try {
   console.log(await client.file.move(params));
 ';
@@ -167,8 +161,6 @@ const params = {
   fileId: myFileId,
   updates: myUpdates
 };
-
-// with promises
 try {
   console.log(await client.file.patch(params));
 ';
@@ -216,8 +208,6 @@ const params = {
   fileId: myFileId,
   file: myFile
 };
-
-// with promises
 try {
   console.log(await client.file.upload(params));
 ';

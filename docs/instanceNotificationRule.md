@@ -23,8 +23,6 @@ const params = {
   instanceId: myInstanceId,
   notificationRuleId: myNotificationRuleId
 };
-
-// with promises
 try {
   console.log(await client.instanceNotificationRule.delete(params));
 ';
@@ -71,8 +69,6 @@ const params = {
   notificationRuleId: myNotificationRuleId,
   evaluationOptions: myEvaluationOptions
 };
-
-// with promises
 try {
   console.log(await client.instanceNotificationRule.evaluate(params));
 ';
@@ -119,8 +115,6 @@ const params = {
   instanceId: myInstanceId,
   notificationRuleId: myNotificationRuleId
 };
-
-// with promises
 try {
   console.log(await client.instanceNotificationRule.get(params));
 ';
@@ -166,8 +160,6 @@ const params = {
   instanceId: myInstanceId,
   notificationRuleId: myNotificationRuleId
 };
-
-// with promises
 try {
   console.log(await client.instanceNotificationRule.logs(params));
 ';
@@ -216,8 +208,6 @@ const params = {
   notificationRuleId: myNotificationRuleId,
   notificationRule: myNotificationRule
 };
-
-// with promises
 try {
   console.log(await client.instanceNotificationRule.patch(params));
 ';

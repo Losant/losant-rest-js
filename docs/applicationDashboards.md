@@ -19,8 +19,6 @@ Returns all dashboards scoped to the given application.
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.applicationDashboards.get(params));
 ';
@@ -71,8 +69,6 @@ const params = {
   applicationId: myApplicationId,
   dashboard: myDashboard
 };
-
-// with promises
 try {
   console.log(await client.applicationDashboards.post(params));
 ';

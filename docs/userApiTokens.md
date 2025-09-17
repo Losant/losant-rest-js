@@ -17,8 +17,6 @@ Returns the API tokens for a user
 
 ```javascript
 const params = {}; // all params are optional
-
-// with promises
 try {
   console.log(await client.userApiTokens.get(params));
 ';
@@ -66,8 +64,6 @@ Create a new API token for an user
 const params = {
   apiToken: myApiToken
 };
-
-// with promises
 try {
   console.log(await client.userApiTokens.post(params));
 ';

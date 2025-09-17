@@ -19,8 +19,6 @@ Returns a collection of instance members
 const params = {
   instanceId: myInstanceId
 };
-
-// with promises
 try {
   console.log(await client.instanceMembers.get(params));
 ';
@@ -69,8 +67,6 @@ const params = {
   instanceId: myInstanceId,
   member: myMember
 };
-
-// with promises
 try {
   console.log(await client.instanceMembers.post(params));
 ';

@@ -23,8 +23,6 @@ const params = {
   instanceId: myInstanceId,
   instanceCustomNodeId: myInstanceCustomNodeId
 };
-
-// with promises
 try {
   console.log(await client.instanceCustomNode.delete(params));
 ';
@@ -70,8 +68,6 @@ const params = {
   instanceId: myInstanceId,
   instanceCustomNodeId: myInstanceCustomNodeId
 };
-
-// with promises
 try {
   console.log(await client.instanceCustomNode.errors(params));
 ';
@@ -121,8 +117,6 @@ const params = {
   instanceId: myInstanceId,
   instanceCustomNodeId: myInstanceCustomNodeId
 };
-
-// with promises
 try {
   console.log(await client.instanceCustomNode.get(params));
 ';
@@ -169,8 +163,6 @@ const params = {
   instanceCustomNodeId: myInstanceCustomNodeId,
   instanceCustomNode: myInstanceCustomNode
 };
-
-// with promises
 try {
   console.log(await client.instanceCustomNode.patch(params));
 ';
@@ -217,8 +209,6 @@ const params = {
   instanceId: myInstanceId,
   instanceCustomNodeId: myInstanceCustomNodeId
 };
-
-// with promises
 try {
   console.log(await client.instanceCustomNode.stats(params));
 ';

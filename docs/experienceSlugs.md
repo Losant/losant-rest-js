@@ -19,8 +19,6 @@ Returns the experience slugs for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.experienceSlugs.get(params));
 ';
@@ -65,8 +63,6 @@ const params = {
   applicationId: myApplicationId,
   experienceSlug: myExperienceSlug
 };
-
-// with promises
 try {
   console.log(await client.experienceSlugs.post(params));
 ';

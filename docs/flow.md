@@ -29,8 +29,6 @@ const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
-
-// with promises
 try {
   console.log(await client.flow.clearStorageEntries(params));
 ';
@@ -76,8 +74,6 @@ const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
-
-// with promises
 try {
   console.log(await client.flow.delete(params));
 ';
@@ -123,8 +119,6 @@ const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
-
-// with promises
 try {
   console.log(await client.flow.errors(params));
 ';
@@ -176,8 +170,6 @@ const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
-
-// with promises
 try {
   console.log(await client.flow.get(params));
 ';
@@ -224,8 +216,6 @@ const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
-
-// with promises
 try {
   console.log(await client.flow.getLogEntries(params));
 ';
@@ -273,8 +263,6 @@ const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
-
-// with promises
 try {
   console.log(await client.flow.getStorageEntries(params));
 ';
@@ -320,8 +308,6 @@ const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
-
-// with promises
 try {
   console.log(await client.flow.getStorageEntriesMetadata(params));
 ';
@@ -368,8 +354,6 @@ const params = {
   flowId: myFlowId,
   flow: myFlow
 };
-
-// with promises
 try {
   console.log(await client.flow.patch(params));
 ';
@@ -418,8 +402,6 @@ const params = {
   flowId: myFlowId,
   button: myButton
 };
-
-// with promises
 try {
   console.log(await client.flow.pressVirtualButton(params));
 ';
@@ -467,8 +449,6 @@ const params = {
   flowId: myFlowId,
   entry: myEntry
 };
-
-// with promises
 try {
   console.log(await client.flow.setStorageEntry(params));
 ';
@@ -515,8 +495,6 @@ const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
-
-// with promises
 try {
   console.log(await client.flow.stats(params));
 ';

@@ -22,8 +22,6 @@ Request an export of the compiled WASM files for a current deployment
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.embeddedDeployments.export(params));
 ';
@@ -68,8 +66,6 @@ Returns the embedded deployments for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.embeddedDeployments.get(params));
 ';
@@ -121,8 +117,6 @@ const params = {
   applicationId: myApplicationId,
   deployment: myDeployment
 };
-
-// with promises
 try {
   console.log(await client.embeddedDeployments.release(params));
 ';
@@ -168,8 +162,6 @@ const params = {
   applicationId: myApplicationId,
   deployment: myDeployment
 };
-
-// with promises
 try {
   console.log(await client.embeddedDeployments.remove(params));
 ';
@@ -215,8 +207,6 @@ const params = {
   applicationId: myApplicationId,
   deployment: myDeployment
 };
-
-// with promises
 try {
   console.log(await client.embeddedDeployments.replace(params));
 ';

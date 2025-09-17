@@ -19,8 +19,6 @@ Returns the organizations associated with the current instance
 const params = {
   instanceId: myInstanceId
 };
-
-// with promises
 try {
   console.log(await client.instanceOrgs.get(params));
 ';
@@ -71,8 +69,6 @@ Create a new organization
 const params = {
   instanceId: myInstanceId
 };
-
-// with promises
 try {
   console.log(await client.instanceOrgs.post(params));
 ';

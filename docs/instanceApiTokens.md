@@ -19,8 +19,6 @@ Returns the API tokens for an instance
 const params = {
   instanceId: myInstanceId
 };
-
-// with promises
 try {
   console.log(await client.instanceApiTokens.get(params));
 ';
@@ -70,8 +68,6 @@ const params = {
   instanceId: myInstanceId,
   apiToken: myApiToken
 };
-
-// with promises
 try {
   console.log(await client.instanceApiTokens.post(params));
 ';

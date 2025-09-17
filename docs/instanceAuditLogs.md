@@ -18,8 +18,6 @@ Returns the audit logs for the instance
 const params = {
   instanceId: myInstanceId
 };
-
-// with promises
 try {
   console.log(await client.instanceAuditLogs.get(params));
 ';

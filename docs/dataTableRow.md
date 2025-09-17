@@ -22,8 +22,6 @@ const params = {
   dataTableId: myDataTableId,
   rowId: myRowId
 };
-
-// with promises
 try {
   console.log(await client.dataTableRow.delete(params));
 ';
@@ -71,8 +69,6 @@ const params = {
   dataTableId: myDataTableId,
   rowId: myRowId
 };
-
-// with promises
 try {
   console.log(await client.dataTableRow.get(params));
 ';
@@ -121,8 +117,6 @@ const params = {
   rowId: myRowId,
   dataTableRow: myDataTableRow
 };
-
-// with promises
 try {
   console.log(await client.dataTableRow.patch(params));
 ';

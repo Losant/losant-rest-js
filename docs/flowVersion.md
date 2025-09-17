@@ -25,8 +25,6 @@ const params = {
   flowId: myFlowId,
   flowVersionId: myFlowVersionId
 };
-
-// with promises
 try {
   console.log(await client.flowVersion.delete(params));
 ';
@@ -74,8 +72,6 @@ const params = {
   flowId: myFlowId,
   flowVersionId: myFlowVersionId
 };
-
-// with promises
 try {
   console.log(await client.flowVersion.errors(params));
 ';
@@ -128,8 +124,6 @@ const params = {
   flowId: myFlowId,
   flowVersionId: myFlowVersionId
 };
-
-// with promises
 try {
   console.log(await client.flowVersion.get(params));
 ';
@@ -178,8 +172,6 @@ const params = {
   flowId: myFlowId,
   flowVersionId: myFlowVersionId
 };
-
-// with promises
 try {
   console.log(await client.flowVersion.getLogEntries(params));
 ';
@@ -230,8 +222,6 @@ const params = {
   flowVersionId: myFlowVersionId,
   flowVersion: myFlowVersion
 };
-
-// with promises
 try {
   console.log(await client.flowVersion.patch(params));
 ';
@@ -281,8 +271,6 @@ const params = {
   flowId: myFlowId,
   flowVersionId: myFlowVersionId
 };
-
-// with promises
 try {
   console.log(await client.flowVersion.stats(params));
 ';

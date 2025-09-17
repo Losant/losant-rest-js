@@ -21,8 +21,6 @@ const params = {
   applicationId: myApplicationId,
   experienceGroupId: myExperienceGroupId
 };
-
-// with promises
 try {
   console.log(await client.experienceGroup.delete(params));
 ';
@@ -68,8 +66,6 @@ const params = {
   applicationId: myApplicationId,
   experienceGroupId: myExperienceGroupId
 };
-
-// with promises
 try {
   console.log(await client.experienceGroup.get(params));
 ';
@@ -118,8 +114,6 @@ const params = {
   experienceGroupId: myExperienceGroupId,
   experienceGroup: myExperienceGroup
 };
-
-// with promises
 try {
   console.log(await client.experienceGroup.patch(params));
 ';

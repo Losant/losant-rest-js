@@ -32,8 +32,6 @@ const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with promises
 try {
   console.log(await client.device.delete(params));
 ';
@@ -79,8 +77,6 @@ const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with promises
 try {
   console.log(await client.device.export(params));
 ';
@@ -132,8 +128,6 @@ const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with promises
 try {
   console.log(await client.device.get(params));
 ';
@@ -182,8 +176,6 @@ const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with promises
 try {
   console.log(await client.device.getCommand(params));
 ';
@@ -235,8 +227,6 @@ const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with promises
 try {
   console.log(await client.device.getCompositeState(params));
 ';
@@ -285,8 +275,6 @@ const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with promises
 try {
   console.log(await client.device.getLogEntries(params));
 ';
@@ -338,8 +326,6 @@ const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with promises
 try {
   console.log(await client.device.getState(params));
 ';
@@ -392,8 +378,6 @@ const params = {
   deviceId: myDeviceId,
   device: myDevice
 };
-
-// with promises
 try {
   console.log(await client.device.patch(params));
 ';
@@ -442,8 +426,6 @@ const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with promises
 try {
   console.log(await client.device.payloadCounts(params));
 ';
@@ -491,8 +473,6 @@ const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with promises
 try {
   console.log(await client.device.payloadCountsBreakdown(params));
 ';
@@ -541,8 +521,6 @@ const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with promises
 try {
   console.log(await client.device.removeData(params));
 ';
@@ -591,8 +569,6 @@ const params = {
   deviceId: myDeviceId,
   deviceCommand: myDeviceCommand
 };
-
-// with promises
 try {
   console.log(await client.device.sendCommand(params));
 ';
@@ -640,8 +616,6 @@ const params = {
   deviceId: myDeviceId,
   deviceState: myDeviceState
 };
-
-// with promises
 try {
   console.log(await client.device.sendState(params));
 ';
@@ -689,8 +663,6 @@ const params = {
   deviceId: myDeviceId,
   connectionStatus: myConnectionStatus
 };
-
-// with promises
 try {
   console.log(await client.device.setConnectionStatus(params));
 ';

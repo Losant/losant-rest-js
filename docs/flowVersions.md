@@ -22,8 +22,6 @@ const params = {
   flowId: myFlowId,
   options: myOptions
 };
-
-// with promises
 try {
   console.log(await client.flowVersions.delete(params));
 ';
@@ -71,8 +69,6 @@ const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
-
-// with promises
 try {
   console.log(await client.flowVersions.get(params));
 ';
@@ -127,8 +123,6 @@ const params = {
   flowId: myFlowId,
   flowVersion: myFlowVersion
 };
-
-// with promises
 try {
   console.log(await client.flowVersions.post(params));
 ';

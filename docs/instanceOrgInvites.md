@@ -20,8 +20,6 @@ const params = {
   instanceId: myInstanceId,
   orgId: myOrgId
 };
-
-// with promises
 try {
   console.log(await client.instanceOrgInvites.get(params));
 ';
@@ -72,8 +70,6 @@ const params = {
   orgId: myOrgId,
   invite: myInvite
 };
-
-// with promises
 try {
   console.log(await client.instanceOrgInvites.post(params));
 ';

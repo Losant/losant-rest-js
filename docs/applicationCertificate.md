@@ -21,8 +21,6 @@ const params = {
   applicationId: myApplicationId,
   applicationCertificateId: myApplicationCertificateId
 };
-
-// with promises
 try {
   console.log(await client.applicationCertificate.delete(params));
 ';
@@ -68,8 +66,6 @@ const params = {
   applicationId: myApplicationId,
   applicationCertificateId: myApplicationCertificateId
 };
-
-// with promises
 try {
   console.log(await client.applicationCertificate.get(params));
 ';
@@ -116,8 +112,6 @@ const params = {
   applicationCertificateId: myApplicationCertificateId,
   applicationCertificate: myApplicationCertificate
 };
-
-// with promises
 try {
   console.log(await client.applicationCertificate.patch(params));
 ';

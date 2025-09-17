@@ -24,8 +24,6 @@ const params = {
   dataTableId: myDataTableId,
   dataTableColumn: myDataTableColumn
 };
-
-// with promises
 try {
   console.log(await client.dataTable.addColumn(params));
 ';
@@ -72,8 +70,6 @@ const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId
 };
-
-// with promises
 try {
   console.log(await client.dataTable.delete(params));
 ';
@@ -119,8 +115,6 @@ const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId
 };
-
-// with promises
 try {
   console.log(await client.dataTable.get(params));
 ';
@@ -167,8 +161,6 @@ const params = {
   dataTableId: myDataTableId,
   dataTable: myDataTable
 };
-
-// with promises
 try {
   console.log(await client.dataTable.patch(params));
 ';
@@ -216,8 +208,6 @@ const params = {
   dataTableId: myDataTableId,
   columnName: myColumnName
 };
-
-// with promises
 try {
   console.log(await client.dataTable.removeColumn(params));
 ';

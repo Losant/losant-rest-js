@@ -19,8 +19,6 @@ Returns the applicationKeys for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.applicationKeys.get(params));
 ';
@@ -72,8 +70,6 @@ const params = {
   applicationId: myApplicationId,
   applicationKey: myApplicationKey
 };
-
-// with promises
 try {
   console.log(await client.applicationKeys.post(params));
 ';

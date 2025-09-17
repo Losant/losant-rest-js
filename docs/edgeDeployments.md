@@ -21,8 +21,6 @@ Returns the edge deployments for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.edgeDeployments.get(params));
 ';
@@ -75,8 +73,6 @@ const params = {
   applicationId: myApplicationId,
   deployment: myDeployment
 };
-
-// with promises
 try {
   console.log(await client.edgeDeployments.release(params));
 ';
@@ -122,8 +118,6 @@ const params = {
   applicationId: myApplicationId,
   deployment: myDeployment
 };
-
-// with promises
 try {
   console.log(await client.edgeDeployments.remove(params));
 ';
@@ -169,8 +163,6 @@ const params = {
   applicationId: myApplicationId,
   deployment: myDeployment
 };
-
-// with promises
 try {
   console.log(await client.edgeDeployments.replace(params));
 ';

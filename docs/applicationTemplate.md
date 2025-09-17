@@ -18,8 +18,6 @@ Retrieves information on an application template
 const params = {
   templateId: myTemplateId
 };
-
-// with promises
 try {
   console.log(await client.applicationTemplate.get(params));
 ';

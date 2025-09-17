@@ -20,8 +20,6 @@ Deletes an API Token
 const params = {
   apiTokenId: myApiTokenId
 };
-
-// with promises
 try {
   console.log(await client.userApiToken.delete(params));
 ';
@@ -65,8 +63,6 @@ Retrieves information on an API token
 const params = {
   apiTokenId: myApiTokenId
 };
-
-// with promises
 try {
   console.log(await client.userApiToken.get(params));
 ';
@@ -111,8 +107,6 @@ const params = {
   apiTokenId: myApiTokenId,
   apiToken: myApiToken
 };
-
-// with promises
 try {
   console.log(await client.userApiToken.patch(params));
 ';

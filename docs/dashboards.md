@@ -17,8 +17,6 @@ Returns the dashboards the current user has permission to see
 
 ```javascript
 const params = {}; // all params are optional
-
-// with promises
 try {
   console.log(await client.dashboards.get(params));
 ';
@@ -68,8 +66,6 @@ Create a new dashboard
 const params = {
   dashboard: myDashboard
 };
-
-// with promises
 try {
   console.log(await client.dashboards.post(params));
 ';

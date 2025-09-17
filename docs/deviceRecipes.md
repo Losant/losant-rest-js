@@ -19,8 +19,6 @@ Returns the device recipes for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.deviceRecipes.get(params));
 ';
@@ -73,8 +71,6 @@ const params = {
   applicationId: myApplicationId,
   deviceRecipe: myDeviceRecipe
 };
-
-// with promises
 try {
   console.log(await client.deviceRecipes.post(params));
 ';

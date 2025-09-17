@@ -19,8 +19,6 @@ const params = {
   orgId: myOrgId,
   auditLogId: myAuditLogId
 };
-
-// with promises
 try {
   console.log(await client.auditLog.get(params));
 ';

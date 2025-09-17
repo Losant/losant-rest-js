@@ -19,8 +19,6 @@ Returns the experience groups for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.experienceGroups.get(params));
 ';
@@ -72,8 +70,6 @@ const params = {
   applicationId: myApplicationId,
   experienceGroup: myExperienceGroup
 };
-
-// with promises
 try {
   console.log(await client.experienceGroups.post(params));
 ';

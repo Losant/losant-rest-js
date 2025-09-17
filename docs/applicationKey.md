@@ -21,8 +21,6 @@ const params = {
   applicationId: myApplicationId,
   applicationKeyId: myApplicationKeyId
 };
-
-// with promises
 try {
   console.log(await client.applicationKey.delete(params));
 ';
@@ -68,8 +66,6 @@ const params = {
   applicationId: myApplicationId,
   applicationKeyId: myApplicationKeyId
 };
-
-// with promises
 try {
   console.log(await client.applicationKey.get(params));
 ';
@@ -116,8 +112,6 @@ const params = {
   applicationKeyId: myApplicationKeyId,
   applicationKey: myApplicationKey
 };
-
-// with promises
 try {
   console.log(await client.applicationKey.patch(params));
 ';

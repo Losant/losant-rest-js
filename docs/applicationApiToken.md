@@ -21,8 +21,6 @@ const params = {
   applicationId: myApplicationId,
   apiTokenId: myApiTokenId
 };
-
-// with promises
 try {
   console.log(await client.applicationApiToken.delete(params));
 ';
@@ -68,8 +66,6 @@ const params = {
   applicationId: myApplicationId,
   apiTokenId: myApiTokenId
 };
-
-// with promises
 try {
   console.log(await client.applicationApiToken.get(params));
 ';
@@ -116,8 +112,6 @@ const params = {
   apiTokenId: myApiTokenId,
   apiToken: myApiToken
 };
-
-// with promises
 try {
   console.log(await client.applicationApiToken.patch(params));
 ';

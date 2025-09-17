@@ -19,8 +19,6 @@ const params = {
   applicationId: myApplicationId,
   edgeDeploymentId: myEdgeDeploymentId
 };
-
-// with promises
 try {
   console.log(await client.edgeDeployment.get(params));
 ';

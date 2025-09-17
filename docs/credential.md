@@ -22,8 +22,6 @@ const params = {
   applicationId: myApplicationId,
   credentialId: myCredentialId
 };
-
-// with promises
 try {
   console.log(await client.credential.delete(params));
 ';
@@ -69,8 +67,6 @@ const params = {
   applicationId: myApplicationId,
   credentialId: myCredentialId
 };
-
-// with promises
 try {
   console.log(await client.credential.get(params));
 ';
@@ -116,8 +112,6 @@ const params = {
   applicationId: myApplicationId,
   credentialId: myCredentialId
 };
-
-// with promises
 try {
   console.log(await client.credential.linkedResources(params));
 ';
@@ -165,8 +159,6 @@ const params = {
   credentialId: myCredentialId,
   credential: myCredential
 };
-
-// with promises
 try {
   console.log(await client.credential.patch(params));
 ';

@@ -18,8 +18,6 @@ Returns the application templates the current user has permission to see
 
 ```javascript
 const params = {}; // all params are optional
-
-// with promises
 try {
   console.log(await client.applicationTemplates.get(params));
 ';
@@ -67,8 +65,6 @@ Returns a category list, beginning at the specified category
 
 ```javascript
 const params = {}; // all params are optional
-
-// with promises
 try {
   console.log(await client.applicationTemplates.getCategories(params));
 ';
@@ -109,8 +105,6 @@ Returns an array of all unique keywords currently in use by templates
 
 ```javascript
 const params = {}; // all params are optional
-
-// with promises
 try {
   console.log(await client.applicationTemplates.getUniqueKeywords(params));
 ';

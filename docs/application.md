@@ -39,8 +39,6 @@ const params = {
   applicationId: myApplicationId,
   options: myOptions
 };
-
-// with promises
 try {
   console.log(await client.application.applyTemplate(params));
 ';
@@ -87,8 +85,6 @@ const params = {
   applicationId: myApplicationId,
   date: myDate
 };
-
-// with promises
 try {
   console.log(await client.application.archiveData(params));
 ';
@@ -133,8 +129,6 @@ Returns success when a job has been enqueued to backfill all current data to its
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.application.backfillArchiveData(params));
 ';
@@ -178,8 +172,6 @@ Copy an application into a new application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.application.clone(params));
 ';
@@ -227,8 +219,6 @@ Deletes an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.application.delete(params));
 ';
@@ -272,8 +262,6 @@ Returns device counts by day for the time range specified for this application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.application.deviceCounts(params));
 ';
@@ -320,8 +308,6 @@ const params = {
   applicationId: myApplicationId,
   options: myOptions
 };
-
-// with promises
 try {
   console.log(await client.application.export(params));
 ';
@@ -367,8 +353,6 @@ Returns success when a job has been enqueued to archive all selected data tables
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.application.fullDataTablesArchive(params));
 ';
@@ -412,8 +396,6 @@ Returns success when a job has been enqueued to archive all current events
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.application.fullEventsArchive(params));
 ';
@@ -457,8 +439,6 @@ Retrieves information on an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.application.get(params));
 ';
@@ -505,8 +485,6 @@ const params = {
   applicationId: myApplicationId,
   globals: myGlobals
 };
-
-// with promises
 try {
   console.log(await client.application.globals(params));
 ';
@@ -551,8 +529,6 @@ Add multiple resources to an application via a zip file
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.application.import(params));
 ';
@@ -600,8 +576,6 @@ Retrieves information on application import logs
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.application.importLogs(params));
 ';
@@ -648,8 +622,6 @@ const params = {
   applicationId: myApplicationId,
   payload: myPayload
 };
-
-// with promises
 try {
   console.log(await client.application.mqttPublishMessage(params));
 ';
@@ -694,8 +666,6 @@ Returns notebook execution usage by day for the time range specified for this ap
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.application.notebookMinuteCounts(params));
 ';
@@ -742,8 +712,6 @@ const params = {
   applicationId: myApplicationId,
   application: myApplication
 };
-
-// with promises
 try {
   console.log(await client.application.patch(params));
 ';
@@ -790,8 +758,6 @@ Returns payload counts for the time range specified for this application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.application.payloadCounts(params));
 ';
@@ -838,8 +804,6 @@ Returns payload counts per resolution in the time range specified for this appli
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.application.payloadCountsBreakdown(params));
 ';
@@ -888,8 +852,6 @@ Get the current application readme information
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.application.readme(params));
 ';
@@ -934,8 +896,6 @@ const params = {
   applicationId: myApplicationId,
   readme: myReadme
 };
-
-// with promises
 try {
   console.log(await client.application.readmePatch(params));
 ';
@@ -981,8 +941,6 @@ const params = {
   applicationId: myApplicationId,
   filter: myFilter
 };
-
-// with promises
 try {
   console.log(await client.application.search(params));
 ';

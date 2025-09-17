@@ -19,8 +19,6 @@ Returns the experience domains for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.experienceDomains.get(params));
 ';
@@ -65,8 +63,6 @@ const params = {
   applicationId: myApplicationId,
   experienceDomain: myExperienceDomain
 };
-
-// with promises
 try {
   console.log(await client.experienceDomains.post(params));
 ';

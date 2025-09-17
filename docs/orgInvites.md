@@ -20,8 +20,6 @@ const params = {
   token: myToken,
   email: myEmail
 };
-
-// with promises
 try {
   console.log(await client.orgInvites.get(params));
 ';
@@ -65,8 +63,6 @@ Accepts/Rejects an invite
 const params = {
   invite: myInvite
 };
-
-// with promises
 try {
   console.log(await client.orgInvites.post(params));
 ';

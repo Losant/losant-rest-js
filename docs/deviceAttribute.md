@@ -22,8 +22,6 @@ const params = {
   deviceId: myDeviceId,
   name: myName
 };
-
-// with promises
 try {
   console.log(await client.deviceAttribute.delete(params));
 ';
@@ -71,8 +69,6 @@ const params = {
   deviceId: myDeviceId,
   name: myName
 };
-
-// with promises
 try {
   console.log(await client.deviceAttribute.get(params));
 ';
@@ -121,8 +117,6 @@ const params = {
   name: myName,
   deviceAttribute: myDeviceAttribute
 };
-
-// with promises
 try {
   console.log(await client.deviceAttribute.patch(params));
 ';

@@ -19,8 +19,6 @@ Returns the resource jobs for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.resourceJobs.get(params));
 ';
@@ -71,8 +69,6 @@ const params = {
   applicationId: myApplicationId,
   resourceJob: myResourceJob
 };
-
-// with promises
 try {
   console.log(await client.resourceJobs.post(params));
 ';

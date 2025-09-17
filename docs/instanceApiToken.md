@@ -21,8 +21,6 @@ const params = {
   instanceId: myInstanceId,
   apiTokenId: myApiTokenId
 };
-
-// with promises
 try {
   console.log(await client.instanceApiToken.delete(params));
 ';
@@ -68,8 +66,6 @@ const params = {
   instanceId: myInstanceId,
   apiTokenId: myApiTokenId
 };
-
-// with promises
 try {
   console.log(await client.instanceApiToken.get(params));
 ';
@@ -116,8 +112,6 @@ const params = {
   apiTokenId: myApiTokenId,
   apiToken: myApiToken
 };
-
-// with promises
 try {
   console.log(await client.instanceApiToken.patch(params));
 ';

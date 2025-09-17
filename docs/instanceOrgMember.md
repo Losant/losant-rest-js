@@ -22,8 +22,6 @@ const params = {
   orgId: myOrgId,
   userId: myUserId
 };
-
-// with promises
 try {
   console.log(await client.instanceOrgMember.delete(params));
 ';
@@ -71,8 +69,6 @@ const params = {
   orgId: myOrgId,
   userId: myUserId
 };
-
-// with promises
 try {
   console.log(await client.instanceOrgMember.get(params));
 ';
@@ -121,8 +117,6 @@ const params = {
   userId: myUserId,
   member: myMember
 };
-
-// with promises
 try {
   console.log(await client.instanceOrgMember.patch(params));
 ';

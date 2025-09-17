@@ -20,8 +20,6 @@ const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with promises
 try {
   console.log(await client.deviceAttributes.get(params));
 ';
@@ -72,8 +70,6 @@ const params = {
   deviceId: myDeviceId,
   deviceAttribute: myDeviceAttribute
 };
-
-// with promises
 try {
   console.log(await client.deviceAttributes.post(params));
 ';

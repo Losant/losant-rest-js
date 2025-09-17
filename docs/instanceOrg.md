@@ -25,8 +25,6 @@ const params = {
   instanceId: myInstanceId,
   orgId: myOrgId
 };
-
-// with promises
 try {
   console.log(await client.instanceOrg.delete(params));
 ';
@@ -72,8 +70,6 @@ const params = {
   instanceId: myInstanceId,
   orgId: myOrgId
 };
-
-// with promises
 try {
   console.log(await client.instanceOrg.deviceCounts(params));
 ';
@@ -121,8 +117,6 @@ const params = {
   instanceId: myInstanceId,
   orgId: myOrgId
 };
-
-// with promises
 try {
   console.log(await client.instanceOrg.get(params));
 ';
@@ -169,8 +163,6 @@ const params = {
   instanceId: myInstanceId,
   orgId: myOrgId
 };
-
-// with promises
 try {
   console.log(await client.instanceOrg.notebookMinuteCounts(params));
 ';
@@ -219,8 +211,6 @@ const params = {
   orgId: myOrgId,
   organization: myOrganization
 };
-
-// with promises
 try {
   console.log(await client.instanceOrg.patch(params));
 ';
@@ -268,8 +258,6 @@ const params = {
   instanceId: myInstanceId,
   orgId: myOrgId
 };
-
-// with promises
 try {
   console.log(await client.instanceOrg.payloadCounts(params));
 ';
@@ -318,8 +306,6 @@ const params = {
   instanceId: myInstanceId,
   orgId: myOrgId
 };
-
-// with promises
 try {
   console.log(await client.instanceOrg.payloadCountsBreakdown(params));
 ';

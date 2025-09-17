@@ -19,8 +19,6 @@ Returns the integrations for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.integrations.get(params));
 ';
@@ -71,8 +69,6 @@ const params = {
   applicationId: myApplicationId,
   integration: myIntegration
 };
-
-// with promises
 try {
   console.log(await client.integrations.post(params));
 ';

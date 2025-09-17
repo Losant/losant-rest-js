@@ -19,8 +19,6 @@ Returns the data tables for an application
 const params = {
   applicationId: myApplicationId
 };
-
-// with promises
 try {
   console.log(await client.dataTables.get(params));
 ';
@@ -71,8 +69,6 @@ const params = {
   applicationId: myApplicationId,
   dataTable: myDataTable
 };
-
-// with promises
 try {
   console.log(await client.dataTables.post(params));
 ';
