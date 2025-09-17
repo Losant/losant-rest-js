@@ -23,16 +23,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.embeddedDeployments.export(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.embeddedDeployments.export(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.embeddedDeployments.export(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -72,16 +69,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.embeddedDeployments.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.embeddedDeployments.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.embeddedDeployments.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -128,16 +122,13 @@ const params = {
   deployment: myDeployment
 };
 
-// with callbacks
-client.embeddedDeployments.release(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.embeddedDeployments.release(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.embeddedDeployments.release(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -178,16 +169,13 @@ const params = {
   deployment: myDeployment
 };
 
-// with callbacks
-client.embeddedDeployments.remove(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.embeddedDeployments.remove(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.embeddedDeployments.remove(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -228,16 +216,13 @@ const params = {
   deployment: myDeployment
 };
 
-// with callbacks
-client.embeddedDeployments.replace(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.embeddedDeployments.replace(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.embeddedDeployments.replace(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

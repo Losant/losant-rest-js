@@ -22,16 +22,13 @@ const params = {
   experienceVersionIdOrName: myExperienceVersionIdOrName
 };
 
-// with callbacks
-client.experienceVersion.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceVersion.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceVersion.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -72,16 +69,13 @@ const params = {
   experienceVersionIdOrName: myExperienceVersionIdOrName
 };
 
-// with callbacks
-client.experienceVersion.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceVersion.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceVersion.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -123,16 +117,13 @@ const params = {
   experienceVersion: myExperienceVersion
 };
 
-// with callbacks
-client.experienceVersion.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceVersion.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceVersion.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

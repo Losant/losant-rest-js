@@ -22,16 +22,13 @@ const params = {
   apiTokenId: myApiTokenId
 };
 
-// with callbacks
-client.instanceApiToken.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceApiToken.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceApiToken.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -72,16 +69,13 @@ const params = {
   apiTokenId: myApiTokenId
 };
 
-// with callbacks
-client.instanceApiToken.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceApiToken.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceApiToken.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -123,16 +117,13 @@ const params = {
   apiToken: myApiToken
 };
 
-// with callbacks
-client.instanceApiToken.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceApiToken.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceApiToken.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

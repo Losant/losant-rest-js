@@ -40,16 +40,13 @@ const params = {
   options: myOptions
 };
 
-// with callbacks
-client.application.applyTemplate(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.applyTemplate(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.applyTemplate(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -91,16 +88,13 @@ const params = {
   date: myDate
 };
 
-// with callbacks
-client.application.archiveData(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.archiveData(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.archiveData(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -140,16 +134,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.application.backfillArchiveData(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.backfillArchiveData(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.backfillArchiveData(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -188,16 +179,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.application.clone(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.clone(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.clone(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -240,16 +228,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.application.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -288,16 +273,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.application.deviceCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.deviceCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.deviceCounts(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -339,16 +321,13 @@ const params = {
   options: myOptions
 };
 
-// with callbacks
-client.application.export(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.export(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.export(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -389,16 +368,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.application.fullDataTablesArchive(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.fullDataTablesArchive(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.fullDataTablesArchive(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -437,16 +413,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.application.fullEventsArchive(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.fullEventsArchive(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.fullEventsArchive(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -485,16 +458,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.application.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -536,16 +506,13 @@ const params = {
   globals: myGlobals
 };
 
-// with callbacks
-client.application.globals(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.globals(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.globals(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -585,16 +552,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.application.import(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.import(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.import(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -637,16 +601,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.application.importLogs(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.importLogs(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.importLogs(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -688,16 +649,13 @@ const params = {
   payload: myPayload
 };
 
-// with callbacks
-client.application.mqttPublishMessage(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.mqttPublishMessage(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.mqttPublishMessage(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -737,16 +695,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.application.notebookMinuteCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.notebookMinuteCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.notebookMinuteCounts(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -788,16 +743,13 @@ const params = {
   application: myApplication
 };
 
-// with callbacks
-client.application.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -839,16 +791,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.application.payloadCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.payloadCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.payloadCounts(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -890,16 +839,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.application.payloadCountsBreakdown(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.payloadCountsBreakdown(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.payloadCountsBreakdown(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -943,16 +889,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.application.readme(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.readme(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.readme(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -992,16 +935,13 @@ const params = {
   readme: myReadme
 };
 
-// with callbacks
-client.application.readmePatch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.readmePatch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.readmePatch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -1042,16 +982,13 @@ const params = {
   filter: myFilter
 };
 
-// with callbacks
-client.application.search(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.application.search(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.search(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

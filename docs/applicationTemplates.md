@@ -19,16 +19,13 @@ Returns the application templates the current user has permission to see
 ```javascript
 const params = {}; // all params are optional
 
-// with callbacks
-client.applicationTemplates.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applicationTemplates.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationTemplates.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -71,16 +68,13 @@ Returns a category list, beginning at the specified category
 ```javascript
 const params = {}; // all params are optional
 
-// with callbacks
-client.applicationTemplates.getCategories(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applicationTemplates.getCategories(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationTemplates.getCategories(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -116,16 +110,13 @@ Returns an array of all unique keywords currently in use by templates
 ```javascript
 const params = {}; // all params are optional
 
-// with callbacks
-client.applicationTemplates.getUniqueKeywords(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applicationTemplates.getUniqueKeywords(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationTemplates.getUniqueKeywords(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

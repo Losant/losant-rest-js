@@ -24,16 +24,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.events.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.events.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.events.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -76,16 +73,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.events.export(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.events.export(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.events.export(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -125,16 +119,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.events.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.events.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.events.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -181,16 +172,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.events.mostRecentBySeverity(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.events.mostRecentBySeverity(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.events.mostRecentBySeverity(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -231,16 +219,13 @@ const params = {
   updates: myUpdates
 };
 
-// with callbacks
-client.events.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.events.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.events.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -286,16 +271,13 @@ const params = {
   event: myEvent
 };
 
-// with callbacks
-client.events.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.events.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.events.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

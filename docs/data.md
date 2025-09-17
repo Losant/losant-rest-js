@@ -22,16 +22,13 @@ const params = {
   query: myQuery
 };
 
-// with callbacks
-client.data.export(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.data.export(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.data.export(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -72,16 +69,13 @@ const params = {
   query: myQuery
 };
 
-// with callbacks
-client.data.lastValueQuery(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.data.lastValueQuery(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.data.lastValueQuery(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -122,16 +116,13 @@ const params = {
   query: myQuery
 };
 
-// with callbacks
-client.data.timeSeriesQuery(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.data.timeSeriesQuery(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.data.timeSeriesQuery(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

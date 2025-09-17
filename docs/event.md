@@ -22,16 +22,13 @@ const params = {
   eventId: myEventId
 };
 
-// with callbacks
-client.event.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.event.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.event.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -72,16 +69,13 @@ const params = {
   eventId: myEventId
 };
 
-// with callbacks
-client.event.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.event.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.event.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -123,16 +117,13 @@ const params = {
   event: myEvent
 };
 
-// with callbacks
-client.event.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.event.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.event.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

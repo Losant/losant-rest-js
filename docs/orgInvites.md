@@ -21,16 +21,13 @@ const params = {
   email: myEmail
 };
 
-// with callbacks
-client.orgInvites.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.orgInvites.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.orgInvites.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -69,16 +66,13 @@ const params = {
   invite: myInvite
 };
 
-// with callbacks
-client.orgInvites.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.orgInvites.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.orgInvites.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

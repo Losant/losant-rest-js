@@ -23,16 +23,13 @@ const params = {
   credentials: myCredentials
 };
 
-// with callbacks
-client.auth.authenticateDevice(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.auth.authenticateDevice(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.auth.authenticateDevice(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -69,16 +66,13 @@ const params = {
   credentials: myCredentials
 };
 
-// with callbacks
-client.auth.authenticateUser(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.auth.authenticateUser(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.auth.authenticateUser(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -115,16 +109,13 @@ const params = {
   oauth: myOauth
 };
 
-// with callbacks
-client.auth.authenticateUserGithub(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.auth.authenticateUserGithub(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.auth.authenticateUserGithub(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -161,16 +152,13 @@ const params = {
   saml: mySaml
 };
 
-// with callbacks
-client.auth.authenticateUserSaml(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.auth.authenticateUserSaml(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.auth.authenticateUserSaml(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -207,16 +195,13 @@ const params = {
   email: myEmail
 };
 
-// with callbacks
-client.auth.ssoDomain(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.auth.ssoDomain(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.auth.ssoDomain(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

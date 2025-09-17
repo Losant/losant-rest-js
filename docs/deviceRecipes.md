@@ -20,16 +20,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.deviceRecipes.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.deviceRecipes.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.deviceRecipes.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -77,16 +74,13 @@ const params = {
   deviceRecipe: myDeviceRecipe
 };
 
-// with callbacks
-client.deviceRecipes.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.deviceRecipes.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.deviceRecipes.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

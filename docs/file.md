@@ -24,16 +24,13 @@ const params = {
   fileId: myFileId
 };
 
-// with callbacks
-client.file.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.file.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.file.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -74,16 +71,13 @@ const params = {
   fileId: myFileId
 };
 
-// with callbacks
-client.file.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.file.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.file.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -124,16 +118,13 @@ const params = {
   fileId: myFileId
 };
 
-// with callbacks
-client.file.move(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.file.move(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.file.move(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -177,16 +168,13 @@ const params = {
   updates: myUpdates
 };
 
-// with callbacks
-client.file.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.file.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.file.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -229,16 +217,13 @@ const params = {
   file: myFile
 };
 
-// with callbacks
-client.file.upload(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.file.upload(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.file.upload(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

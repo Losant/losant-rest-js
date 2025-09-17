@@ -21,16 +21,13 @@ const params = {
   orgId: myOrgId
 };
 
-// with callbacks
-client.instanceOrgMembers.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceOrgMembers.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrgMembers.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -76,16 +73,13 @@ const params = {
   member: myMember
 };
 
-// with callbacks
-client.instanceOrgMembers.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceOrgMembers.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrgMembers.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

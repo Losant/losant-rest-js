@@ -21,16 +21,13 @@ const params = {
   options: myOptions
 };
 
-// with callbacks
-client.experience.bootstrap(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experience.bootstrap(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experience.bootstrap(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -70,16 +67,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.experience.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experience.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experience.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

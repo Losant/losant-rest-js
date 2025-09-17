@@ -24,16 +24,13 @@ const params = {
   instanceCustomNodeId: myInstanceCustomNodeId
 };
 
-// with callbacks
-client.instanceCustomNode.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceCustomNode.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceCustomNode.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -74,16 +71,13 @@ const params = {
   instanceCustomNodeId: myInstanceCustomNodeId
 };
 
-// with callbacks
-client.instanceCustomNode.errors(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceCustomNode.errors(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceCustomNode.errors(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -128,16 +122,13 @@ const params = {
   instanceCustomNodeId: myInstanceCustomNodeId
 };
 
-// with callbacks
-client.instanceCustomNode.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceCustomNode.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceCustomNode.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -179,16 +170,13 @@ const params = {
   instanceCustomNode: myInstanceCustomNode
 };
 
-// with callbacks
-client.instanceCustomNode.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceCustomNode.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceCustomNode.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -230,16 +218,13 @@ const params = {
   instanceCustomNodeId: myInstanceCustomNodeId
 };
 
-// with callbacks
-client.instanceCustomNode.stats(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceCustomNode.stats(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceCustomNode.stats(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

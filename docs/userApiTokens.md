@@ -18,16 +18,13 @@ Returns the API tokens for a user
 ```javascript
 const params = {}; // all params are optional
 
-// with callbacks
-client.userApiTokens.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.userApiTokens.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.userApiTokens.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -70,16 +67,13 @@ const params = {
   apiToken: myApiToken
 };
 
-// with callbacks
-client.userApiTokens.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.userApiTokens.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.userApiTokens.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

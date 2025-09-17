@@ -20,16 +20,13 @@ const params = {
   instanceId: myInstanceId
 };
 
-// with callbacks
-client.instanceApiTokens.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceApiTokens.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceApiTokens.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -74,16 +71,13 @@ const params = {
   apiToken: myApiToken
 };
 
-// with callbacks
-client.instanceApiTokens.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceApiTokens.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceApiTokens.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

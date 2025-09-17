@@ -22,16 +22,13 @@ const params = {
   experienceDomainId: myExperienceDomainId
 };
 
-// with callbacks
-client.experienceDomain.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceDomain.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceDomain.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -72,16 +69,13 @@ const params = {
   experienceDomainId: myExperienceDomainId
 };
 
-// with callbacks
-client.experienceDomain.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceDomain.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceDomain.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -123,16 +117,13 @@ const params = {
   experienceDomain: myExperienceDomain
 };
 
-// with callbacks
-client.experienceDomain.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceDomain.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceDomain.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

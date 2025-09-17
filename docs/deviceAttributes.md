@@ -21,16 +21,13 @@ const params = {
   deviceId: myDeviceId
 };
 
-// with callbacks
-client.deviceAttributes.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.deviceAttributes.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.deviceAttributes.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -76,16 +73,13 @@ const params = {
   deviceAttribute: myDeviceAttribute
 };
 
-// with callbacks
-client.deviceAttributes.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.deviceAttributes.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.deviceAttributes.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

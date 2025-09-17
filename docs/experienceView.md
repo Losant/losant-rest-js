@@ -23,16 +23,13 @@ const params = {
   experienceViewId: myExperienceViewId
 };
 
-// with callbacks
-client.experienceView.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceView.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceView.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -73,16 +70,13 @@ const params = {
   experienceViewId: myExperienceViewId
 };
 
-// with callbacks
-client.experienceView.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceView.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceView.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -124,16 +118,13 @@ const params = {
   experienceViewId: myExperienceViewId
 };
 
-// with callbacks
-client.experienceView.linkedResources(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceView.linkedResources(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceView.linkedResources(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -177,16 +168,13 @@ const params = {
   experienceView: myExperienceView
 };
 
-// with callbacks
-client.experienceView.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceView.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceView.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

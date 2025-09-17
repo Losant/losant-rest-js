@@ -20,16 +20,13 @@ const params = {
   instanceId: myInstanceId
 };
 
-// with callbacks
-client.instanceCustomNodes.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceCustomNodes.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceCustomNodes.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -74,16 +71,13 @@ const params = {
   instanceCustomNode: myInstanceCustomNode
 };
 
-// with callbacks
-client.instanceCustomNodes.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceCustomNodes.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceCustomNodes.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

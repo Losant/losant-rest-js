@@ -22,16 +22,13 @@ const params = {
   experienceGroupId: myExperienceGroupId
 };
 
-// with callbacks
-client.experienceGroup.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceGroup.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceGroup.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -72,16 +69,13 @@ const params = {
   experienceGroupId: myExperienceGroupId
 };
 
-// with callbacks
-client.experienceGroup.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceGroup.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceGroup.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -125,16 +119,13 @@ const params = {
   experienceGroup: myExperienceGroup
 };
 
-// with callbacks
-client.experienceGroup.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceGroup.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceGroup.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

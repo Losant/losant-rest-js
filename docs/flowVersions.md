@@ -23,16 +23,13 @@ const params = {
   options: myOptions
 };
 
-// with callbacks
-client.flowVersions.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.flowVersions.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flowVersions.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -75,16 +72,13 @@ const params = {
   flowId: myFlowId
 };
 
-// with callbacks
-client.flowVersions.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.flowVersions.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flowVersions.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -134,16 +128,13 @@ const params = {
   flowVersion: myFlowVersion
 };
 
-// with callbacks
-client.flowVersions.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.flowVersions.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flowVersions.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

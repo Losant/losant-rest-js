@@ -22,16 +22,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.edgeDeployments.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.edgeDeployments.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.edgeDeployments.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -79,16 +76,13 @@ const params = {
   deployment: myDeployment
 };
 
-// with callbacks
-client.edgeDeployments.release(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.edgeDeployments.release(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.edgeDeployments.release(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -129,16 +123,13 @@ const params = {
   deployment: myDeployment
 };
 
-// with callbacks
-client.edgeDeployments.remove(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.edgeDeployments.remove(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.edgeDeployments.remove(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -179,16 +170,13 @@ const params = {
   deployment: myDeployment
 };
 
-// with callbacks
-client.edgeDeployments.replace(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.edgeDeployments.replace(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.edgeDeployments.replace(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

@@ -20,16 +20,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.dataTables.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.dataTables.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTables.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -75,16 +72,13 @@ const params = {
   dataTable: myDataTable
 };
 
-// with callbacks
-client.dataTables.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.dataTables.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTables.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

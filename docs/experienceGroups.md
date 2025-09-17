@@ -20,16 +20,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.experienceGroups.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceGroups.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceGroups.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -76,16 +73,13 @@ const params = {
   experienceGroup: myExperienceGroup
 };
 
-// with callbacks
-client.experienceGroups.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceGroups.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceGroups.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

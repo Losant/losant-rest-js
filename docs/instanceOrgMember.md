@@ -23,16 +23,13 @@ const params = {
   userId: myUserId
 };
 
-// with callbacks
-client.instanceOrgMember.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceOrgMember.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrgMember.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -75,16 +72,13 @@ const params = {
   userId: myUserId
 };
 
-// with callbacks
-client.instanceOrgMember.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceOrgMember.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrgMember.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -128,16 +122,13 @@ const params = {
   member: myMember
 };
 
-// with callbacks
-client.instanceOrgMember.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceOrgMember.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrgMember.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

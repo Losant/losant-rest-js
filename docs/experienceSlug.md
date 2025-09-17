@@ -22,16 +22,13 @@ const params = {
   experienceSlugId: myExperienceSlugId
 };
 
-// with callbacks
-client.experienceSlug.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceSlug.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceSlug.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -72,16 +69,13 @@ const params = {
   experienceSlugId: myExperienceSlugId
 };
 
-// with callbacks
-client.experienceSlug.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceSlug.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceSlug.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -123,16 +117,13 @@ const params = {
   experienceSlug: myExperienceSlug
 };
 
-// with callbacks
-client.experienceSlug.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceSlug.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceSlug.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

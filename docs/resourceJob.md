@@ -26,16 +26,13 @@ const params = {
   executionId: myExecutionId
 };
 
-// with callbacks
-client.resourceJob.cancelExecution(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.resourceJob.cancelExecution(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.resourceJob.cancelExecution(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -77,16 +74,13 @@ const params = {
   resourceJobId: myResourceJobId
 };
 
-// with callbacks
-client.resourceJob.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.resourceJob.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.resourceJob.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -129,16 +123,13 @@ const params = {
   executionOptions: myExecutionOptions
 };
 
-// with callbacks
-client.resourceJob.execute(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.resourceJob.execute(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.resourceJob.execute(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -180,16 +171,13 @@ const params = {
   resourceJobId: myResourceJobId
 };
 
-// with callbacks
-client.resourceJob.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.resourceJob.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.resourceJob.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -230,16 +218,13 @@ const params = {
   resourceJobId: myResourceJobId
 };
 
-// with callbacks
-client.resourceJob.logs(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.resourceJob.logs(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.resourceJob.logs(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -283,16 +268,13 @@ const params = {
   resourceJob: myResourceJob
 };
 
-// with callbacks
-client.resourceJob.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.resourceJob.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.resourceJob.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

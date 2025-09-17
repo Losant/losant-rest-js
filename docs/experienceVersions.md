@@ -20,16 +20,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.experienceVersions.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceVersions.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceVersions.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -75,16 +72,13 @@ const params = {
   experienceVersion: myExperienceVersion
 };
 
-// with callbacks
-client.experienceVersions.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceVersions.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceVersions.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

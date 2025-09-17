@@ -24,16 +24,13 @@ const params = {
   notificationRuleId: myNotificationRuleId
 };
 
-// with callbacks
-client.instanceNotificationRule.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceNotificationRule.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceNotificationRule.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -75,16 +72,13 @@ const params = {
   evaluationOptions: myEvaluationOptions
 };
 
-// with callbacks
-client.instanceNotificationRule.evaluate(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceNotificationRule.evaluate(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceNotificationRule.evaluate(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -126,16 +120,13 @@ const params = {
   notificationRuleId: myNotificationRuleId
 };
 
-// with callbacks
-client.instanceNotificationRule.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceNotificationRule.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceNotificationRule.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -176,16 +167,13 @@ const params = {
   notificationRuleId: myNotificationRuleId
 };
 
-// with callbacks
-client.instanceNotificationRule.logs(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceNotificationRule.logs(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceNotificationRule.logs(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -229,16 +217,13 @@ const params = {
   notificationRule: myNotificationRule
 };
 
-// with callbacks
-client.instanceNotificationRule.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceNotificationRule.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceNotificationRule.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

@@ -23,16 +23,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.applicationDashboard.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applicationDashboard.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationDashboard.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -73,16 +70,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.applicationDashboard.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applicationDashboard.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationDashboard.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -124,16 +118,13 @@ const params = {
   dashboard: myDashboard
 };
 
-// with callbacks
-client.applicationDashboard.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applicationDashboard.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationDashboard.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -176,16 +167,13 @@ const params = {
   reportConfig: myReportConfig
 };
 
-// with callbacks
-client.applicationDashboard.sendReport(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applicationDashboard.sendReport(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationDashboard.sendReport(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

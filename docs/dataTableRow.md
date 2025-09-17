@@ -23,16 +23,13 @@ const params = {
   rowId: myRowId
 };
 
-// with callbacks
-client.dataTableRow.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.dataTableRow.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTableRow.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -75,16 +72,13 @@ const params = {
   rowId: myRowId
 };
 
-// with callbacks
-client.dataTableRow.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.dataTableRow.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTableRow.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -128,16 +122,13 @@ const params = {
   dataTableRow: myDataTableRow
 };
 
-// with callbacks
-client.dataTableRow.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.dataTableRow.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTableRow.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

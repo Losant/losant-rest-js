@@ -23,16 +23,13 @@ const params = {
   inviteId: myInviteId
 };
 
-// with callbacks
-client.instanceOrgInvite.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceOrgInvite.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrgInvite.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -75,16 +72,13 @@ const params = {
   inviteId: myInviteId
 };
 
-// with callbacks
-client.instanceOrgInvite.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceOrgInvite.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrgInvite.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -128,16 +122,13 @@ const params = {
   roleInfo: myRoleInfo
 };
 
-// with callbacks
-client.instanceOrgInvite.resendInvite(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceOrgInvite.resendInvite(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrgInvite.resendInvite(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

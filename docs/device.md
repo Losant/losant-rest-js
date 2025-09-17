@@ -33,16 +33,13 @@ const params = {
   deviceId: myDeviceId
 };
 
-// with callbacks
-client.device.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.device.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -83,16 +80,13 @@ const params = {
   deviceId: myDeviceId
 };
 
-// with callbacks
-client.device.export(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.device.export(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.export(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -139,16 +133,13 @@ const params = {
   deviceId: myDeviceId
 };
 
-// with callbacks
-client.device.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.device.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -192,16 +183,13 @@ const params = {
   deviceId: myDeviceId
 };
 
-// with callbacks
-client.device.getCommand(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.device.getCommand(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.getCommand(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -248,16 +236,13 @@ const params = {
   deviceId: myDeviceId
 };
 
-// with callbacks
-client.device.getCompositeState(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.device.getCompositeState(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.getCompositeState(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -301,16 +286,13 @@ const params = {
   deviceId: myDeviceId
 };
 
-// with callbacks
-client.device.getLogEntries(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.device.getLogEntries(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.getLogEntries(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -357,16 +339,13 @@ const params = {
   deviceId: myDeviceId
 };
 
-// with callbacks
-client.device.getState(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.device.getState(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.getState(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -414,16 +393,13 @@ const params = {
   device: myDevice
 };
 
-// with callbacks
-client.device.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.device.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -467,16 +443,13 @@ const params = {
   deviceId: myDeviceId
 };
 
-// with callbacks
-client.device.payloadCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.device.payloadCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.payloadCounts(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -519,16 +492,13 @@ const params = {
   deviceId: myDeviceId
 };
 
-// with callbacks
-client.device.payloadCountsBreakdown(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.device.payloadCountsBreakdown(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.payloadCountsBreakdown(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -572,16 +542,13 @@ const params = {
   deviceId: myDeviceId
 };
 
-// with callbacks
-client.device.removeData(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.device.removeData(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.removeData(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -625,16 +592,13 @@ const params = {
   deviceCommand: myDeviceCommand
 };
 
-// with callbacks
-client.device.sendCommand(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.device.sendCommand(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.sendCommand(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -677,16 +641,13 @@ const params = {
   deviceState: myDeviceState
 };
 
-// with callbacks
-client.device.sendState(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.device.sendState(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.sendState(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -729,16 +690,13 @@ const params = {
   connectionStatus: myConnectionStatus
 };
 
-// with callbacks
-client.device.setConnectionStatus(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.device.setConnectionStatus(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.setConnectionStatus(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

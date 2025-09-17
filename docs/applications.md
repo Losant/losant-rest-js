@@ -20,16 +20,13 @@ Returns the applications the current user has permission to see
 ```javascript
 const params = {}; // all params are optional
 
-// with callbacks
-client.applications.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applications.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applications.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -73,16 +70,13 @@ Create a new application from an import bundle
 ```javascript
 const params = {}; // all params are optional
 
-// with callbacks
-client.applications.import(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applications.import(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applications.import(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -128,16 +122,13 @@ Returns application usage summaries over a selected date range
 ```javascript
 const params = {}; // all params are optional
 
-// with callbacks
-client.applications.periodSummaries(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applications.periodSummaries(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applications.periodSummaries(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -187,16 +178,13 @@ const params = {
   application: myApplication
 };
 
-// with callbacks
-client.applications.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applications.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applications.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

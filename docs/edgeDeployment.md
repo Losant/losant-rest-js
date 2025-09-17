@@ -20,16 +20,13 @@ const params = {
   edgeDeploymentId: myEdgeDeploymentId
 };
 
-// with callbacks
-client.edgeDeployment.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.edgeDeployment.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.edgeDeployment.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

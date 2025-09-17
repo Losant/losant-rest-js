@@ -20,16 +20,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.notebooks.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.notebooks.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebooks.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -75,16 +72,13 @@ const params = {
   notebook: myNotebook
 };
 
-// with callbacks
-client.notebooks.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.notebooks.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebooks.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

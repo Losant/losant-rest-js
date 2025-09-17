@@ -20,16 +20,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.applicationCertificateAuthorities.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applicationCertificateAuthorities.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationCertificateAuthorities.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -75,16 +72,13 @@ const params = {
   applicationCertificateAuthority: myApplicationCertificateAuthority
 };
 
-// with callbacks
-client.applicationCertificateAuthorities.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applicationCertificateAuthorities.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationCertificateAuthorities.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

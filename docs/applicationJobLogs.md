@@ -19,16 +19,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.applicationJobLogs.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applicationJobLogs.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationJobLogs.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

@@ -22,16 +22,13 @@ const params = {
   webhookId: myWebhookId
 };
 
-// with callbacks
-client.webhook.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.webhook.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.webhook.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -73,16 +70,13 @@ const params = {
   webhookId: myWebhookId
 };
 
-// with callbacks
-client.webhook.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.webhook.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.webhook.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -124,16 +118,13 @@ const params = {
   webhook: myWebhook
 };
 
-// with callbacks
-client.webhook.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.webhook.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.webhook.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

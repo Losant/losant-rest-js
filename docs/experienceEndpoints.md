@@ -21,16 +21,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.experienceEndpoints.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceEndpoints.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceEndpoints.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -77,16 +74,13 @@ const params = {
   experienceEndpoint: myExperienceEndpoint
 };
 
-// with callbacks
-client.experienceEndpoints.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceEndpoints.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceEndpoints.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -126,16 +120,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.experienceEndpoints.stats(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.experienceEndpoints.stats(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceEndpoints.stats(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

@@ -22,16 +22,13 @@ const params = {
   integrationId: myIntegrationId
 };
 
-// with callbacks
-client.integration.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.integration.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.integration.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -73,16 +70,13 @@ const params = {
   integrationId: myIntegrationId
 };
 
-// with callbacks
-client.integration.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.integration.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.integration.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -124,16 +118,13 @@ const params = {
   integration: myIntegration
 };
 
-// with callbacks
-client.integration.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.integration.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.integration.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

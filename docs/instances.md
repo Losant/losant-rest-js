@@ -17,16 +17,13 @@ Returns a collection of instances
 ```javascript
 const params = {}; // all params are optional
 
-// with callbacks
-client.instances.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instances.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instances.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

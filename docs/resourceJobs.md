@@ -20,16 +20,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.resourceJobs.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.resourceJobs.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.resourceJobs.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -75,16 +72,13 @@ const params = {
   resourceJob: myResourceJob
 };
 
-// with callbacks
-client.resourceJobs.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.resourceJobs.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.resourceJobs.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

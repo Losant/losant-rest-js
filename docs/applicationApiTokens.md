@@ -20,16 +20,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.applicationApiTokens.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applicationApiTokens.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationApiTokens.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -74,16 +71,13 @@ const params = {
   apiToken: myApiToken
 };
 
-// with callbacks
-client.applicationApiTokens.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applicationApiTokens.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationApiTokens.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

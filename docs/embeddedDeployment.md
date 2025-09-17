@@ -20,16 +20,13 @@ const params = {
   embeddedDeploymentId: myEmbeddedDeploymentId
 };
 
-// with callbacks
-client.embeddedDeployment.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.embeddedDeployment.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.embeddedDeployment.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

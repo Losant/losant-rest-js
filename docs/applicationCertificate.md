@@ -22,16 +22,13 @@ const params = {
   applicationCertificateId: myApplicationCertificateId
 };
 
-// with callbacks
-client.applicationCertificate.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applicationCertificate.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationCertificate.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -72,16 +69,13 @@ const params = {
   applicationCertificateId: myApplicationCertificateId
 };
 
-// with callbacks
-client.applicationCertificate.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applicationCertificate.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationCertificate.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -123,16 +117,13 @@ const params = {
   applicationCertificate: myApplicationCertificate
 };
 
-// with callbacks
-client.applicationCertificate.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applicationCertificate.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationCertificate.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

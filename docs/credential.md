@@ -23,16 +23,13 @@ const params = {
   credentialId: myCredentialId
 };
 
-// with callbacks
-client.credential.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.credential.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.credential.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -73,16 +70,13 @@ const params = {
   credentialId: myCredentialId
 };
 
-// with callbacks
-client.credential.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.credential.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.credential.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -123,16 +117,13 @@ const params = {
   credentialId: myCredentialId
 };
 
-// with callbacks
-client.credential.linkedResources(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.credential.linkedResources(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.credential.linkedResources(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -175,16 +166,13 @@ const params = {
   credential: myCredential
 };
 
-// with callbacks
-client.credential.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.credential.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.credential.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

@@ -22,16 +22,13 @@ const params = {
   userId: myUserId
 };
 
-// with callbacks
-client.instanceMember.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceMember.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceMember.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -72,16 +69,13 @@ const params = {
   userId: myUserId
 };
 
-// with callbacks
-client.instanceMember.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceMember.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceMember.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -123,16 +117,13 @@ const params = {
   member: myMember
 };
 
-// with callbacks
-client.instanceMember.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceMember.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceMember.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

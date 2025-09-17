@@ -26,16 +26,13 @@ const params = {
   instanceSandboxId: myInstanceSandboxId
 };
 
-// with callbacks
-client.instanceSandbox.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceSandbox.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceSandbox.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -76,16 +73,13 @@ const params = {
   instanceSandboxId: myInstanceSandboxId
 };
 
-// with callbacks
-client.instanceSandbox.deviceCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceSandbox.deviceCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceSandbox.deviceCounts(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -128,16 +122,13 @@ const params = {
   instanceSandboxId: myInstanceSandboxId
 };
 
-// with callbacks
-client.instanceSandbox.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceSandbox.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceSandbox.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -180,16 +171,13 @@ const params = {
   instanceSandboxId: myInstanceSandboxId
 };
 
-// with callbacks
-client.instanceSandbox.notebookMinuteCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceSandbox.notebookMinuteCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceSandbox.notebookMinuteCounts(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -232,16 +220,13 @@ const params = {
   instanceSandboxId: myInstanceSandboxId
 };
 
-// with callbacks
-client.instanceSandbox.payloadCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceSandbox.payloadCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceSandbox.payloadCounts(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -285,16 +270,13 @@ const params = {
   instanceSandboxId: myInstanceSandboxId
 };
 
-// with callbacks
-client.instanceSandbox.payloadCountsBreakdown(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceSandbox.payloadCountsBreakdown(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceSandbox.payloadCountsBreakdown(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -340,16 +322,13 @@ const params = {
   instanceSandboxId: myInstanceSandboxId
 };
 
-// with callbacks
-client.instanceSandbox.undelete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceSandbox.undelete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceSandbox.undelete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

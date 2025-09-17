@@ -26,16 +26,13 @@ const params = {
   orgId: myOrgId
 };
 
-// with callbacks
-client.instanceOrg.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceOrg.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrg.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -76,16 +73,13 @@ const params = {
   orgId: myOrgId
 };
 
-// with callbacks
-client.instanceOrg.deviceCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceOrg.deviceCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrg.deviceCounts(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -128,16 +122,13 @@ const params = {
   orgId: myOrgId
 };
 
-// with callbacks
-client.instanceOrg.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceOrg.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrg.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -179,16 +170,13 @@ const params = {
   orgId: myOrgId
 };
 
-// with callbacks
-client.instanceOrg.notebookMinuteCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceOrg.notebookMinuteCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrg.notebookMinuteCounts(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -232,16 +220,13 @@ const params = {
   organization: myOrganization
 };
 
-// with callbacks
-client.instanceOrg.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceOrg.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrg.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -284,16 +269,13 @@ const params = {
   orgId: myOrgId
 };
 
-// with callbacks
-client.instanceOrg.payloadCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceOrg.payloadCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrg.payloadCounts(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -337,16 +319,13 @@ const params = {
   orgId: myOrgId
 };
 
-// with callbacks
-client.instanceOrg.payloadCountsBreakdown(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceOrg.payloadCountsBreakdown(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrg.payloadCountsBreakdown(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

@@ -29,16 +29,13 @@ const params = {
   executionId: myExecutionId
 };
 
-// with callbacks
-client.notebook.cancelExecution(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.notebook.cancelExecution(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebook.cancelExecution(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -80,16 +77,13 @@ const params = {
   notebookId: myNotebookId
 };
 
-// with callbacks
-client.notebook.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.notebook.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebook.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -131,16 +125,13 @@ const params = {
   executionOptions: myExecutionOptions
 };
 
-// with callbacks
-client.notebook.execute(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.notebook.execute(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebook.execute(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -182,16 +173,13 @@ const params = {
   notebookId: myNotebookId
 };
 
-// with callbacks
-client.notebook.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.notebook.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebook.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -232,16 +220,13 @@ const params = {
   notebookId: myNotebookId
 };
 
-// with callbacks
-client.notebook.logs(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.notebook.logs(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebook.logs(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -284,16 +269,13 @@ const params = {
   notebookId: myNotebookId
 };
 
-// with callbacks
-client.notebook.notebookMinuteCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.notebook.notebookMinuteCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebook.notebookMinuteCounts(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -337,16 +319,13 @@ const params = {
   notebook: myNotebook
 };
 
-// with callbacks
-client.notebook.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.notebook.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebook.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -389,16 +368,13 @@ const params = {
   exportOptions: myExportOptions
 };
 
-// with callbacks
-client.notebook.requestInputDataExport(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.notebook.requestInputDataExport(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebook.requestInputDataExport(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -441,16 +417,13 @@ const params = {
   jupyterFile: myJupyterFile
 };
 
-// with callbacks
-client.notebook.upload(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.notebook.upload(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebook.upload(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

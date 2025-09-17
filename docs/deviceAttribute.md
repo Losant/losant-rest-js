@@ -23,16 +23,13 @@ const params = {
   name: myName
 };
 
-// with callbacks
-client.deviceAttribute.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.deviceAttribute.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.deviceAttribute.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -75,16 +72,13 @@ const params = {
   name: myName
 };
 
-// with callbacks
-client.deviceAttribute.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.deviceAttribute.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.deviceAttribute.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -128,16 +122,13 @@ const params = {
   deviceAttribute: myDeviceAttribute
 };
 
-// with callbacks
-client.deviceAttribute.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.deviceAttribute.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.deviceAttribute.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

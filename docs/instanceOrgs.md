@@ -20,16 +20,13 @@ const params = {
   instanceId: myInstanceId
 };
 
-// with callbacks
-client.instanceOrgs.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceOrgs.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrgs.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -75,16 +72,13 @@ const params = {
   instanceId: myInstanceId
 };
 
-// with callbacks
-client.instanceOrgs.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceOrgs.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrgs.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

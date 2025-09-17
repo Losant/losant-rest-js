@@ -31,16 +31,13 @@ const params = {
   orgId: myOrgId
 };
 
-// with callbacks
-client.org.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.org.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -79,16 +76,13 @@ const params = {
   orgId: myOrgId
 };
 
-// with callbacks
-client.org.deviceCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.org.deviceCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.deviceCounts(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -129,16 +123,13 @@ const params = {
   orgId: myOrgId
 };
 
-// with callbacks
-client.org.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.org.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -180,16 +171,13 @@ const params = {
   invite: myInvite
 };
 
-// with callbacks
-client.org.inviteMember(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.org.inviteMember(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.inviteMember(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -230,16 +218,13 @@ const params = {
   member: myMember
 };
 
-// with callbacks
-client.org.modifyMember(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.org.modifyMember(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.modifyMember(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -281,16 +266,13 @@ const params = {
   orgId: myOrgId
 };
 
-// with callbacks
-client.org.notebookMinuteCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.org.notebookMinuteCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.notebookMinuteCounts(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -332,16 +314,13 @@ const params = {
   organization: myOrganization
 };
 
-// with callbacks
-client.org.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.org.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -383,16 +362,13 @@ const params = {
   orgId: myOrgId
 };
 
-// with callbacks
-client.org.payloadCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.org.payloadCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.payloadCounts(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -434,16 +410,13 @@ const params = {
   orgId: myOrgId
 };
 
-// with callbacks
-client.org.payloadCountsBreakdown(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.org.payloadCountsBreakdown(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.payloadCountsBreakdown(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -487,16 +460,13 @@ const params = {
   orgId: myOrgId
 };
 
-// with callbacks
-client.org.pendingInvites(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.org.pendingInvites(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.pendingInvites(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -536,16 +506,13 @@ const params = {
   userId: myUserId
 };
 
-// with callbacks
-client.org.removeMember(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.org.removeMember(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.removeMember(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -588,16 +555,13 @@ const params = {
   inviteId: myInviteId
 };
 
-// with callbacks
-client.org.revokeInvite(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.org.revokeInvite(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.revokeInvite(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -638,16 +602,13 @@ const params = {
   transfer: myTransfer
 };
 
-// with callbacks
-client.org.transferResources(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.org.transferResources(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.transferResources(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

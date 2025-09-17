@@ -20,16 +20,13 @@ const params = {
   instanceId: myInstanceId
 };
 
-// with callbacks
-client.instanceNotificationRules.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceNotificationRules.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceNotificationRules.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -74,16 +71,13 @@ const params = {
   notificationRule: myNotificationRule
 };
 
-// with callbacks
-client.instanceNotificationRules.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceNotificationRules.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceNotificationRules.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

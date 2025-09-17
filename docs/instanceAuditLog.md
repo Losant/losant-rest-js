@@ -20,16 +20,13 @@ const params = {
   instanceAuditLogId: myInstanceAuditLogId
 };
 
-// with callbacks
-client.instanceAuditLog.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.instanceAuditLog.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceAuditLog.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

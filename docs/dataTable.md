@@ -25,16 +25,13 @@ const params = {
   dataTableColumn: myDataTableColumn
 };
 
-// with callbacks
-client.dataTable.addColumn(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.dataTable.addColumn(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTable.addColumn(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -76,16 +73,13 @@ const params = {
   dataTableId: myDataTableId
 };
 
-// with callbacks
-client.dataTable.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.dataTable.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTable.delete(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -126,16 +120,13 @@ const params = {
   dataTableId: myDataTableId
 };
 
-// with callbacks
-client.dataTable.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.dataTable.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTable.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -177,16 +168,13 @@ const params = {
   dataTable: myDataTable
 };
 
-// with callbacks
-client.dataTable.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.dataTable.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTable.patch(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -229,16 +217,13 @@ const params = {
   columnName: myColumnName
 };
 
-// with callbacks
-client.dataTable.removeColumn(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.dataTable.removeColumn(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTable.removeColumn(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

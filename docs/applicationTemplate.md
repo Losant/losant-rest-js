@@ -19,16 +19,13 @@ const params = {
   templateId: myTemplateId
 };
 
-// with callbacks
-client.applicationTemplate.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.applicationTemplate.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationTemplate.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

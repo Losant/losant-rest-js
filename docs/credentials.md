@@ -20,16 +20,13 @@ const params = {
   applicationId: myApplicationId
 };
 
-// with callbacks
-client.credentials.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.credentials.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.credentials.get(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -75,16 +72,13 @@ const params = {
   credential: myCredential
 };
 
-// with callbacks
-client.credentials.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
 // with promises
-client.credentials.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.credentials.post(params));
+';
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
