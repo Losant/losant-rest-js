@@ -3,7 +3,7 @@ const client = api.createClient();
 
 // using promises
 try {
-  const response = client.auth.authenticateDevice({ credentials: {
+  const response = await client.auth.authenticateDevice({ credentials: {
       deviceId: 'myDeviceId',
       key: 'my_app_access_key',
       secret: 'my_app_access_secret'

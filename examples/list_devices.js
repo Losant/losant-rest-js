@@ -3,6 +3,7 @@ import api from 'losant-rest';
 const client = api.createClient({ accessToken: 'my_token' });
 try {
   const response = await client.devices.get({ applicationId: 'myAppId' });
+  console.log(response);
 } catch (err) {
   console.error(err);
 }

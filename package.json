@@ -1,7 +1,10 @@
 {
   "name": "losant-rest",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "REST client for accessing the Losant API",
+  "homepage": "https://github.com/Losant/losant-rest-js#readme",
+  "author": "Losant <hello@losant.com>",
+  "license": "MIT",
   "main": "lib/index.js",
   "type": "module",
   "exports": {
