@@ -21,7 +21,6 @@ Returns the applications the current user has permission to see
 const params = {}; // all params are optional
 try {
   console.log(await client.applications.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -69,7 +68,6 @@ Create a new application from an import bundle
 const params = {}; // all params are optional
 try {
   console.log(await client.applications.import(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -119,7 +117,6 @@ Returns application usage summaries over a selected date range
 const params = {}; // all params are optional
 try {
   console.log(await client.applications.periodSummaries(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -173,7 +170,6 @@ const params = {
 };
 try {
   console.log(await client.applications.post(params));
-';
 } catch (err) {
   console.error(err);
 }

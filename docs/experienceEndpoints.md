@@ -22,7 +22,6 @@ const params = {
 };
 try {
   console.log(await client.experienceEndpoints.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -73,7 +72,6 @@ const params = {
 };
 try {
   console.log(await client.experienceEndpoints.post(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -117,7 +115,6 @@ const params = {
 };
 try {
   console.log(await client.experienceEndpoints.stats(params));
-';
 } catch (err) {
   console.error(err);
 }

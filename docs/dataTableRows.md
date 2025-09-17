@@ -26,7 +26,6 @@ const params = {
 };
 try {
   console.log(await client.dataTableRows.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -74,7 +73,6 @@ const params = {
 };
 try {
   console.log(await client.dataTableRows.export(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -120,7 +118,6 @@ const params = {
 };
 try {
   console.log(await client.dataTableRows.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -171,7 +168,6 @@ const params = {
 };
 try {
   console.log(await client.dataTableRows.post(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -217,7 +213,6 @@ const params = {
 };
 try {
   console.log(await client.dataTableRows.query(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -268,7 +263,6 @@ const params = {
 };
 try {
   console.log(await client.dataTableRows.truncate(params));
-';
 } catch (err) {
   console.error(err);
 }

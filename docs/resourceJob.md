@@ -27,7 +27,6 @@ const params = {
 };
 try {
   console.log(await client.resourceJob.cancelExecution(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -73,7 +72,6 @@ const params = {
 };
 try {
   console.log(await client.resourceJob.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -120,7 +118,6 @@ const params = {
 };
 try {
   console.log(await client.resourceJob.execute(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -166,7 +163,6 @@ const params = {
 };
 try {
   console.log(await client.resourceJob.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -211,7 +207,6 @@ const params = {
 };
 try {
   console.log(await client.resourceJob.logs(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -259,7 +254,6 @@ const params = {
 };
 try {
   console.log(await client.resourceJob.patch(params));
-';
 } catch (err) {
   console.error(err);
 }

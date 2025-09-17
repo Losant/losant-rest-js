@@ -21,7 +21,6 @@ const params = {
 };
 try {
   console.log(await client.experienceGroups.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -72,7 +71,6 @@ const params = {
 };
 try {
   console.log(await client.experienceGroups.post(params));
-';
 } catch (err) {
   console.error(err);
 }

@@ -24,7 +24,6 @@ const params = {
 };
 try {
   console.log(await client.flows.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -79,7 +78,6 @@ const params = {
 };
 try {
   console.log(await client.flows.getByVersion(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -134,7 +132,6 @@ const params = {
 };
 try {
   console.log(await client.flows.import(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -178,7 +175,6 @@ const params = {
 };
 try {
   console.log(await client.flows.palette(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -222,7 +218,6 @@ const params = {
 };
 try {
   console.log(await client.flows.post(params));
-';
 } catch (err) {
   console.error(err);
 }

@@ -18,7 +18,6 @@ Returns a collection of instances
 const params = {}; // all params are optional
 try {
   console.log(await client.instances.get(params));
-';
 } catch (err) {
   console.error(err);
 }

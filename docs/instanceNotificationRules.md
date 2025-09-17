@@ -21,7 +21,6 @@ const params = {
 };
 try {
   console.log(await client.instanceNotificationRules.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -70,7 +69,6 @@ const params = {
 };
 try {
   console.log(await client.instanceNotificationRules.post(params));
-';
 } catch (err) {
   console.error(err);
 }

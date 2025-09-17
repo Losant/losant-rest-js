@@ -25,7 +25,6 @@ const params = {
 };
 try {
   console.log(await client.events.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -72,7 +71,6 @@ const params = {
 };
 try {
   console.log(await client.events.export(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -116,7 +114,6 @@ const params = {
 };
 try {
   console.log(await client.events.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -167,7 +164,6 @@ const params = {
 };
 try {
   console.log(await client.events.mostRecentBySeverity(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -212,7 +208,6 @@ const params = {
 };
 try {
   console.log(await client.events.patch(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -262,7 +257,6 @@ const params = {
 };
 try {
   console.log(await client.events.post(params));
-';
 } catch (err) {
   console.error(err);
 }

@@ -24,7 +24,6 @@ const params = {
 };
 try {
   console.log(await client.applicationDashboard.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -69,7 +68,6 @@ const params = {
 };
 try {
   console.log(await client.applicationDashboard.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -115,7 +113,6 @@ const params = {
 };
 try {
   console.log(await client.applicationDashboard.patch(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -162,7 +159,6 @@ const params = {
 };
 try {
   console.log(await client.applicationDashboard.sendReport(params));
-';
 } catch (err) {
   console.error(err);
 }

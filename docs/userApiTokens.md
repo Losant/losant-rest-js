@@ -19,7 +19,6 @@ Returns the API tokens for a user
 const params = {}; // all params are optional
 try {
   console.log(await client.userApiTokens.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -66,7 +65,6 @@ const params = {
 };
 try {
   console.log(await client.userApiTokens.post(params));
-';
 } catch (err) {
   console.error(err);
 }

@@ -31,7 +31,6 @@ const params = {
 };
 try {
   console.log(await client.flow.clearStorageEntries(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -76,7 +75,6 @@ const params = {
 };
 try {
   console.log(await client.flow.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -121,7 +119,6 @@ const params = {
 };
 try {
   console.log(await client.flow.errors(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -172,7 +169,6 @@ const params = {
 };
 try {
   console.log(await client.flow.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -218,7 +214,6 @@ const params = {
 };
 try {
   console.log(await client.flow.getLogEntries(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -265,7 +260,6 @@ const params = {
 };
 try {
   console.log(await client.flow.getStorageEntries(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -310,7 +304,6 @@ const params = {
 };
 try {
   console.log(await client.flow.getStorageEntriesMetadata(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -356,7 +349,6 @@ const params = {
 };
 try {
   console.log(await client.flow.patch(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -404,7 +396,6 @@ const params = {
 };
 try {
   console.log(await client.flow.pressVirtualButton(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -451,7 +442,6 @@ const params = {
 };
 try {
   console.log(await client.flow.setStorageEntry(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -497,7 +487,6 @@ const params = {
 };
 try {
   console.log(await client.flow.stats(params));
-';
 } catch (err) {
   console.error(err);
 }

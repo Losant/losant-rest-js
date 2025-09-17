@@ -23,7 +23,6 @@ const params = {
 };
 try {
   console.log(await client.data.export(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -68,7 +67,6 @@ const params = {
 };
 try {
   console.log(await client.data.lastValueQuery(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -113,7 +111,6 @@ const params = {
 };
 try {
   console.log(await client.data.timeSeriesQuery(params));
-';
 } catch (err) {
   console.error(err);
 }

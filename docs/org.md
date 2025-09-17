@@ -32,7 +32,6 @@ const params = {
 };
 try {
   console.log(await client.org.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -75,7 +74,6 @@ const params = {
 };
 try {
   console.log(await client.org.deviceCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -120,7 +118,6 @@ const params = {
 };
 try {
   console.log(await client.org.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -166,7 +163,6 @@ const params = {
 };
 try {
   console.log(await client.org.inviteMember(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -211,7 +207,6 @@ const params = {
 };
 try {
   console.log(await client.org.modifyMember(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -257,7 +252,6 @@ const params = {
 };
 try {
   console.log(await client.org.notebookMinuteCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -303,7 +297,6 @@ const params = {
 };
 try {
   console.log(await client.org.patch(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -349,7 +342,6 @@ const params = {
 };
 try {
   console.log(await client.org.payloadCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -395,7 +387,6 @@ const params = {
 };
 try {
   console.log(await client.org.payloadCountsBreakdown(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -443,7 +434,6 @@ const params = {
 };
 try {
   console.log(await client.org.pendingInvites(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -487,7 +477,6 @@ const params = {
 };
 try {
   console.log(await client.org.removeMember(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -534,7 +523,6 @@ const params = {
 };
 try {
   console.log(await client.org.revokeInvite(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -579,7 +567,6 @@ const params = {
 };
 try {
   console.log(await client.org.transferResources(params));
-';
 } catch (err) {
   console.error(err);
 }

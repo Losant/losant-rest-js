@@ -33,7 +33,6 @@ const params = {
 };
 try {
   console.log(await client.devices.attributeNames(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -80,7 +79,6 @@ const params = {
 };
 try {
   console.log(await client.devices.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -125,7 +123,6 @@ const params = {
 };
 try {
   console.log(await client.devices.deviceNames(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -170,7 +167,6 @@ const params = {
 };
 try {
   console.log(await client.devices.export(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -216,7 +212,6 @@ const params = {
 };
 try {
   console.log(await client.devices.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -273,7 +268,6 @@ const params = {
 };
 try {
   console.log(await client.devices.getCompositeState(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -325,7 +319,6 @@ const params = {
 };
 try {
   console.log(await client.devices.patch(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -370,7 +363,6 @@ const params = {
 };
 try {
   console.log(await client.devices.payloadCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -415,7 +407,6 @@ const params = {
 };
 try {
   console.log(await client.devices.post(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -462,7 +453,6 @@ const params = {
 };
 try {
   console.log(await client.devices.removeData(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -507,7 +497,6 @@ const params = {
 };
 try {
   console.log(await client.devices.restore(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -553,7 +542,6 @@ const params = {
 };
 try {
   console.log(await client.devices.sendCommand(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -598,7 +586,6 @@ const params = {
 };
 try {
   console.log(await client.devices.tagKeys(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -644,7 +631,6 @@ const params = {
 };
 try {
   console.log(await client.devices.tagValues(params));
-';
 } catch (err) {
   console.error(err);
 }

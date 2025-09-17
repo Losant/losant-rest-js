@@ -27,7 +27,6 @@ const params = {
 };
 try {
   console.log(await client.instanceSandbox.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -72,7 +71,6 @@ const params = {
 };
 try {
   console.log(await client.instanceSandbox.deviceCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -119,7 +117,6 @@ const params = {
 };
 try {
   console.log(await client.instanceSandbox.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -166,7 +163,6 @@ const params = {
 };
 try {
   console.log(await client.instanceSandbox.notebookMinuteCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -213,7 +209,6 @@ const params = {
 };
 try {
   console.log(await client.instanceSandbox.payloadCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -261,7 +256,6 @@ const params = {
 };
 try {
   console.log(await client.instanceSandbox.payloadCountsBreakdown(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -311,7 +305,6 @@ const params = {
 };
 try {
   console.log(await client.instanceSandbox.undelete(params));
-';
 } catch (err) {
   console.error(err);
 }

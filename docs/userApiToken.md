@@ -22,7 +22,6 @@ const params = {
 };
 try {
   console.log(await client.userApiToken.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -65,7 +64,6 @@ const params = {
 };
 try {
   console.log(await client.userApiToken.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -109,7 +107,6 @@ const params = {
 };
 try {
   console.log(await client.userApiToken.patch(params));
-';
 } catch (err) {
   console.error(err);
 }

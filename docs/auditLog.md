@@ -21,7 +21,6 @@ const params = {
 };
 try {
   console.log(await client.auditLog.get(params));
-';
 } catch (err) {
   console.error(err);
 }

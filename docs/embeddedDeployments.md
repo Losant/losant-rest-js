@@ -24,7 +24,6 @@ const params = {
 };
 try {
   console.log(await client.embeddedDeployments.export(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -68,7 +67,6 @@ const params = {
 };
 try {
   console.log(await client.embeddedDeployments.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -119,7 +117,6 @@ const params = {
 };
 try {
   console.log(await client.embeddedDeployments.release(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -164,7 +161,6 @@ const params = {
 };
 try {
   console.log(await client.embeddedDeployments.remove(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -209,7 +205,6 @@ const params = {
 };
 try {
   console.log(await client.embeddedDeployments.replace(params));
-';
 } catch (err) {
   console.error(err);
 }

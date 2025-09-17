@@ -24,7 +24,6 @@ const params = {
 };
 try {
   console.log(await client.experienceView.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -69,7 +68,6 @@ const params = {
 };
 try {
   console.log(await client.experienceView.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -115,7 +113,6 @@ const params = {
 };
 try {
   console.log(await client.experienceView.linkedResources(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -163,7 +160,6 @@ const params = {
 };
 try {
   console.log(await client.experienceView.patch(params));
-';
 } catch (err) {
   console.error(err);
 }

@@ -39,7 +39,6 @@ const params = {
 };
 try {
   console.log(await client.me.addRecentItem(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -81,7 +80,6 @@ const params = {
 };
 try {
   console.log(await client.me.changePassword(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -123,7 +121,6 @@ const params = {
 };
 try {
   console.log(await client.me.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -163,7 +160,6 @@ Returns device counts by day for the time range specified for all applications t
 const params = {}; // all params are optional
 try {
   console.log(await client.me.deviceCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -206,7 +202,6 @@ const params = {
 };
 try {
   console.log(await client.me.disableTwoFactorAuth(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -246,7 +241,6 @@ Disconnects the user from Github
 const params = {}; // all params are optional
 try {
   console.log(await client.me.disconnectGithub(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -287,7 +281,6 @@ const params = {
 };
 try {
   console.log(await client.me.enableTwoFactorAuth(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -329,7 +322,6 @@ const params = {
 };
 try {
   console.log(await client.me.fetchRecentItems(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -370,7 +362,6 @@ Returns the multi-factor authentication key for the current user
 const params = {}; // all params are optional
 try {
   console.log(await client.me.generateTwoFactorAuth(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -409,7 +400,6 @@ Retrieves information on the current user
 const params = {}; // all params are optional
 try {
   console.log(await client.me.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -452,7 +442,6 @@ const params = {
 };
 try {
   console.log(await client.me.invite(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -493,7 +482,6 @@ Retrieves pending organization invitations for a user
 const params = {}; // all params are optional
 try {
   console.log(await client.me.invites(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -532,7 +520,6 @@ Returns notebook execution usage by day for the time range specified for all app
 const params = {}; // all params are optional
 try {
   console.log(await client.me.notebookMinuteCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -575,7 +562,6 @@ const params = {
 };
 try {
   console.log(await client.me.patch(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -617,7 +603,6 @@ Returns payload counts for the time range specified for all applications the cur
 const params = {}; // all params are optional
 try {
   console.log(await client.me.payloadCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -659,7 +644,6 @@ Returns payload counts per resolution in the time range specified for all applic
 const params = {}; // all params are optional
 try {
   console.log(await client.me.payloadCountsBreakdown(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -703,7 +687,6 @@ Returns a new auth token based on the current auth token
 const params = {}; // all params are optional
 try {
   console.log(await client.me.refreshToken(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -746,7 +729,6 @@ const params = {
 };
 try {
   console.log(await client.me.respondToInvite(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -791,7 +773,6 @@ const params = {
 };
 try {
   console.log(await client.me.transferResources(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -831,7 +812,6 @@ Sends an email verification to the user
 const params = {}; // all params are optional
 try {
   console.log(await client.me.verifyEmail(params));
-';
 } catch (err) {
   console.error(err);
 }

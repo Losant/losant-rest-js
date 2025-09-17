@@ -24,7 +24,6 @@ const params = {
 };
 try {
   console.log(await client.auth.authenticateDevice(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -65,7 +64,6 @@ const params = {
 };
 try {
   console.log(await client.auth.authenticateUser(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -106,7 +104,6 @@ const params = {
 };
 try {
   console.log(await client.auth.authenticateUserGithub(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -147,7 +144,6 @@ const params = {
 };
 try {
   console.log(await client.auth.authenticateUserSaml(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -188,7 +184,6 @@ const params = {
 };
 try {
   console.log(await client.auth.ssoDomain(params));
-';
 } catch (err) {
   console.error(err);
 }

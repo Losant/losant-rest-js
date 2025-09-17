@@ -21,7 +21,6 @@ const params = {
 };
 try {
   console.log(await client.instanceMembers.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -69,7 +68,6 @@ const params = {
 };
 try {
   console.log(await client.instanceMembers.post(params));
-';
 } catch (err) {
   console.error(err);
 }

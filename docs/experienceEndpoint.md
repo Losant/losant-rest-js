@@ -24,7 +24,6 @@ const params = {
 };
 try {
   console.log(await client.experienceEndpoint.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -70,7 +69,6 @@ const params = {
 };
 try {
   console.log(await client.experienceEndpoint.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -116,7 +114,6 @@ const params = {
 };
 try {
   console.log(await client.experienceEndpoint.linkedResources(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -164,7 +161,6 @@ const params = {
 };
 try {
   console.log(await client.experienceEndpoint.patch(params));
-';
 } catch (err) {
   console.error(err);
 }

@@ -23,7 +23,6 @@ const params = {
 };
 try {
   console.log(await client.webhook.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -69,7 +68,6 @@ const params = {
 };
 try {
   console.log(await client.webhook.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -115,7 +113,6 @@ const params = {
 };
 try {
   console.log(await client.webhook.patch(params));
-';
 } catch (err) {
   console.error(err);
 }

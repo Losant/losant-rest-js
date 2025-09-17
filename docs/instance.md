@@ -27,7 +27,6 @@ const params = {
 };
 try {
   console.log(await client.instance.deviceCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -72,7 +71,6 @@ const params = {
 };
 try {
   console.log(await client.instance.generateReport(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -115,7 +113,6 @@ const params = {
 };
 try {
   console.log(await client.instance.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -158,7 +155,6 @@ const params = {
 };
 try {
   console.log(await client.instance.historicalSummaries(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -207,7 +203,6 @@ const params = {
 };
 try {
   console.log(await client.instance.notebookMinuteCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -253,7 +248,6 @@ const params = {
 };
 try {
   console.log(await client.instance.patch(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -296,7 +290,6 @@ const params = {
 };
 try {
   console.log(await client.instance.payloadCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -342,7 +335,6 @@ const params = {
 };
 try {
   console.log(await client.instance.payloadCountsBreakdown(params));
-';
 } catch (err) {
   console.error(err);
 }

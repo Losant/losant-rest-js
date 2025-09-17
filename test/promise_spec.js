@@ -4,36 +4,35 @@ import nock from 'nock';
 
 describe('promise tests', function() {
 
-  it('should correctly make an auth call', function(done) {
+  it('should correctly make an auth call', async function() {
     const client = api.createClient();
 
     nock('https://api.losant.com', {
       reqheaders: {
         Accept: 'application/json',
       }
-    }).post('/auth/user', {
+    })
+    .post('/auth/user', {
       email: 'myemail@myemail.com',
       password: 'mypassword'
-    }).query({ _actions: false, _embedded: true, _links: true})
+    })
+    .query({ _actions: false, _embedded: true, _links: true})
     .reply(200, '{"userId":"theUserId","token":"an auth token string"}',
       { 'Content-Type': 'application/json' });
 
-    client.auth.authenticateUser({ credentials: {
-      email: 'myemail@myemail.com',
-      password: 'mypassword'
-    }}).then(function(response) {
-      response.should.deepEqual({
-        userId: 'theUserId',
-        token: 'an auth token string',
-      });
-      nock.isDone().should.be.true();
-      done();
-    }).catch(function(err) {
-      done(err);
+    const response = await client.auth.authenticateUser({
+      credentials: {
+        email: 'myemail@myemail.com',
+        password: 'mypassword'
+      }
+    });
+    response.should.deepEqual({
+      userId: 'theUserId',
+      token: 'an auth token string',
     });
   });
 
-  it('should correctly make a call with a token', function(done){
+  it('should correctly make a call with a token', async function() {
     const client = api.createClient({ accessToken: 'my token' });
 
     nock('https://api.losant.com', {
@@ -41,23 +40,19 @@ describe('promise tests', function() {
         Accept: 'application/json',
         Authorization: 'Bearer my token'
       }
-    }).get('/applications')
+    })
+    .get('/applications')
     .query({ _actions: false, _embedded: true, _links: true})
     .reply(200, '{"count":0,"items":[]}', { 'Content-Type': 'application/json' });
 
-    client.applications.get().then(function(response) {
-      response.should.deepEqual({
-        count: 0,
-        items: [],
-      });
-      nock.isDone().should.be.true();
-      done();
-    }).catch(function(err) {
-      done(err);
+    const response = await client.applications.get();
+    response.should.deepEqual({
+      count: 0,
+      items: [],
     });
   });
 
-  it('should correctly make calls with nested query params', function(done){
+  it('should correctly make calls with nested query params', async function() {
     const client = api.createClient({ accessToken: 'my token' });
 
     nock('https://api.losant.com', {
@@ -65,7 +60,8 @@ describe('promise tests', function() {
         Accept: 'application/json',
         Authorization: 'Bearer my token'
       }
-    }).get('/applications/appId/devices')
+    })
+    .get('/applications/appId/devices')
     .query({ _actions: false, _embedded: true, _links: true, tagFilter: [
       { key: 'key2' },
       { key: 'key1', value: 'value1' },
@@ -73,26 +69,21 @@ describe('promise tests', function() {
     ]})
     .reply(200, '{"count":0,"items":[]}', { 'Content-Type': 'application/json' });
 
-    client.devices.get({
+    const response = await client.devices.get({
       applicationId: 'appId',
       tagFilter: [
         { key: 'key2' },
         { key: 'key1', value: 'value1' },
         { value: 'value2' },
       ]
-    }).then(function(response) {
-      response.should.deepEqual({
-        count: 0,
-        items: [],
-      });
-      nock.isDone().should.be.true();
-      done();
-    }).catch(function(err) {
-      done(err);
+    });
+    response.should.deepEqual({
+      count: 0,
+      items: [],
     });
   });
 
-  it('should correctly make a call with an error', function(done){
+  it('should correctly make a call with an error', async function() {
     const client = api.createClient({ accessToken: 'my token' });
 
     nock('https://api.losant.com', {
@@ -100,19 +91,16 @@ describe('promise tests', function() {
         Accept: 'application/json',
         Authorization: 'Bearer my token'
       }
-    }).get('/applications/badId')
+    })
+    .get('/applications/badId')
     .query({ _actions: false, _embedded: true, _links: true })
     .reply(404, '{"type":"NotFound","message":"Application was not found"}',
       { 'Content-Type': 'application/json' });
 
-    client.application.get({ applicationId: 'badId' }).then(function(response) {
-      done(new Error('Should not be here - ' + JSON.stringify(response)));
-    }).catch(function(err) {
-      err.statusCode.should.equal(404);
-      err.type.should.equal('NotFound');
-      err.message.should.equal('Application was not found');
-      nock.isDone().should.be.true();
-      done();
+    const response = await client.application.get({ applicationId: 'badId' }).should.be.rejectedWith({
+      message: 'Application was not found',
+      type: 'NotFound',
+      statusCode: 404
     });
   });
 

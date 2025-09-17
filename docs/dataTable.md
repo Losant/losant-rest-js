@@ -26,7 +26,6 @@ const params = {
 };
 try {
   console.log(await client.dataTable.addColumn(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -72,7 +71,6 @@ const params = {
 };
 try {
   console.log(await client.dataTable.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -117,7 +115,6 @@ const params = {
 };
 try {
   console.log(await client.dataTable.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -163,7 +160,6 @@ const params = {
 };
 try {
   console.log(await client.dataTable.patch(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -210,7 +206,6 @@ const params = {
 };
 try {
   console.log(await client.dataTable.removeColumn(params));
-';
 } catch (err) {
   console.error(err);
 }

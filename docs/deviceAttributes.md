@@ -22,7 +22,6 @@ const params = {
 };
 try {
   console.log(await client.deviceAttributes.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -72,7 +71,6 @@ const params = {
 };
 try {
   console.log(await client.deviceAttributes.post(params));
-';
 } catch (err) {
   console.error(err);
 }

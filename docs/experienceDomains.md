@@ -21,7 +21,6 @@ const params = {
 };
 try {
   console.log(await client.experienceDomains.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -65,7 +64,6 @@ const params = {
 };
 try {
   console.log(await client.experienceDomains.post(params));
-';
 } catch (err) {
   console.error(err);
 }

@@ -24,7 +24,6 @@ const params = {
 };
 try {
   console.log(await client.flowVersions.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -71,7 +70,6 @@ const params = {
 };
 try {
   console.log(await client.flowVersions.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -125,7 +123,6 @@ const params = {
 };
 try {
   console.log(await client.flowVersions.post(params));
-';
 } catch (err) {
   console.error(err);
 }

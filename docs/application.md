@@ -41,7 +41,6 @@ const params = {
 };
 try {
   console.log(await client.application.applyTemplate(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -87,7 +86,6 @@ const params = {
 };
 try {
   console.log(await client.application.archiveData(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -131,7 +129,6 @@ const params = {
 };
 try {
   console.log(await client.application.backfillArchiveData(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -174,7 +171,6 @@ const params = {
 };
 try {
   console.log(await client.application.clone(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -221,7 +217,6 @@ const params = {
 };
 try {
   console.log(await client.application.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -264,7 +259,6 @@ const params = {
 };
 try {
   console.log(await client.application.deviceCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -310,7 +304,6 @@ const params = {
 };
 try {
   console.log(await client.application.export(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -355,7 +348,6 @@ const params = {
 };
 try {
   console.log(await client.application.fullDataTablesArchive(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -398,7 +390,6 @@ const params = {
 };
 try {
   console.log(await client.application.fullEventsArchive(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -441,7 +432,6 @@ const params = {
 };
 try {
   console.log(await client.application.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -487,7 +477,6 @@ const params = {
 };
 try {
   console.log(await client.application.globals(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -531,7 +520,6 @@ const params = {
 };
 try {
   console.log(await client.application.import(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -578,7 +566,6 @@ const params = {
 };
 try {
   console.log(await client.application.importLogs(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -624,7 +611,6 @@ const params = {
 };
 try {
   console.log(await client.application.mqttPublishMessage(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -668,7 +654,6 @@ const params = {
 };
 try {
   console.log(await client.application.notebookMinuteCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -714,7 +699,6 @@ const params = {
 };
 try {
   console.log(await client.application.patch(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -760,7 +744,6 @@ const params = {
 };
 try {
   console.log(await client.application.payloadCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -806,7 +789,6 @@ const params = {
 };
 try {
   console.log(await client.application.payloadCountsBreakdown(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -854,7 +836,6 @@ const params = {
 };
 try {
   console.log(await client.application.readme(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -898,7 +879,6 @@ const params = {
 };
 try {
   console.log(await client.application.readmePatch(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -943,7 +923,6 @@ const params = {
 };
 try {
   console.log(await client.application.search(params));
-';
 } catch (err) {
   console.error(err);
 }

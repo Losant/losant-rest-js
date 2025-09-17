@@ -25,7 +25,6 @@ const params = {
 };
 try {
   console.log(await client.instanceNotificationRule.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -71,7 +70,6 @@ const params = {
 };
 try {
   console.log(await client.instanceNotificationRule.evaluate(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -117,7 +115,6 @@ const params = {
 };
 try {
   console.log(await client.instanceNotificationRule.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -162,7 +159,6 @@ const params = {
 };
 try {
   console.log(await client.instanceNotificationRule.logs(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -210,7 +206,6 @@ const params = {
 };
 try {
   console.log(await client.instanceNotificationRule.patch(params));
-';
 } catch (err) {
   console.error(err);
 }

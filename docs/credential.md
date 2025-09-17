@@ -24,7 +24,6 @@ const params = {
 };
 try {
   console.log(await client.credential.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -69,7 +68,6 @@ const params = {
 };
 try {
   console.log(await client.credential.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -114,7 +112,6 @@ const params = {
 };
 try {
   console.log(await client.credential.linkedResources(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -161,7 +158,6 @@ const params = {
 };
 try {
   console.log(await client.credential.patch(params));
-';
 } catch (err) {
   console.error(err);
 }

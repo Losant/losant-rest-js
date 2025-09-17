@@ -27,7 +27,6 @@ const params = {
 };
 try {
   console.log(await client.instanceOrg.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -72,7 +71,6 @@ const params = {
 };
 try {
   console.log(await client.instanceOrg.deviceCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -119,7 +117,6 @@ const params = {
 };
 try {
   console.log(await client.instanceOrg.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -165,7 +162,6 @@ const params = {
 };
 try {
   console.log(await client.instanceOrg.notebookMinuteCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -213,7 +209,6 @@ const params = {
 };
 try {
   console.log(await client.instanceOrg.patch(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -260,7 +255,6 @@ const params = {
 };
 try {
   console.log(await client.instanceOrg.payloadCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -308,7 +302,6 @@ const params = {
 };
 try {
   console.log(await client.instanceOrg.payloadCountsBreakdown(params));
-';
 } catch (err) {
   console.error(err);
 }

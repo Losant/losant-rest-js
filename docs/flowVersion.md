@@ -27,7 +27,6 @@ const params = {
 };
 try {
   console.log(await client.flowVersion.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -74,7 +73,6 @@ const params = {
 };
 try {
   console.log(await client.flowVersion.errors(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -126,7 +124,6 @@ const params = {
 };
 try {
   console.log(await client.flowVersion.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -174,7 +171,6 @@ const params = {
 };
 try {
   console.log(await client.flowVersion.getLogEntries(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -224,7 +220,6 @@ const params = {
 };
 try {
   console.log(await client.flowVersion.patch(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -273,7 +268,6 @@ const params = {
 };
 try {
   console.log(await client.flowVersion.stats(params));
-';
 } catch (err) {
   console.error(err);
 }

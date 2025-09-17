@@ -25,7 +25,6 @@ const params = {
 };
 try {
   console.log(await client.deviceRecipe.bulkCreate(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -72,7 +71,6 @@ const params = {
 };
 try {
   console.log(await client.deviceRecipe.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -117,7 +115,6 @@ const params = {
 };
 try {
   console.log(await client.deviceRecipe.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -165,7 +162,6 @@ const params = {
 };
 try {
   console.log(await client.deviceRecipe.patch(params));
-';
 } catch (err) {
   console.error(err);
 }

@@ -21,7 +21,6 @@ const params = {
 };
 try {
   console.log(await client.experienceUsers.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -74,7 +73,6 @@ const params = {
 };
 try {
   console.log(await client.experienceUsers.post(params));
-';
 } catch (err) {
   console.error(err);
 }

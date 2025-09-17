@@ -23,7 +23,6 @@ const params = {
 };
 try {
   console.log(await client.applicationCertificateAuthority.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -68,7 +67,6 @@ const params = {
 };
 try {
   console.log(await client.applicationCertificateAuthority.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -114,7 +112,6 @@ const params = {
 };
 try {
   console.log(await client.applicationCertificateAuthority.patch(params));
-';
 } catch (err) {
   console.error(err);
 }

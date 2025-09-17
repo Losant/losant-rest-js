@@ -21,7 +21,6 @@ const params = {
 };
 try {
   console.log(await client.deviceRecipes.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -73,7 +72,6 @@ const params = {
 };
 try {
   console.log(await client.deviceRecipes.post(params));
-';
 } catch (err) {
   console.error(err);
 }

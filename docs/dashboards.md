@@ -19,7 +19,6 @@ Returns the dashboards the current user has permission to see
 const params = {}; // all params are optional
 try {
   console.log(await client.dashboards.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -68,7 +67,6 @@ const params = {
 };
 try {
   console.log(await client.dashboards.post(params));
-';
 } catch (err) {
   console.error(err);
 }

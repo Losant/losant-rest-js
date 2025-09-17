@@ -21,7 +21,6 @@ const params = {
 };
 try {
   console.log(await client.integrations.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -71,7 +70,6 @@ const params = {
 };
 try {
   console.log(await client.integrations.post(params));
-';
 } catch (err) {
   console.error(err);
 }

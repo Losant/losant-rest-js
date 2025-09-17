@@ -22,7 +22,6 @@ const params = {
 };
 try {
   console.log(await client.orgInvites.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -65,7 +64,6 @@ const params = {
 };
 try {
   console.log(await client.orgInvites.post(params));
-';
 } catch (err) {
   console.error(err);
 }

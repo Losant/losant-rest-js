@@ -24,7 +24,6 @@ const params = {
 };
 try {
   console.log(await client.dashboard.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -67,7 +66,6 @@ const params = {
 };
 try {
   console.log(await client.dashboard.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -110,7 +108,6 @@ const params = {
 };
 try {
   console.log(await client.dashboard.patch(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -155,7 +152,6 @@ const params = {
 };
 try {
   console.log(await client.dashboard.sendReport(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -200,7 +196,6 @@ const params = {
 };
 try {
   console.log(await client.dashboard.validateContext(params));
-';
 } catch (err) {
   console.error(err);
 }

@@ -22,7 +22,6 @@ const params = {
 };
 try {
   console.log(await client.experience.bootstrap(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -66,7 +65,6 @@ const params = {
 };
 try {
   console.log(await client.experience.delete(params));
-';
 } catch (err) {
   console.error(err);
 }

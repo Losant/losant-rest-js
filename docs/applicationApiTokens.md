@@ -21,7 +21,6 @@ const params = {
 };
 try {
   console.log(await client.applicationApiTokens.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -70,7 +69,6 @@ const params = {
 };
 try {
   console.log(await client.applicationApiTokens.post(params));
-';
 } catch (err) {
   console.error(err);
 }

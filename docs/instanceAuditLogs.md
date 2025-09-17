@@ -20,7 +20,6 @@ const params = {
 };
 try {
   console.log(await client.instanceAuditLogs.get(params));
-';
 } catch (err) {
   console.error(err);
 }

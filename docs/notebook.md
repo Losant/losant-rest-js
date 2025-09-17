@@ -30,7 +30,6 @@ const params = {
 };
 try {
   console.log(await client.notebook.cancelExecution(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -76,7 +75,6 @@ const params = {
 };
 try {
   console.log(await client.notebook.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -122,7 +120,6 @@ const params = {
 };
 try {
   console.log(await client.notebook.execute(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -168,7 +165,6 @@ const params = {
 };
 try {
   console.log(await client.notebook.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -213,7 +209,6 @@ const params = {
 };
 try {
   console.log(await client.notebook.logs(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -260,7 +255,6 @@ const params = {
 };
 try {
   console.log(await client.notebook.notebookMinuteCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -308,7 +302,6 @@ const params = {
 };
 try {
   console.log(await client.notebook.patch(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -355,7 +348,6 @@ const params = {
 };
 try {
   console.log(await client.notebook.requestInputDataExport(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -402,7 +394,6 @@ const params = {
 };
 try {
   console.log(await client.notebook.upload(params));
-';
 } catch (err) {
   console.error(err);
 }

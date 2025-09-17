@@ -25,7 +25,6 @@ const params = {
 };
 try {
   console.log(await client.instanceCustomNode.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -70,7 +69,6 @@ const params = {
 };
 try {
   console.log(await client.instanceCustomNode.errors(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -119,7 +117,6 @@ const params = {
 };
 try {
   console.log(await client.instanceCustomNode.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -165,7 +162,6 @@ const params = {
 };
 try {
   console.log(await client.instanceCustomNode.patch(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -211,7 +207,6 @@ const params = {
 };
 try {
   console.log(await client.instanceCustomNode.stats(params));
-';
 } catch (err) {
   console.error(err);
 }

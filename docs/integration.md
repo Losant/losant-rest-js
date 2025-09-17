@@ -23,7 +23,6 @@ const params = {
 };
 try {
   console.log(await client.integration.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -69,7 +68,6 @@ const params = {
 };
 try {
   console.log(await client.integration.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -115,7 +113,6 @@ const params = {
 };
 try {
   console.log(await client.integration.patch(params));
-';
 } catch (err) {
   console.error(err);
 }

@@ -23,7 +23,6 @@ const params = {
 };
 try {
   console.log(await client.edgeDeployments.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -75,7 +74,6 @@ const params = {
 };
 try {
   console.log(await client.edgeDeployments.release(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -120,7 +118,6 @@ const params = {
 };
 try {
   console.log(await client.edgeDeployments.remove(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -165,7 +162,6 @@ const params = {
 };
 try {
   console.log(await client.edgeDeployments.replace(params));
-';
 } catch (err) {
   console.error(err);
 }

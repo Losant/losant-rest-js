@@ -19,7 +19,6 @@ Returns the organizations associated with the current user
 const params = {}; // all params are optional
 try {
   console.log(await client.orgs.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -68,7 +67,6 @@ const params = {
 };
 try {
   console.log(await client.orgs.post(params));
-';
 } catch (err) {
   console.error(err);
 }

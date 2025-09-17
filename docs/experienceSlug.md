@@ -23,7 +23,6 @@ const params = {
 };
 try {
   console.log(await client.experienceSlug.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -68,7 +67,6 @@ const params = {
 };
 try {
   console.log(await client.experienceSlug.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -114,7 +112,6 @@ const params = {
 };
 try {
   console.log(await client.experienceSlug.patch(params));
-';
 } catch (err) {
   console.error(err);
 }

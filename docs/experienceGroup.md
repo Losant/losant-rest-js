@@ -23,7 +23,6 @@ const params = {
 };
 try {
   console.log(await client.experienceGroup.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -68,7 +67,6 @@ const params = {
 };
 try {
   console.log(await client.experienceGroup.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -116,7 +114,6 @@ const params = {
 };
 try {
   console.log(await client.experienceGroup.patch(params));
-';
 } catch (err) {
   console.error(err);
 }

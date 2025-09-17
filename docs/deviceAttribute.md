@@ -24,7 +24,6 @@ const params = {
 };
 try {
   console.log(await client.deviceAttribute.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -71,7 +70,6 @@ const params = {
 };
 try {
   console.log(await client.deviceAttribute.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -119,7 +117,6 @@ const params = {
 };
 try {
   console.log(await client.deviceAttribute.patch(params));
-';
 } catch (err) {
   console.error(err);
 }

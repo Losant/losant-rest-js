@@ -25,7 +25,6 @@ const params = {
 };
 try {
   console.log(await client.file.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -70,7 +69,6 @@ const params = {
 };
 try {
   console.log(await client.file.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -115,7 +113,6 @@ const params = {
 };
 try {
   console.log(await client.file.move(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -163,7 +160,6 @@ const params = {
 };
 try {
   console.log(await client.file.patch(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -210,7 +206,6 @@ const params = {
 };
 try {
   console.log(await client.file.upload(params));
-';
 } catch (err) {
   console.error(err);
 }

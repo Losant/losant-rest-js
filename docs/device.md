@@ -34,7 +34,6 @@ const params = {
 };
 try {
   console.log(await client.device.delete(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -79,7 +78,6 @@ const params = {
 };
 try {
   console.log(await client.device.export(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -130,7 +128,6 @@ const params = {
 };
 try {
   console.log(await client.device.get(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -178,7 +175,6 @@ const params = {
 };
 try {
   console.log(await client.device.getCommand(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -229,7 +225,6 @@ const params = {
 };
 try {
   console.log(await client.device.getCompositeState(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -277,7 +272,6 @@ const params = {
 };
 try {
   console.log(await client.device.getLogEntries(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -328,7 +322,6 @@ const params = {
 };
 try {
   console.log(await client.device.getState(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -380,7 +373,6 @@ const params = {
 };
 try {
   console.log(await client.device.patch(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -428,7 +420,6 @@ const params = {
 };
 try {
   console.log(await client.device.payloadCounts(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -475,7 +466,6 @@ const params = {
 };
 try {
   console.log(await client.device.payloadCountsBreakdown(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -523,7 +513,6 @@ const params = {
 };
 try {
   console.log(await client.device.removeData(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -571,7 +560,6 @@ const params = {
 };
 try {
   console.log(await client.device.sendCommand(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -618,7 +606,6 @@ const params = {
 };
 try {
   console.log(await client.device.sendState(params));
-';
 } catch (err) {
   console.error(err);
 }
@@ -665,7 +652,6 @@ const params = {
 };
 try {
   console.log(await client.device.setConnectionStatus(params));
-';
 } catch (err) {
   console.error(err);
 }
