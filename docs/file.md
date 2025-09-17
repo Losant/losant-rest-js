@@ -19,21 +19,15 @@ parameters and the potential responses.
 Deletes a file or directory, if directory all the contents that directory will also be removed.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   fileId: myFileId
 };
-
-// with callbacks
-client.file.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.file.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.file.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -69,21 +63,15 @@ all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, 
 Retrieves information on a file
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   fileId: myFileId
 };
-
-// with callbacks
-client.file.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.file.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.file.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -119,21 +107,15 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Move a file or the entire contents of a directory
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   fileId: myFileId
 };
-
-// with callbacks
-client.file.move(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.file.move(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.file.move(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -171,22 +153,16 @@ all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, 
 Reupload a file
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   fileId: myFileId,
   updates: myUpdates
 };
-
-// with callbacks
-client.file.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.file.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.file.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -223,22 +199,16 @@ all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, 
 Uploads the file
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   fileId: myFileId,
   file: myFile
 };
-
-// with callbacks
-client.file.upload(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.file.upload(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.file.upload(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

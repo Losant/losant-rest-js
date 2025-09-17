@@ -18,21 +18,15 @@ parameters and the potential responses.
 Deletes an experience endpoint
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceEndpointId: myExperienceEndpointId
 };
-
-// with callbacks
-client.experienceEndpoint.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experienceEndpoint.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceEndpoint.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -69,21 +63,15 @@ all.Application, all.Organization, all.User, experienceEndpoint.*, or experience
 Retrieves information on an experience endpoint
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceEndpointId: myExperienceEndpointId
 };
-
-// with callbacks
-client.experienceEndpoint.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experienceEndpoint.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceEndpoint.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -120,21 +108,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Retrieves information on resources linked to an experience endpoint
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceEndpointId: myExperienceEndpointId
 };
-
-// with callbacks
-client.experienceEndpoint.linkedResources(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experienceEndpoint.linkedResources(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceEndpoint.linkedResources(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -172,22 +154,16 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about an experience endpoint
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceEndpointId: myExperienceEndpointId,
   experienceEndpoint: myExperienceEndpoint
 };
-
-// with callbacks
-client.experienceEndpoint.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experienceEndpoint.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceEndpoint.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

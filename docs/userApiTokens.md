@@ -16,18 +16,12 @@ parameters and the potential responses.
 Returns the API tokens for a user
 
 ```javascript
-var params = {}; // all params are optional
-
-// with callbacks
-client.userApiTokens.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.userApiTokens.get(params)
-  .then(console.log)
-  .catch(console.error);
+const params = {}; // all params are optional
+try {
+  console.log(await client.userApiTokens.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -66,20 +60,14 @@ all.User, all.User.read, userApiTokens.*, or userApiTokens.get.
 Create a new API token for an user
 
 ```javascript
-var params = {
+const params = {
   apiToken: myApiToken
 };
-
-// with callbacks
-client.userApiTokens.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.userApiTokens.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.userApiTokens.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

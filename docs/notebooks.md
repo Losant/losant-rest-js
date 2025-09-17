@@ -16,20 +16,14 @@ parameters and the potential responses.
 Returns the notebooks for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.notebooks.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.notebooks.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebooks.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -70,21 +64,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Create a new notebook for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   notebook: myNotebook
 };
-
-// with callbacks
-client.notebooks.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.notebooks.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebooks.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

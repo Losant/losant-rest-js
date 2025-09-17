@@ -20,22 +20,16 @@ parameters and the potential responses.
 Marks a specific resource job execution for cancellation
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   resourceJobId: myResourceJobId,
   executionId: myExecutionId
 };
-
-// with callbacks
-client.resourceJob.cancelExecution(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.resourceJob.cancelExecution(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.resourceJob.cancelExecution(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -72,21 +66,15 @@ all.Application, all.Organization, all.User, resourceJob.*, or resourceJob.cance
 Deletes a resource job
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   resourceJobId: myResourceJobId
 };
-
-// with callbacks
-client.resourceJob.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.resourceJob.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.resourceJob.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -123,22 +111,16 @@ all.Application, all.Organization, all.User, resourceJob.*, or resourceJob.delet
 Queues the execution of a resource job
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   resourceJobId: myResourceJobId,
   executionOptions: myExecutionOptions
 };
-
-// with callbacks
-client.resourceJob.execute(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.resourceJob.execute(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.resourceJob.execute(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -175,21 +157,15 @@ all.Application, all.Organization, all.User, resourceJob.*, or resourceJob.execu
 Returns a resource job
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   resourceJobId: myResourceJobId
 };
-
-// with callbacks
-client.resourceJob.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.resourceJob.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.resourceJob.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -225,21 +201,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Retrieves information on resource job executions
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   resourceJobId: myResourceJobId
 };
-
-// with callbacks
-client.resourceJob.logs(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.resourceJob.logs(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.resourceJob.logs(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -277,22 +247,16 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Update a resource job
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   resourceJobId: myResourceJobId,
   resourceJob: myResourceJob
 };
-
-// with callbacks
-client.resourceJob.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.resourceJob.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.resourceJob.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

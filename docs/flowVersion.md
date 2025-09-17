@@ -20,22 +20,16 @@ parameters and the potential responses.
 Deletes a flow version
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   flowVersionId: myFlowVersionId
 };
-
-// with callbacks
-client.flowVersion.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flowVersion.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flowVersion.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -72,22 +66,16 @@ all.Application, all.Organization, all.User, flowVersion.*, or flowVersion.delet
 Get information about errors that occurred during runs of this workflow version
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   flowVersionId: myFlowVersionId
 };
-
-// with callbacks
-client.flowVersion.errors(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flowVersion.errors(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flowVersion.errors(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -129,22 +117,16 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Retrieves information on a flow version
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   flowVersionId: myFlowVersionId
 };
-
-// with callbacks
-client.flowVersion.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flowVersion.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flowVersion.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -182,22 +164,16 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Retrieve the recent log entries about runs of this workflow version
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   flowVersionId: myFlowVersionId
 };
-
-// with callbacks
-client.flowVersion.getLogEntries(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flowVersion.getLogEntries(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flowVersion.getLogEntries(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -236,23 +212,17 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about a flow version
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   flowVersionId: myFlowVersionId,
   flowVersion: myFlowVersion
 };
-
-// with callbacks
-client.flowVersion.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flowVersion.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flowVersion.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -291,22 +261,16 @@ all.Application, all.Organization, all.User, flowVersion.*, or flowVersion.patch
 Get statistics about workflow runs for this workflow version
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   flowVersionId: myFlowVersionId
 };
-
-// with callbacks
-client.flowVersion.stats(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flowVersion.stats(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flowVersion.stats(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

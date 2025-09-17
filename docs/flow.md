@@ -25,21 +25,15 @@ parameters and the potential responses.
 Clear all storage entries
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
-
-// with callbacks
-client.flow.clearStorageEntries(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flow.clearStorageEntries(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flow.clearStorageEntries(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -75,21 +69,15 @@ all.Application, all.Organization, all.User, flow.*, or flow.clearStorageEntries
 Deletes a flow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
-
-// with callbacks
-client.flow.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flow.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flow.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -125,21 +113,15 @@ all.Application, all.Organization, all.User, flow.*, or flow.delete.
 Get information about errors that occurred during runs of this workflow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
-
-// with callbacks
-client.flow.errors(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flow.errors(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flow.errors(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -181,21 +163,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Retrieves information on a flow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
-
-// with callbacks
-client.flow.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flow.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flow.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -232,21 +208,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Retrieve the recent log entries about runs of this workflow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
-
-// with callbacks
-client.flow.getLogEntries(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flow.getLogEntries(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flow.getLogEntries(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -284,21 +254,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Gets the current values in persistent storage
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
-
-// with callbacks
-client.flow.getStorageEntries(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flow.getStorageEntries(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flow.getStorageEntries(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -334,21 +298,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Gets metadata about storage for this flow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
-
-// with callbacks
-client.flow.getStorageEntriesMetadata(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flow.getStorageEntriesMetadata(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flow.getStorageEntriesMetadata(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -384,22 +342,16 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about a flow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   flow: myFlow
 };
-
-// with callbacks
-client.flow.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flow.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flow.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -437,22 +389,16 @@ all.Application, all.Organization, all.User, flow.*, or flow.patch.
 Presses the specified virtual button on the flow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   button: myButton
 };
-
-// with callbacks
-client.flow.pressVirtualButton(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flow.pressVirtualButton(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flow.pressVirtualButton(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -489,22 +435,16 @@ all.Application, all.Organization, all.User, flow.*, or flow.pressVirtualButton.
 Sets a storage value
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   entry: myEntry
 };
-
-// with callbacks
-client.flow.setStorageEntry(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flow.setStorageEntry(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flow.setStorageEntry(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -541,21 +481,15 @@ all.Application, all.Organization, all.User, flow.*, or flow.setStorageEntry.
 Get statistics about workflow runs for this workflow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
-
-// with callbacks
-client.flow.stats(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flow.stats(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flow.stats(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

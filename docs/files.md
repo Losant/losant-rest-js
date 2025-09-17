@@ -16,20 +16,14 @@ parameters and the potential responses.
 Returns the files for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.files.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.files.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.files.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -73,21 +67,15 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Create a new file for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   file: myFile
 };
-
-// with callbacks
-client.files.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.files.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.files.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

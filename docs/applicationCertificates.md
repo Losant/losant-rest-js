@@ -16,20 +16,14 @@ parameters and the potential responses.
 Returns the application certificates for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.applicationCertificates.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationCertificates.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationCertificates.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -70,21 +64,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Create a new application certificate for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   applicationCertificate: myApplicationCertificate
 };
-
-// with callbacks
-client.applicationCertificates.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationCertificates.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationCertificates.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

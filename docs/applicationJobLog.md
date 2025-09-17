@@ -15,21 +15,15 @@ parameters and the potential responses.
 Returns the job log for the given ID
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   jobId: myJobId
 };
-
-// with callbacks
-client.applicationJobLog.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationJobLog.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationJobLog.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

@@ -16,21 +16,15 @@ parameters and the potential responses.
 Returns a collection of instance organization invites
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId
 };
-
-// with callbacks
-client.instanceOrgInvites.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceOrgInvites.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrgInvites.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -70,22 +64,16 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceOrgInvites.*, 
 Invites a member to an instance organization
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId,
   invite: myInvite
 };
-
-// with callbacks
-client.instanceOrgInvites.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceOrgInvites.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrgInvites.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

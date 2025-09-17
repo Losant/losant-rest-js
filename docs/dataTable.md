@@ -19,22 +19,16 @@ parameters and the potential responses.
 Adds a new column to this data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId,
   dataTableColumn: myDataTableColumn
 };
-
-// with callbacks
-client.dataTable.addColumn(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dataTable.addColumn(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTable.addColumn(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -71,21 +65,15 @@ all.Application, all.Organization, all.User, dataTable.*, or dataTable.addColumn
 Deletes a data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId
 };
-
-// with callbacks
-client.dataTable.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dataTable.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTable.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -121,21 +109,15 @@ all.Application, all.Organization, all.User, dataTable.*, or dataTable.delete.
 Retrieves information on a data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId
 };
-
-// with callbacks
-client.dataTable.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dataTable.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTable.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -171,22 +153,16 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Updates information about a data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId,
   dataTable: myDataTable
 };
-
-// with callbacks
-client.dataTable.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dataTable.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTable.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -223,22 +199,16 @@ all.Application, all.Organization, all.User, dataTable.*, or dataTable.patch.
 Removes a column from this data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId,
   columnName: myColumnName
 };
-
-// with callbacks
-client.dataTable.removeColumn(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dataTable.removeColumn(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTable.removeColumn(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

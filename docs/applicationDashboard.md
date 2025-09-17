@@ -18,21 +18,15 @@ parameters and the potential responses.
 Deletes a dashboard
 
 ```javascript
-var params = {
+const params = {
   dashboardId: myDashboardId,
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.applicationDashboard.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationDashboard.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationDashboard.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -68,21 +62,15 @@ all.Application, all.Organization, all.User, applicationDashboard.*, or applicat
 Retrieves information on a dashboard
 
 ```javascript
-var params = {
+const params = {
   dashboardId: myDashboardId,
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.applicationDashboard.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationDashboard.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationDashboard.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -118,22 +106,16 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about a dashboard
 
 ```javascript
-var params = {
+const params = {
   dashboardId: myDashboardId,
   applicationId: myApplicationId,
   dashboard: myDashboard
 };
-
-// with callbacks
-client.applicationDashboard.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationDashboard.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationDashboard.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -170,22 +152,16 @@ all.Application, all.Organization, all.User, applicationDashboard.*, or applicat
 Sends a snapshot of a dashboard
 
 ```javascript
-var params = {
+const params = {
   dashboardId: myDashboardId,
   applicationId: myApplicationId,
   reportConfig: myReportConfig
 };
-
-// with callbacks
-client.applicationDashboard.sendReport(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationDashboard.sendReport(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationDashboard.sendReport(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

@@ -17,21 +17,15 @@ parameters and the potential responses.
 Deletes an experience version
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceVersionIdOrName: myExperienceVersionIdOrName
 };
-
-// with callbacks
-client.experienceVersion.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experienceVersion.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceVersion.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -67,21 +61,15 @@ all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, 
 Retrieves information on an experience version
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceVersionIdOrName: myExperienceVersionIdOrName
 };
-
-// with callbacks
-client.experienceVersion.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experienceVersion.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceVersion.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -117,22 +105,16 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Updates information about an experience version
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceVersionIdOrName: myExperienceVersionIdOrName,
   experienceVersion: myExperienceVersion
 };
-
-// with callbacks
-client.experienceVersion.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experienceVersion.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceVersion.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

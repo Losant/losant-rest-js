@@ -17,21 +17,15 @@ parameters and the potential responses.
 Deletes an event
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   eventId: myEventId
 };
-
-// with callbacks
-client.event.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.event.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.event.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -67,21 +61,15 @@ all.Application, all.Organization, all.User, event.*, or event.delete.
 Retrieves information on an event
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   eventId: myEventId
 };
-
-// with callbacks
-client.event.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.event.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.event.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -117,22 +105,16 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about an event
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   eventId: myEventId,
   event: myEvent
 };
-
-// with callbacks
-client.event.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.event.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.event.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

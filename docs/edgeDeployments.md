@@ -18,20 +18,14 @@ parameters and the potential responses.
 Returns the edge deployments for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.edgeDeployments.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.edgeDeployments.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.edgeDeployments.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -74,21 +68,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Deploy an edge workflow version to one or more edge devices. Version can be blank, if removal is desired.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deployment: myDeployment
 };
-
-// with callbacks
-client.edgeDeployments.release(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.edgeDeployments.release(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.edgeDeployments.release(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -124,21 +112,15 @@ all.Application, all.Organization, all.User, edgeDeployments.*, or edgeDeploymen
 Remove all edge deployments from a device, remove all edge deployments of a workflow, or remove a specific workflow from a specific device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deployment: myDeployment
 };
-
-// with callbacks
-client.edgeDeployments.remove(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.edgeDeployments.remove(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.edgeDeployments.remove(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -174,21 +156,15 @@ all.Application, all.Organization, all.User, edgeDeployments.*, or edgeDeploymen
 Replace deployments of an edge workflow version with a new version. New version can be blank, if removal is desired.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deployment: myDeployment
 };
-
-// with callbacks
-client.edgeDeployments.replace(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.edgeDeployments.replace(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.edgeDeployments.replace(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

@@ -18,18 +18,12 @@ parameters and the potential responses.
 Returns the applications the current user has permission to see
 
 ```javascript
-var params = {}; // all params are optional
-
-// with callbacks
-client.applications.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applications.get(params)
-  .then(console.log)
-  .catch(console.error);
+const params = {}; // all params are optional
+try {
+  console.log(await client.applications.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -71,18 +65,12 @@ all.Organization, all.Organization.read, all.User, all.User.cli, all.User.read, 
 Create a new application from an import bundle
 
 ```javascript
-var params = {}; // all params are optional
-
-// with callbacks
-client.applications.import(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applications.import(params)
-  .then(console.log)
-  .catch(console.error);
+const params = {}; // all params are optional
+try {
+  console.log(await client.applications.import(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -126,18 +114,12 @@ all.Organization, all.User, applications.*, or applications.import.
 Returns application usage summaries over a selected date range
 
 ```javascript
-var params = {}; // all params are optional
-
-// with callbacks
-client.applications.periodSummaries(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applications.periodSummaries(params)
-  .then(console.log)
-  .catch(console.error);
+const params = {}; // all params are optional
+try {
+  console.log(await client.applications.periodSummaries(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -183,20 +165,14 @@ all.Organization, all.Organization.read, all.User, all.User.read, applications.*
 Create a new application
 
 ```javascript
-var params = {
+const params = {
   application: myApplication
 };
-
-// with callbacks
-client.applications.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applications.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applications.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

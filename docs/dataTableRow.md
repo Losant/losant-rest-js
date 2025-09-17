@@ -17,22 +17,16 @@ parameters and the potential responses.
 Deletes a data table row
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId,
   rowId: myRowId
 };
-
-// with callbacks
-client.dataTableRow.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dataTableRow.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTableRow.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -69,22 +63,16 @@ all.Application, all.Organization, all.User, dataTableRow.*, or dataTableRow.del
 Retrieves the data table row
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId,
   rowId: myRowId
 };
-
-// with callbacks
-client.dataTableRow.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dataTableRow.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTableRow.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -121,23 +109,17 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates the data table row
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId,
   rowId: myRowId,
   dataTableRow: myDataTableRow
 };
-
-// with callbacks
-client.dataTableRow.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dataTableRow.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTableRow.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

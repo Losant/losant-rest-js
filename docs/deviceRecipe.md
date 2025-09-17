@@ -18,22 +18,16 @@ parameters and the potential responses.
 Bulk creates devices using this recipe from a CSV
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceRecipeId: myDeviceRecipeId,
   bulkInfo: myBulkInfo
 };
-
-// with callbacks
-client.deviceRecipe.bulkCreate(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.deviceRecipe.bulkCreate(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.deviceRecipe.bulkCreate(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -71,21 +65,15 @@ all.Application, all.Organization, all.User, deviceRecipe.*, or deviceRecipe.bul
 Deletes a device recipe
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceRecipeId: myDeviceRecipeId
 };
-
-// with callbacks
-client.deviceRecipe.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.deviceRecipe.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.deviceRecipe.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -121,21 +109,15 @@ all.Application, all.Organization, all.User, deviceRecipe.*, or deviceRecipe.del
 Retrieves information on a device recipe
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceRecipeId: myDeviceRecipeId
 };
-
-// with callbacks
-client.deviceRecipe.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.deviceRecipe.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.deviceRecipe.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -173,22 +155,16 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about a device recipe
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceRecipeId: myDeviceRecipeId,
   deviceRecipe: myDeviceRecipe
 };
-
-// with callbacks
-client.deviceRecipe.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.deviceRecipe.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.deviceRecipe.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

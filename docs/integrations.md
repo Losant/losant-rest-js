@@ -16,20 +16,14 @@ parameters and the potential responses.
 Returns the integrations for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.integrations.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.integrations.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.integrations.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -70,21 +64,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Create a new integration for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   integration: myIntegration
 };
-
-// with callbacks
-client.integrations.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.integrations.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.integrations.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

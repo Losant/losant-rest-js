@@ -16,20 +16,14 @@ parameters and the potential responses.
 Returns the experience views for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.experienceViews.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experienceViews.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceViews.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -72,21 +66,15 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Create a new experience view for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceView: myExperienceView
 };
-
-// with callbacks
-client.experienceViews.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experienceViews.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceViews.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

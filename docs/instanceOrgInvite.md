@@ -17,22 +17,16 @@ parameters and the potential responses.
 Revokes an instance org invitation
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId,
   inviteId: myInviteId
 };
-
-// with callbacks
-client.instanceOrgInvite.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceOrgInvite.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrgInvite.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -69,22 +63,16 @@ all.Instance, all.User, instanceOrgInvite.*, or instanceOrgInvite.delete.
 Returns an organization invite
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId,
   inviteId: myInviteId
 };
-
-// with callbacks
-client.instanceOrgInvite.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceOrgInvite.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrgInvite.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -121,23 +109,17 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceOrgInvite.*, o
 Resend an organization invite with modified role info
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId,
   inviteId: myInviteId,
   roleInfo: myRoleInfo
 };
-
-// with callbacks
-client.instanceOrgInvite.resendInvite(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceOrgInvite.resendInvite(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrgInvite.resendInvite(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

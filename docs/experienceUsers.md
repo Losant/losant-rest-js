@@ -16,20 +16,14 @@ parameters and the potential responses.
 Returns the experience users for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.experienceUsers.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experienceUsers.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceUsers.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -73,21 +67,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Create a new experience user for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceUser: myExperienceUser
 };
-
-// with callbacks
-client.experienceUsers.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experienceUsers.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceUsers.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

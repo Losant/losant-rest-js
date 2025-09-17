@@ -28,21 +28,15 @@ parameters and the potential responses.
 Deletes a device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with callbacks
-client.device.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.device.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -78,21 +72,15 @@ all.Application, all.Organization, all.User, device.*, or device.delete.
 Creates a device data export. Defaults to all data.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with callbacks
-client.device.export(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.device.export(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.export(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -134,21 +122,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Retrieves information on a device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with callbacks
-client.device.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.device.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -187,21 +169,15 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 Retrieve the last known commands(s) sent to the device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with callbacks
-client.device.getCommand(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.device.getCommand(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.getCommand(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -243,21 +219,15 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 Retrieve the composite last complete state of the device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with callbacks
-client.device.getCompositeState(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.device.getCompositeState(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.getCompositeState(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -296,21 +266,15 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 Retrieve the recent log entries about the device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with callbacks
-client.device.getLogEntries(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.device.getLogEntries(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.getLogEntries(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -352,21 +316,15 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 Retrieve the last known state(s) of the device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with callbacks
-client.device.getState(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.device.getState(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.getState(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -408,22 +366,16 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 Updates information about a device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId,
   device: myDevice
 };
-
-// with callbacks
-client.device.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.device.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -462,21 +414,15 @@ all.Application, all.Organization, all.User, device.*, or device.patch.
 Returns payload counts for the time range specified for this device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with callbacks
-client.device.payloadCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.device.payloadCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.payloadCounts(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -514,21 +460,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Returns payload counts per resolution in the time range specified for this device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with callbacks
-client.device.payloadCountsBreakdown(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.device.payloadCountsBreakdown(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.payloadCountsBreakdown(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -567,21 +507,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Removes all device data for the specified time range. Defaults to all data.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with callbacks
-client.device.removeData(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.device.removeData(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.removeData(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -619,22 +553,16 @@ all.Application, all.Organization, all.User, device.*, or device.removeData.
 Send a command to a device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId,
   deviceCommand: myDeviceCommand
 };
-
-// with callbacks
-client.device.sendCommand(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.device.sendCommand(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.sendCommand(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -671,22 +599,16 @@ all.Application, all.Device, all.Organization, all.User, device.*, or device.sen
 Send the current state of the device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId,
   deviceState: myDeviceState
 };
-
-// with callbacks
-client.device.sendState(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.device.sendState(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.sendState(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -723,22 +645,16 @@ all.Application, all.Device, all.Organization, all.User, device.*, or device.sen
 Set the current connection status of the device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId,
   connectionStatus: myConnectionStatus
 };
-
-// with callbacks
-client.device.setConnectionStatus(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.device.setConnectionStatus(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.device.setConnectionStatus(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

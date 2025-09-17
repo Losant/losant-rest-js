@@ -16,20 +16,14 @@ parameters and the potential responses.
 Returns all dashboards scoped to the given application.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.applicationDashboards.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationDashboards.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationDashboards.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -70,21 +64,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Create a new dashboard
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dashboard: myDashboard
 };
-
-// with callbacks
-client.applicationDashboards.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationDashboards.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationDashboards.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

@@ -27,20 +27,14 @@ parameters and the potential responses.
 Deletes an organization
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId
 };
-
-// with callbacks
-client.org.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.org.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -75,20 +69,14 @@ all.Organization, all.User, org.*, or org.delete.
 Returns device counts by day for the time range specified for this organization
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId
 };
-
-// with callbacks
-client.org.deviceCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.org.deviceCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.deviceCounts(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -125,20 +113,14 @@ all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.
 Retrieves information on an organization
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId
 };
-
-// with callbacks
-client.org.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.org.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -175,21 +157,15 @@ all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.
 Invites a person to an organization
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId,
   invite: myInvite
 };
-
-// with callbacks
-client.org.inviteMember(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.org.inviteMember(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.inviteMember(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -225,21 +201,15 @@ all.Organization, all.User, org.*, or org.inviteMember.
 Modifies a current org member&#x27;s role
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId,
   member: myMember
 };
-
-// with callbacks
-client.org.modifyMember(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.org.modifyMember(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.modifyMember(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -277,20 +247,14 @@ all.Organization, all.User, org.*, or org.modifyMember.
 Returns notebook execution usage by day for the time range specified for this organization
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId
 };
-
-// with callbacks
-client.org.notebookMinuteCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.org.notebookMinuteCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.notebookMinuteCounts(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -327,21 +291,15 @@ all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.
 Updates information about an organization
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId,
   organization: myOrganization
 };
-
-// with callbacks
-client.org.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.org.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -379,20 +337,14 @@ all.Organization, all.User, org.*, or org.patch.
 Returns payload counts for the time range specified for all applications this organization owns
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId
 };
-
-// with callbacks
-client.org.payloadCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.org.payloadCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.payloadCounts(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -430,20 +382,14 @@ all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.
 Returns payload counts per resolution in the time range specified for all application this organization owns
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId
 };
-
-// with callbacks
-client.org.payloadCountsBreakdown(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.org.payloadCountsBreakdown(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.payloadCountsBreakdown(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -483,20 +429,14 @@ all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.
 Gets the current pending invites
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId
 };
-
-// with callbacks
-client.org.pendingInvites(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.org.pendingInvites(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.pendingInvites(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -531,21 +471,15 @@ all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.
 Removes a member from the org
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId,
   userId: myUserId
 };
-
-// with callbacks
-client.org.removeMember(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.org.removeMember(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.removeMember(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -583,21 +517,15 @@ all.Organization, all.User, org.*, or org.removeMember.
 Revokes an existing invite
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId,
   inviteId: myInviteId
 };
-
-// with callbacks
-client.org.revokeInvite(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.org.revokeInvite(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.revokeInvite(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -633,21 +561,15 @@ all.Organization, all.User, org.*, or org.revokeInvite.
 Moves resources to a new owner
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId,
   transfer: myTransfer
 };
-
-// with callbacks
-client.org.transferResources(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.org.transferResources(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.org.transferResources(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

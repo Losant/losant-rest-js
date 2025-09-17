@@ -20,21 +20,15 @@ parameters and the potential responses.
 Delete rows from a data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId
 };
-
-// with callbacks
-client.dataTableRows.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dataTableRows.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTableRows.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -72,22 +66,16 @@ all.Application, all.Organization, all.User, dataTableRows.*, or dataTableRows.d
 Request an export of the data table&#x27;s data
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId,
   exportData: myExportData
 };
-
-// with callbacks
-client.dataTableRows.export(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dataTableRows.export(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTableRows.export(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -124,21 +112,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Returns the rows for a data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId
 };
-
-// with callbacks
-client.dataTableRows.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dataTableRows.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTableRows.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -179,22 +161,16 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Inserts a new row(s) into a data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId,
   dataTableRow: myDataTableRow
 };
-
-// with callbacks
-client.dataTableRows.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dataTableRows.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTableRows.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -231,21 +207,15 @@ all.Application, all.Organization, all.User, dataTableRows.*, or dataTableRows.p
 Queries for rows from a data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId
 };
-
-// with callbacks
-client.dataTableRows.query(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dataTableRows.query(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTableRows.query(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -287,21 +257,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Delete all data in the data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId
 };
-
-// with callbacks
-client.dataTableRows.truncate(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dataTableRows.truncate(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTableRows.truncate(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

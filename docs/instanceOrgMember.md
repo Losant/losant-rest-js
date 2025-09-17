@@ -17,22 +17,16 @@ parameters and the potential responses.
 Deletes an organization member
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId,
   userId: myUserId
 };
-
-// with callbacks
-client.instanceOrgMember.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceOrgMember.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrgMember.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -69,22 +63,16 @@ all.Instance, all.User, instanceOrgMember.*, or instanceOrgMember.delete.
 Returns an organization member
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId,
   userId: myUserId
 };
-
-// with callbacks
-client.instanceOrgMember.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceOrgMember.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrgMember.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -121,23 +109,17 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceOrgMember.*, o
 Modifies the role of an organization member
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId,
   userId: myUserId,
   member: myMember
 };
-
-// with callbacks
-client.instanceOrgMember.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceOrgMember.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceOrgMember.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

@@ -21,21 +21,15 @@ parameters and the potential responses.
 Deletes a sandbox user account
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
-
-// with callbacks
-client.instanceSandbox.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceSandbox.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceSandbox.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -71,21 +65,15 @@ all.Instance, all.User, instanceSandbox.*, or instanceSandbox.delete.
 Returns device counts by day for the time range specified for all applications the sandbox user owns
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
-
-// with callbacks
-client.instanceSandbox.deviceCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceSandbox.deviceCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceSandbox.deviceCounts(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -123,21 +111,15 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceSandbox.*, or 
 Returns a sandbox user
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
-
-// with callbacks
-client.instanceSandbox.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceSandbox.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceSandbox.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -175,21 +157,15 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceSandbox.*, or 
 Returns notebook execution usage by day for the time range specified for all applications the sandbox user owns
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
-
-// with callbacks
-client.instanceSandbox.notebookMinuteCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceSandbox.notebookMinuteCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceSandbox.notebookMinuteCounts(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -227,21 +203,15 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceSandbox.*, or 
 Returns payload counts for the time range specified for all applications the sandbox user owns
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
-
-// with callbacks
-client.instanceSandbox.payloadCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceSandbox.payloadCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceSandbox.payloadCounts(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -280,21 +250,15 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceSandbox.*, or 
 Returns payload counts per resolution in the time range specified for all applications the sandbox user owns
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
-
-// with callbacks
-client.instanceSandbox.payloadCountsBreakdown(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceSandbox.payloadCountsBreakdown(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceSandbox.payloadCountsBreakdown(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -335,21 +299,15 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceSandbox.*, or 
 Restores a sandbox user account
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
-
-// with callbacks
-client.instanceSandbox.undelete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceSandbox.undelete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceSandbox.undelete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

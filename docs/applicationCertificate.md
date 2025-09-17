@@ -17,21 +17,15 @@ parameters and the potential responses.
 Deletes an application certificate
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   applicationCertificateId: myApplicationCertificateId
 };
-
-// with callbacks
-client.applicationCertificate.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationCertificate.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationCertificate.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -67,21 +61,15 @@ all.Application, all.Organization, all.User, applicationCertificate.*, or applic
 Retrieves information on an application certificate
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   applicationCertificateId: myApplicationCertificateId
 };
-
-// with callbacks
-client.applicationCertificate.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationCertificate.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationCertificate.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -117,22 +105,16 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about an application certificate
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   applicationCertificateId: myApplicationCertificateId,
   applicationCertificate: myApplicationCertificate
 };
-
-// with callbacks
-client.applicationCertificate.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationCertificate.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationCertificate.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

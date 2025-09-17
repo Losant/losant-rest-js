@@ -16,21 +16,15 @@ parameters and the potential responses.
 Bootstraps the experience for this application with standard endpoints and views
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   options: myOptions
 };
-
-// with callbacks
-client.experience.bootstrap(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experience.bootstrap(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experience.bootstrap(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -66,20 +60,14 @@ all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, 
 Deletes multiple parts of an experience including users, groups, slugs, domains, versions, endpoints, views, and workflows
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.experience.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experience.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experience.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

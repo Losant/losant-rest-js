@@ -22,20 +22,14 @@ parameters and the potential responses.
 Returns device counts by day for the time range specified for this instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
-
-// with callbacks
-client.instance.deviceCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instance.deviceCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instance.deviceCounts(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -72,20 +66,14 @@ all.Instance, all.Instance.read, all.User, all.User.read, instance.*, or instanc
 Generates a CSV report on instance stats
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
-
-// with callbacks
-client.instance.generateReport(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instance.generateReport(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instance.generateReport(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -120,20 +108,14 @@ all.Instance, all.Instance.read, all.User, all.User.read, instance.*, or instanc
 Returns an instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
-
-// with callbacks
-client.instance.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instance.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instance.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -168,20 +150,14 @@ all.Instance, all.Instance.read, all.User, all.User.read, instance.*, or instanc
 Return historical summary entries for an instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
-
-// with callbacks
-client.instance.historicalSummaries(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instance.historicalSummaries(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instance.historicalSummaries(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -222,20 +198,14 @@ all.Instance, all.Instance.read, all.User, all.User.read, instance.*, or instanc
 Returns notebook execution usage by day for the time range specified for this instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
-
-// with callbacks
-client.instance.notebookMinuteCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instance.notebookMinuteCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instance.notebookMinuteCounts(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -272,21 +242,15 @@ all.Instance, all.Instance.read, all.User, all.User.read, instance.*, or instanc
 Updates information about an instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instance: myInstance
 };
-
-// with callbacks
-client.instance.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instance.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instance.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -321,20 +285,14 @@ all.Instance, all.User, instance.*, or instance.patch.
 Returns payload counts for the time range specified for this instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
-
-// with callbacks
-client.instance.payloadCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instance.payloadCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instance.payloadCounts(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -372,20 +330,14 @@ all.Instance, all.Instance.read, all.User, all.User.read, instance.*, or instanc
 Returns payload counts per resolution in the time range specified for this instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
-
-// with callbacks
-client.instance.payloadCountsBreakdown(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instance.payloadCountsBreakdown(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instance.payloadCountsBreakdown(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

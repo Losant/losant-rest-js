@@ -17,22 +17,16 @@ parameters and the potential responses.
 Removes an attribute from a device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId,
   name: myName
 };
-
-// with callbacks
-client.deviceAttribute.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.deviceAttribute.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.deviceAttribute.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -69,22 +63,16 @@ all.Application, all.Organization, all.User, deviceAttribute.*, or deviceAttribu
 Retrieves information on a device attribute
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId,
   name: myName
 };
-
-// with callbacks
-client.deviceAttribute.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.deviceAttribute.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.deviceAttribute.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -121,23 +109,17 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 Updates an attribute on a device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId,
   name: myName,
   deviceAttribute: myDeviceAttribute
 };
-
-// with callbacks
-client.deviceAttribute.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.deviceAttribute.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.deviceAttribute.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

@@ -17,21 +17,15 @@ parameters and the potential responses.
 Deletes an instance member
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   userId: myUserId
 };
-
-// with callbacks
-client.instanceMember.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceMember.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceMember.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -67,21 +61,15 @@ all.Instance, all.User, instanceMember.*, or instanceMember.delete.
 Returns an instance member
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   userId: myUserId
 };
-
-// with callbacks
-client.instanceMember.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceMember.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceMember.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -117,22 +105,16 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceMember.*, or i
 Modifies the role of an instance member
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   userId: myUserId,
   member: myMember
 };
-
-// with callbacks
-client.instanceMember.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceMember.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceMember.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

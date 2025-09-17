@@ -19,20 +19,14 @@ parameters and the potential responses.
 Deletes a dashboard
 
 ```javascript
-var params = {
+const params = {
   dashboardId: myDashboardId
 };
-
-// with callbacks
-client.dashboard.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dashboard.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dashboard.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -67,20 +61,14 @@ all.Organization, all.User, dashboard.*, or dashboard.delete.
 Retrieves information on a dashboard
 
 ```javascript
-var params = {
+const params = {
   dashboardId: myDashboardId
 };
-
-// with callbacks
-client.dashboard.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dashboard.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dashboard.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -114,21 +102,15 @@ No api access token is required to call this action.
 Updates information about a dashboard
 
 ```javascript
-var params = {
+const params = {
   dashboardId: myDashboardId,
   dashboard: myDashboard
 };
-
-// with callbacks
-client.dashboard.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dashboard.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dashboard.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -164,21 +146,15 @@ all.Organization, all.User, dashboard.*, or dashboard.patch.
 Sends a snapshot of a dashboard
 
 ```javascript
-var params = {
+const params = {
   dashboardId: myDashboardId,
   reportConfig: myReportConfig
 };
-
-// with callbacks
-client.dashboard.sendReport(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dashboard.sendReport(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dashboard.sendReport(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -214,21 +190,15 @@ all.Organization, all.User, dashboard.*, or dashboard.sendReport.
 Validates a context object against the dashboard&#x27;s context configuration
 
 ```javascript
-var params = {
+const params = {
   dashboardId: myDashboardId,
   ctx: myCtx
 };
-
-// with callbacks
-client.dashboard.validateContext(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dashboard.validateContext(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dashboard.validateContext(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

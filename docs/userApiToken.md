@@ -17,20 +17,14 @@ parameters and the potential responses.
 Deletes an API Token
 
 ```javascript
-var params = {
+const params = {
   apiTokenId: myApiTokenId
 };
-
-// with callbacks
-client.userApiToken.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.userApiToken.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.userApiToken.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -65,20 +59,14 @@ all.User, userApiToken.*, or userApiToken.delete.
 Retrieves information on an API token
 
 ```javascript
-var params = {
+const params = {
   apiTokenId: myApiTokenId
 };
-
-// with callbacks
-client.userApiToken.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.userApiToken.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.userApiToken.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -113,21 +101,15 @@ all.User, all.User.read, userApiToken.*, or userApiToken.get.
 Updates information about an API token
 
 ```javascript
-var params = {
+const params = {
   apiTokenId: myApiTokenId,
   apiToken: myApiToken
 };
-
-// with callbacks
-client.userApiToken.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.userApiToken.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.userApiToken.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

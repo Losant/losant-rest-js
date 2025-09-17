@@ -19,20 +19,14 @@ parameters and the potential responses.
 Returns the flows for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.flows.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flows.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flows.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -78,21 +72,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Returns the flows by version for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   version: myVersion
 };
-
-// with callbacks
-client.flows.getByVersion(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flows.getByVersion(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flows.getByVersion(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -138,21 +126,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Import a set of flows and flow versions
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   importData: myImportData
 };
-
-// with callbacks
-client.flows.import(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flows.import(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flows.import(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -188,20 +170,14 @@ all.Application, all.Organization, all.User, flows.*, or flows.import.
 Gets additional nodes that should be available in the palette
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.flows.palette(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flows.palette(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flows.palette(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -236,21 +212,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Create a new flow for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flow: myFlow
 };
-
-// with callbacks
-client.flows.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flows.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flows.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

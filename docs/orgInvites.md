@@ -16,21 +16,15 @@ parameters and the potential responses.
 Gets information about an invite
 
 ```javascript
-var params = {
+const params = {
   token: myToken,
   email: myEmail
 };
-
-// with callbacks
-client.orgInvites.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.orgInvites.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.orgInvites.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -65,20 +59,14 @@ No api access token is required to call this action.
 Accepts/Rejects an invite
 
 ```javascript
-var params = {
+const params = {
   invite: myInvite
 };
-
-// with callbacks
-client.orgInvites.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.orgInvites.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.orgInvites.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

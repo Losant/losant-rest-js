@@ -1,11 +1,8 @@
-const {
-    defineConfig,
-} = require('eslint/config');
-const js = require('@eslint/js');
+import { defineConfig } from 'eslint/config';
+import globals from 'globals';
+import js from '@eslint/js';
 
-const globals = require('globals');
-
-module.exports = defineConfig([
+export default defineConfig([
   js.configs.recommended,
   {
     languageOptions: {
@@ -17,9 +14,9 @@ module.exports = defineConfig([
     },
     'rules': {
         'accessor-pairs': 'error',
-        'array-bracket-spacing': 'error',
+        'array-bracket-spacing': 'off',
         'array-callback-return': 'error',
-        'arrow-body-style': 'error',
+        'arrow-body-style': 'off',
         'arrow-parens': 'error',
         'arrow-spacing': 'error',
         'block-scoped-var': 'error',
@@ -82,7 +79,7 @@ module.exports = defineConfig([
 
         'line-comment-position': 'error',
         'linebreak-style': ['error', 'unix'],
-        'lines-around-comment': 'error',
+        'lines-around-comment': 'off',
         'lines-around-directive': 'off',
         'max-depth': 'error',
         'max-len': 'off',
@@ -91,7 +88,7 @@ module.exports = defineConfig([
         'max-params': 'error',
         'max-statements': 'off',
         'max-statements-per-line': 'off',
-        'multiline-ternary': 'error',
+        'multiline-ternary': 'off',
         'new-cap': 'error',
         'new-parens': 'error',
         'newline-after-var': 'off',
@@ -114,7 +111,7 @@ module.exports = defineConfig([
         'no-extend-native': 'error',
         'no-extra-bind': 'error',
         'no-extra-label': 'error',
-        'no-extra-parens': 'error',
+        'no-extra-parens': 'off',
         'no-floating-decimal': 'error',
         'no-implicit-coercion': 'error',
         'no-implicit-globals': 'error',
@@ -172,7 +169,7 @@ module.exports = defineConfig([
         'no-sync': 'error',
         'no-tabs': 'error',
         'no-template-curly-in-string': 'error',
-        'no-ternary': 'error',
+        'no-ternary': 'off',
         'no-throw-literal': 'error',
         'no-trailing-spaces': 'error',
         'no-undef-init': 'error',
@@ -224,7 +221,7 @@ module.exports = defineConfig([
             'before': false,
         }],
 
-        'sort-imports': 'error',
+        'sort-imports': 'off',
         'sort-keys': 'off',
         'sort-vars': 'off',
         'space-before-blocks': 'off',

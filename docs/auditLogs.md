@@ -15,20 +15,14 @@ parameters and the potential responses.
 Returns the audit logs for the organization
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId
 };
-
-// with callbacks
-client.auditLogs.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.auditLogs.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.auditLogs.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

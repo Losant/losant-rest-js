@@ -17,21 +17,15 @@ parameters and the potential responses.
 Deletes an experience user
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceUserId: myExperienceUserId
 };
-
-// with callbacks
-client.experienceUser.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experienceUser.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceUser.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -67,21 +61,15 @@ all.Application, all.Organization, all.User, experienceUser.*, or experienceUser
 Retrieves information on an experience user
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceUserId: myExperienceUserId
 };
-
-// with callbacks
-client.experienceUser.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experienceUser.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceUser.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -117,22 +105,16 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about an experience user
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceUserId: myExperienceUserId,
   experienceUser: myExperienceUser
 };
-
-// with callbacks
-client.experienceUser.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experienceUser.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceUser.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

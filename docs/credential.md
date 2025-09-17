@@ -18,21 +18,15 @@ parameters and the potential responses.
 Deletes a credential
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   credentialId: myCredentialId
 };
-
-// with callbacks
-client.credential.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.credential.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.credential.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -68,21 +62,15 @@ all.Application, all.Organization, all.User, credential.*, or credential.delete.
 Retrieves information on a credential
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   credentialId: myCredentialId
 };
-
-// with callbacks
-client.credential.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.credential.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.credential.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -118,21 +106,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Retrieves information on resources linked to a credential
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   credentialId: myCredentialId
 };
-
-// with callbacks
-client.credential.linkedResources(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.credential.linkedResources(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.credential.linkedResources(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -169,22 +151,16 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about a credential
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   credentialId: myCredentialId,
   credential: myCredential
 };
-
-// with callbacks
-client.credential.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.credential.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.credential.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

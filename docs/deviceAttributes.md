@@ -16,21 +16,15 @@ parameters and the potential responses.
 Returns the attributes for a device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
-
-// with callbacks
-client.deviceAttributes.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.deviceAttributes.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.deviceAttributes.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -70,22 +64,16 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 Adds a new attribute to a device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId,
   deviceAttribute: myDeviceAttribute
 };
-
-// with callbacks
-client.deviceAttributes.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.deviceAttributes.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.deviceAttributes.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

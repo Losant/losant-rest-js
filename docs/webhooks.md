@@ -16,20 +16,14 @@ parameters and the potential responses.
 Returns the webhooks for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.webhooks.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.webhooks.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.webhooks.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -70,21 +64,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Create a new webhook for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   webhook: myWebhook
 };
-
-// with callbacks
-client.webhooks.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.webhooks.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.webhooks.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

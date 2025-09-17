@@ -17,21 +17,15 @@ parameters and the potential responses.
 Deletes an API Token
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   apiTokenId: myApiTokenId
 };
-
-// with callbacks
-client.applicationApiToken.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationApiToken.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationApiToken.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -67,21 +61,15 @@ all.Application, all.Organization, all.User, applicationApiToken.*, or applicati
 Retrieves information on an API token
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   apiTokenId: myApiTokenId
 };
-
-// with callbacks
-client.applicationApiToken.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationApiToken.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationApiToken.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -117,22 +105,16 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about an API token
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   apiTokenId: myApiTokenId,
   apiToken: myApiToken
 };
-
-// with callbacks
-client.applicationApiToken.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationApiToken.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationApiToken.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

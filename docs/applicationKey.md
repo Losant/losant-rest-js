@@ -17,21 +17,15 @@ parameters and the potential responses.
 Deletes an applicationKey
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   applicationKeyId: myApplicationKeyId
 };
-
-// with callbacks
-client.applicationKey.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationKey.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationKey.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -67,21 +61,15 @@ all.Application, all.Organization, all.User, applicationKey.*, or applicationKey
 Retrieves information on an applicationKey
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   applicationKeyId: myApplicationKeyId
 };
-
-// with callbacks
-client.applicationKey.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationKey.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationKey.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -117,22 +105,16 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about an applicationKey
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   applicationKeyId: myApplicationKeyId,
   applicationKey: myApplicationKey
 };
-
-// with callbacks
-client.applicationKey.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationKey.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationKey.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

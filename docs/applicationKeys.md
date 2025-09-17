@@ -16,20 +16,14 @@ parameters and the potential responses.
 Returns the applicationKeys for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.applicationKeys.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationKeys.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationKeys.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -71,21 +65,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Create a new applicationKey for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   applicationKey: myApplicationKey
 };
-
-// with callbacks
-client.applicationKeys.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationKeys.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationKeys.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

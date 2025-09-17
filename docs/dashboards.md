@@ -16,18 +16,12 @@ parameters and the potential responses.
 Returns the dashboards the current user has permission to see
 
 ```javascript
-var params = {}; // all params are optional
-
-// with callbacks
-client.dashboards.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dashboards.get(params)
-  .then(console.log)
-  .catch(console.error);
+const params = {}; // all params are optional
+try {
+  console.log(await client.dashboards.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -68,20 +62,14 @@ all.Organization, all.Organization.read, all.User, all.User.read, dashboards.*, 
 Create a new dashboard
 
 ```javascript
-var params = {
+const params = {
   dashboard: myDashboard
 };
-
-// with callbacks
-client.dashboards.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dashboards.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dashboards.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

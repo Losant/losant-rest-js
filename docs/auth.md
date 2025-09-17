@@ -19,20 +19,14 @@ parameters and the potential responses.
 Authenticates a device using the provided credentials.
 
 ```javascript
-var params = {
+const params = {
   credentials: myCredentials
 };
-
-// with callbacks
-client.auth.authenticateDevice(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.auth.authenticateDevice(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.auth.authenticateDevice(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -65,20 +59,14 @@ No api access token is required to call this action.
 Authenticates a user using the provided credentials.
 
 ```javascript
-var params = {
+const params = {
   credentials: myCredentials
 };
-
-// with callbacks
-client.auth.authenticateUser(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.auth.authenticateUser(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.auth.authenticateUser(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -111,20 +99,14 @@ No api access token is required to call this action.
 Authenticates a user via GitHub OAuth.
 
 ```javascript
-var params = {
+const params = {
   oauth: myOauth
 };
-
-// with callbacks
-client.auth.authenticateUserGithub(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.auth.authenticateUserGithub(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.auth.authenticateUserGithub(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -157,20 +139,14 @@ No api access token is required to call this action.
 Authenticates a user via a SAML response.
 
 ```javascript
-var params = {
+const params = {
   saml: mySaml
 };
-
-// with callbacks
-client.auth.authenticateUserSaml(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.auth.authenticateUserSaml(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.auth.authenticateUserSaml(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -203,20 +179,14 @@ No api access token is required to call this action.
 Checks email domain for SSO configuration.
 
 ```javascript
-var params = {
+const params = {
   email: myEmail
 };
-
-// with callbacks
-client.auth.ssoDomain(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.auth.ssoDomain(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.auth.ssoDomain(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

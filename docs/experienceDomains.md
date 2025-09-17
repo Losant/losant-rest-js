@@ -16,20 +16,14 @@ parameters and the potential responses.
 Returns the experience domains for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.experienceDomains.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experienceDomains.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceDomains.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -64,21 +58,15 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Create a new experience domain for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceDomain: myExperienceDomain
 };
-
-// with callbacks
-client.experienceDomains.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experienceDomains.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceDomains.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

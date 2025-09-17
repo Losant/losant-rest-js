@@ -28,20 +28,14 @@ parameters and the potential responses.
 Gets the attribute names that match the given query. Maximum 1K returned.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.devices.attributeNames(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.devices.attributeNames(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.devices.attributeNames(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -79,21 +73,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Delete devices
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   options: myOptions
 };
-
-// with callbacks
-client.devices.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.devices.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.devices.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -130,20 +118,14 @@ all.Application, all.Organization, all.User, devices.*, or devices.delete.
 Gets the device names that match the given query. Maximum 1K returned.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.devices.deviceNames(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.devices.deviceNames(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.devices.deviceNames(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -180,20 +162,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Creates an export of all device metadata
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.devices.export(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.devices.export(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.devices.export(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -231,20 +207,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Returns the devices for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.devices.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.devices.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.devices.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -293,20 +263,14 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 Retrieve the composite last complete state of the matching devices
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.devices.getCompositeState(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.devices.getCompositeState(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.devices.getCompositeState(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -349,21 +313,15 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 Update the fields of one or more devices
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   patchInfo: myPatchInfo
 };
-
-// with callbacks
-client.devices.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.devices.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.devices.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -400,20 +358,14 @@ all.Application, all.Organization, all.User, devices.*, or devices.patch.
 Creates an export of payload count information for the matching devices
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.devices.payloadCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.devices.payloadCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.devices.payloadCounts(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -449,21 +401,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Create a new device for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   device: myDevice
 };
-
-// with callbacks
-client.devices.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.devices.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.devices.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -501,21 +447,15 @@ all.Application, all.Organization, all.User, devices.*, or devices.post.
 Removes all device data for the specified time range. Defaults to all data.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   options: myOptions
 };
-
-// with callbacks
-client.devices.removeData(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.devices.removeData(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.devices.removeData(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -551,21 +491,15 @@ all.Application, all.Organization, all.User, devices.*, or devices.removeData.
 Restore deleted devices
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   options: myOptions
 };
-
-// with callbacks
-client.devices.restore(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.devices.restore(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.devices.restore(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -602,21 +536,15 @@ all.Application, all.Organization, all.User, devices.*, or devices.restore.
 Send a command to multiple devices
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   multiDeviceCommand: myMultiDeviceCommand
 };
-
-// with callbacks
-client.devices.sendCommand(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.devices.sendCommand(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.devices.sendCommand(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -653,20 +581,14 @@ all.Application, all.Device, all.Organization, all.User, devices.*, or devices.s
 Gets the unique tag keys for devices that match the given query. Maximum 1K returned.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.devices.tagKeys(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.devices.tagKeys(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.devices.tagKeys(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -703,21 +625,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Gets the unique tag values for the given key for devices that match the given query. Maximum 1K returned.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   key: myKey
 };
-
-// with callbacks
-client.devices.tagValues(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.devices.tagValues(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.devices.tagValues(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

@@ -15,20 +15,14 @@ parameters and the potential responses.
 Returns the audit logs for the instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
-
-// with callbacks
-client.instanceAuditLogs.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceAuditLogs.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceAuditLogs.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

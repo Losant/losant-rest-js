@@ -17,21 +17,15 @@ parameters and the potential responses.
 Deletes an experience domain
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceDomainId: myExperienceDomainId
 };
-
-// with callbacks
-client.experienceDomain.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experienceDomain.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceDomain.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -67,21 +61,15 @@ all.Application, all.Organization, all.User, experienceDomain.*, or experienceDo
 Retrieves information on an experience domain
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceDomainId: myExperienceDomainId
 };
-
-// with callbacks
-client.experienceDomain.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experienceDomain.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceDomain.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -117,22 +105,16 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about an experience domain
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceDomainId: myExperienceDomainId,
   experienceDomain: myExperienceDomain
 };
-
-// with callbacks
-client.experienceDomain.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.experienceDomain.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.experienceDomain.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

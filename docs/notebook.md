@@ -23,22 +23,16 @@ parameters and the potential responses.
 Marks a specific notebook execution for cancellation
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId,
   executionId: myExecutionId
 };
-
-// with callbacks
-client.notebook.cancelExecution(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.notebook.cancelExecution(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebook.cancelExecution(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -75,21 +69,15 @@ all.Application, all.Organization, all.User, notebook.*, or notebook.execute.
 Deletes a notebook
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId
 };
-
-// with callbacks
-client.notebook.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.notebook.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebook.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -125,22 +113,16 @@ all.Application, all.Organization, all.User, notebook.*, or notebook.delete.
 Triggers the execution of a notebook
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId,
   executionOptions: myExecutionOptions
 };
-
-// with callbacks
-client.notebook.execute(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.notebook.execute(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebook.execute(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -177,21 +159,15 @@ all.Application, all.Organization, all.User, notebook.*, or notebook.execute.
 Retrieves information on a notebook
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId
 };
-
-// with callbacks
-client.notebook.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.notebook.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebook.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -227,21 +203,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Retrieves information on notebook executions
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId
 };
-
-// with callbacks
-client.notebook.logs(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.notebook.logs(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebook.logs(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -279,21 +249,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Returns notebook execution usage by day for the time range specified for this notebook
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId
 };
-
-// with callbacks
-client.notebook.notebookMinuteCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.notebook.notebookMinuteCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebook.notebookMinuteCounts(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -331,22 +295,16 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about a notebook
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId,
   notebook: myNotebook
 };
-
-// with callbacks
-client.notebook.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.notebook.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebook.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -383,22 +341,16 @@ all.Application, all.Organization, all.User, notebook.*, or notebook.patch.
 Requests a combined zip file of the potential input data for a notebook execution
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId,
   exportOptions: myExportOptions
 };
-
-// with callbacks
-client.notebook.requestInputDataExport(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.notebook.requestInputDataExport(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebook.requestInputDataExport(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -435,22 +387,16 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Uploads the jupyter notebook file
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId,
   jupyterFile: myJupyterFile
 };
-
-// with callbacks
-client.notebook.upload(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.notebook.upload(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.notebook.upload(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

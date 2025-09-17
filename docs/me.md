@@ -34,20 +34,14 @@ parameters and the potential responses.
 Adds an item to a recent item list
 
 ```javascript
-var params = {
+const params = {
   data: myData
 };
-
-// with callbacks
-client.me.addRecentItem(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.addRecentItem(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.me.addRecentItem(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -81,20 +75,14 @@ all.User, me.*, or me.addRecentItem.
 Changes the current user&#x27;s password and optionally logs out all other sessions
 
 ```javascript
-var params = {
+const params = {
   data: myData
 };
-
-// with callbacks
-client.me.changePassword(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.changePassword(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.me.changePassword(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -128,20 +116,14 @@ all.User, me.*, or me.changePassword.
 Deletes the current user
 
 ```javascript
-var params = {
+const params = {
   credentials: myCredentials
 };
-
-// with callbacks
-client.me.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.me.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -175,18 +157,12 @@ all.User, me.*, or me.delete.
 Returns device counts by day for the time range specified for all applications the current user owns
 
 ```javascript
-var params = {}; // all params are optional
-
-// with callbacks
-client.me.deviceCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.deviceCounts(params)
-  .then(console.log)
-  .catch(console.error);
+const params = {}; // all params are optional
+try {
+  console.log(await client.me.deviceCounts(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -221,20 +197,14 @@ all.User, all.User.read, me.*, or me.deviceCounts.
 Disables multi-factor authentication for the current user
 
 ```javascript
-var params = {
+const params = {
   data: myData
 };
-
-// with callbacks
-client.me.disableTwoFactorAuth(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.disableTwoFactorAuth(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.me.disableTwoFactorAuth(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -268,18 +238,12 @@ all.User, me.*, or me.disableTwoFactorAuth.
 Disconnects the user from Github
 
 ```javascript
-var params = {}; // all params are optional
-
-// with callbacks
-client.me.disconnectGithub(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.disconnectGithub(params)
-  .then(console.log)
-  .catch(console.error);
+const params = {}; // all params are optional
+try {
+  console.log(await client.me.disconnectGithub(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -312,20 +276,14 @@ all.User, me.*, or me.disconnectGithub.
 Enables multi-factor authentication for the current user
 
 ```javascript
-var params = {
+const params = {
   data: myData
 };
-
-// with callbacks
-client.me.enableTwoFactorAuth(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.enableTwoFactorAuth(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.me.enableTwoFactorAuth(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -359,20 +317,14 @@ all.User, me.*, or me.enableTwoFactorAuth.
 Gets a recent item list
 
 ```javascript
-var params = {
+const params = {
   itemType: myItemType
 };
-
-// with callbacks
-client.me.fetchRecentItems(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.fetchRecentItems(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.me.fetchRecentItems(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -407,18 +359,12 @@ all.User, all.User.read, me.*, or me.fetchRecentItems.
 Returns the multi-factor authentication key for the current user
 
 ```javascript
-var params = {}; // all params are optional
-
-// with callbacks
-client.me.generateTwoFactorAuth(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.generateTwoFactorAuth(params)
-  .then(console.log)
-  .catch(console.error);
+const params = {}; // all params are optional
+try {
+  console.log(await client.me.generateTwoFactorAuth(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -451,18 +397,12 @@ all.User, me.*, or me.generateTwoFactorAuth.
 Retrieves information on the current user
 
 ```javascript
-var params = {}; // all params are optional
-
-// with callbacks
-client.me.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.get(params)
-  .then(console.log)
-  .catch(console.error);
+const params = {}; // all params are optional
+try {
+  console.log(await client.me.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -497,20 +437,14 @@ all.User, all.User.read, me.*, or me.get.
 Retrieves information for an invitation to an organization
 
 ```javascript
-var params = {
+const params = {
   inviteId: myInviteId
 };
-
-// with callbacks
-client.me.invite(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.invite(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.me.invite(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -545,18 +479,12 @@ all.User, all.User.read, me.*, or me.invite.
 Retrieves pending organization invitations for a user
 
 ```javascript
-var params = {}; // all params are optional
-
-// with callbacks
-client.me.invites(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.invites(params)
-  .then(console.log)
-  .catch(console.error);
+const params = {}; // all params are optional
+try {
+  console.log(await client.me.invites(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -589,18 +517,12 @@ all.User, all.User.read, me.*, or me.invites.
 Returns notebook execution usage by day for the time range specified for all applications the current user owns
 
 ```javascript
-var params = {}; // all params are optional
-
-// with callbacks
-client.me.notebookMinuteCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.notebookMinuteCounts(params)
-  .then(console.log)
-  .catch(console.error);
+const params = {}; // all params are optional
+try {
+  console.log(await client.me.notebookMinuteCounts(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -635,20 +557,14 @@ all.User, all.User.read, me.*, or me.notebookMinuteCounts.
 Updates information about the current user
 
 ```javascript
-var params = {
+const params = {
   user: myUser
 };
-
-// with callbacks
-client.me.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.me.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -684,18 +600,12 @@ all.User, me.*, or me.patch.
 Returns payload counts for the time range specified for all applications the current user owns
 
 ```javascript
-var params = {}; // all params are optional
-
-// with callbacks
-client.me.payloadCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.payloadCounts(params)
-  .then(console.log)
-  .catch(console.error);
+const params = {}; // all params are optional
+try {
+  console.log(await client.me.payloadCounts(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -731,18 +641,12 @@ all.User, all.User.read, me.*, or me.payloadCounts.
 Returns payload counts per resolution in the time range specified for all applications the current user owns
 
 ```javascript
-var params = {}; // all params are optional
-
-// with callbacks
-client.me.payloadCountsBreakdown(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.payloadCountsBreakdown(params)
-  .then(console.log)
-  .catch(console.error);
+const params = {}; // all params are optional
+try {
+  console.log(await client.me.payloadCountsBreakdown(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -780,18 +684,12 @@ all.User, all.User.read, me.*, or me.payloadCountsBreakdown.
 Returns a new auth token based on the current auth token
 
 ```javascript
-var params = {}; // all params are optional
-
-// with callbacks
-client.me.refreshToken(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.refreshToken(params)
-  .then(console.log)
-  .catch(console.error);
+const params = {}; // all params are optional
+try {
+  console.log(await client.me.refreshToken(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -825,21 +723,15 @@ all.User, or me.*.
 Accepts or rejects an invitation to an organization
 
 ```javascript
-var params = {
+const params = {
   inviteId: myInviteId,
   response: myResponse
 };
-
-// with callbacks
-client.me.respondToInvite(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.respondToInvite(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.me.respondToInvite(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -876,20 +768,14 @@ all.User, me.*, or me.respondToInvite.
 Moves resources to a new owner
 
 ```javascript
-var params = {
+const params = {
   transfer: myTransfer
 };
-
-// with callbacks
-client.me.transferResources(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.transferResources(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.me.transferResources(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -923,18 +809,12 @@ all.User, me.*, or me.transferResources.
 Sends an email verification to the user
 
 ```javascript
-var params = {}; // all params are optional
-
-// with callbacks
-client.me.verifyEmail(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.me.verifyEmail(params)
-  .then(console.log)
-  .catch(console.error);
+const params = {}; // all params are optional
+try {
+  console.log(await client.me.verifyEmail(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

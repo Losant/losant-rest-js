@@ -16,20 +16,14 @@ parameters and the potential responses.
 Returns the Custom Nodes for an instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
-
-// with callbacks
-client.instanceCustomNodes.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceCustomNodes.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceCustomNodes.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -69,21 +63,15 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceCustomNodes.*,
 Create a new Custom Node for an instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceCustomNode: myInstanceCustomNode
 };
-
-// with callbacks
-client.instanceCustomNodes.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceCustomNodes.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceCustomNodes.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

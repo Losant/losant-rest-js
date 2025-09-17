@@ -17,21 +17,15 @@ parameters and the potential responses.
 Deletes an application certificate authority
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   applicationCertificateAuthorityId: myApplicationCertificateAuthorityId
 };
-
-// with callbacks
-client.applicationCertificateAuthority.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationCertificateAuthority.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationCertificateAuthority.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -67,21 +61,15 @@ all.Application, all.Organization, all.User, applicationCertificateAuthority.*, 
 Retrieves information on an application certificate authority
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   applicationCertificateAuthorityId: myApplicationCertificateAuthorityId
 };
-
-// with callbacks
-client.applicationCertificateAuthority.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationCertificateAuthority.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationCertificateAuthority.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -117,22 +105,16 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about an application certificate authority
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   applicationCertificateAuthorityId: myApplicationCertificateAuthorityId,
   applicationCertificateAuthority: myApplicationCertificateAuthority
 };
-
-// with callbacks
-client.applicationCertificateAuthority.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.applicationCertificateAuthority.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.applicationCertificateAuthority.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

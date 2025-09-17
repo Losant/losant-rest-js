@@ -16,20 +16,14 @@ parameters and the potential responses.
 Returns the data tables for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.dataTables.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dataTables.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTables.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -70,21 +64,15 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Create a new data table for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTable: myDataTable
 };
-
-// with callbacks
-client.dataTables.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.dataTables.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.dataTables.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

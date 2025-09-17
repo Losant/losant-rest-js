@@ -19,20 +19,14 @@ parameters and the potential responses.
 Request an export of the compiled WASM files for a current deployment
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.embeddedDeployments.export(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.embeddedDeployments.export(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.embeddedDeployments.export(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -68,20 +62,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Returns the embedded deployments for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.embeddedDeployments.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.embeddedDeployments.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.embeddedDeployments.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -123,21 +111,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Deploy an embedded workflow version to one or more embedded devices. Version can be blank, if removal is desired.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deployment: myDeployment
 };
-
-// with callbacks
-client.embeddedDeployments.release(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.embeddedDeployments.release(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.embeddedDeployments.release(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -173,21 +155,15 @@ all.Application, all.Organization, all.User, embeddedDeployments.*, or embeddedD
 Remove all embedded deployments from a device, remove all embedded deployments of a workflow, or remove a specific workflow from a specific device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deployment: myDeployment
 };
-
-// with callbacks
-client.embeddedDeployments.remove(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.embeddedDeployments.remove(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.embeddedDeployments.remove(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -223,21 +199,15 @@ all.Application, all.Organization, all.User, embeddedDeployments.*, or embeddedD
 Replace deployments of an embedded workflow version with a new version. New version can be blank, if removal is desired.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deployment: myDeployment
 };
-
-// with callbacks
-client.embeddedDeployments.replace(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.embeddedDeployments.replace(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.embeddedDeployments.replace(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

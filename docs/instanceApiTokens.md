@@ -16,20 +16,14 @@ parameters and the potential responses.
 Returns the API tokens for an instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
-
-// with callbacks
-client.instanceApiTokens.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceApiTokens.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceApiTokens.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -69,21 +63,15 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceApiTokens.*, o
 Create a new API token for an instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   apiToken: myApiToken
 };
-
-// with callbacks
-client.instanceApiTokens.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.instanceApiTokens.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.instanceApiTokens.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

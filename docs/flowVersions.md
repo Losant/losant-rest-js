@@ -17,22 +17,16 @@ parameters and the potential responses.
 Delete flow versions
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   options: myOptions
 };
-
-// with callbacks
-client.flowVersions.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flowVersions.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flowVersions.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -70,21 +64,15 @@ all.Application, all.Organization, all.User, flowVersions.*, or flowVersions.del
 Returns the flow versions for a flow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
-
-// with callbacks
-client.flowVersions.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flowVersions.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flowVersions.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -128,22 +116,16 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Create or replace a flow version for a flow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   flowVersion: myFlowVersion
 };
-
-// with callbacks
-client.flowVersions.post(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.flowVersions.post(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.flowVersions.post(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication

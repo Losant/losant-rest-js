@@ -4,7 +4,7 @@
 
 The [Losant](https://www.losant.com) REST API client provides a simple way to use the comprehensive Losant API. You can authenticate either as a Losant device or with your user account, and have access to all the functionality of the Losant platform.
 
-This client works both in browsers and node.js (v20 and newer), and supports both callbacks and promises. It uses [Axios](https://github.com/mzabriskie/axios) under the covers for the actual HTTP communication.
+This client works both in browsers and node.js (v20 and newer), and only supports promises. It uses [Axios](https://github.com/mzabriskie/axios) under the covers for the actual HTTP communication.
 
 <br/>
 
@@ -48,37 +48,6 @@ const sendSensorDataToLosant = async () => {
 setInterval(async () => {
   await sendSensorDataToLosant();
 }, 60000);
-```
-
-OR
-
-```javascript
-var api = require('losant-rest');
-var mySensor = require('./my-analog-sensor');
-
-var client = api.createClient();
-
-client.auth.authenticateDevice({ credentials: {
-  deviceId: 'my-device-id',
-  key: 'my-app-access-key',
-  secret: 'my-app-access-secret'
-}}).then(function (response) {
-  client.setOption('accessToken', response.token);
-  var appId = response.applicationId;
-
-  var state = { data: { temperature: mySensor.read() } };
-  return client.device.sendState({
-    deviceId: 'my-device-id',
-    applicationId: appId,
-    deviceState: state
-  });
-})
-.then(function (response) {
-  console.log(response); // { success: true }
-})
-.catch(function (error) {
-  console.error(error);
-});
 ```
 
 ## API Documentation

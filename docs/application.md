@@ -35,21 +35,15 @@ parameters and the potential responses.
 Add resources to an application via an application template
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   options: myOptions
 };
-
-// with callbacks
-client.application.applyTemplate(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.applyTemplate(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.applyTemplate(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -86,21 +80,15 @@ all.Application, all.Organization, all.User, application.*, or application.apply
 Returns success when a job has been enqueued to archive this application&#x27;s device data for a given day
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   date: myDate
 };
-
-// with callbacks
-client.application.archiveData(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.archiveData(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.archiveData(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -136,20 +124,14 @@ all.Application, all.Organization, all.User, application.*, or application.archi
 Returns success when a job has been enqueued to backfill all current data to its archive
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.application.backfillArchiveData(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.backfillArchiveData(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.backfillArchiveData(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -184,20 +166,14 @@ all.Application, all.Organization, all.User, application.*, or application.backf
 Copy an application into a new application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.application.clone(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.clone(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.clone(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -236,20 +212,14 @@ all.Application, all.Organization, all.User, application.*, or application.clone
 Deletes an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.application.delete(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.delete(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.delete(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -284,20 +254,14 @@ all.Application, all.Organization, all.User, application.*, or application.delet
 Returns device counts by day for the time range specified for this application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.application.deviceCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.deviceCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.deviceCounts(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -334,21 +298,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Export an application and all of its resources
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   options: myOptions
 };
-
-// with callbacks
-client.application.export(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.export(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.export(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -385,20 +343,14 @@ all.Application, all.Organization, all.User, application.*, or application.expor
 Returns success when a job has been enqueued to archive all selected data tables
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.application.fullDataTablesArchive(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.fullDataTablesArchive(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.fullDataTablesArchive(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -433,20 +385,14 @@ all.Application, all.Organization, all.User, application.*, or application.fullD
 Returns success when a job has been enqueued to archive all current events
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.application.fullEventsArchive(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.fullEventsArchive(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.fullEventsArchive(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -481,20 +427,14 @@ all.Application, all.Organization, all.User, application.*, or application.fullE
 Retrieves information on an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.application.get(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.get(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.get(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -531,21 +471,15 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Updates an application global at the given key
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   globals: myGlobals
 };
-
-// with callbacks
-client.application.globals(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.globals(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.globals(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -581,20 +515,14 @@ all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, 
 Add multiple resources to an application via a zip file
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.application.import(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.import(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.import(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -633,20 +561,14 @@ all.Application, all.Organization, all.User, application.*, or application.impor
 Retrieves information on application import logs
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.application.importLogs(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.importLogs(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.importLogs(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -683,21 +605,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Publishes the given message to the given MQTT topic
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   payload: myPayload
 };
-
-// with callbacks
-client.application.mqttPublishMessage(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.mqttPublishMessage(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.mqttPublishMessage(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -733,20 +649,14 @@ all.Application, all.Organization, all.User, application.*, or application.mqttP
 Returns notebook execution usage by day for the time range specified for this application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.application.notebookMinuteCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.notebookMinuteCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.notebookMinuteCounts(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -783,21 +693,15 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   application: myApplication
 };
-
-// with callbacks
-client.application.patch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.patch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.patch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -835,20 +739,14 @@ all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, 
 Returns payload counts for the time range specified for this application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.application.payloadCounts(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.payloadCounts(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.payloadCounts(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -886,20 +784,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Returns payload counts per resolution in the time range specified for this application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.application.payloadCountsBreakdown(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.payloadCountsBreakdown(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.payloadCountsBreakdown(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -939,20 +831,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Get the current application readme information
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
-
-// with callbacks
-client.application.readme(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.readme(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.readme(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -987,21 +873,15 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Update the current application readme information
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   readme: myReadme
 };
-
-// with callbacks
-client.application.readmePatch(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.readmePatch(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.readmePatch(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
@@ -1037,21 +917,15 @@ all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, 
 Search across an application&#x27;s resources by target identifier
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   filter: myFilter
 };
-
-// with callbacks
-client.application.search(params, function (err, result) {
-  if (err) { return console.error(err); }
-  console.log(result);
-});
-
-// with promises
-client.application.search(params)
-  .then(console.log)
-  .catch(console.error);
+try {
+  console.log(await client.application.search(params));
+} catch (err) {
+  console.error(err);
+}
 ```
 
 #### Authentication
