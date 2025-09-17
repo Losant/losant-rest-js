@@ -50,37 +50,6 @@ setInterval(async () => {
 }, 60000);
 ```
 
-OR
-
-```javascript
-var api = require('losant-rest');
-var mySensor = require('./my-analog-sensor');
-
-var client = api.createClient();
-
-client.auth.authenticateDevice({ credentials: {
-  deviceId: 'my-device-id',
-  key: 'my-app-access-key',
-  secret: 'my-app-access-secret'
-}}).then(function (response) {
-  client.setOption('accessToken', response.token);
-  var appId = response.applicationId;
-
-  var state = { data: { temperature: mySensor.read() } };
-  return client.device.sendState({
-    deviceId: 'my-device-id',
-    applicationId: appId,
-    deviceState: state
-  });
-})
-.then(function (response) {
-  console.log(response); // { success: true }
-})
-.catch(function (error) {
-  console.error(error);
-});
-```
-
 ## API Documentation
 
 ```javascript

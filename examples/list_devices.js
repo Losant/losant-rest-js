@@ -1,13 +1,11 @@
-var api = require('losant-rest');
+import api from 'losant-rest';
 
-var client = api.createClient({ accessToken: 'my_token' });
-client.devices.get({ applicationId: 'myAppId' })
-.then(function (response) {
-  console.log(response);
-})
-.catch(function (err) {
+const client = api.createClient({ accessToken: 'my_token' });
+try {
+  const response = await client.devices.get({ applicationId: 'myAppId' });
+} catch (err) {
   console.error(err);
-});
+}
 /* Example result
  * {
  *   count: 1,

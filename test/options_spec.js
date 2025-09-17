@@ -1,11 +1,11 @@
-require('./common');
-var api  = require('../lib');
-var nock = require('nock');
+import './common.js';
+import api from '../lib/index.js';
+import nock from 'nock';
 
 describe('promise tests', function() {
 
   it('should be able to set and modify token', function(done) {
-    var client = api.createClient({ accessToken: 'token1' });
+    const client = api.createClient({ accessToken: 'token1' });
     client.getOption('accessToken').should.equal('token1');
     client.setOption('accessToken', 'token2');
     client.getOption('accessToken').should.equal('token2');
@@ -32,7 +32,7 @@ describe('promise tests', function() {
   });
 
   it('should be able to set and modify url', function(done) {
-    var client = api.createClient({ url: 'http://not.losant', accessToken: 'token1' });
+    const client = api.createClient({ url: 'http://not.losant', accessToken: 'token1' });
     client.getOption('url').should.equal('http://not.losant');
     client.setOption('url', 'http://stillnot.losant');
     client.getOption('url').should.equal('http://stillnot.losant');

@@ -1,11 +1,8 @@
-const {
-    defineConfig,
-} = require('eslint/config');
-const js = require('@eslint/js');
+import { defineConfig } from 'eslint/config';
+import globals from 'globals';
+import js from '@eslint/js';
 
-const globals = require('globals');
-
-module.exports = defineConfig([
+export default defineConfig([
   js.configs.recommended,
   {
     languageOptions: {
@@ -172,7 +169,7 @@ module.exports = defineConfig([
         'no-sync': 'error',
         'no-tabs': 'error',
         'no-template-curly-in-string': 'error',
-        'no-ternary': 'error',
+        'no-ternary': 'off',
         'no-throw-literal': 'error',
         'no-trailing-spaces': 'error',
         'no-undef-init': 'error',
@@ -224,7 +221,7 @@ module.exports = defineConfig([
             'before': false,
         }],
 
-        'sort-imports': 'error',
+        'sort-imports': 'off',
         'sort-keys': 'off',
         'sort-vars': 'off',
         'space-before-blocks': 'off',

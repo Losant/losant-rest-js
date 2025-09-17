@@ -1,11 +1,11 @@
-require('./common');
-var api  = require('../lib');
-var nock = require('nock');
+import './common.js';
+import api from '../lib/index.js';
+import nock from 'nock';
 
 describe('promise tests', function() {
 
   it('should correctly make an auth call', function(done) {
-    var client = api.createClient();
+    const client = api.createClient();
 
     nock('https://api.losant.com', {
       reqheaders: {
@@ -34,7 +34,7 @@ describe('promise tests', function() {
   });
 
   it('should correctly make a call with a token', function(done){
-    var client = api.createClient({ accessToken: 'my token' });
+    const client = api.createClient({ accessToken: 'my token' });
 
     nock('https://api.losant.com', {
       reqheaders: {
@@ -58,7 +58,7 @@ describe('promise tests', function() {
   });
 
   it('should correctly make calls with nested query params', function(done){
-    var client = api.createClient({ accessToken: 'my token' });
+    const client = api.createClient({ accessToken: 'my token' });
 
     nock('https://api.losant.com', {
       reqheaders: {
@@ -93,7 +93,7 @@ describe('promise tests', function() {
   });
 
   it('should correctly make a call with an error', function(done){
-    var client = api.createClient({ accessToken: 'my token' });
+    const client = api.createClient({ accessToken: 'my token' });
 
     nock('https://api.losant.com', {
       reqheaders: {

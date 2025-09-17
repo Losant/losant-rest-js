@@ -1,7 +1,7 @@
 process.env.NODE_ENV = 'test';
 
-require('should');
-var nock = require('nock');
+import 'should';
+import nock from 'nock';
 
 beforeEach(function(done) {
   nock.cleanAll();
