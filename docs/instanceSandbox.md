@@ -21,7 +21,7 @@ parameters and the potential responses.
 Deletes a sandbox user account
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
@@ -71,7 +71,7 @@ all.Instance, all.User, instanceSandbox.*, or instanceSandbox.delete.
 Returns device counts by day for the time range specified for all applications the sandbox user owns
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
@@ -123,7 +123,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceSandbox.*, or 
 Returns a sandbox user
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
@@ -175,7 +175,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceSandbox.*, or 
 Returns notebook execution usage by day for the time range specified for all applications the sandbox user owns
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
@@ -227,7 +227,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceSandbox.*, or 
 Returns payload counts for the time range specified for all applications the sandbox user owns
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
@@ -280,7 +280,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceSandbox.*, or 
 Returns payload counts per resolution in the time range specified for all applications the sandbox user owns
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };
@@ -335,7 +335,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceSandbox.*, or 
 Restores a sandbox user account
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceSandboxId: myInstanceSandboxId
 };

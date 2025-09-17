@@ -35,7 +35,7 @@ parameters and the potential responses.
 Add resources to an application via an application template
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   options: myOptions
 };
@@ -86,7 +86,7 @@ all.Application, all.Organization, all.User, application.*, or application.apply
 Returns success when a job has been enqueued to archive this application&#x27;s device data for a given day
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   date: myDate
 };
@@ -136,7 +136,7 @@ all.Application, all.Organization, all.User, application.*, or application.archi
 Returns success when a job has been enqueued to backfill all current data to its archive
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -184,7 +184,7 @@ all.Application, all.Organization, all.User, application.*, or application.backf
 Copy an application into a new application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -236,7 +236,7 @@ all.Application, all.Organization, all.User, application.*, or application.clone
 Deletes an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -284,7 +284,7 @@ all.Application, all.Organization, all.User, application.*, or application.delet
 Returns device counts by day for the time range specified for this application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -334,7 +334,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Export an application and all of its resources
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   options: myOptions
 };
@@ -385,7 +385,7 @@ all.Application, all.Organization, all.User, application.*, or application.expor
 Returns success when a job has been enqueued to archive all selected data tables
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -433,7 +433,7 @@ all.Application, all.Organization, all.User, application.*, or application.fullD
 Returns success when a job has been enqueued to archive all current events
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -481,7 +481,7 @@ all.Application, all.Organization, all.User, application.*, or application.fullE
 Retrieves information on an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -531,7 +531,7 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Updates an application global at the given key
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   globals: myGlobals
 };
@@ -581,7 +581,7 @@ all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, 
 Add multiple resources to an application via a zip file
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -633,7 +633,7 @@ all.Application, all.Organization, all.User, application.*, or application.impor
 Retrieves information on application import logs
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -683,7 +683,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Publishes the given message to the given MQTT topic
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   payload: myPayload
 };
@@ -733,7 +733,7 @@ all.Application, all.Organization, all.User, application.*, or application.mqttP
 Returns notebook execution usage by day for the time range specified for this application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -783,7 +783,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   application: myApplication
 };
@@ -835,7 +835,7 @@ all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, 
 Returns payload counts for the time range specified for this application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -886,7 +886,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Returns payload counts per resolution in the time range specified for this application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -939,7 +939,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Get the current application readme information
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -987,7 +987,7 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Update the current application readme information
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   readme: myReadme
 };
@@ -1037,7 +1037,7 @@ all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, 
 Search across an application&#x27;s resources by target identifier
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   filter: myFilter
 };

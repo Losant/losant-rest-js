@@ -17,7 +17,7 @@ parameters and the potential responses.
 Deletes an experience version
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceVersionIdOrName: myExperienceVersionIdOrName
 };
@@ -67,7 +67,7 @@ all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, 
 Retrieves information on an experience version
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceVersionIdOrName: myExperienceVersionIdOrName
 };
@@ -117,7 +117,7 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Updates information about an experience version
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceVersionIdOrName: myExperienceVersionIdOrName,
   experienceVersion: myExperienceVersion

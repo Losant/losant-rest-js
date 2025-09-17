@@ -17,7 +17,7 @@ parameters and the potential responses.
 Deletes a data table row
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId,
   rowId: myRowId
@@ -69,7 +69,7 @@ all.Application, all.Organization, all.User, dataTableRow.*, or dataTableRow.del
 Retrieves the data table row
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId,
   rowId: myRowId
@@ -121,7 +121,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates the data table row
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId,
   rowId: myRowId,

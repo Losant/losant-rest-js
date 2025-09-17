@@ -16,7 +16,7 @@ parameters and the potential responses.
 Returns the organizations associated with the current instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
 
@@ -71,7 +71,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceOrgs.*, or ins
 Create a new organization
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
 

@@ -17,7 +17,7 @@ parameters and the potential responses.
 Deletes a webhook
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   webhookId: myWebhookId
 };
@@ -68,7 +68,7 @@ all.Application, all.Organization, all.User, webhook.*, or webhook.delete.
 Retrieves information on a webhook
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   webhookId: myWebhookId
 };
@@ -118,7 +118,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about a webhook
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   webhookId: myWebhookId,
   webhook: myWebhook

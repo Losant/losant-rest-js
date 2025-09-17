@@ -20,7 +20,7 @@ parameters and the potential responses.
 Delete events
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -72,7 +72,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Request an export of an application&#x27;s event data
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -121,7 +121,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Returns the events for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -177,7 +177,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Returns the first new event ordered by severity and then creation
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -226,7 +226,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Asynchronously updates information for matching events by subject and/or current state
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   updates: myUpdates
 };
@@ -281,7 +281,7 @@ all.Application, all.Organization, all.User, events.*, or events.patch.
 Create a new event for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   event: myEvent
 };

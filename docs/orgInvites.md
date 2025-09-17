@@ -16,7 +16,7 @@ parameters and the potential responses.
 Gets information about an invite
 
 ```javascript
-var params = {
+const params = {
   token: myToken,
   email: myEmail
 };
@@ -65,7 +65,7 @@ No api access token is required to call this action.
 Accepts/Rejects an invite
 
 ```javascript
-var params = {
+const params = {
   invite: myInvite
 };
 

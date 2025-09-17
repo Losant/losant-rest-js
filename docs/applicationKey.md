@@ -17,7 +17,7 @@ parameters and the potential responses.
 Deletes an applicationKey
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   applicationKeyId: myApplicationKeyId
 };
@@ -67,7 +67,7 @@ all.Application, all.Organization, all.User, applicationKey.*, or applicationKey
 Retrieves information on an applicationKey
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   applicationKeyId: myApplicationKeyId
 };
@@ -117,7 +117,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about an applicationKey
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   applicationKeyId: myApplicationKeyId,
   applicationKey: myApplicationKey

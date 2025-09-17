@@ -16,7 +16,7 @@ parameters and the potential responses.
 Returns the device recipes for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -72,7 +72,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Create a new device recipe for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceRecipe: myDeviceRecipe
 };

@@ -27,7 +27,7 @@ parameters and the potential responses.
 Deletes an organization
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId
 };
 
@@ -75,7 +75,7 @@ all.Organization, all.User, org.*, or org.delete.
 Returns device counts by day for the time range specified for this organization
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId
 };
 
@@ -125,7 +125,7 @@ all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.
 Retrieves information on an organization
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId
 };
 
@@ -175,7 +175,7 @@ all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.
 Invites a person to an organization
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId,
   invite: myInvite
 };
@@ -225,7 +225,7 @@ all.Organization, all.User, org.*, or org.inviteMember.
 Modifies a current org member&#x27;s role
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId,
   member: myMember
 };
@@ -277,7 +277,7 @@ all.Organization, all.User, org.*, or org.modifyMember.
 Returns notebook execution usage by day for the time range specified for this organization
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId
 };
 
@@ -327,7 +327,7 @@ all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.
 Updates information about an organization
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId,
   organization: myOrganization
 };
@@ -379,7 +379,7 @@ all.Organization, all.User, org.*, or org.patch.
 Returns payload counts for the time range specified for all applications this organization owns
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId
 };
 
@@ -430,7 +430,7 @@ all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.
 Returns payload counts per resolution in the time range specified for all application this organization owns
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId
 };
 
@@ -483,7 +483,7 @@ all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.
 Gets the current pending invites
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId
 };
 
@@ -531,7 +531,7 @@ all.Organization, all.Organization.read, all.User, all.User.read, org.*, or org.
 Removes a member from the org
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId,
   userId: myUserId
 };
@@ -583,7 +583,7 @@ all.Organization, all.User, org.*, or org.removeMember.
 Revokes an existing invite
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId,
   inviteId: myInviteId
 };
@@ -633,7 +633,7 @@ all.Organization, all.User, org.*, or org.revokeInvite.
 Moves resources to a new owner
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId,
   transfer: myTransfer
 };

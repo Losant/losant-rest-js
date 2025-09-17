@@ -22,7 +22,7 @@ parameters and the potential responses.
 Returns device counts by day for the time range specified for this instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
 
@@ -72,7 +72,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instance.*, or instanc
 Generates a CSV report on instance stats
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
 
@@ -120,7 +120,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instance.*, or instanc
 Returns an instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
 
@@ -168,7 +168,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instance.*, or instanc
 Return historical summary entries for an instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
 
@@ -222,7 +222,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instance.*, or instanc
 Returns notebook execution usage by day for the time range specified for this instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
 
@@ -272,7 +272,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instance.*, or instanc
 Updates information about an instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instance: myInstance
 };
@@ -321,7 +321,7 @@ all.Instance, all.User, instance.*, or instance.patch.
 Returns payload counts for the time range specified for this instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
 
@@ -372,7 +372,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instance.*, or instanc
 Returns payload counts per resolution in the time range specified for this instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
 

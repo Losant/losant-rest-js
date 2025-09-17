@@ -34,7 +34,7 @@ parameters and the potential responses.
 Adds an item to a recent item list
 
 ```javascript
-var params = {
+const params = {
   data: myData
 };
 
@@ -81,7 +81,7 @@ all.User, me.*, or me.addRecentItem.
 Changes the current user&#x27;s password and optionally logs out all other sessions
 
 ```javascript
-var params = {
+const params = {
   data: myData
 };
 
@@ -128,7 +128,7 @@ all.User, me.*, or me.changePassword.
 Deletes the current user
 
 ```javascript
-var params = {
+const params = {
   credentials: myCredentials
 };
 
@@ -175,7 +175,7 @@ all.User, me.*, or me.delete.
 Returns device counts by day for the time range specified for all applications the current user owns
 
 ```javascript
-var params = {}; // all params are optional
+const params = {}; // all params are optional
 
 // with callbacks
 client.me.deviceCounts(params, function (err, result) {
@@ -221,7 +221,7 @@ all.User, all.User.read, me.*, or me.deviceCounts.
 Disables multi-factor authentication for the current user
 
 ```javascript
-var params = {
+const params = {
   data: myData
 };
 
@@ -268,7 +268,7 @@ all.User, me.*, or me.disableTwoFactorAuth.
 Disconnects the user from Github
 
 ```javascript
-var params = {}; // all params are optional
+const params = {}; // all params are optional
 
 // with callbacks
 client.me.disconnectGithub(params, function (err, result) {
@@ -312,7 +312,7 @@ all.User, me.*, or me.disconnectGithub.
 Enables multi-factor authentication for the current user
 
 ```javascript
-var params = {
+const params = {
   data: myData
 };
 
@@ -359,7 +359,7 @@ all.User, me.*, or me.enableTwoFactorAuth.
 Gets a recent item list
 
 ```javascript
-var params = {
+const params = {
   itemType: myItemType
 };
 
@@ -407,7 +407,7 @@ all.User, all.User.read, me.*, or me.fetchRecentItems.
 Returns the multi-factor authentication key for the current user
 
 ```javascript
-var params = {}; // all params are optional
+const params = {}; // all params are optional
 
 // with callbacks
 client.me.generateTwoFactorAuth(params, function (err, result) {
@@ -451,7 +451,7 @@ all.User, me.*, or me.generateTwoFactorAuth.
 Retrieves information on the current user
 
 ```javascript
-var params = {}; // all params are optional
+const params = {}; // all params are optional
 
 // with callbacks
 client.me.get(params, function (err, result) {
@@ -497,7 +497,7 @@ all.User, all.User.read, me.*, or me.get.
 Retrieves information for an invitation to an organization
 
 ```javascript
-var params = {
+const params = {
   inviteId: myInviteId
 };
 
@@ -545,7 +545,7 @@ all.User, all.User.read, me.*, or me.invite.
 Retrieves pending organization invitations for a user
 
 ```javascript
-var params = {}; // all params are optional
+const params = {}; // all params are optional
 
 // with callbacks
 client.me.invites(params, function (err, result) {
@@ -589,7 +589,7 @@ all.User, all.User.read, me.*, or me.invites.
 Returns notebook execution usage by day for the time range specified for all applications the current user owns
 
 ```javascript
-var params = {}; // all params are optional
+const params = {}; // all params are optional
 
 // with callbacks
 client.me.notebookMinuteCounts(params, function (err, result) {
@@ -635,7 +635,7 @@ all.User, all.User.read, me.*, or me.notebookMinuteCounts.
 Updates information about the current user
 
 ```javascript
-var params = {
+const params = {
   user: myUser
 };
 
@@ -684,7 +684,7 @@ all.User, me.*, or me.patch.
 Returns payload counts for the time range specified for all applications the current user owns
 
 ```javascript
-var params = {}; // all params are optional
+const params = {}; // all params are optional
 
 // with callbacks
 client.me.payloadCounts(params, function (err, result) {
@@ -731,7 +731,7 @@ all.User, all.User.read, me.*, or me.payloadCounts.
 Returns payload counts per resolution in the time range specified for all applications the current user owns
 
 ```javascript
-var params = {}; // all params are optional
+const params = {}; // all params are optional
 
 // with callbacks
 client.me.payloadCountsBreakdown(params, function (err, result) {
@@ -780,7 +780,7 @@ all.User, all.User.read, me.*, or me.payloadCountsBreakdown.
 Returns a new auth token based on the current auth token
 
 ```javascript
-var params = {}; // all params are optional
+const params = {}; // all params are optional
 
 // with callbacks
 client.me.refreshToken(params, function (err, result) {
@@ -825,7 +825,7 @@ all.User, or me.*.
 Accepts or rejects an invitation to an organization
 
 ```javascript
-var params = {
+const params = {
   inviteId: myInviteId,
   response: myResponse
 };
@@ -876,7 +876,7 @@ all.User, me.*, or me.respondToInvite.
 Moves resources to a new owner
 
 ```javascript
-var params = {
+const params = {
   transfer: myTransfer
 };
 
@@ -923,7 +923,7 @@ all.User, me.*, or me.transferResources.
 Sends an email verification to the user
 
 ```javascript
-var params = {}; // all params are optional
+const params = {}; // all params are optional
 
 // with callbacks
 client.me.verifyEmail(params, function (err, result) {

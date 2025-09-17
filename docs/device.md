@@ -28,7 +28,7 @@ parameters and the potential responses.
 Deletes a device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
@@ -78,7 +78,7 @@ all.Application, all.Organization, all.User, device.*, or device.delete.
 Creates a device data export. Defaults to all data.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
@@ -134,7 +134,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Retrieves information on a device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
@@ -187,7 +187,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 Retrieve the last known commands(s) sent to the device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
@@ -243,7 +243,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 Retrieve the composite last complete state of the device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
@@ -296,7 +296,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 Retrieve the recent log entries about the device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
@@ -352,7 +352,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 Retrieve the last known state(s) of the device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
@@ -408,7 +408,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 Updates information about a device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId,
   device: myDevice
@@ -462,7 +462,7 @@ all.Application, all.Organization, all.User, device.*, or device.patch.
 Returns payload counts for the time range specified for this device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
@@ -514,7 +514,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Returns payload counts per resolution in the time range specified for this device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
@@ -567,7 +567,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Removes all device data for the specified time range. Defaults to all data.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
@@ -619,7 +619,7 @@ all.Application, all.Organization, all.User, device.*, or device.removeData.
 Send a command to a device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId,
   deviceCommand: myDeviceCommand
@@ -671,7 +671,7 @@ all.Application, all.Device, all.Organization, all.User, device.*, or device.sen
 Send the current state of the device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId,
   deviceState: myDeviceState
@@ -723,7 +723,7 @@ all.Application, all.Device, all.Organization, all.User, device.*, or device.sen
 Set the current connection status of the device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId,
   connectionStatus: myConnectionStatus

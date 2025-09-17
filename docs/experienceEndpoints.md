@@ -17,7 +17,7 @@ parameters and the potential responses.
 Returns the experience endpoints for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -72,7 +72,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Create a new experience endpoint for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceEndpoint: myExperienceEndpoint
 };
@@ -122,7 +122,7 @@ all.Application, all.Organization, all.User, experienceEndpoints.*, or experienc
 Get statistics about endpoint requests
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 

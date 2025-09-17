@@ -16,7 +16,7 @@ parameters and the potential responses.
 Returns the data tables for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -70,7 +70,7 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Create a new data table for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTable: myDataTable
 };

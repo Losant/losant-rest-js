@@ -16,7 +16,7 @@ parameters and the potential responses.
 Returns the webhooks for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -70,7 +70,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Create a new webhook for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   webhook: myWebhook
 };

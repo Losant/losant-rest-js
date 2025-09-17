@@ -17,7 +17,7 @@ parameters and the potential responses.
 Deletes an integration
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   integrationId: myIntegrationId
 };
@@ -68,7 +68,7 @@ all.Application, all.Organization, all.User, integration.*, or integration.delet
 Retrieves information on an integration
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   integrationId: myIntegrationId
 };
@@ -118,7 +118,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about an integration
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   integrationId: myIntegrationId,
   integration: myIntegration

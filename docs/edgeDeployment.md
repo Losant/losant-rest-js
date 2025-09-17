@@ -15,7 +15,7 @@ parameters and the potential responses.
 Retrieves information on an edge deployment
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   edgeDeploymentId: myEdgeDeploymentId
 };

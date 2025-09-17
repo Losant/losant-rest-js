@@ -19,7 +19,7 @@ parameters and the potential responses.
 Adds a new column to this data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId,
   dataTableColumn: myDataTableColumn
@@ -71,7 +71,7 @@ all.Application, all.Organization, all.User, dataTable.*, or dataTable.addColumn
 Deletes a data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId
 };
@@ -121,7 +121,7 @@ all.Application, all.Organization, all.User, dataTable.*, or dataTable.delete.
 Retrieves information on a data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId
 };
@@ -171,7 +171,7 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Updates information about a data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId,
   dataTable: myDataTable
@@ -223,7 +223,7 @@ all.Application, all.Organization, all.User, dataTable.*, or dataTable.patch.
 Removes a column from this data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId,
   columnName: myColumnName

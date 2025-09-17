@@ -15,7 +15,7 @@ parameters and the potential responses.
 Returns a collection of instance sandboxes
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
 

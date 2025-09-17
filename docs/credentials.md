@@ -16,7 +16,7 @@ parameters and the potential responses.
 Returns a collection of credentials for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -70,7 +70,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Create a new credential for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   credential: myCredential
 };

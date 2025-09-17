@@ -17,7 +17,7 @@ parameters and the potential responses.
 Deletes an experience slug
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceSlugId: myExperienceSlugId
 };
@@ -67,7 +67,7 @@ all.Application, all.Organization, all.User, experienceSlug.*, or experienceSlug
 Retrieves information on an experience slug
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceSlugId: myExperienceSlugId
 };
@@ -117,7 +117,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about an experience slug
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceSlugId: myExperienceSlugId,
   experienceSlug: myExperienceSlug

@@ -16,7 +16,7 @@ parameters and the potential responses.
 Returns the dashboards the current user has permission to see
 
 ```javascript
-var params = {}; // all params are optional
+const params = {}; // all params are optional
 
 // with callbacks
 client.dashboards.get(params, function (err, result) {
@@ -68,7 +68,7 @@ all.Organization, all.Organization.read, all.User, all.User.read, dashboards.*, 
 Create a new dashboard
 
 ```javascript
-var params = {
+const params = {
   dashboard: myDashboard
 };
 

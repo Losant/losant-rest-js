@@ -18,7 +18,7 @@ parameters and the potential responses.
 Deletes an experience view
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceViewId: myExperienceViewId
 };
@@ -68,7 +68,7 @@ all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, 
 Retrieves information on an experience view
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceViewId: myExperienceViewId
 };
@@ -119,7 +119,7 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Retrieves information on resources linked to an experience view
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceViewId: myExperienceViewId
 };
@@ -171,7 +171,7 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Updates information about an experience view
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceViewId: myExperienceViewId,
   experienceView: myExperienceView

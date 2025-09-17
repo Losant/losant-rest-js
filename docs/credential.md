@@ -18,7 +18,7 @@ parameters and the potential responses.
 Deletes a credential
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   credentialId: myCredentialId
 };
@@ -68,7 +68,7 @@ all.Application, all.Organization, all.User, credential.*, or credential.delete.
 Retrieves information on a credential
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   credentialId: myCredentialId
 };
@@ -118,7 +118,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Retrieves information on resources linked to a credential
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   credentialId: myCredentialId
 };
@@ -169,7 +169,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about a credential
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   credentialId: myCredentialId,
   credential: myCredential

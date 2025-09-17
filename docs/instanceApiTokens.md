@@ -16,7 +16,7 @@ parameters and the potential responses.
 Returns the API tokens for an instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
 
@@ -69,7 +69,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceApiTokens.*, o
 Create a new API token for an instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   apiToken: myApiToken
 };

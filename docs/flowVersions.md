@@ -17,7 +17,7 @@ parameters and the potential responses.
 Delete flow versions
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   options: myOptions
@@ -70,7 +70,7 @@ all.Application, all.Organization, all.User, flowVersions.*, or flowVersions.del
 Returns the flow versions for a flow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
@@ -128,7 +128,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Create or replace a flow version for a flow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   flowVersion: myFlowVersion

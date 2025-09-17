@@ -16,7 +16,7 @@ parameters and the potential responses.
 Returns the experience domains for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -64,7 +64,7 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Create a new experience domain for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceDomain: myExperienceDomain
 };

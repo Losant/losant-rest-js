@@ -16,7 +16,7 @@ parameters and the potential responses.
 Returns a collection of instance members
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
 
@@ -68,7 +68,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceMembers.*, or 
 Creates a new instance member
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   member: myMember
 };

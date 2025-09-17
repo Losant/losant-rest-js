@@ -17,7 +17,7 @@ parameters and the potential responses.
 Deletes an instance member
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   userId: myUserId
 };
@@ -67,7 +67,7 @@ all.Instance, all.User, instanceMember.*, or instanceMember.delete.
 Returns an instance member
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   userId: myUserId
 };
@@ -117,7 +117,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceMember.*, or i
 Modifies the role of an instance member
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   userId: myUserId,
   member: myMember

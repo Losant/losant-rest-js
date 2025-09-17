@@ -16,7 +16,7 @@ parameters and the potential responses.
 Returns the API tokens for a user
 
 ```javascript
-var params = {}; // all params are optional
+const params = {}; // all params are optional
 
 // with callbacks
 client.userApiTokens.get(params, function (err, result) {
@@ -66,7 +66,7 @@ all.User, all.User.read, userApiTokens.*, or userApiTokens.get.
 Create a new API token for an user
 
 ```javascript
-var params = {
+const params = {
   apiToken: myApiToken
 };
 

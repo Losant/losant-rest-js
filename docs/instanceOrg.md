@@ -21,7 +21,7 @@ parameters and the potential responses.
 Deletes an organization
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId
 };
@@ -71,7 +71,7 @@ all.Instance, all.User, instanceOrg.*, or instanceOrg.delete.
 Returns device counts by day for the time range specified for this organization
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId
 };
@@ -123,7 +123,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceOrg.*, or inst
 Retrieves information on an organization
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId
 };
@@ -174,7 +174,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceOrg.*, or inst
 Returns notebook execution usage by day for the time range specified for this organization
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId
 };
@@ -226,7 +226,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceOrg.*, or inst
 Updates information about an organization
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId,
   organization: myOrganization
@@ -279,7 +279,7 @@ all.Instance, all.User, instanceOrg.*, or instanceOrg.patch.
 Returns payload counts for the time range specified for all applications this organization owns
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId
 };
@@ -332,7 +332,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceOrg.*, or inst
 Returns payload counts per resolution in the time range specified for all application this organization owns
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId
 };

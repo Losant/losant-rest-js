@@ -19,7 +19,7 @@ parameters and the potential responses.
 Authenticates a device using the provided credentials.
 
 ```javascript
-var params = {
+const params = {
   credentials: myCredentials
 };
 
@@ -65,7 +65,7 @@ No api access token is required to call this action.
 Authenticates a user using the provided credentials.
 
 ```javascript
-var params = {
+const params = {
   credentials: myCredentials
 };
 
@@ -111,7 +111,7 @@ No api access token is required to call this action.
 Authenticates a user via GitHub OAuth.
 
 ```javascript
-var params = {
+const params = {
   oauth: myOauth
 };
 
@@ -157,7 +157,7 @@ No api access token is required to call this action.
 Authenticates a user via a SAML response.
 
 ```javascript
-var params = {
+const params = {
   saml: mySaml
 };
 
@@ -203,7 +203,7 @@ No api access token is required to call this action.
 Checks email domain for SSO configuration.
 
 ```javascript
-var params = {
+const params = {
   email: myEmail
 };
 

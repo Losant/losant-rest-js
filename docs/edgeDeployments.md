@@ -18,7 +18,7 @@ parameters and the potential responses.
 Returns the edge deployments for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -74,7 +74,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Deploy an edge workflow version to one or more edge devices. Version can be blank, if removal is desired.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deployment: myDeployment
 };
@@ -124,7 +124,7 @@ all.Application, all.Organization, all.User, edgeDeployments.*, or edgeDeploymen
 Remove all edge deployments from a device, remove all edge deployments of a workflow, or remove a specific workflow from a specific device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deployment: myDeployment
 };
@@ -174,7 +174,7 @@ all.Application, all.Organization, all.User, edgeDeployments.*, or edgeDeploymen
 Replace deployments of an edge workflow version with a new version. New version can be blank, if removal is desired.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deployment: myDeployment
 };

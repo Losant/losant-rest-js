@@ -18,7 +18,7 @@ parameters and the potential responses.
 Deletes a dashboard
 
 ```javascript
-var params = {
+const params = {
   dashboardId: myDashboardId,
   applicationId: myApplicationId
 };
@@ -68,7 +68,7 @@ all.Application, all.Organization, all.User, applicationDashboard.*, or applicat
 Retrieves information on a dashboard
 
 ```javascript
-var params = {
+const params = {
   dashboardId: myDashboardId,
   applicationId: myApplicationId
 };
@@ -118,7 +118,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about a dashboard
 
 ```javascript
-var params = {
+const params = {
   dashboardId: myDashboardId,
   applicationId: myApplicationId,
   dashboard: myDashboard
@@ -170,7 +170,7 @@ all.Application, all.Organization, all.User, applicationDashboard.*, or applicat
 Sends a snapshot of a dashboard
 
 ```javascript
-var params = {
+const params = {
   dashboardId: myDashboardId,
   applicationId: myApplicationId,
   reportConfig: myReportConfig

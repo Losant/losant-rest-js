@@ -17,7 +17,7 @@ parameters and the potential responses.
 Deletes an organization member
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId,
   userId: myUserId
@@ -69,7 +69,7 @@ all.Instance, all.User, instanceOrgMember.*, or instanceOrgMember.delete.
 Returns an organization member
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId,
   userId: myUserId
@@ -121,7 +121,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceOrgMember.*, o
 Modifies the role of an organization member
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId,
   userId: myUserId,

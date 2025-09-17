@@ -18,7 +18,7 @@ parameters and the potential responses.
 Returns the applications the current user has permission to see
 
 ```javascript
-var params = {}; // all params are optional
+const params = {}; // all params are optional
 
 // with callbacks
 client.applications.get(params, function (err, result) {
@@ -71,7 +71,7 @@ all.Organization, all.Organization.read, all.User, all.User.cli, all.User.read, 
 Create a new application from an import bundle
 
 ```javascript
-var params = {}; // all params are optional
+const params = {}; // all params are optional
 
 // with callbacks
 client.applications.import(params, function (err, result) {
@@ -126,7 +126,7 @@ all.Organization, all.User, applications.*, or applications.import.
 Returns application usage summaries over a selected date range
 
 ```javascript
-var params = {}; // all params are optional
+const params = {}; // all params are optional
 
 // with callbacks
 client.applications.periodSummaries(params, function (err, result) {
@@ -183,7 +183,7 @@ all.Organization, all.Organization.read, all.User, all.User.read, applications.*
 Create a new application
 
 ```javascript
-var params = {
+const params = {
   application: myApplication
 };
 

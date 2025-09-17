@@ -17,7 +17,7 @@ parameters and the potential responses.
 Deletes an experience group
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceGroupId: myExperienceGroupId
 };
@@ -67,7 +67,7 @@ all.Application, all.Organization, all.User, experienceGroup.*, or experienceGro
 Retrieves information on an experience group
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceGroupId: myExperienceGroupId
 };
@@ -119,7 +119,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about an experience group
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceGroupId: myExperienceGroupId,
   experienceGroup: myExperienceGroup

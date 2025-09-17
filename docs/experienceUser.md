@@ -17,7 +17,7 @@ parameters and the potential responses.
 Deletes an experience user
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceUserId: myExperienceUserId
 };
@@ -67,7 +67,7 @@ all.Application, all.Organization, all.User, experienceUser.*, or experienceUser
 Retrieves information on an experience user
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceUserId: myExperienceUserId
 };
@@ -117,7 +117,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about an experience user
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceUserId: myExperienceUserId,
   experienceUser: myExperienceUser

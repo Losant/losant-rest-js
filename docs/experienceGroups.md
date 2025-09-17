@@ -16,7 +16,7 @@ parameters and the potential responses.
 Returns the experience groups for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -71,7 +71,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Create a new experience group for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceGroup: myExperienceGroup
 };

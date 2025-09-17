@@ -16,7 +16,7 @@ parameters and the potential responses.
 Returns the files for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -73,7 +73,7 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Create a new file for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   file: myFile
 };

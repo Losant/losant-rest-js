@@ -17,7 +17,7 @@ parameters and the potential responses.
 Deletes an event
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   eventId: myEventId
 };
@@ -67,7 +67,7 @@ all.Application, all.Organization, all.User, event.*, or event.delete.
 Retrieves information on an event
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   eventId: myEventId
 };
@@ -117,7 +117,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about an event
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   eventId: myEventId,
   event: myEvent

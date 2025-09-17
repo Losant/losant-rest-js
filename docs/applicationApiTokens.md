@@ -16,7 +16,7 @@ parameters and the potential responses.
 Returns the API tokens for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -69,7 +69,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Create a new API token for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   apiToken: myApiToken
 };

@@ -16,7 +16,7 @@ parameters and the potential responses.
 Returns the organizations associated with the current user
 
 ```javascript
-var params = {}; // all params are optional
+const params = {}; // all params are optional
 
 // with callbacks
 client.orgs.get(params, function (err, result) {
@@ -68,7 +68,7 @@ all.User, all.User.read, orgs.*, or orgs.get.
 Create a new organization
 
 ```javascript
-var params = {
+const params = {
   organization: myOrganization
 };
 

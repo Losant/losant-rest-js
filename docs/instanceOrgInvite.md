@@ -17,7 +17,7 @@ parameters and the potential responses.
 Revokes an instance org invitation
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId,
   inviteId: myInviteId
@@ -69,7 +69,7 @@ all.Instance, all.User, instanceOrgInvite.*, or instanceOrgInvite.delete.
 Returns an organization invite
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId,
   inviteId: myInviteId
@@ -121,7 +121,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceOrgInvite.*, o
 Resend an organization invite with modified role info
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId,
   inviteId: myInviteId,

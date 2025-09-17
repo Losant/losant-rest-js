@@ -16,7 +16,7 @@ parameters and the potential responses.
 Bootstraps the experience for this application with standard endpoints and views
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   options: myOptions
 };
@@ -66,7 +66,7 @@ all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, 
 Deletes multiple parts of an experience including users, groups, slugs, domains, versions, endpoints, views, and workflows
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 

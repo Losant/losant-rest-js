@@ -19,7 +19,7 @@ parameters and the potential responses.
 Request an export of the compiled WASM files for a current deployment
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -68,7 +68,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Returns the embedded deployments for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -123,7 +123,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Deploy an embedded workflow version to one or more embedded devices. Version can be blank, if removal is desired.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deployment: myDeployment
 };
@@ -173,7 +173,7 @@ all.Application, all.Organization, all.User, embeddedDeployments.*, or embeddedD
 Remove all embedded deployments from a device, remove all embedded deployments of a workflow, or remove a specific workflow from a specific device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deployment: myDeployment
 };
@@ -223,7 +223,7 @@ all.Application, all.Organization, all.User, embeddedDeployments.*, or embeddedD
 Replace deployments of an embedded workflow version with a new version. New version can be blank, if removal is desired.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deployment: myDeployment
 };

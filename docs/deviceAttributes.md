@@ -16,7 +16,7 @@ parameters and the potential responses.
 Returns the attributes for a device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId
 };
@@ -70,7 +70,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 Adds a new attribute to a device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId,
   deviceAttribute: myDeviceAttribute

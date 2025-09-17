@@ -19,7 +19,7 @@ parameters and the potential responses.
 Deletes a dashboard
 
 ```javascript
-var params = {
+const params = {
   dashboardId: myDashboardId
 };
 
@@ -67,7 +67,7 @@ all.Organization, all.User, dashboard.*, or dashboard.delete.
 Retrieves information on a dashboard
 
 ```javascript
-var params = {
+const params = {
   dashboardId: myDashboardId
 };
 
@@ -114,7 +114,7 @@ No api access token is required to call this action.
 Updates information about a dashboard
 
 ```javascript
-var params = {
+const params = {
   dashboardId: myDashboardId,
   dashboard: myDashboard
 };
@@ -164,7 +164,7 @@ all.Organization, all.User, dashboard.*, or dashboard.patch.
 Sends a snapshot of a dashboard
 
 ```javascript
-var params = {
+const params = {
   dashboardId: myDashboardId,
   reportConfig: myReportConfig
 };
@@ -214,7 +214,7 @@ all.Organization, all.User, dashboard.*, or dashboard.sendReport.
 Validates a context object against the dashboard&#x27;s context configuration
 
 ```javascript
-var params = {
+const params = {
   dashboardId: myDashboardId,
   ctx: myCtx
 };

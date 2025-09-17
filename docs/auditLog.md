@@ -15,7 +15,7 @@ parameters and the potential responses.
 Retrieves information on an audit log
 
 ```javascript
-var params = {
+const params = {
   orgId: myOrgId,
   auditLogId: myAuditLogId
 };

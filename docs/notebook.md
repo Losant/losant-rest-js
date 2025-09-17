@@ -23,7 +23,7 @@ parameters and the potential responses.
 Marks a specific notebook execution for cancellation
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId,
   executionId: myExecutionId
@@ -75,7 +75,7 @@ all.Application, all.Organization, all.User, notebook.*, or notebook.execute.
 Deletes a notebook
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId
 };
@@ -125,7 +125,7 @@ all.Application, all.Organization, all.User, notebook.*, or notebook.delete.
 Triggers the execution of a notebook
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId,
   executionOptions: myExecutionOptions
@@ -177,7 +177,7 @@ all.Application, all.Organization, all.User, notebook.*, or notebook.execute.
 Retrieves information on a notebook
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId
 };
@@ -227,7 +227,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Retrieves information on notebook executions
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId
 };
@@ -279,7 +279,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Returns notebook execution usage by day for the time range specified for this notebook
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId
 };
@@ -331,7 +331,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about a notebook
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId,
   notebook: myNotebook
@@ -383,7 +383,7 @@ all.Application, all.Organization, all.User, notebook.*, or notebook.patch.
 Requests a combined zip file of the potential input data for a notebook execution
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId,
   exportOptions: myExportOptions
@@ -435,7 +435,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Uploads the jupyter notebook file
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   notebookId: myNotebookId,
   jupyterFile: myJupyterFile

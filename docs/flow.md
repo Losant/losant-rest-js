@@ -25,7 +25,7 @@ parameters and the potential responses.
 Clear all storage entries
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
@@ -75,7 +75,7 @@ all.Application, all.Organization, all.User, flow.*, or flow.clearStorageEntries
 Deletes a flow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
@@ -125,7 +125,7 @@ all.Application, all.Organization, all.User, flow.*, or flow.delete.
 Get information about errors that occurred during runs of this workflow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
@@ -181,7 +181,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Retrieves information on a flow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
@@ -232,7 +232,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Retrieve the recent log entries about runs of this workflow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
@@ -284,7 +284,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Gets the current values in persistent storage
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
@@ -334,7 +334,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Gets metadata about storage for this flow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };
@@ -384,7 +384,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about a flow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   flow: myFlow
@@ -437,7 +437,7 @@ all.Application, all.Organization, all.User, flow.*, or flow.patch.
 Presses the specified virtual button on the flow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   button: myButton
@@ -489,7 +489,7 @@ all.Application, all.Organization, all.User, flow.*, or flow.pressVirtualButton.
 Sets a storage value
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   entry: myEntry
@@ -541,7 +541,7 @@ all.Application, all.Organization, all.User, flow.*, or flow.setStorageEntry.
 Get statistics about workflow runs for this workflow
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId
 };

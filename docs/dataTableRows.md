@@ -20,7 +20,7 @@ parameters and the potential responses.
 Delete rows from a data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId
 };
@@ -72,7 +72,7 @@ all.Application, all.Organization, all.User, dataTableRows.*, or dataTableRows.d
 Request an export of the data table&#x27;s data
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId,
   exportData: myExportData
@@ -124,7 +124,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Returns the rows for a data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId
 };
@@ -179,7 +179,7 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Inserts a new row(s) into a data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId,
   dataTableRow: myDataTableRow
@@ -231,7 +231,7 @@ all.Application, all.Organization, all.User, dataTableRows.*, or dataTableRows.p
 Queries for rows from a data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId
 };
@@ -287,7 +287,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Delete all data in the data table
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   dataTableId: myDataTableId
 };

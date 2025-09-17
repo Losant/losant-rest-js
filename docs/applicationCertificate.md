@@ -17,7 +17,7 @@ parameters and the potential responses.
 Deletes an application certificate
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   applicationCertificateId: myApplicationCertificateId
 };
@@ -67,7 +67,7 @@ all.Application, all.Organization, all.User, applicationCertificate.*, or applic
 Retrieves information on an application certificate
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   applicationCertificateId: myApplicationCertificateId
 };
@@ -117,7 +117,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about an application certificate
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   applicationCertificateId: myApplicationCertificateId,
   applicationCertificate: myApplicationCertificate

@@ -19,7 +19,7 @@ parameters and the potential responses.
 Returns the flows for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -78,7 +78,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Returns the flows by version for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   version: myVersion
 };
@@ -138,7 +138,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Import a set of flows and flow versions
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   importData: myImportData
 };
@@ -188,7 +188,7 @@ all.Application, all.Organization, all.User, flows.*, or flows.import.
 Gets additional nodes that should be available in the palette
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 
@@ -236,7 +236,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Create a new flow for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flow: myFlow
 };

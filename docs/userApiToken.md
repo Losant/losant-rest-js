@@ -17,7 +17,7 @@ parameters and the potential responses.
 Deletes an API Token
 
 ```javascript
-var params = {
+const params = {
   apiTokenId: myApiTokenId
 };
 
@@ -65,7 +65,7 @@ all.User, userApiToken.*, or userApiToken.delete.
 Retrieves information on an API token
 
 ```javascript
-var params = {
+const params = {
   apiTokenId: myApiTokenId
 };
 
@@ -113,7 +113,7 @@ all.User, all.User.read, userApiToken.*, or userApiToken.get.
 Updates information about an API token
 
 ```javascript
-var params = {
+const params = {
   apiTokenId: myApiTokenId,
   apiToken: myApiToken
 };

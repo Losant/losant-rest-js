@@ -19,7 +19,7 @@ parameters and the potential responses.
 Deletes a notification rule
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   notificationRuleId: myNotificationRuleId
 };
@@ -69,7 +69,7 @@ all.Instance, all.User, instanceNotificationRule.*, or instanceNotificationRule.
 Queues the evaluation of a notification rule
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   notificationRuleId: myNotificationRuleId,
   evaluationOptions: myEvaluationOptions
@@ -121,7 +121,7 @@ all.Instance, all.User, instanceNotificationRule.*, or instanceNotificationRule.
 Retrieves information on a notification rule
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   notificationRuleId: myNotificationRuleId
 };
@@ -171,7 +171,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceNotificationRu
 Retrieves information on notification rule deliveries
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   notificationRuleId: myNotificationRuleId
 };
@@ -223,7 +223,7 @@ all.Instance, all.User, instanceNotificationRule.*, or instanceNotificationRule.
 Updates information about a notification rule
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   notificationRuleId: myNotificationRuleId,
   notificationRule: myNotificationRule

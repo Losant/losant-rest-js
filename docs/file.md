@@ -19,7 +19,7 @@ parameters and the potential responses.
 Deletes a file or directory, if directory all the contents that directory will also be removed.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   fileId: myFileId
 };
@@ -69,7 +69,7 @@ all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, 
 Retrieves information on a file
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   fileId: myFileId
 };
@@ -119,7 +119,7 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 Move a file or the entire contents of a directory
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   fileId: myFileId
 };
@@ -171,7 +171,7 @@ all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, 
 Reupload a file
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   fileId: myFileId,
   updates: myUpdates
@@ -223,7 +223,7 @@ all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, 
 Uploads the file
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   fileId: myFileId,
   file: myFile

@@ -18,7 +18,7 @@ parameters and the potential responses.
 Deletes an experience endpoint
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceEndpointId: myExperienceEndpointId
 };
@@ -69,7 +69,7 @@ all.Application, all.Organization, all.User, experienceEndpoint.*, or experience
 Retrieves information on an experience endpoint
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceEndpointId: myExperienceEndpointId
 };
@@ -120,7 +120,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Retrieves information on resources linked to an experience endpoint
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceEndpointId: myExperienceEndpointId
 };
@@ -172,7 +172,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about an experience endpoint
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceEndpointId: myExperienceEndpointId,
   experienceEndpoint: myExperienceEndpoint

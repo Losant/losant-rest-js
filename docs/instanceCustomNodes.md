@@ -16,7 +16,7 @@ parameters and the potential responses.
 Returns the Custom Nodes for an instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
 
@@ -69,7 +69,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceCustomNodes.*,
 Create a new Custom Node for an instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceCustomNode: myInstanceCustomNode
 };

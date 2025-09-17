@@ -17,7 +17,7 @@ parameters and the potential responses.
 Deletes an experience domain
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceDomainId: myExperienceDomainId
 };
@@ -67,7 +67,7 @@ all.Application, all.Organization, all.User, experienceDomain.*, or experienceDo
 Retrieves information on an experience domain
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceDomainId: myExperienceDomainId
 };
@@ -117,7 +117,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about an experience domain
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   experienceDomainId: myExperienceDomainId,
   experienceDomain: myExperienceDomain

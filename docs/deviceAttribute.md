@@ -17,7 +17,7 @@ parameters and the potential responses.
 Removes an attribute from a device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId,
   name: myName
@@ -69,7 +69,7 @@ all.Application, all.Organization, all.User, deviceAttribute.*, or deviceAttribu
 Retrieves information on a device attribute
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId,
   name: myName
@@ -121,7 +121,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 Updates an attribute on a device
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   deviceId: myDeviceId,
   name: myName,

@@ -20,7 +20,7 @@ parameters and the potential responses.
 Deletes a flow version
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   flowVersionId: myFlowVersionId
@@ -72,7 +72,7 @@ all.Application, all.Organization, all.User, flowVersion.*, or flowVersion.delet
 Get information about errors that occurred during runs of this workflow version
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   flowVersionId: myFlowVersionId
@@ -129,7 +129,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Retrieves information on a flow version
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   flowVersionId: myFlowVersionId
@@ -182,7 +182,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Retrieve the recent log entries about runs of this workflow version
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   flowVersionId: myFlowVersionId
@@ -236,7 +236,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Updates information about a flow version
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   flowVersionId: myFlowVersionId,
@@ -291,7 +291,7 @@ all.Application, all.Organization, all.User, flowVersion.*, or flowVersion.patch
 Get statistics about workflow runs for this workflow version
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   flowId: myFlowId,
   flowVersionId: myFlowVersionId

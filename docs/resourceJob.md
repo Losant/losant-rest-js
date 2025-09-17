@@ -20,7 +20,7 @@ parameters and the potential responses.
 Marks a specific resource job execution for cancellation
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   resourceJobId: myResourceJobId,
   executionId: myExecutionId
@@ -72,7 +72,7 @@ all.Application, all.Organization, all.User, resourceJob.*, or resourceJob.cance
 Deletes a resource job
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   resourceJobId: myResourceJobId
 };
@@ -123,7 +123,7 @@ all.Application, all.Organization, all.User, resourceJob.*, or resourceJob.delet
 Queues the execution of a resource job
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   resourceJobId: myResourceJobId,
   executionOptions: myExecutionOptions
@@ -175,7 +175,7 @@ all.Application, all.Organization, all.User, resourceJob.*, or resourceJob.execu
 Returns a resource job
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   resourceJobId: myResourceJobId
 };
@@ -225,7 +225,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Retrieves information on resource job executions
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   resourceJobId: myResourceJobId
 };
@@ -277,7 +277,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 Update a resource job
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   resourceJobId: myResourceJobId,
   resourceJob: myResourceJob

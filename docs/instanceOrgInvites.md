@@ -16,7 +16,7 @@ parameters and the potential responses.
 Returns a collection of instance organization invites
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId
 };
@@ -70,7 +70,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceOrgInvites.*, 
 Invites a member to an instance organization
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   orgId: myOrgId,
   invite: myInvite

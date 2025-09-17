@@ -17,7 +17,7 @@ parameters and the potential responses.
 Creates a csv file from a query of devices and attributes over a time range.
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   query: myQuery
 };
@@ -67,7 +67,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 Returns the last known data for the given attribute
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   query: myQuery
 };
@@ -117,7 +117,7 @@ all.Application, all.Application.read, all.Device, all.Device.read, all.Organiza
 Returns the data for the given query
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   query: myQuery
 };

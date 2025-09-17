@@ -19,7 +19,7 @@ parameters and the potential responses.
 Deletes a Custom Node
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceCustomNodeId: myInstanceCustomNodeId
 };
@@ -69,7 +69,7 @@ all.Instance, all.User, instanceCustomNode.*, or instanceCustomNode.delete.
 Get information about errors that occurred during runs of this Custom Node
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceCustomNodeId: myInstanceCustomNodeId
 };
@@ -123,7 +123,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceCustomNode.*, 
 Retrieves information on a Custom Node
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceCustomNodeId: myInstanceCustomNodeId
 };
@@ -173,7 +173,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceCustomNode.*, 
 Updates information about a Custom Node
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceCustomNodeId: myInstanceCustomNodeId,
   instanceCustomNode: myInstanceCustomNode
@@ -225,7 +225,7 @@ all.Instance, all.User, instanceCustomNode.*, or instanceCustomNode.patch.
 Get statistics about runs for this Custom Node
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceCustomNodeId: myInstanceCustomNodeId
 };

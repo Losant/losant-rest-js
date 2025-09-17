@@ -15,7 +15,7 @@ parameters and the potential responses.
 Returns the job logs for an application
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId
 };
 

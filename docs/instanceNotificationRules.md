@@ -16,7 +16,7 @@ parameters and the potential responses.
 Returns the notification rules for an instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId
 };
 
@@ -69,7 +69,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceNotificationRu
 Create a new notification rule for an instance
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   notificationRule: myNotificationRule
 };

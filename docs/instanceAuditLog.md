@@ -15,7 +15,7 @@ parameters and the potential responses.
 Retrieves information on an instance audit log
 
 ```javascript
-var params = {
+const params = {
   instanceId: myInstanceId,
   instanceAuditLogId: myInstanceAuditLogId
 };

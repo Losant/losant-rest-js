@@ -15,7 +15,7 @@ parameters and the potential responses.
 Retrieves information on an embedded deployment
 
 ```javascript
-var params = {
+const params = {
   applicationId: myApplicationId,
   embeddedDeploymentId: myEmbeddedDeploymentId
 };

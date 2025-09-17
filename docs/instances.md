@@ -15,7 +15,7 @@ parameters and the potential responses.
 Returns a collection of instances
 
 ```javascript
-var params = {}; // all params are optional
+const params = {}; // all params are optional
 
 // with callbacks
 client.instances.get(params, function (err, result) {
