@@ -217,6 +217,9 @@ all.User, me.*, or me.disableTwoFactorAuth.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | data | [Disable Multi-Factor Authentication](../lib/schemas/multiFactorAuthDisable.json) | Y | Object containing multi-factor authentication properties |  | [Disable Multi-Factor Authentication Example](_schemas.md#disable-multi-factor-authentication-example) |
+| includeRecent | string | N | Should the user include recent app/dashboard info |  | true |
+| summaryExclude | string | N | Comma-separated list of summary fields to exclude from user summary |  | payloadCount |
+| summaryInclude | string | N | Comma-separated list of summary fields to include in user summary |  | payloadCount |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -255,6 +258,9 @@ all.User, me.*, or me.disconnectGithub.
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
+| includeRecent | string | N | Should the user include recent app/dashboard info |  | true |
+| summaryExclude | string | N | Comma-separated list of summary fields to exclude from user summary |  | payloadCount |
+| summaryInclude | string | N | Comma-separated list of summary fields to include in user summary |  | payloadCount |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -296,6 +302,9 @@ all.User, me.*, or me.enableTwoFactorAuth.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | data | [Enable Multi-Factor Authentication](../lib/schemas/multiFactorAuthEnable.json) | Y | Object containing multi-factor authentication properties |  | [Enable Multi-Factor Authentication Example](_schemas.md#enable-multi-factor-authentication-example) |
+| includeRecent | string | N | Should the user include recent app/dashboard info |  | true |
+| summaryExclude | string | N | Comma-separated list of summary fields to exclude from user summary |  | payloadCount |
+| summaryInclude | string | N | Comma-separated list of summary fields to include in user summary |  | payloadCount |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -414,7 +423,7 @@ all.User, all.User.read, me.*, or me.get.
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| includeRecent | undefined | N | Should the user include recent app/dashboard info |  | true |
+| includeRecent | string | N | Should the user include recent app/dashboard info |  | true |
 | summaryExclude | string | N | Comma-separated list of summary fields to exclude from user summary |  | payloadCount |
 | summaryInclude | string | N | Comma-separated list of summary fields to include in user summary |  | payloadCount |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
@@ -577,6 +586,7 @@ all.User, me.*, or me.patch.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | user | [Me Patch](../lib/schemas/mePatch.json) | Y | Object containing new user properties |  | [Me Patch Example](_schemas.md#me-patch-example) |
+| includeRecent | string | N | Should the user include recent app/dashboard info |  | true |
 | summaryExclude | string | N | Comma-separated list of summary fields to exclude from user summary |  | payloadCount |
 | summaryInclude | string | N | Comma-separated list of summary fields to include in user summary |  | payloadCount |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |

@@ -27,6 +27,11 @@
       "format": "email",
       "maxLength": 1024
     },
+    "requestedEmail": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 1024
+    },
     "firstName": {
       "type": "string",
       "minLength": 1,
