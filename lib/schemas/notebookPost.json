@@ -509,6 +509,9 @@
                 "type": "string",
                 "minLength": 1,
                 "maxLength": 1024
+              },
+              "destinationPrivate": {
+                "type": "boolean"
               }
             },
             "required": [
@@ -545,6 +548,9 @@
                 "type": "string",
                 "minLength": 1,
                 "maxLength": 1024
+              },
+              "destinationPrivate": {
+                "type": "boolean"
               }
             },
             "required": [
@@ -582,6 +588,9 @@
                 "type": "string",
                 "minLength": 1,
                 "maxLength": 1024
+              },
+              "destinationPrivate": {
+                "type": "boolean"
               }
             },
             "required": [

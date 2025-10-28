@@ -7,6 +7,19 @@
       "maxLength": 32767,
       "minLength": 1
     },
+    "response": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "maxLength": 32767
+        },
+        "comments": {
+          "type": "string",
+          "maxLength": 32767
+        }
+      }
+    },
     "responseId": {
       "type": "string",
       "minLength": 1,
@@ -29,7 +42,6 @@
     }
   },
   "required": [
-    "text",
     "responseId",
     "finishReason"
   ],

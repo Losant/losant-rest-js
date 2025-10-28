@@ -91,7 +91,7 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [File Schema](../lib/schemas/file.json) | file information |
+| 200 | [File Schema](../lib/schemas/file.json) | File information |
 
 #### Error Responses
 
@@ -176,14 +176,14 @@ all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, 
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | fileId | string | Y | ID associated with the file |  | 575ec76c7ae143cd83dc4a96 |
-| updates | [File Patch](../lib/schemas/filePatch.json) | Y | Reupload a file |  | [File Patch Example](_schemas.md#file-patch-example) |
+| updates | [File Patch](../lib/schemas/filePatch.json) | Y | Updated information about the file |  | [File Patch Example](_schemas.md#file-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [File Upload Post Response](../lib/schemas/fileUploadPostResponse.json) | Successfully updated file and returned a post url to respond with |
+| 201 | [File Upload Post Response](../lib/schemas/fileUploadPostResponse.json) | Successfully updated file and the information needed to upload the file content |
 
 #### Error Responses
 

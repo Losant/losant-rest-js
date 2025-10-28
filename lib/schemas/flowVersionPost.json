@@ -42,6 +42,12 @@
                   },
                   "update": {
                     "type": "boolean"
+                  },
+                  "public": {
+                    "type": "boolean"
+                  },
+                  "private": {
+                    "type": "boolean"
                   }
                 },
                 "additionalProperties": false

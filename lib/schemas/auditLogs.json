@@ -69,6 +69,7 @@
               "Flow",
               "Integration",
               "Notebook",
+              "PrivateFile",
               "ResourceJob",
               "Webhook"
             ]

@@ -36,7 +36,7 @@ all.Application, all.Application.cli, all.Application.read, all.Organization, al
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| sortField | string | N | Field to sort the results by. Accepted values are: lastUpdated, type, name, creationDate | lastUpdated | subject |
+| sortField | string | N | Field to sort the results by. Accepted values are: lastUpdated, type, name, creationDate | lastUpdated | name |
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
 | page | string | N | Which page of results to return | 0 | 0 |
 | perPage | string | N | How many items to return per page | 100 | 10 |
@@ -95,7 +95,7 @@ all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [File Upload Post Response](../lib/schemas/fileUploadPostResponse.json) | Successfully created file and returned a post url to respond with |
+| 201 | [File Upload Post Response](../lib/schemas/fileUploadPostResponse.json) | Successfully created file and the information needed to upload the file content |
 
 #### Error Responses
 

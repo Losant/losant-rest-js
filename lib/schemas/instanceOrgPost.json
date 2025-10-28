@@ -102,6 +102,10 @@
           "type": "integer",
           "minimum": 0
         },
+        "privatefile": {
+          "type": "integer",
+          "minimum": 0
+        },
         "resourcejob": {
           "type": "integer",
           "minimum": 0

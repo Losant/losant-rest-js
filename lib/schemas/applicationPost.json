@@ -152,6 +152,10 @@
               "type": "boolean",
               "default": false
             },
+            "includePrivateFiles": {
+              "type": "boolean",
+              "default": false
+            },
             "includeDataTableRows": {
               "type": "boolean",
               "default": false

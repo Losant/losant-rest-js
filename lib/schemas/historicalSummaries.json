@@ -132,6 +132,10 @@
                 "type": "integer",
                 "minimum": 0
               },
+              "privatefile": {
+                "type": "integer",
+                "minimum": 0
+              },
               "resourcejob": {
                 "type": "integer",
                 "minimum": 0
@@ -286,6 +290,12 @@
             "type": "number"
           },
           "notebookMinutesCount": {
+            "type": "number"
+          },
+          "privateFileCount": {
+            "type": "number"
+          },
+          "privateFileTotalSizeMb": {
             "type": "number"
           },
           "webhookCount": {

@@ -6,7 +6,7 @@
       "type": "array",
       "items": {
         "title": "File Schema",
-        "description": "Schema for a single file",
+        "description": "Schema for a single public or private file",
         "type": "object",
         "properties": {
           "id": {

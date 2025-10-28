@@ -1,103 +1,124 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "applicationId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "creationDate": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "lastUpdated": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "authorId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
-    },
-    "authorType": {
-      "type": "string",
-      "enum": [
-        "flow",
-        "user",
-        "device",
-        "apiToken",
-        "notebook"
-      ]
-    },
-    "status": {
-      "type": "string",
-      "enum": [
-        "pending",
-        "moving",
-        "deleting",
-        "completed"
-      ]
-    },
-    "name": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 1024
-    },
-    "parentDirectory": {
-      "type": "string",
-      "maxLength": 1024
-    },
-    "type": {
-      "type": "string",
-      "enum": [
-        "file",
-        "directory"
-      ]
-    },
-    "fileSize": {
-      "type": "number"
-    },
-    "contentType": {
-      "type": "string",
-      "maxLength": 1024
-    },
-    "fileDimensions": {
+  "allOf": [
+    {
+      "title": "File Schema",
+      "description": "Schema for a single public or private file",
       "type": "object",
       "properties": {
-        "width": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "applicationId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "creationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "authorId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "authorType": {
+          "type": "string",
+          "enum": [
+            "flow",
+            "user",
+            "device",
+            "apiToken",
+            "notebook"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "moving",
+            "deleting",
+            "completed"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "parentDirectory": {
+          "type": "string",
+          "maxLength": 1024
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "file",
+            "directory"
+          ]
+        },
+        "fileSize": {
           "type": "number"
         },
-        "height": {
-          "type": "number"
+        "s3etag": {
+          "type": "string"
+        },
+        "contentType": {
+          "type": "string",
+          "maxLength": 1024
+        },
+        "fileDimensions": {
+          "type": "object",
+          "properties": {
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            }
+          }
+        },
+        "moveIntoId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "url": {
+          "type": "string"
         }
       }
     },
-    "upload": {
+    {
       "type": "object",
       "properties": {
-        "url": {
-          "type": "string"
-        },
-        "fields": {
+        "upload": {
           "type": "object",
-          "patternProperties": {
-            "^.*$": {
-              "type": "string"
-            }
-          },
           "properties": {
-            "key": {
+            "url": {
               "type": "string"
             },
-            "bucket": {
-              "type": "string"
+            "fields": {
+              "type": "object",
+              "patternProperties": {
+                "^.*$": {
+                  "type": "string"
+                }
+              },
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "bucket": {
+                  "type": "string"
+                }
+              }
             }
           }
         }
       }
     }
-  }
+  ]
 }

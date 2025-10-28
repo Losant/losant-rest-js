@@ -175,6 +175,9 @@
             "notebookCount": {
               "type": "integer"
             },
+            "privateFileCount": {
+              "type": "integer"
+            },
             "resourceJobCount": {
               "type": "integer"
             },
@@ -474,6 +477,10 @@
               "type": "object",
               "properties": {
                 "includeFiles": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "includePrivateFiles": {
                   "type": "boolean",
                   "default": false
                 },

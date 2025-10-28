@@ -1,0 +1,620 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8192
+    },
+    "blockConfig": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 32767
+        },
+        "applicationId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "startX": {
+          "type": "number"
+        },
+        "startY": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "blockType": {
+          "type": "string",
+          "enum": [
+            "custom-chart",
+            "custom-html"
+          ]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "configuration": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "headContent": {
+                      "type": "string",
+                      "maxLength": 32767
+                    },
+                    "bodyContent": {
+                      "type": "string",
+                      "maxLength": 32767
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "string",
+                  "maxLength": 32767
+                }
+              ]
+            },
+            "segments": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "queryType": {
+                        "type": "string",
+                        "enum": [
+                          "time-series"
+                        ]
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "attribute": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "aggregation": {
+                        "oneOf": [
+                          {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "enum": [
+                                  "FIRST",
+                                  "LAST",
+                                  "COUNT",
+                                  "MAX",
+                                  "MIN",
+                                  "MEDIAN",
+                                  "MEAN",
+                                  "SUM",
+                                  "STD_DEV"
+                                ]
+                              },
+                              {
+                                "type": "string",
+                                "enum": [
+                                  "NONE"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "FIRST",
+                                      "LAST",
+                                      "COUNT",
+                                      "MAX",
+                                      "MIN",
+                                      "MEDIAN",
+                                      "MEAN",
+                                      "SUM",
+                                      "STD_DEV"
+                                    ]
+                                  },
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "NONE"
+                                    ]
+                                  }
+                                ]
+                              },
+                              "options": {
+                                "type": "object",
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "type"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "TIMEATVALUE"
+                                ]
+                              },
+                              "options": {
+                                "type": "object",
+                                "properties": {
+                                  "value": {
+                                    "oneOf": [
+                                      {
+                                        "type": "string",
+                                        "maxLength": 255
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                  "value"
+                                ]
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "type",
+                              "options"
+                            ]
+                          }
+                        ]
+                      },
+                      "deviceIds": {
+                        "type": "array",
+                        "maxItems": 100,
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        }
+                      },
+                      "deviceTags": {
+                        "type": "array",
+                        "maxItems": 100,
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "value": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "fromCtx": {
+                              "type": "string",
+                              "maxLength": 255
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "query": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "duration": {
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "{{dashboard.duration}}"
+                            ]
+                          }
+                        ]
+                      },
+                      "resolution": {
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          },
+                          {
+                            "type": "string",
+                            "maxLength": 255
+                          }
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "queryType": {
+                        "type": "string",
+                        "enum": [
+                          "gauge"
+                        ]
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "attribute": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "aggregation": {
+                        "oneOf": [
+                          {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "enum": [
+                                  "FIRST",
+                                  "LAST",
+                                  "COUNT",
+                                  "MAX",
+                                  "MIN",
+                                  "MEDIAN",
+                                  "MEAN",
+                                  "SUM",
+                                  "STD_DEV"
+                                ]
+                              },
+                              {
+                                "type": "string",
+                                "enum": [
+                                  "NONE"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "FIRST",
+                                      "LAST",
+                                      "COUNT",
+                                      "MAX",
+                                      "MIN",
+                                      "MEDIAN",
+                                      "MEAN",
+                                      "SUM",
+                                      "STD_DEV"
+                                    ]
+                                  },
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "NONE"
+                                    ]
+                                  }
+                                ]
+                              },
+                              "options": {
+                                "type": "object",
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "type"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "TIMEATVALUE"
+                                ]
+                              },
+                              "options": {
+                                "type": "object",
+                                "properties": {
+                                  "value": {
+                                    "oneOf": [
+                                      {
+                                        "type": "string",
+                                        "maxLength": 255
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                  "value"
+                                ]
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "type",
+                              "options"
+                            ]
+                          }
+                        ]
+                      },
+                      "deviceIds": {
+                        "type": "array",
+                        "maxItems": 100,
+                        "items": {
+                          "type": "string",
+                          "maxLength": 255
+                        }
+                      },
+                      "deviceTags": {
+                        "type": "array",
+                        "maxItems": 100,
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "value": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "fromCtx": {
+                              "type": "string",
+                              "maxLength": 255
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "query": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "duration": {
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "{{dashboard.duration}}"
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "queryType": {
+                        "type": "string",
+                        "enum": [
+                          "data-table"
+                        ]
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "dataTableId": {
+                        "type": "string",
+                        "pattern": "^[A-Fa-f\\d]{24}$"
+                      },
+                      "query": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "queryMode": {
+                        "type": "string",
+                        "enum": [
+                          "$or",
+                          "$and",
+                          "advanced"
+                        ]
+                      },
+                      "sortColumn": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "sortDirection": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "limit": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "offset": {
+                        "type": "string",
+                        "maxLength": 255
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "queryType": {
+                        "type": "string",
+                        "enum": [
+                          "device-info"
+                        ]
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "attributes": {
+                        "oneOf": [
+                          {
+                            "type": "null"
+                          },
+                          {
+                            "type": "array",
+                            "maxItems": 100,
+                            "items": {
+                              "type": "string",
+                              "maxLength": 255
+                            }
+                          }
+                        ]
+                      },
+                      "excludeConnectionInfo": {
+                        "type": "boolean"
+                      },
+                      "sortField": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "sortDirection": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "page": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "perPage": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "query": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "compositeStateType": {
+                        "type": "string",
+                        "maxLength": 255
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "queryType": {
+                        "type": "string",
+                        "enum": [
+                          "events"
+                        ]
+                      },
+                      "id": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "sortField": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "sortDirection": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "page": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "perPage": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "query": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "includeExtendedEventInfo": {
+                        "type": "boolean"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            },
+            "vegaVersion": {
+              "type": "string",
+              "enum": [
+                "vegaLite2",
+                "vegaLite3",
+                "vegaLite4",
+                "vegaLite5",
+                "vegaLite6",
+                "vega4",
+                "vega5",
+                "vega6"
+              ]
+            },
+            "tooltipEventSubscribe": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "blockType",
+        "startX",
+        "startY",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "text",
+    "blockConfig"
+  ],
+  "additionalProperties": false
+}

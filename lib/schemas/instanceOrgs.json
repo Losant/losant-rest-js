@@ -129,6 +129,10 @@
                 "type": "integer",
                 "minimum": 0
               },
+              "privatefile": {
+                "type": "integer",
+                "minimum": 0
+              },
               "resourcejob": {
                 "type": "integer",
                 "minimum": 0
@@ -248,6 +252,9 @@
                 "type": "integer"
               },
               "notebookCount": {
+                "type": "integer"
+              },
+              "privateFileCount": {
                 "type": "integer"
               },
               "resourceJobCount": {

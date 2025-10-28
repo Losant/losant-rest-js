@@ -118,6 +118,9 @@
               "notebookCount": {
                 "type": "integer"
               },
+              "privateFileCount": {
+                "type": "integer"
+              },
               "resourceJobCount": {
                 "type": "integer"
               },

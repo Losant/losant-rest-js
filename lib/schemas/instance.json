@@ -165,6 +165,9 @@
         "notebook": {
           "type": "integer"
         },
+        "privatefile": {
+          "type": "integer"
+        },
         "resourcejob": {
           "type": "integer"
         },
@@ -288,6 +291,10 @@
           "minimum": 0
         },
         "notebook": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "privatefile": {
           "type": "integer",
           "minimum": 0
         },

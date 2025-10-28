@@ -523,6 +523,12 @@
                             },
                             "update": {
                               "type": "boolean"
+                            },
+                            "public": {
+                              "type": "boolean"
+                            },
+                            "private": {
+                              "type": "boolean"
                             }
                           },
                           "additionalProperties": false
@@ -3654,6 +3660,12 @@
                                 },
                                 "update": {
                                   "type": "boolean"
+                                },
+                                "public": {
+                                  "type": "boolean"
+                                },
+                                "private": {
+                                  "type": "boolean"
                                 }
                               },
                               "additionalProperties": false
@@ -6693,6 +6705,12 @@
                                   "type": "boolean"
                                 },
                                 "update": {
+                                  "type": "boolean"
+                                },
+                                "public": {
+                                  "type": "boolean"
+                                },
+                                "private": {
                                   "type": "boolean"
                                 }
                               },

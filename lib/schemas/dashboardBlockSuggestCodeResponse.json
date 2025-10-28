@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "response": {
+      "type": "object",
+      "properties": {
+        "headContent": {
+          "type": "string",
+          "maxLength": 32767
+        },
+        "bodyContent": {
+          "type": "string",
+          "maxLength": 32767
+        },
+        "comments": {
+          "type": "string",
+          "maxLength": 32767
+        }
+      }
+    },
+    "responseId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "finishReason": {
+      "type": "string",
+      "enum": [
+        "FINISH_REASON_UNSPECIFIED",
+        "STOP",
+        "MAX_TOKENS",
+        "SAFETY",
+        "RECITATION",
+        "OTHER",
+        "BLOCKLIST",
+        "PROHIBITED_CONTENT",
+        "SPII",
+        "MALFORMED_FUNCTION_CALL"
+      ]
+    }
+  },
+  "required": [
+    "response",
+    "responseId",
+    "finishReason"
+  ],
+  "additionalProperties": false
+}

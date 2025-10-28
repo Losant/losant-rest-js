@@ -176,6 +176,9 @@
               "notebook": {
                 "type": "integer"
               },
+              "privatefile": {
+                "type": "integer"
+              },
               "resourcejob": {
                 "type": "integer"
               },
@@ -282,6 +285,9 @@
                 "type": "integer"
               },
               "resourceJobCount": {
+                "type": "integer"
+              },
+              "privateFileCount": {
                 "type": "integer"
               },
               "webhookCount": {

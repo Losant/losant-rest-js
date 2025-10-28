@@ -97,6 +97,7 @@
             "Global",
             "Integration",
             "Notebook",
+            "PrivateFile",
             "Webhook",
             "ResourceJob"
           ]
@@ -158,6 +159,7 @@
                 "Global",
                 "Integration",
                 "Notebook",
+                "PrivateFile",
                 "Webhook",
                 "ResourceJob"
               ]

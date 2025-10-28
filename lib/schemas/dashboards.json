@@ -1143,8 +1143,10 @@
                             "vegaLite3",
                             "vegaLite4",
                             "vegaLite5",
+                            "vegaLite6",
                             "vega4",
-                            "vega5"
+                            "vega5",
+                            "vega6"
                           ]
                         },
                         "tooltipEventSubscribe": {
