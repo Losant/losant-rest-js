@@ -1628,6 +1628,14 @@
         }
       },
       "additionalProperties": false
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "csv",
+        "json"
+      ],
+      "default": "csv"
     }
   },
   "additionalProperties": false
