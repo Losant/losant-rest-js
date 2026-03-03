@@ -20,7 +20,7 @@ describe('Options Tests', function() {
     .query({ _actions: false, _embedded: true, _links: true })
     .reply(200, '{"count":0,"items":[]}', { 'Content-Type': 'application/json' });
 
-    const response = await client.dashboards.get(); 
+    const response = await client.dashboards.get();
     response.should.deepEqual({
       count: 0,
       items: [],

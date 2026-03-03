@@ -97,7 +97,7 @@ describe('promise tests', function() {
     .reply(404, '{"type":"NotFound","message":"Application was not found"}',
       { 'Content-Type': 'application/json' });
 
-    const response = await client.application.get({ applicationId: 'badId' }).should.be.rejectedWith({
+    await client.application.get({ applicationId: 'badId' }).should.be.rejectedWith({
       message: 'Application was not found',
       type: 'NotFound',
       statusCode: 404
