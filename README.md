@@ -178,6 +178,6 @@ A client is a single api instance. By default, it is unauthenticated, but can be
 
 *****
 
-Copyright (c) 2025 Losant IoT, Inc
+Copyright (c) 2026 SUSE
 
 <https://www.losant.com>
