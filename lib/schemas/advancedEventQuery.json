@@ -1174,6 +1174,9 @@
                       "maxLength": 255
                     },
                     {
+                      "type": "null"
+                    },
+                    {
                       "type": "object",
                       "properties": {
                         "$in": {
@@ -1214,6 +1217,9 @@
                     {
                       "type": "string",
                       "maxLength": 255
+                    },
+                    {
+                      "type": "null"
                     },
                     {
                       "type": "object",
@@ -1263,6 +1269,9 @@
                     {
                       "type": "string",
                       "maxLength": 255
+                    },
+                    {
+                      "type": "null"
                     },
                     {
                       "type": "object",
@@ -1320,6 +1329,9 @@
                           "maxLength": 255
                         },
                         {
+                          "type": "null"
+                        },
+                        {
                           "type": "object",
                           "properties": {
                             "$in": {
@@ -1360,6 +1372,9 @@
                         {
                           "type": "string",
                           "maxLength": 255
+                        },
+                        {
+                          "type": "null"
                         },
                         {
                           "type": "object",
@@ -1409,6 +1424,9 @@
                         {
                           "type": "string",
                           "maxLength": 255
+                        },
+                        {
+                          "type": "null"
                         },
                         {
                           "type": "object",
@@ -1472,6 +1490,9 @@
                           "maxLength": 255
                         },
                         {
+                          "type": "null"
+                        },
+                        {
                           "type": "object",
                           "properties": {
                             "$in": {
@@ -1512,6 +1533,9 @@
                         {
                           "type": "string",
                           "maxLength": 255
+                        },
+                        {
+                          "type": "null"
                         },
                         {
                           "type": "object",
@@ -1561,6 +1585,9 @@
                         {
                           "type": "string",
                           "maxLength": 255
+                        },
+                        {
+                          "type": "null"
                         },
                         {
                           "type": "object",

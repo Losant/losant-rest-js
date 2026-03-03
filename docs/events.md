@@ -227,7 +227,9 @@ all.Application, all.Organization, all.User, events.*, or events.patch.
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | abnormal power to * |
 | state | string | N | If provided, act on events only in the given state. Accepted values are: new, acknowledged, resolved |  | new |
 | query | [Advanced Event Query](../lib/schemas/advancedEventQuery.json) | N | Event filter JSON object which overrides the filterField, filter, and state parameters. |  | [Advanced Event Query Example](_schemas.md#advanced-event-query-example) |
-| updates | [Event Patch](../lib/schemas/eventPatch.json) | Y | Object containing updated information for the events |  | [Event Patch Example](_schemas.md#event-patch-example) |
+| email | string | N | Email address to send a notification with update job results. Defaults to current user&#x27;s email. |  | email@example.com |
+| callbackUrl | string | N | Callback URL to call with update results from a job. |  | https://example.com/cburl |
+| updates | [Event Patch](../lib/schemas/eventPatch.json) | Y | Object containing updated information for the events. |  | [Event Patch Example](_schemas.md#event-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

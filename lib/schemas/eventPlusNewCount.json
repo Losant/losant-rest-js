@@ -83,6 +83,9 @@
           "minLength": 1,
           "maxLength": 255
         },
+        "disableTagChangeTracking": {
+          "type": "boolean"
+        },
         "eventTags": {
           "type": "object",
           "patternProperties": {
@@ -95,6 +98,7 @@
           "additionalProperties": false
         },
         "updates": {
+          "maxItems": 100,
           "type": "array",
           "items": {
             "type": "object",

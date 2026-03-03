@@ -18,9 +18,33 @@
       "type": "string",
       "format": "date-time"
     },
+    "createdById": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "createdByType": {
+      "type": "string",
+      "enum": [
+        "flow",
+        "user",
+        "apiToken"
+      ]
+    },
     "lastUpdated": {
       "type": "string",
       "format": "date-time"
+    },
+    "lastUpdatedById": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "lastUpdatedByType": {
+      "type": "string",
+      "enum": [
+        "flow",
+        "user",
+        "apiToken"
+      ]
     },
     "key": {
       "type": "string"
@@ -62,6 +86,11 @@
       },
       "maxItems": 100
     },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
     "description": {
       "type": "string",
       "maxLength": 32767
@@ -98,6 +127,22 @@
         "type": "string",
         "minLength": 1,
         "maxLength": 1024
+      }
+    },
+    "addressFilterType": {
+      "type": "string",
+      "enum": [
+        "all",
+        "whitelist",
+        "blacklist"
+      ]
+    },
+    "addresses": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "string",
+        "maxLength": 48
       }
     }
   }

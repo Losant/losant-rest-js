@@ -29,6 +29,11 @@
       },
       "maxItems": 100
     },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
     "description": {
       "type": "string",
       "maxLength": 32767
@@ -65,6 +70,22 @@
         "type": "string",
         "minLength": 1,
         "maxLength": 1024
+      }
+    },
+    "addressFilterType": {
+      "type": "string",
+      "enum": [
+        "all",
+        "whitelist",
+        "blacklist"
+      ]
+    },
+    "addresses": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "string",
+        "maxLength": 48
       }
     }
   },

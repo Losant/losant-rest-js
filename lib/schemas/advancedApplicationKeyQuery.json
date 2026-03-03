@@ -556,6 +556,9 @@
                       "maxLength": 255
                     },
                     {
+                      "type": "null"
+                    },
+                    {
                       "type": "object",
                       "properties": {
                         "$in": {
@@ -596,6 +599,9 @@
                     {
                       "type": "string",
                       "maxLength": 255
+                    },
+                    {
+                      "type": "null"
                     },
                     {
                       "type": "object",
@@ -645,6 +651,9 @@
                     {
                       "type": "string",
                       "maxLength": 255
+                    },
+                    {
+                      "type": "null"
                     },
                     {
                       "type": "object",
@@ -702,6 +711,9 @@
                           "maxLength": 255
                         },
                         {
+                          "type": "null"
+                        },
+                        {
                           "type": "object",
                           "properties": {
                             "$in": {
@@ -742,6 +754,9 @@
                         {
                           "type": "string",
                           "maxLength": 255
+                        },
+                        {
+                          "type": "null"
                         },
                         {
                           "type": "object",
@@ -791,6 +806,9 @@
                         {
                           "type": "string",
                           "maxLength": 255
+                        },
+                        {
+                          "type": "null"
                         },
                         {
                           "type": "object",
@@ -854,6 +872,9 @@
                           "maxLength": 255
                         },
                         {
+                          "type": "null"
+                        },
+                        {
                           "type": "object",
                           "properties": {
                             "$in": {
@@ -894,6 +915,9 @@
                         {
                           "type": "string",
                           "maxLength": 255
+                        },
+                        {
+                          "type": "null"
                         },
                         {
                           "type": "object",
@@ -945,6 +969,9 @@
                           "maxLength": 255
                         },
                         {
+                          "type": "null"
+                        },
+                        {
                           "type": "object",
                           "properties": {
                             "$in": {
@@ -994,6 +1021,109 @@
       ]
     },
     "key": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "name": {
       "oneOf": [
         {
           "type": [
@@ -1406,6 +1536,212 @@
       ]
     },
     "subTopics": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "addressFilterType": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$eq": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$ne": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lt": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$gte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$lte": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "$startsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$endsWith": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$contains": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$ci": {
+              "type": "boolean"
+            },
+            "$in": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
+            "$nin": {
+              "type": "array",
+              "maxItems": 100,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "addresses": {
       "oneOf": [
         {
           "type": [

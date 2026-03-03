@@ -65,6 +65,10 @@
           ]
         }
       ]
+    },
+    "disableTagChangeTracking": {
+      "type": "boolean",
+      "default": false
     }
   },
   "required": [
