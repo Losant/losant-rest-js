@@ -192,7 +192,6 @@
                   "devices.delete",
                   "devices.restore",
                   "devices.removeData",
-                  "devices.detailedSummary",
                   "devices.deviceNames",
                   "devices.export",
                   "devices.get",

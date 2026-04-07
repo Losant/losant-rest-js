@@ -1165,6 +1165,9 @@
         {
           "oneOf": [
             {
+              "type": "null"
+            },
+            {
               "type": "object",
               "properties": {
                 "$tagKey": {
@@ -1319,6 +1322,9 @@
           "properties": {
             "$eq": {
               "oneOf": [
+                {
+                  "type": "null"
+                },
                 {
                   "type": "object",
                   "properties": {
@@ -1480,6 +1486,9 @@
           "properties": {
             "$ne": {
               "oneOf": [
+                {
+                  "type": "null"
+                },
                 {
                   "type": "object",
                   "properties": {
