@@ -1,0 +1,248 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "User OAuth Token",
+        "description": "Schema for a single OAuth Token",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "oauthTokenId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expirationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "defaultRole": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "edit",
+              "collaborate",
+              "view",
+              "none"
+            ]
+          },
+          "orgRoles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "orgId": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "string",
+                      "enum": [
+                        "sandbox"
+                      ]
+                    }
+                  ]
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "admin",
+                    "edit",
+                    "collaborate",
+                    "view",
+                    "none"
+                  ]
+                },
+                "applicationRoles": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "resourceId": {
+                        "type": "string",
+                        "pattern": "^[A-Fa-f\\d]{24}$"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "collaborate",
+                          "view",
+                          "none"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "resourceId",
+                      "role"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "maxItems": 100
+                },
+                "dashboardRoles": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "resourceId": {
+                        "type": "string",
+                        "pattern": "^[A-Fa-f\\d]{24}$"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "collaborate",
+                          "view",
+                          "none"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "resourceId",
+                      "role"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "maxItems": 100
+                }
+              },
+              "required": [
+                "orgId",
+                "role"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 25
+          },
+          "scope": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "description": "OAuth-supported user-context API scope. See the `scopes_supported` field of the OAuth authorization server metadata document at /.well-known/oauth-authorization-server for the authoritative list.",
+              "enum": [
+                "all.Application.read",
+                "all.Application.bounded",
+                "only.Organization.read",
+                "only.Organization.bounded",
+                "all.Organization.read",
+                "all.Organization.bounded",
+                "only.User.read"
+              ]
+            },
+            "description": "API scopes for this OAuth client"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          },
+          "oauth": {
+            "type": "object",
+            "properties": {
+              "client_id": {
+                "type": "string",
+                "minLength": 24,
+                "maxLength": 1024,
+                "description": "The registered OAuth client ID (ObjectId or HTTPS URL for CIMD)"
+              },
+              "client_name": {
+                "type": "string",
+                "maxLength": 255,
+                "description": "Human-readable name of the OAuth client (from client registration)"
+              },
+              "client_uri": {
+                "type": "string",
+                "maxLength": 1024,
+                "description": "Informational URL for the OAuth client's homepage (from client registration)"
+              },
+              "logo_uri": {
+                "type": "string",
+                "maxLength": 32768,
+                "description": "Logo URL for the OAuth client (http(s) URL or data: URI, from client registration)"
+              },
+              "redirect_uri": {
+                "type": "string",
+                "format": "uri",
+                "maxLength": 1024
+              },
+              "resource": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uri",
+                  "maxLength": 1024
+                },
+                "description": "Resource indicator(s) per RFC 8707 — audience(s) this token is bound to"
+              },
+              "authorizationStatus": {
+                "type": "string",
+                "enum": [
+                  "pending",
+                  "authorized"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc",
+        "ASC",
+        "DESC",
+        ""
+      ]
+    }
+  }
+}

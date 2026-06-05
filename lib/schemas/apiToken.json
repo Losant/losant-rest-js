@@ -58,6 +58,106 @@
       "type": "string",
       "format": "date-time"
     },
+    "defaultRole": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "edit",
+        "collaborate",
+        "view",
+        "none"
+      ]
+    },
+    "orgRoles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "orgId": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "sandbox"
+                ]
+              }
+            ]
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "edit",
+              "collaborate",
+              "view",
+              "none"
+            ]
+          },
+          "applicationRoles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "resourceId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "collaborate",
+                    "view",
+                    "none"
+                  ]
+                }
+              },
+              "required": [
+                "resourceId",
+                "role"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 100
+          },
+          "dashboardRoles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "resourceId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "collaborate",
+                    "view",
+                    "none"
+                  ]
+                }
+              },
+              "required": [
+                "resourceId",
+                "role"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 100
+          }
+        },
+        "required": [
+          "orgId",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 25
+    },
     "scope": {
       "type": "array",
       "items": {

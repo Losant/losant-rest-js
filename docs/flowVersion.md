@@ -35,7 +35,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, flowVersion.*, or flowVersion.delete.
+all.Application, all.Application.bounded, all.Organization, all.Organization.bounded, all.User, all.User.bounded, flowVersion.*, or flowVersion.delete.
 
 #### Available Parameters
 
@@ -81,7 +81,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, flowVersion.*, or flowVersion.errors.
+all.Application, all.Application.bounded, all.Application.read, all.Organization, all.Organization.bounded, all.Organization.read, all.User, all.User.bounded, all.User.read, flowVersion.*, or flowVersion.errors.
 
 #### Available Parameters
 
@@ -132,7 +132,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, flowVersion.*, or flowVersion.get.
+all.Application, all.Application.bounded, all.Application.read, all.Organization, all.Organization.bounded, all.Organization.read, all.User, all.User.bounded, all.User.read, flowVersion.*, or flowVersion.get.
 
 #### Available Parameters
 
@@ -179,7 +179,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, flowVersion.*, or flowVersion.log.
+all.Application, all.Application.bounded, all.Application.read, all.Organization, all.Organization.bounded, all.Organization.read, all.User, all.User.bounded, all.User.read, flowVersion.*, or flowVersion.log.
 
 #### Available Parameters
 
@@ -228,7 +228,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, flowVersion.*, or flowVersion.patch.
+all.Application, all.Application.bounded, all.Organization, all.Organization.bounded, all.User, all.User.bounded, flowVersion.*, or flowVersion.patch.
 
 #### Available Parameters
 
@@ -276,7 +276,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, flowVersion.*, or flowVersion.stats.
+all.Application, all.Application.bounded, all.Application.read, all.Organization, all.Organization.bounded, all.Organization.read, all.User, all.User.bounded, all.User.read, flowVersion.*, or flowVersion.stats.
 
 #### Available Parameters
 

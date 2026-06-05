@@ -42,7 +42,7 @@
             ],
             "additionalProperties": false
           },
-          "maxItems": 1000
+          "maxItems": 100
         },
         "dashboardRoles": {
           "type": "array",
@@ -68,7 +68,7 @@
             ],
             "additionalProperties": false
           },
-          "maxItems": 1000
+          "maxItems": 100
         }
       },
       "additionalProperties": false,
@@ -119,7 +119,7 @@
             ],
             "additionalProperties": false
           },
-          "maxItems": 1000
+          "maxItems": 100
         },
         "dashboardRoles": {
           "type": "array",
@@ -145,7 +145,7 @@
             ],
             "additionalProperties": false
           },
-          "maxItems": 1000
+          "maxItems": 100
         },
         "disallowTransfer": {
           "type": "boolean"

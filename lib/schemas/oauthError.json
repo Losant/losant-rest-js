@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "error": {
+      "type": "string",
+      "enum": [
+        "invalid_request",
+        "invalid_client",
+        "invalid_grant",
+        "unauthorized_client",
+        "unsupported_grant_type",
+        "invalid_scope",
+        "invalid_target",
+        "temporarily_unavailable"
+      ],
+      "description": "OAuth 2.0 error code"
+    },
+    "error_description": {
+      "type": "string",
+      "description": "Human-readable error description"
+    },
+    "error_uri": {
+      "type": "string",
+      "description": "URI identifying a human-readable web page with information about the error"
+    }
+  },
+  "required": [
+    "error"
+  ]
+}

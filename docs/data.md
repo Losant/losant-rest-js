@@ -31,7 +31,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Device, all.Device.read, all.Organization, all.Organization.read, all.User, all.User.read, data.*, or data.export.
+all.Application, all.Application.bounded, all.Application.read, all.Device, all.Device.read, all.Organization, all.Organization.bounded, all.Organization.read, all.User, all.User.bounded, all.User.read, data.*, or data.export.
 
 #### Available Parameters
 
@@ -75,7 +75,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Device, all.Device.read, all.Organization, all.Organization.read, all.User, all.User.read, data.*, or data.lastValueQuery.
+all.Application, all.Application.bounded, all.Application.read, all.Device, all.Device.read, all.Organization, all.Organization.bounded, all.Organization.read, all.User, all.User.bounded, all.User.read, data.*, or data.lastValueQuery.
 
 #### Available Parameters
 
@@ -119,7 +119,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Device, all.Device.read, all.Organization, all.Organization.read, all.User, all.User.read, data.*, or data.timeSeriesQuery.
+all.Application, all.Application.bounded, all.Application.read, all.Device, all.Device.read, all.Organization, all.Organization.bounded, all.Organization.read, all.User, all.User.bounded, all.User.read, data.*, or data.timeSeriesQuery.
 
 #### Available Parameters
 

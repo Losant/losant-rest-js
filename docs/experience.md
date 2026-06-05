@@ -30,7 +30,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, experience.*, or experience.bootstrap.
+all.Application, all.Application.bounded, all.Application.cli, all.Organization, all.Organization.bounded, all.User, all.User.bounded, all.User.cli, experience.*, or experience.bootstrap.
 
 #### Available Parameters
 
@@ -73,7 +73,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, experience.*, or experience.delete.
+all.Application, all.Application.bounded, all.Organization, all.Organization.bounded, all.User, all.User.bounded, experience.*, or experience.delete.
 
 #### Available Parameters
 

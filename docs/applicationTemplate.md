@@ -28,7 +28,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.User, all.User.read, applicationTemplate.*, or applicationTemplate.get.
+all.User, all.User.bounded, all.User.read, applicationTemplate.*, applicationTemplate.get, only.User, only.User.bounded, or only.User.read.
 
 #### Available Parameters
 

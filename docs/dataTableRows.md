@@ -34,7 +34,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, dataTableRows.*, or dataTableRows.delete.
+all.Application, all.Application.bounded, all.Organization, all.Organization.bounded, all.User, all.User.bounded, dataTableRows.*, or dataTableRows.delete.
 
 #### Available Parameters
 
@@ -81,7 +81,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, dataTableRows.*, or dataTableRows.export.
+all.Application, all.Application.bounded, all.Application.read, all.Organization, all.Organization.bounded, all.Organization.read, all.User, all.User.bounded, all.User.read, dataTableRows.*, or dataTableRows.export.
 
 #### Available Parameters
 
@@ -126,7 +126,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.cli, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.cli, all.User.read, dataTableRows.*, or dataTableRows.get.
+all.Application, all.Application.bounded, all.Application.cli, all.Application.read, all.Organization, all.Organization.bounded, all.Organization.read, all.User, all.User.bounded, all.User.cli, all.User.read, dataTableRows.*, or dataTableRows.get.
 
 #### Available Parameters
 
@@ -176,7 +176,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, dataTableRows.*, or dataTableRows.post.
+all.Application, all.Application.bounded, all.Organization, all.Organization.bounded, all.User, all.User.bounded, dataTableRows.*, or dataTableRows.post.
 
 #### Available Parameters
 
@@ -221,7 +221,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, dataTableRows.*, or dataTableRows.query.
+all.Application, all.Application.bounded, all.Application.read, all.Organization, all.Organization.bounded, all.Organization.read, all.User, all.User.bounded, all.User.read, dataTableRows.*, or dataTableRows.query.
 
 #### Available Parameters
 
@@ -271,7 +271,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, dataTableRows.*, or dataTableRows.truncate.
+all.Application, all.Application.bounded, all.Organization, all.Organization.bounded, all.User, all.User.bounded, dataTableRows.*, or dataTableRows.truncate.
 
 #### Available Parameters
 

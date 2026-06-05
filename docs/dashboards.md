@@ -27,7 +27,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Organization, all.Organization.read, all.User, all.User.read, dashboards.*, or dashboards.get.
+all.Organization, all.Organization.bounded, all.Organization.read, all.User, all.User.bounded, all.User.read, dashboards.*, dashboards.get, only.Organization, only.Organization.bounded, or only.Organization.read.
 
 #### Available Parameters
 
@@ -75,7 +75,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Organization, all.User, dashboards.*, or dashboards.post.
+all.Organization, all.Organization.bounded, all.User, all.User.bounded, dashboards.*, dashboards.post, only.Organization, or only.Organization.bounded.
 
 #### Available Parameters
 

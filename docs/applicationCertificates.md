@@ -29,7 +29,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, applicationCertificates.*, or applicationCertificates.get.
+all.Application, all.Application.bounded, all.Application.read, all.Organization, all.Organization.bounded, all.Organization.read, all.User, all.User.bounded, all.User.read, applicationCertificates.*, or applicationCertificates.get.
 
 #### Available Parameters
 
@@ -78,7 +78,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, applicationCertificates.*, or applicationCertificates.post.
+all.Application, all.Application.bounded, all.Organization, all.Organization.bounded, all.User, all.User.bounded, applicationCertificates.*, or applicationCertificates.post.
 
 #### Available Parameters
 

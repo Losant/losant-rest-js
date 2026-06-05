@@ -1577,6 +1577,10 @@
                   },
                   "includeDeviceInfo": {
                     "type": "boolean"
+                  },
+                  "maxResultsPerDevice": {
+                    "type": "string",
+                    "maxLength": 255
                   }
                 },
                 "additionalProperties": false

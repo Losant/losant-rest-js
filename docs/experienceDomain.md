@@ -31,7 +31,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, experienceDomain.*, or experienceDomain.delete.
+all.Application, all.Application.bounded, all.Organization, all.Organization.bounded, all.User, all.User.bounded, experienceDomain.*, or experienceDomain.delete.
 
 #### Available Parameters
 
@@ -75,7 +75,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, experienceDomain.*, or experienceDomain.get.
+all.Application, all.Application.bounded, all.Application.read, all.Organization, all.Organization.bounded, all.Organization.read, all.User, all.User.bounded, all.User.read, experienceDomain.*, or experienceDomain.get.
 
 #### Available Parameters
 
@@ -120,7 +120,7 @@ try {
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, experienceDomain.*, or experienceDomain.patch.
+all.Application, all.Application.bounded, all.Organization, all.Organization.bounded, all.User, all.User.bounded, experienceDomain.*, or experienceDomain.patch.
 
 #### Available Parameters
 

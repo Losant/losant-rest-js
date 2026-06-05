@@ -1,0 +1,197 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "expirationDate": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Session expiration. Omit for the default 1-year session, pass an ISO date for a specific expiration, or pass null for a session that does not expire."
+    },
+    "oauth": {
+      "type": "object",
+      "properties": {
+        "client_id": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 1024,
+          "description": "The registered OAuth client ID (ObjectId or HTTPS URL for CIMD)"
+        },
+        "redirect_uri": {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 1024
+        },
+        "resource": {
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 1024
+          },
+          "description": "Resource indicator(s) per RFC 8707 — absolute URI(s) identifying the audience(s) this token is being requested for"
+        },
+        "code_challenge": {
+          "type": "string",
+          "minLength": 43,
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "description": "PKCE code challenge (RFC 7636 base64url, 43-128 chars)"
+        },
+        "code_challenge_method": {
+          "type": "string",
+          "enum": [
+            "S256"
+          ],
+          "description": "PKCE code challenge method"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "client_id",
+        "redirect_uri",
+        "code_challenge",
+        "code_challenge_method"
+      ]
+    },
+    "defaultRole": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "edit",
+        "collaborate",
+        "view",
+        "none"
+      ]
+    },
+    "orgRoles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "orgId": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "sandbox"
+                ]
+              }
+            ]
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "edit",
+              "collaborate",
+              "view",
+              "none"
+            ]
+          },
+          "applicationRoles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "resourceId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "collaborate",
+                    "view",
+                    "none"
+                  ]
+                }
+              },
+              "required": [
+                "resourceId",
+                "role"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 100
+          },
+          "dashboardRoles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "resourceId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "collaborate",
+                    "view",
+                    "none"
+                  ]
+                }
+              },
+              "required": [
+                "resourceId",
+                "role"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 100
+          }
+        },
+        "required": [
+          "orgId",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 25
+    },
+    "scope": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "description": "OAuth-supported user-context API scope. See the `scopes_supported` field of the OAuth authorization server metadata document at /.well-known/oauth-authorization-server for the authoritative list.",
+        "enum": [
+          "all.Application.read",
+          "all.Application.bounded",
+          "only.Organization.read",
+          "only.Organization.bounded",
+          "all.Organization.read",
+          "all.Organization.bounded",
+          "only.User.read"
+        ]
+      },
+      "description": "API scopes for this OAuth client"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "oauth"
+  ]
+}

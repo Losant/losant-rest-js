@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "error": {
+      "type": "string",
+      "enum": [
+        "invalid_redirect_uri",
+        "invalid_client_metadata",
+        "invalid_software_statement",
+        "unapproved_software_statement"
+      ],
+      "description": "OAuth 2.0 DCR error code"
+    },
+    "error_description": {
+      "type": "string",
+      "description": "Human-readable error description"
+    }
+  },
+  "required": [
+    "error"
+  ]
+}

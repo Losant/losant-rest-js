@@ -15,6 +15,106 @@
       "type": "string",
       "format": "date-time"
     },
+    "defaultRole": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "edit",
+        "collaborate",
+        "view",
+        "none"
+      ]
+    },
+    "orgRoles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "orgId": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "sandbox"
+                ]
+              }
+            ]
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "edit",
+              "collaborate",
+              "view",
+              "none"
+            ]
+          },
+          "applicationRoles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "resourceId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "collaborate",
+                    "view",
+                    "none"
+                  ]
+                }
+              },
+              "required": [
+                "resourceId",
+                "role"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 100
+          },
+          "dashboardRoles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "resourceId": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "collaborate",
+                    "view",
+                    "none"
+                  ]
+                }
+              },
+              "required": [
+                "resourceId",
+                "role"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 100
+          }
+        },
+        "required": [
+          "orgId",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 25
+    },
     "scope": {
       "type": "array",
       "uniqueItems": true,
@@ -26,6 +126,7 @@
                 "type": "string",
                 "enum": [
                   "all.Application",
+                  "all.Application.bounded",
                   "all.Application.read",
                   "all.Application.cli",
                   "all.Device",
@@ -352,7 +453,11 @@
                 "type": "string",
                 "enum": [
                   "all.Organization",
+                  "all.Organization.bounded",
                   "all.Organization.read",
+                  "only.Organization",
+                  "only.Organization.bounded",
+                  "only.Organization.read",
                   "applications.*",
                   "auditLog.*",
                   "auditLogs.*",
@@ -395,6 +500,7 @@
             "type": "string",
             "enum": [
               "all.Instance",
+              "all.Instance.bounded",
               "all.Instance.read",
               "instance.*",
               "instance.get",
@@ -483,8 +589,12 @@
             "type": "string",
             "enum": [
               "all.User",
+              "all.User.bounded",
               "all.User.read",
               "all.User.cli",
+              "only.User",
+              "only.User.bounded",
+              "only.User.read",
               "userApiToken.*",
               "userApiToken.get",
               "userApiToken.patch",
@@ -492,6 +602,13 @@
               "userApiTokens.*",
               "userApiTokens.get",
               "userApiTokens.post",
+              "userOauthToken.*",
+              "userOauthToken.get",
+              "userOauthToken.patch",
+              "userOauthToken.delete",
+              "userOauthTokens.*",
+              "userOauthTokens.get",
+              "userOauthTokens.post",
               "applicationTemplate.*",
               "applicationTemplate.get",
               "applicationTemplates.*",
@@ -521,6 +638,7 @@
               "me.invite",
               "me.invites",
               "me.respondToInvite",
+              "me.refreshToken",
               "orgs.*",
               "orgs.get",
               "orgs.post"
