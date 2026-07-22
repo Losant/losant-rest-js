@@ -105,7 +105,7 @@ all.Organization, all.Organization.bounded, all.User, all.User.bounded, applicat
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
 | 404 | [Error](../lib/schemas/error.json) | Error if application is not found |
-| 422 | [Validation Error](../lib/schemas/validationErrors.json) | Error if too many validation errors occurred on other resources |
+| 422 | [Validation Errors](../lib/schemas/validationErrors.json) | Error if too many validation errors occurred on other resources |
 
 <br/>
 

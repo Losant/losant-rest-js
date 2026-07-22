@@ -29,6 +29,11 @@
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
       },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "maxLength": 1024
+      },
       "status": {
         "type": "string",
         "enum": [
@@ -61,6 +66,11 @@
       "sourceId": {
         "type": "string",
         "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "callbackUrl": {
+        "type": "string",
+        "format": "uri",
+        "maxLength": 1024
       },
       "runQueuedAt": {
         "type": "string",
@@ -116,6 +126,16 @@
               },
               "contentType": {
                 "type": "string"
+              },
+              "outputType": {
+                "type": "string",
+                "enum": [
+                  "dataTable",
+                  "file",
+                  "executionResult",
+                  "directory",
+                  "temporaryUrl"
+                ]
               }
             }
           }

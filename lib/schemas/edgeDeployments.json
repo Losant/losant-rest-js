@@ -184,6 +184,31 @@
     "totalCount": {
       "type": "integer"
     },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc",
+        "ASC",
+        "DESC",
+        ""
+      ]
+    },
     "applicationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
@@ -200,6 +225,9 @@
       "type": "string",
       "minLength": 1,
       "maxLength": 255
+    },
+    "filterEmpty": {
+      "type": "boolean"
     }
   }
 }

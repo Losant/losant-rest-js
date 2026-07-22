@@ -166,7 +166,7 @@ all.Application, all.Application.bounded, all.Application.read, all.Device, all.
 
 ## Get Command
 
-Retrieve the last known commands(s) sent to the device
+Retrieve the last known command(s) sent to the device
 
 ```javascript
 const params = {

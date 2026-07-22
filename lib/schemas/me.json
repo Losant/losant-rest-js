@@ -194,115 +194,712 @@
       "title": "Recent Item List",
       "description": "Schema for an array of recent items",
       "type": "object",
-      "properties": {
-        "itemType": {
-          "type": "string",
-          "enum": [
-            "application",
-            "device",
-            "flow",
-            "dashboard",
-            "organization"
-          ]
+      "oneOf": [
+        {
+          "properties": {
+            "itemType": {
+              "type": "string",
+              "enum": [
+                "device"
+              ]
+            },
+            "parentId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "deviceClass": {
+                    "type": "string",
+                    "enum": [
+                      "standalone",
+                      "gateway",
+                      "peripheral",
+                      "floating",
+                      "edgeCompute",
+                      "system",
+                      "embedded"
+                    ]
+                  }
+                }
+              }
+            }
+          }
         },
-        "parentId": {
-          "type": "string",
-          "pattern": "^[A-Fa-f\\d]{24}$"
+        {
+          "properties": {
+            "itemType": {
+              "type": "string",
+              "enum": [
+                "flow"
+              ]
+            },
+            "parentId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "flowClass": {
+                    "type": "string",
+                    "enum": [
+                      "cloud",
+                      "edge",
+                      "embedded",
+                      "experience",
+                      "customNode"
+                    ]
+                  }
+                }
+              }
+            }
+          }
         },
-        "items": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "pattern": "^[A-Fa-f\\d]{24}$"
-              },
-              "name": {
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 255
+        {
+          "properties": {
+            "itemType": {
+              "type": "string",
+              "enum": [
+                "application"
+              ]
+            },
+            "parentId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "ownerId": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "ownerType": {
+                    "type": "string",
+                    "enum": [
+                      "user",
+                      "organization"
+                    ]
+                  },
+                  "ownerName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "iconColor": {
+                    "type": "string",
+                    "maxLength": 64
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "itemType": {
+              "type": "string",
+              "enum": [
+                "dashboard"
+              ]
+            },
+            "parentId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "ownerId": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "ownerType": {
+                    "type": "string",
+                    "enum": [
+                      "user",
+                      "organization"
+                    ]
+                  },
+                  "ownerName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "iconColor": {
+                    "type": "string",
+                    "maxLength": 64
+                  },
+                  "applicationId": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "applicationName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "itemType": {
+              "type": "string",
+              "enum": [
+                "organization"
+              ]
+            },
+            "parentId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "iconColor": {
+                    "type": "string",
+                    "maxLength": 64
+                  }
+                }
               }
             }
           }
         }
-      }
+      ]
     },
     "recentApplications": {
       "title": "Recent Item List",
       "description": "Schema for an array of recent items",
       "type": "object",
-      "properties": {
-        "itemType": {
-          "type": "string",
-          "enum": [
-            "application",
-            "device",
-            "flow",
-            "dashboard",
-            "organization"
-          ]
+      "oneOf": [
+        {
+          "properties": {
+            "itemType": {
+              "type": "string",
+              "enum": [
+                "device"
+              ]
+            },
+            "parentId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "deviceClass": {
+                    "type": "string",
+                    "enum": [
+                      "standalone",
+                      "gateway",
+                      "peripheral",
+                      "floating",
+                      "edgeCompute",
+                      "system",
+                      "embedded"
+                    ]
+                  }
+                }
+              }
+            }
+          }
         },
-        "parentId": {
-          "type": "string",
-          "pattern": "^[A-Fa-f\\d]{24}$"
+        {
+          "properties": {
+            "itemType": {
+              "type": "string",
+              "enum": [
+                "flow"
+              ]
+            },
+            "parentId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "flowClass": {
+                    "type": "string",
+                    "enum": [
+                      "cloud",
+                      "edge",
+                      "embedded",
+                      "experience",
+                      "customNode"
+                    ]
+                  }
+                }
+              }
+            }
+          }
         },
-        "items": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "pattern": "^[A-Fa-f\\d]{24}$"
-              },
-              "name": {
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 255
+        {
+          "properties": {
+            "itemType": {
+              "type": "string",
+              "enum": [
+                "application"
+              ]
+            },
+            "parentId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "ownerId": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "ownerType": {
+                    "type": "string",
+                    "enum": [
+                      "user",
+                      "organization"
+                    ]
+                  },
+                  "ownerName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "iconColor": {
+                    "type": "string",
+                    "maxLength": 64
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "itemType": {
+              "type": "string",
+              "enum": [
+                "dashboard"
+              ]
+            },
+            "parentId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "ownerId": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "ownerType": {
+                    "type": "string",
+                    "enum": [
+                      "user",
+                      "organization"
+                    ]
+                  },
+                  "ownerName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "iconColor": {
+                    "type": "string",
+                    "maxLength": 64
+                  },
+                  "applicationId": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "applicationName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "itemType": {
+              "type": "string",
+              "enum": [
+                "organization"
+              ]
+            },
+            "parentId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "iconColor": {
+                    "type": "string",
+                    "maxLength": 64
+                  }
+                }
               }
             }
           }
         }
-      }
+      ]
     },
     "recentOrganizations": {
       "title": "Recent Item List",
       "description": "Schema for an array of recent items",
       "type": "object",
-      "properties": {
-        "itemType": {
-          "type": "string",
-          "enum": [
-            "application",
-            "device",
-            "flow",
-            "dashboard",
-            "organization"
-          ]
+      "oneOf": [
+        {
+          "properties": {
+            "itemType": {
+              "type": "string",
+              "enum": [
+                "device"
+              ]
+            },
+            "parentId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "deviceClass": {
+                    "type": "string",
+                    "enum": [
+                      "standalone",
+                      "gateway",
+                      "peripheral",
+                      "floating",
+                      "edgeCompute",
+                      "system",
+                      "embedded"
+                    ]
+                  }
+                }
+              }
+            }
+          }
         },
-        "parentId": {
-          "type": "string",
-          "pattern": "^[A-Fa-f\\d]{24}$"
+        {
+          "properties": {
+            "itemType": {
+              "type": "string",
+              "enum": [
+                "flow"
+              ]
+            },
+            "parentId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "flowClass": {
+                    "type": "string",
+                    "enum": [
+                      "cloud",
+                      "edge",
+                      "embedded",
+                      "experience",
+                      "customNode"
+                    ]
+                  }
+                }
+              }
+            }
+          }
         },
-        "items": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "pattern": "^[A-Fa-f\\d]{24}$"
-              },
-              "name": {
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 255
+        {
+          "properties": {
+            "itemType": {
+              "type": "string",
+              "enum": [
+                "application"
+              ]
+            },
+            "parentId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "ownerId": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "ownerType": {
+                    "type": "string",
+                    "enum": [
+                      "user",
+                      "organization"
+                    ]
+                  },
+                  "ownerName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "iconColor": {
+                    "type": "string",
+                    "maxLength": 64
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "itemType": {
+              "type": "string",
+              "enum": [
+                "dashboard"
+              ]
+            },
+            "parentId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "ownerId": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "ownerType": {
+                    "type": "string",
+                    "enum": [
+                      "user",
+                      "organization"
+                    ]
+                  },
+                  "ownerName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "iconColor": {
+                    "type": "string",
+                    "maxLength": 64
+                  },
+                  "applicationId": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "applicationName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "itemType": {
+              "type": "string",
+              "enum": [
+                "organization"
+              ]
+            },
+            "parentId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "iconColor": {
+                    "type": "string",
+                    "maxLength": 64
+                  }
+                }
               }
             }
           }
         }
-      }
+      ]
     },
     "summary": {
       "type": "object",
@@ -565,7 +1162,7 @@
               "type": "integer"
             },
             "minutesThisPeriod": {
-              "type": "integer"
+              "type": "number"
             },
             "runsThisPeriod": {
               "type": "integer"

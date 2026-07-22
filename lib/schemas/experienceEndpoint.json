@@ -46,6 +46,11 @@
         "apiToken"
       ]
     },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
     "description": {
       "type": "string",
       "maxLength": 32767
@@ -170,9 +175,23 @@
           "id": {
             "type": "string",
             "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "parentId": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         }
       }
+    },
+    "requestCount": {
+      "type": "number"
     }
   }
 }

@@ -36,12 +36,13 @@ all.Application, all.Application.bounded, all.Application.read, all.Organization
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| sortField | string | N | Field to sort the results by. Accepted values are: certificateInfo.commonName, status, id, creationDate, lastUpdated | certificateInfo.commonName | status |
+| sortField | string | N | Field to sort the results by. Accepted values are: name, certificateInfo.commonName, status, id, creationDate, lastUpdated | certificateInfo.commonName | status |
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
 | page | string | N | Which page of results to return | 0 | 0 |
 | perPage | string | N | How many items to return per page | 100 | 10 |
-| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: certificateInfo.commonName, status |  | status |
+| filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name, certificateInfo.commonName, status |  | status |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | the*status |
+| query | [Advanced Application Certificate Query](../lib/schemas/advancedApplicationCertQuery.json) | N | Application certificate filter JSON object which overrides the filterField and filter parameters. |  | [Advanced Application Certificate Query Example](_schemas.md#advanced-application-certificate-query-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

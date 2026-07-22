@@ -134,7 +134,7 @@ all.Application, all.Application.bounded, all.Organization, all.Organization.bou
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | dataTableId | string | Y | ID associated with the data table |  | 575ed78e7ae143cd83dc4aab |
 | rowId | string | Y | ID associated with the data table row |  | 596f832b128eda5cfe765443 |
-| dataTableRow | [Data Table Row Insert Update](../lib/schemas/dataTableRowInsertUpdate.json) | Y | Object containing updated properties for the data table row |  | [Data Table Row Insert Update Example](_schemas.md#data-table-row-insert-update-example) |
+| dataTableRow | [Data Table Row Patch](../lib/schemas/dataTableRowPatch.json) | Y | Object containing updated properties for the data table row |  | [Data Table Row Patch Example](_schemas.md#data-table-row-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

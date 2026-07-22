@@ -19,6 +19,9 @@
     "aggregation": {
       "oneOf": [
         {
+          "type": "null"
+        },
+        {
           "oneOf": [
             {
               "type": "string",
@@ -171,10 +174,39 @@
                     "type": "object",
                     "patternProperties": {
                       "^[0-9a-zA-Z_-]{1,255}$": {
-                        "type": [
-                          "number",
-                          "string",
-                          "boolean"
+                        "oneOf": [
+                          {
+                            "type": [
+                              "number",
+                              "string",
+                              "boolean"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "value": {
+                                "type": [
+                                  "number",
+                                  "string",
+                                  "boolean"
+                                ]
+                              },
+                              "sum": {
+                                "type": "number"
+                              },
+                              "count": {
+                                "type": "number"
+                              },
+                              "average": {
+                                "type": "number"
+                              },
+                              "variance": {
+                                "type": "number"
+                              }
+                            },
+                            "additionalProperties": false
+                          }
                         ]
                       }
                     },

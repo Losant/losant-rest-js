@@ -39,6 +39,16 @@
       "flowClass": {
         "type": "string",
         "enum": [
+          "cloud",
+          "edge",
+          "embedded",
+          "experience",
+          "customNode"
+        ]
+      },
+      "deviceClass": {
+        "type": "string",
+        "enum": [
           "standalone",
           "gateway",
           "peripheral",
@@ -46,16 +56,6 @@
           "edgeCompute",
           "system",
           "embedded"
-        ]
-      },
-      "deviceClass": {
-        "type": "string",
-        "enum": [
-          "cloud",
-          "edge",
-          "embedded",
-          "experience",
-          "customNode"
         ]
       },
       "_type": {

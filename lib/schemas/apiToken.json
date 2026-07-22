@@ -18,8 +18,17 @@
       "type": "string",
       "enum": [
         "application",
-        "user"
+        "user",
+        "instance"
       ]
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "instanceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "creatorId": {
       "type": "string",

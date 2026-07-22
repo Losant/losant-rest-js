@@ -137,8 +137,22 @@
       "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "experienceGroupId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "none",
+            "any"
+          ]
+        }
+      ]
+    },
+    "includeAncestorGroups": {
+      "type": "string"
     }
   }
 }

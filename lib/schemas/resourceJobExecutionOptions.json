@@ -20,7 +20,7 @@
           "type": "string",
           "minLength": 4,
           "maxLength": 255,
-          "pattern": ".*{{.+}}.*"
+          "pattern": ".*\\{\\{.+\\}\\}.*"
         }
       ]
     }

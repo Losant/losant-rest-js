@@ -4,94 +4,89 @@
   "items": {
     "type": "object",
     "properties": {
-      "title": "Organization Invitation",
-      "description": "Schema for a pending invitation to an Organization",
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "pattern": "^[A-Fa-f\\d]{24}$"
-        },
-        "email": {
-          "type": "string",
-          "format": "email",
-          "maxLength": 1024
-        },
-        "role": {
-          "type": "string",
-          "enum": [
-            "admin",
-            "edit",
-            "collaborate",
-            "view",
-            "none"
-          ]
-        },
-        "applicationRoles": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "resourceId": {
-                "type": "string",
-                "pattern": "^[A-Fa-f\\d]{24}$"
-              },
-              "role": {
-                "type": "string",
-                "enum": [
-                  "collaborate",
-                  "view",
-                  "none"
-                ]
-              }
+      "id": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "maxLength": 1024
+      },
+      "role": {
+        "type": "string",
+        "enum": [
+          "admin",
+          "edit",
+          "collaborate",
+          "view",
+          "none"
+        ]
+      },
+      "applicationRoles": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "resourceId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
             },
-            "required": [
-              "resourceId",
-              "role"
-            ],
-            "additionalProperties": false
+            "role": {
+              "type": "string",
+              "enum": [
+                "collaborate",
+                "view",
+                "none"
+              ]
+            }
           },
-          "maxItems": 100
+          "required": [
+            "resourceId",
+            "role"
+          ],
+          "additionalProperties": false
         },
-        "dashboardRoles": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "resourceId": {
-                "type": "string",
-                "pattern": "^[A-Fa-f\\d]{24}$"
-              },
-              "role": {
-                "type": "string",
-                "enum": [
-                  "collaborate",
-                  "view",
-                  "none"
-                ]
-              }
+        "maxItems": 100
+      },
+      "dashboardRoles": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "resourceId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
             },
-            "required": [
-              "resourceId",
-              "role"
-            ],
-            "additionalProperties": false
+            "role": {
+              "type": "string",
+              "enum": [
+                "collaborate",
+                "view",
+                "none"
+              ]
+            }
           },
-          "maxItems": 100
+          "required": [
+            "resourceId",
+            "role"
+          ],
+          "additionalProperties": false
         },
-        "inviteDate": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "ttl": {
-          "type": "number"
-        },
-        "hasExpired": {
-          "type": "boolean"
-        },
-        "disallowTransfer": {
-          "type": "boolean"
-        }
+        "maxItems": 100
+      },
+      "inviteDate": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "ttl": {
+        "type": "number"
+      },
+      "hasExpired": {
+        "type": "boolean"
+      },
+      "disallowTransfer": {
+        "type": "boolean"
       }
     }
   }

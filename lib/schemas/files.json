@@ -5,7 +5,7 @@
     "items": {
       "type": "array",
       "items": {
-        "title": "File Schema",
+        "title": "File",
         "description": "Schema for a single public or private file",
         "type": "object",
         "properties": {
@@ -125,6 +125,10 @@
         "DESC",
         ""
       ]
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
     },
     "parentExists": {
       "type": "boolean"

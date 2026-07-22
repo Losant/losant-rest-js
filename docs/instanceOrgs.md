@@ -93,7 +93,7 @@ all.Instance, all.Instance.bounded, all.User, all.User.bounded, instanceOrgs.*, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Organization](../lib/schemas/org.json) | The newly created organization |
+| 201 | [Instance Organization](../lib/schemas/instanceOrg.json) | The newly created organization |
 
 #### Error Responses
 

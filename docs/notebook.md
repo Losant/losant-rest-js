@@ -46,7 +46,7 @@ all.Application, all.Application.bounded, all.Organization, all.Organization.bou
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | notebookId | string | Y | ID associated with the notebook |  | 575ed78e7ae143cd83dc4aab |
-| executionId | undefined | Y | The ID of the execution to cancel |  | 632e18632f59592e773a4153 |
+| executionId | string | Y | The ID of the execution to cancel |  | 632e18632f59592e773a4153 |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

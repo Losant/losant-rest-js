@@ -91,7 +91,7 @@ all.Application, all.Application.bounded, all.Application.cli, all.Application.r
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [File Schema](../lib/schemas/file.json) | File information |
+| 200 | [File](../lib/schemas/file.json) | File information |
 
 #### Error Responses
 
@@ -137,7 +137,7 @@ all.Application, all.Application.bounded, all.Application.cli, all.Organization,
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [File Schema](../lib/schemas/file.json) | Returns a new file or directory that was created by the move, if a directory a job will kick off to move all the directories children. |
+| 201 | [File](../lib/schemas/file.json) | Returns a new file or directory that was created by the move, if a directory a job will kick off to move all the directory&#x27;s children. |
 
 #### Error Responses
 
@@ -183,7 +183,7 @@ all.Application, all.Application.bounded, all.Application.cli, all.Organization,
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [File Upload Post Response](../lib/schemas/fileUploadPostResponse.json) | Successfully updated file and the information needed to upload the file content |
+| 200 | [File Upload Post Response](../lib/schemas/fileUploadPostResponse.json) | Successfully updated file and the information needed to upload the file content |
 
 #### Error Responses
 
@@ -229,7 +229,7 @@ all.Application, all.Application.bounded, all.Application.cli, all.Organization,
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [File Schema](../lib/schemas/file.json) | Updated file content |
+| 200 | [File](../lib/schemas/file.json) | Updated file content |
 
 #### Error Responses
 

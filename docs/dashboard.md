@@ -130,7 +130,7 @@ all.Organization, all.Organization.bounded, all.User, all.User.bounded, dashboar
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Dashboard](../lib/schemas/dashboard.json) | Update dashboard information |
+| 200 | [Dashboard](../lib/schemas/dashboard.json) | Updated dashboard information |
 
 #### Error Responses
 

@@ -56,7 +56,7 @@ all.Application, all.Application.bounded, all.Organization, all.Organization.bou
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
-| options | [Application Apply Template Patch Schema](../lib/schemas/applicationApplyTemplatePatch.json) | Y | Object containing template import options |  | [Application Apply Template Patch Schema Example](_schemas.md#application-apply-template-patch-schema-example) |
+| options | [Application Apply Template Patch](../lib/schemas/applicationApplyTemplatePatch.json) | Y | Object containing template import options |  | [Application Apply Template Patch Example](_schemas.md#application-apply-template-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -186,7 +186,7 @@ all.Application, all.Application.bounded, all.Organization, all.Organization.bou
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
-| options | [Application Clone Post Schema](../lib/schemas/applicationClonePost.json) | N | Object containing optional clone fields |  | [Application Clone Post Schema Example](_schemas.md#application-clone-post-schema-example) |
+| options | [Application Clone Post](../lib/schemas/applicationClonePost.json) | N | Object containing optional clone fields |  | [Application Clone Post Example](_schemas.md#application-clone-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -203,7 +203,7 @@ all.Application, all.Application.bounded, all.Organization, all.Organization.bou
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
 | 404 | [Error](../lib/schemas/error.json) | Error if application is not found |
-| 422 | [Validation Error](../lib/schemas/validationErrors.json) | Error if too many validation errors occurred on other resources |
+| 422 | [Validation Errors](../lib/schemas/validationErrors.json) | Error if too many validation errors occurred on other resources |
 
 <br/>
 
@@ -319,7 +319,7 @@ all.Application, all.Application.bounded, all.Organization, all.Organization.bou
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID of the associated application |  | 575ec8687ae143cd83dc4a97 |
-| options | [Application Export Post Schema](../lib/schemas/applicationExportPost.json) | Y | Object containing export application options |  | [Application Export Post Schema Example](_schemas.md#application-export-post-schema-example) |
+| options | [Application Export Post](../lib/schemas/applicationExportPost.json) | Y | Object containing export application options |  | [Application Export Post Example](_schemas.md#application-export-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
@@ -369,7 +369,7 @@ all.Application, all.Application.bounded, all.Organization, all.Organization.bou
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | Enqueued a job to archive all selected data tables of this application archive location |
+| 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | Enqueued a job to archive all selected data tables to this application archive location |
 
 #### Error Responses
 
@@ -544,7 +544,7 @@ all.Application, all.Application.bounded, all.Organization, all.Organization.bou
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Application](../lib/schemas/application.json) | Updated application information |
+| 200 | [Application Import Result](../lib/schemas/applicationImportResult.json) | Updated application information or a dry-run result |
 | 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | If a job was enqueued for the resources to be imported into the application |
 
 #### Error Responses

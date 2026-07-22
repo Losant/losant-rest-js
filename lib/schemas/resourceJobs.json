@@ -40,7 +40,7 @@
                 "type": "string",
                 "minLength": 4,
                 "maxLength": 255,
-                "pattern": ".*{{.+}}.*"
+                "pattern": ".*\\{\\{.+\\}\\}.*"
               }
             ]
           },
@@ -66,13 +66,13 @@
           },
           "iterationDelay": {
             "type": "integer",
-            "min": 0,
-            "max": 60000
+            "minimum": 0,
+            "maximum": 60000
           },
           "iterationTimeout": {
             "type": "integer",
-            "min": 60000,
-            "max": 900000
+            "minimum": 60000,
+            "maximum": 900000
           },
           "creationDate": {
             "type": "string",
@@ -81,6 +81,30 @@
           "lastUpdated": {
             "type": "string",
             "format": "date-time"
+          },
+          "createdById": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "createdByType": {
+            "type": "string",
+            "enum": [
+              "flow",
+              "user",
+              "apiToken"
+            ]
+          },
+          "lastUpdatedById": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "lastUpdatedByType": {
+            "type": "string",
+            "enum": [
+              "flow",
+              "user",
+              "apiToken"
+            ]
           },
           "lastExecutionRequested": {
             "type": "string",
@@ -98,13 +122,13 @@
           },
           "maxIterationRetries": {
             "type": "integer",
-            "min": 1,
-            "max": 5
+            "minimum": 1,
+            "maximum": 5
           },
           "retryDelay": {
             "type": "integer",
-            "min": 0,
-            "max": 30000
+            "minimum": 0,
+            "maximum": 30000
           }
         },
         "additionalProperties": false

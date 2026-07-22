@@ -9,6 +9,10 @@
         "inactive"
       ]
     },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
     "name": {
       "oneOf": [
         {
@@ -20,10 +24,6 @@
           "type": "null"
         }
       ]
-    },
-    "description": {
-      "type": "string",
-      "maxLength": 32767
     },
     "filterType": {
       "oneOf": [

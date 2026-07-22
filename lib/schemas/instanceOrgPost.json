@@ -160,7 +160,7 @@
     },
     "members": {
       "type": "array",
-      "maxItems": "10",
+      "maxItems": 10,
       "items": {
         "title": "Instance Org Member Post",
         "description": "Schema for an Instance Organization member creation request",

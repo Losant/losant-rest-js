@@ -147,7 +147,7 @@
           "only.User.read"
         ]
       },
-      "description": "API scopes for this OAuth client"
+      "description": "API scopes for this OAuth token"
     },
     "status": {
       "type": "string",
@@ -200,6 +200,9 @@
             "pending",
             "authorized"
           ]
+        },
+        "authorizationCode": {
+          "type": "string"
         }
       }
     }

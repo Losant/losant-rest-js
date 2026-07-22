@@ -6,7 +6,7 @@
       "type": "array",
       "items": {
         "title": "Instance Organization",
-        "description": "Schema for the body of an Organization owned by an instance",
+        "description": "Schema for an Organization owned by an instance",
         "type": "object",
         "properties": {
           "creationDate": {
@@ -446,12 +446,15 @@
                     "type": "integer"
                   },
                   "minutesThisPeriod": {
-                    "type": "integer"
+                    "type": "number"
                   },
                   "runsThisPeriod": {
                     "type": "integer"
                   }
                 }
+              },
+              "deviceDataSize": {
+                "type": "number"
               }
             }
           },

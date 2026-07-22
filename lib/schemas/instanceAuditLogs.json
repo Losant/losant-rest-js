@@ -5,7 +5,96 @@
     "items": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/instanceAuditLogs"
+        "title": "Instance Audit Log",
+        "description": "Schema for a single Instance Audit Log entry",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "instanceAuditLogId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "instanceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "primaryTargetId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "primaryTargetType": {
+            "type": "string",
+            "enum": [
+              "Organization",
+              "ApiToken",
+              "User",
+              "InstanceCustomNode",
+              "NotificationRule"
+            ]
+          },
+          "primaryTargetName": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "secondaryTargetId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "secondaryTargetType": {
+            "type": "string",
+            "enum": [
+              "OrgInvite",
+              "ApiToken"
+            ]
+          },
+          "secondaryTargetName": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "actorId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "actorType": {
+            "type": "string",
+            "enum": [
+              "User",
+              "ApiToken"
+            ]
+          },
+          "actorName": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "requestResource": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "requestAction": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "requestQueryParams": {
+            "type": "object"
+          },
+          "requestBody": {},
+          "requestPathParams": {
+            "type": "object"
+          },
+          "responseBody": {},
+          "responseStatus": {
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 599
+          }
+        }
       }
     },
     "count": {

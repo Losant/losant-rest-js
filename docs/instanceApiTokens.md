@@ -48,7 +48,7 @@ all.Instance, all.Instance.bounded, all.Instance.read, all.User, all.User.bounde
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [API Token](../lib/schemas/apiToken.json) | Collection of API tokens |
+| 200 | [API Tokens](../lib/schemas/apiTokens.json) | Collection of API tokens |
 
 #### Error Responses
 

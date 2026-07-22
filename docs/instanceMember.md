@@ -135,7 +135,7 @@ all.Instance, all.User, instanceMember.*, or instanceMember.patch.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Instance Member Patch](../lib/schemas/instanceMemberPatch.json) | The modified instance member |
+| 200 | [Instance Member](../lib/schemas/instanceMember.json) | The modified instance member |
 
 #### Error Responses
 

@@ -154,8 +154,15 @@
       "type": "string"
     },
     "categoryId": {
-      "type": "string",
-      "pattern": "^[A-Fa-f\\d]{24}$"
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "keywords": {
       "type": "array",
