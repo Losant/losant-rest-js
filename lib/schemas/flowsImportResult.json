@@ -110,6 +110,10 @@
           "triggers": {
             "type": "array",
             "items": {
+              "type": "object",
+              "discriminator": {
+                "propertyName": "type"
+              },
               "oneOf": [
                 {
                   "type": "object",
@@ -198,7 +202,11 @@
                           "maxLength": 48
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -215,7 +223,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -325,7 +334,11 @@
                           "maxLength": 48
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -342,7 +355,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -464,7 +478,11 @@
                           "maxLength": 48
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -481,7 +499,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -569,7 +588,11 @@
                           "maxLength": 48
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -586,7 +609,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -683,7 +707,11 @@
                           "maxLength": 48
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -700,7 +728,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -831,7 +860,11 @@
                           ]
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -848,7 +881,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -928,7 +962,11 @@
                           "maxLength": 48
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -945,7 +983,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -1020,7 +1059,11 @@
                           "maxLength": 48
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -1037,7 +1080,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -1118,7 +1162,11 @@
                           "maxLength": 48
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -1135,7 +1183,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -1224,7 +1273,11 @@
                           "maxLength": 48
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -1241,7 +1294,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -1333,7 +1387,11 @@
                           "maxLength": 48
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -1350,7 +1408,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -1445,7 +1504,11 @@
                           "maxLength": 48
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -1462,7 +1525,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -1547,7 +1611,11 @@
                           "maxLength": 48
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -1564,7 +1632,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -1652,7 +1721,11 @@
                           "maxLength": 48
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -1669,7 +1742,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -1740,7 +1814,11 @@
                           "maxLength": 32767
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -1757,7 +1835,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -1886,7 +1965,11 @@
                           "maxLength": 48
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -1903,7 +1986,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -2010,7 +2094,11 @@
                           "maxLength": 48
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -2027,7 +2115,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -2123,7 +2212,11 @@
                           "maxLength": 48
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -2140,7 +2233,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -2267,7 +2361,11 @@
                           ]
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -2284,7 +2382,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -2422,7 +2521,11 @@
                           "maxLength": 48
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -2439,7 +2542,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -2549,7 +2653,11 @@
                           }
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -2566,7 +2674,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 },
@@ -2665,7 +2774,11 @@
                           ]
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [
+                        "category",
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -2682,7 +2795,8 @@
                     }
                   },
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ],
                   "additionalProperties": false
                 }
@@ -2707,7 +2821,41 @@
                   "type": "object"
                 },
                 "meta": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "category": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024
+                    },
+                    "label": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 255
+                    },
+                    "description": {
+                      "type": "string",
+                      "maxLength": 32767
+                    },
+                    "x": {
+                      "type": "number"
+                    },
+                    "y": {
+                      "type": "number"
+                    },
+                    "groupId": {
+                      "type": "string",
+                      "maxLength": 1024
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
                 },
                 "outputIds": {
                   "type": "array",
@@ -2725,7 +2873,8 @@
               },
               "additionalProperties": false,
               "required": [
-                "type"
+                "type",
+                "meta"
               ]
             }
           },
@@ -2755,6 +2904,10 @@
                 "type": "array",
                 "maxItems": 100,
                 "items": {
+                  "type": "object",
+                  "discriminator": {
+                    "propertyName": "type"
+                  },
                   "oneOf": [
                     {
                       "type": "object",
@@ -3109,6 +3262,18 @@
                 }
               }
             }
+          },
+          "_customNodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/flow"
+            }
+          },
+          "_customNodeVersions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/flowVersion"
+            }
           }
         }
       }
@@ -3123,6 +3288,11 @@
           {
             "description": "Schema for a single Cloud/Edge/Embedded/Custom Node Workflow Version",
             "type": "object",
+            "not": {
+              "required": [
+                "flowClass"
+              ]
+            },
             "properties": {
               "id": {
                 "type": "string",
@@ -3177,15 +3347,6 @@
                 "minLength": 1,
                 "maxLength": 255
               },
-              "flowClass": {
-                "type": "string",
-                "enum": [
-                  "cloud",
-                  "edge",
-                  "embedded",
-                  "customNode"
-                ]
-              },
               "notes": {
                 "type": "string",
                 "maxLength": 32767
@@ -3196,6 +3357,10 @@
               "triggers": {
                 "type": "array",
                 "items": {
+                  "type": "object",
+                  "discriminator": {
+                    "propertyName": "type"
+                  },
                   "oneOf": [
                     {
                       "type": "object",
@@ -3284,7 +3449,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -3301,7 +3470,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -3411,7 +3581,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -3428,7 +3602,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -3550,7 +3725,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -3567,7 +3746,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -3655,7 +3835,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -3672,7 +3856,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -3769,7 +3954,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -3786,7 +3975,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -3917,7 +4107,11 @@
                               ]
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -3934,7 +4128,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -4014,7 +4209,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -4031,7 +4230,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -4106,7 +4306,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -4123,7 +4327,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -4204,7 +4409,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -4221,7 +4430,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -4310,7 +4520,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -4327,7 +4541,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -4419,7 +4634,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -4436,7 +4655,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -4531,7 +4751,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -4548,7 +4772,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -4633,7 +4858,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -4650,7 +4879,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -4738,7 +4968,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -4755,7 +4989,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -4826,7 +5061,11 @@
                               "maxLength": 32767
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -4843,7 +5082,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -4972,7 +5212,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -4989,7 +5233,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -5096,7 +5341,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -5113,7 +5362,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -5209,7 +5459,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -5226,7 +5480,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -5353,7 +5608,11 @@
                               ]
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -5370,7 +5629,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -5508,7 +5768,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -5525,7 +5789,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -5635,7 +5900,11 @@
                               }
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -5652,7 +5921,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -5751,7 +6021,11 @@
                               ]
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -5768,7 +6042,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     }
@@ -5793,7 +6068,41 @@
                       "type": "object"
                     },
                     "meta": {
-                      "type": "object"
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 1024
+                        },
+                        "name": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 1024
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "groupId": {
+                          "type": "string",
+                          "maxLength": 1024
+                        }
+                      },
+                      "required": [
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -5811,7 +6120,8 @@
                   },
                   "additionalProperties": false,
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ]
                 }
               },
@@ -5868,6 +6178,10 @@
                     "type": "array",
                     "maxItems": 100,
                     "items": {
+                      "type": "object",
+                      "discriminator": {
+                        "propertyName": "type"
+                      },
                       "oneOf": [
                         {
                           "type": "object",
@@ -6182,12 +6496,27 @@
                     }
                   }
                 }
+              },
+              "_customNodes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/flow"
+                }
+              },
+              "_customNodeVersions": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/flowVersion"
+                }
               }
             }
           },
           {
             "description": "Schema for a single Experience Workflow Version",
             "type": "object",
+            "required": [
+              "flowClass"
+            ],
             "properties": {
               "id": {
                 "type": "string",
@@ -6212,6 +6541,30 @@
               "lastUpdated": {
                 "type": "string",
                 "format": "date-time"
+              },
+              "createdById": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "createdByType": {
+                "type": "string",
+                "enum": [
+                  "flow",
+                  "user",
+                  "apiToken"
+                ]
+              },
+              "lastUpdatedById": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "lastUpdatedByType": {
+                "type": "string",
+                "enum": [
+                  "flow",
+                  "user",
+                  "apiToken"
+                ]
               },
               "name": {
                 "type": "string",
@@ -6242,6 +6595,10 @@
               "triggers": {
                 "type": "array",
                 "items": {
+                  "type": "object",
+                  "discriminator": {
+                    "propertyName": "type"
+                  },
                   "oneOf": [
                     {
                       "type": "object",
@@ -6330,7 +6687,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -6347,7 +6708,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -6457,7 +6819,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -6474,7 +6840,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -6596,7 +6963,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -6613,7 +6984,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -6701,7 +7073,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -6718,7 +7094,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -6815,7 +7192,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -6832,7 +7213,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -6963,7 +7345,11 @@
                               ]
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -6980,7 +7366,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -7060,7 +7447,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -7077,7 +7468,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -7152,7 +7544,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -7169,7 +7565,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -7250,7 +7647,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -7267,7 +7668,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -7356,7 +7758,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -7373,7 +7779,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -7465,7 +7872,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -7482,7 +7893,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -7577,7 +7989,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -7594,7 +8010,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -7679,7 +8096,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -7696,7 +8117,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -7784,7 +8206,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -7801,7 +8227,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -7872,7 +8299,11 @@
                               "maxLength": 32767
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -7889,7 +8320,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -8018,7 +8450,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -8035,7 +8471,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -8142,7 +8579,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -8159,7 +8600,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -8255,7 +8697,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -8272,7 +8718,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -8399,7 +8846,11 @@
                               ]
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -8416,7 +8867,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -8554,7 +9006,11 @@
                               "maxLength": 48
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -8571,7 +9027,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -8681,7 +9138,11 @@
                               }
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -8698,7 +9159,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     },
@@ -8797,7 +9259,11 @@
                               ]
                             }
                           },
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "required": [
+                            "category",
+                            "name"
+                          ]
                         },
                         "outputIds": {
                           "type": "array",
@@ -8814,7 +9280,8 @@
                         }
                       },
                       "required": [
-                        "type"
+                        "type",
+                        "meta"
                       ],
                       "additionalProperties": false
                     }
@@ -8839,7 +9306,41 @@
                       "type": "object"
                     },
                     "meta": {
-                      "type": "object"
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 1024
+                        },
+                        "name": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 1024
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "groupId": {
+                          "type": "string",
+                          "maxLength": 1024
+                        }
+                      },
+                      "required": [
+                        "name"
+                      ]
                     },
                     "outputIds": {
                       "type": "array",
@@ -8857,7 +9358,8 @@
                   },
                   "additionalProperties": false,
                   "required": [
-                    "type"
+                    "type",
+                    "meta"
                   ]
                 }
               },
@@ -8909,6 +9411,18 @@
                       }
                     }
                   }
+                }
+              },
+              "_customNodes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/flow"
+                }
+              },
+              "_customNodeVersions": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/flowVersion"
                 }
               }
             }

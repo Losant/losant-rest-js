@@ -107,15 +107,11 @@
           "requestQueryParams": {
             "type": "object"
           },
-          "requestBody": {
-            "type": "object"
-          },
+          "requestBody": {},
           "requestPathParams": {
             "type": "object"
           },
-          "responseBody": {
-            "type": "object"
-          },
+          "responseBody": {},
           "responseStatus": {
             "type": "integer",
             "minimum": 100,

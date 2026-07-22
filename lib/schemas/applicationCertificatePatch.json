@@ -13,10 +13,13 @@
       "type": "string",
       "maxLength": 32767
     },
-    "certificate": {
-      "type": "string",
-      "maxLength": 32767,
-      "minLength": 50
+    "name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 255
     },
     "filterType": {
       "oneOf": [
@@ -51,6 +54,31 @@
         "minLength": 1,
         "maxLength": 1024
       }
+    },
+    "addressFilterType": {
+      "type": "string",
+      "enum": [
+        "all",
+        "whitelist",
+        "blacklist"
+      ]
+    },
+    "addresses": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "string",
+        "maxLength": 48
+      }
+    },
+    "deviceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "certificate": {
+      "type": "string",
+      "maxLength": 32767,
+      "minLength": 50
     }
   },
   "additionalProperties": false

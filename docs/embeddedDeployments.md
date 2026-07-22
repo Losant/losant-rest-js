@@ -139,7 +139,7 @@ all.Application, all.Application.bounded, all.Organization, all.Organization.bou
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Success](../lib/schemas/success.json) | If deployment release has been initiated successfully |
+| 202 | [Success](../lib/schemas/success.json) | If deployment release has been accepted for processing |
 
 #### Error Responses
 
@@ -183,7 +183,7 @@ all.Application, all.Application.bounded, all.Organization, all.Organization.bou
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Success](../lib/schemas/success.json) | If deployment removal has been initiated successfully |
+| 202 | [Success](../lib/schemas/success.json) | If deployment removal has been accepted for processing |
 
 #### Error Responses
 
@@ -227,7 +227,7 @@ all.Application, all.Application.bounded, all.Organization, all.Organization.bou
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Success](../lib/schemas/success.json) | If deployment replacement has been initiated successfully |
+| 202 | [Success](../lib/schemas/success.json) | If deployment replacement has been accepted for processing |
 
 #### Error Responses
 

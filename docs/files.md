@@ -51,7 +51,7 @@ all.Application, all.Application.bounded, all.Application.cli, all.Application.r
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Files Schema](../lib/schemas/files.json) | Collection of files |
+| 200 | [Files](../lib/schemas/files.json) | Collection of files |
 
 #### Error Responses
 

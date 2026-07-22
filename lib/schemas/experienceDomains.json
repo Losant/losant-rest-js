@@ -58,6 +58,25 @@
     "totalCount": {
       "type": "integer"
     },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc",
+        "ASC",
+        "DESC",
+        ""
+      ]
+    },
     "applicationId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"

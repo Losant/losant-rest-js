@@ -111,139 +111,145 @@
       }
     },
     "input": {
-      "callbackUrl": {
-        "type": "string",
-        "format": "uri",
-        "maxLength": 1024
-      },
-      "emails": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "format": "email",
-          "maxLength": 1024
-        }
-      },
-      "start": {
-        "type": "number"
-      },
-      "end": {
-        "type": "number"
-      },
-      "gatewayId": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
-      },
-      "parentId": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
-      },
-      "query": {
-        "type": "string"
-      },
-      "ownerId": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
-      },
-      "ownerType": {
-        "type": "string",
-        "enum": [
-          "user",
-          "organization"
-        ]
-      },
-      "fileUrl": {
-        "type": "string",
-        "format": "uri",
-        "maxLength": 1024
-      },
-      "templateContext": {
-        "type": "string"
-      }
-    },
-    "output": {
-      "downloadUrls": {
-        "type": "array",
-        "items": {
+      "type": "object",
+      "properties": {
+        "callbackUrl": {
           "type": "string",
           "format": "uri",
           "maxLength": 1024
+        },
+        "emails": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 1024
+          }
+        },
+        "start": {
+          "type": "number"
+        },
+        "end": {
+          "type": "number"
+        },
+        "gatewayId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "parentId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "query": {
+          "type": "string"
+        },
+        "ownerId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "ownerType": {
+          "type": "string",
+          "enum": [
+            "user",
+            "organization"
+          ]
+        },
+        "fileUrl": {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 1024
+        },
+        "templateContext": {
+          "type": "string"
         }
-      },
-      "devicesDirectory": {
-        "type": "string"
-      },
-      "eventsDirectory": {
-        "type": "string"
-      },
-      "dataTablesDirectory": {
-        "type": "string"
-      },
-      "created": {
-        "type": "number"
-      },
-      "failed": {
-        "type": "number"
-      },
-      "removed": {
-        "type": "number"
-      },
-      "restored": {
-        "type": "number"
-      },
-      "repoUrl": {
-        "type": "string"
-      },
-      "commit": {
-        "type": "string"
-      },
-      "noChanges": {
-        "type": "boolean"
-      },
-      "applicationId": {
-        "type": "string",
-        "pattern": "^[A-Fa-f\\d]{24}$"
-      },
-      "validationErrors": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "id": {
-              "type": "string"
-            },
-            "message": {
-              "type": "string"
+      }
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "downloadUrls": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 1024
+          }
+        },
+        "devicesDirectory": {
+          "type": "string"
+        },
+        "eventsDirectory": {
+          "type": "string"
+        },
+        "dataTablesDirectory": {
+          "type": "string"
+        },
+        "created": {
+          "type": "number"
+        },
+        "failed": {
+          "type": "number"
+        },
+        "removed": {
+          "type": "number"
+        },
+        "restored": {
+          "type": "number"
+        },
+        "repoUrl": {
+          "type": "string"
+        },
+        "commit": {
+          "type": "string"
+        },
+        "noChanges": {
+          "type": "boolean"
+        },
+        "applicationId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              }
             }
           }
+        },
+        "skippedDeviceNotFound": {
+          "type": "number"
+        },
+        "skippedDateTooOld": {
+          "type": "number"
+        },
+        "skippedDateInFuture": {
+          "type": "number"
+        },
+        "skippedInvalidDate": {
+          "type": "number"
+        },
+        "skippedNoValidAttributes": {
+          "type": "number"
+        },
+        "written": {
+          "type": "number"
+        },
+        "eeaBundleVersion": {
+          "type": "string"
         }
-      },
-      "skippedDeviceNotFound": {
-        "type": "number"
-      },
-      "skippedDateTooOld": {
-        "type": "number"
-      },
-      "skippedDateInFuture": {
-        "type": "number"
-      },
-      "skippedInvalidDate": {
-        "type": "number"
-      },
-      "skippedNoValidAttributes": {
-        "type": "number"
-      },
-      "written": {
-        "type": "number"
-      },
-      "eeaBundleVersion": {
-        "type": "string"
       }
     }
   }

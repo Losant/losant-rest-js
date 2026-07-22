@@ -93,7 +93,7 @@ all.Instance, all.Instance.bounded, all.Instance.read, all.User, all.User.bounde
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Organization Invitation](../lib/schemas/orgInvite.json) | A single organization invite |
+| 200 | [Instance Organization Invitation](../lib/schemas/instanceOrgInvite.json) | A single organization invite |
 
 #### Error Responses
 
@@ -141,7 +141,7 @@ all.Instance, all.User, instanceOrgInvite.*, or instanceOrgInvite.resendInvite.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Organization Invitation](../lib/schemas/orgInvite.json) | The new org invite |
+| 201 | [Instance Organization Invitation](../lib/schemas/instanceOrgInvite.json) | The new org invite |
 
 #### Error Responses
 

@@ -20,6 +20,10 @@
         "instance"
       ]
     },
+    "instanceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "creationDate": {
       "type": "string",
       "format": "date-time"

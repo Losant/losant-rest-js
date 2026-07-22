@@ -158,7 +158,7 @@ all.Application, all.Application.bounded, all.Application.cli, all.Application.r
 
 ## Post
 
-Inserts a new row(s) into a data table
+Creates new row(s) in a data table
 
 ```javascript
 const params = {
@@ -184,14 +184,14 @@ all.Application, all.Application.bounded, all.Organization, all.Organization.bou
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | dataTableId | string | Y | ID associated with the data table |  | 575ed78e7ae143cd83dc4aab |
-| dataTableRow | [Data Table Row Insert](../lib/schemas/dataTableRowInsert.json) | Y | The row(s) to insert |  | [Data Table Row Insert Example](_schemas.md#data-table-row-insert-example) |
+| dataTableRow | [Data Table Row Post](../lib/schemas/dataTableRowPost.json) | Y | The row(s) to create |  | [Data Table Row Post Example](_schemas.md#data-table-row-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Data Table Row Insert Result](../lib/schemas/dataTableRowInsertResult.json) | Successfully created data table row, or bulk insert count |
+| 201 | [Data Table Row Post Result](../lib/schemas/dataTableRowPostResult.json) | Successfully created data table row, or bulk creation information |
 
 #### Error Responses
 

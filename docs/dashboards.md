@@ -95,3 +95,4 @@ all.Organization, all.Organization.bounded, all.User, all.User.bounded, dashboar
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if associated application or organization was not found |

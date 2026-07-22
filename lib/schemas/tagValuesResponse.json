@@ -3,8 +3,7 @@
   "type": "object",
   "properties": {
     "tagKey": {
-      "type": "string",
-      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+      "type": "string"
     },
     "tagValues": {
       "type": "array",

@@ -40,7 +40,7 @@ all.Application, all.Application.bounded, all.Organization, all.Organization.bou
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | flowId | string | Y | ID associated with the flow |  | 575ed18f7ae143cd83dc4aa6 |
-| options | [Flow Versions Delete Post](../lib/schemas/flowVersionsDeletePost.json) | Y | Object containing flow version deletion options |  | [Flow Versions Delete Post Example](_schemas.md#flow-versions-delete-post-example) |
+| options | [Workflow Versions Delete Post](../lib/schemas/flowVersionsDeletePost.json) | Y | Object containing flow version deletion options |  | [Workflow Versions Delete Post Example](_schemas.md#workflow-versions-delete-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

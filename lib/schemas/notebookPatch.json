@@ -13,8 +13,12 @@
     },
     "inputs": {
       "type": "array",
+      "maxItems": 100,
       "items": {
-        "maxItems": 100,
+        "type": "object",
+        "discriminator": {
+          "propertyName": "inputType"
+        },
         "oneOf": [
           {
             "type": "object",
@@ -35,7 +39,7 @@
                     "type": "string",
                     "minLength": 4,
                     "maxLength": 255,
-                    "pattern": ".*{{.+}}.*"
+                    "pattern": ".*\\{\\{.+\\}\\}.*"
                   }
                 ]
               },
@@ -55,7 +59,7 @@
                           "type": "string",
                           "minLength": 4,
                           "maxLength": 255,
-                          "pattern": ".*{{.+}}.*"
+                          "pattern": ".*\\{\\{.+\\}\\}.*"
                         }
                       ]
                     },
@@ -81,7 +85,7 @@
                       "type": "string",
                       "minLength": 4,
                       "maxLength": 255,
-                      "pattern": ".*{{.+}}.*"
+                      "pattern": ".*\\{\\{.+\\}\\}.*"
                     }
                   ]
                 }
@@ -132,7 +136,7 @@
                     "type": "string",
                     "minLength": 4,
                     "maxLength": 255,
-                    "pattern": ".*{{.+}}.*"
+                    "pattern": ".*\\{\\{.+\\}\\}.*"
                   }
                 ]
               },
@@ -152,7 +156,7 @@
                           "type": "string",
                           "minLength": 4,
                           "maxLength": 255,
-                          "pattern": ".*{{.+}}.*"
+                          "pattern": ".*\\{\\{.+\\}\\}.*"
                         }
                       ]
                     },
@@ -178,7 +182,7 @@
                       "type": "string",
                       "minLength": 4,
                       "maxLength": 255,
-                      "pattern": ".*{{.+}}.*"
+                      "pattern": ".*\\{\\{.+\\}\\}.*"
                     }
                   ]
                 }
@@ -221,7 +225,7 @@
                     "type": "string",
                     "minLength": 4,
                     "maxLength": 255,
-                    "pattern": ".*{{.+}}.*"
+                    "pattern": ".*\\{\\{.+\\}\\}.*"
                   }
                 ]
               },
@@ -241,7 +245,7 @@
                           "type": "string",
                           "minLength": 4,
                           "maxLength": 255,
-                          "pattern": ".*{{.+}}.*"
+                          "pattern": ".*\\{\\{.+\\}\\}.*"
                         }
                       ]
                     },
@@ -267,7 +271,7 @@
                       "type": "string",
                       "minLength": 4,
                       "maxLength": 255,
-                      "pattern": ".*{{.+}}.*"
+                      "pattern": ".*\\{\\{.+\\}\\}.*"
                     }
                   ]
                 }
@@ -310,7 +314,7 @@
                     "type": "string",
                     "minLength": 4,
                     "maxLength": 255,
-                    "pattern": ".*{{.+}}.*"
+                    "pattern": ".*\\{\\{.+\\}\\}.*"
                   }
                 ]
               },
@@ -324,7 +328,7 @@
                     "type": "string",
                     "minLength": 4,
                     "maxLength": 255,
-                    "pattern": ".*{{.+}}.*"
+                    "pattern": ".*\\{\\{.+\\}\\}.*"
                   }
                 ]
               },
@@ -359,7 +363,7 @@
                     "type": "string",
                     "minLength": 4,
                     "maxLength": 255,
-                    "pattern": ".*{{.+}}.*"
+                    "pattern": ".*\\{\\{.+\\}\\}.*"
                   }
                 ]
               },
@@ -401,7 +405,7 @@
                     "type": "string",
                     "minLength": 4,
                     "maxLength": 255,
-                    "pattern": ".*{{.+}}.*"
+                    "pattern": ".*\\{\\{.+\\}\\}.*"
                   }
                 ]
               },
@@ -437,7 +441,7 @@
                     "type": "string",
                     "minLength": 4,
                     "maxLength": 255,
-                    "pattern": ".*{{.+}}.*"
+                    "pattern": ".*\\{\\{.+\\}\\}.*"
                   }
                 ]
               },
@@ -462,8 +466,12 @@
     },
     "outputs": {
       "type": "array",
+      "maxItems": 100,
       "items": {
-        "maxItems": 100,
+        "type": "object",
+        "discriminator": {
+          "propertyName": "outputType"
+        },
         "oneOf": [
           {
             "type": "object",
@@ -484,7 +492,7 @@
                     "type": "string",
                     "minLength": 4,
                     "maxLength": 255,
-                    "pattern": ".*{{.+}}.*"
+                    "pattern": ".*\\{\\{.+\\}\\}.*"
                   }
                 ]
               },
@@ -498,7 +506,7 @@
                     "type": "string",
                     "minLength": 4,
                     "maxLength": 255,
-                    "pattern": ".*{{.+}}.*"
+                    "pattern": ".*\\{\\{.+\\}\\}.*"
                   }
                 ]
               },
@@ -535,7 +543,7 @@
                     "type": "string",
                     "minLength": 4,
                     "maxLength": 255,
-                    "pattern": ".*{{.+}}.*"
+                    "pattern": ".*\\{\\{.+\\}\\}.*"
                   }
                 ]
               },
@@ -579,7 +587,7 @@
                     "type": "string",
                     "minLength": 4,
                     "maxLength": 255,
-                    "pattern": ".*{{.+}}.*"
+                    "pattern": ".*\\{\\{.+\\}\\}.*"
                   }
                 ]
               },
@@ -657,7 +665,7 @@
                     "type": "string",
                     "minLength": 4,
                     "maxLength": 255,
-                    "pattern": ".*{{.+}}.*"
+                    "pattern": ".*\\{\\{.+\\}\\}.*"
                   }
                 ]
               }

@@ -116,7 +116,7 @@ No api access token is required to call this action.
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| oauth | [Github Login](../lib/schemas/githubLogin.json) | Y | User authentication credentials (access token) |  | [Github Login Example](_schemas.md#github-login-example) |
+| oauth | [GitHub Login](../lib/schemas/githubLogin.json) | Y | User authentication credentials (access token) |  | [GitHub Login Example](_schemas.md#github-login-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

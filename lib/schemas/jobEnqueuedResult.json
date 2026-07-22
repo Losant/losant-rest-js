@@ -10,7 +10,7 @@
     },
     "jobId": {
       "type": "string",
-      "maxLength": 21
+      "maxLength": 24
     },
     "success": {
       "type": "boolean",

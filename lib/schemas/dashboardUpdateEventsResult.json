@@ -1,0 +1,266 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "oneOf": [
+    {
+      "title": "Event",
+      "description": "Schema for a single Event",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "eventId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "applicationId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "creationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sourceType": {
+          "type": "string",
+          "enum": [
+            "flow",
+            "user",
+            "device",
+            "apiToken",
+            "experienceUser",
+            "public"
+          ]
+        },
+        "sourceId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "sourceName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "level": {
+          "type": "string",
+          "enum": [
+            "info",
+            "warning",
+            "error",
+            "critical"
+          ]
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "new",
+            "acknowledged",
+            "resolved"
+          ]
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 32767
+        },
+        "data": {},
+        "deviceId": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "deviceName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "disableTagChangeTracking": {
+          "type": "boolean"
+        },
+        "eventTags": {
+          "type": "object",
+          "patternProperties": {
+            "^[0-9a-zA-Z_-]{1,255}$": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 255
+            }
+          },
+          "additionalProperties": false
+        },
+        "updates": {
+          "maxItems": 100,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sourceType": {
+                "type": "string",
+                "enum": [
+                  "flow",
+                  "user",
+                  "device",
+                  "apiToken",
+                  "experienceUser",
+                  "public"
+                ]
+              },
+              "sourceId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "sourceName": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              },
+              "creationDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "comment": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "data": {},
+              "state": {
+                "type": "string",
+                "enum": [
+                  "new",
+                  "acknowledged",
+                  "resolved"
+                ]
+              },
+              "stateChange": {
+                "type": "object",
+                "properties": {
+                  "old": {
+                    "type": "string",
+                    "enum": [
+                      "new",
+                      "acknowledged",
+                      "resolved"
+                    ]
+                  },
+                  "new": {
+                    "type": "string",
+                    "enum": [
+                      "new",
+                      "acknowledged",
+                      "resolved"
+                    ]
+                  }
+                }
+              },
+              "levelChange": {
+                "type": "object",
+                "properties": {
+                  "old": {
+                    "type": "string",
+                    "enum": [
+                      "info",
+                      "warning",
+                      "error",
+                      "critical"
+                    ]
+                  },
+                  "new": {
+                    "type": "string",
+                    "enum": [
+                      "info",
+                      "warning",
+                      "error",
+                      "critical"
+                    ]
+                  }
+                }
+              },
+              "subjectChange": {
+                "type": "object",
+                "properties": {
+                  "old": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "new": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  }
+                }
+              },
+              "deviceIdChange": {
+                "type": "object",
+                "properties": {
+                  "old": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "oldDeviceName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "new": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "newDeviceName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  }
+                }
+              },
+              "tagsChange": {
+                "type": "object",
+                "patternProperties": {
+                  "^[0-9a-zA-Z_-]{1,255}$": {
+                    "type": "object",
+                    "properties": {
+                      "old": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      },
+                      "new": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    {
+      "title": "Success",
+      "description": "Schema for reporting a successful operation",
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "enum": [
+            true
+          ]
+        }
+      }
+    }
+  ]
+}

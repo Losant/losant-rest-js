@@ -13,30 +13,32 @@
       "patternProperties": {
         "^[0-9a-zA-Z_-]{1,255}$": {
           "anyOf": [
-            [
-              {
-                "type": "string",
-                "maxLength": 32767
-              },
-              {
-                "type": "number"
-              },
-              {
-                "type": "object",
-                "properties": {
-                  "key": {
-                    "type": "string",
-                    "pattern": "^[0-9a-zA-Z_-]{1,255}$"
-                  },
-                  "value": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 255
-                  }
+            {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "maxLength": 32767
                 },
-                "additionalProperties": false
-              }
-            ],
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                    },
+                    "value": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            },
             {
               "type": "object",
               "properties": {
@@ -46,7 +48,6 @@
                 },
                 "name": {
                   "type": "string",
-                  "minLength": 1,
                   "maxLength": 255
                 },
                 "description": {
@@ -100,6 +101,52 @@
                       }
                     }
                   }
+                }
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f\\d]{24}$"
+                },
+                "email": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "format": "email",
+                      "maxLength": 1024
+                    },
+                    {
+                      "type": "string",
+                      "maxLength": 0
+                    }
+                  ]
+                },
+                "firstName": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "lastName": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "avatarUrl": {
+                  "type": "string",
+                  "format": "uri",
+                  "maxLength": 1024
+                },
+                "userTags": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[0-9a-zA-Z_-]{1,255}$": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 255
+                    }
+                  },
+                  "additionalProperties": false
                 }
               }
             }

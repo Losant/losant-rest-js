@@ -22,6 +22,9 @@
         "embedded"
       ]
     },
+    "restricted": {
+      "type": "boolean"
+    },
     "token": {
       "type": "string",
       "minLength": 1

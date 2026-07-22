@@ -34,6 +34,16 @@
             "type": "string",
             "maxLength": 32767
           },
+          "_currentRole": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "edit",
+              "collaborate",
+              "view",
+              "none"
+            ]
+          },
           "members": {
             "type": "array",
             "items": {
@@ -537,7 +547,7 @@
                     "type": "integer"
                   },
                   "minutesThisPeriod": {
-                    "type": "integer"
+                    "type": "number"
                   },
                   "runsThisPeriod": {
                     "type": "integer"
@@ -587,6 +597,9 @@
               "maxLength": 45,
               "minLength": 3
             }
+          },
+          "auditLogEnabled": {
+            "type": "boolean"
           },
           "disabledAt": {
             "oneOf": [

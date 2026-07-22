@@ -94,7 +94,8 @@ all.Instance, all.User, instanceOrgMembers.*, or instanceOrgMembers.post.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Instance Org Member](../lib/schemas/instanceOrgMember.json) | The newly created instance member |
+| 201 | [Instance Org Member](../lib/schemas/instanceOrgMember.json) | The newly added instance org member |
+| 202 | [Instance Organization Invite Sent](../lib/schemas/instanceOrgInviteSent.json) | An invite was sent to the new member&#x27;s email address |
 
 #### Error Responses
 

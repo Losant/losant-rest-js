@@ -2,6 +2,10 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
+    "instanceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "items": {
       "type": "array",
       "items": {
@@ -22,6 +26,10 @@
             "pattern": "^[A-Fa-f\\d]{24}$"
           },
           "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deletedAt": {
             "type": "string",
             "format": "date-time"
           },
@@ -476,7 +484,7 @@
                     "type": "integer"
                   },
                   "minutesThisPeriod": {
-                    "type": "integer"
+                    "type": "number"
                   },
                   "runsThisPeriod": {
                     "type": "integer"

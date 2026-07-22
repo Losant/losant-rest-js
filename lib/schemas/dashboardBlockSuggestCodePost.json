@@ -74,6 +74,10 @@
               "type": "array",
               "maxItems": 100,
               "items": {
+                "type": "object",
+                "discriminator": {
+                  "propertyName": "queryType"
+                },
                 "oneOf": [
                   {
                     "type": "object",
@@ -260,6 +264,9 @@
                         ]
                       }
                     },
+                    "required": [
+                      "queryType"
+                    ],
                     "additionalProperties": false
                   },
                   {
@@ -432,6 +439,9 @@
                         ]
                       }
                     },
+                    "required": [
+                      "queryType"
+                    ],
                     "additionalProperties": false
                   },
                   {
@@ -480,6 +490,9 @@
                         "maxLength": 255
                       }
                     },
+                    "required": [
+                      "queryType"
+                    ],
                     "additionalProperties": false
                   },
                   {
@@ -538,6 +551,9 @@
                         "maxLength": 255
                       }
                     },
+                    "required": [
+                      "queryType"
+                    ],
                     "additionalProperties": false
                   },
                   {
@@ -577,6 +593,9 @@
                         "type": "boolean"
                       }
                     },
+                    "required": [
+                      "queryType"
+                    ],
                     "additionalProperties": false
                   }
                 ]

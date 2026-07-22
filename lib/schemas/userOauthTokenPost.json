@@ -186,7 +186,7 @@
           "only.User.read"
         ]
       },
-      "description": "API scopes for this OAuth client"
+      "description": "API scopes for this OAuth token"
     }
   },
   "additionalProperties": false,

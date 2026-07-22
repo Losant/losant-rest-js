@@ -45,7 +45,7 @@ all.User, all.User.bounded, all.User.read, only.User, only.User.bounded, only.Us
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [API Token](../lib/schemas/apiToken.json) | Collection of API tokens |
+| 200 | [API Tokens](../lib/schemas/apiTokens.json) | Collection of API tokens |
 
 #### Error Responses
 
@@ -57,7 +57,7 @@ all.User, all.User.bounded, all.User.read, only.User, only.User.bounded, only.Us
 
 ## Post
 
-Create a new API token for an user
+Create a new API token for a user
 
 ```javascript
 const params = {

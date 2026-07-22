@@ -87,7 +87,7 @@ all.Application, all.Application.bounded, all.Organization, all.Organization.bou
 | removeVersions | string | N | If this is set, all Experience Versions and their contents will be removed (except for develop). |  | true |
 | keepViews | string | N | If this is set, Experience Views (in the develop version) will not be removed. |  | true |
 | keepEndpoints | string | N | If this is set, Experience Endpoints (in the develop version) will not be removed. |  | true |
-| removeWorkflows | string | N | If this is set, all Experience Workflows (in the develop version) will ve removed. |  | true |
+| removeWorkflows | string | N | If this is set, all Experience Workflows (in the develop version) will be removed. |  | true |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

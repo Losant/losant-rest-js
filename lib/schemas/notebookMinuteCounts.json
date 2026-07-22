@@ -20,7 +20,7 @@
             "format": "date-time"
           },
           "minutes": {
-            "type": "integer"
+            "type": "number"
           },
           "completed": {
             "type": "integer"

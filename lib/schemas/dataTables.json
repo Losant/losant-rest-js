@@ -81,6 +81,17 @@
               "additionalProperties": false
             },
             "maxItems": 50
+          },
+          "summary": {
+            "type": "object",
+            "properties": {
+              "count": {
+                "type": "number"
+              },
+              "size": {
+                "type": "number"
+              }
+            }
           }
         }
       }

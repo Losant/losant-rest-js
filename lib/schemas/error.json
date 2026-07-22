@@ -7,6 +7,20 @@
     },
     "message": {
       "type": "string"
+    },
+    "validationErrors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string"
+          },
+          "validationMessage": {
+            "type": "string"
+          }
+        }
+      }
     }
   }
 }

@@ -48,7 +48,7 @@ all.Instance, all.Instance.bounded, all.Instance.read, all.User, all.User.bounde
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Instance Organization Invitations](../lib/schemas/orgInviteCollection.json) | A collection of instance organization invitations |
+| 200 | [Instance Organization Invitations](../lib/schemas/instanceOrgInvites.json) | A collection of instance organization invitations |
 
 #### Error Responses
 
@@ -94,7 +94,7 @@ all.Instance, all.User, instanceOrgInvites.*, or instanceOrgInvites.post.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Instance Organization Invitations](../lib/schemas/orgInviteCollection.json) | The new organization invite |
+| 201 | [Instance Organization Invitation](../lib/schemas/instanceOrgInvite.json) | The new organization invite |
 
 #### Error Responses
 

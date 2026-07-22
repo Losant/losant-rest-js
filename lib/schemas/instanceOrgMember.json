@@ -38,6 +38,58 @@
         "none"
       ]
     },
+    "applicationRoles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "resourceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "collaborate",
+              "view",
+              "none"
+            ]
+          }
+        },
+        "required": [
+          "resourceId",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 100
+    },
+    "dashboardRoles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "resourceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "collaborate",
+              "view",
+              "none"
+            ]
+          }
+        },
+        "required": [
+          "resourceId",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 100
+    },
     "avatarUrl": {
       "type": "string",
       "format": "uri",

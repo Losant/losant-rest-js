@@ -136,7 +136,7 @@ all.Application, all.Application.bounded, all.Organization, all.Organization.bou
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Dashboard](../lib/schemas/dashboard.json) | Update dashboard information |
+| 200 | [Dashboard](../lib/schemas/dashboard.json) | Updated dashboard information |
 
 #### Error Responses
 

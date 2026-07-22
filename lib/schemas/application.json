@@ -46,6 +46,15 @@
       "type": "string",
       "maxLength": 64
     },
+    "_currentRole": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "edit",
+        "collaborate",
+        "view"
+      ]
+    },
     "name": {
       "type": "string",
       "minLength": 1,
@@ -356,7 +365,7 @@
               "type": "integer"
             },
             "minutesThisPeriod": {
-              "type": "integer"
+              "type": "number"
             },
             "runsThisPeriod": {
               "type": "integer"
@@ -607,5 +616,9 @@
       },
       "additionalProperties": false
     }
-  }
+  },
+  "required": [
+    "id",
+    "name"
+  ]
 }
