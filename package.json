@@ -28,7 +28,7 @@
   },
   "scripts": {
     "lint": "eslint *.js lib test",
-    "reinstall": "rm -rf ./node-modules && yarn install",
+    "reinstall": "rm -rf ./node_modules && pnpm install",
     "test": "mocha test 2>&1"
   },
   "repository": {
