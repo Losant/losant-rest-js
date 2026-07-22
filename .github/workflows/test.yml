@@ -11,7 +11,7 @@ jobs:
   test:
     strategy:
       matrix:
-        nodejs: [ '20', '22', '24', '25' ]
+        nodejs: [ '22', '24', '25', '26' ]
     runs-on: ubuntu-latest
     permissions:
       actions: write
@@ -34,7 +34,7 @@ jobs:
       # tag v6.3.0
       uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f
       with:
-        node-version-file: '.node-version'
+        node-version: ${{ matrix.nodejs }}
         cache: 'pnpm'
     - run: pnpm install --frozen-lockfile
     - run: pnpm test
