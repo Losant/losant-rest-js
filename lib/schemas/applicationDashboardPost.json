@@ -1266,7 +1266,8 @@
                             "triangle-down",
                             "triangle-up",
                             "octagon"
-                          ]
+                          ],
+                          "default": "circle"
                         }
                       },
                       "additionalProperties": false
@@ -2234,7 +2235,8 @@
                             "triangle-down",
                             "triangle-up",
                             "octagon"
-                          ]
+                          ],
+                          "default": "circle"
                         }
                       },
                       "additionalProperties": false
@@ -3276,7 +3278,6 @@
                             "type": {
                               "type": "string",
                               "enum": [
-                                "indicator",
                                 "label",
                                 "image"
                               ]
@@ -3332,7 +3333,8 @@
                                       "triangle-down",
                                       "triangle-up",
                                       "octagon"
-                                    ]
+                                    ],
+                                    "default": "circle"
                                   }
                                 },
                                 "additionalProperties": false
@@ -3369,10 +3371,130 @@
                                     "triangle-down",
                                     "triangle-up",
                                     "octagon"
-                                  ]
+                                  ],
+                                  "default": "circle"
                                 }
                               },
                               "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "position",
+                            "size",
+                            "defaultCondition"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "indicator"
+                              ]
+                            },
+                            "size": {
+                              "type": "string",
+                              "enum": [
+                                "small",
+                                "medium",
+                                "large"
+                              ]
+                            },
+                            "position": {
+                              "type": "string",
+                              "minLength": 3,
+                              "maxLength": 255
+                            },
+                            "popupTemplate": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "conditions": {
+                              "type": "array",
+                              "maxItems": 100,
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "color": {
+                                    "type": "string",
+                                    "maxLength": 64
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "maxLength": 48
+                                  },
+                                  "label": {
+                                    "type": "string",
+                                    "maxLength": 32767
+                                  },
+                                  "condition": {
+                                    "type": "string",
+                                    "maxLength": 2048
+                                  },
+                                  "imageUrl": {
+                                    "type": "string",
+                                    "maxLength": 32767
+                                  },
+                                  "shape": {
+                                    "type": "string",
+                                    "enum": [
+                                      "circle",
+                                      "square",
+                                      "triangle-down",
+                                      "triangle-up",
+                                      "octagon"
+                                    ],
+                                    "default": "circle"
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                  "shape"
+                                ]
+                              }
+                            },
+                            "defaultCondition": {
+                              "type": "object",
+                              "properties": {
+                                "color": {
+                                  "type": "string",
+                                  "maxLength": 64
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
+                                "label": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                },
+                                "condition": {
+                                  "type": "string",
+                                  "maxLength": 2048
+                                },
+                                "imageUrl": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                },
+                                "shape": {
+                                  "type": "string",
+                                  "enum": [
+                                    "circle",
+                                    "square",
+                                    "triangle-down",
+                                    "triangle-up",
+                                    "octagon"
+                                  ],
+                                  "default": "circle"
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "shape"
+                              ]
                             }
                           },
                           "required": [
@@ -3443,7 +3565,8 @@
                                       "triangle-down",
                                       "triangle-up",
                                       "octagon"
-                                    ]
+                                    ],
+                                    "default": "circle"
                                   }
                                 },
                                 "additionalProperties": false
@@ -3480,7 +3603,8 @@
                                     "triangle-down",
                                     "triangle-up",
                                     "octagon"
-                                  ]
+                                  ],
+                                  "default": "circle"
                                 }
                               },
                               "additionalProperties": false
@@ -3558,7 +3682,8 @@
                                       "triangle-down",
                                       "triangle-up",
                                       "octagon"
-                                    ]
+                                    ],
+                                    "default": "circle"
                                   }
                                 },
                                 "additionalProperties": false
@@ -3595,7 +3720,8 @@
                                     "triangle-down",
                                     "triangle-up",
                                     "octagon"
-                                  ]
+                                  ],
+                                  "default": "circle"
                                 }
                               },
                               "additionalProperties": false
@@ -3939,7 +4065,8 @@
                             "triangle-down",
                             "triangle-up",
                             "octagon"
-                          ]
+                          ],
+                          "default": "circle"
                         }
                       },
                       "additionalProperties": false
@@ -3976,7 +4103,8 @@
                           "triangle-down",
                           "triangle-up",
                           "octagon"
-                        ]
+                        ],
+                        "default": "circle"
                       }
                     },
                     "additionalProperties": false
@@ -6435,6 +6563,9 @@
                       "pattern": "^[A-Fa-f\\d]{24}$"
                     },
                     "maxItems": 1000
+                  },
+                  "includeExperienceGroups": {
+                    "type": "boolean"
                   }
                 },
                 "additionalProperties": false

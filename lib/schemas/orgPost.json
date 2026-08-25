@@ -35,6 +35,10 @@
         "adminRequired",
         "required"
       ]
+    },
+    "entitlementId": {
+      "type": "string",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false,

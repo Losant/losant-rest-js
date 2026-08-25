@@ -223,6 +223,8 @@
 *   [Instance Member Post](#instance-member-post)
 *   [Instance Members](#instance-members)
 *   [Instance Organization](#instance-organization)
+*   [Instance Org Entitlement](#instance-org-entitlement)
+*   [Instance Org Entitlement Sync](#instance-org-entitlement-sync)
 *   [Instance Organization Invitation](#instance-organization-invitation)
 *   [Instance Organization Invite Sent](#instance-organization-invite-sent)
 *   [Instance Organization Invitations](#instance-organization-invitations)
@@ -246,6 +248,7 @@
 *   [Last Value Data](#last-value-data)
 *   [Last Value Query](#last-value-query)
 *   [Me](#me)
+*   [Me Entitlements](#me-entitlements)
 *   [Me Patch](#me-patch)
 *   [MQTT Publish Body](#mqtt-publish-body)
 *   [Multi Device Command](#multi-device-command)
@@ -17191,6 +17194,7 @@ Schema for the body of an API Token creation request
               "instance.payloadCountsBreakdown",
               "instance.deviceCounts",
               "instance.notebookMinuteCounts",
+              "instance.entitlements",
               "instanceOrg.*",
               "instanceOrg.get",
               "instanceOrg.patch",
@@ -17199,6 +17203,8 @@ Schema for the body of an API Token creation request
               "instanceOrg.payloadCountsBreakdown",
               "instanceOrg.deviceCounts",
               "instanceOrg.notebookMinuteCounts",
+              "instanceOrg.entitlement",
+              "instanceOrg.entitlementSync",
               "instanceOrg.convertToEnterprise",
               "instanceOrgs.*",
               "instanceOrgs.get",
@@ -17319,6 +17325,7 @@ Schema for the body of an API Token creation request
               "me.invites",
               "me.respondToInvite",
               "me.refreshToken",
+              "me.entitlements",
               "orgs.*",
               "orgs.get",
               "orgs.post"
@@ -21559,7 +21566,8 @@ Schema for the body of an application-scoped Dashboard creation request
                             "triangle-down",
                             "triangle-up",
                             "octagon"
-                          ]
+                          ],
+                          "default": "circle"
                         }
                       },
                       "additionalProperties": false
@@ -22527,7 +22535,8 @@ Schema for the body of an application-scoped Dashboard creation request
                             "triangle-down",
                             "triangle-up",
                             "octagon"
-                          ]
+                          ],
+                          "default": "circle"
                         }
                       },
                       "additionalProperties": false
@@ -23569,7 +23578,6 @@ Schema for the body of an application-scoped Dashboard creation request
                             "type": {
                               "type": "string",
                               "enum": [
-                                "indicator",
                                 "label",
                                 "image"
                               ]
@@ -23625,7 +23633,8 @@ Schema for the body of an application-scoped Dashboard creation request
                                       "triangle-down",
                                       "triangle-up",
                                       "octagon"
-                                    ]
+                                    ],
+                                    "default": "circle"
                                   }
                                 },
                                 "additionalProperties": false
@@ -23662,10 +23671,130 @@ Schema for the body of an application-scoped Dashboard creation request
                                     "triangle-down",
                                     "triangle-up",
                                     "octagon"
-                                  ]
+                                  ],
+                                  "default": "circle"
                                 }
                               },
                               "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "position",
+                            "size",
+                            "defaultCondition"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "indicator"
+                              ]
+                            },
+                            "size": {
+                              "type": "string",
+                              "enum": [
+                                "small",
+                                "medium",
+                                "large"
+                              ]
+                            },
+                            "position": {
+                              "type": "string",
+                              "minLength": 3,
+                              "maxLength": 255
+                            },
+                            "popupTemplate": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "conditions": {
+                              "type": "array",
+                              "maxItems": 100,
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "color": {
+                                    "type": "string",
+                                    "maxLength": 64
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "maxLength": 48
+                                  },
+                                  "label": {
+                                    "type": "string",
+                                    "maxLength": 32767
+                                  },
+                                  "condition": {
+                                    "type": "string",
+                                    "maxLength": 2048
+                                  },
+                                  "imageUrl": {
+                                    "type": "string",
+                                    "maxLength": 32767
+                                  },
+                                  "shape": {
+                                    "type": "string",
+                                    "enum": [
+                                      "circle",
+                                      "square",
+                                      "triangle-down",
+                                      "triangle-up",
+                                      "octagon"
+                                    ],
+                                    "default": "circle"
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                  "shape"
+                                ]
+                              }
+                            },
+                            "defaultCondition": {
+                              "type": "object",
+                              "properties": {
+                                "color": {
+                                  "type": "string",
+                                  "maxLength": 64
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
+                                "label": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                },
+                                "condition": {
+                                  "type": "string",
+                                  "maxLength": 2048
+                                },
+                                "imageUrl": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                },
+                                "shape": {
+                                  "type": "string",
+                                  "enum": [
+                                    "circle",
+                                    "square",
+                                    "triangle-down",
+                                    "triangle-up",
+                                    "octagon"
+                                  ],
+                                  "default": "circle"
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "shape"
+                              ]
                             }
                           },
                           "required": [
@@ -23736,7 +23865,8 @@ Schema for the body of an application-scoped Dashboard creation request
                                       "triangle-down",
                                       "triangle-up",
                                       "octagon"
-                                    ]
+                                    ],
+                                    "default": "circle"
                                   }
                                 },
                                 "additionalProperties": false
@@ -23773,7 +23903,8 @@ Schema for the body of an application-scoped Dashboard creation request
                                     "triangle-down",
                                     "triangle-up",
                                     "octagon"
-                                  ]
+                                  ],
+                                  "default": "circle"
                                 }
                               },
                               "additionalProperties": false
@@ -23851,7 +23982,8 @@ Schema for the body of an application-scoped Dashboard creation request
                                       "triangle-down",
                                       "triangle-up",
                                       "octagon"
-                                    ]
+                                    ],
+                                    "default": "circle"
                                   }
                                 },
                                 "additionalProperties": false
@@ -23888,7 +24020,8 @@ Schema for the body of an application-scoped Dashboard creation request
                                     "triangle-down",
                                     "triangle-up",
                                     "octagon"
-                                  ]
+                                  ],
+                                  "default": "circle"
                                 }
                               },
                               "additionalProperties": false
@@ -24232,7 +24365,8 @@ Schema for the body of an application-scoped Dashboard creation request
                             "triangle-down",
                             "triangle-up",
                             "octagon"
-                          ]
+                          ],
+                          "default": "circle"
                         }
                       },
                       "additionalProperties": false
@@ -24269,7 +24403,8 @@ Schema for the body of an application-scoped Dashboard creation request
                           "triangle-down",
                           "triangle-up",
                           "octagon"
-                        ]
+                        ],
+                        "default": "circle"
                       }
                     },
                     "additionalProperties": false
@@ -26728,6 +26863,9 @@ Schema for the body of an application-scoped Dashboard creation request
                       "pattern": "^[A-Fa-f\\d]{24}$"
                     },
                     "maxItems": 1000
+                  },
+                  "includeExperienceGroups": {
+                    "type": "boolean"
                   }
                 },
                 "additionalProperties": false
@@ -64635,7 +64773,8 @@ Schema for a single Dashboard
                             "triangle-down",
                             "triangle-up",
                             "octagon"
-                          ]
+                          ],
+                          "default": "circle"
                         }
                       },
                       "additionalProperties": false
@@ -65603,7 +65742,8 @@ Schema for a single Dashboard
                             "triangle-down",
                             "triangle-up",
                             "octagon"
-                          ]
+                          ],
+                          "default": "circle"
                         }
                       },
                       "additionalProperties": false
@@ -66645,7 +66785,6 @@ Schema for a single Dashboard
                             "type": {
                               "type": "string",
                               "enum": [
-                                "indicator",
                                 "label",
                                 "image"
                               ]
@@ -66701,7 +66840,8 @@ Schema for a single Dashboard
                                       "triangle-down",
                                       "triangle-up",
                                       "octagon"
-                                    ]
+                                    ],
+                                    "default": "circle"
                                   }
                                 },
                                 "additionalProperties": false
@@ -66738,10 +66878,130 @@ Schema for a single Dashboard
                                     "triangle-down",
                                     "triangle-up",
                                     "octagon"
-                                  ]
+                                  ],
+                                  "default": "circle"
                                 }
                               },
                               "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "position",
+                            "size",
+                            "defaultCondition"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "indicator"
+                              ]
+                            },
+                            "size": {
+                              "type": "string",
+                              "enum": [
+                                "small",
+                                "medium",
+                                "large"
+                              ]
+                            },
+                            "position": {
+                              "type": "string",
+                              "minLength": 3,
+                              "maxLength": 255
+                            },
+                            "popupTemplate": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "conditions": {
+                              "type": "array",
+                              "maxItems": 100,
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "color": {
+                                    "type": "string",
+                                    "maxLength": 64
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "maxLength": 48
+                                  },
+                                  "label": {
+                                    "type": "string",
+                                    "maxLength": 32767
+                                  },
+                                  "condition": {
+                                    "type": "string",
+                                    "maxLength": 2048
+                                  },
+                                  "imageUrl": {
+                                    "type": "string",
+                                    "maxLength": 32767
+                                  },
+                                  "shape": {
+                                    "type": "string",
+                                    "enum": [
+                                      "circle",
+                                      "square",
+                                      "triangle-down",
+                                      "triangle-up",
+                                      "octagon"
+                                    ],
+                                    "default": "circle"
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                  "shape"
+                                ]
+                              }
+                            },
+                            "defaultCondition": {
+                              "type": "object",
+                              "properties": {
+                                "color": {
+                                  "type": "string",
+                                  "maxLength": 64
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
+                                "label": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                },
+                                "condition": {
+                                  "type": "string",
+                                  "maxLength": 2048
+                                },
+                                "imageUrl": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                },
+                                "shape": {
+                                  "type": "string",
+                                  "enum": [
+                                    "circle",
+                                    "square",
+                                    "triangle-down",
+                                    "triangle-up",
+                                    "octagon"
+                                  ],
+                                  "default": "circle"
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "shape"
+                              ]
                             }
                           },
                           "required": [
@@ -66812,7 +67072,8 @@ Schema for a single Dashboard
                                       "triangle-down",
                                       "triangle-up",
                                       "octagon"
-                                    ]
+                                    ],
+                                    "default": "circle"
                                   }
                                 },
                                 "additionalProperties": false
@@ -66849,7 +67110,8 @@ Schema for a single Dashboard
                                     "triangle-down",
                                     "triangle-up",
                                     "octagon"
-                                  ]
+                                  ],
+                                  "default": "circle"
                                 }
                               },
                               "additionalProperties": false
@@ -66927,7 +67189,8 @@ Schema for a single Dashboard
                                       "triangle-down",
                                       "triangle-up",
                                       "octagon"
-                                    ]
+                                    ],
+                                    "default": "circle"
                                   }
                                 },
                                 "additionalProperties": false
@@ -66964,7 +67227,8 @@ Schema for a single Dashboard
                                     "triangle-down",
                                     "triangle-up",
                                     "octagon"
-                                  ]
+                                  ],
+                                  "default": "circle"
                                 }
                               },
                               "additionalProperties": false
@@ -67308,7 +67572,8 @@ Schema for a single Dashboard
                             "triangle-down",
                             "triangle-up",
                             "octagon"
-                          ]
+                          ],
+                          "default": "circle"
                         }
                       },
                       "additionalProperties": false
@@ -67345,7 +67610,8 @@ Schema for a single Dashboard
                           "triangle-down",
                           "triangle-up",
                           "octagon"
-                        ]
+                        ],
+                        "default": "circle"
                       }
                     },
                     "additionalProperties": false
@@ -69665,6 +69931,9 @@ Schema for a single Dashboard
                       "pattern": "^[A-Fa-f\\d]{24}$"
                     },
                     "maxItems": 1000
+                  },
+                  "includeExperienceGroups": {
+                    "type": "boolean"
                   }
                 },
                 "additionalProperties": false
@@ -71889,7 +72158,8 @@ Schema for the body of a Dashboard modification request
                             "triangle-down",
                             "triangle-up",
                             "octagon"
-                          ]
+                          ],
+                          "default": "circle"
                         }
                       },
                       "additionalProperties": false
@@ -72857,7 +73127,8 @@ Schema for the body of a Dashboard modification request
                             "triangle-down",
                             "triangle-up",
                             "octagon"
-                          ]
+                          ],
+                          "default": "circle"
                         }
                       },
                       "additionalProperties": false
@@ -73899,7 +74170,6 @@ Schema for the body of a Dashboard modification request
                             "type": {
                               "type": "string",
                               "enum": [
-                                "indicator",
                                 "label",
                                 "image"
                               ]
@@ -73955,7 +74225,8 @@ Schema for the body of a Dashboard modification request
                                       "triangle-down",
                                       "triangle-up",
                                       "octagon"
-                                    ]
+                                    ],
+                                    "default": "circle"
                                   }
                                 },
                                 "additionalProperties": false
@@ -73992,10 +74263,130 @@ Schema for the body of a Dashboard modification request
                                     "triangle-down",
                                     "triangle-up",
                                     "octagon"
-                                  ]
+                                  ],
+                                  "default": "circle"
                                 }
                               },
                               "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "position",
+                            "size",
+                            "defaultCondition"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "indicator"
+                              ]
+                            },
+                            "size": {
+                              "type": "string",
+                              "enum": [
+                                "small",
+                                "medium",
+                                "large"
+                              ]
+                            },
+                            "position": {
+                              "type": "string",
+                              "minLength": 3,
+                              "maxLength": 255
+                            },
+                            "popupTemplate": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "conditions": {
+                              "type": "array",
+                              "maxItems": 100,
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "color": {
+                                    "type": "string",
+                                    "maxLength": 64
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "maxLength": 48
+                                  },
+                                  "label": {
+                                    "type": "string",
+                                    "maxLength": 32767
+                                  },
+                                  "condition": {
+                                    "type": "string",
+                                    "maxLength": 2048
+                                  },
+                                  "imageUrl": {
+                                    "type": "string",
+                                    "maxLength": 32767
+                                  },
+                                  "shape": {
+                                    "type": "string",
+                                    "enum": [
+                                      "circle",
+                                      "square",
+                                      "triangle-down",
+                                      "triangle-up",
+                                      "octagon"
+                                    ],
+                                    "default": "circle"
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                  "shape"
+                                ]
+                              }
+                            },
+                            "defaultCondition": {
+                              "type": "object",
+                              "properties": {
+                                "color": {
+                                  "type": "string",
+                                  "maxLength": 64
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
+                                "label": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                },
+                                "condition": {
+                                  "type": "string",
+                                  "maxLength": 2048
+                                },
+                                "imageUrl": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                },
+                                "shape": {
+                                  "type": "string",
+                                  "enum": [
+                                    "circle",
+                                    "square",
+                                    "triangle-down",
+                                    "triangle-up",
+                                    "octagon"
+                                  ],
+                                  "default": "circle"
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "shape"
+                              ]
                             }
                           },
                           "required": [
@@ -74066,7 +74457,8 @@ Schema for the body of a Dashboard modification request
                                       "triangle-down",
                                       "triangle-up",
                                       "octagon"
-                                    ]
+                                    ],
+                                    "default": "circle"
                                   }
                                 },
                                 "additionalProperties": false
@@ -74103,7 +74495,8 @@ Schema for the body of a Dashboard modification request
                                     "triangle-down",
                                     "triangle-up",
                                     "octagon"
-                                  ]
+                                  ],
+                                  "default": "circle"
                                 }
                               },
                               "additionalProperties": false
@@ -74181,7 +74574,8 @@ Schema for the body of a Dashboard modification request
                                       "triangle-down",
                                       "triangle-up",
                                       "octagon"
-                                    ]
+                                    ],
+                                    "default": "circle"
                                   }
                                 },
                                 "additionalProperties": false
@@ -74218,7 +74612,8 @@ Schema for the body of a Dashboard modification request
                                     "triangle-down",
                                     "triangle-up",
                                     "octagon"
-                                  ]
+                                  ],
+                                  "default": "circle"
                                 }
                               },
                               "additionalProperties": false
@@ -74562,7 +74957,8 @@ Schema for the body of a Dashboard modification request
                             "triangle-down",
                             "triangle-up",
                             "octagon"
-                          ]
+                          ],
+                          "default": "circle"
                         }
                       },
                       "additionalProperties": false
@@ -74599,7 +74995,8 @@ Schema for the body of a Dashboard modification request
                           "triangle-down",
                           "triangle-up",
                           "octagon"
-                        ]
+                        ],
+                        "default": "circle"
                       }
                     },
                     "additionalProperties": false
@@ -77065,6 +77462,9 @@ Schema for the body of a Dashboard modification request
                       "pattern": "^[A-Fa-f\\d]{24}$"
                     },
                     "maxItems": 1000
+                  },
+                  "includeExperienceGroups": {
+                    "type": "boolean"
                   }
                 },
                 "additionalProperties": false
@@ -78381,7 +78781,8 @@ Schema for the body of a Dashboard creation request
                             "triangle-down",
                             "triangle-up",
                             "octagon"
-                          ]
+                          ],
+                          "default": "circle"
                         }
                       },
                       "additionalProperties": false
@@ -79349,7 +79750,8 @@ Schema for the body of a Dashboard creation request
                             "triangle-down",
                             "triangle-up",
                             "octagon"
-                          ]
+                          ],
+                          "default": "circle"
                         }
                       },
                       "additionalProperties": false
@@ -80391,7 +80793,6 @@ Schema for the body of a Dashboard creation request
                             "type": {
                               "type": "string",
                               "enum": [
-                                "indicator",
                                 "label",
                                 "image"
                               ]
@@ -80447,7 +80848,8 @@ Schema for the body of a Dashboard creation request
                                       "triangle-down",
                                       "triangle-up",
                                       "octagon"
-                                    ]
+                                    ],
+                                    "default": "circle"
                                   }
                                 },
                                 "additionalProperties": false
@@ -80484,10 +80886,130 @@ Schema for the body of a Dashboard creation request
                                     "triangle-down",
                                     "triangle-up",
                                     "octagon"
-                                  ]
+                                  ],
+                                  "default": "circle"
                                 }
                               },
                               "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "position",
+                            "size",
+                            "defaultCondition"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "indicator"
+                              ]
+                            },
+                            "size": {
+                              "type": "string",
+                              "enum": [
+                                "small",
+                                "medium",
+                                "large"
+                              ]
+                            },
+                            "position": {
+                              "type": "string",
+                              "minLength": 3,
+                              "maxLength": 255
+                            },
+                            "popupTemplate": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "conditions": {
+                              "type": "array",
+                              "maxItems": 100,
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "color": {
+                                    "type": "string",
+                                    "maxLength": 64
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "maxLength": 48
+                                  },
+                                  "label": {
+                                    "type": "string",
+                                    "maxLength": 32767
+                                  },
+                                  "condition": {
+                                    "type": "string",
+                                    "maxLength": 2048
+                                  },
+                                  "imageUrl": {
+                                    "type": "string",
+                                    "maxLength": 32767
+                                  },
+                                  "shape": {
+                                    "type": "string",
+                                    "enum": [
+                                      "circle",
+                                      "square",
+                                      "triangle-down",
+                                      "triangle-up",
+                                      "octagon"
+                                    ],
+                                    "default": "circle"
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                  "shape"
+                                ]
+                              }
+                            },
+                            "defaultCondition": {
+                              "type": "object",
+                              "properties": {
+                                "color": {
+                                  "type": "string",
+                                  "maxLength": 64
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
+                                "label": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                },
+                                "condition": {
+                                  "type": "string",
+                                  "maxLength": 2048
+                                },
+                                "imageUrl": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                },
+                                "shape": {
+                                  "type": "string",
+                                  "enum": [
+                                    "circle",
+                                    "square",
+                                    "triangle-down",
+                                    "triangle-up",
+                                    "octagon"
+                                  ],
+                                  "default": "circle"
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "shape"
+                              ]
                             }
                           },
                           "required": [
@@ -80558,7 +81080,8 @@ Schema for the body of a Dashboard creation request
                                       "triangle-down",
                                       "triangle-up",
                                       "octagon"
-                                    ]
+                                    ],
+                                    "default": "circle"
                                   }
                                 },
                                 "additionalProperties": false
@@ -80595,7 +81118,8 @@ Schema for the body of a Dashboard creation request
                                     "triangle-down",
                                     "triangle-up",
                                     "octagon"
-                                  ]
+                                  ],
+                                  "default": "circle"
                                 }
                               },
                               "additionalProperties": false
@@ -80673,7 +81197,8 @@ Schema for the body of a Dashboard creation request
                                       "triangle-down",
                                       "triangle-up",
                                       "octagon"
-                                    ]
+                                    ],
+                                    "default": "circle"
                                   }
                                 },
                                 "additionalProperties": false
@@ -80710,7 +81235,8 @@ Schema for the body of a Dashboard creation request
                                     "triangle-down",
                                     "triangle-up",
                                     "octagon"
-                                  ]
+                                  ],
+                                  "default": "circle"
                                 }
                               },
                               "additionalProperties": false
@@ -81054,7 +81580,8 @@ Schema for the body of a Dashboard creation request
                             "triangle-down",
                             "triangle-up",
                             "octagon"
-                          ]
+                          ],
+                          "default": "circle"
                         }
                       },
                       "additionalProperties": false
@@ -81091,7 +81618,8 @@ Schema for the body of a Dashboard creation request
                           "triangle-down",
                           "triangle-up",
                           "octagon"
-                        ]
+                        ],
+                        "default": "circle"
                       }
                     },
                     "additionalProperties": false
@@ -83557,6 +84085,9 @@ Schema for the body of a Dashboard creation request
                       "pattern": "^[A-Fa-f\\d]{24}$"
                     },
                     "maxItems": 1000
+                  },
+                  "includeExperienceGroups": {
+                    "type": "boolean"
                   }
                 },
                 "additionalProperties": false
@@ -85600,7 +86131,8 @@ Schema for a collection of Dashboards
                                   "triangle-down",
                                   "triangle-up",
                                   "octagon"
-                                ]
+                                ],
+                                "default": "circle"
                               }
                             },
                             "additionalProperties": false
@@ -86568,7 +87100,8 @@ Schema for a collection of Dashboards
                                   "triangle-down",
                                   "triangle-up",
                                   "octagon"
-                                ]
+                                ],
+                                "default": "circle"
                               }
                             },
                             "additionalProperties": false
@@ -87610,7 +88143,6 @@ Schema for a collection of Dashboards
                                   "type": {
                                     "type": "string",
                                     "enum": [
-                                      "indicator",
                                       "label",
                                       "image"
                                     ]
@@ -87666,7 +88198,8 @@ Schema for a collection of Dashboards
                                             "triangle-down",
                                             "triangle-up",
                                             "octagon"
-                                          ]
+                                          ],
+                                          "default": "circle"
                                         }
                                       },
                                       "additionalProperties": false
@@ -87703,10 +88236,130 @@ Schema for a collection of Dashboards
                                           "triangle-down",
                                           "triangle-up",
                                           "octagon"
-                                        ]
+                                        ],
+                                        "default": "circle"
                                       }
                                     },
                                     "additionalProperties": false
+                                  }
+                                },
+                                "required": [
+                                  "type",
+                                  "position",
+                                  "size",
+                                  "defaultCondition"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "indicator"
+                                    ]
+                                  },
+                                  "size": {
+                                    "type": "string",
+                                    "enum": [
+                                      "small",
+                                      "medium",
+                                      "large"
+                                    ]
+                                  },
+                                  "position": {
+                                    "type": "string",
+                                    "minLength": 3,
+                                    "maxLength": 255
+                                  },
+                                  "popupTemplate": {
+                                    "type": "string",
+                                    "maxLength": 32767
+                                  },
+                                  "conditions": {
+                                    "type": "array",
+                                    "maxItems": 100,
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "color": {
+                                          "type": "string",
+                                          "maxLength": 64
+                                        },
+                                        "id": {
+                                          "type": "string",
+                                          "maxLength": 48
+                                        },
+                                        "label": {
+                                          "type": "string",
+                                          "maxLength": 32767
+                                        },
+                                        "condition": {
+                                          "type": "string",
+                                          "maxLength": 2048
+                                        },
+                                        "imageUrl": {
+                                          "type": "string",
+                                          "maxLength": 32767
+                                        },
+                                        "shape": {
+                                          "type": "string",
+                                          "enum": [
+                                            "circle",
+                                            "square",
+                                            "triangle-down",
+                                            "triangle-up",
+                                            "octagon"
+                                          ],
+                                          "default": "circle"
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "shape"
+                                      ]
+                                    }
+                                  },
+                                  "defaultCondition": {
+                                    "type": "object",
+                                    "properties": {
+                                      "color": {
+                                        "type": "string",
+                                        "maxLength": 64
+                                      },
+                                      "id": {
+                                        "type": "string",
+                                        "maxLength": 48
+                                      },
+                                      "label": {
+                                        "type": "string",
+                                        "maxLength": 32767
+                                      },
+                                      "condition": {
+                                        "type": "string",
+                                        "maxLength": 2048
+                                      },
+                                      "imageUrl": {
+                                        "type": "string",
+                                        "maxLength": 32767
+                                      },
+                                      "shape": {
+                                        "type": "string",
+                                        "enum": [
+                                          "circle",
+                                          "square",
+                                          "triangle-down",
+                                          "triangle-up",
+                                          "octagon"
+                                        ],
+                                        "default": "circle"
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "required": [
+                                      "shape"
+                                    ]
                                   }
                                 },
                                 "required": [
@@ -87777,7 +88430,8 @@ Schema for a collection of Dashboards
                                             "triangle-down",
                                             "triangle-up",
                                             "octagon"
-                                          ]
+                                          ],
+                                          "default": "circle"
                                         }
                                       },
                                       "additionalProperties": false
@@ -87814,7 +88468,8 @@ Schema for a collection of Dashboards
                                           "triangle-down",
                                           "triangle-up",
                                           "octagon"
-                                        ]
+                                        ],
+                                        "default": "circle"
                                       }
                                     },
                                     "additionalProperties": false
@@ -87892,7 +88547,8 @@ Schema for a collection of Dashboards
                                             "triangle-down",
                                             "triangle-up",
                                             "octagon"
-                                          ]
+                                          ],
+                                          "default": "circle"
                                         }
                                       },
                                       "additionalProperties": false
@@ -87929,7 +88585,8 @@ Schema for a collection of Dashboards
                                           "triangle-down",
                                           "triangle-up",
                                           "octagon"
-                                        ]
+                                        ],
+                                        "default": "circle"
                                       }
                                     },
                                     "additionalProperties": false
@@ -88273,7 +88930,8 @@ Schema for a collection of Dashboards
                                   "triangle-down",
                                   "triangle-up",
                                   "octagon"
-                                ]
+                                ],
+                                "default": "circle"
                               }
                             },
                             "additionalProperties": false
@@ -88310,7 +88968,8 @@ Schema for a collection of Dashboards
                                 "triangle-down",
                                 "triangle-up",
                                 "octagon"
-                              ]
+                              ],
+                              "default": "circle"
                             }
                           },
                           "additionalProperties": false
@@ -90630,6 +91289,9 @@ Schema for a collection of Dashboards
                             "pattern": "^[A-Fa-f\\d]{24}$"
                           },
                           "maxItems": 1000
+                        },
+                        "includeExperienceGroups": {
+                          "type": "boolean"
                         }
                       },
                       "additionalProperties": false
@@ -220175,6 +220837,7 @@ Schema for the body of a GitHub login request
               "instance.payloadCountsBreakdown",
               "instance.deviceCounts",
               "instance.notebookMinuteCounts",
+              "instance.entitlements",
               "instanceOrg.*",
               "instanceOrg.get",
               "instanceOrg.patch",
@@ -220183,6 +220846,8 @@ Schema for the body of a GitHub login request
               "instanceOrg.payloadCountsBreakdown",
               "instanceOrg.deviceCounts",
               "instanceOrg.notebookMinuteCounts",
+              "instanceOrg.entitlement",
+              "instanceOrg.entitlementSync",
               "instanceOrg.convertToEnterprise",
               "instanceOrgs.*",
               "instanceOrgs.get",
@@ -220303,6 +220968,7 @@ Schema for the body of a GitHub login request
               "me.invites",
               "me.respondToInvite",
               "me.refreshToken",
+              "me.entitlements",
               "orgs.*",
               "orgs.get",
               "orgs.post"
@@ -222366,6 +223032,12 @@ Schema for a single Instance
         "notRequired",
         "adminRequired",
         "required"
+      ]
+    },
+    "entitlementMode": {
+      "type": "string",
+      "enum": [
+        "scc"
       ]
     }
   }
@@ -226272,6 +226944,18 @@ Schema for an Organization owned by an instance
           "type": "integer",
           "minimum": 5,
           "maximum": 3600
+        },
+        "deviceHard": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "applicationkeyHard": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "applicationcertificateHard": {
+          "type": "integer",
+          "minimum": 0
         }
       },
       "additionalProperties": false
@@ -226778,6 +227462,311 @@ Schema for an Organization owned by an instance
   },
   "currentPeriodStart": "2023-01-01T00:00:00.000Z",
   "currentPeriodEnd": "2023-01-31T11:59:59.999Z"
+}
+```
+
+<br/>
+
+## Instance Org Entitlement
+
+Schema for SCC entitlement details for an instance organization
+
+### <a name="instance-org-entitlement-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "entitlementId": {
+      "type": "string"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "externalOrgId": {
+      "type": "integer"
+    },
+    "externalOrgName": {
+      "type": "string"
+    },
+    "subscriptionName": {
+      "type": "string"
+    },
+    "hasSupport": {
+      "type": "boolean"
+    },
+    "allowedOrgCount": {
+      "type": "integer"
+    },
+    "usedOrgCount": {
+      "type": "integer"
+    },
+    "orgIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "maxItems": 1000
+    },
+    "limits": {
+      "type": "object",
+      "properties": {
+        "apitoken": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "application": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "applicationcertificate": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "applicationcertificateauthority": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "applicationkey": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "credential": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "dashboard": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "datatable": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "device": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "devicerecipe": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experiencedomain": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceendpoint": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experiencegroup": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceslug": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceuser": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceversion": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceview": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "file": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "flow": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "integration": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notebook": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "privatefile": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "resourcejob": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "webhook": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "dataTTL": {
+          "type": "integer",
+          "minimum": 86400
+        },
+        "member": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "payload": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "storage": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notebookMinutesPerRun": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notebookMinutesPerMonth": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notebookInParallel": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experienceFlowSlots": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "applicationFlowSlots": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "systemInterval": {
+          "type": "integer",
+          "minimum": 5,
+          "maximum": 3600
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
+```
+### <a name="instance-org-entitlement-example"></a> Example
+
+```json
+{
+  "entitlementId": "l05antt35t",
+  "expiresAt": "2029-06-16T15:36:50.338Z",
+  "externalOrgId": 886788,
+  "externalOrgName": "Example Organization",
+  "subscriptionName": "Losant Test Subscription",
+  "hasSupport": true,
+  "allowedOrgCount": 1,
+  "usedOrgCount": 1,
+  "orgIds": [],
+  "limits": {
+    "device": 1000,
+    "dataTTL": 31536000
+  }
+}
+```
+
+<br/>
+
+## Instance Org Entitlement Sync
+
+Schema for the result of an on-demand SCC entitlement sync for an instance organization
+
+### <a name="instance-org-entitlement-sync-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "boolean"
+    },
+    "limitsUpdated": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z]+$": {
+          "type": "object",
+          "properties": {
+            "previous": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "current": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "expired",
+              "limitsDecreased",
+              "noMember"
+            ]
+          },
+          "decreased": {
+            "type": "object",
+            "patternProperties": {
+              "^[a-zA-Z]+$": {
+                "type": "object",
+                "properties": {
+                  "requested": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "current": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      }
+    }
+  }
+}
+```
+### <a name="instance-org-entitlement-sync-example"></a> Example
+
+```json
+{
+  "success": true,
+  "limitsUpdated": {
+    "device": {
+      "previous": 10,
+      "current": 1000
+    }
+  },
+  "issues": [
+    {
+      "type": "noMember"
+    }
+  ]
 }
 ```
 
@@ -228580,6 +229569,18 @@ Schema for a collection of Organizations within an instance
                 "type": "integer",
                 "minimum": 5,
                 "maximum": 3600
+              },
+              "deviceHard": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "applicationkeyHard": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "applicationcertificateHard": {
+                "type": "integer",
+                "minimum": 0
               }
             },
             "additionalProperties": false
@@ -231086,6 +232087,12 @@ Schema for a collection of Instances
               "notRequired",
               "adminRequired",
               "required"
+            ]
+          },
+          "entitlementMode": {
+            "type": "string",
+            "enum": [
+              "scc"
             ]
           }
         }
@@ -236150,6 +237157,231 @@ Schema for information about the currently authenticated user
     "deviceRecipeCount": 0
   },
   "ssoLinked": false
+}
+```
+
+<br/>
+
+## Me Entitlements
+
+Schema for entitlement information for the currently authenticated user
+
+### <a name="me-entitlements-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "userFound": {
+      "type": "boolean"
+    },
+    "entitlements": {
+      "type": "array",
+      "items": {
+        "title": "Entitlement",
+        "type": "object",
+        "properties": {
+          "entitlementId": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "externalOrgId": {
+            "type": "integer"
+          },
+          "externalOrgName": {
+            "type": "string"
+          },
+          "subscriptionName": {
+            "type": "string"
+          },
+          "hasSupport": {
+            "type": "boolean"
+          },
+          "allowedOrgCount": {
+            "type": "integer"
+          },
+          "usedOrgCount": {
+            "type": "integer"
+          },
+          "orgIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "maxItems": 1000
+          },
+          "limits": {
+            "type": "object",
+            "properties": {
+              "apitoken": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "application": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "applicationcertificate": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "applicationcertificateauthority": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "applicationkey": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "credential": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "dashboard": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "datatable": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "device": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "devicerecipe": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experiencedomain": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceendpoint": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experiencegroup": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceslug": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceuser": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceversion": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceview": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "file": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "flow": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "integration": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "notebook": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "privatefile": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "resourcejob": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "webhook": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "dataTTL": {
+                "type": "integer",
+                "minimum": 86400
+              },
+              "member": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "payload": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "storage": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "notebookMinutesPerRun": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "notebookMinutesPerMonth": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "notebookInParallel": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceFlowSlots": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "applicationFlowSlots": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "systemInterval": {
+                "type": "integer",
+                "minimum": 5,
+                "maximum": 3600
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    }
+  }
+}
+```
+### <a name="me-entitlements-example"></a> Example
+
+```json
+{
+  "userFound": true,
+  "entitlements": [
+    {
+      "entitlementId": "l05antt35t",
+      "expiresAt": "2029-06-16T15:36:50.338Z",
+      "externalOrgId": 886788,
+      "externalOrgName": "Example Organization",
+      "subscriptionName": "Losant Test Subscription",
+      "hasSupport": true,
+      "allowedOrgCount": 1,
+      "usedOrgCount": 0,
+      "orgIds": []
+    }
+  ]
 }
 ```
 
@@ -243835,6 +245067,18 @@ Schema for a single Organization
           "type": "integer",
           "minimum": 5,
           "maximum": 3600
+        },
+        "deviceHard": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "applicationkeyHard": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "applicationcertificateHard": {
+          "type": "integer",
+          "minimum": 0
         }
       },
       "additionalProperties": false
@@ -244108,6 +245352,10 @@ Schema for a single Organization
           }
         }
       }
+    },
+    "entitlementOrgId": {
+      "type": "string",
+      "maxLength": 1024
     },
     "planId": {
       "type": "string",
@@ -245041,6 +246289,10 @@ Schema for the body of an Organization creation request
         "adminRequired",
         "required"
       ]
+    },
+    "entitlementId": {
+      "type": "string",
+      "maxLength": 1024
     }
   },
   "additionalProperties": false,
@@ -245438,6 +246690,18 @@ Schema for a collection of Organizations
                 "type": "integer",
                 "minimum": 5,
                 "maximum": 3600
+              },
+              "deviceHard": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "applicationkeyHard": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "applicationcertificateHard": {
+                "type": "integer",
+                "minimum": 0
               }
             },
             "additionalProperties": false
@@ -245711,6 +246975,10 @@ Schema for a collection of Organizations
                 }
               }
             }
+          },
+          "entitlementOrgId": {
+            "type": "string",
+            "maxLength": 1024
           },
           "planId": {
             "type": "string",
@@ -248938,6 +250206,7 @@ SAML Response body for login
               "instance.payloadCountsBreakdown",
               "instance.deviceCounts",
               "instance.notebookMinuteCounts",
+              "instance.entitlements",
               "instanceOrg.*",
               "instanceOrg.get",
               "instanceOrg.patch",
@@ -248946,6 +250215,8 @@ SAML Response body for login
               "instanceOrg.payloadCountsBreakdown",
               "instanceOrg.deviceCounts",
               "instanceOrg.notebookMinuteCounts",
+              "instanceOrg.entitlement",
+              "instanceOrg.entitlementSync",
               "instanceOrg.convertToEnterprise",
               "instanceOrgs.*",
               "instanceOrgs.get",
@@ -249066,6 +250337,7 @@ SAML Response body for login
               "me.invites",
               "me.respondToInvite",
               "me.refreshToken",
+              "me.entitlements",
               "orgs.*",
               "orgs.get",
               "orgs.post"
@@ -252423,6 +253695,7 @@ Schema for the body of a User authentication request
               "instance.payloadCountsBreakdown",
               "instance.deviceCounts",
               "instance.notebookMinuteCounts",
+              "instance.entitlements",
               "instanceOrg.*",
               "instanceOrg.get",
               "instanceOrg.patch",
@@ -252431,6 +253704,8 @@ Schema for the body of a User authentication request
               "instanceOrg.payloadCountsBreakdown",
               "instanceOrg.deviceCounts",
               "instanceOrg.notebookMinuteCounts",
+              "instanceOrg.entitlement",
+              "instanceOrg.entitlementSync",
               "instanceOrg.convertToEnterprise",
               "instanceOrgs.*",
               "instanceOrgs.get",
@@ -252551,6 +253826,7 @@ Schema for the body of a User authentication request
               "me.invites",
               "me.respondToInvite",
               "me.refreshToken",
+              "me.entitlements",
               "orgs.*",
               "orgs.get",
               "orgs.post"
@@ -253979,6 +255255,7 @@ Schema for the body of a User creation request
               "instance.payloadCountsBreakdown",
               "instance.deviceCounts",
               "instance.notebookMinuteCounts",
+              "instance.entitlements",
               "instanceOrg.*",
               "instanceOrg.get",
               "instanceOrg.patch",
@@ -253987,6 +255264,8 @@ Schema for the body of a User creation request
               "instanceOrg.payloadCountsBreakdown",
               "instanceOrg.deviceCounts",
               "instanceOrg.notebookMinuteCounts",
+              "instanceOrg.entitlement",
+              "instanceOrg.entitlementSync",
               "instanceOrg.convertToEnterprise",
               "instanceOrgs.*",
               "instanceOrgs.get",
@@ -254107,6 +255386,7 @@ Schema for the body of a User creation request
               "me.invites",
               "me.respondToInvite",
               "me.refreshToken",
+              "me.entitlements",
               "orgs.*",
               "orgs.get",
               "orgs.post"
@@ -254325,6 +255605,34 @@ Schema for the result of a validateContext call when invalid context is passed
                     }
                   },
                   "additionalProperties": false
+                },
+                "experienceGroups": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      },
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Fa-f\\d]{24}$"
+                      },
+                      "parentId": {
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^[A-Fa-f\\d]{24}$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -254569,6 +255877,34 @@ Schema for the result of a successful validateContext call
                     }
                   },
                   "additionalProperties": false
+                },
+                "experienceGroups": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      },
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Fa-f\\d]{24}$"
+                      },
+                      "parentId": {
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^[A-Fa-f\\d]{24}$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
                 }
               }
             }

@@ -282,6 +282,18 @@
                 "type": "integer",
                 "minimum": 5,
                 "maximum": 3600
+              },
+              "deviceHard": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "applicationkeyHard": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "applicationcertificateHard": {
+                "type": "integer",
+                "minimum": 0
               }
             },
             "additionalProperties": false
@@ -555,6 +567,10 @@
                 }
               }
             }
+          },
+          "entitlementOrgId": {
+            "type": "string",
+            "maxLength": 1024
           },
           "planId": {
             "type": "string",

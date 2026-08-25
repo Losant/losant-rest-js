@@ -376,6 +376,12 @@
         "adminRequired",
         "required"
       ]
+    },
+    "entitlementMode": {
+      "type": "string",
+      "enum": [
+        "scc"
+      ]
     }
   }
 }
