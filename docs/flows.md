@@ -235,6 +235,7 @@ all.Application, all.Application.bounded, all.Organization, all.Organization.bou
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | flow | [Workflow Post](../lib/schemas/flowPost.json) | Y | New flow information |  | [Workflow Post Example](_schemas.md#workflow-post-example) |
 | includeCustomNodes | string | N | If the result of the request should also include the details of any custom nodes referenced by the returned workflows | false | true |
+| strictValidation | string | N | When true, perform stricter validation on node and trigger configuration | false | true |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

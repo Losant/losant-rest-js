@@ -142,6 +142,7 @@ all.Application, all.Application.bounded, all.Organization, all.Organization.bou
 | flowVersion | [Workflow Version Post](../lib/schemas/flowVersionPost.json) | Y | New flow version information |  | [Workflow Version Post Example](_schemas.md#workflow-version-post-example) |
 | includeCustomNodes | string | N | If the result of the request should also include the details of any custom nodes referenced by the returned workflows | false | true |
 | allowReplacement | string | N | Allow replacement of an existing flow version with same version name | false | true |
+| strictValidation | string | N | When true, perform stricter validation on node and trigger configuration | false | true |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses

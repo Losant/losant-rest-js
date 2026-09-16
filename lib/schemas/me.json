@@ -61,6 +61,15 @@
       "type": "string",
       "maxLength": 1024
     },
+    "state": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "country": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
     "tokenCutoff": {
       "type": "string",
       "format": "date-time"
@@ -149,6 +158,9 @@
           "type": "integer"
         },
         "notebook": {
+          "type": "integer"
+        },
+        "oauthclient": {
           "type": "integer"
         },
         "privatefile": {
@@ -968,6 +980,9 @@
           "type": "integer"
         },
         "notebookCount": {
+          "type": "integer"
+        },
+        "oauthClientCount": {
           "type": "integer"
         },
         "resourceJobCount": {

@@ -316,6 +316,10 @@
 *   [Time Series Data](#time-series-data)
 *   [Time Series Query](#time-series-query)
 *   [User Credentials](#user-credentials)
+*   [User OAuth Client](#user-oauth-client)
+*   [User OAuth Client Patch](#user-oauth-client-patch)
+*   [User OAuth Client Post](#user-oauth-client-post)
+*   [User OAuth Clients](#user-oauth-clients)
 *   [User OAuth Token](#user-oauth-token)
 *   [User OAuth Token Patch](#user-oauth-token-patch)
 *   [User OAuth Token Post](#user-oauth-token-post)
@@ -17295,6 +17299,13 @@ Schema for the body of an API Token creation request
               "userOauthTokens.*",
               "userOauthTokens.get",
               "userOauthTokens.post",
+              "userOauthClient.*",
+              "userOauthClient.get",
+              "userOauthClient.patch",
+              "userOauthClient.delete",
+              "userOauthClients.*",
+              "userOauthClients.get",
+              "userOauthClients.post",
               "applicationTemplate.*",
               "applicationTemplate.get",
               "applicationTemplates.*",
@@ -220938,6 +220949,13 @@ Schema for the body of a GitHub login request
               "userOauthTokens.*",
               "userOauthTokens.get",
               "userOauthTokens.post",
+              "userOauthClient.*",
+              "userOauthClient.get",
+              "userOauthClient.patch",
+              "userOauthClient.delete",
+              "userOauthClients.*",
+              "userOauthClients.get",
+              "userOauthClients.post",
               "applicationTemplate.*",
               "applicationTemplate.get",
               "applicationTemplates.*",
@@ -230647,6 +230665,9 @@ Schema for information about a sandbox user within an instance domain
         "notebook": {
           "type": "integer"
         },
+        "oauthclient": {
+          "type": "integer"
+        },
         "privatefile": {
           "type": "integer"
         },
@@ -230753,6 +230774,9 @@ Schema for information about a sandbox user within an instance domain
           "type": "integer"
         },
         "notebookCount": {
+          "type": "integer"
+        },
+        "oauthClientCount": {
           "type": "integer"
         },
         "resourceJobCount": {
@@ -231226,6 +231250,9 @@ Schema for a collection of instance associated sandboxes
               "notebook": {
                 "type": "integer"
               },
+              "oauthclient": {
+                "type": "integer"
+              },
               "privatefile": {
                 "type": "integer"
               },
@@ -231332,6 +231359,9 @@ Schema for a collection of instance associated sandboxes
                 "type": "integer"
               },
               "notebookCount": {
+                "type": "integer"
+              },
+              "oauthClientCount": {
                 "type": "integer"
               },
               "resourceJobCount": {
@@ -236004,6 +236034,15 @@ Schema for information about the currently authenticated user
       "type": "string",
       "maxLength": 1024
     },
+    "state": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "country": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
     "tokenCutoff": {
       "type": "string",
       "format": "date-time"
@@ -236092,6 +236131,9 @@ Schema for information about the currently authenticated user
           "type": "integer"
         },
         "notebook": {
+          "type": "integer"
+        },
+        "oauthclient": {
           "type": "integer"
         },
         "privatefile": {
@@ -236913,6 +236955,9 @@ Schema for information about the currently authenticated user
         "notebookCount": {
           "type": "integer"
         },
+        "oauthClientCount": {
+          "type": "integer"
+        },
         "resourceJobCount": {
           "type": "integer"
         },
@@ -237142,6 +237187,8 @@ Schema for information about the currently authenticated user
   "lastName": "Name",
   "companyName": "Example, Inc.",
   "url": "https://example.com",
+  "state": "Ohio",
+  "country": "United States",
   "emailVerified": true,
   "needsToVerifyEmail": false,
   "twoFactorAuthEnabled": false,
@@ -237430,6 +237477,15 @@ Schema for the body of request to modify the current user
     },
     "url": {
       "type": "string",
+      "maxLength": 1024
+    },
+    "state": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "country": {
+      "type": "string",
+      "minLength": 1,
       "maxLength": 1024
     },
     "password": {
@@ -250307,6 +250363,13 @@ SAML Response body for login
               "userOauthTokens.*",
               "userOauthTokens.get",
               "userOauthTokens.post",
+              "userOauthClient.*",
+              "userOauthClient.get",
+              "userOauthClient.patch",
+              "userOauthClient.delete",
+              "userOauthClients.*",
+              "userOauthClients.get",
+              "userOauthClients.post",
               "applicationTemplate.*",
               "applicationTemplate.get",
               "applicationTemplates.*",
@@ -253796,6 +253859,13 @@ Schema for the body of a User authentication request
               "userOauthTokens.*",
               "userOauthTokens.get",
               "userOauthTokens.post",
+              "userOauthClient.*",
+              "userOauthClient.get",
+              "userOauthClient.patch",
+              "userOauthClient.delete",
+              "userOauthClients.*",
+              "userOauthClients.get",
+              "userOauthClients.post",
               "applicationTemplate.*",
               "applicationTemplate.get",
               "applicationTemplates.*",
@@ -253853,6 +253923,685 @@ Schema for the body of a User authentication request
 {
   "email": "email@example.com",
   "password": "this is the password"
+}
+```
+
+<br/>
+
+## User OAuth Client
+
+Schema for a single private OAuth client
+
+### <a name="user-oauth-client-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "client_id": {
+      "type": "string",
+      "description": "Unique client identifier"
+    },
+    "client_secret": {
+      "type": "string",
+      "description": "Client secret. Only ever included in the response to the initial creation request."
+    },
+    "client_name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "client_uri": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
+    },
+    "logo_uri": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 32768,
+      "description": "URL of the client's logo. May be an http(s) URL or a data:image/* URI."
+    },
+    "redirect_uris": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 25,
+      "items": {
+        "type": "string",
+        "format": "uri",
+        "maxLength": 1024
+      },
+      "description": "Array of redirect URIs for use in redirect-based flows"
+    },
+    "grant_types": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "authorization_code",
+          "refresh_token"
+        ]
+      },
+      "description": "Array of OAuth 2.0 grant types"
+    },
+    "response_types": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "code"
+        ]
+      },
+      "description": "Array of OAuth 2.0 response types"
+    },
+    "token_endpoint_auth_method": {
+      "type": "string",
+      "description": "Authentication method for the token endpoint",
+      "enum": [
+        "client_secret_basic",
+        "client_secret_post",
+        "none"
+      ]
+    },
+    "scope": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "description": "OAuth-supported user-context API scope. See the `scopes_supported` field of the OAuth authorization server metadata document at /.well-known/oauth-authorization-server for the authoritative list.",
+        "enum": [
+          "all.Application.read",
+          "all.Application.bounded",
+          "only.Organization.read",
+          "only.Organization.bounded",
+          "all.Organization.read",
+          "all.Organization.bounded",
+          "only.User.read"
+        ]
+      },
+      "description": "API scopes this client may request"
+    },
+    "contacts": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "string",
+        "format": "email",
+        "maxLength": 1024
+      },
+      "description": "Contact email addresses for this client"
+    },
+    "tos_uri": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
+    },
+    "policy_uri": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
+    }
+  }
+}
+```
+### <a name="user-oauth-client-example"></a> Example
+
+```json
+{
+  "id": "575ec7417ae143cd83dc4a95",
+  "creationDate": "2016-06-13T04:00:00.000Z",
+  "lastUpdated": "2016-06-13T04:00:00.000Z",
+  "client_id": "575ec7417ae143cd83dc4a95",
+  "client_secret": "8f14e45fceea167a5a36dedd4bea2543",
+  "client_name": "My Private Client",
+  "description": "Private OAuth client for automation",
+  "client_uri": "https://example.com",
+  "logo_uri": "https://example.com/logo.png",
+  "redirect_uris": [
+    "https://example.com/callback"
+  ],
+  "grant_types": [
+    "authorization_code",
+    "refresh_token"
+  ],
+  "response_types": [
+    "code"
+  ],
+  "token_endpoint_auth_method": "client_secret_basic",
+  "scope": [
+    "only.User.read",
+    "all.Application.read"
+  ],
+  "contacts": [
+    "admin@example.com"
+  ],
+  "tos_uri": "https://example.com/tos",
+  "policy_uri": "https://example.com/privacy"
+}
+```
+
+<br/>
+
+## User OAuth Client Patch
+
+Schema for the body of a private OAuth client modification request
+
+### <a name="user-oauth-client-patch-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "client_name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "client_uri": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 1024
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "logo_uri": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 32768,
+          "description": "URL of the client's logo. May be an http(s) URL or a data:image/* URI."
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "redirect_uris": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 25,
+      "items": {
+        "type": "string",
+        "format": "uri",
+        "maxLength": 1024
+      },
+      "description": "Array of redirect URIs for use in redirect-based flows"
+    },
+    "token_endpoint_auth_method": {
+      "type": "string",
+      "description": "Authentication method for the token endpoint",
+      "enum": [
+        "client_secret_basic",
+        "client_secret_post",
+        "none"
+      ]
+    },
+    "scope": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "description": "OAuth-supported user-context API scope. See the `scopes_supported` field of the OAuth authorization server metadata document at /.well-known/oauth-authorization-server for the authoritative list.",
+        "enum": [
+          "all.Application.read",
+          "all.Application.bounded",
+          "only.Organization.read",
+          "only.Organization.bounded",
+          "all.Organization.read",
+          "all.Organization.bounded",
+          "only.User.read"
+        ]
+      },
+      "description": "API scopes this client may request"
+    },
+    "contacts": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "string",
+        "format": "email",
+        "maxLength": 1024
+      },
+      "description": "Contact email addresses for this client"
+    },
+    "tos_uri": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 1024
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "policy_uri": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 1024
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}
+```
+### <a name="user-oauth-client-patch-example"></a> Example
+
+```json
+{
+  "client_name": "Updated Private Client Name",
+  "description": "Updated description",
+  "redirect_uris": [
+    "https://example.com/new-callback"
+  ]
+}
+```
+
+<br/>
+
+## User OAuth Client Post
+
+Schema for the body of a private OAuth client creation request
+
+### <a name="user-oauth-client-post-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "client_name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "client_uri": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 1024
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "logo_uri": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 32768,
+          "description": "URL of the client's logo. May be an http(s) URL or a data:image/* URI."
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "redirect_uris": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 25,
+      "items": {
+        "type": "string",
+        "format": "uri",
+        "maxLength": 1024
+      },
+      "description": "Array of redirect URIs for use in redirect-based flows"
+    },
+    "token_endpoint_auth_method": {
+      "type": "string",
+      "description": "Authentication method for the token endpoint",
+      "enum": [
+        "client_secret_basic",
+        "client_secret_post",
+        "none"
+      ]
+    },
+    "scope": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "description": "OAuth-supported user-context API scope. See the `scopes_supported` field of the OAuth authorization server metadata document at /.well-known/oauth-authorization-server for the authoritative list.",
+        "enum": [
+          "all.Application.read",
+          "all.Application.bounded",
+          "only.Organization.read",
+          "only.Organization.bounded",
+          "all.Organization.read",
+          "all.Organization.bounded",
+          "only.User.read"
+        ]
+      },
+      "description": "API scopes this client may request"
+    },
+    "contacts": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "string",
+        "format": "email",
+        "maxLength": 1024
+      },
+      "description": "Contact email addresses for this client"
+    },
+    "tos_uri": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 1024
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "policy_uri": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 1024
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "client_name",
+    "redirect_uris"
+  ]
+}
+```
+### <a name="user-oauth-client-post-example"></a> Example
+
+```json
+{
+  "client_name": "My Private Client",
+  "description": "Private OAuth client for automation",
+  "client_uri": "https://example.com",
+  "logo_uri": "https://example.com/logo.png",
+  "redirect_uris": [
+    "https://example.com/callback"
+  ],
+  "token_endpoint_auth_method": "client_secret_basic",
+  "scope": [
+    "only.User.read",
+    "all.Application.read"
+  ],
+  "contacts": [
+    "admin@example.com"
+  ],
+  "tos_uri": "https://example.com/tos",
+  "policy_uri": "https://example.com/privacy"
+}
+```
+
+<br/>
+
+## User OAuth Clients
+
+Schema for a collection of private OAuth clients
+
+### <a name="user-oauth-clients-schema"></a> Schema
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "title": "User OAuth Client",
+        "description": "Schema for a single private OAuth client",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "client_id": {
+            "type": "string",
+            "description": "Unique client identifier"
+          },
+          "client_secret": {
+            "type": "string",
+            "description": "Client secret. Only ever included in the response to the initial creation request."
+          },
+          "client_name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 32767
+          },
+          "client_uri": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 1024
+          },
+          "logo_uri": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 32768,
+            "description": "URL of the client's logo. May be an http(s) URL or a data:image/* URI."
+          },
+          "redirect_uris": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 25,
+            "items": {
+              "type": "string",
+              "format": "uri",
+              "maxLength": 1024
+            },
+            "description": "Array of redirect URIs for use in redirect-based flows"
+          },
+          "grant_types": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "authorization_code",
+                "refresh_token"
+              ]
+            },
+            "description": "Array of OAuth 2.0 grant types"
+          },
+          "response_types": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "code"
+              ]
+            },
+            "description": "Array of OAuth 2.0 response types"
+          },
+          "token_endpoint_auth_method": {
+            "type": "string",
+            "description": "Authentication method for the token endpoint",
+            "enum": [
+              "client_secret_basic",
+              "client_secret_post",
+              "none"
+            ]
+          },
+          "scope": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "description": "OAuth-supported user-context API scope. See the `scopes_supported` field of the OAuth authorization server metadata document at /.well-known/oauth-authorization-server for the authoritative list.",
+              "enum": [
+                "all.Application.read",
+                "all.Application.bounded",
+                "only.Organization.read",
+                "only.Organization.bounded",
+                "all.Organization.read",
+                "all.Organization.bounded",
+                "only.User.read"
+              ]
+            },
+            "description": "API scopes this client may request"
+          },
+          "contacts": {
+            "type": "array",
+            "maxItems": 10,
+            "items": {
+              "type": "string",
+              "format": "email",
+              "maxLength": 1024
+            },
+            "description": "Contact email addresses for this client"
+          },
+          "tos_uri": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 1024
+          },
+          "policy_uri": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 1024
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "perPage": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "filterField": {
+      "type": "string"
+    },
+    "sortField": {
+      "type": "string"
+    },
+    "sortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc",
+        "ASC",
+        "DESC",
+        ""
+      ]
+    }
+  }
+}
+```
+### <a name="user-oauth-clients-example"></a> Example
+
+```json
+{
+  "items": [
+    {
+      "id": "575ec7417ae143cd83dc4a95",
+      "creationDate": "2016-06-13T04:00:00.000Z",
+      "lastUpdated": "2016-06-13T04:00:00.000Z",
+      "client_id": "575ec7417ae143cd83dc4a95",
+      "client_secret": "8f14e45fceea167a5a36dedd4bea2543",
+      "client_name": "My Private Client",
+      "description": "Private OAuth client for automation",
+      "client_uri": "https://example.com",
+      "logo_uri": "https://example.com/logo.png",
+      "redirect_uris": [
+        "https://example.com/callback"
+      ],
+      "grant_types": [
+        "authorization_code",
+        "refresh_token"
+      ],
+      "response_types": [
+        "code"
+      ],
+      "token_endpoint_auth_method": "client_secret_basic",
+      "scope": [
+        "only.User.read",
+        "all.Application.read"
+      ],
+      "contacts": [
+        "admin@example.com"
+      ],
+      "tos_uri": "https://example.com/tos",
+      "policy_uri": "https://example.com/privacy"
+    }
+  ],
+  "count": 1,
+  "totalCount": 1,
+  "perPage": 1000,
+  "page": 0,
+  "sortField": "client_name",
+  "sortDirection": "asc"
 }
 ```
 
@@ -254821,6 +255570,15 @@ Schema for the body of a User creation request
       "type": "string",
       "maxLength": 1024
     },
+    "state": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "country": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
     "oauth": {
       "type": "object",
       "properties": {
@@ -255356,6 +256114,13 @@ Schema for the body of a User creation request
               "userOauthTokens.*",
               "userOauthTokens.get",
               "userOauthTokens.post",
+              "userOauthClient.*",
+              "userOauthClient.get",
+              "userOauthClient.patch",
+              "userOauthClient.delete",
+              "userOauthClients.*",
+              "userOauthClients.get",
+              "userOauthClients.post",
               "applicationTemplate.*",
               "applicationTemplate.get",
               "applicationTemplates.*",
@@ -255438,6 +256203,8 @@ Schema for the body of a User creation request
   "lastName": "Name",
   "companyName": "Example, Inc.",
   "url": "https://example.com",
+  "state": "Ohio",
+  "country": "United States",
   "password": "The new password1!",
   "acceptTerms": "on"
 }
