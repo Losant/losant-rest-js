@@ -32,3 +32,4 @@ jobs:
           VEX_GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
         with:
           vex_repo: Losant/losant-vexhub
+          min_severity: "MEDIUM"
