@@ -1,0 +1,35 @@
+name: Create VEX
+
+on:
+  schedule:
+    - cron: '0 */8 * * *'
+  workflow_dispatch:
+
+jobs:
+  create-vex:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+
+    steps:
+      # tag v6.0.2
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+
+      # v3.2.0
+      - name: Generate GitHub App Token
+        id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1
+        with:
+          app-id: 4830546
+          private-key: ${{ secrets.VEX_APP_PRIVATE_KEY }}
+          repositories: "losant-vexhub"
+
+      - uses: Losant/losant-vex-tools/create-vex@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VEX_GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+        with:
+          vex_repo: Losant/losant-vexhub
+          disable_issues: true
