@@ -36,6 +36,15 @@
       "type": "string",
       "maxLength": 1024
     },
+    "state": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "country": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
     "oauth": {
       "type": "object",
       "properties": {
@@ -571,6 +580,13 @@
               "userOauthTokens.*",
               "userOauthTokens.get",
               "userOauthTokens.post",
+              "userOauthClient.*",
+              "userOauthClient.get",
+              "userOauthClient.patch",
+              "userOauthClient.delete",
+              "userOauthClients.*",
+              "userOauthClients.get",
+              "userOauthClients.post",
               "applicationTemplate.*",
               "applicationTemplate.get",
               "applicationTemplates.*",

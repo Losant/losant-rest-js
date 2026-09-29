@@ -184,6 +184,9 @@
               "notebook": {
                 "type": "integer"
               },
+              "oauthclient": {
+                "type": "integer"
+              },
               "privatefile": {
                 "type": "integer"
               },
@@ -290,6 +293,9 @@
                 "type": "integer"
               },
               "notebookCount": {
+                "type": "integer"
+              },
+              "oauthClientCount": {
                 "type": "integer"
               },
               "resourceJobCount": {

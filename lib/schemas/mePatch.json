@@ -36,6 +36,15 @@
       "type": "string",
       "maxLength": 1024
     },
+    "state": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "country": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
     "password": {
       "type": "string",
       "minLength": 12,
