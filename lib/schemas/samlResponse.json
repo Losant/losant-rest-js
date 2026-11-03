@@ -12,6 +12,18 @@
       "maxLength": 45,
       "minLength": 3
     },
+    "requestIds": {
+      "description": "IDs of the login requests this browser has pending. The response must answer one of them.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      }
+    },
     "requestedScopes": {
       "type": "array",
       "uniqueItems": true,
@@ -562,7 +574,8 @@
   },
   "required": [
     "SAMLResponse",
-    "SAMLDomain"
+    "SAMLDomain",
+    "requestIds"
   ],
   "additionalProperties": false
 }

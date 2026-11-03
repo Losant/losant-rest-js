@@ -249866,6 +249866,18 @@ SAML Response body for login
       "maxLength": 45,
       "minLength": 3
     },
+    "requestIds": {
+      "description": "IDs of the login requests this browser has pending. The response must answer one of them.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      }
+    },
     "requestedScopes": {
       "type": "array",
       "uniqueItems": true,
@@ -250416,7 +250428,8 @@ SAML Response body for login
   },
   "required": [
     "SAMLResponse",
-    "SAMLDomain"
+    "SAMLDomain",
+    "requestIds"
   ],
   "additionalProperties": false
 }
@@ -250426,7 +250439,10 @@ SAML Response body for login
 ```json
 {
   "SAMLResponse": "PHNhbWxwOlJlc3BvbnNlIHhtbG5zOnNhbWxwPSJ1cm46b2FzaXM6bmFtZXM6dGM6U0FNTDoy...",
-  "SAMLDomain": "example.com"
+  "SAMLDomain": "example.com",
+  "requestIds": [
+    "aRequestId"
+  ]
 }
 ```
 
@@ -250452,11 +250468,17 @@ SSO Request built from the SP and IDP config
     "ssoRequest": {
       "type": "string",
       "maxLength": 32767
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
     }
   },
   "required": [
     "ssoType",
-    "ssoRequest"
+    "ssoRequest",
+    "requestId"
   ]
 }
 ```
@@ -250465,7 +250487,8 @@ SSO Request built from the SP and IDP config
 ```json
 {
   "ssoType": "SAML",
-  "ssoRequest": "http://localhost:8080/simplesaml/saml2/idp/SSOService.php?SAMLRequest=fZJdT8MgFIb%2..."
+  "ssoRequest": "http://localhost:8080/simplesaml/saml2/idp/SSOService.php?SAMLRequest=fZJdT8MgFIb%2...",
+  "requestId": "aRequestId"
 }
 ```
 

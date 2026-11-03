@@ -11,10 +11,16 @@
     "ssoRequest": {
       "type": "string",
       "maxLength": 32767
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
     }
   },
   "required": [
     "ssoType",
-    "ssoRequest"
+    "ssoRequest",
+    "requestId"
   ]
 }
