@@ -11,7 +11,7 @@ jobs:
   test:
     strategy:
       matrix:
-        nodejs: [ '22', '24', '25', '26' ]
+        nodejs: [ '22', '24', '26' ]
     runs-on: ubuntu-latest
     permissions:
       actions: write
@@ -36,5 +36,9 @@ jobs:
       with:
         node-version: ${{ matrix.nodejs }}
         cache: 'pnpm'
-    - run: pnpm install --frozen-lockfile
-    - run: pnpm test
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+    - name: Run ESLint
+      run: pnpm lint
+    - name: Run Tests
+      run: pnpm test
