@@ -1,0 +1,183 @@
+name: Upgrade Node.js Version
+
+on:
+  schedule:
+    - cron: '0 9 * * 1' # Every Monday 9 AM UTC
+  workflow_dispatch:
+    inputs:
+      node_major_version:
+        description: 'Node major version to check for upgrades'
+        required: false
+        default: '26'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    outputs:
+      skip: ${{ steps.check.outputs.skip }}
+
+    steps:
+      - name: Check for existing upgrade PR
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          COUNT=$(gh pr list \
+            --repo "${{ github.repository }}" \
+            --state open \
+            --search "chore: upgrade Node in:title" \
+            --json number \
+            --jq 'length')
+          if [ "$COUNT" != "0" ]; then
+            echo "PR already open matching 'chore: upgrade Node' — skipping"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  upgrade:
+    needs: check
+    if: needs.check.outputs.skip == 'false'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      current_node: ${{ steps.upgrade.outputs.current_node }}
+      current_pnpm: ${{ steps.upgrade.outputs.current_pnpm }}
+      new_node_version: ${{ steps.upgrade.outputs.new_node_version }}
+      new_pnpm: ${{ steps.upgrade.outputs.new_pnpm }}
+      notes: ${{ steps.upgrade.outputs.notes }}
+
+    steps:
+      - name: Checkout
+        # tag v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      - name: Setup pnpm
+        # tag v3.1.2
+        uses: pnpm/setup@fa36a5ef7dcdefc3a7cb25655c122e00cf6e636e
+        with:
+          require-lockfile: true
+          node-version-file: '.node-version'
+
+      - name: Run Node upgrade
+        id: upgrade
+        uses: Losant/losant-vex-tools/auto-upgrade-node@main
+        with:
+          node_major_version: ${{ inputs.node_major_version || '26' }}
+
+      - name: Save upgrade diff
+        if: steps.upgrade.outputs.new_node_version != ''
+        run: git diff > upgrade.patch
+
+      - name: Upload upgrade diff
+        if: steps.upgrade.outputs.new_node_version != ''
+        # tag v4.6.2
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: upgrade-patch
+          path: upgrade.patch
+          retention-days: 1
+
+  open-pr:
+    needs: upgrade
+    if: needs.upgrade.outputs.new_node_version != ''
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+
+      - name: Download upgrade diff
+        # tag v4.3.0
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: upgrade-patch
+
+      - name: Apply upgrade diff
+        run: |
+          git apply upgrade.patch
+          rm upgrade.patch
+
+      - name: Configure git
+        run: |
+          git config user.email "automation@losant.com"
+          git config user.name "Losant Automation"
+
+      - name: Delete stale remote branch if present
+        run: git push origin --delete "upgrade-node-to-${{ needs.upgrade.outputs.new_node_version }}" || true
+
+      - name: Create upgrade branch
+        run: git checkout -b "upgrade-node-to-${{ needs.upgrade.outputs.new_node_version }}"
+
+      - name: Commit and push
+        env:
+          LATEST_NODE: ${{ needs.upgrade.outputs.new_node_version }}
+          NEW_PNPM: ${{ needs.upgrade.outputs.new_pnpm }}
+        run: |
+          SUBJECT="chore: upgrade Node to $LATEST_NODE"
+          if [ -n "$NEW_PNPM" ]; then
+            SUBJECT="$SUBJECT and pnpm to $NEW_PNPM"
+          fi
+          git add .
+          git commit -n -m "$SUBJECT"
+          git push -u origin "upgrade-node-to-${{ needs.upgrade.outputs.new_node_version }}"
+
+      - name: Open pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LATEST_NODE: ${{ needs.upgrade.outputs.new_node_version }}
+          CURRENT_NODE: ${{ needs.upgrade.outputs.current_node }}
+          CURRENT_PNPM: ${{ needs.upgrade.outputs.current_pnpm }}
+          NEW_PNPM: ${{ needs.upgrade.outputs.new_pnpm }}
+          NOTES: ${{ needs.upgrade.outputs.notes }}
+        run: |
+          TITLE="chore: upgrade Node to $LATEST_NODE"
+          if [ -n "$NEW_PNPM" ]; then
+            TITLE="$TITLE and pnpm to $NEW_PNPM"
+          fi
+
+          # GitHub caps issue/PR bodies at 65536 characters; NOTES can carry
+          # raw failure output (build logs, etc.) that's unbounded in size.
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          MAX_NOTES_LENGTH=50000
+          if [ "${#NOTES}" -gt "$MAX_NOTES_LENGTH" ]; then
+            NOTES="${NOTES:0:$MAX_NOTES_LENGTH}
+
+          ... (truncated — see the full output in the run log: $RUN_URL)"
+          fi
+
+          BODY="## Automated Node.js Version Upgrade
+
+          | | Before | After |
+          |---|---|---|
+          | Node.js | \`$CURRENT_NODE\` | \`$LATEST_NODE\` |"
+
+          if [ -n "$NEW_PNPM" ]; then
+            BODY="$BODY
+          | pnpm | \`$CURRENT_PNPM\` | \`$NEW_PNPM\` |"
+          fi
+
+          if [ -n "$NOTES" ]; then
+            BODY="$BODY
+
+          ## Notes
+
+          $NOTES"
+          fi
+
+          BODY="$BODY
+          Review the lock file changes, run tests, and merge when ready."
+
+          gh pr create \
+            --repo "${{ github.repository }}" \
+            --title "$TITLE" \
+            --body "$BODY" \
+            --base develop \
+            --assignee eeerin
